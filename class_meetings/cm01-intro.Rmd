@@ -56,6 +56,28 @@ Show the marginal of Y. Show some conditional distributions.
 
 Almost all supervised learning methods decide to use the __mode__ as the prediction.
 
+## Fundamental Concept: Evaluating Prediction Goodness
+
+Suppose we've come up with a model that makes predictions of the response, given knowledge of predictors. How can we evaulate how good (or bad) the predictions are? It depends on whether the response is categorical or numeric.
+
+### Categorical Response
+
+When the response is _categorical_, the __prediction accuracy__ measures prediction "goodness" as the proportion of correct predictions:
+$$ \text{Prediction Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}. $$
+Equivalently, we can measure the prediction "badness" with the __error rate__, which is one minus the prediction accuracy, telling us the proportion of _incorrect_ predictions. 
+
+This will be the main focus of the course, but there are others, too. A common measure of goodness is the (Shannon) __information__ (the equivalent measure of badness is __entropy__). These measurements consider the entire conditional distribution, as opposed to just the mode. 
+
+### Numeric Response
+
+When the response is _numeric_, and we're forming predictions using a mean estimate (usually the case), then there are a few measures of goodness. Suppose we've made $N$ predictions $\hat{y}_1, \ldots, \hat{y}_N$, for which the actual response ended up being $y_1, \ldots, y_N$.  
+
+- The __mean squared error__ (MSE) is a universal measure of badness (the larger this number, the worse the model is). $$ \text{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2. $$
+- The __coefficient of determination__ ($R^2$) is a universal measure of goodness. 
+- The __likelihood__ is a measure of goodness, and is only applicable when we've made distributional assumptions. 
+
+There are extensions to these, such as AIC and adjusted $R^2$, but these have a different meaning. We'll touch on these later. 
+
 ## LAB
 
 - Give an exercise with discrete and continuous $Y$ with no predictors. Then introduce a categorical predictor. Then a continuous predictor (but without the categorical). 
