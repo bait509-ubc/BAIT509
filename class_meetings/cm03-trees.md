@@ -25,7 +25,7 @@ A **decision stump** is a decision on *Y* based on the value of *one* of the pre
 
 ![](cm03-trees_files/stump.png)
 
-(Attribution: Hyeju Jang, DSCI 571)
+(Image attribution: Hyeju Jang, DSCI 571)
 
 Learning procedure
 ------------------
