@@ -12,6 +12,49 @@ Your participation will be assessed in class, as well as your attempts at doing 
 - 5%: in-class discussion
     - You'll be given the opportunity to briefly present your in-class exercises.
 
+Regarding the in-class mini-presentations, don't fret if you or your team can't figure out the answer to a question you are presenting! You won't be penalized _at all_ for not knowing, or getting an answer wrong, but at least try. The floor will be turned to the class for an answer, or I will chime in with some insight. 
+
+## Introduction to class outlines:
+
+When the topic of discussion is a Machine Learning methodology:
+
+1. Brief explanation of the main idea underlying a methodology.
+2. Hands-on exploratory work with toy datasets to allow you to build concepts.
+3. Connection to higher-level concepts, including more complex extensions. 
+
+In your actual assignments, you'll be working with real data. 
+
+## Terminology
+
+In supervised learning, we try to gain information on a variable $Y$, given observations on variables $X_1,\ldots,X_p$.
+
+The variable $Y$ is called the __response variable__, and sometimes the _dependent variable_.
+
+The variables $X_1, \ldots, X_p$ are called __predictor variables__ (or just "predictors"). There are many other terms for these, including _features_, _independent variables_, and _covariates_.
+
+## Fundamental Concept: Predictors give us more information about the response
+
+### Numeric Example
+
+Take the example where $(X,Y)$ are bivariate normal; $Y$ is also Normal. Using the distribution of $Y$ alone, there is a lot of uncertainty as to what a future outcome of the response might be. But if we observe, say, $X=2$, then the distribution of $Y$ is more certain. This is the __conditional distribution__ of the response given the predictors. 
+
+Almost all supervised learning methods decide to use the __mean__ as the prediction.
+
+### Categorical Example
+
+Take the example where $Y$ can be one of three categories: _A_, _B_, or _C_. 
+
+DGP:
+
+$$ \text{logit}(P(Y=B|X=x)) = 5 + x $$
+
+$$ \text{logit}(P(Y=C|X=x)) = x $$
+
+$X$ is Exponential(1). 
+
+Show the marginal of Y. Show some conditional distributions. 
+
+Almost all supervised learning methods decide to use the __mode__ as the prediction.
 
 ## LAB
 
