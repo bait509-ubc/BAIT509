@@ -1,0 +1,10 @@
+---
+title: 'BAIT 509 Class Meeting 03: Generalization Error'
+output: github_document
+---
+
+## Topics
+
+- Generalization error
+- Training, validation, and test sets
+- Cross validation
