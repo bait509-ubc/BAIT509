@@ -24,6 +24,16 @@ When the topic of discussion is a Machine Learning methodology:
 
 In your actual assignments, you'll be working with real data.
 
+General outline of class meetings
+---------------------------------
+
+-   10:00-11:10: hands-on lecture. Typically involves:
+    -   A short explanation of basic concepts, then
+    -   hands-on work with mini presentations, then
+    -   deeper explanation regarding details.
+-   11:10-11:50: lab portion.
+    -   Typically involves you working on an assignment, with members of the teaching team available to answer your questions.
+
 Terminology
 -----------
 
