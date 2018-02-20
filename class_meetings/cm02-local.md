@@ -19,7 +19,7 @@ ggplot(dat, aes(x,y)) +
     rotate_y
 ```
 
-<img src="cm02-local_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="cm02-local_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 Exercise 1
 ----------
@@ -49,3 +49,28 @@ Instead of estimating the mean just at *X* = 0, we'd like to do the same pro
 -   Go ahead and do the estimation using both methods, and plot all 1000 mean estimates on top of the scatterplot in a different colour, to form a **regression curve**. Better yet, make this an actual curve by drawing a line through all 1000 estimates.
 -   Play with different values of *k* and *r*. What effect does increasing these values have on the regression curve? What about decreasing? What would you say is a "good" choice of *k* and *r*, and why?
 -   What happens when you choose *k* = *n* = 200? What happens if you choose *r* = 10 or bigger?
+
+Concept of Model Assumptions
+----------------------------
+
+The model assumptions for loess are that the regression curve can be any smooth function.
+
+An important concept in machine learning is how model assumptions influence the bias-variance tradeoff. We'll explore this throughout the course.
+
+### Exercise
+
+Consider
+*Y* = *X* + *ε*,
+ where *X* (predictor) is N(0,1), and *ε* (error term) is also N(0,1) (both are independent).
+
+Generate a sample of size 100, 100 times. For each sample, fit a linear and local regression. Plot all 100 smoothers in one panel, and all 100 regression lines in another panel, over a grid of *x* values between -4 and 4. Be sure to include the true mean curve.
+
+Compare the fit of the linear vs. local methods. In particular, comment on the following:
+
+-   Where on the plot does the smoother fit worse, and why? Is this phenomenon seen in the linear model too?
+-   Compare the linear and smoothed methods in terms of bias and variance. Which method is best here (if any)?
+
+**Hints:**
+
+-   Use alpha transparency in your plot.
+-   Don't vary the smoothing parameter.
