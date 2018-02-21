@@ -23,22 +23,22 @@ Class meetings occur in HA 133. Vincenzo will be leading all class meetings as t
 
 | Week | Weekday     | Date           | Time        | Place | Leader   |
 | ---- | ----------- | -------------- | ----------- | ----- | -------- |
-| 1    | Monday      | Feb 26, 2018   | 12:00-13:00 | ESB 3167      | Mohamed  |
-| 1    | Tuesday     | Feb 27, 2018   | 13:00-14:00 | ESB 3167      | Mohamed  |
-| 1    | Thursday    | March 1, 2018  | 12:00-13:00 | ESB 3167      | Vincenzo |
-| 2    | Monday      | March 5, 2018  | 12:00-13:00 | ESB 3167      | Mohamed  |
-| 2    | Tuesday     | March 6, 2018  | 13:00-14:00 | ESB 3167      | Mohamed  |
-| 2    | Thursday    | March 8, 2018  | 12:00-13:00 | ESB 3167      | Vincenzo |
-| 3    | Monday      | March 12, 2018 | 12:00-13:00 | ESB 3167      | Mohamed  |
-| 3    | Tuesday     | March 13, 2018 | 13:00-14:00 | ESB 3167      | Mohamed  |
-| 3    | Thursday    | March 15, 2018 | 12:00-13:00 | ESB 3167      | Vincenzo |
-| 4    | Monday      | March 19, 2018 | 12:00-13:00 | ESB 3167      | Mohamed  |
-| 4    | Tuesday     | March 20, 2018 | 13:00-14:00 | ESB 3167      | Mohamed  |
-| 4    | Thursday    | March 22, 2018 | 12:00-13:00 | ESB 3167      | Vincenzo |
-| 5    | Monday      | March 26, 2018 | 12:00-13:00 | ESB 3167      | Mohamed  |
-| 5    | Tuesday     | March 27, 2018 | 13:00-14:00 | ESB 3167      | Mohamed  |
-| 5    | Thursday    | March 29, 2018 | 12:00-13:00 | ESB 3167      | Vincenzo |
-| 6    | Tuesday     | April 3, 2018  | 13:00-14:00 | ESB 3167      | Mohamed  |
+| 1    | Monday      | Feb 26, 2018   | 12:00-13:00 | ESB 3174 | Mohamed  |
+| 1    | Tuesday     | Feb 27, 2018   | 13:00-14:00 | ESB 3174 | Mohamed  |
+| 1    | Thursday    | March 1, 2018  | 12:00-13:00 | ESB 3174 | Vincenzo |
+| 2    | Monday      | March 5, 2018  | 12:00-13:00 | ESB 3174 | Mohamed  |
+| 2    | Tuesday     | March 6, 2018  | 13:00-14:00 | ESB 3174 | Mohamed  |
+| 2    | Thursday    | March 8, 2018  | 12:00-13:00 | ESB 3174 | Vincenzo |
+| 3    | Monday      | March 12, 2018 | 12:00-13:00 | ESB 3174 | Mohamed  |
+| 3    | Tuesday     | March 13, 2018 | 13:00-14:00 | ESB 3174 | Mohamed  |
+| 3    | Thursday    | March 15, 2018 | 12:00-13:00 | ESB 3174 | Vincenzo |
+| 4    | Monday      | March 19, 2018 | 12:00-13:00 | ESB 3174 | Mohamed  |
+| 4    | Tuesday     | March 20, 2018 | 13:00-14:00 | ESB 3174 | Mohamed  |
+| 4    | Thursday    | March 22, 2018 | 12:00-13:00 | ESB 3174 | Vincenzo |
+| 5    | Monday      | March 26, 2018 | 12:00-13:00 | ESB 3174 | Mohamed  |
+| 5    | Tuesday     | March 27, 2018 | 13:00-14:00 | ESB 3174 | Mohamed  |
+| 5    | Thursday    | March 29, 2018 | 12:00-13:00 | ESB 3174 | Vincenzo |
+| 6    | Tuesday     | April 3, 2018  | 13:00-14:00 | ESB 3174 | Mohamed  |
 
 ## Grading
 
