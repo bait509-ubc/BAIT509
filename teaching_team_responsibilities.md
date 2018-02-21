@@ -10,7 +10,7 @@ Class meetings occur in HA 133. Vincenzo will be leading all class meetings as t
 | ---- | ------------- | ----------- | -------------- | --------------- |
 | 1    | cm01          | Monday      | Feb 26, 2018   | Raffi           |
 | 1    | cm02          | Wednesday   | Feb 28, 2018   | Raffi           |
-| 2    | cm03          | Monday      | March 5, 2018  | Vaden           |
+| 2    | cm03          | Monday      | March 5, 2018  | Raffi           |
 | 2    | cm04          | Wednesday   | March 7, 2018  | Raffi           |
 | 3    | cm05          | Monday      | March 12, 2018 | Vaden           |
 | 3    | cm06          | Wednesday   | March 14, 2018 | Raffi, Vaden    |
