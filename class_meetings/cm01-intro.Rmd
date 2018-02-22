@@ -3,6 +3,12 @@ title: "BAIT 509 Class Meeting 01"
 output: github_document
 ---
 
+## Overview
+
+- About me; about you; about the course. 
+- GitHub
+- Basics of Machine Learning
+
 ## GitHub
 
 Your participation will be assessed in class, as well as your attempts at doing the in-class exercises. Be sure to commit and push to your github repo while doing class exercises. I'll be using Source Tree to communicate between my laptop and GitHub.
@@ -32,6 +38,36 @@ In your actual assignments, you'll be working with real data.
     - deeper explanation regarding details.
 - 11:10-11:50: lab portion. 
     - Typically involves you working on an assignment, with members of the teaching team available to answer your questions. 
+
+## Git and GitHub
+
+We'll be using git with GitHub for course materials, including a place to put your work on the in-class exercises.
+
+__git__: A version control program. It keeps track of file changes.
+
+__GitHub__: A service to host your files, and integrates with `git`.
+
+We'll come back to `git` later, but for now, let's focus on GitHub. 
+
+You might find these readings helpful:
+
+- I recommend reading ["Why Git? Why GitHub?"](http://happygitwithr.com/big-picture.html) by Jenny Bryan if you're not familiar with what these tools are all about, and why they are useful for data science. It's an incomplete chapter in an incomplete book, but still very useful.
+- [This STAT 545 lesson](http://stat545.com/cm003-notes_and_exercises.html) aims to introduce git and GitHub.
+
+### GitHub Exercises
+
+- If you haven't already, make an account on [github.com](https://github.com/).
+    - Jenny's ["Register a GitHub account"](http://happygitwithr.com/github-acct.html) chapter is useful if you want to read more.
+- Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -> "Watching" (in the upper-right corner of the page). 
+    - This will notify you by email whenever a new issue comment is made. We'll be using issues for remote discussion about course material and assignments. 
+- I'll make a new issue. Reply to the issue saying anything you'd like! Keep in mind, __this is public__ (i.e., open to the world)! 
+- I recommend that you `Fork` the BAIT509 repo (="repository"). There's a button for this at the top-right corner of the main BAIT 509 repo page. You can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course (at the start of lectures) -- more on this later. If you don't want to fork the repo, create your own repo.
+- On either your own BAIT509 repo, or the forked repo, modify (or add) the `README.md` file to include a sentence or two introducing yourself, and indicate that the repo is being used to put your in-class BAIT509 work. 
+    - This repository is by default __public__/open to the world. If you have time, and are interested in making the repository private without having to pay, try [requesting an Education account](https://education.github.com/). 
+
+### Git Exercises
+
+You'll need to [install `git`](http://happygitwithr.com/install-git.html) on your computers. Then [introduce yourself to `git`](http://happygitwithr.com/hello-git.html), and if you want, [install a `git` client](http://happygitwithr.com/git-client.html) (I like to use [sourcetree](https://www.sourcetreeapp.com/)).
 
 ## Terminology
 
