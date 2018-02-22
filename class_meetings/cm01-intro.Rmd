@@ -9,16 +9,53 @@ output: github_document
 - GitHub
 - Basics of Machine Learning
 
-## GitHub
+## About me
 
-Your participation will be assessed in class, as well as your attempts at doing the in-class exercises. Be sure to commit and push to your github repo while doing class exercises. I'll be using Source Tree to communicate between my laptop and GitHub.
+A data scientist and teaching fellow at UBC for the Master of Data Science program. My background:
 
-- 5%: attempting the in-class exercises, as assessed through your commit history. 
-    - Key word here is _attempt_ -- we're looking for effort here, not correctness. 
-- 5%: in-class discussion
-    - You'll be given the opportunity to briefly present your in-class exercises.
+- BSc Biology (Brock U)
+- BSc Mathematics (Brock U)
+- MSc Mathematical Statistics (Brock U)
+- PhD Statistics (UBC)
+    - Thesis on forecasting extremes for flooding via multivariate dependence modelling.
 
-Regarding the in-class mini-presentations, don't fret if you or your team can't figure out the answer to a question you are presenting! You won't be penalized _at all_ for not knowing, or getting an answer wrong, but at least try. The floor will be turned to the class for an answer, or I will chime in with some insight. 
+Computationally, I am primarily an R programmer. 
+
+Lots of experience as a statistical consultant for business and academia. 
+
+## About you
+
+## About this course
+
+### Asking Questions
+
+Besides asking questions and contributing to discussions in class, you are encouraged to ask questions online via [GitHub issues on the BAIT509 repo](https://github.com/vincenzocoia/BAIT509/issues). Feel free to ask about anything related to the course -- content, assessments, coding, jobs, etc. You are also encouraged to interact with these Issues: 
+
+- Add a comment to the Issue if you have something to add; or propose a solution to their question.
+- Add to the question.
+- Give the question a "thumbs up" if you have this same question and like the way it was worded.
+- Ask for more details.
+
+This happens outside of BAIT 509, too. For example, you would do these things if you experience a (legitimate) problem with an R package, which will typically have a GitHub repo. See the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues) as an example. 
+
+It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
+
+- Provide relevant links (for example, to the relevant assignment or course notes).
+- Make a reproducible example (in the case that it's a question involving code).
+- Be detailed.
+
+You'll probably find that the act of writing an effective question causes you to answer your own question! In this case, post your question anyway, with the corresponding solution. 
+
+Note that the BAIT 509 GitHub issues are __public__ -- anyone with internet can view them. This is a good thing -- it is a display of your thoughtfulness, your willingness to participate, and your willingness to ask questions. 
+
+On that note, don't be afraid to ask a question here! Discrimination and ridicule will not be tolerated, and this includes on the BAIT509 repo. The teaching team will provide guidance on a per-question basis, and students are also encouraged to provide ways in which a question can be made more effective. 
+
+Here are some resources to help you get a sense of how to ask a question online:
+
+- I recommend checking out [these guidelines](http://stat545.com/help-STAT545.html#github-issue) used in STAT 545 for asking questions with GitHub issues.
+- 
+
+
 
 ## Introduction to class outlines:
 
