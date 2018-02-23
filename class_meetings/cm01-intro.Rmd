@@ -5,11 +5,30 @@ output: github_document
 
 ## Overview
 
-- About me; about you; about the course. 
-- GitHub
-- Basics of Machine Learning
+First listening component:
 
-## About me
+- About me; about you; about the course. 
+- Online discussions
+- GitHub
+
+In-class Exercise:
+
+- Getting acquainted with GitHub
+- Online discussions
+
+Second listening component:
+
+- More tools for data science, and the course
+
+Lab:
+
+- Basics of Machine Learning
+- Fill out survey
+- git
+
+## About
+
+### About me
 
 A data scientist and teaching fellow at UBC for the Master of Data Science program. My background:
 
@@ -23,20 +42,79 @@ Computationally, I am primarily an R programmer.
 
 Lots of experience as a statistical consultant for business and academia. 
 
-## About you
+### About you
 
-## About this course
+Introduce yourself! Let's hear about:
 
-### Asking Questions
+- Your name
+- Why MBAN?
+- Something about yourself.
 
-Besides asking questions and contributing to discussions in class, you are encouraged to ask questions online via [GitHub issues on the BAIT509 repo](https://github.com/vincenzocoia/BAIT509/issues). Feel free to ask about anything related to the course -- content, assessments, coding, jobs, etc. You are also encouraged to interact with these Issues: 
+### About this course
+
+- Preview of the course website -- it contains all materials related to the course.
+- Preview of the syllabus
+
+Before we talk more about the assessments, let's first talk about the structure of our class meetings. 
+
+### About class meetings
+
+I intend most class meetings to take the __listen-do-listen-do__ form:
+
+1. __Listen__: (15 min?) I'll start class meetings with high-level explanations of a topic.
+2. __Do__: (40 min?) You do hands-on exploratory work to allow you to build concepts.
+    - You "present" your work to initiate a class discussion; I clarify concepts as needed.
+3. __Listen__: (25 min?) Once you have basic concepts down pat, I'll talk more about details.
+4. __Do__: (40 min?) Open time for working on course material, typically assignments or in-class material. Instructor and a TA will be present to answer questions. 
+
+Notes:
+
+- This structure might evolve as the course progresses. 
+- There will be a TA present to help you.
+- In-class exercises will typically contain toy data sets; assignments will be more "real".
+
+### About class meeting notes
+
+(This manuscript being one of them!)
+
+Each class meeting will be accompanied with a manuscript of notes to guide the meeting. I intend these to generally be structured as:
+
+- Outline
+- Basic concepts
+- In-class exercises
+- More advanced concepts
+
+
+## Participation Skills
+
+
+### Your participation assessment
+
+Let's go over how you'll be assessed. See the `participation` file in the `assignments` folder.
+
+
+### Online discussion
+
+By now, you're used to asking questions and contributing to discussions _in class_. But the world of _online discussions_ is quite different. 
+
+You are encouraged to ask questions online via [GitHub issues on the BAIT509 repo](https://github.com/vincenzocoia/BAIT509/issues). Feel free to ask about anything related to the course, including (but not limited to):
+
+- content
+- assessments
+- coding
+- jobs
+- requests
+
+You are also encouraged to interact with these Issues: 
 
 - Add a comment to the Issue if you have something to add; or propose a solution to their question.
 - Add to the question.
 - Give the question a "thumbs up" if you have this same question and like the way it was worded.
 - Ask for more details.
 
-This happens outside of BAIT 509, too. For example, you would do these things if you experience a (legitimate) problem with an R package, which will typically have a GitHub repo. See the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues) as an example. 
+Think for a moment why I'm including this in your _class notes_ instead of in the document outlining our expectations for your `participation`. When you interact like this outside of the BAIT509 repo, you become a valuable contributor to the data science community in general! For example, you would do these things if you experience a (legitimate) problem with an R package. See the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues) as an example; or, if an R package does not have a GitHub repo, you can contact the author directly. 
+
+### Asking effective questions
 
 It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
 
@@ -55,27 +133,6 @@ Here are some resources to help you get a sense of how to ask a question online:
 - I recommend checking out [these guidelines](http://stat545.com/help-STAT545.html#github-issue) used in STAT 545 for asking questions with GitHub issues.
 - 
 
-
-
-## Introduction to class outlines:
-
-When the topic of discussion is a Machine Learning methodology:
-
-1. Brief explanation of the main idea underlying a methodology.
-2. Hands-on exploratory work with toy datasets to allow you to build concepts.
-3. Connection to higher-level concepts, including more complex extensions. 
-
-In your actual assignments, you'll be working with real data. 
-
-## General outline of class meetings
-
-- 10:00-11:10: hands-on lecture. Typically involves:
-    - A short explanation of basic concepts, then 
-    - hands-on work with mini presentations, then
-    - deeper explanation regarding details.
-- 11:10-11:50: lab portion. 
-    - Typically involves you working on an assignment, with members of the teaching team available to answer your questions. 
-
 ## Git and GitHub
 
 We'll be using git with GitHub for course materials, including a place to put your work on the in-class exercises.
@@ -91,20 +148,38 @@ You might find these readings helpful:
 - I recommend reading ["Why Git? Why GitHub?"](http://happygitwithr.com/big-picture.html) by Jenny Bryan if you're not familiar with what these tools are all about, and why they are useful for data science. It's an incomplete chapter in an incomplete book, but still very useful.
 - [This STAT 545 lesson](http://stat545.com/cm003-notes_and_exercises.html) aims to introduce git and GitHub.
 
-### GitHub Exercises
+## In-Class Exercises
+
+For your first exercise, you'll first acquaint yourself with GitHub, then add a comment on the BAIT509 Issue about effective questions. Here are your instructions.
+
+__Note__: Done early? Head to the "Lab" section of these course notes for additional tasks!
+
+### Acquaint yourself with GitHub and the BAIT 509 repo
 
 - If you haven't already, make an account on [github.com](https://github.com/).
     - Jenny's ["Register a GitHub account"](http://happygitwithr.com/github-acct.html) chapter is useful if you want to read more.
 - Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -> "Watching" (in the upper-right corner of the page). 
     - This will notify you by email whenever a new issue comment is made. We'll be using issues for remote discussion about course material and assignments. 
-- I'll make a new issue. Reply to the issue saying anything you'd like! Keep in mind, __this is public__ (i.e., open to the world)! 
 - I recommend that you `Fork` the BAIT509 repo (="repository"). There's a button for this at the top-right corner of the main BAIT 509 repo page. You can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course (at the start of lectures) -- more on this later. If you don't want to fork the repo, create your own repo.
 - On either your own BAIT509 repo, or the forked repo, modify (or add) the `README.md` file to include a sentence or two introducing yourself, and indicate that the repo is being used to put your in-class BAIT509 work. 
     - This repository is by default __public__/open to the world. If you have time, and are interested in making the repository private without having to pay, try [requesting an Education account](https://education.github.com/). 
 
-### Git Exercises
+### Evaluating questions
 
-You'll need to [install `git`](http://happygitwithr.com/install-git.html) on your computers. Then [introduce yourself to `git`](http://happygitwithr.com/hello-git.html), and if you want, [install a `git` client](http://happygitwithr.com/git-client.html) (I like to use [sourcetree](https://www.sourcetreeapp.com/)).
+Peruse the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues). I'll make an Issue on the BAIT509 repo soliciting your comments on some online questions. In particular:
+
+- Find a question/issue or two that someone has posed online. Ideally, one should also have a response. See below for some example sites.
+- Add a comment to the new Issue I made. For each thread you examined, specify:
+    - A link to the thread/question
+    - In what ways is the question/issue worded effectively/ineffectively? Why? What would make it better, if anything?
+        - Note that people often reply with this type of feedback, too! Sometimes not in a pleasant way, unfortunately.
+    - If there are responses to the question/issue, did any add good value to the discussion? Were any supportive? Were any destructive?
+
+We'll talk about some examples after you're done. Here are some sites you might find useful:
+
+- [`ggplot2` GitHub Issues](https://github.com/tidyverse/ggplot2/issues) (a popular R package)
+- [`scipy` GitHub Issues](https://github.com/scipy/scipy/issues) (a popular python package)
+- [Stack Overflow](https://stackoverflow.com/)
 
 ## Terminology
 
@@ -160,6 +235,18 @@ When the response is _numeric_, and we're forming predictions using a mean estim
 
 There are extensions to these, such as AIC and adjusted $R^2$, but these have a different meaning. We'll touch on these later. 
 
-## LAB
+## Lab
+
+
+
+### Survey
+
+Be sure to fill out the survey!
+
+### Git Exercises (end of class)
+
+You'll need to [install `git`](http://happygitwithr.com/install-git.html) on your computers. Then [introduce yourself to `git`](http://happygitwithr.com/hello-git.html), and if you want, [install a `git` client](http://happygitwithr.com/git-client.html) (I like to use [sourcetree](https://www.sourcetreeapp.com/)).
+
+### ML
 
 - Give an exercise with discrete and continuous $Y$ with no predictors. Then introduce a categorical predictor. Then a continuous predictor (but without the categorical). 
