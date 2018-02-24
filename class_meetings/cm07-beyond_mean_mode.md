@@ -1,7 +1,7 @@
-BAIT 509 Class Meeting 08: Supervised Learning Beyond the Mean and Mode
+BAIT 509 Class Meeting 07: Supervised Learning Beyond the Mean and Mode
 ================
 Vincenzo Coia
-2018-03-21
+2018-03-19
 
 Learning Goals
 ==============
@@ -51,7 +51,7 @@ Task: we want to predict the number of runs from two baseball teams: one that ma
 
 Here are the estimated densities of "runs" in either case:
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
 Don't you think this is far more informative than the mean estimates in the below table?
 
@@ -71,7 +71,7 @@ Local methods don't assume anything about the data. The idea is the same as in l
 
 The simplest case is to use a "moving window", which I used in the example above. In that example, I just used all data within `20` hits of 1000 and 1500, respectively, and made kernel density estimates of the subsetted data. Visually, you can see the data that I subsetted within these two narrow windows:
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 You could also form an empirical cdf of the subsetted data if you want an estimate of the cdf.
 
@@ -99,7 +99,7 @@ Using a Poisson GLM, the predicted distributions are
 
 Plotted, their pmf estimates are:
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 Evaluating Model Goodness
 -------------------------
@@ -162,7 +162,7 @@ Here are the 0.25-, 0.5-, and 0.75-quantile regression lines:
 
     ## Smoothing formula not specified. Using: y ~ x
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 I did this easily with `ggplot2`, just by adding a layer `geom_quantile` to my scatterplot, specifying the quantile levels with the `quantiles=` argument. We could also use the function `rq` in the `quantreg` package in R:
 
@@ -203,7 +203,7 @@ Because each quantile is allowed to have its own line, some of these lines might
     ## Smoothing formula not specified. Using: y ~ x
     ## Smoothing formula not specified. Using: y ~ x
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 Quantile estimates of Sepal Width for plants with Sepal Length less than `7.3` are valid, but otherwise, are not. For example, for plants with a Sepal Length of 8, this model predicts 30% of such plants to have a Sepal Width of less than `2.75`, but only 20% of such plants should have Sepal Width less than `2.82`. This is an illogical statement.
 
@@ -221,11 +221,11 @@ Here is a histogram of 100 observations generated from a Student's *t*(1) distri
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Here are estimates of high and low quantiles, compared to the actual. You can see the discrepency grows quickly. **Extreme-low quantiles are too high**, whereas **extreme-high quantiles are too low**.
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 As a rule of thumb, it's best to stay below *τ* = 0.95 or above *τ* = 0.05. If you really want estimates of these extreme quantiles, you'll need to turn to **Extreme Value Theory** to make an assumption on the tail of the distribution of the data. One common approach is to fit a generalized Pareto distribution to the upper portion of the data, after which you can extract high quantiles.
 
@@ -250,7 +250,7 @@ $$ S = \\sum\_{i=1}^{n} \\rho\_{\\tau}(Y\_i - \\hat{Q}\_i(\\tau)), $$
 
 Here is a plot of various check functions. Notice that, when *τ* = 0.5 (corresponding to the median), this is proportional to the absolute value:
 
-<img src="cm08-beyond_mean_mode_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="cm07-beyond_mean_mode_files/figure-markdown_github/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 Note that there *are* more scoring rules we can use, other than this. In fact, for any increasing function *g*, we can wrap *Y*<sub>*i*</sub> and $\\hat{Q}\_i(\\tau)$ by *g*, and end up with another proper scoring rule. I recommend using *g* = log if you suspect your data are heavy-tailed, otherwise the scoring rule may not converge (in the *n* → ∞ sense).
 
