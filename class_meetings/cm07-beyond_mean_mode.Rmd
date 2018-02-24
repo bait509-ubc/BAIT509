@@ -1,7 +1,7 @@
 ---
-title: 'BAIT 509 Class Meeting 08: Supervised Learning Beyond the Mean and Mode'
+title: 'BAIT 509 Class Meeting 07: Supervised Learning Beyond the Mean and Mode'
 author: "Vincenzo Coia"
-date: '2018-03-21'
+date: '2018-03-19'
 output: github_document
 references:
 - id: gneiting_raftery
