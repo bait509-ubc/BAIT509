@@ -202,6 +202,10 @@ We'll talk about some examples after you're done. Here are some sites you might 
 
 ## Introduction to Machine Learning
 
+In this section, we'll go over some basic machine learning concepts, and have you "doing" machine learning, starting with methods you already know. 
+
+### What machine learning is
+
 What is Machine Learning (ML) (or Statistical Learning)? As the [ISLR book](http://www-bcf.usc.edu/~gareth/ISL/) puts it, it's a "vast set of tools for understanding data". Before we explain more, we need to consider the two main types of ML:
 
 - __Supervised learning__. (_This is the focus of BAIT 509_). Consider a "black box" that accepts some input(s), and returns some type of output. Feed it a variety of input, and write down the output each time (to obtain a _data set_). _Supervised learning_ attempts to learn from these data to re-construct this black box. That is, it's a way of building a forecaster/prediction tool. 
@@ -252,15 +256,48 @@ NCI60[[1]] %>%
 You've seen methods for doing this in BABS 507/508, such as k-means. 
 
 
-## Terminology
+### Variable terminology
+
+In supervised learning:
+
+- The output is a random variable, typically denoted $Y$. 
+- The input(s) variables (which may or may not be random), if there are $p$ of them, are typically denoted $X_1$, ..., $X_p$ -- or just $X$ if there's one. 
+
+There are many names for the input and output variables. Here are some (there are more, undoubtedly):
+
+- __Output__: response, dependent variable. 
+- __Input__: predictors, covariates, features, independent variables, explanatory variables, regressors. 
+
+In BAIT 509, we will use the terminology _predictors_ and _response_ (and sometimes _outcome_).
+
+### Variable types
+
+Terminology surrounding variable types can be confusing, so it's worth going over it. Here are some non-technical definitions. 
+
+- A __numeric__ variable is one that has a quantity associated with it, such as age or height. Of these, a numeric variable can be one of two things:
+    - A variable is __continuous__ if you can increase/decrease the variable "smoothly". For example, temperature, or proportions.
+    - A variable is __discrete__ if increasing/decreasing the variable can only happen "in steps". For example, number of apples in the fridge. - A __categorical__ variable, as the name suggests, is a variable that can be one of many categories. For example, type of fruit; success or failure.  
+
+### Types of Supervised Learning
+
+There are two main types of supervised learning methods -- determined entirely by the type of response variable.
+
+- __Regression__ is supervised learning when the response is numeric.
+- __Classification__ is supervised learning when the response is categorical. 
+
+We'll examine both equally in this course. 
+
+Note: Don't confuse classification with _clustering_! The latter is an unsupervised learning method.
+
+## In-Class Exercise:
+
+- Let's write down some supervised learning techniques that you've heard of.
+- What type of ML algorithm do the following situations fall under?
+
+## Fundamental Concept: Predictors give us more information about the response
 
 In supervised learning, we try to gain information on a variable $Y$, given observations on variables $X_1,\ldots,X_p$.
 
-The variable $Y$ is called the __response variable__, and sometimes the _dependent variable_.
-
-The variables $X_1, \ldots, X_p$ are called __predictor variables__ (or just "predictors"). There are many other terms for these, including _features_, _independent variables_, and _covariates_.
-
-## Fundamental Concept: Predictors give us more information about the response
 
 ### Numeric Example
 
