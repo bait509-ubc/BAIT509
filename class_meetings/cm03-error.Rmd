@@ -8,3 +8,4 @@ output: github_document
 - Generalization error
 - Training, validation, and test sets
 - Cross validation
+- Feature selection; R2adj, AIC. Forward and backward selection?
