@@ -52,6 +52,8 @@ Introduce yourself! Let's hear about:
 
 ### About this course
 
+This is a brand new course! You can expect things to evolve as we progress.
+
 -   Preview of the course website -- it contains all materials related to the course.
 -   Preview of the syllabus
 
@@ -156,30 +158,73 @@ For your first exercise, you'll first acquaint yourself with GitHub, then add a 
 
 ### Acquaint yourself with GitHub and the BAIT 509 repo
 
--   If you haven't already, make an account on [github.com](https://github.com/).
+1.  **Make an account**: If you haven't already, make an account on [github.com](https://github.com/).
     -   Jenny's ["Register a GitHub account"](http://happygitwithr.com/github-acct.html) chapter is useful if you want to read more.
--   Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -&gt; "Watching" (in the upper-right corner of the page).
+2.  **Fill out the survey**: Let us know your github.com username by filling in the survey at <https://goo.gl/forms/uEy5UpHAmCZiOIh42>
+3.  **Watch BAIT509**: Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -&gt; "Watching" (in the upper-right corner of the page).
     -   This will notify you by email whenever a new issue comment is made. We'll be using issues for remote discussion about course material and assignments.
--   I recommend that you `Fork` the BAIT509 repo (="repository"). There's a button for this at the top-right corner of the main BAIT 509 repo page. You can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course (at the start of lectures) -- more on this later. If you don't want to fork the repo, create your own repo.
--   On either your own BAIT509 repo, or the forked repo, modify (or add) the `README.md` file to include a sentence or two introducing yourself, and indicate that the repo is being used to put your in-class BAIT509 work.
-    -   This repository is by default **public**/open to the world. If you have time, and are interested in making the repository private without having to pay, try [requesting an Education account](https://education.github.com/).
+4.  **Set up your own BAIT509 repo** (repo="repository"): You'll use this repo to put your in-class work, and notes. You can do this in one of two ways:
+    1.  Maintain your own copy of the main BAIT 509 repo (\***recommended**\*), by [`Fork`ing](https://help.github.com/articles/fork-a-repo/) the main BAIT509 repo.
+        -   There's a button for this at the top-right corner of the main BAIT 509 repo page.
+        -   This is useful so you can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course -- more on this later.
+    2.  Start fresh and create a new blank repo.
+5.  **Add to your repo**: On your new BAIT 509 repo, add a new folder for you to put your in-class exercises, seeded with a README file. To do this for a folder called `my_folder`:
+    1.  Click "Create New File" on the main repo page.
+    2.  In the file name, type `my_folder/README.md`. Populate the contents with a brief description of what this folder will be used for (a one-liner is fine).
+    3.  Click "Commit new file".
+6.  **Education Account**: Your new repository is by default **public**/open to the world. I recommend you keep it this way. If you have time, and are interested in making the repository private without having to pay, try [requesting an Education account](https://education.github.com/).
+    -   *If you do make your repo private*, you'll need to [add the teaching team as collaborators](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/) to your repo so that we can evaluate your participation. See the course [README](../README.md) for our github usernames.
 
 ### Evaluating questions
 
-Peruse the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues). I'll make an Issue on the BAIT509 repo soliciting your comments on some online questions. In particular:
+For this exercise, I'll make an Issue on the BAIT509 repo soliciting your comments regarding the quality of some online questions/discussions.
 
--   Find a question/issue or two that someone has posed online. Ideally, one should also have a response. See below for some example sites.
--   Add a comment to the new Issue I made. For each thread you examined, specify:
+1.  Find a question/issue or two that someone has posed online. Ideally, one should also have a response. See below for some example sites.
+2.  Add a comment to the BAIT509 Issue. For each thread you examined, specify:
     -   A link to the thread/question
     -   In what ways is the question/issue worded effectively/ineffectively? Why? What would make it better, if anything?
         -   Note that people often reply with this type of feedback, too! Sometimes not in a pleasant way, unfortunately.
-    -   If there are responses to the question/issue, did any add good value to the discussion? Were any supportive? Were any destructive?
+    -   If there is a discussion surrounding this question/issue, did any comments add value to the discussion? Were any supportive? Were any destructive? How so?
 
 We'll talk about some examples after you're done. Here are some sites you might find useful:
 
 -   [`ggplot2` GitHub Issues](https://github.com/tidyverse/ggplot2/issues) (a popular R package)
 -   [`scipy` GitHub Issues](https://github.com/scipy/scipy/issues) (a popular python package)
 -   [Stack Overflow](https://stackoverflow.com/)
+
+Introduction to Machine Learning
+--------------------------------
+
+What is Machine Learning (ML) (or Statistical Learning)? As the [ISLR book](http://www-bcf.usc.edu/~gareth/ISL/) puts it, it's a "vast set of tools for understanding data". Before we explain more, we need to consider the two main types of ML:
+
+-   **Supervised learning**. (*This is the focus of BAIT 509*). Consider a "black box" that accepts some input(s), and returns some type of output. Feed it a variety of input, and write down the output each time (to obtain a *data set*). *Supervised learning* attempts to learn from these data to re-construct this black box. That is, it's a way of building a forecaster/prediction tool.
+
+For example, consider trying to predict someone's wage (output) based on their age (input). Using the `Wage` data set from the `ISLR` R package, here are examples of inputs and outputs:
+
+|  age|       wage|
+|----:|----------:|
+|   18|   75.04315|
+|   24|   70.47602|
+|   45|  130.98218|
+|   43|  154.68529|
+|   50|   75.04315|
+|   54|  127.11574|
+
+We try to model the relationship between age and wage so that we can predict the salary of a new individual, given their age.
+
+An example supervised learning technique is *linear regression*, which you've seen before in BABS 507/508. For an age `x`, let's use linear regression to make a prediction that's quadratic in `x`. Here's the fit:
+
+<img src="cm01-intro_files/figure-markdown_github/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+The blue curve represents our attempt to "re-construct" the black box by learning from the existing data. So, for a new individual aged 70, we would predict a salary of about $100,000. A 50-year-old, about $125,000.
+
+-   **Unsupervised learning**. (*BAIT 509 will not focus on this*). Sometimes we can't see the output of the black box. *Unsupervised learning* attempts to find structure in the data without any output.
+
+For example, consider the following two gene expression measurements (actually two principal components). Are there groups that we can identify here?
+
+<img src="cm01-intro_files/figure-markdown_github/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+You've seen methods for doing this in BABS 507/508, such as k-means.
 
 Terminology
 -----------
@@ -242,13 +287,13 @@ There are extensions to these, such as AIC and adjusted *R*<sup>2</sup>, but the
 Lab
 ---
 
-### Survey
-
-Be sure to fill out the survey!
+Be sure to let us know what your github username is by [filling out the survey](https://goo.gl/forms/uEy5UpHAmCZiOIh42), if you haven't already!
 
 ### Git Exercises (end of class)
 
 You'll need to [install `git`](http://happygitwithr.com/install-git.html) on your computers. Then [introduce yourself to `git`](http://happygitwithr.com/hello-git.html), and if you want, [install a `git` client](http://happygitwithr.com/git-client.html) (I like to use [sourcetree](https://www.sourcetreeapp.com/)).
+
+### Adding work to your repo
 
 ### ML
 
