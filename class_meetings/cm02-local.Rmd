@@ -10,12 +10,12 @@ my_accent <- "#d95f02"
 rotate_y <- theme(axis.title.y=element_text(angle=0, vjust=0.5))
 ```
 
+__Note__: Before the start of class, if you've `Fork`ed the main BAIT 509 repo, it's a good idea to update this fork with the newest changes made to the repo.
 
 
 ## 0. Learning Goals
 
 - Loess and kNN
-
 
 
 ## LAB PORTION
