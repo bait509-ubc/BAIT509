@@ -32,6 +32,14 @@ We'll help you out! Copy and paste the following line to get the attention of th
 
 `@vincenzocoia @vmasrani @mooahmed @rafizaman`
 
+## Class Meetings
+
+Details about class meetings will appear here as they become available. Readings are optional, but should be useful.
+
+|  #   |   Date | Topic | 
+|:----:|:------:|-------|
+| [cm01](/class_meetings/cm01-intro.md) | Monday, February 26 | Intro to the course, tools, and ML |
+
 
 ## Assessments
 
@@ -49,6 +57,15 @@ A change in status will be accompanied with an Issue creation/comment, so you wi
 | [Assignment 2](/assessments/assignment2/assignment2.ipynb)   | NA   | March 19 at 10:00am |
 | [Assignment 3](/assessments/assignment3/assignment3.ipynb)   | NA   | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | NA   | April 3 at 24:00    |
-| [Participation](/assessments/participation/participation.md) | NA   | March 28, at 12:00 (noon)  |
+| [Participation](/assessments/participation/participation.md) | OPEN   | March 28, at 12:00 (noon)  |
 
 Please submit your assignments to [UBC Connect](https://connect.ubc.ca/) in the form of a jupyter notebook __AND__ pdf file.
+
+## Useful Resources
+
+Here are some resources you might find useful for the course. Let me know if you find something you find useful, and I can add it here.
+
+- [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/) (aka ISLR).
+	- A very well-written book covering a lot of concepts in supervised learning. 
+- [Happy git and GitHub for the useR](http://happygitwithr.com/)
+	- Jenny Bryan's book on just about all the tools we're using in this course, and how they all work together. Doesn't include jupyter notebooks (?). 
