@@ -294,9 +294,12 @@ Note: Don't confuse classification with _clustering_! The latter is an unsupervi
 - Let's write down some supervised learning techniques that you've heard of.
 - What type of ML algorithm do the following situations fall under?
 
-## Fundamental Concept: Predictors give us more information about the response
+## 
+
+### Fundamental Concept: Predictors give us more information about the response
 
 In supervised learning, we try to gain information on a variable $Y$, given observations on variables $X_1,\ldots,X_p$.
+
 
 
 ### Numeric Example
@@ -342,6 +345,26 @@ When the response is _numeric_, and we're forming predictions using a mean estim
 - The __likelihood__ is a measure of goodness, and is only applicable when we've made distributional assumptions. 
 
 There are extensions to these, such as AIC and adjusted $R^2$, but these have a different meaning. We'll touch on these later. 
+
+## In-Class Exercise
+
+### Oracle regression
+
+The distribution of the data is:
+$$ Y|X=x \sim \text{Beta}(e^{-x}, 1/x), $$
+$$ X \sim \text{Exp}(1). $$
+
+Write a formula that gives a prediction of $Y$ from $X$. Generate data, and evaluate the MSE. Why is the MSE not zero, even though we know the true distribution of the data?
+
+### Oracle classification
+
+The distribution of the data is:
+$$ X_1, X_2 \sim \text{Unif}(0,1), $$
+and the distribution of $Y|(X_1,X_2)$ is
+
+(something continuous in x1, at least for the proportion of one category)
+
+(something binary in x2). 
 
 ## Lab
 
