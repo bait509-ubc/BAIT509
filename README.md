@@ -24,13 +24,13 @@ Here are the members of your teaching team. To see specifics of who's doing what
 | Vincenzo Coia | Instructor | `@vincenzocoia` |
 | Vaden Masrani | Teaching Assistant | `@vmasrani` |
 | Mohamed Ahmed | Teaching Assistant | `@mooahmed` |
-| Rafi Mohammad | Teaching Assistant | TBD |
+| Rafi Mohammad | Teaching Assistant | `@rafizaman` |
 
 As mentioned in [Class Meeting 01](/class_meetings/cm01-intro.md), please use [BAIT509 Issues](https://github.com/vincenzocoia/BAIT509/issues) as a primary mode of communication -- use email only for things that really should be private (find our emails in the syllabus).
 
 We'll help you out! Copy and paste the following line to get the attention of the teaching team:
 
-`@vincenzocoia @vmasrani @mooahmed`
+`@vincenzocoia @vmasrani @mooahmed @rafizaman`
 
 
 ## Assessments
