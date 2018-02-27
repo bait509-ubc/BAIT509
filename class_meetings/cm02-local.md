@@ -1,44 +1,66 @@
 BAIT 509 Class Meeting 02: Local Classification and Regression
 ================
 
+**Note**: Before the start of class, if you've `Fork`ed the main BAIT 509 repo, it's a good idea to update this fork with the newest changes made to the repo. But not critical if this sounds too crazy at this point!
+
 0. Learning Goals
 -----------------
 
 -   Loess and kNN
 
-LAB PORTION
------------
+In-Class Exercise
+-----------------
+
+Consider the following data set, given by `dat`. Here's the top six rows of data:
 
 ``` r
 set.seed(87)
 dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
               y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
+kable(head(dat))
+```
+
+|          x|         y|
+|----------:|---------:|
+|  -5.142691|  2.823462|
+|  -4.722812|  2.759020|
+|  -4.871821|  3.043214|
+|  -3.915033|  2.716712|
+|  -1.164387|  2.412004|
+|  -3.104414|  2.325320|
+
+Here's a scatterplot of the data:
+
+``` r
 ggplot(dat, aes(x,y)) + 
-    geom_point() +
+    geom_point(colour=my_accent) +
     theme_bw() + 
     rotate_y
 ```
 
-<img src="cm02-local_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="cm02-local_files/figure-markdown_github/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+-   **Why the toy data set?** Because I can embed characteristics into the data for pedagogical reasons. You'll see real data in the assignments and final project.
 
 Exercise 1
 ----------
 
 ### 1a: Mean at *X* = 0
 
-Consider estimating the mean of *Y* when *X* = 0 by using data whose *X* values are near 0. In particular, consider two methods:
+Consider estimating the mean of *Y* when *X* = 0 by using data whose *X* values are near 0.
 
-1.  use the *k* nearest data points (you choose *k*);
-2.  use all data whose *X* values are within *r* units of 0 (you choose *r*).
+1.  Eyeball the above scatterplot of the data. What would you say is a reasonable estimate of the mean of *Y* at *X* = 0? Why?
+2.  Estimate using two different methods:
+    1.  Subset the data to the *k* nearest data points (you choose *k*), and take the average *Y*. Hints for doing this:
+        -   First, add a new column in the data that stores the *distance* between *X* = 0 and each observation. If that column is named `d`, you can do this with the following partial code: `dat$d <- YOUR_CALCULATION_HERE`. Recall that `dat$x` is a vector of the `x` column.
+        -   Then, arrange the data from smallest distance to largest with `arrange(dat)` (you'll need to load the `tidyverse` package first), and subset *that* to the first *k* rows.
+    2.  Subset the data whose *X* values are within *r* units of 0 (you choose *r*), and take the average *Y*. Hint:
+        -   Subset the data using the `filter` function. The condition to filter on: you want to keep rows whose distances (`d`) are ...
 
-*k* and *r* are called **hyperparameters**.
+*k* and *r* are called **hyperparameters**. Method 1 is a special case of **loess** (short for "local regression"), sometimes called a **moving window**. Method 2 is called ***k*-Nearest Neighbours Regression**.
 
-**Questions for discussion**:
-
--   Eyeball the plot. What would you say is a reasonable estimate of the mean of *Y* at *X* = 0? Why?
--   Pick values of *k* and *r*, and estimate the mean using both methods. Use your guess as a reference to choose a "good" value.
--   What happens when you try to pick an *r* that is way too small? Say, *r* = 0.01? Why?
--   There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
+1.  What happens when you try to pick an *r* that is way too small? Say, *r* = 0.01? Why?
+2.  There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
 
 ### 1b: Regression Curve
 
