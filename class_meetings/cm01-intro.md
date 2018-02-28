@@ -145,10 +145,11 @@ __Note__: Done early? Head to the "Lab" section of these course notes for additi
 3. __Watch BAIT509__: Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -> "Watching" (in the upper-right corner of the page). 
     - This will notify you by email whenever a new issue comment is made. We'll be using issues for remote discussion about course material and assignments. 
 4. __Set up your own BAIT509 repo__ (repo="repository"): You'll use this repo to put your in-class work, and notes. You can do this in one of two ways:
-    1. Maintain your own copy of the main BAIT 509 repo (\*__recommended__\*), by [`Fork`ing](https://help.github.com/articles/fork-a-repo/) the main BAIT509 repo. 
+    1. Maintain your own copy of the main BAIT 509 repo ~~(\*__recommended__\*)~~, by [`Fork`ing](https://help.github.com/articles/fork-a-repo/) the main BAIT509 repo. 
         - There's a button for this at the top-right corner of the main BAIT 509 repo page. 
         - This is useful so you can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course -- more on this later. 
     2. Start fresh and create a new blank repo.
+        - On second thought, I would recommend this if git and github are new to you.
 5. __Add to your repo__: On your new BAIT 509 repo, add a new folder for you to put your in-class exercises, seeded with a README file. To do this for a folder called `my_folder`:
     1. Click "Create New File" on the main repo page.
     2. In the file name, type `my_folder/README.md`. Populate the contents with a brief description of what this folder will be used for (a one-liner is fine).
@@ -307,7 +308,7 @@ $$ Y \mid X_1=x_1 \sim N(5-x_1, 5). $$
 - The conditional distribution of $Y$ given _only_ $X_2$ is
 $$ Y \mid X_2=x_2 \sim N(5+2x_2, 2). $$
 - The (marginal) distribution of $Y$ (not given any of the predictors) is
-$$ Y \sim N(0, 6). $$
+$$ Y \sim N(5, 6). $$
 
 The following R function generates data from the joint distribution of $(X_1, X_2, Y)$. It takes a single positive integer as an input, representing the sample size, and returns a `tibble` (a fancy version of a data frame) with columns named `x1`, `x2`, and `y`, corresponding to the random vector $(X_1, X_2, Y)$, with realizations given in the rows. 
 
@@ -326,6 +327,9 @@ genreg <- function(n){
 1. Generate data -- as much as you'd like.
 
 
+```r
+dat <- genreg(1000)
+```
 
 
 2. For now, ignore the $Y$ values. Use the means from the distributions listed above to predict $Y$ under four circumstances:
@@ -335,32 +339,74 @@ genreg <- function(n){
     4. Using neither the values of $X_1$ nor $X_2$. (Your predictions in this case will be the same every time -- what is that number?)
     
 
+```r
+dat <- mutate(dat,
+       yhat = 5,
+       yhat1 = 5-x1,
+       yhat2 = 5+2*x2,
+       yhat12 = 5-x1+2*x2)
+```
     
 
 3. Now use the actual outcomes of $Y$ to calculate the mean squared error (MSE) for each of the four situations. 
     - Try re-running the simulation with a new batch of data. Do your MSE's change much? If so, choose a larger sample so that these numbers are more stable.
     
 
-```
-## [1] 6.250548
-```
-
-```
-## [1] 5.110282
+```r
+(mse <- mean((dat$yhat - dat$y)^2))
 ```
 
 ```
-## [1] 2.006538
+## [1] 6.468105
+```
+
+```r
+(mse1 <- mean((dat$yhat1 - dat$y)^2))
 ```
 
 ```
-## [1] 0.9904978
+## [1] 5.248613
 ```
+
+```r
+(mse2 <- mean((dat$yhat2 - dat$y)^2))
+```
+
+```
+## [1] 2.014189
+```
+
+```r
+(mse12 <- mean((dat$yhat12 - dat$y)^2))
+```
+
+```
+## [1] 0.9581933
+```
+
+```r
+knitr::kable(tribble(
+    ~ Case, ~ MSE,
+    "No predictors", mse,
+    "Only X1", mse1,
+    "Only X2", mse2,
+    "Both X1 and X2", mse12
+))
+```
+
+
+
+Case                    MSE
+---------------  ----------
+No predictors     6.4681051
+Only X1           5.2486131
+Only X2           2.0141887
+Both X1 and X2    0.9581933
 
     
-
 4. Order the situations from "best forecaster" to "worst forecaster". Why do we see this order?
 
+> They're ordered from worst to best in the above table. Adding more predictors reduces the error. Adding $X_2$ is better than adding $X_1$ (as seen by the lower MSE), because it's carries more information about $Y$ (i.e., it's more dependent with $Y$ than $X_1$ is).
 
 
 
@@ -372,6 +418,16 @@ $$ P(Y=B \mid X=x) = 0.8/(1+e^{-x}), $$
 
 To help you visualize this, here is a plot of $P(Y=B \mid X=x)$ vs $x$ (notice that it is bounded above by 0.8, and below by 0).
 
+
+```r
+ggplot(tibble(x=c(-7, 7)), aes(x)) +
+    stat_function(fun=function(x) 0.8/(1+exp(-x))) +
+    ylim(c(0,1)) +
+    geom_hline(yintercept=c(0,0.8), linetype="dashed", alpha=0.5) +
+    theme_bw() +
+    labs(y="P(Y=B|X=x)")
+```
+
 <img src="cm01-intro_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Here's an R function to generate data for you, where $X\sim N(0,1)$. As before, it accepts a positive integer as its input, representing the sample size, and returns a tibble with column names `x` and `y` corresponding to the predictor and response. 
@@ -381,9 +437,9 @@ Here's an R function to generate data for you, where $X\sim N(0,1)$. As before, 
 gencla <- function(n) {
     x <- rnorm(n) 
     pB <- 0.8/(1+exp(-x))
-    y <- map_chr(pB, function(x) 
+    y <- map_chr(pB, function(t) 
             sample(LETTERS[1:3], size=1, replace=TRUE,
-                   prob=c(0.2, x, 1-x)))
+                   prob=c(0.2, t, 1-t-0.2)))
     tibble(x=x, y=y)
 }
 ```
@@ -391,10 +447,108 @@ gencla <- function(n) {
 
 1. Calculate the probabilities of each category when $X=1$. What about when $X=-2$? With this information, what would you classify $Y$ as in both cases?
     - BONUS: Plot these two conditional distributions. 
+
+
+```r
+## X=1:
+(pB <- 0.8/(1+exp(-1)))
+```
+
+```
+## [1] 0.5848469
+```
+
+```r
+(pA <- 0.2)
+```
+
+```
+## [1] 0.2
+```
+
+```r
+(pC <- 1 - pB - pA)
+```
+
+```
+## [1] 0.2151531
+```
+
+```r
+ggplot(tibble(p=c(pA,pB,pC), y=LETTERS[1:3]), aes(y, p)) +
+    geom_col() +
+    theme_bw() +
+    labs(y="Probabilities", title="X=1")
+```
+
+<img src="cm01-intro_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+
+```r
+## X=-2
+(pB <- 0.8/(1+exp(-(-2))))
+```
+
+```
+## [1] 0.09536234
+```
+
+```r
+(pA <- 0.2)
+```
+
+```
+## [1] 0.2
+```
+
+```r
+(pC <- 1 - pB - pA)
+```
+
+```
+## [1] 0.7046377
+```
+
+```r
+ggplot(tibble(p=c(pA,pB,pC), y=LETTERS[1:3]), aes(y, p)) +
+    geom_col() +
+    theme_bw() +
+    labs("Probabilities", title="X=-2")
+```
+
+<img src="cm01-intro_files/figure-html/unnamed-chunk-13-2.png" style="display: block; margin: auto;" />
+
+> When $X=1$, _B_ has the highest probability, so we predict that. When $X=-2$, _C_ has the highest probability, so we predict that.
+
 2. In general, when would you classify $Y$ as _A_? _B_? _C_?
+
+> For any $X<0$, the probability of _C_ will be the largest, so we predict that. For any $X>0$, the probability of _B_ will be the largest, so we predict that.
+
 3. Generate data -- as much as you'd like.
+
+
+```r
+dat2 <- gencla(1000)
+```
+
 4. For now, ignore the $Y$ data. Make predictions on $Y$ from $X$.
+
+
+```r
+dat2$yhat <- if_else(dat2$x<0, "C", "B")
+```
+
+
 5. Now, using the true $Y$ values, calculate the error rate. What type of accuracy do you get?
+
+
+```r
+1-mean(dat2$yhat == dat2$y)
+```
+
+```
+## [1] 0.449
+```
+
 
 ## (BONUS) Random prediction
 
