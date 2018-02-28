@@ -39,6 +39,7 @@ Details about class meetings will appear here as they become available. Readings
 |  #   |   Date | Topic | 
 |:----:|:------:|-------|
 | [cm01](/class_meetings/cm01-intro.md) | Monday, February 26 | Intro to the course, tools, and ML |
+| [cm02](/class_meetings/cm02-local.md) | Wednesday, February 28 | Error, and local methods |
 
 
 ## Assessments
@@ -53,7 +54,7 @@ A change in status will be accompanied with an Issue creation/comment, so you wi
 
 | Assessment     | Status | Due    |
 |:--------------:|:------:|:------:|
-| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | NA   | March 7 at 10:00am  |
+| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | OPEN   | March 7 at 10:00am  |
 | [Assignment 2](/assessments/assignment2/assignment2.ipynb)   | NA   | March 19 at 10:00am |
 | [Assignment 3](/assessments/assignment3/assignment3.ipynb)   | NA   | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | NA   | April 3 at 24:00    |
