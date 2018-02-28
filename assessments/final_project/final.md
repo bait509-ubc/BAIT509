@@ -46,3 +46,5 @@ Provide insight/advice on the original business question, using results from you
 ### Flood Forecasting
 
 Your client, an environmental consulting firm, wants to predict floods one or two days in advance. Suppose your client is currently using the last-value-carried-forward method to forecast, and wants to see "if you can do better" (whatever that means). 
+
+Hint: The `lubridate` package in R is useful for working with dates. In particular, use the `yday()` function to obtain the "day of year" from the date. The `year()` function is also useful -- it extracts the year from a date.
