@@ -5,6 +5,8 @@ output: github_document
 
 ## Topics
 
+- parametric vs. non-parametric
+- error from adding more predictors
 - Generalization error
 - Training, validation, and test sets
 - Cross validation
