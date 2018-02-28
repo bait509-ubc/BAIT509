@@ -1,7 +1,15 @@
 ---
-title: 'BAIT 509 Class Meeting 03: Trees for Classification and Regression'
+title: 'BAIT 509 Class Meeting 05: Decision Trees and Ensemble Methods'
 output: github_document
 ---
+
+# Outline
+
+- Decision trees
+- Bagging, boosting, random forests, model averaging. 
+
+# Decision Trees
+
 
 Some problems (or at least potential problems) with the local methods introduced last time:
 
@@ -45,3 +53,4 @@ Now that we know what a decision stump is, how can we choose the one that gives 
 - Now consider fitting a decision stump to a continuous predictor. How would you decide where to make the split?
 - Why don't we want to fit a decision stump that results in the same decision being made in either case? (i.e., the same category being predicted). What distribution does the corresponding decision correspond to?
 - By inspecting the decision tree, draw a picture showing the learned decision tree when the maximum depth is  2.
+

@@ -1,6 +1,0 @@
----
-title: 'BAIT 509 Class Meeting 05: Ensemble Methods'
-output: github_document
----
-
-- Bagging, boosting, random forests, model averaging. 

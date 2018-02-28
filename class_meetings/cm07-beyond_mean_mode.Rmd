@@ -1,8 +1,15 @@
 ---
-title: 'BAIT 509 Class Meeting 07: Supervised Learning Beyond the Mean and Mode'
-author: "Vincenzo Coia"
+title: 'BAIT 509 Class Meeting 07'
+subtitle: "Supervised Learning Beyond the Mean and Mode"
 date: '2018-03-19'
-output: github_document
+output: 
+    html_document:
+        keep_md: true
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        theme: cerulean
+        toc_float: true
 references:
 - id: gneiting_raftery
   title: Strictly proper scoring rules, prediction, and estimation
