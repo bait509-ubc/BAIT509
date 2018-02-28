@@ -1,189 +1,12 @@
----
-title: 'BAIT 509 Class Meeting 02'
-subtitle: "Local Classification and Regression"
-date: "Wednesday, February 28, 2018"
-output: 
-    html_document:
-        keep_md: true
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        theme: cerulean
-        toc_float: true
----
+# BAIT 509 Class Meeting 03
+Monday, March 5, 2018  
 
-```{r setup, include=FALSE}
-suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(knitr))
-opts_chunk$set(fig.width=5, fig.height=3, fig.align="center", echo=FALSE,
-               warning=FALSE)
-my_accent <- "#d95f02"
-rotate_y <- theme(axis.title.y=element_text(angle=0, vjust=0.5))
-```
+
 
 
 # Outline
 
-- Reducible error and the fundamental tradeoff.
 - Loess and kNN
-
-# Review from last time
-
-From the "irreducible error" section in cm01 ([html](/cm01-intro.html#irreducible-error), [md](/cm01-intro.md#irreducible-error)):
-
-- Even if we know the true probability distribution of the data, we can't predict $Y$ without error.
-    - We can "beat" this error by adding informative predictors.
-- We measure error by mean squared error (MSE) for regression, and the error rate for classification.
-
-Activities:
-
-- I'll give live-coding solutions to the Oracle Regression exercise ([html](/cm01-intro.html#oracle-regression), [md](/cm01-intro.md#oracle-regression)). 
-    - Includes a demo of RMarkdown
-    - I'll demonstrate the save-commit-push workflow in git.
-- I'll let you work on the Oracle Classification exercise ([html](/cm01-intro.html#oracle-classification), [md](/cm01-intro.md#oracle-classification)).
-
-# Reducible Error
-
-## What is it?
-
-Last time, we saw what irreducible error is, and how to "beat" it. 
-
-The other type of error is __reducible error__, which arises from not knowing the true distribution of the data (or some aspect of it, such as the mean or mode). We therefore have to _estimate_ this. Error in this estimation is known as the reducible error. 
-
-__Example__: Consider the case of one predictor, and the true distribution of the data is $Y|X=x \sim N(5/x, 1)$ (and take $X \sim 1+Exp(1)$). I'll generate 100 realizations from this distribution, to form our data. In reality, we are only ever faced with this data, and know almost nothing about the distribution. As such, I decide to try linear regression to form my forecaster. Here's what I get:
-
-```{r}
-set.seed(400)
-n <- 100
-x <- rexp(n)+1
-y <- rnorm(n, mean=5/x)
-qplot(x,y) +
-    stat_smooth(method="lm", se=FALSE, size=0.5,
-                mapping=aes(colour="Estimate")) +
-    stat_function(fun=function(x) 5/x,
-                  mapping=aes(colour="True mean")) +
-    scale_colour_brewer("", palette="Dark2") +
-    theme_bw() +
-    rotate_y
-```
-
-The difference between the true curve and the estimated curve is due to reducible error. 
-
-In the classification setting, a misidentification of the mode is due to reducible error. 
-
-(__Why the toy data set instead of real ones?__ Because I can embed characteristics into the data for pedagogical reasons. You'll see real data at least in the assignments and final project.)
-
-## Bias and Variance
-
-There are two key aspects to reducible error: __bias__ and __variance__. They only make sense in light of the hypothetical situation of building a model/forecaster over and over again as we generate a new data set over and over again.
-
-- __Bias__ occurs when your estimates are systematically different from the truth. For regression, this means that the estimated mean is either usually bigger or usually smaller than the true mean. For a classifier, it's the systematic tendency to choosing an incorrect mode.
-- __Variance__ refers to the variability of your estimates.
-
-There is usually (always?) a tradeoff between bias and variance. It's referred to as the __bias/variance tradeoff__, and we'll see examples of this later.  
-
-Let's look at the above linear regression example again. I'll generate 100 data sets, and fit a linear regression for each:
-
-```{r}
-set.seed(400)
-n <- 100
-N <- 100
-xgrid <- data.frame(x=seq(0,6, length.out=100)) + 1
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-bias_plot <- tibble(iter=1:N) %>% group_by(iter) %>% do({
-    dat <- tibble(x=rexp(n)+1, 
-                  y=5/x+rnorm(n))
-    data.frame(
-        .,
-        xgrid,
-        Linear = predict(lm(y~x, data=dat),
-                         newdata=xgrid)
-    )
-}) %>% 
-    ggplot(aes(x=x, y=Linear)) +
-    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
-    stat_function(fun=function(x) 5/x,
-                  mapping=aes(colour="True mean")) +
-    theme_bw() +
-    scale_colour_brewer("", palette="Dark2") +
-    ylab("y") + rotate_y
-bias_plot
-```
-
-The _spread_ of the linear regression estimates is the variance; the difference between the _center of the regression lines_ and the true mean curve is the bias. 
-
-## Error decomposition
-
-We saw that we measure error using mean squared error (MSE) in the case of regression, and the error rate in the case of a classifier. These both contain all errors: irreducible error, bias, and variance:
-
-MSE = bias^2 + variance + irreducible variance
-
-A similar decomposition for error rate exists.
-
-__Note__: If you look online, the MSE is often defined as the expected squared difference between a parameter and its estimate, in which case the "irreducible error" is not present. We're taking MSE to be the expected squared distance between a true "new" observation and our prediction (mean estimate). 
-
-## Reducing reducible error
-
-As the name suggests, we can reduce reducible error. Exactly how depends on the machine learning method, but in general:
-
-- We can reduce variance by increasing the sample size, and adding more model assumptions.
-- We can reduce bias by being less strict with model assumptions, OR by specifying them to be closer to the truth.
-
-Consider the above regression example again. Notice how my estimates tighten up when they're based on a larger sample size (1000 here, instead of 100):
-
-```{r}
-set.seed(400)
-n <- 1000
-N <- 100
-xgrid <- data.frame(x=seq(0,6, length.out=100)) + 1
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-tibble(iter=1:N) %>% group_by(iter) %>% do({
-    dat <- tibble(x=rexp(n)+1, 
-                  y=5/x+rnorm(n))
-    data.frame(
-        .,
-        xgrid,
-        Linear = predict(lm(y~x, data=dat),
-                         newdata=xgrid)
-    )
-}) %>% 
-    ggplot(aes(x=x, y=Linear)) +
-    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
-    stat_function(fun=function(x) 5/x,
-                  mapping=aes(colour="True mean")) +
-    theme_bw() +
-    scale_colour_brewer("", palette="Dark2") +
-    ylab("y") + rotate_y
-```
-
-Notice how, after fitting the linear regression $E(Y|X=x)=\beta_0 + \beta_1 (1/x)$ (which is a _correct_ model assumption), the regression estimates are centered around the truth -- that is, they are unbiased:
-
-```{r}
-set.seed(400)
-n <- 100
-N <- 100
-xgrid <- data.frame(xinv=(seq(0,6, length.out=100))) + 1
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-tibble(iter=1:N) %>% group_by(iter) %>% do({
-    dat <- tibble(x=rexp(n)+1, 
-                  xinv=1/x,
-                  y=5/x+rnorm(n))
-    data.frame(
-        .,
-        xgrid,
-        Linear = predict(lm(y~xinv, data=dat),
-                         newdata=xgrid)
-    )
-}) %>% 
-    ggplot(aes(x=1/xinv, y=Linear)) +
-    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
-    stat_function(fun=function(x) 5/x,
-                  mapping=aes(colour="True mean")) +
-    theme_bw() +
-    scale_colour_brewer("", palette="Dark2") +
-    ylab("y") + rotate_y +
-    xlab("x")
-```
 
 # Local machine learning methods
 
@@ -223,21 +46,26 @@ $k$ and $r$ are called __hyperparameters__, because we don't estimate them -- we
 
 Consider the following data set, given by `dat`. Here's the top six rows of data:
 
-```{r, echo=TRUE}
+
+```r
 set.seed(87)
 dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
               y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
 kable(head(dat))
 ```
 
+         x          y
+----------  ---------
+ -5.142691   2.823462
+ -4.722812   2.759020
+ -4.871821   3.043214
+ -3.915033   2.716712
+ -1.164387   2.412004
+ -3.104414   2.325320
+
 Here's a scatterplot of the data:
 
-```{r}
-ggplot(dat, aes(x,y)) + 
-    geom_point(colour=my_accent) +
-    theme_bw() + 
-    rotate_y
-```
+<img src="cm03-local_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
 ## Exercise 1: Mean at $X=0$
 
@@ -296,37 +124,7 @@ The phenomenon you see when $k$ and $r$ are very small is called __overfitting__
 
 Let's look at the bias and variance for different values of the hyperparameter in loess. 
 
-```{r, fig.height=8}
-set.seed(400)
-N <- 100
-xgrid <- seq(-7, 6.5, length.out=300)
-true_mean <- Vectorize(function(x){
-    if (x==0) return(exp(1)) else return(sin(x^2/5)/x + exp(1))
-})
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-expand.grid(iter=1:N, r=c(0.5, 1, 2, 4)) %>% group_by(iter, r) %>% do({
-    this_r <- unique(.$r)
-    dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
-                  y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
-    data.frame(
-        .,
-        x = xgrid,
-        yhat = ksmooth(dat$x, dat$y, kernel="box", 
-                         bandwidth=this_r,
-                         x.points=xgrid)$y
-    )
-}) %>% 
-    ungroup() %>% 
-    mutate(r=paste0("bandwidth=", r)) %>% 
-    ggplot(aes(x=x, y=yhat)) +
-    facet_wrap(~ r, ncol=1) +
-    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
-    stat_function(fun=true_mean,
-                  mapping=aes(colour="True mean")) +
-    theme_bw() +
-    scale_colour_brewer("", palette="Dark2") +
-    ylab("y") + rotate_y
-```
+<img src="cm03-local_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 You can see the bias/variance tradeoff here:
 
@@ -389,40 +187,7 @@ Let's look at the same example, but with kernel downweighting and local polynomi
 
 Warning! The "bandwidth" hyperparameter in this plot is parameterized differently than in the previous plot, but carries the same interpretation.  
 
-```{r, fig.height=8, fig.width=10}
-set.seed(400)
-N <- 100
-xgrid <- seq(-7, 6.5, length.out=300)
-true_mean <- Vectorize(function(x){
-    if (x==0) return(exp(1)) else return(sin(x^2/5)/x + exp(1))
-})
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-expand.grid(iter=1:N, r=c(0.1, 0.5, 0.7), d=0:2) %>% 
-    group_by(iter, r, d) %>% do({
-    this_r <- unique(.$r)
-    this_d <- unique(.$d)
-    dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
-                  y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
-    data.frame(
-        .,
-        x = xgrid,
-        yhat = predict(loess(y~x, data=dat, 
-                             span=this_r, degree=this_d),
-                       newdata=data.frame(x=xgrid))
-    )
-}) %>% 
-    ungroup() %>% 
-    mutate(r=paste0("bandwidth=", r),
-           d=paste0("degree=", d)) %>% 
-    ggplot(aes(x=x, y=yhat)) +
-    facet_grid(r ~ d) +
-    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
-    stat_function(fun=true_mean,
-                  mapping=aes(colour="True mean")) +
-    theme_bw() +
-    scale_colour_brewer("", palette="Dark2") +
-    ylab("y") + rotate_y
-```
+<img src="cm03-local_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 Notice:
 
@@ -446,31 +211,7 @@ where $X$ (predictor) is N(0,1), and $\varepsilon$ (error term) is also N(0,1) (
 I'll generate a sample of size 100, 100 times. For each sample, I'll fit a linear regression model and a loess model. Here are the resulting 100 regression curves for each (the dashed line is the true mean):
 
 
-```{r, fig.width=7, fig.height=3}
-set.seed(474)
-n <- 100
-N <- 100
-xgrid <- data.frame(x=seq(-4,4, length.out=100))
-## Use "tibble %>% group_by %>% do" in place of `for` loop
-tibble(iter=1:N) %>% group_by(iter) %>% do({
-    dat <- tibble(x=rnorm(n), 
-                  y=x+rnorm(n))
-    data.frame(
-        .,
-        xgrid,
-        Local  = predict(loess(y~x, data=dat),
-                         newdata=xgrid),
-        Linear = predict(lm(y~x, data=dat),
-                         newdata=xgrid)
-    )
-}) %>% 
-    gather(key="method", value="Prediction", Local, Linear) %>% 
-    ggplot(aes(x=x, y=Prediction)) +
-    facet_wrap(~ method) +
-    geom_line(aes(group=iter), colour=my_accent, alpha=0.1) +
-    geom_abline(intercept=0, slope=1, linetype="dashed") +
-    theme_bw()
-```
+<img src="cm03-local_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 Notice that the local method has higher variance than the linear regression method. 
 
@@ -479,5 +220,7 @@ Notice that the local method has higher variance than the linear regression meth
 
 The last chunk of time for today's class meeting will be used for "lab time". The instruction part of today is over.
 
-- I recommend getting acquainted with RStudio and Jupyter notebooks if you haven't already, and ideally, get `git` running locally. This is in the "Lab" section of last time ([html](/cm01-intro.html#lab-tooling-part-2), [md](/cm01-intro.md#lab-tooling-part-2)).
+- I recommend getting acquainted with RStudio and Jupyter notebooks (or some other way to interact with python) if you haven't already, and ideally, get `git` running locally. Instructions live in the "Lab" section of Class Meeting 01.
+    - Note! Using `git` is optional in this course! There is a learning curve, but learning it pays dividends. Just drag-and-drop your in-class work files to your github repo.
+    - Using RMarkdown is also optional. Use plain R scripts if you prefer. 
 - Work on your first assignment. A TA and I will be around to help.
