@@ -46,7 +46,7 @@ Length of grading period is anticipatory.
 
 | Assessment     | Grading Period      | Grader        |
 | -------------- | ------------------- | ---------------- |
-| Assignment 1   | March 7  - March 13 | Mohamed, Raffi   |
+| Assignment 1   | March 12  - March 19 | Mohamed, Raffi   |
 | Assignment 2   | March 19 - March 27 | Mohamed, Vaden   |
 | Assignment 3   | March 28 - April 3  | Mohamed, Vaden   |
 | Participation: In-class       | March 28 - April 3 | Vincenzo |
