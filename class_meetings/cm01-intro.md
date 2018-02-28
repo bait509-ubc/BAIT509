@@ -1,16 +1,5 @@
----
-title: "BAIT 509 Class Meeting 01"
-subtitle: "Introduction"
-date: "Monday, February 26, 2018"
-output: 
-    html_document:
-        keep_md: true
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        theme: cerulean
-        toc_float: true
----
+# BAIT 509 Class Meeting 01
+Monday, February 26, 2018  
 
 
 
@@ -335,14 +324,45 @@ genreg <- function(n){
 
 
 1. Generate data -- as much as you'd like.
+
+
+
+
 2. For now, ignore the $Y$ values. Use the means from the distributions listed above to predict $Y$ under four circumstances:
     1. Using both the values of $X_1$ and $X_2$.
     2. Using only the values of $X_1$.
     3. Using only the values of $X_2$.
     4. Using neither the values of $X_1$ nor $X_2$. (Your predictions in this case will be the same every time -- what is that number?)
+    
+
+    
+
 3. Now use the actual outcomes of $Y$ to calculate the mean squared error (MSE) for each of the four situations. 
     - Try re-running the simulation with a new batch of data. Do your MSE's change much? If so, choose a larger sample so that these numbers are more stable.
+    
+
+```
+## [1] 6.250548
+```
+
+```
+## [1] 5.110282
+```
+
+```
+## [1] 2.006538
+```
+
+```
+## [1] 0.9904978
+```
+
+    
+
 4. Order the situations from "best forecaster" to "worst forecaster". Why do we see this order?
+
+
+
 
 ## Oracle classification
 
@@ -352,7 +372,7 @@ $$ P(Y=B \mid X=x) = 0.8/(1+e^{-x}), $$
 
 To help you visualize this, here is a plot of $P(Y=B \mid X=x)$ vs $x$ (notice that it is bounded above by 0.8, and below by 0).
 
-<img src="cm01-intro_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="cm01-intro_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Here's an R function to generate data for you, where $X\sim N(0,1)$. As before, it accepts a positive integer as its input, representing the sample size, and returns a tibble with column names `x` and `y` corresponding to the predictor and response. 
 
