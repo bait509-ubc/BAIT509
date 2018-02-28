@@ -377,14 +377,43 @@ genreg <- function(n){
 
 
 1. Generate data -- as much as you'd like.
+
+```{r}
+dat <- genreg(1000)
+```
+
+
 2. For now, ignore the $Y$ values. Use the means from the distributions listed above to predict $Y$ under four circumstances:
     1. Using both the values of $X_1$ and $X_2$.
     2. Using only the values of $X_1$.
     3. Using only the values of $X_2$.
     4. Using neither the values of $X_1$ nor $X_2$. (Your predictions in this case will be the same every time -- what is that number?)
+    
+```{r}
+dat <- mutate(dat,
+       yhat = 5,
+       yhat1 = 5-x1,
+       yhat2 = 5+2*x2,
+       yhat12 = 5-x1+2*x2)
+```
+    
+
 3. Now use the actual outcomes of $Y$ to calculate the mean squared error (MSE) for each of the four situations. 
     - Try re-running the simulation with a new batch of data. Do your MSE's change much? If so, choose a larger sample so that these numbers are more stable.
+    
+```{r}
+(mse <- mean((dat$yhat - dat$y)^2))
+(mse1 <- mean((dat$yhat1 - dat$y)^2))
+(mse2 <- mean((dat$yhat2 - dat$y)^2))
+(mse12 <- mean((dat$yhat12 - dat$y)^2))
+```
+
+    
+
 4. Order the situations from "best forecaster" to "worst forecaster". Why do we see this order?
+
+
+
 
 ## Oracle classification
 
