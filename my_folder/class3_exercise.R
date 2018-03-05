@@ -12,5 +12,5 @@ dat_knn
 dat_knn_final <- dat_knn[1:5,]
 dat_knn_final
 
-y_predict <- mean(dat_knn_final$d)
+y_predict <- mean(dat_knn_final$y)
 y_predict
