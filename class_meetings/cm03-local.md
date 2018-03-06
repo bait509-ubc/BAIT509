@@ -65,6 +65,14 @@ kable(head(dat))
 
 Here's a scatterplot of the data:
 
+
+```r
+ggplot(dat, aes(x,y)) + 
+    geom_point(colour=my_accent) +
+    theme_bw() + 
+    rotate_y
+```
+
 <img src="cm03-local_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
 ## Exercise 1: Mean at $X=0$
@@ -72,14 +80,53 @@ Here's a scatterplot of the data:
 Let's check your understanding of loess and kNN. Consider estimating the mean of $Y$ when $X=0$ by using data whose $X$ values are near 0. 
 
 1. Eyeball the above scatterplot of the data. What would you say is a reasonable estimate of the mean of $Y$ at $X=0$? Why?
+
+> The data seem to be centered around approximately 2.7. 
+
 2. Estimate using loess and kNN (you choose the hyperparameters).
     1. Hints for kNN:
         - First, add a new column in the data that stores the _distance_ between $X=0$ and each observation. If that column is named `d`, you can do this with the following partial code: `dat$d <- YOUR_CALCULATION_HERE`. Recall that `dat$x` is a vector of the `x` column.
         - Then, arrange the data from smallest distance to largest with `arrange(dat)` (you'll need to load the `tidyverse` package first), and subset _that_ to the first $k$ rows. 
     2. Hints for loess:
         - Subset the data using the `filter` function. The condition to filter on: you want to keep rows whose distances (`d`) are ...
+        
+
+```r
+k <- 10
+r <- 0.5
+dat %>% 
+    mutate(d = abs(x-0)) %>% 
+    arrange(d) %>% 
+    summarize(kNN=mean(y[1:k]),
+              loess=mean(y[d<r])) %>% 
+    kable
+```
+
+      kNN      loess
+---------  ---------
+ 2.744816   2.764507
+
 3. What happens when you try to pick an $r$ that is way too small? Say, $r=0.01$? Why?
+
+> There will be no prediction, because there will be no data in the window. Here's the data that result after subsetting:
+
+
+```r
+r <- 0.01
+dat %>% 
+    mutate(d = abs(x-0)) %>% 
+    filter(d<r)
+```
+
+```
+## # A tibble: 0 x 3
+## # ... with 3 variables: x <dbl>, y <dbl>, d <dbl>
+```
+
+
 4. There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
+
+> Large values of k or r will result in a prediction with low variance, but high bias; and vice-versa for smaller values of k and r.
 
 ## Exercise 2: Regression Curve
 
@@ -89,31 +136,37 @@ __Questions for discussion__:
 
 - Go ahead and do the estimation using both methods, and plot the mean estimates for each $X$ on top of the scatterplot in a different colour, connecting the dots to form a __regression curve__. I'll give you some of the code -- just fill in your code for the kNN and loess exercise from before:
 
-```
+
+```r
 library(tidyverse)
 xgrid <- seq(-5, 4, length.out=1000)
-kNN_estimates <- map_dbl(xgrid, function(x){
-    ## YOUR CODE HERE FOR kNN
-    ## Note: The variable "x" here is a single value along the grid.
-    ## Hint1: Extend your code for kNN from the previous exercise.
-    ## Hint2: Say you store the prediction in the variable "yhat".
-    ##         Then in a new line of code, write: return(yhat)
+k <- 10
+r <- 0.5
+kNN_estimates <- map_dbl(xgrid, function(x_){
+    dat %>% 
+        mutate(d = abs(x-x_)) %>% 
+        arrange(d) %>% 
+        summarize(yhat=mean(y[1:k])) %>% 
+        `[[`("yhat")
 })
-loess_estimates <- map_dbl(xgrid, function(x){
-    ## YOUR CODE HERE FOR LOESS
-    ## Note: The variable "x" here is a single value along the grid.
-    ## Hint1: Extend your code for loess from the previous exercise.
-    ## Hint2: Say you store the prediction in the variable "yhat".
-    ##         Then in a new line of code, write: return(yhat)
+loess_estimates <- map_dbl(xgrid, function(x_){
+    dat %>% 
+        mutate(d = abs(x-x_)) %>% 
+        filter(d<r) %>% 
+        summarize(yhat=mean(y)) %>% 
+        `[[`("yhat")
 })
 est <- tibble(x=xgrid, kNN=kNN_estimates, loess=loess_estimates) %>% 
     gather(key="method", value="estimate", kNN, loess)
 ggplot() +
-    geom_point(data=dat, mapping=aes(x,y), colour=my_accent) +
+    geom_point(data=dat, mapping=aes(x,y)) +
     geom_line(data=est, 
-              mapping=aes(x,estimate, group=method, colour=method)) +
+              mapping=aes(x,estimate, group=method, colour=method),
+              size=1) +
     theme_bw()
 ```
+
+<img src="cm03-local_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 - Play with different values of $k$ and $r$, and regenerate the plot each time. What effect does increasing these values have on the regression curve? What about decreasing? What would you say is a "good" choice of $k$ and $r$, and why?
 - What happens when you choose $k=n=200$? What happens if you choose $r=10$ or bigger?
@@ -124,7 +177,40 @@ The phenomenon you see when $k$ and $r$ are very small is called __overfitting__
 
 Let's look at the bias and variance for different values of the hyperparameter in loess. 
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+```r
+set.seed(400)
+N <- 100
+xgrid <- seq(-7, 6.5, length.out=300)
+true_mean <- Vectorize(function(x){
+    if (x==0) return(exp(1)) else return(sin(x^2/5)/x + exp(1))
+})
+## Use "tibble %>% group_by %>% do" in place of `for` loop
+expand.grid(iter=1:N, r=c(0.5, 1, 2, 4)) %>% group_by(iter, r) %>% do({
+    this_r <- unique(.$r)
+    dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
+                  y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
+    data.frame(
+        .,
+        x = xgrid,
+        yhat = ksmooth(dat$x, dat$y, kernel="box", 
+                         bandwidth=this_r,
+                         x.points=xgrid)$y
+    )
+}) %>% 
+    ungroup() %>% 
+    mutate(r=paste0("bandwidth=", r)) %>% 
+    ggplot(aes(x=x, y=yhat)) +
+    facet_wrap(~ r, ncol=1) +
+    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
+    stat_function(fun=true_mean,
+                  mapping=aes(colour="True mean")) +
+    theme_bw() +
+    scale_colour_brewer("", palette="Dark2") +
+    ylab("y") + rotate_y
+```
+
+<img src="cm03-local_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 You can see the bias/variance tradeoff here:
 
@@ -187,7 +273,43 @@ Let's look at the same example, but with kernel downweighting and local polynomi
 
 Warning! The "bandwidth" hyperparameter in this plot is parameterized differently than in the previous plot, but carries the same interpretation.  
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+```r
+set.seed(400)
+N <- 100
+xgrid <- seq(-7, 6.5, length.out=300)
+true_mean <- Vectorize(function(x){
+    if (x==0) return(exp(1)) else return(sin(x^2/5)/x + exp(1))
+})
+## Use "tibble %>% group_by %>% do" in place of `for` loop
+expand.grid(iter=1:N, r=c(0.1, 0.5, 0.7), d=0:2) %>% 
+    group_by(iter, r, d) %>% do({
+    this_r <- unique(.$r)
+    this_d <- unique(.$d)
+    dat <- tibble(x = c(rnorm(100), rnorm(100)+5)-3,
+                  y = sin(x^2/5)/x + rnorm(200)/10 + exp(1))
+    data.frame(
+        .,
+        x = xgrid,
+        yhat = predict(loess(y~x, data=dat, 
+                             span=this_r, degree=this_d),
+                       newdata=data.frame(x=xgrid))
+    )
+}) %>% 
+    ungroup() %>% 
+    mutate(r=paste0("bandwidth=", r),
+           d=paste0("degree=", d)) %>% 
+    ggplot(aes(x=x, y=yhat)) +
+    facet_grid(r ~ d) +
+    geom_line(aes(group=iter, colour="Estimates"), alpha=0.1) +
+    stat_function(fun=true_mean,
+                  mapping=aes(colour="True mean")) +
+    theme_bw() +
+    scale_colour_brewer("", palette="Dark2") +
+    ylab("y") + rotate_y
+```
+
+<img src="cm03-local_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 Notice:
 
@@ -211,7 +333,34 @@ where $X$ (predictor) is N(0,1), and $\varepsilon$ (error term) is also N(0,1) (
 I'll generate a sample of size 100, 100 times. For each sample, I'll fit a linear regression model and a loess model. Here are the resulting 100 regression curves for each (the dashed line is the true mean):
 
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+```r
+set.seed(474)
+n <- 100
+N <- 100
+xgrid <- data.frame(x=seq(-4,4, length.out=100))
+## Use "tibble %>% group_by %>% do" in place of `for` loop
+tibble(iter=1:N) %>% group_by(iter) %>% do({
+    dat <- tibble(x=rnorm(n), 
+                  y=x+rnorm(n))
+    data.frame(
+        .,
+        xgrid,
+        Local  = predict(loess(y~x, data=dat),
+                         newdata=xgrid),
+        Linear = predict(lm(y~x, data=dat),
+                         newdata=xgrid)
+    )
+}) %>% 
+    gather(key="method", value="Prediction", Local, Linear) %>% 
+    ggplot(aes(x=x, y=Prediction)) +
+    facet_wrap(~ method) +
+    geom_line(aes(group=iter), colour=my_accent, alpha=0.1) +
+    geom_abline(intercept=0, slope=1, linetype="dashed") +
+    theme_bw()
+```
+
+<img src="cm03-local_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 Notice that the local method has higher variance than the linear regression method. 
 
