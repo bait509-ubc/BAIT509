@@ -1,23 +1,23 @@
----
-title: 'BAIT 509 Class Meeting 04'
-subtitle: "Model Selection"
-date: "Wednesday, March 7, 2018"
-output: 
-    html_document:
-        keep_md: true
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        theme: cerulean
-        toc_float: true
----
+# BAIT 509 Class Meeting 04
+Wednesday, March 7, 2018  
+
+## Topics
+
+- Selecting hyperparameters; selecting predictors. 
+- parametric vs. non-parametric
+- error from adding more predictors
+- Generalization error
+- Training, validation, and test sets
+- Cross validation
+- Feature selection; R2adj, AIC. Forward and backward selection?
 
 # Outline
 
 - Out-of-sample error
 - Concept of training, validation, and test data.
 
-```{r}
+
+```r
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(knitr))
 opts_chunk$set(fig.width=5, fig.height=3, fig.align="center",
@@ -41,7 +41,8 @@ More terminology: __training error__ and __test error__ are errors computed on t
 
 Let's check using loess on an artificial data set (from last time). Here's the training error (MSE):
 
-```{r}
+
+```r
 set.seed(87)
 n <- 200
 dat <- tibble(x = c(rnorm(n/2), rnorm(n/2)+5)-3,
@@ -51,14 +52,23 @@ yhat <- predict(fit)
 mean((yhat - dat$y)^2)
 ```
 
+```
+## [1] 0.009599779
+```
+
 Here's the test error:
 
-```{r}
+
+```r
 n <- 1000
 newdat <- tibble(x = c(rnorm(n/2), rnorm(n/2)+5)-3,
                  y = sin(x^2/5)/x + rnorm(n)/10 + exp(1))
 yhat <- predict(fit, newdata = newdat)
 mean((yhat - newdat$y)^2, na.rm = TRUE)
+```
+
+```
+## [1] 0.0112968
 ```
 
 If you think this was due to luck, go ahead and try changing the seed -- more often than not, you'll see the test error > training error. 
@@ -67,7 +77,8 @@ This fundamental problem exists because, by definition, we build the model to be
 
 The more we try to make the model fit the training data -- i.e., the more we overfit the data -- the worse the problem gets. Let's reduce the loess bandwidth to emulate this effect. Here's the training error:
 
-```{r}
+
+```r
 set.seed(87)
 n <- 200
 dat <- tibble(x = c(rnorm(n/2), rnorm(n/2)+5)-3,
@@ -77,14 +88,23 @@ yhat <- predict(fit)
 mean((yhat - dat$y)^2)
 ```
 
+```
+## [1] 0.008518578
+```
+
 Test error:
 
-```{r}
+
+```r
 n <- 1000
 newdat <- tibble(x = c(rnorm(n/2), rnorm(n/2)+5)-3,
                  y = sin(x^2/5)/x + rnorm(n)/10 + exp(1))
 yhat <- predict(fit, newdata = newdat)
 mean((yhat - newdat$y)^2, na.rm = TRUE)
+```
+
+```
+## [1] 0.01233726
 ```
 
 The effect gets even worse if we have less training data. 
@@ -97,7 +117,8 @@ One solution is to split the data into two parts: __training__ and __validation_
 
 Then, we can tune the model (such as choosing the $k$ in kNN or $r$ in loess) to minimize error _on the validation set_.
 
-```{r}
+
+```r
 set.seed(87)
 n <- 200
 dat <- tibble(x = c(rnorm(n/2), rnorm(n/2)+5)-3,
@@ -123,6 +144,8 @@ tibble(r = seq(0.05, 0.7, length.out=100)) %>%
     geom_line(aes(group=set, colour=set)) +
     theme_bw()
 ```
+
+<img src="cm04-selection_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 We would choose a bandwidth ($r$) of approximately 0.35, because the error on the validation set is smallest. 
 
