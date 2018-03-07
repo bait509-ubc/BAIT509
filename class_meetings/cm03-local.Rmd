@@ -347,11 +347,3 @@ tibble(iter=1:N) %>% group_by(iter) %>% do({
 Notice that the local method has higher variance than the linear regression method. 
 
 
-# Lab
-
-The last chunk of time for today's class meeting will be used for "lab time". The instruction part of today is over.
-
-- I recommend getting acquainted with RStudio and Jupyter notebooks (or some other way to interact with python) if you haven't already, and ideally, get `git` running locally. Instructions live in the "Lab" section of Class Meeting 01.
-    - Note! Using `git` is optional in this course! There is a learning curve, but learning it pays dividends. Just drag-and-drop your in-class work files to your github repo.
-    - Using RMarkdown is also optional. Use plain R scripts if you prefer. 
-- Work on your first assignment. A TA and I will be around to help.
