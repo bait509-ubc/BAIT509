@@ -41,7 +41,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm01](/class_meetings/cm01-intro.md) | Monday, February 26 | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
 | [cm02](/class_meetings/cm02-error.md) | Wednesday, February 28 | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
 | [cm03](/class_meetings/cm03-local.md) | Monday, March 5 | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
-| | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
+| [cm04](/class_meetings/cm04-selection.md) | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
 
 
 ## Assessments
