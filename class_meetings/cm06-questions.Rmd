@@ -39,7 +39,12 @@ Before going into this, you need to know what data are available, and what state
 
 ## 1-2 Distilling Questions
 
+
+Companies have high level questions. Companies ask things such as, how are my employees doing? Then it's about refining.
+
+
 We'll talk about taking a problem faced by an organization, and how to distill that into something explorable. 
+
 - A Business Question is a high-level question
 - A Statistical Question is a lower-level, more specific question that is addressable by machine learning/statistics.
 
