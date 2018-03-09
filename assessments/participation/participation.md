@@ -10,7 +10,11 @@ Class meetings will have exercises to be attempted in-class. To obtain full poin
 
 The key word here is _attempt_ -- we're looking for effort here, not correctness.
 
-Specifically, we will be grading you based on your commit history and your `git diff`s (changes to your exercise files). Be sure to commit and push to your github repo while doing class exercises, as we will be looking at your commit timestamps to see that they correspond to class meetings. 
+Specifically, we will be grading you based on your commit history and your `git diff`s (changes to your exercise files). Be sure to commit and push to your github repo while doing class exercises, as we will be looking at your commit timestamps to see that they correspond to class meetings.
+
+Class meetings the didn't have any (non-assignment) in-class exercises:
+
+- cm04
 
 ## Discussion (5%)
 
