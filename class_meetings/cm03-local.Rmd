@@ -15,7 +15,7 @@ output:
 ```{r setup, include=FALSE}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(knitr))
-opts_chunk$set(fig.width=5, fig.height=3, fig.align="center", echo=FALSE,
+opts_chunk$set(fig.width=5, fig.height=3, fig.align="center",
                warning=FALSE)
 my_accent <- "#d95f02"
 rotate_y <- theme(axis.title.y=element_text(angle=0, vjust=0.5))
@@ -85,14 +85,42 @@ ggplot(dat, aes(x,y)) +
 Let's check your understanding of loess and kNN. Consider estimating the mean of $Y$ when $X=0$ by using data whose $X$ values are near 0. 
 
 1. Eyeball the above scatterplot of the data. What would you say is a reasonable estimate of the mean of $Y$ at $X=0$? Why?
+
+> The data seem to be centered around approximately 2.7. 
+
 2. Estimate using loess and kNN (you choose the hyperparameters).
     1. Hints for kNN:
         - First, add a new column in the data that stores the _distance_ between $X=0$ and each observation. If that column is named `d`, you can do this with the following partial code: `dat$d <- YOUR_CALCULATION_HERE`. Recall that `dat$x` is a vector of the `x` column.
         - Then, arrange the data from smallest distance to largest with `arrange(dat)` (you'll need to load the `tidyverse` package first), and subset _that_ to the first $k$ rows. 
     2. Hints for loess:
         - Subset the data using the `filter` function. The condition to filter on: you want to keep rows whose distances (`d`) are ...
+        
+```{r}
+k <- 10
+r <- 0.5
+dat %>% 
+    mutate(d = abs(x-0)) %>% 
+    arrange(d) %>% 
+    summarize(kNN=mean(y[1:k]),
+              loess=mean(y[d<r])) %>% 
+    kable
+```
+
 3. What happens when you try to pick an $r$ that is way too small? Say, $r=0.01$? Why?
+
+> There will be no prediction, because there will be no data in the window. Here's the data that result after subsetting:
+
+```{r}
+r <- 0.01
+dat %>% 
+    mutate(d = abs(x-0)) %>% 
+    filter(d<r)
+```
+
+
 4. There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
+
+> Large values of k or r will result in a prediction with low variance, but high bias; and vice-versa for smaller values of k and r.
 
 ## Exercise 2: Regression Curve
 
@@ -102,29 +130,32 @@ __Questions for discussion__:
 
 - Go ahead and do the estimation using both methods, and plot the mean estimates for each $X$ on top of the scatterplot in a different colour, connecting the dots to form a __regression curve__. I'll give you some of the code -- just fill in your code for the kNN and loess exercise from before:
 
-```
+```{r}
 library(tidyverse)
 xgrid <- seq(-5, 4, length.out=1000)
-kNN_estimates <- map_dbl(xgrid, function(x){
-    ## YOUR CODE HERE FOR kNN
-    ## Note: The variable "x" here is a single value along the grid.
-    ## Hint1: Extend your code for kNN from the previous exercise.
-    ## Hint2: Say you store the prediction in the variable "yhat".
-    ##         Then in a new line of code, write: return(yhat)
+k <- 10
+r <- 0.5
+kNN_estimates <- map_dbl(xgrid, function(x_){
+    dat %>% 
+        mutate(d = abs(x-x_)) %>% 
+        arrange(d) %>% 
+        summarize(yhat=mean(y[1:k])) %>% 
+        `[[`("yhat")
 })
-loess_estimates <- map_dbl(xgrid, function(x){
-    ## YOUR CODE HERE FOR LOESS
-    ## Note: The variable "x" here is a single value along the grid.
-    ## Hint1: Extend your code for loess from the previous exercise.
-    ## Hint2: Say you store the prediction in the variable "yhat".
-    ##         Then in a new line of code, write: return(yhat)
+loess_estimates <- map_dbl(xgrid, function(x_){
+    dat %>% 
+        mutate(d = abs(x-x_)) %>% 
+        filter(d<r) %>% 
+        summarize(yhat=mean(y)) %>% 
+        `[[`("yhat")
 })
 est <- tibble(x=xgrid, kNN=kNN_estimates, loess=loess_estimates) %>% 
     gather(key="method", value="estimate", kNN, loess)
 ggplot() +
-    geom_point(data=dat, mapping=aes(x,y), colour=my_accent) +
+    geom_point(data=dat, mapping=aes(x,y)) +
     geom_line(data=est, 
-              mapping=aes(x,estimate, group=method, colour=method)) +
+              mapping=aes(x,estimate, group=method, colour=method),
+              size=1) +
     theme_bw()
 ```
 
@@ -316,11 +347,3 @@ tibble(iter=1:N) %>% group_by(iter) %>% do({
 Notice that the local method has higher variance than the linear regression method. 
 
 
-# Lab
-
-The last chunk of time for today's class meeting will be used for "lab time". The instruction part of today is over.
-
-- I recommend getting acquainted with RStudio and Jupyter notebooks (or some other way to interact with python) if you haven't already, and ideally, get `git` running locally. Instructions live in the "Lab" section of Class Meeting 01.
-    - Note! Using `git` is optional in this course! There is a learning curve, but learning it pays dividends. Just drag-and-drop your in-class work files to your github repo.
-    - Using RMarkdown is also optional. Use plain R scripts if you prefer. 
-- Work on your first assignment. A TA and I will be around to help.
