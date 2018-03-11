@@ -57,10 +57,10 @@ A change in status will be accompanied with an Issue creation/comment, so you wi
 
 | Assessment     | Status | Due    |
 |:--------------:|:------:|:------:|
-| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | OPEN   | March 12 at ~~10:00am~~ 24:00  |
+| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | OPEN   | March 12 at 23:59  |
 | [Assignment 2](/assessments/assignment2/assignment2.ipynb)   | NA   | March 21 at 10:00am |
 | [Assignment 3](/assessments/assignment3/assignment3.ipynb)   | NA   | March 28 at 10:00am |
-| [Final Project](/assessments/final_project/final.md)         | NA   | April 3 at 24:00    |
+| [Final Project](/assessments/final_project/final.md)         | NA   | April 3 at 23:59    |
 | [Participation](/assessments/participation/participation.md) | OPEN   | March 28 at 12:00 (noon)  |
 
 Please submit your assignments to [UBC Connect](https://connect.ubc.ca/) in the form of a jupyter notebook __AND__ pdf file.
