@@ -1,16 +1,6 @@
 # BAIT 509 Class Meeting 04
 Wednesday, March 7, 2018  
 
-## Topics
-
-- Selecting hyperparameters; selecting predictors. 
-- parametric vs. non-parametric
-- error from adding more predictors
-- Generalization error
-- Training, validation, and test sets
-- Cross validation
-- Feature selection; R2adj, AIC. Forward and backward selection?
-
 # Outline
 
 - Out-of-sample error
