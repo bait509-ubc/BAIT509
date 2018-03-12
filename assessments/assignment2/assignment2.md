@@ -5,14 +5,14 @@ __Evaluates__: Class meetings 05 and 07 (not 06, which is specific to your final
 __Due__: Wednesday, March 21 at 10:00am (i.e., the start of Class Meeting 07).
 
 
-## Instructions
+## Instructions (5%)
 
 - You must use proper spelling and grammar.
 - Use either R or python to complete this assignment (or both). 
 - Submit your assignment through [UBC Connect](https://connect.ubc.ca/) by the deadline. 
 - If you submit more than one file for your assignment, be sure to also include a README file to inform the grader of how to navigate your solutions.
 
-## Exercise 1: Concepts
+## Exercise 1: Concepts (25%)
 
 Respond to the following questions, without using code. When asked to explain/write, there's no need for a lengthy explanation! We're looking for big-picture concepts here, that can be conveyed in 1-3 short sentences. 
 
@@ -44,7 +44,7 @@ Consider the following partition of the (two-predictor) predictor space. This ti
 
 Why might we not want a decision tree to split until the training data are perfectly classified? What aspect of a decision tree can we control to prevent creating a decision tree that large?
 
-## Exercise 2
+## Exercise 2 (70%)
 
 Answer questions 7 and 8 in Section 8.4 of the [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) book (pages 333-334). 
 
