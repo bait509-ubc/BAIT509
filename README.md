@@ -42,6 +42,10 @@ Details about class meetings will appear here as they become available. Readings
 | [cm02](/class_meetings/cm02-error.md) | Wednesday, February 28 | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
 | [cm03](/class_meetings/cm03-local.md) | Monday, March 5 | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
 | [cm04](/class_meetings/cm04-selection.md) | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
+| [cm05](/class_meetings/cm05-trees.md) | Monday, March 12 | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
+| cm06 | Wednesday, March 14 | Refining business questions | |
+| cm07 | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
+| cm08 | Wednesday, March 21 | Beyond the mean and mode | |
 
 
 ## Assessments
