@@ -43,7 +43,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm03](/class_meetings/cm03-local.md) | Monday, March 5 | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
 | [cm04](/class_meetings/cm04-selection.md) | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
 | [cm05](/class_meetings/cm05-trees.md) | Monday, March 12 | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
-| cm06 | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. |
+| cm06 | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
 | cm07 | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | cm08 | Wednesday, March 21 | Beyond the mean and mode | |
 
