@@ -43,7 +43,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm03](/class_meetings/cm03-local.md) | Monday, March 5 | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
 | [cm04](/class_meetings/cm04-selection.md) | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
 | [cm05](/class_meetings/cm05-trees.md) | Monday, March 12 | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
-| cm06 | Wednesday, March 14 | Refining business questions | |
+| cm06 | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. |
 | cm07 | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | cm08 | Wednesday, March 21 | Beyond the mean and mode | |
 
@@ -61,7 +61,7 @@ A change in status will be accompanied with an Issue creation/comment, so you wi
 
 | Assessment     | Status | Due    |
 |:--------------:|:------:|:------:|
-| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | OPEN   | March 12 at 23:59  |
+| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | CLOSED | March 12 at 23:59  |
 | [Assignment 2](/assessments/assignment2/assignment2.md)      | OPEN   | March 21 at 10:00am |
 | [Assignment 3](/assessments/assignment3/assignment3.ipynb)   | NA     | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | NA     | April 3 at 23:59    |
