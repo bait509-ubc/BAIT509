@@ -58,7 +58,7 @@ Assessments can have one of three statuses:
 - OPEN: This assessment is ready for you to work on.
 - CLOSED: This assessment is due. We will not be accepting further work on this assessment.
 
-A change in status will be accompanied with an Issue creation/comment, so you will be notified of it (_if_ you're [`Watch`ing](https://help.github.com/articles/watching-and-unwatching-repositories/#watching-a-single-repository) the repo!)
+A change to "OPEN" will be accompanied with an Issue creation/comment, so you will be notified of it (_if_ you're [`Watch`ing](https://help.github.com/articles/watching-and-unwatching-repositories/#watching-a-single-repository) the repo!)
 
 
 | Assessment     | Status | Due    |
