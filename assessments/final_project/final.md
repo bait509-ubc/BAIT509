@@ -2,7 +2,7 @@
 
 __Due date__: Tuesday, April 3, at 24:00. 
 
-__Submission instructions__: All group members should submit their report to Connect by the deadline. 
+__Submission instructions__: All group members should make a complete submission to Connect by the deadline. 
 
 Your task is to build a supervised learning model to address a hypothetical (or real, if you have one) business question, in the form of a report, in a group.
 
