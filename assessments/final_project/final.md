@@ -59,7 +59,7 @@ Be sure to also provide enough information so that a reader can reproduce your a
 Here are some sample datasets that you're free to use for your project. 
 
 * [Marshall Violent Crime](./data/marshall/)
-* [College Scorecard](./data/scorecard/)
+* [College Scorecard](https://collegescorecard.ed.gov/data/)
 * [Tech Mental Health Survey](https://www.kaggle.com/osmi/mental-health-in-tech-survey)
 * [Zillow real-estate data](https://www.kaggle.com/zillow/zecon)
 * [Wine ratings](https://www.kaggle.com/zynicide/wine-reviews/data)
