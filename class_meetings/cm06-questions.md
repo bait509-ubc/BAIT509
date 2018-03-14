@@ -22,20 +22,45 @@ output:
 
 To fit classification and regression trees in R, we use the package `tree` and the function `tree()`, which works similarly to `lm()` and `loess()`:
 
-```{r, fig.width=8, fig.height=4}
+
+```r
 suppressPackageStartupMessages(library(tree))
 suppressPackageStartupMessages(library(tidyverse))
 fit <- tree(Sepal.Width ~ ., data=iris)
 summary(fit)
+```
+
+```
+## 
+## Regression tree:
+## tree(formula = Sepal.Width ~ ., data = iris)
+## Variables actually used in tree construction:
+## [1] "Petal.Length" "Sepal.Length" "Petal.Width" 
+## Number of terminal nodes:  10 
+## Residual mean deviance:  0.06268 = 8.776 / 140 
+## Distribution of residuals:
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -0.60560 -0.16780  0.03182  0.00000  0.16280  0.63180
+```
+
+```r
 plot(fit)  # Plot the tree, without labels
 text(fit)  # Add labels to the tree
 ```
 
+![](cm06-questions_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
 (Messy -- would need to modify the predictor names). Make predictions with `predict`:
 
-```{r}
+
+```r
 predict(fit, newdata=iris) %>% 
     head
+```
+
+```
+##        1        2        3        4        5        6 
+## 3.635294 3.273913 3.273913 3.273913 3.273913 3.635294
 ```
 
 If you want to control the depth of the tree, use the `tree.control` function in the `control` argument. Arguments of `tree.control` that are relevant are:
@@ -45,20 +70,28 @@ If you want to control the depth of the tree, use the `tree.control` function in
 
 Let's fit a tree to the max, and check its MSE:
 
-```{r}
+
+```r
 fitfull <- tree(Sepal.Width ~ ., data=iris, 
                 control=tree.control(nrow(iris), 
                                      mindev=0, minsize=2))
 mean((predict(fitfull) - iris$Sepal.Width)^2)
 ```
 
+```
+## [1] 0.0008666667
+```
+
 You can investigate the pruning of a tree via cross validation using the `cv.tree` function. Specify `FUN=prune.misclass` if you want to prune based on classification error instead of purity measurements, for classification. It returns a list, where the important components are named `"size"` (number of terminal nodes) and `"dev"` (the error). Let's plot those:
 
-```{r}
+
+```r
 set.seed(4)
 fitfull_cv <- cv.tree(fitfull)
 plot(fitfull_cv$size, log(fitfull_cv$dev))
 ```
+
+![](cm06-questions_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 The x-axis represents the number of terminal nodes present in the subtree. The y-axis is the cross-validation error for that subtree. 
 
@@ -66,11 +99,14 @@ From the plot, it looks like it's best to prune the tree to have approximately 1
 
 \*Note: if you encounter an error running `prune.tree(fitfull, best=10)`, it's not a true error (I believe it's only an error to the `print` call, which is called by default). Wrap the code with `try`:
 
-```{r}
+
+```r
 fit_pruned <- try(prune.tree(fitfull, best=10))
 plot(fit_pruned)
 text(fit_pruned)
 ```
+
+![](cm06-questions_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 
 # Overview of the ML workflow
