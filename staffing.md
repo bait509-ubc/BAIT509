@@ -33,7 +33,7 @@ Class meetings occur in HA 133. Vincenzo will be leading all class meetings as t
 | 3    | Tuesday     | March 13, 2018 | 13:00-14:00 | HA 235 | Mohamed  |
 | 3    | Wednesday   | March 14, 2018 | 12:00-13:00 | HA 232 | Mohamed  |
 | 3    | Thursday    | March 15, 2018 | 12:00-13:00 | HA 335 | Vincenzo |
-| 4    | Tuesday     | March 20, 2018 | 13:00-14:00 | HA 235 | Mohamed  |
+| 4    | Friday      | March 16, 2018 | 15:00-16:00 | ESB 3174 | Mohamed  |
 | 4    | Wednesday   | March 21, 2018 | 12:00-13:00 | HA 232 | Mohamed  |
 | 4    | Thursday    | March 22, 2018 | 12:00-13:00 | HA 335 | Vincenzo |
 | 5    | Tuesday     | March 27, 2018 | 13:00-14:00 | HA 235 | Mohamed  |
