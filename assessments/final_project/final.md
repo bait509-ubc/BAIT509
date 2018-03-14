@@ -2,7 +2,9 @@
 
 __Due date__: Tuesday, April 3, at 24:00. 
 
-Your task is to build a supervised learning model to address a hypothetical (or real, if you have one) business question, in the form of a report. 
+__Submission instructions__: All group members should submit their report to Connect by the deadline. 
+
+Your task is to build a supervised learning model to address a hypothetical (or real, if you have one) business question, in the form of a report, in a group.
 
 We will provide some datasets for you to use (see Section 2 below). You can use your own data, but only after getting it approved by a member of the teaching team. 
 
@@ -63,7 +65,7 @@ Here are some sample datasets that you're free to use for your project.
 
 I'll leave it up to your group to come up with a hypothetical business question. It doesn't have to be strictly business related, as long as it's some big-picture question. 
 
-Below is an example problem setup, using the river flow data.
+Below is an example problem setup, using the river flow data. Feel free to use it as your project setup.
 
 ### Flood Forecasting
 
@@ -79,13 +81,14 @@ __Hints__:
 
 ## 3. Grading
 
-Your submission will be graded based on the following rubric.
+Your submission will be graded based on the following rubric. All group members will receive the same grade. 
 
 - __Tidy submission, and navigability (5%)__
     - _All group members' full names are on the report_.
     - Your report should be easy to navigate. This includes being arranged/organized in a sensible way. 
     - If you have multiple files, they should be easy to navigate, and should be easy to find out what's what, through a README file. 
     - Your submission is complete, and does not require compiling.
+    - Your submission is not different from other members in the group (at least, from the majority submission).
 - __Low-level writing (10%)__
     - Your report should be concise and informative, not cluttered with irrelevant information. (Note that the Appendix is a more foregiving section, as it's usually reserved for lengthier, more details things that one would not be interested in unless they want to dig deeper into your analysis). 
     - You should use proper English, spelling, and grammar.
