@@ -1,6 +1,6 @@
 # BAIT 509 Final Project
 
-__Due date__: Tuesday, April 3, at 24:00. 
+__Due date__: Tuesday, April 3, at 23:59. 
 
 __Submission instructions__: All group members should make a complete submission to Connect by the deadline. 
 
