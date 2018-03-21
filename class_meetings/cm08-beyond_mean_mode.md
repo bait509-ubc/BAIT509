@@ -1,31 +1,5 @@
----
-title: 'BAIT 509 Class Meeting 08'
-subtitle: "Supervised Learning Beyond the Mean and Mode"
-date: 'Wednesday, March 21, 2018'
-output: 
-    html_document:
-        keep_md: true
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        theme: cerulean
-        toc_float: true
-references:
-- id: gneiting_raftery
-  title: Strictly proper scoring rules, prediction, and estimation
-  author:
-  - family: Gneiting
-    given: Tilmann
-  - family: Raftery
-    given: Adrian
-  volume: 102
-  issue: 477
-  publisher: Journal of the American Statistical Association
-  page: 359-378
-  type: article-journal
-  issued:
-    year: 2007
----
+# BAIT 509 Class Meeting 08
+Wednesday, March 21, 2018  
 
 
 
@@ -296,6 +270,24 @@ _At the very least_, one should check that the forecast distributions are "calib
 
 For this course, we won't be picky about how you choose your tuning parameters. Just look for a subset that you think has "enough" observations in it so that the distribution starts to take some shape, but not so much that it starts to shift.
 
+# In-class exercises
+
+For (1) and (2) below, you're choosing between two candidates to hire. Discuss the pros and cons of choosing one candidate over the other in the following situations.
+
+1. Both are predicted to have the same productivity score of 75, but have the following probabilistic forecasts.
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+
+2. Two "non-overlapping" forecasts:
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
+
+3. You've formed a probabilist forecast for a particular value of the predictors, displayed below as a density. You then collect test data for that same value of the predictor, indicated as the points below the density. What is the problem with the probabilistic forecast?
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
+
+
+
 # Quantile Regression
 
 Probabilistic forecasts are useful if you're making a small amount of decisions at a time. For example:
@@ -362,7 +354,7 @@ ggplot(dat, aes(hits, runs)) +
 ## Smoothing formula not specified. Using: y ~ x
 ```
 
-<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
 
 I did this easily with `ggplot2`, just by adding a layer `geom_quantile` to my scatterplot, specifying the quantile levels with the `quantiles=` argument. We could also use the function `rq` in the `quantreg` package in R:
 
@@ -426,7 +418,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
 ## Smoothing formula not specified. Using: y ~ x
 ```
 
-<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
 
 ```r
 fit_iris <- rq(Sepal.Width ~ Sepal.Length, data=iris, tau=2:3/10)
@@ -459,12 +451,12 @@ qplot(y) + theme_bw()
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" />
 
 Here are estimates of high and low quantiles, compared to the actual. You can see the discrepency grows quickly. __Extreme-low quantiles are too high__, whereas __extreme-high quantiles are too low__. 
 
 
-<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" />
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" />
 
 
 As a rule of thumb, it's best to stay below $\tau=0.95$ or above $\tau=0.05$. If you really want estimates of these extreme quantiles, you'll need to turn to __Extreme Value Theory__ to make an assumption on the tail of the distribution of the data. One common approach is to fit a generalized Pareto distribution to the upper portion of the data, after which you can extract high quantiles. 
@@ -510,7 +502,7 @@ cowplot::plot_grid(
 )
 ```
 
-<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" />
 
 For quantile regression __estimation__, we minimize the sum of scores instead of the sum of squared residuals, as in the usual (mean) linear regression.
 
