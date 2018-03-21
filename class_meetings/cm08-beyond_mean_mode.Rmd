@@ -290,6 +290,55 @@ _At the very least_, one should check that the forecast distributions are "calib
 
 For this course, we won't be picky about how you choose your tuning parameters. Just look for a subset that you think has "enough" observations in it so that the distribution starts to take some shape, but not so much that it starts to shift.
 
+# In-class exercises
+
+For (1) and (2) below, you're choosing between two candidates to hire. Discuss the pros and cons of choosing one candidate over the other in the following situations.
+
+1. Both are predicted to have the same productivity score of 75, but have the following probabilistic forecasts.
+
+```{r, echo=FALSE}
+suppressPackageStartupMessages(library(viridis))
+mu <- 75
+ggplot(data.frame(x=c(-10,10)+mu), aes(x)) +
+    stat_function(fun=function(x) dnorm(x, mean=mu), 
+                  mapping=aes(colour="A")) +
+    stat_function(fun=function(x) dnorm(x, mean=mu, sd=3),
+                  mapping=aes(colour="B")) +
+    theme_bw() +
+    scale_colour_viridis("", discrete=TRUE) +
+    xlab("Productivity") +
+    ylab("Density")
+```
+
+2. Two "non-overlapping" forecasts:
+
+```{r, echo=FALSE}
+ggplot(data.frame(x=c(50,90)), aes(x)) +
+    stat_function(fun=function(x) dnorm(x, mean=60), n=500,
+                  mapping=aes(colour="A")) +
+    stat_function(fun=function(x) dnorm(x, mean=80, sd=3), n=500,
+                  mapping=aes(colour="B")) +
+    theme_bw() +
+    scale_colour_viridis("", discrete=TRUE) +
+    xlab("Productivity") +
+    ylab("Density")
+```
+
+3. You've formed a probabilist forecast for a particular value of the predictors, displayed below as a density. You then collect test data for that same value of the predictor, indicated as the points below the density. What is the problem with the probabilistic forecast?
+
+```{r, echo=FALSE}
+set.seed(473)
+ggplot(data.frame(x=c(-3,5)), aes(x)) +
+    stat_function(fun=dnorm, n=500) +
+    geom_point(data=data.frame(x=rnorm(20, mean=2), y=0),
+               mapping=aes(x,y)) +
+    theme_bw() +
+    xlab("Response") +
+    ylab("Density")
+```
+
+
+
 # Quantile Regression
 
 Probabilistic forecasts are useful if you're making a small amount of decisions at a time. For example:
