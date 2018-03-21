@@ -45,7 +45,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm05](/class_meetings/cm05-trees.md) | Monday, March 12 | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
 | [cm06](/class_meetings/cm06-questions.md) | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
 | [cm07](/class_meetings/cm07-ensembles.md) | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
-| cm08 | Wednesday, March 21 | Beyond the mean and mode | |
+| [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Wednesday, March 21 | Beyond the mean and mode | |
 | cm09 | Monday, March 26 | SVM | Section 9 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) is all about SVM -- we won't be able to cover all of it, but what we do cover is TBD. |
 | cm10 | Wednesday, March 28 | Feature selection? |  |
 
@@ -64,8 +64,8 @@ A change to "OPEN" will be accompanied with an Issue creation/comment, so you wi
 | Assessment     | Status | Due    |
 |:--------------:|:------:|:------:|
 | [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | CLOSED | March 12 at 23:59  |
-| [Assignment 2](/assessments/assignment2/assignment2.md)      | OPEN   | March 21 at 10:00am |
-| [Assignment 3](/assessments/assignment3/assignment3.ipynb)   | NA     | March 28 at 10:00am |
+| [Assignment 2](/assessments/assignment2/assignment2.md)      | CLOSED | March 21 at 10:00am |
+| [Assignment 3](/assessments/assignment3/assignment3.md)      | OPEN   | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | OPEN   | April 3 at 23:59    |
 | [Participation](/assessments/participation/participation.md) | OPEN   | March 28 at 12:00 (noon)  |
 
