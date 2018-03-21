@@ -4,6 +4,10 @@
 
 __Deadline for online contributions__: Wednesday, March 28, at 12:00 (i.e., the end of Class Meeting 10).
 
+## Submission Instructions
+
+On Connect, you'll see a place for you to "submit your participation". Instructions are there, but all you have to do is put a link to your github repo(s) containing your in-class work. Please do this before the deadline, so that we can get started with grading. 
+
 ## In-class Exercises (5%)
 
 Class meetings will have exercises to be attempted in-class. To obtain full points for this section, you are expected to attempt all exercises. Exemptions will only be permitted on a case-by-case basis _ahead of time_ by the instructor. 
