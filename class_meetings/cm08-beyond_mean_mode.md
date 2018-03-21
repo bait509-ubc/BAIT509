@@ -278,15 +278,23 @@ For (1) and (2) below, you're choosing between two candidates to hire. Discuss t
 
 <img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
+> It's hard to make a decision here. On the one hand, we can be fairly certain that the _actual_ productivity of candidate A will be about 75, but there's more of a gamble with candidate B. There's a very real chance that B's productivity is actually quite a bit higher than A -- for example, a productivity of 80 is plausible for B, but not for A. On the other hand, there's also a very real chance that B's productivity is actually quite a bit _lower_ than A, for the same reason. Your decision would depend on whether you would want to take a risk or not.
+
+> On the other hand, in reality, this is only one tool out of many other aspects of the candidate that you would consider. It might be a good idea to chat with B to get a better sense of what their productivity might actually be.
+
 2. Two "non-overlapping" forecasts:
 
 <img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
-3. You've formed a probabilist forecast for a particular value of the predictors, displayed below as a density. You then collect test data for that same value of the predictor, indicated as the points below the density. What is the problem with the probabilistic forecast?
+> In this case, B is very very likely to have higher productivity than A, because all "plausible" productivity values for B are higher than all "plausible" productivity values of A.
+
+> Again, this is just one tool you might use to make a decision. 
+
+3. You've formed a probabilistic forecast for a particular value of the predictors, displayed below as a density. You then collect test data for that same value of the predictor, indicated as the points below the density. What is the problem with the probabilistic forecast?
 
 <img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
 
-
+> The forecast is biased, because the actual values are occuring near the upper tail of the distribution -- they _should_ be scattered about the middle, with a higher density of points occuring near 0. If using local methods, we'd have to reduce $k$ or the window width to decrease bias (to remove "further" data that are less relevant); if using a tree-based method, you could grow the tree deeper to lower the bias. 
 
 # Quantile Regression
 
