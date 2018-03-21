@@ -300,7 +300,7 @@ But they are not appropriate when making decisions en-masse. For example:
 - A bus company wants to know how long it takes a bus to travel between stops, for all stops and all busses.
 - You want to predict future behaviour of customers.
 
-It's common to "default" to using the mean to make decisions. But, the mean is not always appropriate:
+It's common to "default" to using the mean to make decisions. But, the mean is not always appropriate (I wrote a [blog post](https://vincenzocoia.github.io/20180218-mean/) about this):
 
 - Sometimes there are outliers, in which case the median is a more robust measure of central tendency.
     - For example, there was a very large flu outbreak in 2009.
