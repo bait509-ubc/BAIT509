@@ -28,7 +28,8 @@ references:
 ---
 
 
-```{r, warning=FALSE}
+
+```r
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(Lahman))
 suppressPackageStartupMessages(library(knitr))
@@ -59,38 +60,35 @@ The idea here is to put forth an _entire probability distribution_ as a predicti
 
 Let's look at an example. Suppose there are two baseball teams, one that gets 1000 total hits in a year, and another that gets 1500. Using "total hits in a year" as a predictor, we set out to predict the total number of runs of both teams. Here's the top snippet of the data:
 
-```{r}
+
+```r
 dat <- Teams %>% tbl_df %>% 
     select(runs=R, hits=H)
 kable(head(dat))
 ```
 
+
+
+ runs   hits
+-----  -----
+  401    426
+  302    323
+  249    328
+  137    178
+  302    403
+  376    410
+
 Let's not concern ourselves with the _methods_ yet. Using a standard regression technique, here are our predictions:
 
-```{r, echo=FALSE}
-r <- 20
-datsub <- filter(dat,
-                 (hits>=1000-r & hits<=1000+r) |
-                     (hits>=1500-r & hits<=1500+r)) %>% 
-    mutate(approx_hits = if_else(hits>=1000-r & hits<=1000+r, 1000, 1500))
-datsub %>% 
-    group_by(approx_hits) %>%
-    summarize(expected_runs=round(mean(runs))) %>% 
-    select(hits=approx_hits, expected_runs) %>% 
-    kable(col.names = c("Number of Hits (X)", 
-                        "Expected Number of Runs (E(Y))"))
-```
+
+ Number of Hits (X)   Expected Number of Runs (E(Y))
+-------------------  -------------------------------
+               1000                              558
+               1500                              768
 
 Using a probabilistic forecast, here are our predictions:
 
-```{r, echo=FALSE}
-ggplot(datsub, aes(runs)) + 
-    geom_density(aes(fill=factor(approx_hits)), 
-                 colour=NA, alpha=0.5) +
-    scale_fill_discrete("Number of Hits (X)") +
-    theme_bw() +
-    xlab("Number of Runs (Y)")
-```
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 Don't you think this is far more informative than the mean estimates in the above table?
 
@@ -115,13 +113,15 @@ Let's review how to estimate a univariate probability density function or probab
 
 Here's a random sample of 10 continuous variables, ordered from smallest to largest, stored in the variable `x`:
 
-```{r, echo=FALSE}
-set.seed(43340)
-x <- rnorm(10, sd=10) %>% round(1) %>% sort
+
+
+
+```r
+x
 ```
 
-```{r}
-x
+```
+##  [1] -19.8 -13.6 -12.0  -3.5  -2.8   4.4   4.5  15.1  16.3  20.2
 ```
 
 Recall that we can use __histograms__ to estimate the density of the data. The idea is:
@@ -133,29 +133,48 @@ Recall that we can use __histograms__ to estimate the density of the data. The i
 3. Make a bar plot (with no space between the bars), where the bar width corresponds to the bins, and the bar height corresponds to the number of observations in that bin.
     - For our setup, we have:
     
-```{r}
+
+```r
 ggplot(data.frame(x=x), aes(x)) +
     geom_histogram(binwidth=10, center=min(x)+5,
                    fill=my_accent, colour="black") +
     theme_bw()
 ```
 
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+
 (Note: this is not a true density, since the area under the curve is not 1, but the shape is what matters)
 
 You'd have to play with the binwidth to get a histogram that looks about right (not too jagged, not too coarse). For the above example, there are too few data to make a good estimate. Let's now generate 1000 observations, and make a histogram using `qplot` from R's `ggplot2` package, with a variety of binwidths -- too small, too large, and just right.
 
-```{r}
+
+```r
 x <- rnorm(1000, sd=10)
 qplot(x, binwidth=1)  # too small
+```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+
+```r
 qplot(x, binwidth=10)  # too big
+```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
+
+```r
 qplot(x, binwidth=3.5)  # just right
 ```
 
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-8-3.png" style="display: block; margin: auto;" />
+
 __Advanced method__: There's a technique called the _kernel density estimate_ that works as an alernative to the histogram. The idea is to put a "little mound" (a kernel) on top of each observation, and add them up. Instead of playing with the binwidth, you can play with the "bandwidth" of the kernels. Use `geom="density"` in `qplot`, and use `bw` to play with the bandwidth:
 
-```{r}
+
+```r
 qplot(x, geom="density", bw=2.5)
 ```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 ## Discrete Response
 
@@ -166,37 +185,55 @@ When the response is discrete (this includes categorical), the approach is simpl
 
 Here are ten observations, stored in `x`:
 
-```{r, echo=FALSE}
-set.seed(4)
-x <- rpois(10, lambda=1)
+
+
+
+```r
+x
 ```
 
-```{r}
-x
+```
+##  [1] 1 0 0 0 2 0 1 2 3 0
 ```
 
 The proportions are as follows:
 
-```{r}
+
+```r
 props <- tibble(Value=x) %>% 
     group_by(Value) %>% 
     summarize(Proportion=length(Value)/length(x))
 kable(props)
 ```
 
+
+
+ Value   Proportion
+------  -----------
+     0          0.5
+     1          0.2
+     2          0.2
+     3          0.1
+
 You can plot these proportions with `qplot`, specifying `geom="col"`:
 
-```{r}
+
+```r
 qplot(x=Value, y=Proportion, data=props, geom="col")
 ```
 
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+
 You can use `ggplot2` to calculate the proportions, but it's more complex. It's easier to plot the raw counts, instead of proportions -- and that's fine, you'll still get the same shape. Using `qplot` again, let's make a plot for 1000 observations (note that I indicate that my data are discrete by using the `factor` function):
 
-```{r}
+
+```r
 set.seed(2)
 x <- rpois(1000, lambda=1)
 qplot(factor(x))
 ```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 Here's the code to get proportions instead of counts:
 
@@ -215,9 +252,10 @@ The local methods and classification/regression trees that we've seen so far can
 - For the moving window (loess), form a histogram/density plot/bar plot using the observations that fall in the window.
 - For tree-based methods, use the observations within a leaf to form a histogram/density plot/bar plot for that leaf.
 
-The above baseball example used a moving window with a radius of ```r r``` hits. Visually, you can see the data that I subsetted within these two narrow windows, for hits of 1000 and 1500:
+The above baseball example used a moving window with a radius of ``20`` hits. Visually, you can see the data that I subsetted within these two narrow windows, for hits of 1000 and 1500:
 
-```{r}
+
+```r
 ggplot(dat, aes(hits, runs)) +
     geom_point(colour=my_accent, alpha=0.1) +
     geom_vline(xintercept=c(1000+c(-r,r), 1500+c(-r,r)),
@@ -226,6 +264,8 @@ ggplot(dat, aes(hits, runs)) +
     labs(x="Number of Hits (X)",
          y="Number of Runs (Y)")
 ```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ## Bias-variance tradeoff
 
@@ -238,41 +278,7 @@ Let's examine the bias-variance tradeoff with kNN-based probabilistic forecasts.
 
 Here are the 20 estimates for the values of $k$. The overall mean of the distributions are indicated by a vertical dashed line.
 
-```{r, echo=FALSE}
-set.seed(38)
-N <- 20
-n <- 500
-sd <- 10
-k <- c(15, 100)
-x0 <- 25
-estimates <- expand.grid(iter=1:N, k=k) %>% 
-    group_by(iter, k) %>% do({
-        this_k <- .$k
-        tibble(iter = .$iter,
-               k = paste("k =", this_k), 
-               x = rnorm(n, sd=sd),
-               y = x + rnorm(n, sd=sd),
-               d = abs(x-x0)) %>% 
-            arrange(d) %>% 
-            select(-x, -d) %>% 
-            `[`(1:this_k, 1:ncol(.))
-    }) %>% 
-    bind_rows(
-        tibble(iter = NA,
-               k = "Actual",
-               y = rnorm(20000, mean=x0, sd=sd),
-               type = "Actual")
-    )
-means <- estimates %>% 
-    group_by(k) %>% 
-    summarize(mean=mean(y))
-ggplot(estimates, aes(x=y)) +
-    facet_wrap(~k) +
-    geom_density(aes(group=iter)) +
-    geom_vline(data=means, mapping=aes(xintercept=mean),
-               linetype="dashed", colour=my_accent) +
-    theme_bw()
-```
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 Notice that:
 
@@ -328,7 +334,8 @@ where $Q(\tau)$ is the $\tau$-quantile. In other words, __each quantile level ge
 
 Here are the 0.25-, 0.5-, and 0.75-quantile regression lines for the baseball data:
 
-```{r}
+
+```r
 ggplot(dat, aes(hits, runs)) +
     geom_point(alpha=0.1, colour=my_accent) +
     geom_quantile(colour="black") +
@@ -337,16 +344,57 @@ ggplot(dat, aes(hits, runs)) +
          y="Number of Runs (Y)")
 ```
 
+```
+## Loading required package: SparseM
+```
+
+```
+## 
+## Attaching package: 'SparseM'
+```
+
+```
+## The following object is masked from 'package:base':
+## 
+##     backsolve
+```
+
+```
+## Smoothing formula not specified. Using: y ~ x
+```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+
 I did this easily with `ggplot2`, just by adding a layer `geom_quantile` to my scatterplot, specifying the quantile levels with the `quantiles=` argument. We could also use the function `rq` in the `quantreg` package in R:
 
-```{r, echo=TRUE}
+
+```r
 (fit_rq <- rq(runs ~ hits, data=dat, tau=c(0.25, 0.5, 0.75)))
+```
+
+```
+## Call:
+## rq(formula = runs ~ hits, tau = c(0.25, 0.5, 0.75), data = dat)
+## 
+## Coefficients:
+##                tau= 0.25 tau= 0.50  tau= 0.75
+## (Intercept) -118.8297872 8.2101818 64.0347349
+## hits           0.5531915 0.4923636  0.4908592
+## 
+## Degrees of freedom: 2835 total; 2833 residual
 ```
 
 If we were to again focus on the two teams (one with 1000 hits, and one with 1500 hits), we have (by evaluating the above three lines):
 
-```{r}
+
+```r
 predict(fit_rq, newdata=data.frame(hits=c(1000, 1500)))
+```
+
+```
+##   tau= 0.25 tau= 0.50 tau= 0.75
+## 1  434.3617  500.5738  554.8940
+## 2  710.9574  746.7556  800.3236
 ```
 
 So, we could say that the team with 1000 hits: 
@@ -362,7 +410,8 @@ amongst other things.
 
 Because each quantile is allowed to have its own line, some of these lines might cross, giving an __invalid result__. Here is an example with the `iris` data set, fitting the 0.2- and 0.3-quantiles:
 
-```{r, warning=FALSE}
+
+```r
 ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
     geom_point(alpha=0.25, colour=my_accent) +
     geom_quantile(aes(colour="0.2"), quantiles=0.2) +
@@ -371,12 +420,22 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
     theme_bw() +
     labs(x="Sepal Length",
          y="Sepal Width")
+```
+
+```
+## Smoothing formula not specified. Using: y ~ x
+## Smoothing formula not specified. Using: y ~ x
+```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+
+```r
 fit_iris <- rq(Sepal.Width ~ Sepal.Length, data=iris, tau=2:3/10)
 b <- coef(fit_iris)
 at8 <- round(predict(fit_iris, newdata=data.frame(Sepal.Length=8)), 2)
 ```
 
-Quantile estimates of Sepal Width for plants with Sepal Length less than ```r round((b[1,1]-b[1,2])/(b[2,2]-b[2,1]), 2)``` are valid, but otherwise, are not. For example, for plants with a Sepal Length of 8, this model predicts 30% of such plants to have a Sepal Width of less than ```r at8[2]```, but only 20% of such plants should have Sepal Width less than ```r at8[1]```. This is an illogical statement. 
+Quantile estimates of Sepal Width for plants with Sepal Length less than ``7.3`` are valid, but otherwise, are not. For example, for plants with a Sepal Length of 8, this model predicts 30% of such plants to have a Sepal Width of less than ``2.75``, but only 20% of such plants should have Sepal Width less than ``2.82``. This is an illogical statement. 
 
 There have been several "adjustments" proposed to ensure that this doesn't happen (see below), but ultimately, this suggests an inadequacy in the model assumptions. Luckily, this usually only happens at extreme values of the predictor space, and/or for large quantile levels, so is usually not a problem. 
 
@@ -390,36 +449,23 @@ Estimates of higher quantiles usually become worse for large/small values of $\t
 
 Here is a histogram of 100 observations generated from a Student's _t_(1) distribution (it's heavy-tailed):
 
-```{r}
+
+```r
 set.seed(4)
 y <- rt(100, df=1)
 qplot(y) + theme_bw()
 ```
 
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+
 Here are estimates of high and low quantiles, compared to the actual. You can see the discrepency grows quickly. __Extreme-low quantiles are too high__, whereas __extreme-high quantiles are too low__. 
 
 
-```{r, fig.width=8, echo=FALSE}
-p1 <- ggplot(data.frame(x=c(0,0.05)), aes(x)) + 
-    stat_function(aes(colour="Estimated"),
-                  fun=function(x) quantile(y, probs=x, type=1)) +
-    stat_function(aes(colour="Actual"),
-                  fun=function(x) qt(x, df=1)) +
-    scale_colour_discrete(guide=FALSE) +
-    labs(x=expression(paste("Quantile level (", tau, ")")),
-         y="Quantile") +
-    theme_bw()
-p2 <- ggplot(data.frame(x=c(0.95,1)), aes(x)) + 
-    stat_function(aes(colour="Estimated"),
-                  fun=function(x) quantile(y, probs=x, type=1)) +
-    stat_function(aes(colour="Actual"),
-                  fun=function(x) qt(x, df=1)) +
-    scale_colour_discrete("Type") +
-    labs(x=expression(paste("Quantile level (", tau, ")")),
-         y="Quantile") +
-    theme_bw()
-cowplot::plot_grid(p1, p2, ncol=2)
-```
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" />
 
 
 As a rule of thumb, it's best to stay below $\tau=0.95$ or above $\tau=0.05$. If you really want estimates of these extreme quantiles, you'll need to turn to __Extreme Value Theory__ to make an assumption on the tail of the distribution of the data. One common approach is to fit a generalized Pareto distribution to the upper portion of the data, after which you can extract high quantiles. 
@@ -446,7 +492,8 @@ for real $s$. This scoring rule is __negatively oriented__, meaning the lower th
 
 Here is a plot of various check functions. Notice that, when $\tau=0.5$ (corresponding to the median), this is proportional to the absolute value:
 
-```{r, fig.width=8, fig.height=3}
+
+```r
 base <- ggplot(data.frame(x=c(-2,2)), aes(x)) + 
     theme_bw() +
     labs(y=expression(rho)) +
@@ -463,6 +510,8 @@ cowplot::plot_grid(
     ncol=3
 )
 ```
+
+<img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
 
 For quantile regression __estimation__, we minimize the sum of scores instead of the sum of squared residuals, as in the usual (mean) linear regression.
 
