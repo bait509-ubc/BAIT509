@@ -40,12 +40,11 @@ my_accent <- "#d95f02"
 # Outline
 
 - What is "Probabilistic forecasting" and "Quantile regression"; how to interpret the forecasts/predictions; and to have a sense of when it's appropriate to use them.
-- Probabilistic forecasts: how to estimate (plot) predictive distribution densities using a "moving window" approach. 
+- Probabilistic forecasts: how to estimate (plot) predictive distribution densities using subset approaches. 
 - Quantile Regression:
     - How to fit a linear quantile regression model in R (using both `ggplot2` and the `quantreg` package), and how to interpret it.
     - Understand the "crossing quantile" problem.
     - Know how to evaluate goodness of quantile regression models
-    - Know how to estimate a quantile in a univariate sample (both in R and the "formula", but not the optimization problem)
 
 # Orientation within the Big-Picture of Supervised Learning
 
