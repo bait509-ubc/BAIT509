@@ -46,7 +46,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm06](/class_meetings/cm06-questions.md) | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
 | [cm07](/class_meetings/cm07-ensembles.md) | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Wednesday, March 21 | Beyond the mean and mode | |
-| cm09 | Monday, March 26 | SVM | Section 9 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) is all about SVM -- we won't be able to cover all of it, but what we do cover is TBD. |
+| cm09 | Monday, March 26 | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
 | cm10 | Wednesday, March 28 | Feature selection? |  |
 
 
