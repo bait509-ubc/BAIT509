@@ -33,11 +33,11 @@ In random forests, how do we ensure that the trees being averaged are sufficient
 
 ### 1.4
 
-Consider the following partition of the (two-predictor) predictor space. This time, the letters are there for you to refer to label the four regions. The response is categorical, and can either be "x" or "o". 
+Consider the following partition of the (two-predictor) predictor space. This time, the letters are there to label the four regions so that we can reference them. The response is categorical, and can either be "x" or "o". 
 
 ![](./data/partition.png)
 
-(a) For this regression tree, what predictions would be made for each of the regions A through D?
+(a) For this classification tree, what predictions would be made for each of the regions A through D?
 (b) What is the classification error for this decision?
 
 ### 1.5
