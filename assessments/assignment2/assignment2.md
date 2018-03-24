@@ -2,7 +2,7 @@
 
 __Evaluates__: Class meetings 05 and 07 (not 06, which is specific to your final project).
 
-__Due__: Wednesday, March 21 at 10:00am (i.e., the start of Class Meeting 07).
+__Due__: Wednesday, March 21 at 10:00am (i.e., the start of Class Meeting 08).
 
 
 ## Instructions (5%)
