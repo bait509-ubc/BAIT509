@@ -1,7 +1,0 @@
----
-title: 'BAIT 509 Class Meeting 10: Final Project'
-output: github_document
----
-
-- Use GitHub to collaborate. 
-- Choosing a model: the human side of model selection, and the numeric side. 
