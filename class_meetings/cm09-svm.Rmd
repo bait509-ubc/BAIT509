@@ -1,0 +1,58 @@
+---
+title: 'BAIT 509 Class Meeting 09'
+subtitle: "Support Vector Machines"
+date: "Monday, March 26, 2018"
+output: 
+    html_document:
+        keep_md: true
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        theme: cerulean
+        toc_float: true
+---
+
+# Overview
+
+- Maximal Margin Classifier, and hyperplanes
+- Support Vector Classifiers (SVC)
+- Support Vector Machines (SVM)
+- Extensions to multiple classes
+- SVM's in python
+- Feedback on Assignment 1
+- Lab: work on Assignment 3
+
+# The setup
+
+Today, we'll dicuss a new method for __binary classification__ -- that is, classification when there are two categories. The method is called __Support Vector Machines__. We'll build up to it by considering two special cases:
+
+1. The Maximal Margin Classifier (too restrictive to use in practice)
+2. The Support Vector Classifier (linear version of SVM)
+
+We'll demonstrate concepts when there are two predictors, because it's more difficult to visualize in higher dimensions. But concepts generalize.
+
+Let's start by loading some useful R packages to demonstrate concepts.
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+knitr::opts_chunk$set(fig.width=6, fig.height=3, fig.align="center")
+```
+
+
+# Maximal Margin Classifier
+
+```{r, echo=FALSE}
+set.seed(4392)
+n <- 20
+mux1 <- c(4,0)
+mux2 <- c(0,4)
+tibble(x1 = rnorm(n) + rep(mux1, each=n/2),
+       x2 = rnorm(n) + rep(mux2, each=n/2),
+       y  = rep(LETTERS[1:2], each=n/2)) %>% 
+    ggplot(aes(x1,x2)) +
+    geom_point(aes(shape=y, colour=y)) +
+    theme_bw() +
+    theme(axis.title.y = element_text(angle=0, vjust=0.5))
+```
+
+

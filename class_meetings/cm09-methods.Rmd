@@ -1,9 +1,0 @@
----
-title: "BAIT 509 Class Meeting 08: Expanding your ML toolkit, Part 1"
-output: github_document
----
-
-Now that you've learned foundational concepts of machine learning, along with some defacto methods, we'll now focus on expanding your machine learning "toolkit" for Class Meetings 08 and 09. We won't go into detail, but we'll go over the main idea behind several algorithms.
-
-- SVM and SVR
-- Multi-class logistic regression

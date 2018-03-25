@@ -1,0 +1,8 @@
+---
+title: 'BAIT 509 Class Meeting 10'
+output: github_document
+---
+
+- Selecting predictors? AIC, BIC, adjusted R^2, Mallow's C_p, etc. 
+- Choosing a model: the human side of model selection, and the numeric side. 
+    - Using more than one
