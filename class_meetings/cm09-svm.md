@@ -265,7 +265,7 @@ We can also calculate the distance to the decision boundary by appending `.decis
 my_model.decision_function(X)
 ```
 
-# Feedback on Lab 1
+# Feedback on Assignment 1
 
 Hard to say which exercise needs most attention -- perhaps Exercise 4, then perhaps Exercise 2.
 
