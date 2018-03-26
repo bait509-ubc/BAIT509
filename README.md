@@ -34,7 +34,7 @@ We'll help you out! Copy and paste the following line to get the attention of th
 
 ## Class Meetings
 
-Details about class meetings will appear here as they become available. Readings are optional, but should be useful.
+Details about class meetings will appear here as they become available. Readings are optional, but should be useful. To view the HTML version of the notes, click the HTML file in the `class_meetings` folder, right-click the "Download" button, and save it as an html file. Open the file locally with your browser.
 
 |  #   |   Date | Topic | Recommended Readings (optional) |
 |:----:|:------:|-------|---------------------|
