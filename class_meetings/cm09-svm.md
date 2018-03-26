@@ -1,16 +1,5 @@
----
-title: 'BAIT 509 Class Meeting 09'
-subtitle: "Support Vector Machines"
-date: "Monday, March 26, 2018"
-output: 
-    html_document:
-        keep_md: true
-        toc: true
-        toc_depth: 2
-        number_sections: true
-        theme: cerulean
-        toc_float: true
----
+# BAIT 509 Class Meeting 09
+Monday, March 26, 2018  
 
 # Overview
 
@@ -190,7 +179,7 @@ This approach fits an SVM for each category against "other". That's $K$ SVM's in
 2. Fit SVM
 3. Repeat 1-2 for all $K$ choices of $j$.
 
-Classification is made using the "popular vote".
+Remember the measure of "confidence" introduced in 4.3, as the absolute value of the left-hand-side of the equation of the hyperplane? We choose the category that results in the highest confidence score. 
 
 # SVM in python
 
