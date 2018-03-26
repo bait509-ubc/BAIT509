@@ -42,6 +42,53 @@ knitr::opts_chunk$set(fig.width=6, fig.height=3, fig.align="center")
 
 # Maximal Margin Classifier
 
+## Setup
+
+Consider the following two-predictor example. The response can take on one of two categories: "A" or "B". Also consider the three classifiers, where above a line we predict "B", and below, we predict "A":
+
 <img src="cm09-svm_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
+Each line perfectly classifies the training data -- which one would you prefer, and why?
+
+## The Method
+
+The Maximal Margin Classifier only applies when the two groups can be perfectly separated on the training set by:
+
+- a dividing line (if we have 2 predictors),
+- a dividing plane (if we have 3 predictors),
+- or in general, we need a __dividing hyperplane__.
+
+We choose the line/hyperplane so that the observations closest to the line/hyperplane are as far away as possible. This minimizes the chance that a new observation will be misclassified. In other words, _we want to fit the widest slab possible between the two classes_. This is called __maximizing the margin__, where the margin is the smallest distance from the hyperplane and the points.
+
+
+```r
+lines_mmc %>% 
+    mutate(beta0_min=c(-9.464481,0.6778491,-1.819599),
+           beta0_max=c(-2.535519,1.322151,3.218414)) %>%
+    gather(key="level", value="beta0",
+           beta0_min, beta0_mid, beta0_max) %>%
+    mutate(line = paste("Line", line)) %>%
+    tidyr::crossing(dat_mmc) %>% 
+    ggplot(aes(x1, x2)) +
+    facet_wrap(~line) +
+    geom_point(aes(shape=y, colour=y)) +
+    geom_abline(aes(intercept=beta0, slope=beta1), alpha=0.5) +
+    theme_bw() +
+    theme(axis.title.y = element_text(angle=0, vjust=0.5)) +
+    ylim(c(-2.75, 5.25)) +
+    coord_equal()
+```
+
+<img src="cm09-svm_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+
+Let's look at the resulting "slabs" from the above three examples.
+
+We can order the lines from best to worst: Line 
+
+
+
+Out of the three above lines, Line 3 is the best choice -- but in general, we can run an algorithm to optimize this.
+
+A perfect classification almost never happens with real data, but this is an important setup before moving on to support vector machines. 
 
