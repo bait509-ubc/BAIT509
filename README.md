@@ -34,7 +34,7 @@ We'll help you out! Copy and paste the following line to get the attention of th
 
 ## Class Meetings
 
-Details about class meetings will appear here as they become available. Readings are optional, but should be useful.
+Details about class meetings will appear here as they become available. Readings are optional, but should be useful. To view the HTML version of the notes, click the HTML file in the `class_meetings` folder, right-click the "Download" button, and save it as an html file. Open the file locally with your browser.
 
 |  #   |   Date | Topic | Recommended Readings (optional) |
 |:----:|:------:|-------|---------------------|
@@ -47,7 +47,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm07](/class_meetings/cm07-ensembles.md) | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Wednesday, March 21 | Beyond the mean and mode | |
 | [cm09](/class_meetings/cm09-svm.md) | Monday, March 26 | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
-| cm10 | Wednesday, March 28 | Feature selection? Naive Bayes? |  |
+| cm10 | Wednesday, March 28 | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
 
 
 ## Assessments
