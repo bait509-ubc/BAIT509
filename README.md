@@ -47,7 +47,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm07](/class_meetings/cm07-ensembles.md) | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Wednesday, March 21 | Beyond the mean and mode | |
 | [cm09](/class_meetings/cm09-svm.md) | Monday, March 26 | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
-| cm10 | Wednesday, March 28 | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
+| [cm10](/class_meetings/cm10-selection.md) | Wednesday, March 28 | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
 
 
 ## Assessments
@@ -65,7 +65,7 @@ A change to "OPEN" will be accompanied with an Issue creation/comment, so you wi
 |:--------------:|:------:|:------:|
 | [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | CLOSED | March 12 at 23:59  |
 | [Assignment 2](/assessments/assignment2/assignment2.md)      | CLOSED | March 21 at 10:00am |
-| [Assignment 3](/assessments/assignment3/assignment3.md)      | OPEN   | March 28 at 10:00am |
+| [Assignment 3](/assessments/assignment3/assignment3.md)      | CLOSED   | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | OPEN   | April 3 at 23:59    |
 | [Participation](/assessments/participation/participation.md) | OPEN   | March 28 at 12:00 (noon)  |
 
