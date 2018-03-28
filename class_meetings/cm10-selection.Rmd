@@ -1,6 +1,6 @@
 ---
 title: 'BAIT 509 Class Meeting 10'
-subtitle: "Model Selection and Predictor Selection"
+subtitle: "Feature and Model Selection"
 date: "Wednesday, March 28, 2018"
 output: 
     html_document:
@@ -139,19 +139,6 @@ When training a model, we can write the training procedure as the optimization o
 
 __Regularization__ adds a penalty directly to this loss function, that grows as the number of predictors grows. This is in contrast to the specialized measures (like adjusted $R^2$) that adds the penalty to the error term _after_ the model is fit. There are different types of regularization, but typically those that involve an L1 regularizer are used in feature selection. 
 
-# In-Class Exercise
+# Lab
 
-From 573 lab 1. 
-
-Many statistics exist that we can use to assess how good a model is. Fill in the following table of model statistics:
-
-| Performance metric | Definition | When does it apply? 
-|--------------------|------------|------|
-|  AIC               |            |      |  
-|  BIC               |            |      |    
-|  MSE               |            |      |     
-|  classification error rate |    |      |    
-|  adjusted $R^2$  |              |      |    
-| [Mallow's $C_p$](https://en.wikipedia.org/wiki/Mallows's_Cp)  |         |      |,
-
-Hint - a good resource for these model statistics can be found in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf). See Chapter 2 for MSE & classification error, and Chapter 6 for AIC, BIC, adjusted $R^2$ & Mallow’s $C_p$.
+Use the remaining class time to work on your group projects. 
