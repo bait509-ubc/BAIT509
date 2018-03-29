@@ -67,7 +67,7 @@ A change to "OPEN" will be accompanied with an Issue creation/comment, so you wi
 | [Assignment 2](/assessments/assignment2/assignment2.md)      | CLOSED | March 21 at 10:00am |
 | [Assignment 3](/assessments/assignment3/assignment3.md)      | CLOSED   | March 28 at 10:00am |
 | [Final Project](/assessments/final_project/final.md)         | OPEN   | April 3 at 23:59    |
-| [Participation](/assessments/participation/participation.md) | OPEN   | March 28 at 12:00 (noon)  |
+| [Participation](/assessments/participation/participation.md) | CLOSED   | March 28 at 12:00 (noon)  |
 
 Please submit your assignments to [UBC Connect](https://connect.ubc.ca/) in the form of a jupyter notebook __AND__ pdf file.
 
