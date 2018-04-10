@@ -21,6 +21,7 @@ Class meetings the didn't have any (non-assignment) in-class exercises:
 - cm04
 - cm05
 - cm06
+- cm10
 
 ## Discussion (5%)
 
