@@ -22,15 +22,12 @@ Here are the members of your teaching team. To see specifics of who's doing what
 | Name     | Position | GitHub username |
 | -------- | -------- | --------------- |
 | Vincenzo Coia | Instructor | `@vincenzocoia` |
-| Vaden Masrani | Teaching Assistant | `@vmasrani` |
-| Mohamed Ahmed | Teaching Assistant | `@mooahmed` |
-| Rafi Mohammad | Teaching Assistant | `@rafizaman` |
 
 As mentioned in [Class Meeting 01](/class_meetings/cm01-intro.md), please use [BAIT509 Issues](https://github.com/vincenzocoia/BAIT509/issues) as a primary mode of communication -- use email only for things that really should be private (find our emails in the syllabus).
 
 We'll help you out! Copy and paste the following line to get the attention of the teaching team:
 
-`@vincenzocoia @vmasrani @mooahmed @rafizaman`
+`@vincenzocoia`
 
 ## Class Meetings
 
@@ -49,6 +46,14 @@ Details about class meetings will appear here as they become available. Readings
 | [cm09](/class_meetings/cm09-svm.md) | Monday, March 26 | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
 | [cm10](/class_meetings/cm10-selection.md) | Wednesday, March 28 | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
 
+## Office Hours
+
+Want to talk about the course outside of lecture? Let's talk during these dedicated times.
+
+| Date | Time | Place |
+|------|------|-------|
+| Friday, Jan 4 | 12:00-13:00 | TBD |
+| Mondays, Jan 7 - Jan 28 | 13:00-14:00 | TBD |
 
 ## Assessments
 
