@@ -1,5 +1,7 @@
 # BAIT509 - Business Applications of Machine Learning
 
+**2019 project due Friday, February 8th at 11:59PM**
+
 This repo contains materials for the 2018 (inaugural!) iteration of BAIT509 at UBC. In particular, you can find:
 
 - The syllabus can be found at [syllabus.pdf](syllabus.pdf), but anything listed in this README file will take precedence. 
