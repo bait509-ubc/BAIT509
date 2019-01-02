@@ -1,88 +1,66 @@
 # BAIT509 - Business Applications of Machine Learning
 
-**2019 project due Friday, February 8th at 11:59PM**
+This is the home page for BAIT 509 at The University of British Columbia, displaying the 2019 iteration of the course. The syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed in on this website will take precedence. 
 
-This repo contains materials for the 2018 (inaugural!) iteration of BAIT509 at UBC. In particular, you can find:
+## Learning Objectives
 
-- The syllabus can be found at [syllabus.pdf](syllabus.pdf), but anything listed in this README file will take precedence. 
-- Class meeting notes can be found in the [`class_meetings`](/class_meetings) folder.
-- Instructions for your five assessments can be found in the [`assessments`](/assessments) folder.
+By the end of the course, students should be expected to be able to:
 
-This repo _does not_ contain things that really ought to be private. We'll use [UBC Connect](https://connect.ubc.ca/) for these. This includes:
-
-- Your grades and feedback on your assessments.
-- Solutions to the assignments. 
-
-Since BAIT 509 is brand new, material in this repo will be under flux for the duration of the course. This is different from most courses, where you're only shown material when it's ready. __NOTE:__ This means that you can see assessments before they're ready too, so don't start one unless you've been told it's ready! See below for more details.
-
-This very manuscript is intended to help you navigate the course, kind of like a more practical version of your syllabus. 
+- Explain what ML is, in the context of errors and model functions. 
+- Understand and implement the machine learning paradigms in both R and python for a variety of ML methods.
+- Identify a data table based on a machine learning problem
+- Understand the types of error, and how this influences model choice/goodness
+- Build and justify a ML model. 
+- Understand how ML fits into the greater scope of solving a business problem
 
 ## Teaching Team
 
-Here are the members of your teaching team. To see specifics of who's doing what in this course, see the [`staffing.md`](staffing.md) file.
+At your service!
 
-| Name     | Position | GitHub username |
-| -------- | -------- | --------------- |
-| Vincenzo Coia | Instructor | `@vincenzocoia` |
-
-As mentioned in [Class Meeting 01](/class_meetings/cm01-intro.md), please use [BAIT509 Issues](https://github.com/vincenzocoia/BAIT509/issues) as a primary mode of communication -- use email only for things that really should be private (find our emails in the syllabus).
-
-We'll help you out! Copy and paste the following line to get the attention of the teaching team:
-
-`@vincenzocoia`
+| Name     | Position | 
+| -------- | -------- | 
+| Vincenzo Coia | Instructor | 
+| Hossameldin Mohammed | TA | 
+| Emily Mistick | TA |
+| Arjun Baghela | TA |
 
 ## Class Meetings
 
-Details about class meetings will appear here as they become available. Readings are optional, but should be useful. To view the HTML version of the notes, click the HTML file in the `class_meetings` folder, right-click the "Download" button, and save it as an html file. Open the file locally with your browser.
+Details about class meetings will appear here as they become available. Readings are optional, but should be useful. 
 
 |  #   |   Date | Topic | Recommended Readings (optional) |
 |:----:|:------:|-------|---------------------|
-| [cm01](/class_meetings/cm01-intro.md) | Monday, February 26 | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
-| [cm02](/class_meetings/cm02-error.md) | Wednesday, February 28 | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
-| [cm03](/class_meetings/cm03-local.md) | Monday, March 5 | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
-| [cm04](/class_meetings/cm04-selection.md) | Wednesday, March 7 | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
+| [cm01](/class_meetings/cm01-intro.md) | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
+| [cm02](/class_meetings/cm02-error.md) | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
+| [cm03](/class_meetings/cm03-local.md) | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
+| [cm04](/class_meetings/cm04-selection.md) | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
 | [cm05](/class_meetings/cm05-trees.md) | Monday, March 12 | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
-| [cm06](/class_meetings/cm06-questions.md) | Wednesday, March 14 | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
-| [cm07](/class_meetings/cm07-ensembles.md) | Monday, March 19 | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
+| [cm06](/class_meetings/cm06-questions.md) | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
+| [cm07](/class_meetings/cm07-ensembles.md) | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Wednesday, March 21 | Beyond the mean and mode | |
-| [cm09](/class_meetings/cm09-svm.md) | Monday, March 26 | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
-| [cm10](/class_meetings/cm10-selection.md) | Wednesday, March 28 | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
+| [cm09](/class_meetings/cm09-svm.md) | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
+| [cm10](/class_meetings/cm10-selection.md) | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
 
 ## Office Hours
 
 Want to talk about the course outside of lecture? Let's talk during these dedicated times.
 
-| Date | Time | Place |
-|------|------|-------|
-| Friday, Jan 4 | 12:00-13:00 | TBD |
-| Mondays, Jan 7 - Jan 28 | 13:00-14:00 | TBD |
+- Vincenzo: Wednesdays (Jan 16 - Feb 6) in ESB 3174
+
 
 ## Assessments
 
-Assessments can have one of three statuses:
+| Assessment      | Due    |
+|:---------------:|:------:|
+| [Assignment 1]  | January 12 at 18:00 |
+| [Assignment 2]  | January 26 at 18:00 |
+| [Assignment 3]  | February 2 at 18:00 |
+| [Final Project] | February 8 at 23:59 |
+| [Participation] | February 8 at 23:59 |
 
-- NA (Not Available): This assessment is not ready yet for you to begin.
-- OPEN: This assessment is ready for you to work on.
-- CLOSED: This assessment is due. We will not be accepting further work on this assessment.
+Please submit your assignments to [UBC Connect](https://connect.ubc.ca/).
 
-A change to "OPEN" will be accompanied with an Issue creation/comment, so you will be notified of it (_if_ you're [`Watch`ing](https://help.github.com/articles/watching-and-unwatching-repositories/#watching-a-single-repository) the repo!)
-
-
-| Assessment     | Status | Due    |
-|:--------------:|:------:|:------:|
-| [Assignment 1](/assessments/assignment1/assignment1.ipynb)   | CLOSED | March 12 at 23:59  |
-| [Assignment 2](/assessments/assignment2/assignment2.md)      | CLOSED | March 21 at 10:00am |
-| [Assignment 3](/assessments/assignment3/assignment3.md)      | CLOSED   | March 28 at 10:00am |
-| [Final Project](/assessments/final_project/final.md)         | CLOSED   | April 3 at 23:59    |
-| [Participation](/assessments/participation/participation.md) | CLOSED   | March 28 at 12:00 (noon)  |
-
-Please submit your assignments to [UBC Connect](https://connect.ubc.ca/) in the form of a jupyter notebook __AND__ pdf file.
-
-## Useful Resources
-
-Here are some resources you might find useful for the course. Let me know if you find something you find useful, and I can add it here.
+## Annotated Resources
 
 - [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/) (aka ISLR).
 	- A very well-written book covering a lot of concepts in supervised learning. 
-- [Happy git and GitHub for the useR](http://happygitwithr.com/)
-	- Jenny Bryan's book on just about all the tools we're using in this course, and how they all work together. Doesn't include jupyter notebooks (?). 
