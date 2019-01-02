@@ -53,15 +53,15 @@ TA office hours are TBD
 
 ## Assessments
 
-| Assessment      | Due    |
-|:---------------:|:------:|
-| [Assignment 1]  | January 12 at 18:00 |
-| [Assignment 2]  | January 26 at 18:00 |
-| [Assignment 3]  | February 2 at 18:00 |
-| [Final Project] | February 8 at 23:59 |
-| [Participation] | February 8 at 23:59 |
+| Assessment      | Due    | Weight |
+|:---------------:|:------:|--------|
+| [Assignment 1]  | January 12 at 18:00 | 20% | 
+| [Assignment 2]  | January 26 at 18:00 | 20% |
+| [Assignment 3]  | February 2 at 18:00 | 20% |
+| [Final Project] | February 8 at 23:59 | 30% |
+| [Participation](/assessments/participation/participation.md) | January 31 at 18:00 | 10% |
 
-Please submit your assignments to [UBC Connect](https://connect.ubc.ca/).
+Please submit everything to [UBC Connect](https://connect.ubc.ca/).
 
 ## Annotated Resources
 
