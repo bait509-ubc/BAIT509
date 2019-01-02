@@ -24,9 +24,7 @@ opts_chunk$set(fig.width=5, fig.height=3, fig.align="center")
 
 In today's class, we'll discuss:
 
-- About me, you, the course, and such.
 - Discussions: asking effective questions, and intro to your participation assessment
-- Getting acquainted with the course tools: GitHub, git (if you want), R/RStudio/RMarkdown, Jupyter Notebooks
 - What machine learning is, beginning with the concept of irreducible error. 
 
 # About
@@ -45,155 +43,7 @@ Computationally, I am primarily an R programmer. I'm a basic python user.
 
 Lots of experience as a statistical consultant for business and academia. 
 
-## About the TA's
-
-This course has three TA's.
-
-- Vaden and Mohamed are in comp sci.
-- Rafi is in ECE.
-
-You'll see them in class and office hours. 
-
-## About you
-
-Introduce yourself! Let's hear about:
-
-- Your name
-- Why MBAN?
-- Something about yourself.
-
-## About this course
-
-This is a brand new course! You can expect things to evolve as we progress.
-
-- Preview of the course website -- it contains all materials related to the course.
-- Preview of the syllabus
-
-Before we talk more about the assessments, let's first talk about the structure of our class meetings. 
-
-## About class meetings
-
-I intend most class meetings to take the __listen-do-listen-do__ form:
-
-1. __Listen__: (15 min?) I'll start class meetings with high-level explanations of a topic.
-2. __Do__: (40 min?) You do hands-on exploratory work to allow you to build concepts.
-    - You "present" your work to initiate a class discussion; I clarify concepts as needed.
-3. __Listen__: (25 min?) Once you have basic concepts down pat, I'll talk more about details. Maybe iterate back to 1 with another topic. 
-4. __Do__: (40 min?) Open time for working on course material, typically assignments or in-class material. Instructor and a TA will be present to answer questions. 
-
-Notes:
-
-- This structure might evolve as the course progresses. 
-- There will be a TA present to help you.
-- In-class exercises will typically contain toy data sets; assignments will be more "real".
-
-# Participation Skills
-
-
-## Your participation assessment
-
-Let's go over how you'll be assessed. See the [`participation`](../assessments/participation/participation.md) file in the `assessments` folder.
-
-
-## Online discussion
-
-By now, you're used to asking questions and contributing to discussions _in class_. But the world of _online discussions_ is quite different. 
-
-You are encouraged to ask questions online via [GitHub issues on the BAIT509 repo](https://github.com/vincenzocoia/BAIT509/issues). Feel free to ask about anything related to the course, including (but not limited to):
-
-- content
-- assessments
-- coding
-- jobs
-- requests
-
-You are also encouraged to interact with these Issues: 
-
-- Add a comment to the Issue if you have something to add; or propose a solution to their question.
-- Add to the question.
-- Give the question a "thumbs up" if you have this same question and like the way it was worded.
-- Ask for more details.
-
-Think for a moment why I'm including this in your _class notes_ instead of in the document outlining our expectations for your `participation`. When you interact like this outside of the BAIT509 repo, you become a valuable contributor to the data science community in general! For example, you would do these things if you experience a (legitimate) problem with an R package. See the [`ggplot2` Issues](https://github.com/tidyverse/ggplot2/issues) as an example; or, if an R package does not have a GitHub repo, you can contact the author directly. 
-
-## Asking effective questions
-
-It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
-
-- Provide relevant links (for example, to the relevant assignment or course notes).
-- Make a reproducible example (in the case that it's a question involving code).
-- Be detailed.
-
-You'll probably find that the act of writing an effective question causes you to answer your own question! In this case, post your question anyway, with the corresponding solution. 
-
-Note that the BAIT 509 GitHub issues are __public__ -- anyone with internet can view them. This is a good thing -- it is a display of your thoughtfulness, your willingness to participate, and your willingness to ask questions. 
-
-On that note, don't be afraid to ask a question here! Discrimination and ridicule will not be tolerated, and this includes on the BAIT509 repo. The teaching team will provide guidance on a per-question basis, and students are also encouraged to provide ways in which a question can be made more effective. 
-
-I recommend checking out the [STAT545 "how to get unstuck" page](http://stat545.com/help-general.html) for resources on how to get your questions answered. 
-
-# Git and GitHub
-
-We'll be using git with GitHub for course materials, including a place to put your work on the in-class exercises.
-
-__git__: A version control program. It keeps track of file changes.
-
-__GitHub__: A service to host your files, and integrates with `git`.
-
-We'll come back to `git` later, but for now, let's focus on GitHub. 
-
-You might find these readings helpful:
-
-- I recommend reading ["Why Git? Why GitHub?"](http://happygitwithr.com/big-picture.html) by Jenny Bryan if you're not familiar with what these tools are all about, and why they are useful for data science. It's an incomplete chapter in an incomplete book, but still very useful.
-- [This STAT 545 lesson](http://stat545.com/cm003-notes_and_exercises.html) aims to introduce git and GitHub.
-
-# In-Class Exercises: Tooling, Part 1
-
-For your first exercise, you'll first acquaint yourself with GitHub, then add a comment on the BAIT509 Issue about effective questions. Here are your instructions.
-
-__Note__: Done early? Head to the "Lab" section of these course notes for additional tasks!
-
-## Acquaint yourself with GitHub and the BAIT 509 repo
-
-1. __Make an account__: If you haven't already, make an account on [github.com](https://github.com/).
-    - Jenny's ["Register a GitHub account"](http://happygitwithr.com/github-acct.html) chapter is useful if you want to read more.
-2. __Fill out the survey__: Let us know your github.com username by filling in the survey at https://goo.gl/forms/86bIrgJSUvJBVdef2
-3. __Watch BAIT509__: Navigate to the [BAIT509 github page](https://github.com/vincenzocoia/BAIT509), and click "Watch" -> "Watching" (in the upper-right corner of the page). 
-    - This will notify you by email whenever a new issue comment is made. We'll be using issues for remote discussion about course material and assignments. 
-4. __Set up your own BAIT509 repo__ (repo="repository"): You'll use this repo to put your in-class work, and notes. You can do this in one of two ways:
-    1. Maintain your own copy of the main BAIT 509 repo ~~(\*__recommended__\*)~~, by [`Fork`ing](https://help.github.com/articles/fork-a-repo/) the main BAIT509 repo. 
-        - There's a button for this at the top-right corner of the main BAIT 509 repo page. 
-        - This is useful so you can [keep your fork synced](https://help.github.com/articles/fork-a-repo/#keep-your-fork-synced) as the main repo evolves throughout the course -- more on this later. 
-    2. Start fresh and create a new blank repo.
-        - On second thought, I would recommend this if git and github are new to you.
-5. __Add to your repo__: On your new BAIT 509 repo, add a new folder for you to put your in-class exercises, seeded with a README file. To do this for a folder called `my_folder`:
-    1. Click "Create New File" on the main repo page.
-    2. In the file name, type `my_folder/README.md`. Populate the contents with a brief description of what this folder will be used for (a one-liner is fine).
-    3. Click "Commit new file".
-6. __Education Account__: Your new repository is by default __public__/open to the world. I recommend you keep it this way. If you have time, and are interested in making the repository private without having to pay, try [requesting an Education account](https://education.github.com/).
-    - _If you do make your repo private_, you'll need to [add the teaching team as collaborators](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/) to your repo so that we can evaluate your participation. See the course [README](../README.md) for our github usernames. 
-
-## Evaluating questions
-
-For this exercise, I'll make an Issue on the BAIT509 repo soliciting your comments regarding the quality of some online questions/discussions.
-
-1. Find a question/issue or two that someone has posed online. Ideally, one should also have a response. See below for some example sites.
-2. Add a comment to the BAIT509 Issue. For each thread you examined, specify:
-    - A link to the thread/question
-    - In what ways is the question/issue worded effectively/ineffectively? Why? What would make it better, if anything?
-        - Note that people often reply with this type of feedback, too! Sometimes not in a pleasant way, unfortunately.
-    - If there is a discussion surrounding this question/issue, did any comments add value to the discussion? Were any supportive? Were any destructive? How so?
-
-We'll talk about some examples after you're done. Here are some sites you might find useful:
-
-- [`ggplot2` GitHub Issues](https://github.com/tidyverse/ggplot2/issues) (a popular R package)
-- [`scipy` GitHub Issues](https://github.com/scipy/scipy/issues) (a popular python package)
-- [Stack Overflow](https://stackoverflow.com/)
-
-
-## R
-
-You'll need various tools to interact with R in this course.
+# R and python
 
 1. If you haven't already, install R and RStudio.
     - RStudio is the editor we'll be using to code in R. You can use something else if you want, but I highly recommend not.
@@ -202,6 +52,35 @@ You'll need various tools to interact with R in this course.
     - `install.packages("ISLR")` -- the package to accompany the ISLR book.
     - `install.packages("knitr")`
 
+
+# Asking effective questions
+
+It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
+
+- Provide relevant links (for example, to the relevant assignment or course notes).
+- Make a reproducible example (in the case that it's a question involving code).
+	- Sometimes called a [Minimal Working Example](https://en.wikipedia.org/wiki/Minimal_working_example) (MWE).
+- Be detailed.
+
+You'll probably find that the act of writing an effective question causes you to answer your own question! In this case, post your question anyway, with the corresponding solution. 
+
+I recommend checking out the [STAT545 "how to get unstuck" page](http://stat545.com/help-general.html) for resources on how to get your questions answered. 
+
+## Your Turn
+
+For this exercise, you'll be commenting on the quality of some online questions/discussions.
+
+1. Find a question/issue or two that someone has posed online. Ideally, one should also have a response. See below for some example sites.
+2. Add a comment to the thread in canvas. For each question you examined, specify:
+    - A link to the thread/question
+    - In what ways is the question/issue worded effectively/ineffectively? Why? What would make it better, if anything?
+    - If there is a discussion surrounding this question/issue, did any comments add value to the discussion? Were any supportive? Were any destructive? How so?
+
+We'll talk about some examples after you're done. Here are some sites you might find useful:
+
+- [`scipy` GitHub Issues](https://github.com/scipy/scipy/issues) (a popular python package)
+- [`ggplot2` GitHub Issues](https://github.com/tidyverse/ggplot2/issues) (a popular R package)
+- [Stack Overflow](https://stackoverflow.com/)
 
 # Introduction to Machine Learning
 
