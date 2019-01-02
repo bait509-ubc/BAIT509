@@ -1,7 +1,7 @@
 ---
 title: "BAIT 509 Class Meeting 01"
 subtitle: "Introduction"
-date: "Monday, February 26, 2018"
+date: "January 2, 2019"
 output: 
     html_document:
         keep_md: true
@@ -86,6 +86,10 @@ We'll talk about some examples after you're done. Here are some sites you might 
 
 In this section, we'll go over some basic machine learning concepts.
 
+- Prediction quantity: mean and mode.
+- Error measurements
+- What is irreducible error?
+
 ## What machine learning is
 
 What is Machine Learning (ML) (or Statistical Learning)? As the [ISLR book](http://www-bcf.usc.edu/~gareth/ISL/) puts it, it's a "vast set of tools for understanding data". Before we explain more, we need to consider the two main types of ML:
@@ -157,8 +161,6 @@ In BAIT 509, we will use the terminology _predictors_ and _response_.
 Terminology surrounding variable types can be confusing, so it's worth going over it. Here are some non-technical definitions. 
 
 - A __numeric__ variable is one that has a quantity associated with it, such as age or height. Of these, a numeric variable can be one of two things:
-    - A variable is __continuous__ if you can increase/decrease the variable "smoothly". For example, temperature, or proportions.
-    - A variable is __discrete__ if increasing/decreasing the variable can only happen "in steps". For example, number of apples in the fridge.
 - A __categorical__ variable, as the name suggests, is a variable that can be one of many categories. For example, type of fruit; success or failure.  
 
 ## Types of Supervised Learning
@@ -175,6 +177,20 @@ Note: Don't confuse classification with _clustering_! The latter is an unsupervi
 ## What have you heard of so far?
 
 Let's write down some supervised learning techniques that you've heard of. Are there any that you particularly are interested in learning about?
+
+## Together: Linear Regression Example
+
+Let's predict _Sepal Width_ of iris species using the `iris` data set.
+
+1. Univariate example.
+	1. Pick a prediction.
+	2. "Calculate" prediction for a new iris plant.
+	3. Evaluate error on the data
+2. Using species.
+	1. Use species as a predictor.
+	2. Calculate prediction for a new _setosa_ plant.
+	3. Evaluate error on the data. How does it compare to the univariate example?
+3. Try using all other recorded features.
 
 # Irreducible Error
 
@@ -228,8 +244,6 @@ This is much more uncertain than in the case where we have predictors!
 
 # In-class Exercises: Irreducible Error
 
-Note: if you don't have `git` set up on your computer (this is different from github), for now, just drag-and-drop your R file to your github repo to add it to your repo. 
-
 ## Oracle regression
 
 Suppose you have two independent predictors, $X_1, X_2 \sim N(0,1)$, and the conditional distribution of $Y$ is
@@ -245,7 +259,7 @@ $$ Y \sim N(5, 6). $$
 
 The following R function generates data from the joint distribution of $(X_1, X_2, Y)$. It takes a single positive integer as an input, representing the sample size, and returns a `tibble` (a fancy version of a data frame) with columns named `x1`, `x2`, and `y`, corresponding to the random vector $(X_1, X_2, Y)$, with realizations given in the rows. 
 
-```{r, echo=TRUE}
+```
 genreg <- function(n){
     x1 <- rnorm(n)
     x2 <- rnorm(n)
@@ -258,7 +272,7 @@ genreg <- function(n){
 
 1. Generate data -- as much as you'd like.
 
-```{r, echo=TRUE}
+```
 dat <- genreg(1000)
 ```
 
@@ -269,23 +283,23 @@ dat <- genreg(1000)
     3. Using only the values of $X_2$.
     4. Using neither the values of $X_1$ nor $X_2$. (Your predictions in this case will be the same every time -- what is that number?)
     
-```{r, echo=TRUE}
+```
 dat <- mutate(dat,
-       yhat = 5,
-       yhat1 = 5-x1,
-       yhat2 = 5+2*x2,
-       yhat12 = 5-x1+2*x2)
+       yhat = FILL_THIS_IN,
+       yhat1 = FILL_THIS_IN,
+       yhat2 = FILL_THIS_IN,
+       yhat12 = FILL_THIS_IN)
 ```
     
 
 3. Now use the actual outcomes of $Y$ to calculate the mean squared error (MSE) for each of the four situations. 
     - Try re-running the simulation with a new batch of data. Do your MSE's change much? If so, choose a larger sample so that these numbers are more stable.
     
-```{r, echo=TRUE}
-(mse <- mean((dat$yhat - dat$y)^2))
-(mse1 <- mean((dat$yhat1 - dat$y)^2))
-(mse2 <- mean((dat$yhat2 - dat$y)^2))
-(mse12 <- mean((dat$yhat12 - dat$y)^2))
+```
+(mse <- mean((dat$FILL_THIS_IN - dat$y)^2))
+(mse1 <- mean((dat$FILL_THIS_IN - dat$y)^2))
+(mse2 <- mean((dat$FILL_THIS_IN - dat$y)^2))
+(mse12 <- mean((dat$FILL_THIS_IN - dat$y)^2))
 knitr::kable(tribble(
     ~ Case, ~ MSE,
     "No predictors", mse,
@@ -297,9 +311,6 @@ knitr::kable(tribble(
 
     
 4. Order the situations from "best forecaster" to "worst forecaster". Why do we see this order?
-
-> They're ordered from worst to best in the above table. Adding more predictors reduces the error. Adding $X_2$ is better than adding $X_1$ (as seen by the lower MSE), because it's carries more information about $Y$ (i.e., it's more dependent with $Y$ than $X_1$ is).
-
 
 
 ## Oracle classification
@@ -321,7 +332,7 @@ ggplot(tibble(x=c(-7, 7)), aes(x)) +
 
 Here's an R function to generate data for you, where $X\sim N(0,1)$. As before, it accepts a positive integer as its input, representing the sample size, and returns a tibble with column names `x` and `y` corresponding to the predictor and response. 
 
-```{r, echo=TRUE}
+```
 gencla <- function(n) {
     x <- rnorm(n) 
     pB <- 0.8/(1+exp(-x))
@@ -336,50 +347,26 @@ gencla <- function(n) {
 1. Calculate the probabilities of each category when $X=1$. What about when $X=-2$? With this information, what would you classify $Y$ as in both cases?
     - BONUS: Plot these two conditional distributions. 
 
-```{r}
+```
 ## X=1:
-(pB <- 0.8/(1+exp(-1)))
-(pA <- 0.2)
-(pC <- 1 - pB - pA)
+(pB <- FILL_THIS_IN)
+(pA <- FILL_THIS_IN)
+(pC <- FILL_THIS_IN)
 ggplot(tibble(p=c(pA,pB,pC), y=LETTERS[1:3]), aes(y, p)) +
     geom_col() +
     theme_bw() +
     labs(y="Probabilities", title="X=1")
 ## X=-2
-(pB <- 0.8/(1+exp(-(-2))))
-(pA <- 0.2)
-(pC <- 1 - pB - pA)
+(pB <- FILL_THIS_IN)
+(pA <- FILL_THIS_IN)
+(pC <- FILL_THIS_IN)
 ggplot(tibble(p=c(pA,pB,pC), y=LETTERS[1:3]), aes(y, p)) +
     geom_col() +
     theme_bw() +
     labs("Probabilities", title="X=-2")
 ```
 
-> When $X=1$, _B_ has the highest probability, so we predict that. When $X=-2$, _C_ has the highest probability, so we predict that.
-
 2. In general, when would you classify $Y$ as _A_? _B_? _C_?
-
-> For any $X<0$, the probability of _C_ will be the largest, so we predict that. For any $X>0$, the probability of _B_ will be the largest, so we predict that.
-
-3. Generate data -- as much as you'd like.
-
-```{r}
-dat2 <- gencla(1000)
-```
-
-4. For now, ignore the $Y$ data. Make predictions on $Y$ from $X$.
-
-```{r}
-dat2$yhat <- if_else(dat2$x<0, "C", "B")
-```
-
-
-5. Now, using the true $Y$ values, calculate the error rate. What type of accuracy do you get?
-
-```{r}
-1-mean(dat2$yhat == dat2$y)
-```
-
 
 ## (BONUS) Random prediction
 
