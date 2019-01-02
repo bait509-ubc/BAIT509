@@ -247,7 +247,7 @@ dat <- mutate(dat,
 ```
 
 ```
-## [1] 6.153074
+## [1] 5.871729
 ```
 
 ```r
@@ -255,7 +255,7 @@ dat <- mutate(dat,
 ```
 
 ```
-## [1] 5.294446
+## [1] 5.104845
 ```
 
 ```r
@@ -263,7 +263,7 @@ dat <- mutate(dat,
 ```
 
 ```
-## [1] 1.884127
+## [1] 1.958196
 ```
 
 ```r
@@ -271,7 +271,7 @@ dat <- mutate(dat,
 ```
 
 ```
-## [1] 0.9570312
+## [1] 1.053775
 ```
 
 ```r
@@ -286,12 +286,12 @@ knitr::kable(tribble(
 
 
 
-Case                    MSE
----------------  ----------
-No predictors     6.1530744
-Only X1           5.2944459
-Only X2           1.8841268
-Both X1 and X2    0.9570312
+Case                   MSE
+---------------  ---------
+No predictors     5.871729
+Only X1           5.104845
+Only X2           1.958196
+Both X1 and X2    1.053775
 
     
 4. Order the situations from "best forecaster" to "worst forecaster". Why do we see this order?
@@ -436,7 +436,7 @@ dat2$yhat <- if_else(dat2$x<0, "C", "B")
 ```
 
 ```
-## [1] 0.449
+## [1] 0.473
 ```
 
 
@@ -463,45 +463,3 @@ Write a formula that gives a prediction of $Y$ from $X$ (you might have to look 
 What statistical quantity does the mean squared error (MSE) reduce to when we know the true distribution of the data? Hint: if each conditional distribution has a certain variance, what then is the MSE?
 
 What is the error rate in the classification setting?
-
-# Lab: Tooling, Part 2
-
-Be sure to let us know what your github username is by [filling out the survey](https://goo.gl/forms/86bIrgJSUvJBVdef2), if you haven't already!
-
-## Git
-
-Get `git` working on your local computer. You don't _really_ have to do this -- you can get by just by using GitHub and drag-and-drop -- but you might find this method clumsy. So maybe skip ahead for now, unless you're determined. Plus, it's a good skill to be able to use `git`. 
-
-- If you haven't already, [install `git`](http://happygitwithr.com/install-git.html) on your computer. Then [introduce yourself to `git`](http://happygitwithr.com/hello-git.html).
-- If you want, [install a `git` client](http://happygitwithr.com/git-client.html) (I like to use [sourcetree](https://www.sourcetreeapp.com/)). If you don't use a git client, the alternative is to use the command line.
-- Try cloning your repo to your computer (I'll let you google that).
-- Make a change to a file in that repo, locally. Commit the change. Then push the change.
-
-__Note__ (merge conflicts): if you have a local cloned copy of your github repo, you can run into problems if you make changes to both the github version of the repo, and the local version. Though, you probably won't experience this unless you change the same lines in the same file. If you do this, you'll encounter a "merge conflict" when you try to push your changes. You'll have to fix this by hand, choosing which text to keep, and what to remove. 
-
-## RMarkdown
-
-Get cozy with writing in RMarkdown! You should be able to: 
-
-- Make code chunks and write R code in them.
-- `Knit` an RMarkdown document to either `.pdf`, `.html`, or `.md`.
-- Ideally, write the "English part" of the document in markdown. 
-    - [This tutorial](https://www.markdowntutorial.com/) will get you up to speed in 10 minutes.
-    - Original documentation for markdown can be found on the [Daring Fireball site](https://daringfireball.net/projects/markdown/). 
-
-I recommend reading the [Happy git with R book, Section IV](http://happygitwithr.com/rmd-test-drive.html) to get comfortable with these concepts. For now, let's see if you can upload/push an RMarkdown (`.Rmd`) file to your repo. In addition:
-
-1. Submit a `Knit`ted file as a...
-    - Level 1 challenge: `.html` file; 
-    - Level 2 challenge: `.pdf` file; 
-    - Level 3 challenge: `.md` file with github-flavoured markdown.
-2. As you write your RMarkdown file, include your own R code in a chunk that does something -- anything. `2+2` is fine. A plot is better. 
-3. Use at least 6 markdown features in your text (such as bold, italics, adding a hyperlink, header, etc.). 
-
-## Jupyter Notebooks
-
-We expect you to submit your assignments (at this point, at least some of them) in the form of a [_jupyter notebook_](http://jupyter.org/). Do something similar as you did with the RMarkdown document above:
-
-1. Install Jupyter if you haven't already. Doing this via the anaconda distribution is recommended. 
-2. Make a new jupyter notebook file. Add some markdown chunks; add some code chunks. Run the document.
-3. Upload/push your jupyter notebook file to your github repo. 
