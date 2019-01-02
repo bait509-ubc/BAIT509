@@ -2,6 +2,8 @@
 
 This is the home page for BAIT 509 at The University of British Columbia, displaying the 2019 iteration of the course. The syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed in on this website will take precedence. 
 
+Github repository underpinning this website: [vincenzocoia/BAIT509](https://github.com/vincenzocoia/BAIT509)
+
 ## Learning Objectives
 
 By the end of the course, students should be expected to be able to:
