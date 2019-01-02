@@ -463,13 +463,13 @@ div.tocify {
 </ul></li>
 </ol>
 <pre class="r"><code>(mse &lt;- mean((dat$yhat - dat$y)^2))</code></pre>
-<pre><code>## [1] 6.153074</code></pre>
+<pre><code>## [1] 5.871729</code></pre>
 <pre class="r"><code>(mse1 &lt;- mean((dat$yhat1 - dat$y)^2))</code></pre>
-<pre><code>## [1] 5.294446</code></pre>
+<pre><code>## [1] 5.104845</code></pre>
 <pre class="r"><code>(mse2 &lt;- mean((dat$yhat2 - dat$y)^2))</code></pre>
-<pre><code>## [1] 1.884127</code></pre>
+<pre><code>## [1] 1.958196</code></pre>
 <pre class="r"><code>(mse12 &lt;- mean((dat$yhat12 - dat$y)^2))</code></pre>
-<pre><code>## [1] 0.9570312</code></pre>
+<pre><code>## [1] 1.053775</code></pre>
 <pre class="r"><code>knitr::kable(tribble(
     ~ Case, ~ MSE,
     &quot;No predictors&quot;, mse,
@@ -487,19 +487,19 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">No predictors</td>
-<td align="right">6.1530744</td>
+<td align="right">5.871729</td>
 </tr>
 <tr class="even">
 <td align="left">Only X1</td>
-<td align="right">5.2944459</td>
+<td align="right">5.104845</td>
 </tr>
 <tr class="odd">
 <td align="left">Only X2</td>
-<td align="right">1.8841268</td>
+<td align="right">1.958196</td>
 </tr>
 <tr class="even">
 <td align="left">Both X1 and X2</td>
-<td align="right">0.9570312</td>
+<td align="right">1.053775</td>
 </tr>
 </tbody>
 </table>
@@ -581,7 +581,7 @@ div.tocify {
 <li>Now, using the true <span class="math inline">\(Y\)</span> values, calculate the error rate. What type of accuracy do you get?</li>
 </ol>
 <pre class="r"><code>1-mean(dat2$yhat == dat2$y)</code></pre>
-<pre><code>## [1] 0.449</code></pre>
+<pre><code>## [1] 0.473</code></pre>
 </div>
 <div id="bonus-random-prediction" class="section level2">
 <h2><span class="header-section-number">7.3</span> (BONUS) Random prediction</h2>
@@ -599,54 +599,6 @@ div.tocify {
 <h2><span class="header-section-number">7.5</span> (BONUS) Oracle MSE</h2>
 <p>What statistical quantity does the mean squared error (MSE) reduce to when we know the true distribution of the data? Hint: if each conditional distribution has a certain variance, what then is the MSE?</p>
 <p>What is the error rate in the classification setting?</p>
-</div>
-</div>
-<div id="lab-tooling-part-2" class="section level1">
-<h1><span class="header-section-number">8</span> Lab: Tooling, Part 2</h1>
-<p>Be sure to let us know what your github username is by <a href="https://goo.gl/forms/86bIrgJSUvJBVdef2">filling out the survey</a>, if you haven’t already!</p>
-<div id="git" class="section level2">
-<h2><span class="header-section-number">8.1</span> Git</h2>
-<p>Get <code>git</code> working on your local computer. You don’t <em>really</em> have to do this – you can get by just by using GitHub and drag-and-drop – but you might find this method clumsy. So maybe skip ahead for now, unless you’re determined. Plus, it’s a good skill to be able to use <code>git</code>.</p>
-<ul>
-<li>If you haven’t already, <a href="http://happygitwithr.com/install-git.html">install <code>git</code></a> on your computer. Then <a href="http://happygitwithr.com/hello-git.html">introduce yourself to <code>git</code></a>.</li>
-<li>If you want, <a href="http://happygitwithr.com/git-client.html">install a <code>git</code> client</a> (I like to use <a href="https://www.sourcetreeapp.com/">sourcetree</a>). If you don’t use a git client, the alternative is to use the command line.</li>
-<li>Try cloning your repo to your computer (I’ll let you google that).</li>
-<li>Make a change to a file in that repo, locally. Commit the change. Then push the change.</li>
-</ul>
-<p><strong>Note</strong> (merge conflicts): if you have a local cloned copy of your github repo, you can run into problems if you make changes to both the github version of the repo, and the local version. Though, you probably won’t experience this unless you change the same lines in the same file. If you do this, you’ll encounter a “merge conflict” when you try to push your changes. You’ll have to fix this by hand, choosing which text to keep, and what to remove.</p>
-</div>
-<div id="rmarkdown" class="section level2">
-<h2><span class="header-section-number">8.2</span> RMarkdown</h2>
-<p>Get cozy with writing in RMarkdown! You should be able to:</p>
-<ul>
-<li>Make code chunks and write R code in them.</li>
-<li><code>Knit</code> an RMarkdown document to either <code>.pdf</code>, <code>.html</code>, or <code>.md</code>.</li>
-<li>Ideally, write the “English part” of the document in markdown.
-<ul>
-<li><a href="https://www.markdowntutorial.com/">This tutorial</a> will get you up to speed in 10 minutes.</li>
-<li>Original documentation for markdown can be found on the <a href="https://daringfireball.net/projects/markdown/">Daring Fireball site</a>.</li>
-</ul></li>
-</ul>
-<p>I recommend reading the <a href="http://happygitwithr.com/rmd-test-drive.html">Happy git with R book, Section IV</a> to get comfortable with these concepts. For now, let’s see if you can upload/push an RMarkdown (<code>.Rmd</code>) file to your repo. In addition:</p>
-<ol style="list-style-type: decimal">
-<li>Submit a <code>Knit</code>ted file as a…
-<ul>
-<li>Level 1 challenge: <code>.html</code> file;</li>
-<li>Level 2 challenge: <code>.pdf</code> file;</li>
-<li>Level 3 challenge: <code>.md</code> file with github-flavoured markdown.</li>
-</ul></li>
-<li>As you write your RMarkdown file, include your own R code in a chunk that does something – anything. <code>2+2</code> is fine. A plot is better.</li>
-<li>Use at least 6 markdown features in your text (such as bold, italics, adding a hyperlink, header, etc.).</li>
-</ol>
-</div>
-<div id="jupyter-notebooks" class="section level2">
-<h2><span class="header-section-number">8.3</span> Jupyter Notebooks</h2>
-<p>We expect you to submit your assignments (at this point, at least some of them) in the form of a <a href="http://jupyter.org/"><em>jupyter notebook</em></a>. Do something similar as you did with the RMarkdown document above:</p>
-<ol style="list-style-type: decimal">
-<li>Install Jupyter if you haven’t already. Doing this via the anaconda distribution is recommended.</li>
-<li>Make a new jupyter notebook file. Add some markdown chunks; add some code chunks. Run the document.</li>
-<li>Upload/push your jupyter notebook file to your github repo.</li>
-</ol>
 </div>
 </div>
 
