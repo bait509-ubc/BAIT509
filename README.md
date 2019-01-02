@@ -49,6 +49,7 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 - Vincenzo: Wednesdays (Jan 16 - Feb 6) in ESB 3174
 
+TA office hours are TBD
 
 ## Assessments
 
