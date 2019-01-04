@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 02'
 subtitle: "Reducible Error"
-date: "Wednesday, February 28, 2018"
+date: "January 4, 2019"
 output: 
     html_document:
         keep_md: true
@@ -24,23 +24,62 @@ rotate_y <- theme(axis.title.y=element_text(angle=0, vjust=0.5))
 
 # Outline
 
-- Finish irreducible error from last time
-- Reducible error and the fundamental tradeoff.
+- Classification example
+- Generalization error
+- Optimize the _reducible error_ through the fundamental tradeoff.
 
-# Review from last time
+# Classification Exercise: Do Together
 
-From the "irreducible error" section in cm01:
+Let's use the `Default` data in the `ISLR` R package for classification: predict whether or not a new individual will default on their credit card debt.
 
-- Even if we know the true probability distribution of the data, we can't predict $Y$ without error.
-    - We can "beat" this error by adding informative predictors.
-- We measure error by mean squared error (MSE) for regression, and the error rate for classification.
+Our task: make the best prediction model we can.
 
-Activities:
+1. Code the null model.
+	- What would you predict for a new person?
+	- What's the error using the original data (aka training data)?
+2. Plot all the data, and come up with a classifier by eye.
+	- What would you predict for a non-student with income $40,000 and balance $1,011?
+	- Classify the original (training) data. What's the overall error?
+3. How might we optimize the classifier? Let's code it.
 
-- I'll give live-coding solutions to the Oracle Regression exercise.
-    - Includes a demo of RMarkdown
-    - I'll demonstrate the save-commit-push workflow in git.
-- I'll let you work on the Oracle Classification exercise.
+Discussion: does it make sense to classify a new iris plant species based on the `iris` dataset?
+
+# Training Error vs. Generalization Error
+
+Discussion: 
+
+1. What's wrong with calculating error on the training data? 
+2. What's an alternative way to compute error?
+
+Activity: Get the generalization error for the above classifier.
+
+# Model complexity
+
+A big part of machine learning is choosing how complex to make a model. Examples:
+
+- More partitions in the above credit card default classifier
+- Adding higher order polynomials in linear regression
+
+And lots more that we'll see when we explore more machine learning models.
+
+__The difficulty__: adding more complexity will decrease training error. What's a way of dealing with this?
+
+## Activity
+
+Let's return to the `iris` example from lecture 1, predicting Sepal Width, this time using Petal Width only, using polynomial linear regression.
+
+__Task__: Choose an optimal polynomial order.
+
+Here's code for a graph to visualize the model fit:
+
+```
+p <- 4
+ggplot(iris, aes(Petal.Width, Sepal.Width)) +
+	geom_point(alpha = 0.2) +
+	geom_smooth(method = "lm", formula = y ~ poly(x, p)) +
+	theme_bw()
+```
+
 
 # Reducible Error
 
@@ -50,14 +89,21 @@ Last time, we saw what irreducible error is, and how to "beat" it.
 
 The other type of error is __reducible error__, which arises from not knowing the true distribution of the data (or some aspect of it, such as the mean or mode). We therefore have to _estimate_ this. Error in this estimation is known as the reducible error. 
 
-__Example__: Consider the case of one predictor, and the true distribution of the data is $Y|X=x \sim N(5/x, 1)$ (and take $X \sim 1+Exp(1)$). I'll generate 100 realizations from this distribution, to form our data. In reality, we are only ever faced with this data, and know almost nothing about the distribution. As such, I decide to try linear regression to form my forecaster. Here's what I get:
+## Example
+
+- one numeric predictor
+- one numeric response
+- true (unknown) distribution of the data is $Y|X=x \sim N(5/x, 1)$ (and take $X \sim 1+Exp(1)$). 
+- you only see the following 100 observations stored in `dat`, plotted below, and choose to use linear regression as a model:
 
 ```{r}
 set.seed(400)
 n <- 100
-x <- rexp(n)+1
-y <- rnorm(n, mean=5/x)
-qplot(x,y) +
+dat <- tibble(
+	x = rexp(n) + 1,
+	y = rnorm(n, mean = 5/x)
+)
+ggplot(dat, aes(x, y)) +
     stat_smooth(method="lm", se=FALSE, size=0.5,
                 mapping=aes(colour="Estimate")) +
     stat_function(fun=function(x) 5/x,

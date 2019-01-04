@@ -180,6 +180,8 @@ Let's write down some supervised learning techniques that you've heard of. Are t
 
 ## Together: Linear Regression Example
 
+**Add this exploration to your participation folder on canvas.**
+
 Let's predict _Sepal Width_ of iris species using the `iris` data set.
 
 1. Univariate example.
@@ -243,6 +245,8 @@ ggplot(tibble(x=c(-5,7)), aes(x)) +
 This is much more uncertain than in the case where we have predictors!
 
 # In-class Exercises: Irreducible Error
+
+**NOT REQUIRED FOR PARTICIPATION**
 
 ## Oracle regression
 
