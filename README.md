@@ -56,9 +56,11 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 ## Assessments
 
+Links to assessments will be made available when they are ready. The deadlines listed here are the official ones, and take precendence over the ones listed in the [sauder syllabus](https://github.com/vincenzocoia/BAIT509/blob/master/sauder_syllabus.pdf).
+
 | Assessment      | Due    | Weight |
 |:---------------:|:------:|--------|
-| [Assignment 1]  | January 12 at 18:00 | 20% | 
+| [Assignment 1]  | January ~~12~~ 17 at 18:00 | 20% | 
 | [Assignment 2]  | January 26 at 18:00 | 20% |
 | [Assignment 3]  | February 2 at 18:00 | 20% |
 | [Final Project] | February 8 at 23:59 | 30% |
