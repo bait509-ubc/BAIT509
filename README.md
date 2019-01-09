@@ -60,7 +60,7 @@ Links to assessments will be made available when they are ready. The deadlines l
 
 | Assessment      | Due    | Weight |
 |:---------------:|:------:|--------|
-| [Assignment 1]  | January ~~12~~ 17 at 18:00 | 20% | 
+| [Assignment 1](/assessments/assignment1/assignment1.ipynb)  | January ~~12~~ 17 at 18:00 | 20% | 
 | [Assignment 2]  | January 26 at 18:00 | 20% |
 | [Assignment 3]  | February 2 at 18:00 | 20% |
 | [Final Project] | February 8 at 23:59 | 30% |
