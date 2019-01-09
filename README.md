@@ -32,9 +32,9 @@ Details about class meetings will appear here as they become available. Readings
 
 |  #   | Topic | Recommended Readings |
 |------|-------|-------|
-| [cm01](/class_meetings/cm01-intro.md); [worksheet.R](/class_meetings/cm01-worksheet.R) | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
-| [cm02](/class_meetings/cm02-error.md); [worksheet](/class_meetings/cm02-worksheet.html) ([.Rmd](/class_meetings/cm02-worksheet.Rmd)) | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
-| [cm03](/class_meetings/cm03-local.md); [model fitting in python](/class_meetings/cm03-model_fitting-python.html) ([.ipynb](/class_meetings/cm03-model_fitting-python.ipynb)) | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
+| [cm01](/class_meetings/cm01-intro.md); worksheet ([.R](/class_meetings/cm01-worksheet.R)) | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
+| [cm02](/class_meetings/cm02-error.md); worksheet ([.html](/class_meetings/cm02-worksheet.html) / [.Rmd](/class_meetings/cm02-worksheet.Rmd)) | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
+| [cm03](/class_meetings/cm03-local.md); model fitting in python ([.html](/class_meetings/cm03-model_fitting-python.html) / [.ipynb](/class_meetings/cm03-model_fitting-python.ipynb)) | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
 | [cm04](/class_meetings/cm04-selection.md) | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1 |
 | [cm05](/class_meetings/cm05-trees.md) | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
 | [cm06](/class_meetings/cm06-questions.md) | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
