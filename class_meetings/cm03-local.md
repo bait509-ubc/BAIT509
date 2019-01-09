@@ -1,5 +1,16 @@
-# BAIT 509 Class Meeting 03
-Monday, March 5, 2018  
+---
+title: 'BAIT 509 Class Meeting 03'
+subtitle: "Local Classification and Regression"
+date: "January 9, 2019"
+output: 
+    html_document:
+        keep_md: true
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        theme: cerulean
+        toc_float: true
+---
 
 
 
@@ -81,8 +92,6 @@ Let's check your understanding of loess and kNN. Consider estimating the mean of
 
 1. Eyeball the above scatterplot of the data. What would you say is a reasonable estimate of the mean of $Y$ at $X=0$? Why?
 
-> The data seem to be centered around approximately 2.7. 
-
 2. Estimate using loess and kNN (you choose the hyperparameters).
     1. Hints for kNN:
         - First, add a new column in the data that stores the _distance_ between $X=0$ and each observation. If that column is named `d`, you can do this with the following partial code: `dat$d <- YOUR_CALCULATION_HERE`. Recall that `dat$x` is a vector of the `x` column.
@@ -90,55 +99,26 @@ Let's check your understanding of loess and kNN. Consider estimating the mean of
     2. Hints for loess:
         - Subset the data using the `filter` function. The condition to filter on: you want to keep rows whose distances (`d`) are ...
         
-
-```r
+```
 k <- 10
 r <- 0.5
-dat %>% 
-    mutate(d = abs(x-0)) %>% 
-    arrange(d) %>% 
-    summarize(kNN=mean(y[1:k]),
-              loess=mean(y[d<r])) %>% 
-    kable
+x0 <- 0
+dat$dist <- FILL_THIS_IN
+dat <- arrange(dat, dist)  # sort by distance
+kNN_prediction <- FILL_THIS_IN
+loess_prediction <- FILL_THIS_IN
 ```
-
-      kNN      loess
----------  ---------
- 2.744816   2.764507
 
 3. What happens when you try to pick an $r$ that is way too small? Say, $r=0.01$? Why?
 
-> There will be no prediction, because there will be no data in the window. Here's the data that result after subsetting:
-
-
-```r
-r <- 0.01
-dat %>% 
-    mutate(d = abs(x-0)) %>% 
-    filter(d<r)
-```
-
-```
-## # A tibble: 0 x 3
-## # ... with 3 variables: x <dbl>, y <dbl>, d <dbl>
-```
-
-
 4. There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
-
-> Large values of k or r will result in a prediction with low variance, but high bias; and vice-versa for smaller values of k and r.
 
 ## Exercise 2: Regression Curve
 
-Instead of estimating the mean just at $X=0$, we'd like to do the same procedure, but for "all" $X$ values, keeping the hyperparameter fixed. Because we can't actually do this for all $X$ values, let's choose a grid of 1000 $X$ values between -5 and 4 using the code `seq(-5, 4, length.out=1000)`.
-
-__Questions for discussion__:
-
-- Go ahead and do the estimation using both methods, and plot the mean estimates for each $X$ on top of the scatterplot in a different colour, connecting the dots to form a __regression curve__. I'll give you some of the code -- just fill in your code for the kNN and loess exercise from before:
+Form the __regression curve__ / __model function__ by doing the estimation over a grid of x values, and connecting the dots:
 
 
 ```r
-library(tidyverse)
 xgrid <- seq(-5, 4, length.out=1000)
 k <- 10
 r <- 0.5
@@ -166,7 +146,9 @@ ggplot() +
     theme_bw()
 ```
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="cm03-local_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+__Exercises__:
 
 - Play with different values of $k$ and $r$, and regenerate the plot each time. What effect does increasing these values have on the regression curve? What about decreasing? What would you say is a "good" choice of $k$ and $r$, and why?
 - What happens when you choose $k=n=200$? What happens if you choose $r=10$ or bigger?
@@ -210,7 +192,7 @@ expand.grid(iter=1:N, r=c(0.5, 1, 2, 4)) %>% group_by(iter, r) %>% do({
     ylab("y") + rotate_y
 ```
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="cm03-local_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 You can see the bias/variance tradeoff here:
 
@@ -309,7 +291,7 @@ expand.grid(iter=1:N, r=c(0.1, 0.5, 0.7), d=0:2) %>%
     ylab("y") + rotate_y
 ```
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="cm03-local_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 Notice:
 
@@ -360,7 +342,7 @@ tibble(iter=1:N) %>% group_by(iter) %>% do({
     theme_bw()
 ```
 
-<img src="cm03-local_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="cm03-local_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 Notice that the local method has higher variance than the linear regression method. 
 

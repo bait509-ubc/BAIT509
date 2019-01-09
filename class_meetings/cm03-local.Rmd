@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 03'
 subtitle: "Local Classification and Regression"
-date: "Monday, March 5, 2018"
+date: "January 9, 2019"
 output: 
     html_document:
         keep_md: true
@@ -86,8 +86,6 @@ Let's check your understanding of loess and kNN. Consider estimating the mean of
 
 1. Eyeball the above scatterplot of the data. What would you say is a reasonable estimate of the mean of $Y$ at $X=0$? Why?
 
-> The data seem to be centered around approximately 2.7. 
-
 2. Estimate using loess and kNN (you choose the hyperparameters).
     1. Hints for kNN:
         - First, add a new column in the data that stores the _distance_ between $X=0$ and each observation. If that column is named `d`, you can do this with the following partial code: `dat$d <- YOUR_CALCULATION_HERE`. Recall that `dat$x` is a vector of the `x` column.
@@ -95,43 +93,25 @@ Let's check your understanding of loess and kNN. Consider estimating the mean of
     2. Hints for loess:
         - Subset the data using the `filter` function. The condition to filter on: you want to keep rows whose distances (`d`) are ...
         
-```{r}
+```
 k <- 10
 r <- 0.5
-dat %>% 
-    mutate(d = abs(x-0)) %>% 
-    arrange(d) %>% 
-    summarize(kNN=mean(y[1:k]),
-              loess=mean(y[d<r])) %>% 
-    kable
+x0 <- 0
+dat$dist <- FILL_THIS_IN
+dat <- arrange(dat, dist)  # sort by distance
+kNN_prediction <- FILL_THIS_IN
+loess_prediction <- FILL_THIS_IN
 ```
 
 3. What happens when you try to pick an $r$ that is way too small? Say, $r=0.01$? Why?
 
-> There will be no prediction, because there will be no data in the window. Here's the data that result after subsetting:
-
-```{r}
-r <- 0.01
-dat %>% 
-    mutate(d = abs(x-0)) %>% 
-    filter(d<r)
-```
-
-
 4. There's a tradeoff between choosing large and small values of either hyperparameter. What's good and what's bad about choosing a large value? What about small values?
-
-> Large values of k or r will result in a prediction with low variance, but high bias; and vice-versa for smaller values of k and r.
 
 ## Exercise 2: Regression Curve
 
-Instead of estimating the mean just at $X=0$, we'd like to do the same procedure, but for "all" $X$ values, keeping the hyperparameter fixed. Because we can't actually do this for all $X$ values, let's choose a grid of 1000 $X$ values between -5 and 4 using the code `seq(-5, 4, length.out=1000)`.
-
-__Questions for discussion__:
-
-- Go ahead and do the estimation using both methods, and plot the mean estimates for each $X$ on top of the scatterplot in a different colour, connecting the dots to form a __regression curve__. I'll give you some of the code -- just fill in your code for the kNN and loess exercise from before:
+Form the __regression curve__ / __model function__ by doing the estimation over a grid of x values, and connecting the dots:
 
 ```{r}
-library(tidyverse)
 xgrid <- seq(-5, 4, length.out=1000)
 k <- 10
 r <- 0.5
@@ -158,6 +138,8 @@ ggplot() +
               size=1) +
     theme_bw()
 ```
+
+__Exercises__:
 
 - Play with different values of $k$ and $r$, and regenerate the plot each time. What effect does increasing these values have on the regression curve? What about decreasing? What would you say is a "good" choice of $k$ and $r$, and why?
 - What happens when you choose $k=n=200$? What happens if you choose $r=10$ or bigger?
