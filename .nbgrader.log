@@ -1,0 +1,19 @@
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/vincenzocoia/git_docs/BAIT509
+[NotebookApp | INFO] 0 active kernels
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8888/?token=593237963c00b46bc534ddc266b6e227182bae84b1958060
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=593237963c00b46bc534ddc266b6e227182bae84b1958060
+[NotebookApp | INFO] Accepting one-time-token-authenticated connection from ::1
+[NotebookApp | WARNING] Notebook assessments/assignment1/assignment1.ipynb is not trusted
+[NotebookApp | INFO] Kernel started: 6a1d1565-d19c-4877-80e7-d4c0f8ff58a1
+[NotebookApp | INFO] Adapting to protocol v5.0 for kernel 6a1d1565-d19c-4877-80e7-d4c0f8ff58a1
+[NotebookApp | INFO] Saving file at /assessments/assignment1/assignment1.ipynb
+[NotebookApp | WARNING] Notebook assessments/assignment1/assignment1.ipynb is not trusted
+[NotebookApp | WARNING] Notebook assessments/assignment1/assignment1.ipynb is not trusted
