@@ -3,12 +3,16 @@ title: "Model fitting in R"
 output: html_document
 ---
 
-```{r}
-library(tidyverse)
-head(iris)
-```
+Scratch notes from our in-class activities in Lecture 3. This covers the model-fitting paradigm in R.
 
 ```{r}
+library(tidyverse)
+```
+
+Use the `iris` data to demonstrate. Split into training and test data:
+
+```{r}
+head(iris)
 set.seed(100)
 iris <- mutate(
 	iris, 
