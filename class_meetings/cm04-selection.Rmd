@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 04'
 subtitle: "Model Selection"
-date: "Wednesday, March 7, 2018"
+date: "January 14, 2019"
 output: 
     html_document:
         keep_md: true
@@ -14,8 +14,17 @@ output:
 
 # Outline
 
-- Out-of-sample error
-- Concept of training, validation, and test data.
+We're ahead of schedule. Today, we'll focus on:
+
+- New concepts:
+	- Cross validation
+	- Bootstrap
+	- Where does AIC and R-squared-adjusted fit in? Feature selection (not a big part of this course).
+- Discussion of homework / previous concepts
+- Start looking into tomorrow's concepts.
+- If time remains, "lab time" for you to work with your peers to complete your homework.
+
+
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
@@ -26,6 +35,11 @@ my_accent <- "#d95f02"
 rotate_y <- theme(axis.title.y=element_text(angle=0, vjust=0.5))
 ```
 
+# Exercise: CV 
+
+k-fold cross validation with `caret::train()` in R. See [this resource](https://machinelearningmastery.com/how-to-estimate-model-accuracy-in-r-using-the-caret-package) 
+
+In python, can use [`sklearn.model_selection.cross_val_score`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score).
 
 # Out-of-sample Error
 
@@ -142,7 +156,7 @@ If you wanted an unbiased estimate of generalization error, you can start your p
 
 There's not really a standard choice for deciding _how much_ data to put aside for each set, but something like 60% training, 20% validation, and 20% test is generally acceptable.
 
-## Cross-validation
+## Solution 2: Cross-validation
 
 The problem with the training-validation-test set approach is that you're wasting a lot of data -- lots of data are not being used in training! Another problem is that it's not easy to choose how much data to put aside for each set.
 
@@ -160,12 +174,3 @@ The general procedure is as follows:
 You can then repeat this procedure for different values of the tuning parameters, choosing values that give the lowest error. Once you choose this tuning parameter, go ahead and use _all_ the data as training data, with the selected tuning parameters. 
 
 CV is generally preferred to the hold-out set method, because we can fit a model that has overall lower error, but it's computationally expensive. 
-
-# Lab
-
-The last chunk of time for today's class meeting will be used for "lab time". The instruction part of today is over.
-
-- I recommend getting acquainted with RStudio and Jupyter notebooks (or some other way to interact with python) if you haven't already, and ideally, get `git` running locally. Instructions live in the "Lab" section of Class Meeting 01.
-    - Note! Using `git` is optional in this course! There is a learning curve, but learning it pays dividends. Just drag-and-drop your in-class work files to your github repo.
-    - Using RMarkdown is also optional. Use plain R scripts if you prefer. 
-- Work on your first assignment. A TA and I will be around to help.
