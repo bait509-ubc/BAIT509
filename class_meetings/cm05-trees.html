@@ -10,6 +10,7 @@
 
 
 
+<meta name="date" content="2019-01-16" />
 
 <title>BAIT 509 Class Meeting 05</title>
 
@@ -92,6 +93,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -217,7 +221,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">BAIT 509 Class Meeting 05</h1>
 <h3 class="subtitle"><em>Classification and Regression Trees (CART)</em></h3>
-<h4 class="date"><em>Monday, March 12, 2018</em></h4>
+<h4 class="date"><em>January 16, 2019</em></h4>
 
 </div>
 
@@ -226,8 +230,10 @@ div.tocify {
 <h1><span class="header-section-number">1</span> Outline</h1>
 <ul>
 <li>Classification and Regression Trees</li>
-<li>Overview of Assignment 2</li>
-<li>Lab portion: work on Assignments 1 and 2</li>
+</ul>
+<p>Housekeeping:</p>
+<ul>
+<li>Able to submit multiple files to participation folder on canvas?</li>
 </ul>
 </div>
 <div id="motivation" class="section level1">
@@ -247,23 +253,10 @@ div.tocify {
 <li>When the response is numeric, we aim to estimate the mean, and take that as our prediction.</li>
 </ul>
 </div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">3</span> Introduction</h1>
-<div id="what-are-classification-and-regression-trees" class="section level2">
-<h2><span class="header-section-number">3.1</span> What are classification and regression trees?</h2>
-<p>For the moment, let’s see what a tree <em>is</em>, before seeing how to make them for supervised learning.</p>
-<p>(Whiteboard example)</p>
-</div>
-<div id="how-do-they-partition-the-predictor-space" class="section level2">
-<h2><span class="header-section-number">3.2</span> How do they partition the predictor space?</h2>
-<p>(Whiteboard example, 2 predictors).</p>
-<p>Let’s see how to go about making these trees.</p>
-</div>
-</div>
 <div id="stumps-a-preliminary-concept" class="section level1">
-<h1><span class="header-section-number">4</span> Stumps: A preliminary concept</h1>
+<h1><span class="header-section-number">3</span> Stumps: A preliminary concept</h1>
 <div id="what-are-they" class="section level2">
-<h2><span class="header-section-number">4.1</span> What are they?</h2>
+<h2><span class="header-section-number">3.1</span> What are they?</h2>
 <p>Let’s say I get an upset stomach once in a while, and I suspect certain foods might be responsible. My response and predictors are:</p>
 <ul>
 <li><span class="math inline">\(Y\)</span>: sick or not sick (categorical)</li>
@@ -331,7 +324,7 @@ div.tocify {
 <p>The same idea applies in the regression case, except we take the average of the subsetted data, and choose the best one according to the mean squared error.</p>
 </div>
 <div id="choosing-the-best-stumps" class="section level2">
-<h2><span class="header-section-number">4.2</span> Choosing the best stumps</h2>
+<h2><span class="header-section-number">3.2</span> Choosing the best stumps</h2>
 <p><strong>Question</strong>: What is the error of the above decision stump? If we decide to make a prediction without a decision stump (or any predictors at all), what would the best prediction be, and what’s the error?</p>
 <p>We have many stumps we can choose from – which one is best?</p>
 <p><strong>Classification</strong>:</p>
@@ -350,6 +343,10 @@ div.tocify {
 <li>The one that gives the least mean squared error.</li>
 </ul>
 </div>
+</div>
+<div id="partitioning-of-predictor-space" class="section level1">
+<h1><span class="header-section-number">4</span> Partitioning of predictor space</h1>
+<p>How does a stump partition the predictor space?</p>
 </div>
 <div id="trees" class="section level1">
 <h1><span class="header-section-number">5</span> Trees</h1>
@@ -381,10 +378,10 @@ div.tocify {
 <p>To avoid this, we take the approach of growing an overly large (overfit) tree, and then pruning it. We won’t get into details of how the tree is pruned back, but the technique is called <em>cost complexity pruning</em>. The general idea is to control a tuning parameter <span class="math inline">\(\alpha\)</span> to control how much pruning is done – it can be chosen by cross-validation, or the validation set approach.</p>
 </div>
 </div>
-<div id="lab" class="section level1">
-<h1><span class="header-section-number">6</span> Lab</h1>
+<div id="exercise" class="section level1">
+<h1><span class="header-section-number">6</span> Exercise</h1>
 <ul>
-<li>Use the time after the lecture period to work on your Assignments 1 and 2.</li>
+<li>Coding a decision tree.</li>
 </ul>
 </div>
 
