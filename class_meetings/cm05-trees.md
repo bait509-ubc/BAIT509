@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 05'
 subtitle: "Classification and Regression Trees (CART)"
-date: "Monday, March 12, 2018"
+date: "January 16, 2019"
 output: 
     html_document:
         keep_md: true
@@ -15,8 +15,10 @@ output:
 # Outline
 
 - Classification and Regression Trees
-- Overview of Assignment 2
-- Lab portion: work on Assignments 1 and 2
+
+Housekeeping:
+
+- Able to submit multiple files to participation folder on canvas?
 
 # Motivation
 
@@ -32,20 +34,6 @@ Our setting this time is the usual: we have a response $Y$ (either categorical o
 
 - When the response is categorical, we aim to estimate the mode and take that as our prediction.
 - When the response is numeric, we aim to estimate the mean, and take that as our prediction. 
-
-# Introduction
-
-## What are classification and regression trees?
-
-For the moment, let's see what a tree _is_, before seeing how to make them for supervised learning.
-
-(Whiteboard example)
-
-## How do they partition the predictor space?
-
-(Whiteboard example, 2 predictors).
-
-Let's see how to go about making these trees.
 
 # Stumps: A preliminary concept
 
@@ -102,6 +90,10 @@ __Regression__:
 
 - The one that gives the least mean squared error. 
 
+# Partitioning of predictor space
+
+How does a stump partition the predictor space?
+
 # Trees
 
 Notice that a tree is just a bunch of stumps!
@@ -135,6 +127,6 @@ Sometimes, a stopping criterion may cause the tree to stop growing prematurely. 
 
 To avoid this, we take the approach of growing an overly large (overfit) tree, and then pruning it. We won't get into details of how the tree is pruned back, but the technique is called _cost complexity pruning_. The general idea is to control a tuning parameter $\alpha$ to control how much pruning is done -- it can be chosen by cross-validation, or the validation set approach.
 
-# Lab
+# Exercise
 
-- Use the time after the lecture period to work on your Assignments 1 and 2. 
+- Coding a decision tree.
