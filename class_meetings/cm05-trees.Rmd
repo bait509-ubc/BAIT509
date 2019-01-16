@@ -129,4 +129,5 @@ To avoid this, we take the approach of growing an overly large (overfit) tree, a
 
 # Exercise
 
-- Coding a decision tree.
+- Coding a decision tree with `tree::tree()` in R, using the [titanic data](https://raw.githubusercontent.com/vincenzocoia/BAIT509/master/assessments/assignment1/data/titanic.csv).
+- `predict()` and `plot()`, and "S3 generics" in R.
