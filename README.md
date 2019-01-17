@@ -63,7 +63,7 @@ Links to assessments will be made available when they are ready. The deadlines l
 | [Assignment 1](/assessments/assignment1/assignment1.html) ([.ipynb](/assessments/assignment1/assignment1.ipynb))  | January ~~12~~ ~~17~~ 19 at 18:00 | 20% | 
 | [Assignment 2]  | January 26 at 18:00 | 20% |
 | [Assignment 3]  | February 2 at 18:00 | 20% |
-| [Final Project] | February 8 at 23:59 | 30% |
+| [Final Project](/assessments/project/project.md) | February 8 at 23:59 | 30% |
 | [Participation](/assessments/participation/participation.md) | January 31 at 18:00 | 10% |
 
 Please submit everything to [UBC Connect](https://connect.ubc.ca/).
