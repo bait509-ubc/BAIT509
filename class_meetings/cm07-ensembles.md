@@ -1,13 +1,25 @@
-# BAIT 509 Class Meeting 07
-Monday, March 19, 2018  
+---
+title: 'BAIT 509 Class Meeting 07'
+subtitle: "Ensemble methods"
+date: "January 21, 2019"
+output: 
+    html_document:
+        keep_md: true
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        theme: cerulean
+        toc_float: true
+---
 
 # Outline
 
-- Bagging and Random Forests
-- In-class exercises
+Assignment 2 is up.
+
+- Example: Cross validation
+- Bagging and Random Forests: about
+- Example: Random Forests
 - Boosting
-- Implementations of ensemble methods
-- Lab (work on Assignment 2)
 
 # Motivation: why ensembles?
 
@@ -51,34 +63,18 @@ Random forests attempt to fix this problem by modifying how a single tree in the
 
 The result is an ensemble of trees that look "more random" -- they are said to be _decorrelated_. This prevents any one predictor from "dominating" the ensemble. And because the trees are less related, combining their predictions results in an overall better result. 
 
-# In-class exercises
-
-Answer the following questions, and upload your results to your github repo. Remember, your answers do not have to be correct to earn participation points!
+# Discussion Questions
 
 - Bagging is a special case of random forests under which case?
-
-> When $m=p$ -- that is, when the size of the predictor subset equals the total number of predictors. This means that, when sampling the predictors, we'd end up with all the predictors. 
-
 - What are the hyperparameters we can control for random forests?
-
-> Tree size, number of trees in the ensemble, number of predictors to subset at each branch ($m$).
-
 - Suppose you have the following paired data of `(x,y)`: (1,2), (1,5), (2,0). Which of the following are valid bootstrapped data sets? Why/why not?
     1. (1,0), (1,2), (1,5) 
     2. (1,2), (2,0)
     3. (1,2), (1,2), (1,5)
-
-> 1 is not valid, because (1,0) is not part of the data set (even though x=1 and y=0 are both in the data, they don't appear _paired_). 2 is not valid, because it only contains two observations (and should contain three, the size of the original data set). 3 is valid.
-
 - For each of the above valid bootstapped data sets, which observations are out-of-bag (OOB)?
-
-> For 3 above, the OOB observation is (2,0), because it's in the original sample, but not in the bootstrapped sample.
-
 - You make a random forest consisting of four trees. You obtain a new observation of predictors, and would like to predict the response. What would your prediction be in the following cases?
     1. Regression: your trees make the following four predictions: 1,1,3,3.
     2. Classification: your trees make the following four predictions: "A", "A", "B", "C".
-    
-> For 1 (regression), we'd take the mean as the prediction, which is 2. For 2 (classification), we'd take the mode (or the "most popular vote"), which is "A". 
 
 # Boosting
 
@@ -174,7 +170,7 @@ mean((yhat1 - mtcars$mpg)^2)
 ```
 
 ```
-## [1] 5.374839
+## [1] 5.655269
 ```
 
 ```r
@@ -182,7 +178,7 @@ mean((yhat2 - mtcars$mpg)^2)
 ```
 
 ```
-## [1] 1.360225
+## [1] 1.49721
 ```
 
 Here are two key parameters you can change in the `randomForest` function:
