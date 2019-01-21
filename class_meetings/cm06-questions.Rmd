@@ -1,7 +1,7 @@
 ---
 title: "BAIT 509 Class Meeting 06"
 subtitle: "The ML Workflow; Refining Business Questions"
-date: "Wednesday, March 14, 2018"
+date: "Friday, January 18, 2019"
 output: 
     html_document:
         keep_md: true
@@ -14,7 +14,7 @@ output:
 
 # Objectives
 
-- Classification and regression trees in R
+- Classification and regression trees in R; plotting model functions.
 - Awareness of the machine learning workflow, with emphasis on asking useful statistical questions.
 - Setting up your projects, and getting started with forming your own statistical questions with the help of the teaching team. 
 
