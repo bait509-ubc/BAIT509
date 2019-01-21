@@ -61,7 +61,7 @@ Links to assessments will be made available when they are ready. The deadlines l
 | Assessment      | Due    | Weight |
 |:---------------:|:------:|--------|
 | [Assignment 1](/assessments/assignment1/assignment1.html) ([.ipynb](/assessments/assignment1/assignment1.ipynb))  | January ~~12~~ ~~17~~ 19 at 18:00 | 20% | 
-| [Assignment 2](/assessments/assignment1/assignment2.md)  | January 26 at 18:00 | 20% |
+| [Assignment 2](/assessments/assignment2/assignment2.md)  | January 26 at 18:00 | 20% |
 | [Assignment 3]  | February 2 at 18:00 | 20% |
 | [Final Project](/assessments/project/project.md) | February 8 at 23:59 | 30% |
 | [Participation](/assessments/participation/participation.md) | January 31 at 18:00 | 10% |
