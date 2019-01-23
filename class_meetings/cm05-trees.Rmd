@@ -73,6 +73,11 @@ This will get you a decision/classification stump, like so:
 
 The same idea applies in the regression case, except we take the average of the subsetted data, and choose the best one according to the mean squared error. 
 
+Some things to note:
+
+- A decision on a numeric variable is always made based on a threshold (either less than or greater than). Although it makes sense to talk about a stump based on a more complicated decision, allowing for more complicated decisions would increase the search space, and would make fitting these models impractical. Plus, sometimes a more complicated decision can be broken down into several single-threshold decisions.
+- It follows that decisions are always binary. Again, although it makes sense to talk about a stump that has more than two options, we can usually write these as a tree.
+
 ## Choosing the best stumps
 
 __Question__: What is the error of the above decision stump? If we decide to make a prediction without a decision stump (or any predictors at all), what would the best prediction be, and what's the error?
@@ -97,6 +102,11 @@ How does a stump partition the predictor space?
 # Trees
 
 Notice that a tree is just a bunch of stumps!
+
+This means:
+
+	1. For numeric predictors, decisions can only involve one threshold.
+	2. Decisions are always binary.
 
 ## Optimal tree -- computationally infeasible
 
