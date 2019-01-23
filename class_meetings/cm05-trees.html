@@ -322,6 +322,11 @@ div.tocify {
 </div>
 <p>(Image attribution: Hyeju Jang, DSCI 571)</p>
 <p>The same idea applies in the regression case, except we take the average of the subsetted data, and choose the best one according to the mean squared error.</p>
+<p>Some things to note:</p>
+<ul>
+<li>A decision on a numeric variable is always made based on a threshold (either less than or greater than). Although it makes sense to talk about a stump based on a more complicated decision, allowing for more complicated decisions would increase the search space, and would make fitting these models impractical. Plus, sometimes a more complicated decision can be broken down into several single-threshold decisions.</li>
+<li>It follows that decisions are always binary. Again, although it makes sense to talk about a stump that has more than two options, we can usually write these as a tree.</li>
+</ul>
 </div>
 <div id="choosing-the-best-stumps" class="section level2">
 <h2><span class="header-section-number">3.2</span> Choosing the best stumps</h2>
@@ -351,6 +356,9 @@ div.tocify {
 <div id="trees" class="section level1">
 <h1><span class="header-section-number">5</span> Trees</h1>
 <p>Notice that a tree is just a bunch of stumps!</p>
+<p>This means:</p>
+<pre><code>1. For numeric predictors, decisions can only involve one threshold.
+2. Decisions are always binary.</code></pre>
 <div id="optimal-tree-computationally-infeasible" class="section level2">
 <h2><span class="header-section-number">5.1</span> Optimal tree – computationally infeasible</h2>
 <p>Ideally, we’d examine the error from every possible regression tree, and choose the best one. But there are far too many trees possible! We turn to <em>recursive binary splitting</em> as the next best thing.</p>
@@ -381,7 +389,8 @@ div.tocify {
 <div id="exercise" class="section level1">
 <h1><span class="header-section-number">6</span> Exercise</h1>
 <ul>
-<li>Coding a decision tree.</li>
+<li>Coding a decision tree with <code>tree::tree()</code> in R, using the <a href="https://raw.githubusercontent.com/vincenzocoia/BAIT509/master/assessments/assignment1/data/titanic.csv">titanic data</a>.</li>
+<li><code>predict()</code> and <code>plot()</code>, and “S3 generics” in R.</li>
 </ul>
 </div>
 

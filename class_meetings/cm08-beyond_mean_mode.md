@@ -1,5 +1,31 @@
-# BAIT 509 Class Meeting 08
-Wednesday, March 21, 2018  
+---
+title: 'BAIT 509 Class Meeting 08'
+subtitle: "Supervised Learning Beyond the Mean and Mode"
+date: 'January 23, 2019'
+output: 
+    html_document:
+        keep_md: true
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        theme: cerulean
+        toc_float: true
+references:
+- id: gneiting_raftery
+  title: Strictly proper scoring rules, prediction, and estimation
+  author:
+  - family: Gneiting
+    given: Tilmann
+  - family: Raftery
+    given: Adrian
+  volume: 102
+  issue: 477
+  publisher: Journal of the American Statistical Association
+  page: 359-378
+  type: article-journal
+  issued:
+    year: 2007
+---
 
 
 
@@ -13,6 +39,18 @@ my_accent <- "#d95f02"
 
 # Outline
 
+Housekeeping:
+
+- Office hour room moved to ESB 3174 when possible.
+- Can't accept late submissions for Assignments 2+. Solutions made available right away.
+- Questions for Assignment 2?
+	- Hint for ISLR 8(c): `prune.tree()` from the `tree` package in R will prune a fitted tree. 
+
+Concepts:
+
+- CART:
+	1. For numeric predictors, decisions can only involve one threshold.
+	2. Decisions are always binary.
 - What is "Probabilistic forecasting" and "Quantile regression"; how to interpret the forecasts/predictions; and to have a sense of when it's appropriate to use them.
 - Probabilistic forecasts: how to estimate (plot) predictive distribution densities using subset approaches. 
 - Quantile Regression:
@@ -242,7 +280,7 @@ ggplot(dat, aes(hits, runs)) +
 
 ## Bias-variance tradeoff
 
-Let's examine the bias-variance tradeoff with kNN-based probabilistic forecasts. I'll run a simulation like so:
+Let's examine the bias-variance / overfitting-underfitting tradeoff with kNN-based probabilistic forecasts. I'll run a simulation like so:
 
 - Generate data from a bivariate Normal distribution, so that $X \sim N(0, 100)$, and $Y = X + N(0, 100)$.
 - Training data will contain 500 observations, for which a kNN probabilistic forecast will be built when $X=25$.
@@ -323,7 +361,7 @@ $\tau$ is referred to as the _quantile level_, or sometimes the _quantile index_
 
 For example, the bus company might want to predict the 0.8-quantile of transit time -- 80% of busses will get to their destination within that time.
 
-__Be warned__: you may have a hard time convincing people that quantiles are actually what they care about, because the world is trained to think about the mean. Quantiles are also harder to interpret.
+__Be warned__: you may have a hard time convincing people that quantiles are actually what they care about, because the world is trained to think about the mean. Quantiles aside from the median are also harder to interpret.
 
 ## Linear Quantile Regression
 
@@ -513,7 +551,3 @@ cowplot::plot_grid(
 <img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" />
 
 For quantile regression __estimation__, we minimize the sum of scores instead of the sum of squared residuals, as in the usual (mean) linear regression.
-
-# Lab
-
-Assignment 3 is now open. You can work on the first half of it for the remainder of the class. 
