@@ -278,6 +278,13 @@ ggplot(dat, aes(hits, runs)) +
 
 <img src="cm08-beyond_mean_mode_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
+## Exercise
+
+1. Install the `Lahman` package, which contains the `Teams` dataset.
+2. Build a null model probabilistic forecast of "number of runs" (`R` column).
+3. Build a probabilistic forecast, using kNN, of "number of runs" for a team that has 1500 hits (`H` column) and 70 wins (`W` column). Don't forget to scale the predictors!
+4. Do the same thing, but using linear regression. What additional assumption(s) is/are needed here?
+
 ## Bias-variance tradeoff
 
 Let's examine the bias-variance / overfitting-underfitting tradeoff with kNN-based probabilistic forecasts. I'll run a simulation like so:
@@ -308,7 +315,7 @@ _At the very least_, one should check that the forecast distributions are "calib
 
 For this course, we won't be picky about how you choose your tuning parameters. Just look for a subset that you think has "enough" observations in it so that the distribution starts to take some shape, but not so much that it starts to shift.
 
-# In-class exercises
+# Discussion Points
 
 For (1) and (2) below, you're choosing between two candidates to hire. Discuss the pros and cons of choosing one candidate over the other in the following situations.
 
@@ -442,6 +449,11 @@ So, we could say that the team with 1000 hits:
 - would typically get 501 runs (median);
 
 amongst other things. 
+
+## Exercise
+
+- Get a 95% prediction interval using linear quantile regression, with Y=`R` (number of runs), X=`H` (number of hits), when X=1500.
+- What about a 95% PI using kNN, going back to the earlier example we did?
 
 ## Problem: Crossing quantiles
 
