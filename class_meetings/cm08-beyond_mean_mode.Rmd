@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 08'
 subtitle: "Supervised Learning Beyond the Mean and Mode"
-date: 'Wednesday, March 21, 2018'
+date: 'January 23, 2019'
 output: 
     html_document:
         keep_md: true
