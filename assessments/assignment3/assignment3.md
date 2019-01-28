@@ -81,7 +81,7 @@ For this exercise, you're expected to use the `auto_data.csv` dataset, not the `
 
 Answer the following questions:
 
-1. Split the data into random training and validation sets. Set aside 40% of the data for the validation set. 
-2. Fit the two models over a grid of hyperparameters, and report the validation error in all cases. You can report them in a table, or a plot. To make things easy, you don't have to choose a fine grid, as long as the optimal hyperparameters are located somewhere in the range of the grid.
-3. For both methods, what hyperparameter(s) on your grid has the best validation error? Of these two models, which one is better, the linear or radial?
+1. Split the data into random training and validation sets. Set aside 40% of the data for the validation set. OR, skip this step if you plan on doing cross validation.
+2. Fit the two models over a grid of hyperparameters, and report the generalization error in all cases. You can report them in a table, or a plot. To make things easy, you don't have to choose a fine grid, as long as the optimal hyperparameters are located somewhere in the range of the grid.
+3. For both methods, what hyperparameter(s) on your grid has the best generalization error? Of these two models, which one is better, the linear or radial?
 
