@@ -39,7 +39,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm05](/class_meetings/cm05-trees.md); CART example ([.R](/class_meetings/cm05-worksheet.R)) | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
 | [cm06](/class_meetings/cm06-questions.md); model function example ([.R](/class_meetings/cm06-worksheet.R)) | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
 | [cm07](/class_meetings/cm07-ensembles.md); random forest example ([.R](/class_meetings/cm07-worksheet.R)) | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
-| [cm08](/class_meetings/cm08-beyond_mean_mode.md) | Beyond the mean and mode | |
+| [cm08](/class_meetings/cm08-beyond_mean_mode.md); worksheet ([.R](/class_meetings/cm08-worksheet.R)) | Beyond the mean and mode | |
 | [cm09](/class_meetings/cm09-svm.md) | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
 | [cm10](/class_meetings/cm10-selection.md) | Feature and model selection | We'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
 
