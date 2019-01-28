@@ -6,7 +6,7 @@ __Evaluates__: Class meetings 08 and 09.
 
 - You must use proper spelling and grammar.
 - Follow the language specifications for each question.
-- Submit your assignment through [UBC Connect](https://connect.ubc.ca/) by the deadline. 
+- Submit your assignment through [UBC Canvas](https://canvas.ubc.ca/) by the deadline. 
 - If you submit more than one file for your assignment, be sure to also include a README file to inform the grader of how to navigate your solutions. This can be a plain text file.
 
 ## Exercise 1 (15%): Probabilistic Forecasting 
