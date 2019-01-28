@@ -74,7 +74,16 @@ __Language hints__: Check out [`sklearn`'s implementation](http://scikit-learn.o
 
 __Attribution__: These questions are adapted from the [ISLR book](http://www-bcf.usc.edu/~gareth/ISL/), Section 9.7 questions 7(b) and (c).
 
-For this exercise, you're expected to use the `auto_data.csv` dataset, not the `mtcars` data set. The `name` and `mpg` columns should _not_ be used as predictors. Your task is to use SVM to predict whether a car has high or low mileage (column `mileage`) using two methods:
+For this exercise, you're expected to use the `auto_data.csv` dataset, not the `mtcars` data set. The `name` and `mpg` columns should _not_ be used as predictors, but use everything else. Here is code to load the dataset and separate the data into predictors and response (where `pd` is `pandas`):
+
+```
+dat = pd.read_csv("data/auto_data.csv")
+y = dat["mileage"]
+X = dat[["cylinders", "displacement", "horsepower", "weight", "acceleration", "year", "origin"]]
+```
+
+
+Your task is to use SVM to predict whether a car has high or low mileage (column `mileage`) using two methods:
 
 1. An SVM with a linear kernel (so, a basic support vector classifier)
 2. An SVM with a radial basis kernel
