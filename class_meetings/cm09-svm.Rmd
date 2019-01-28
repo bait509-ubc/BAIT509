@@ -1,7 +1,7 @@
 ---
 title: 'BAIT 509 Class Meeting 09'
 subtitle: "Support Vector Machines"
-date: "Monday, March 26, 2018"
+date: "January 28, 2019"
 output: 
     html_document:
         keep_md: true
@@ -14,19 +14,27 @@ output:
 
 # Overview
 
+- Solutions to Assignment 2
+- Assignment 3 has been launched
+
+Continue with quantile regression:
+
+- Review of interpreting probabilistic forecasts: [Discussion Points](file:///Users/vincenzocoia/git_docs/BAIT509/class_meetings/cm08-beyond_mean_mode.html#6_discussion_points) in cm08.
+- Continue with cm08 worksheet: add quantile regression predictions: 0.5, 0.8. Obtain 90% PI.
+- What adjustment needs to be made for a moving-window approach (like loess)?
+- Define loss function / error measurement on whiteboard for tau-quantile.
+- Continue with cm08 worksheet: calculate error for mean and quantile predictions.
+- Continue with cm08 worksheet: fit linear quantile regression to obtain  0.5, 0.8 quantiles, and obtain 90% PI.
+
+SVM's:
+
 - Maximal Margin Classifier, and hyperplanes
 - Support Vector Classifiers (SVC)
 - Support Vector Machines (SVM)
 - Extensions to multiple classes
 - SVM's in python
-- Feedback on Assignment 1
-- Lab: work on Assignment 3
 
-# Announcement
-
-The "participation assessment" is available on Connect. Please submit a link to your github repo (or repos) before the end of class on Wednesday.
-
-# The setup
+# The setup for SVM
 
 Today, we'll dicuss a new method for __binary classification__ -- that is, classification when there are two categories. The method is called __Support Vector Machines__. We'll build up to it by considering two special cases:
 
@@ -241,27 +249,25 @@ tibble(x1 = c(rpois(10,5), 15-rpois(10,5)),
 
 1. Construct the decision rule according to this classification boundary. How would you classify a new observation that has $x_1=6$ and $x_2=10$?
 
-> If `x1<7.5`, then "A". Else "B". For the above example, since `x1=6<7.5`, we would classify "A".
 
 2. What size is the margin here?
 
-> The margin width is 2 units. 
 
 3. Which observations receive a penalty? Which observations are the support vectors?
 
-> The observations that receive a penalty are 6,7,8,9,10. These are also the support vectors, by definition.
+
 
 4. What is the total penalty here?
 
-> The penalty, added in order of observations 6-10, is 0.25+0.25+1.25+1.75+2.25 = 5.75.
+
 
 5. Can I choose a bigger margin if my total allowable penalty is 6?
 
-> Yes -- increasing the margin will eventually lead to an increase in penalty, which is allowable.
+
 
 6. Are the data separable? If so, what are the support vectors?
 
-> The data are separable -- as such, we can apply a maximal margin classifier to it. The support vectors would be 4,8,9.
+
 
 # Support Vector Machines
 
@@ -387,11 +393,3 @@ We can also calculate the distance to the decision boundary by appending `.decis
 ```
 my_model.decision_function(X)
 ```
-
-# Feedback on Assignment 1
-
-Hard to say which exercise needs most attention -- perhaps Exercise 4, then perhaps Exercise 2.
-
-# Lab
-
-Use the remainder of the class time to complete Assignment 3. 
