@@ -70,7 +70,7 @@ Links to assessments will be made available when they are ready. The deadlines l
 | [Final Project](/assessments/project/project.md) | February 8 at 23:59 | 30% |
 | [Participation](/assessments/participation/participation.md) | January 31 at 18:00 | 10% |
 
-Please submit everything to [UBC Connect](https://connect.ubc.ca/).
+Please submit everything to [UBC Canvas](https://canvas.ubc.ca/).
 
 ## Annotated Resources
 
