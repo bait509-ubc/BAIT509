@@ -41,7 +41,7 @@ Details about class meetings will appear here as they become available. Readings
 | [cm07](/class_meetings/cm07-ensembles.md); random forest example ([.R](/class_meetings/cm07-worksheet.R)) | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
 | [cm08](/class_meetings/cm08-beyond_mean_mode.md); worksheet ([.R](/class_meetings/cm08-worksheet.R)) | Beyond the mean and mode | |
 | [cm09](/class_meetings/cm09-svm.md) (worksheet a continuation of yesterday's) | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
-| [cm10](/class_meetings/cm10-selection.md) SVM and cross validation worksheet ([.ipynb](/class_meetings/cm08-worksheet.ipynb)) | SVM continuation; wrapup; alternatives to accuracy | [Alternative measures](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/), and [ROC](https://machinelearningmastery.com/assessing-comparing-classifier-performance-roc-curves-2/) |
+| [cm10](/class_meetings/cm10-selection.md) SVM and cross validation worksheet ([.ipynb](https://raw.githubusercontent.com/vincenzocoia/BAIT509/master/class_meetings/cm10-worksheet.ipynb)) | SVM continuation; wrapup; alternatives to accuracy | [Alternative measures](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/), and [ROC](https://machinelearningmastery.com/assessing-comparing-classifier-performance-roc-curves-2/) |
 
 ## Office Hours
 
