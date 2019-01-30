@@ -225,7 +225,7 @@ In general, the machine learning paradigm in python (at least with scikit-learn,
 2. Fit the model.
 3. Query the fit.
 
-You can run classification in python with the `sklearn.svm` bundle of methods. From this bundle, the method `SVC` is useful for SVM's (despite its name), and `LinearSVC` is a special case when the classification boundary is linear (what we've been calling SVC).
+You can run classification in python with the `sklearn.svm` module. From this module, the method `SVC` is useful for SVM's (despite its name), and `LinearSVC` is a special case when the classification boundary is linear (what we've been calling SVC).
 
 Load `SVC` like so:
 
