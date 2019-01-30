@@ -220,7 +220,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">BAIT 509 Class Meeting 10</h1>
-<h3 class="subtitle"><em>SVM; alternatives to accuracy; summary</em></h3>
+<h3 class="subtitle"><em>SVM; course summary; alternatives to accuracy</em></h3>
 <h4 class="date"><em>January 30, 2019</em></h4>
 
 </div>
@@ -229,11 +229,28 @@ div.tocify {
 <div id="overview" class="section level1">
 <h1><span class="header-section-number">1</span> Overview</h1>
 <ul>
-<li>Finish up with SVM’s (cm09).</li>
-<li>Alternatives to Accuracy: false positives/negatives, ROC, F1-score.</li>
+<li>Finish up with SVM’s (cm09).
+<ul>
+<li>Bias-variance tradeoff of <code>C</code></li>
+<li><a href="https://vincenzocoia.github.io/BAIT509/class_meetings/cm09-svm.html#33_making_predictions,_and_confidence">Making Predictions, and Confidence (cm09)</a>.</li>
+<li>General <a href="https://vincenzocoia.github.io/BAIT509/class_meetings/cm09-svm.html#6_support_vector_machines">SVM’s (cm09)</a></li>
+<li>SVM coding example (see worksheet)</li>
+</ul></li>
 <li>Summary of course</li>
+<li>Bonus material: Alternatives to Accuracy: false positives/negatives, ROC, F1-score, AUC.</li>
 <li>Work on your final projects, if time remains.</li>
 </ul>
+</div>
+<div id="alternatives-to-accuracy" class="section level1">
+<h1><span class="header-section-number">2</span> Alternatives to Accuracy</h1>
+<ol style="list-style-type: decimal">
+<li>Breast cancer data set: <a href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer" class="uri">http://archive.ics.uci.edu/ml/datasets/Breast+Cancer</a></li>
+<li>Calculate accuracies of some models. Include “all negative” model, too.</li>
+<li>Make confusion matrices; define FPR and TPR (and synonyms); define aggregate measures.</li>
+<li>Try a different threshold for logistic regression and RF.</li>
+<li>Introduce ROC. Compare ROC for all three models.</li>
+<li>Use case: choosing a threshold; AUC to evaluate overall model performance.</li>
+</ol>
 </div>
 
 
