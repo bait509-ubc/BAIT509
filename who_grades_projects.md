@@ -2,7 +2,7 @@ Please grade the first group separately, not on canvas, for a calibration round.
 
 | TA | Project Team |
 |----|----|
-| All | Prakhar Sinha, Krish Kohli, Utkarsh Misra, Shaily |
+| All | Prakhar Sinha, Krish Kohli, Utkarsh Misra, ~~Shaily~~ |
 | Hossam | Nipun Goyal, Doris(Chengyu) LIU, Faith Fu, Shally |
 | Hossam | Beth Yibai Li, Beryl Lee, Louis Luo |
 | Hossam | Shitong Ni, Mia Mi, Atlas Quan |
