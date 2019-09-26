@@ -47,15 +47,14 @@ Details about class meetings will appear here as they become available. Readings
 
 Want to talk about the course outside of lecture? Let's talk during these dedicated times.
 
-| Teaching Member | When | Where |
-|----|----|----|
-| Arjun | Tuesdays (Jan 15 - Feb 5) 13:00-14:00  | ESB ~~1045~~ 3174 |
-| Vincenzo | Wednesdays (Jan 16 - Feb 6) 10:30-11:30 | ESB 3174 |
-| Emily | Wednesdays (Jan 16 - Feb 6) ~~15:00-16:00~~ 13:00-14:00 | ESB ~~1045~~ 3174 |
-| Hossam | Friday, January 11, 15:00-16:00 | ESB 1045 |
-| Hossam | Friday, January 18, 16:00-17:00 | ESB 1045 |
-| Hossam | Friday, January 25, 15:00-16:00 | ESB 3174 | 
-| Hossam | Friday, February 1, 15:00-16:00 | ESB 1045 |
+| Teaching Member | When                 | Where    |
+| :---:           | :---:                | :---:    |
+| Tomas Beuzen    | Tuesdays 13:00-14:00 | ESB 1045 |
+|                 |                      |          |
+|                 |                      |          |
+|                 |                      |          |
+|                 |                      |          |
+|                 |                      |          |
 
 
 ## Assessments
