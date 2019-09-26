@@ -74,7 +74,7 @@ Please submit everything to [UBC Canvas](https://canvas.ubc.ca/).
 
 ## Annotated Resources
 
-- [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/).
-- [Data Mining: Practical Machine Learning Tools and Techniques](ftp://ftp.ingv.it/pub/manuela.sbarra/Data%20Mining%20Practical%20Machine%20Learning%20Tools%20and%20Techniques%20-%20WEKA.pdf)
+- [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/)
+- [Data Mining: Practical Machine Learning Tools and Techniques](https://www.cs.waikato.ac.nz/ml/weka/book.html)
 - [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
 - [A Course in Machine Learning](http://ciml.info/)
