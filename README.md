@@ -21,7 +21,7 @@ At your service!
 
 | Name         | Position   | GitHub Handle | 
 | :---:        | :---:      | :---:         |
-| Tomas Beuzen | Instructor | @tbeuzen      |
+| [Tomas Beuzen](https://tomasbeuzen.github.io/) | Instructor | @tbeuzen      |
 |              | TA         |               |
 |              | TA         |               |
 |              | TA         |               |
