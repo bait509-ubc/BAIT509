@@ -1,8 +1,8 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the home page for BAIT 509 at The University of British Columbia, displaying the 2019 iteration of the course. The syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed in on this website will take precedence. 
+This is the home page for the 2019 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. The core syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed on this website will take precedence. 
 
-Github repository underpinning this website: [vincenzocoia/BAIT509](https://github.com/vincenzocoia/BAIT509)
+This repository is avaiable as a [website](https://bait509-ubc.github.io/BAIT509/)
 
 ## Learning Objectives
 
@@ -19,12 +19,12 @@ By the end of the course, students should be expected to be able to:
 
 At your service!
 
-| Name     | Position | 
-| -------- | -------- | 
-| Vincenzo Coia | Instructor | 
-| Hossameldin Mohammed | TA | 
-| Emily Mistick | TA |
-| Arjun Baghela | TA |
+| Name         | Position   | GitHub Handle | 
+| :---:        | :---:      | :---:         |
+| Tomas Beuzen | Instructor | @tbeuzen      |
+|              | TA         |               |
+|              | TA         |               |
+|              | TA         |               |
 
 ## Class Meetings
 
@@ -62,8 +62,8 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 Links to assessments will be made available when they are ready. The deadlines listed here are the official ones, and take precendence over the ones listed in the [sauder syllabus](https://github.com/vincenzocoia/BAIT509/blob/master/sauder_syllabus.pdf).
 
-| Assessment      | Due    | Weight |
-|:---------------:|:------:|--------|
+| Assessment        | Due    | Weight |
+|:---:              |:---:   |:---:   |
 | [Assignment 1](/assessments/assignment1/assignment1.html) ([.ipynb](/assessments/assignment1/assignment1.ipynb))  | January ~~12~~ ~~17~~ 19 at 18:00 | 20% | 
 | [Assignment 2](/assessments/assignment2/assignment2.md)  | January 26 at 18:00 | 20% |
 | [Assignment 3](/assessments/assignment3/assignment3.md)  | February 2 at 18:00 | 20% |
@@ -74,5 +74,7 @@ Please submit everything to [UBC Canvas](https://canvas.ubc.ca/).
 
 ## Annotated Resources
 
-- [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/) (aka ISLR).
-	- A very well-written book covering a lot of concepts in supervised learning. 
+- [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/).
+- [Data Mining: Practical Machine Learning Tools and Techniques](ftp://ftp.ingv.it/pub/manuela.sbarra/Data%20Mining%20Practical%20Machine%20Learning%20Tools%20and%20Techniques%20-%20WEKA.pdf)
+- [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
+- [A Course in Machine Learning](http://ciml.info/)
