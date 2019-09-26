@@ -2,7 +2,7 @@
 
 This is the home page for the 2019 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. The core syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed on this website will take precedence. 
 
-This repository is avaiable as a [website](https://bait509-ubc.github.io/BAIT509/)
+This repository is avaiable as a [website](https://bait509-ubc.github.io/BAIT509/).
 
 ## Learning Objectives
 
