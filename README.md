@@ -72,7 +72,7 @@ Links to assessments will be made available when they are ready. The deadlines l
 
 Please submit everything to [UBC Canvas](https://canvas.ubc.ca/).
 
-## Annotated Resources
+## Additional Resources
 
 - [An Introduction to Statistical Learning with R](http://www-bcf.usc.edu/~gareth/ISL/)
 - [Data Mining: Practical Machine Learning Tools and Techniques](https://www.cs.waikato.ac.nz/ml/weka/book.html)
