@@ -22,12 +22,12 @@ def plot_model(X, y, model, predict_proba = False):
 
     # Mesh predictions
     if predict_proba:
-        mesh_df['predictions'] = model.predict_proba(mesh_df[['x1', 'x2']])[:, 0]
+        mesh_df['predictions'] = model.predict_proba(mesh_df[['x1', 'x2']])[:, 1]
         # Plot
         base_plot = alt.Chart(mesh_df).mark_rect(opacity=0.5).encode(
-            x=alt.X('x1', bin=alt.Bin(step=step[0])),
-            y=alt.Y('x2', bin=alt.Bin(step=step[1])),
-            color=alt.Color('predictions', title='P(blue)', scale=alt.Scale(scheme='redblue'))
+            x=alt.X('x1', bin=alt.Bin(step=step[0]), axis=alt.Axis(title=X.columns[0])),
+            y=alt.Y('x2', bin=alt.Bin(step=step[1]), axis=alt.Axis(title=X.columns[1])),
+            color=alt.Color('predictions', title='P(red)', scale=alt.Scale(scheme='blueorange'))
         ).properties(
             width=400,
             height=400
