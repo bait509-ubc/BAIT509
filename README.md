@@ -1,21 +1,17 @@
 # BAIT509 - Business Applications of Machine Learning
 
-*** NOTE THAT THIS REPO IS NOT CURRENTLY BEING UPDATED. CURRENT STUDENTS SHOULD VISIT THE CANVAS COURSE PAGE.
+This is the GitHub home page for the 2019/2020 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/) for the most up-to-date content and announcements.
 
-This is the home page for the 2019 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. The core syllabus can be found at [sauder_syllabus.pdf](sauder_syllabus.pdf), but anything listed on this website will take precedence.
-
-This repository is avaiable as a [website](https://bait509-ubc.github.io/BAIT509/).
+This repository is avaiable as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/).
 
 ## Learning Objectives
 
 By the end of the course, students are expected to be able to:
 
-- Explain what machine learning (ML) is, in the context of errors and model functions;
-- Understand and implement the machine learning paradigms in both R and python for a variety of ML methods;
-- Identify a data table based on a machine learning problem;
-- Understand the types of error, and how this influences model choice/goodness;
-- Build and justify a ML model; and,
-- Understand how ML fits into the greater scope of solving a business problem.
+1. Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training and testing error;
+2. Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and ensemble methods;
+3. Implement a machine learning pipeline (i.e., loading data, creating a machine learning model, testing the model) in Python; and,
+4. Apply and interpret machine learning methods to carry out supervised learning projects and to answer business objectives.
 
 ## Teaching Team
 
@@ -23,41 +19,36 @@ At your service!
 
 | Name         | Position   | GitHub Handle |
 | :---:        | :---:      | :---:         |
-| [Tomas Beuzen](https://tomasbeuzen.github.io/) | Instructor | @tbeuzen      |
-|              | TA         |               |
-|              | TA         |               |
-|              | TA         |               |
+| [Tomas Beuzen](https://tomasbeuzen.github.io/) | Instructor | @tbeuzen |
 
 ## Class Meetings
 
-Details about class meetings will appear here as they become available. Readings are optional, but should be useful. 
+Details about class meetings will appear here as they become available. [Optional additional material](additional_resources.pdf) is also available for each lecture. 
 
-|  #    | Topic | Recommended Readings |
-| :---: | :---: | :---:                |
-| 1     | Intro to the course, tools, and ML | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.1 |
-| 2     | Irreducible and Reducible Error | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 2.2 (you can stop in 2.2.3 once you get to the "The Bayes Classifier" subsection). |
-| 3     | Local methods | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/)'s "K-Nearest Neighbors" section (in Section 2.2.3) on page 39; and Section 7.6 ("Local Regression"). |
-| 4     | Model Selection | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 5.1; we'll be touching on 6.1, 6.2, and 6.3 from [ISLR](http://www-bcf.usc.edu/~gareth/ISL/), but only briefly. |
-| 5     | Classification and Regression Trees | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.1 |
-| 6     | Refining business questions | [This blog post by datapine](https://www.datapine.com/blog/data-analysis-questions/) does a good job motivating the problem of asking good questions. [This blog post by altexsoft](https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/) does a good job outlining the use of supervised learning in business. |
-| 7     | Ensembles | [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) Section 8.2 |
-| 8     | Beyond the mean and mode | |
-| 9     | SVM | Section 9.1, 9.2, 9.4 in [ISLR](http://www-bcf.usc.edu/~gareth/ISL/). The details aren't all that important. 9.3 is quite advanced, but I'll be discussing the main idea behind it in class. |
-| 10    | SVM continuation; wrapup; alternatives to accuracy | [Alternative measures](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/), and [ROC](https://machinelearningmastery.com/assessing-comparing-classifier-performance-roc-curves-2/) |
+|  #    | Topic | Link |
+| :---: | :---: | :---: |
+| 1     | Introduction to machine learning and decision trees | [Lecture 1](/lectures/lecture1_intro_and_decision_trees.html) |
+| 2     | Fundamentals of machine learning and error | [Lecture 2](/lectures/lecture2_error.html) | 
+| 3     | Cross-validation, kNN and loess | [Lecture 3](/lectures/lecture3_crossvalidation_knn_loess.html) | 
+| 4     | Feature pre-processing | [Lecture 4](/lectures/lecture4_feature_preprocessing.html) | 
+| 5     | Naïve Bayes and logistic regression | Lecture 5 |
+| 6     | Model and feature selection | Lecture 6 |
+| 7     | Workflow and forming good machine learning questions from business questions | Lecture 7 |
+| 8     | Support Vector Machines | Lecture 8 |
+| 9     | Advanced ML techniques | Lecture 9 |
+| 10    | Topics related to the group project | Lecture 10 | 
 
 ## Assessments
 
-Links to assessments will be made available when they are ready. The deadlines listed here are the official ones, and take precendence over the ones listed in the [sauder syllabus](sauder_syllabus.pdf).
-
 | Assessment                                                   | Due                  | Weight |
 | :---:                                                        | :---:                | :---:  |
-| [Participation](/assessments/participation/participation.md) | January XX at 18:00  | 10%    |
-| [Assignment 1](/assessments/assignment1/assignment1.md)      | January XX at 18:00  | 20%    |
-| [Assignment 2](/assessments/assignment2/assignment2.md)      | January XX at 18:00  | 20%    |
-| [Assignment 3](/assessments/assignment3/assignment3.md)      | February XX at 18:00 | 20%    |
-| [Final Project](/assessments/project/project.md)             | February XX at 23:59 | 30%    |
+| Participation | - | 10%    |
+| [Assignment 1](/assignments/assignment1/assignment1.ipynb)      | January 20 at 23:59  | 20%    |
+| Assignment 2     | January 27 at 23:59  | 20%    |
+| Assignment 3      | February 7 at 23:59 | 20%    |
+| Final Project           | February 14 at 23:59 | 30%    |
 
-Please submit everything to [UBC Canvas](https://canvas.ubc.ca/).
+All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/).
 
 ## Office Hours
 
@@ -66,11 +57,6 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 | Teaching Member | When                 | Where    |
 | :---:           | :---:                | :---:    |
 |  [Tomas Beuzen](https://tomasbeuzen.github.io/) | Tuesdays 13:00-14:00 | ESB 1045 |
-|                 |                      |          |
-|                 |                      |          |
-|                 |                      |          |
-|                 |                      |          |
-|                 |                      |          |
 
 ## Additional Resources
 
