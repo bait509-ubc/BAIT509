@@ -7,6 +7,8 @@ from sklearn.naive_bayes import MultinomialNB
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
+import matplotlib.pyplot as plt
+from sklearn.svm import SVC
 
 def plot_model(X, y, model, predict_proba = False):
     
@@ -221,3 +223,26 @@ def plot_laplace_smoothing(X_train, y_train, X_test, y_test, alpha_vals=np.logsp
         width=400,
         height=300
     )
+
+def plot_svc(x1, y1, x2, y2, model, title='SVC'):
+    plt.scatter(x1, y1, marker='o', s=120, edgecolor='k')
+    plt.scatter(x2, y2, marker='o', s=120, edgecolor='k')
+    # create grid to evaluate model
+    xx2, xx1 = np.meshgrid(np.linspace(2, 14, 30),
+                           np.linspace(2, 14, 30))
+    XX = np.vstack([xx1.ravel(), xx2.ravel()]).T
+    Z = model.decision_function(XX).reshape(xx1.shape)
+    plt.contour(xx1, xx2, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
+    plt.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100, lw=1, fc='none', ec='k')
+    plt.title(title)
+
+def plot_svc_grid(x1, y1, x2, y2, X, y, C = [0.001, 0.01, 0.1, 1]):
+    fig, ax = plt.subplots(2, 2, figsize=(12, 12))
+    plt.sca(ax[0,0])
+    plot_svc(x1, y1, x2, y2, SVC(C=C[0], kernel='linear').fit(X, y), "C=" + str(C[0]))
+    plt.sca(ax[0,1])
+    plot_svc(x1, y1, x2, y2, SVC(C=C[1], kernel='linear').fit(X, y), "C=" + str(C[1]))
+    plt.sca(ax[1,0])
+    plot_svc(x1, y1, x2, y2, SVC(C=C[2], kernel='linear').fit(X, y), "C=" + str(C[2]))
+    plt.sca(ax[1,1])
+    plot_svc(x1, y1, x2, y2, SVC(C=C[3], kernel='linear').fit(X, y), "C=" + str(C[3]))
