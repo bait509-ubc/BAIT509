@@ -33,8 +33,8 @@ Details about class meetings will appear here as they become available. [Optiona
 | 4     | Feature pre-processing | [Lecture 4](/lectures/lecture4_feature_preprocessing.html) | 
 | 5     | Naïve Bayes and logistic regression | [Lecture 5](/lectures/lecture5_naivebayes_logisitic.html) |
 | 6     | Model and feature selection | [Lecture 6](/lectures/lecture6_feature_model_selection.html) |
-| 7     | Workflow and forming good machine learning questions from business questions | Lecture 7 |
-| 8     | Support Vector Machines | Lecture 8 |
+| 7     | Workflow and forming good machine learning questions from business questions | [Lecture 7](lecture7_workflow_and_business_questions.ipynb) |
+| 8     | Support Vector Machines | [Lecture 8](lecture8_support_vector_machines.ipynb) |
 | 9     | Advanced ML techniques | Lecture 9 |
 | 10    | Topics related to the group project | Lecture 10 | 
 
@@ -45,7 +45,7 @@ Details about class meetings will appear here as they become available. [Optiona
 | Participation | - | 10%    |
 | [Assignment 1](/assignments/assignment1/assignment1.ipynb)      | January 20 at 23:59  | 20%    |
 | [Assignment 2](/assignments/assignment2/assignment2.ipynb)      | January 27 at 23:59  | 20%    |
-| Assignment 3      | February 7 at 23:59 | 20%    |
+| [Assignment 3](/assignments/assignment2/assignment3.ipynb)     | February 7 at 23:59 | 20%    |
 | Final Project           | February 14 at 23:59 | 30%    |
 
 All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/).
