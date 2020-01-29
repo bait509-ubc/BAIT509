@@ -46,7 +46,7 @@ Details about class meetings will appear here as they become available. [Optiona
 | [Assignment 1](/assignments/assignment1/assignment1.ipynb)      | January 20 at 23:59  | 20%    |
 | [Assignment 2](/assignments/assignment2/assignment2.ipynb)      | January 27 at 23:59  | 20%    |
 | [Assignment 3](/assignments/assignment2/assignment3.ipynb)     | February 7 at 23:59 | 20%    |
-| Final Project           | February 14 at 23:59 | 30%    |
+| [Final Project](/assignments/final_project/final_project.ipynb)           | February 14 at 23:59 | 30%    |
 
 All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/).
 
