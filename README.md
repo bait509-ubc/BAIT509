@@ -28,14 +28,14 @@ Details about class meetings will appear here as they become available. [Optiona
 |  #    | Topic | Link |
 | :---: | :---: | :---: |
 | 1     | Introduction to machine learning and decision trees | [Lecture 1](/lectures/lecture1_intro_and_decision_trees.html) |
-| 2     | Fundamentals of machine learning and error | [Lecture 2](/lectures/lecture2_error.html) | 
-| 3     | Cross-validation, kNN and loess | [Lecture 3](/lectures/lecture3_crossvalidation_knn_loess.html) | 
-| 4     | Feature pre-processing | [Lecture 4](/lectures/lecture4_feature_preprocessing.html) | 
-| 5     | Naïve Bayes and logistic regression | [Lecture 5](/lectures/lecture5_naivebayes_logisitic.html) |
-| 6     | Model and feature selection | [Lecture 6](/lectures/lecture6_feature_model_selection.html) |
+| 2     | Fundamentals of machine learning and error | [Lecture 2](/lectures/lecture2_error.ipynb) | 
+| 3     | Cross-validation, kNN and loess | [Lecture 3](/lectures/lecture3_crossvalidation_knn_loess.ipynb) | 
+| 4     | Feature pre-processing | [Lecture 4](/lectures/lecture4_feature_preprocessing.ipynb) | 
+| 5     | Naïve Bayes and logistic regression | [Lecture 5](/lectures/lecture5_naivebayes_logisitic.ipynb) |
+| 6     | Model and feature selection | [Lecture 6](/lectures/lecture6_feature_model_selection.ipynb) |
 | 7     | Workflow and forming good machine learning questions from business questions | [Lecture 7](lecture7_workflow_and_business_questions.ipynb) |
 | 8     | Support Vector Machines | [Lecture 8](lecture8_support_vector_machines.ipynb) |
-| 9     | Advanced ML techniques | Lecture 9 |
+| 9     | Advanced ML techniques | [Lecture 9](lecture9_advanced_ml_techniques.ipynb) |
 | 10    | Topics related to the group project | Lecture 10 | 
 
 ## Assessments
