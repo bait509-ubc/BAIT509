@@ -36,7 +36,7 @@ Details about class meetings will appear here as they become available. [Optiona
 | 7     | Workflow and forming good machine learning questions from business questions | [Lecture 7](lecture7_workflow_and_business_questions.ipynb) |
 | 8     | Support Vector Machines | [Lecture 8](lecture8_support_vector_machines.ipynb) |
 | 9     | Advanced ML techniques | [Lecture 9](lecture9_advanced_ml_techniques.ipynb) |
-| 10    | Topics related to the group project | Lecture 10 | 
+| 10    | Topics related to the group project | [Lecture 10](lecture10_final_lecture.ipynb) | 
 
 ## Assessments
 
