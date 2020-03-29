@@ -56,7 +56,7 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 | Teaching Member | When                 | Where    |
 | :---:           | :---:                | :---:    |
-|  [Tomas Beuzen](https://tomasbeuzen.github.io/) | Mondays 13:00-14:00 | ESB 1045 |
+|  [Tomas Beuzen](https://tomasbeuzen.github.io/) | Thursdays 13:00-14:00 | ESB 1045 |
 
 ## Additional Resources
 
