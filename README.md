@@ -33,10 +33,10 @@ Details about class meetings will appear here as they become available. [Optiona
 | 4     | Feature pre-processing | Lecture 4 [html](/lectures/lecture4_feature_preprocessing.html)/[notebook](/lectures/lecture4_feature_preprocessing.ipynb) | 
 | 5     | Naïve Bayes and logistic regression | Lecture 5 [html](/lectures/lecture5_naivebayes_logisitic.html)/[notebook](/lectures/lecture5_naivebayes_logisitic.ipynb) |
 | 6     | Model and feature selection | Lecture 6 [html](/lectures/lecture6_feature_model_selection.html)/[notebook](/lectures/lecture6_feature_model_selection.ipynb) |
-| 7     | Workflow and forming good machine learning questions from business questions | Lecture 7 [html](lecture7_workflow_and_business_questions.html)/[notebook](lecture7_workflow_and_business_questions.ipynb) |
-| 8     | Support Vector Machines | Lecture 8 [html](lecture8_support_vector_machines.html)/[notebook](lecture8_support_vector_machines.ipynb) |
-| 9     | Advanced ML techniques | Lecture 9 [html](lecture9_advanced_ml_techniques.html)/[notebook](lecture9_advanced_ml_techniques.ipynb) |
-| 10    | Topics related to the group project | Lecture 10 [html](lecture10_final_lecture.html)/[notebook](lecture10_final_lecture.ipynb) | 
+| 7     | Workflow and forming good machine learning questions from business questions | Lecture 7 [html](/lectures/lecture7_workflow_and_business_questions.html)/[notebook](/lectures/lecture7_workflow_and_business_questions.ipynb) |
+| 8     | Support Vector Machines | Lecture 8 [html](/lectures/lecture8_support_vector_machines.html)/[notebook](/lectures/lecture8_support_vector_machines.ipynb) |
+| 9     | Advanced ML techniques | Lecture 9 [html](/lectures/lecture9_advanced_ml_techniques.html)/[notebook](/lectures/lecture9_advanced_ml_techniques.ipynb) |
+| 10    | Topics related to the group project | Lecture 10 [html](/lectures/lecture10_final_lecture.html)/[notebook](/lectures/lecture10_final_lecture.ipynb) | 
 
 ## Assessments
 
