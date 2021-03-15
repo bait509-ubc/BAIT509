@@ -38,7 +38,7 @@ from model_plotting import plot_model, plot_regression_model, plot_tree_grid # t
 [1;32m     11[0m [0msys[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0;34m'code/'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 12[0;31m [0;32mfrom[0m [0mmodel_plotting[0m [0;32mimport[0m [0mplot_model[0m[0;34m,[0m [0mplot_regression_model[0m[0;34m,[0m [0mplot_tree_grid[0m [0;31m# these are some custom plotting scripts I made[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m~/Documents/BAIT509/bait509_site/lectures/code/model_plotting.py[0m in [0;36m<module>[0;34m[0m
+[0;32m~/Documents/BAIT509/BAIT509/lectures/code/model_plotting.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      5[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mtree[0m [0;32mimport[0m [0mDecisionTreeClassifier[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      6[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mnaive_bayes[0m [0;32mimport[0m [0mMultinomialNB[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 7[0;31m [0;32mfrom[0m [0mstatsmodels[0m[0;34m.[0m[0mnonparametric[0m[0;34m.[0m[0msmoothers_lowess[0m [0;32mimport[0m [0mlowess[0m[0;34m[0m[0;34m[0m[0m

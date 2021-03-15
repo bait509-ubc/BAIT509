@@ -44,7 +44,7 @@ y2 = [5, 7, 7, 9, 5, 3, 6, 6, 7, 3]
 [0m[1;32m     11[0m [0mplt[0m[0;34m.[0m[0mrcParams[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0;34m{[0m[0;34m'font.size'[0m[0;34m:[0m [0;36m18[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     12[0m [0mplt[0m[0;34m.[0m[0mrcParams[0m[0;34m[[0m[0;34m'axes.axisbelow'[0m[0;34m][0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/Documents/BAIT509/bait509_site/lectures/code/model_plotting.py[0m in [0;36m<module>[0;34m[0m
+[0;32m~/Documents/BAIT509/BAIT509/archive/2019-2020/lectures/code/model_plotting.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      5[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mtree[0m [0;32mimport[0m [0mDecisionTreeClassifier[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      6[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mnaive_bayes[0m [0;32mimport[0m [0mMultinomialNB[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 7[0;31m [0;32mfrom[0m [0mstatsmodels[0m[0;34m.[0m[0mnonparametric[0m[0;34m.[0m[0msmoothers_lowess[0m [0;32mimport[0m [0mlowess[0m[0;34m[0m[0;34m[0m[0m
