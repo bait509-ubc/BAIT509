@@ -1,0 +1,43 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: BAIT 509 - Business Applications of Machine Learning
+author: Hayley Boyce
+email: hfboyce@cs.ubc.ca
+logo: imgs/bait_logo.png
+description: >- # this means to ignore newlines until "baseurl:"
+  This is the lecture content for BAIT 509 part, a course of the Sauder School of Business Masters of Business Analytics program.
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon: imgs/bait_logo.png
+  home_page_in_navbar: false
+  use_edit_page_button: true
+  use_repository_button: true
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - html_image

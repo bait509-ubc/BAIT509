@@ -1,0 +1,1905 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAIT 509: Business Applications of Machine Learning &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/bait_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Hayley Boyce
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture9_advanced_ml_techniques.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture9_advanced_ml_techniques.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture9_advanced_ml_techniques.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   BAIT 509: Business Applications of Machine Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-9-ensembles-probabilistic-forecasting-metrics">
+     Lecture 9 - Ensembles, Probabilistic Forecasting, Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-outline">
+   Lecture outline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap-5-mins-a-id-0-a">
+   0. Recap  (5 mins)
+   <a id="0">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives-a-id-1-a">
+   1. Lecture learning objectives
+   <a id="1">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forests-30-mins-a-id-2-a">
+   2. Random Forests (30 mins)
+   <a id="2">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     2.1 Motivation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bagging-bootstrap-aggregation">
+     2.2 Bagging (bootstrap aggregation)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#size-of-b">
+       Size of B
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-max-depth-to-use-for-each-individual-tree">
+       What max_depth to use for each individual tree?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-forests">
+     2.3 Random Forests
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probabilistic-predictions">
+       Probabilistic Predictions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-importance">
+       Feature Importance
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-exercise-on-concepts">
+     2.4 Quick exercise on concepts
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-practical-example-predicting-rain-in-australia">
+     2.5 A practical example: Predicting rain in Australia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-ensemble-methods-15-mins-a-id-3-a">
+   3. Other Ensemble Methods (15 mins)
+   <a id="3">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#voting">
+     3.1 Voting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boosting">
+     3.2 Boosting
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basics">
+       Basics
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#current-popular-algorithms">
+     3.3 Current Popular Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beyond-error-rate-and-r2-metrics-20-mins-a-id-4-a">
+   4. Beyond “error rate” and “r2” metrics (20 mins)
+   <a id="4">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.1 Probabilistic Predictions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#classification">
+       Classification
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#regression">
+       Regression
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-metrics">
+     4.2 Classification Metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#change-the-classification-threshold">
+       Change the classification threshold!
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weight-classes-differently">
+       Weight classes differently!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-metrics">
+     4.3 Regression Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remaining-time-is-to-work-on-your-final-project-a-id-5-a">
+   5. Remaining time is to work on your final project!
+   <a id="5">
+   </a>
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bait-509-business-applications-of-machine-learning">
+<h1>BAIT 509: Business Applications of Machine Learning<a class="headerlink" href="#bait-509-business-applications-of-machine-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture-9-ensembles-probabilistic-forecasting-metrics">
+<h2>Lecture 9 - Ensembles, Probabilistic Forecasting, Metrics<a class="headerlink" href="#lecture-9-ensembles-probabilistic-forecasting-metrics" title="Permalink to this headline">¶</a></h2>
+<p>Tomas Beuzen, 3rd February 2020</p>
+</div>
+</div>
+<div class="section" id="lecture-outline">
+<h1>Lecture outline<a class="headerlink" href="#lecture-outline" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="#0">0. Recap (5 mins)</a></p></li>
+<li><p><a class="reference external" href="#1">1. Lecture learning objectives</a></p></li>
+<li><p><a class="reference external" href="#2">2. Random forests (30 mins)</a></p></li>
+<li><p><a class="reference external" href="#3">3. Other ensemble methods (15 mins)</a></p></li>
+<li><p><a class="reference external" href="#break">— Break — (10 mins)</a></p></li>
+<li><p><a class="reference external" href="#4">4. Beyond “error rate” and “r2” metrics (20 mins)</a></p></li>
+<li><p><a class="reference external" href="#5">5. Remaining time is to work on your final project!</a></p></li>
+</ul>
+</div>
+<div class="section" id="announcements">
+<h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Assignment 2 grades released tomorrow</p></li>
+<li><p>Assigntment 3 <strong>due next Friday 7th Feb, 11:59pm</strong></p></li>
+<li><p>Instructor evaluations open <a class="reference external" href="https://canvas.ubc.ca/courses/30777/external_tools/6073">on Canvas</a></p></li>
+</ul>
+</div>
+<div class="section" id="recap-5-mins-a-id-0-a">
+<h1>0. Recap  (5 mins) <a id=0></a><a class="headerlink" href="#recap-5-mins-a-id-0-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Maximal-margin classifier</p></li>
+<li><p>Support vector classifier</p></li>
+<li><p>Support vector machines</p></li>
+<li><p>Multi-class classification</p></li>
+</ul>
+<ul class="simple">
+<li><p>If our data are linearly separable, it makes sense to choose a line that maximises the space (the “margin”) between the observations</p></li>
+<li><p>This line is called the <strong>Maximal Margin Hyperplane</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/svm_2.png"><img alt="../_images/svm_2.png" src="../_images/svm_2.png" style="width: 1000px;" /></a>
+<ul class="simple">
+<li><p>Unfortunately, our data is rarely linearly separable</p></li>
+<li><p>We still want to find the best line, but to find the best line we might have to poorly predict some of our data</p></li>
+<li><p>We penalise our classifier for predicting data poorly</p></li>
+<li><p>We can impose a threshold on this penalty to control the width of our margin</p></li>
+<li><p>The idea is to find the orientation of our line and the width of our margin to find the optimal set-up</p>
+<ul>
+<li><p>A narrow margin tends towards overfitting</p></li>
+<li><p>A wider margin tends towards underfitting</p></li>
+</ul>
+</li>
+<li><p>We typically use cross-validation to find the optimum line &amp; margin</p></li>
+<li><p>We call this model a <strong>Support Vector Classifier</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/svm_4.png"><img alt="../_images/svm_4.png" src="../_images/svm_4.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>But even these more generalised, penalty-based system, would struggle with data such as that shown below</p></li>
+<li><p>So we introduce the notion of a kernel to look at the relationships between our data in “higher dimensional space”</p></li>
+<li><p>A SVC coupled with a kernel trick is referred to as a <strong>Support Vector Machine</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/svm_6.png"><img alt="../_images/svm_6.png" src="../_images/svm_6.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/svm_8.png"><img alt="../_images/svm_8.png" src="../_images/svm_8.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>Separating this data with a SVM implemented in sklearn:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/svm_9.png"><img alt="../_images/svm_9.png" src="../_images/svm_9.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/svm_10.png"><img alt="../_images/svm_10.png" src="../_images/svm_10.png" style="width: 450px;" /></a>
+</div>
+<div class="section" id="lecture-learning-objectives-a-id-1-a">
+<h1>1. Lecture learning objectives <a id=1></a><a class="headerlink" href="#lecture-learning-objectives-a-id-1-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Understand how the Random Forest algorithm works</p></li>
+<li><p>Discuss concepts of bagging and boosting</p></li>
+<li><p>Describe metrics other than error and r2 for measuring ML performance</p></li>
+</ul>
+</div>
+<div class="section" id="random-forests-30-mins-a-id-2-a">
+<h1>2. Random Forests (30 mins)<a id=2></a><a class="headerlink" href="#random-forests-30-mins-a-id-2-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivation">
+<h2>2.1 Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Recall that we could fit a Decision Tree with a large/unlimited <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> to any dataset and get very low bias</p></li>
+<li><p>We say that such a model is overfit to the training data, it doesn’t generalise well to new datasets, and therefore has high variance</p></li>
+<li><p>There is usually a trade-off between bias and variance. We learned that we could decrease the variance in this model by reducing its complexity, i.e., limiting the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>, but this in turn increases the bias.</p></li>
+<li><p>It’s natural to wonder if there is another way we can reduce variance whilst retaining low bias.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/tradeoff.png"><img alt="../_images/tradeoff.png" src="../_images/tradeoff.png" style="width: 500px;" /></a>
+<p><a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">Source: dziganto.github.io</a></p>
+<ul class="simple">
+<li><p>One way to reduce variance is to use multiple different models to make a prediction</p></li>
+<li><p>An analogy is using a jury to make a decision rather than a single judge</p></li>
+<li><p>Consider the hypothetical situation of collecting <em>B</em> data sets (of equal size), and fitting a decision tree to each one</p></li>
+<li><p>These <em>B</em> models are called an ensemble</p></li>
+<li><p>When we want to predict a new observation we can take the average prediction of our <em>B</em> trees in the case of regression, or the mode prediction of the <em>B</em> trees in the case of classification</p></li>
+<li><p>This “averaging” process can reduce variance</p></li>
+</ul>
+</div>
+<div class="section" id="bagging-bootstrap-aggregation">
+<h2>2.2 Bagging (bootstrap aggregation)<a class="headerlink" href="#bagging-bootstrap-aggregation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Unfortunately, collecting multiple different data sets in the real world is not practical, we usually only have one dataset to work with</p></li>
+<li><p>But we can emulate the collection of <em>B</em> datasets using <strong>bootstrapping</strong></p></li>
+<li><p>A bootstrap sample is one where we randomly draw (with replacement) <em>n</em> observations from our original dataset</p></li>
+<li><p>We can generate as many bootstrap samples as we like!</p></li>
+<li><p>The resulting datasets are related in some sense, so are not as good as having <em>B</em> independent data sets. But it still gives us something useful!</p></li>
+<li><p>We can fit a tree on each data set, and combining the results is called “aggregation”</p></li>
+<li><p>So bootstrap + aggregation = bagging!</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/bootstrap.png"><img alt="../_images/bootstrap.png" src="../_images/bootstrap.png" style="width: 700px;" /></a>
+<div class="section" id="size-of-b">
+<h3>Size of B<a class="headerlink" href="#size-of-b" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A natural question to ask is how many bootstrap samples should you draw? (i.e., how many trees should I build in my ensemble?)</p></li>
+<li><p>We can’t really overfit by increasing <em>B</em>, because this just results in new data sets being generated – not fitting more and more models to a single data set</p></li>
+<li><p>You’ll find that as B increases the error rate will drop (because we are reducing variance by using more models) until it reaches a stable point where it no longer drops</p></li>
+<li><p>Once this point is reached, increasing <em>B</em> does not do us much good</p></li>
+<li><p>You can optimise <em>B</em> using cross-validation, but a common approach is to just use a large number (the default in sklearn for Random Forests is 100)</p></li>
+</ul>
+</div>
+<div class="section" id="what-max-depth-to-use-for-each-individual-tree">
+<h3>What max_depth to use for each individual tree?<a class="headerlink" href="#what-max-depth-to-use-for-each-individual-tree" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The whole idea of bagging is to reduce variance</p></li>
+<li><p>We therefore tend to want to use indiviudal models that have low bias and high variance to aggregate together</p></li>
+<li><p>So we usually deliberately overfit each tree in the ensemble (i.e., no max_depth), to get trees with low bias and high variance – the variance of which will be reduced in the ensemble</p></li>
+<li><p>We are talking about trees here but you can of course use bagging on other models and the same ideas as discussed above apply.</p></li>
+<li><p>It’s just that tree-based algorithms allow us to make a little trick to further improve our ensemble - this trick results in what we call a Random Forest!</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="random-forests">
+<h2>2.3 Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>One problem with <strong>Bagging</strong> is that the trees in the ensemble tend to be correlated – that is, they share similarities</p></li>
+<li><p>We don’t really want to use similar models to make our predictions - we want to use models that differ slightly, so that by averaging them, we can try and reduce variance</p></li>
+<li><p><strong>Random forests</strong> attempt to fix this problem by introducing additional randomness into each individual tree</p></li>
+<li><p>Recall that, when making a split in a decision tree, we choose one feature out of the total <em>d</em> features to split on</p></li>
+<li><p>The idea behind <strong>Random forests</strong> is to consider only a random subset of the <em>d</em> features at each split</p></li>
+<li><p>The result is an ensemble of indiviudal trees that are less correlated and the combination of their predictions results in an overall better result</p></li>
+<li><p>We’ll use a Random Forest shortly, but first, a few additional advantages of the method…</p></li>
+</ul>
+<div class="section" id="probabilistic-predictions">
+<h3>Probabilistic Predictions<a class="headerlink" href="#probabilistic-predictions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When using tree-based methods, we are dealing with frequencies of class labels (at least in classification problems)</p></li>
+<li><p>Every leaf will have a distribution of the number of classes that falls into that leaf</p></li>
+<li><p>The example below is from last lecture, a tree modelling a dataset with 3 classes (“blue”, “orange”, “red”)</p></li>
+<li><p>The very first node has a probability distribution of:</p>
+<ul>
+<li><p>40% chance of blue</p></li>
+<li><p>30% chance of orange</p></li>
+<li><p>30% chance of red</p></li>
+</ul>
+</li>
+<li><p>Each of the leaf nodes, in this case, have 100% probability of predicting a particular class (because there is only one class evident in each leaf)</p></li>
+<li><p>In a RF the probability distribution is the average predicted probability for some given test data across all trees in the forest</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/multi_class_dt_graph.png"><img alt="../_images/multi_class_dt_graph.png" src="../_images/multi_class_dt_graph.png" style="width: 450px;" /></a>
+</div>
+<div class="section" id="feature-importance">
+<h3>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Another advantage of using RFs is that they provide a measure of feature importance (which is useful for interpretability and feature selection)</p></li>
+<li><p>Every split in an indiviudal tree reduces the training error (if it didn’t then the split wouldn’t be made)</p></li>
+<li><p>We can measure how much each predictor reduces training error within each tree, and then average that across all trees in the forest to determine which features are most useful for modelling our data (read more <a class="reference external" href="https://stackoverflow.com/questions/15810339/how-are-feature-importances-in-randomforestclassifier-determined">here</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="quick-exercise-on-concepts">
+<h2>2.4 Quick exercise on concepts<a class="headerlink" href="#quick-exercise-on-concepts" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Bagging is a special case of random forests under which case?</p></li>
+<li><p>What are the main hyperparameters we can control for random forests (we haven’t seen them yet, but conceptually, what do you think we can control)?</p></li>
+<li><p>Suppose you have the following paired data of (X,y): (1,2), (1,5), (2,0). Which of the following are valid bootstrapped data sets? Why/why not?</p>
+<ul class="simple">
+<li><p>(1,0), (1,2), (1,5)</p></li>
+<li><p>(1,2), (2,0)</p></li>
+<li><p>(1,2), (1,2), (1,5)</p></li>
+</ul>
+</li>
+<li><p>You make a random forest consisting of four trees. You obtain a new observation, and would like to predict the response. What would your prediction be in the following cases?</p>
+<ul class="simple">
+<li><p>Regression: your trees make the following four predictions: 1,1,3,3.</p></li>
+<li><p>Classification: your trees make the following four predictions: “A”, “A”, “B”, “C”.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="a-practical-example-predicting-rain-in-australia">
+<h2>2.5 A practical example: Predicting rain in Australia<a class="headerlink" href="#a-practical-example-predicting-rain-in-australia" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In this example I’ll be using meteorological measurements to predict whether or not it will rain tomorrow</p></li>
+<li><p>This datset has not been provided on Canvas, you can download it from Kaggle <a class="reference external" href="https://www.kaggle.com/jsphyg/weather-dataset-rattle-package">here</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weatherAUS.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>MinTemp</th>
+      <th>MaxTemp</th>
+      <th>Rainfall</th>
+      <th>Evaporation</th>
+      <th>Sunshine</th>
+      <th>Humidity9am</th>
+      <th>Humidity3pm</th>
+      <th>Pressure9am</th>
+      <th>Pressure3pm</th>
+      <th>Cloud9am</th>
+      <th>Cloud3pm</th>
+      <th>Temp9am</th>
+      <th>Temp3pm</th>
+      <th>RainToday</th>
+      <th>RainTomorrow</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2008-12-01</td>
+      <td>Albury</td>
+      <td>13.4</td>
+      <td>22.9</td>
+      <td>0.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.0</td>
+      <td>22.0</td>
+      <td>1007.7</td>
+      <td>1007.1</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>16.9</td>
+      <td>21.8</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2008-12-02</td>
+      <td>Albury</td>
+      <td>7.4</td>
+      <td>25.1</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.0</td>
+      <td>25.0</td>
+      <td>1010.6</td>
+      <td>1007.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17.2</td>
+      <td>24.3</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2008-12-03</td>
+      <td>Albury</td>
+      <td>12.9</td>
+      <td>25.7</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>38.0</td>
+      <td>30.0</td>
+      <td>1007.6</td>
+      <td>1008.7</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>21.0</td>
+      <td>23.2</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2008-12-04</td>
+      <td>Albury</td>
+      <td>9.2</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45.0</td>
+      <td>16.0</td>
+      <td>1017.6</td>
+      <td>1012.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.1</td>
+      <td>26.5</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2008-12-05</td>
+      <td>Albury</td>
+      <td>17.5</td>
+      <td>32.3</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>82.0</td>
+      <td>33.0</td>
+      <td>1010.8</td>
+      <td>1006.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>17.8</td>
+      <td>29.7</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>We can see that there are quite a few missing values here</p></li>
+<li><p>Most sklearn algorithms won’t work with missing values so we either need to remove them or fill them</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> to see exactly how many missing values there are</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 142193 entries, 0 to 142192
+Data columns (total 17 columns):
+ #   Column        Non-Null Count   Dtype  
+---  ------        --------------   -----  
+ 0   Date          142193 non-null  object 
+ 1   Location      142193 non-null  object 
+ 2   MinTemp       141556 non-null  float64
+ 3   MaxTemp       141871 non-null  float64
+ 4   Rainfall      140787 non-null  float64
+ 5   Evaporation   81350 non-null   float64
+ 6   Sunshine      74377 non-null   float64
+ 7   Humidity9am   140419 non-null  float64
+ 8   Humidity3pm   138583 non-null  float64
+ 9   Pressure9am   128179 non-null  float64
+ 10  Pressure3pm   128212 non-null  float64
+ 11  Cloud9am      88536 non-null   float64
+ 12  Cloud3pm      85099 non-null   float64
+ 13  Temp9am       141289 non-null  float64
+ 14  Temp3pm       139467 non-null  float64
+ 15  RainToday     140787 non-null  object 
+ 16  RainTomorrow  142193 non-null  object 
+dtypes: float64(13), object(4)
+memory usage: 18.4+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>I’m going to drop all the missing rows for this simple example</p></li>
+<li><p>This leaves us with 56,420 observations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>MinTemp</th>
+      <th>MaxTemp</th>
+      <th>Rainfall</th>
+      <th>Evaporation</th>
+      <th>Sunshine</th>
+      <th>Humidity9am</th>
+      <th>Humidity3pm</th>
+      <th>Pressure9am</th>
+      <th>Pressure3pm</th>
+      <th>Cloud9am</th>
+      <th>Cloud3pm</th>
+      <th>Temp9am</th>
+      <th>Temp3pm</th>
+      <th>RainToday</th>
+      <th>RainTomorrow</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5939</th>
+      <td>2009-01-01</td>
+      <td>Cobar</td>
+      <td>17.9</td>
+      <td>35.2</td>
+      <td>0.0</td>
+      <td>12.0</td>
+      <td>12.3</td>
+      <td>20.0</td>
+      <td>13.0</td>
+      <td>1006.3</td>
+      <td>1004.4</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>26.6</td>
+      <td>33.4</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>5940</th>
+      <td>2009-01-02</td>
+      <td>Cobar</td>
+      <td>18.4</td>
+      <td>28.9</td>
+      <td>0.0</td>
+      <td>14.8</td>
+      <td>13.0</td>
+      <td>30.0</td>
+      <td>8.0</td>
+      <td>1012.9</td>
+      <td>1012.1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>20.3</td>
+      <td>27.0</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>5942</th>
+      <td>2009-01-04</td>
+      <td>Cobar</td>
+      <td>19.4</td>
+      <td>37.6</td>
+      <td>0.0</td>
+      <td>10.8</td>
+      <td>10.6</td>
+      <td>42.0</td>
+      <td>22.0</td>
+      <td>1012.3</td>
+      <td>1009.2</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>28.7</td>
+      <td>34.9</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>5943</th>
+      <td>2009-01-05</td>
+      <td>Cobar</td>
+      <td>21.9</td>
+      <td>38.4</td>
+      <td>0.0</td>
+      <td>11.4</td>
+      <td>12.2</td>
+      <td>37.0</td>
+      <td>22.0</td>
+      <td>1012.7</td>
+      <td>1009.1</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>29.1</td>
+      <td>35.6</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>5944</th>
+      <td>2009-01-06</td>
+      <td>Cobar</td>
+      <td>24.2</td>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>11.2</td>
+      <td>8.4</td>
+      <td>19.0</td>
+      <td>15.0</td>
+      <td>1010.7</td>
+      <td>1007.4</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>33.6</td>
+      <td>37.6</td>
+      <td>No</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>I’m going to drop the <code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">Location</span></code> column</p></li>
+<li><p>I also need to encode my categorical data</p></li>
+<li><p>Usually I suggest using sklearn’s OneHotEncoder for this, because it’s easier to work into pipelines and combine with numeric scaling</p></li>
+<li><p>But here, we don’t need to do numeric scaling (we are using a tree-based method)</p></li>
+<li><p>So I’m going to use the Panda’s in-built one hot encode function, <code class="docutils literal notranslate"><span class="pre">get_dummies()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Location&#39;</span><span class="p">,</span> <span class="s1">&#39;RainTomorrow&#39;</span><span class="p">])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RainTomorrow&#39;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MinTemp</th>
+      <th>MaxTemp</th>
+      <th>Rainfall</th>
+      <th>Evaporation</th>
+      <th>Sunshine</th>
+      <th>Humidity9am</th>
+      <th>Humidity3pm</th>
+      <th>Pressure9am</th>
+      <th>Pressure3pm</th>
+      <th>Cloud9am</th>
+      <th>Cloud3pm</th>
+      <th>Temp9am</th>
+      <th>Temp3pm</th>
+      <th>RainToday_Yes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5939</th>
+      <td>17.9</td>
+      <td>35.2</td>
+      <td>0.0</td>
+      <td>12.0</td>
+      <td>12.3</td>
+      <td>20.0</td>
+      <td>13.0</td>
+      <td>1006.3</td>
+      <td>1004.4</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>26.6</td>
+      <td>33.4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5940</th>
+      <td>18.4</td>
+      <td>28.9</td>
+      <td>0.0</td>
+      <td>14.8</td>
+      <td>13.0</td>
+      <td>30.0</td>
+      <td>8.0</td>
+      <td>1012.9</td>
+      <td>1012.1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>20.3</td>
+      <td>27.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5942</th>
+      <td>19.4</td>
+      <td>37.6</td>
+      <td>0.0</td>
+      <td>10.8</td>
+      <td>10.6</td>
+      <td>42.0</td>
+      <td>22.0</td>
+      <td>1012.3</td>
+      <td>1009.2</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>28.7</td>
+      <td>34.9</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5943</th>
+      <td>21.9</td>
+      <td>38.4</td>
+      <td>0.0</td>
+      <td>11.4</td>
+      <td>12.2</td>
+      <td>37.0</td>
+      <td>22.0</td>
+      <td>1012.7</td>
+      <td>1009.1</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>29.1</td>
+      <td>35.6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5944</th>
+      <td>24.2</td>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>11.2</td>
+      <td>8.4</td>
+      <td>19.0</td>
+      <td>15.0</td>
+      <td>1010.7</td>
+      <td>1007.4</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>33.6</td>
+      <td>37.6</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Okay lets separate that data into <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and then into training and testing splits</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                    <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now let’s create our model</p></li>
+<li><p>I’m going to use <code class="docutils literal notranslate"><span class="pre">n_estimators=100</span></code> and <code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code> (note these are the default hyperparameters anyway)</p></li>
+<li><p>I’m not doing any hyperparameter tuning here, but you will do some in your assignment</p></li>
+<li><p>Don’t forget about the helpful GridSearchCV function!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier()
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can take a look at which features are most important in our model using the <code class="docutils literal notranslate"><span class="pre">.feature_importances_</span></code> attribute</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+              <span class="s1">&#39;importance&#39;</span><span class="p">:</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>Humidity3pm</td>
+      <td>0.167769</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sunshine</td>
+      <td>0.130311</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pressure3pm</td>
+      <td>0.091231</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Pressure9am</td>
+      <td>0.078676</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Cloud3pm</td>
+      <td>0.062006</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>MinTemp</td>
+      <td>0.061350</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Temp3pm</td>
+      <td>0.060738</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Humidity9am</td>
+      <td>0.059981</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Temp9am</td>
+      <td>0.058680</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MaxTemp</td>
+      <td>0.058533</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Evaporation</td>
+      <td>0.054387</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Rainfall</td>
+      <td>0.053945</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Cloud9am</td>
+      <td>0.041455</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>RainToday_Yes</td>
+      <td>0.020938</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Based on the above I might want to do some feature selection</p></li>
+<li><p>Let’s calculate a cross-validation score on the training data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-validation error = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cv</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation error = 0.15
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>So let’s see if we can remove some features to make our model simpler and to try and improve, or at least retain, that validation error</p></li>
+<li><p>I’ll drop the 5 “worst” features and re-calculate the cross-validation error</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_drop</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RainToday_Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;Cloud9am&#39;</span><span class="p">,</span> <span class="s1">&#39;Rainfall&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporation&#39;</span><span class="p">,</span> <span class="s1">&#39;MaxTemp&#39;</span><span class="p">])</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train_drop</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-validation error = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cv</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation error = 0.15
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Okay so we reduced our number of features without impacting cross-validation error</p></li>
+<li><p>Usually I would continue with this process to refine my model further, i.e., dropping features, adding new ones, etc.</p></li>
+<li><p>But for now, let’s just test on our test data</p></li>
+<li><p>Don’t forget to re-train your model and drop those “worst” features in the test set… (this is where pipelines come in handy! They remember these steps for you!)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_drop</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test_drop</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RainToday_Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;Cloud9am&#39;</span><span class="p">,</span> <span class="s1">&#39;Rainfall&#39;</span><span class="p">,</span> <span class="s1">&#39;Evaporation&#39;</span><span class="p">,</span> <span class="s1">&#39;MaxTemp&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_drop</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error on test data = 0.15
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also calculate the probability of a particular observation</p></li>
+<li><p>Let’s take a look at our features and come up with a typical ‘dry’ and ‘wet’ day to test our model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_drop</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MinTemp</th>
+      <th>Sunshine</th>
+      <th>Humidity9am</th>
+      <th>Humidity3pm</th>
+      <th>Pressure9am</th>
+      <th>Pressure3pm</th>
+      <th>Cloud3pm</th>
+      <th>Temp9am</th>
+      <th>Temp3pm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>21977</th>
+      <td>17.2</td>
+      <td>11.6</td>
+      <td>83.0</td>
+      <td>76.0</td>
+      <td>1016.7</td>
+      <td>1014.4</td>
+      <td>1.0</td>
+      <td>19.7</td>
+      <td>20.7</td>
+    </tr>
+    <tr>
+      <th>92946</th>
+      <td>23.3</td>
+      <td>12.3</td>
+      <td>52.0</td>
+      <td>48.0</td>
+      <td>1012.3</td>
+      <td>1010.1</td>
+      <td>1.0</td>
+      <td>29.2</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>82137</th>
+      <td>18.5</td>
+      <td>10.7</td>
+      <td>62.0</td>
+      <td>48.0</td>
+      <td>1015.8</td>
+      <td>1011.8</td>
+      <td>1.0</td>
+      <td>24.5</td>
+      <td>27.5</td>
+    </tr>
+    <tr>
+      <th>64106</th>
+      <td>11.0</td>
+      <td>3.8</td>
+      <td>75.0</td>
+      <td>51.0</td>
+      <td>1008.4</td>
+      <td>1013.1</td>
+      <td>7.0</td>
+      <td>13.2</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>116366</th>
+      <td>14.0</td>
+      <td>11.2</td>
+      <td>35.0</td>
+      <td>26.0</td>
+      <td>1016.0</td>
+      <td>1011.7</td>
+      <td>5.0</td>
+      <td>20.7</td>
+      <td>26.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">([</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1010</span><span class="p">,</span> <span class="mi">1005</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">33</span><span class="p">])</span>
+<span class="n">wet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Dry&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">dry</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+              <span class="s1">&#39;Wet&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">wet</span><span class="p">)[</span><span class="mi">0</span><span class="p">]},</span>
+             <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rain tomorrow: No&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain tomorrow: Yes&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dry</th>
+      <th>Wet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rain tomorrow: No</th>
+      <td>0.93</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <th>Rain tomorrow: Yes</th>
+      <td>0.07</td>
+      <td>0.94</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="other-ensemble-methods-15-mins-a-id-3-a">
+<h1>3. Other Ensemble Methods (15 mins) <a id=3></a><a class="headerlink" href="#other-ensemble-methods-15-mins-a-id-3-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="voting">
+<h2>3.1 Voting<a class="headerlink" href="#voting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Voting here is essentially what we talked about as “aggregation” previously</p></li>
+<li><p>It’s about collecting predictions from multiple different models and aggregating them into a single prediction</p></li>
+<li><p>sklearn has a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html#sklearn.ensemble.VotingClassifier"><code class="docutils literal notranslate"><span class="pre">VotingClassifier</span></code></a> and <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingRegressor.html#sklearn.ensemble.VotingRegressor"><code class="docutils literal notranslate"><span class="pre">VotingRegressor</span></code></a> to facilitate this kind of ensembling</p></li>
+<li><p>Just so show you how it works, let’s create a voting classifier on the rainfall data above using a <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> and <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">VotingClassifier</span>
+
+<span class="n">model1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model3</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">voter</span> <span class="o">=</span> <span class="n">VotingClassifier</span><span class="p">(</span><span class="n">estimators</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;lr&#39;</span><span class="p">,</span> <span class="n">model1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">model2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="n">model3</span><span class="p">)])</span>
+<span class="n">voter</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_drop</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">voter</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_drop</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:762: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error on test data = 0.15
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="boosting">
+<h2>3.2 Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Boosting is another common ensemble method</p></li>
+<li><p>I will go over the basic concepts of boosting here, but encourage you to see this <a class="reference external" href="https://www.gormanalysis.com/blog/gradient-boosting-explained/">blog post</a> if you want to learn more</p></li>
+</ul>
+<div class="section" id="basics">
+<h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Essentially, boosting is the opposite of bagging in the sense that we make an ensemble of models with <em>high bias</em> and <em>low variance</em>, e.g., an underfit model</p></li>
+<li><p>The idea is to build models sequentially to address the short-comings of the previous model</p></li>
+<li><p>Consider a simple two-tree boosting ensemble for regression. The boosting framework is as follows:</p>
+<ol class="simple">
+<li><p>Fit a tree to your data</p></li>
+<li><p>Record the predictions of your tree;</p></li>
+<li><p>Compute the residuals (actual minus predicted values);</p></li>
+<li><p>Fit a second tree to the residuals;</p></li>
+<li><p>Record the predictions of the second tree;</p></li>
+<li><p>Record the final prediction as the prediction of the first tree plus the prediction of the second tree</p></li>
+</ol>
+</li>
+<li><p>This process is illustrated by the table below which is taken directly from the blog post linked above.</p></li>
+<li><p>Essentially, the second tree captures patterns in the data that the first tree missed, which is why boosting is so useful.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/boosting.png"><img alt="../_images/boosting.png" src="../_images/boosting.png" style="width: 700px;" /></a>
+<p>Source: <a class="reference external" href="https://www.gormanalysis.com/blog/gradient-boosting-explained/">GormAnalysis</a></p>
+<ul class="simple">
+<li><p>Boosting is about improving predictions by learning on residuals</p></li>
+<li><p>We therefore want to use “weak” learners to help us slowly get at the structure of the underyling the data</p></li>
+<li><p>The idea is to use a low-variance/high-bias model, like a decision stump, for which we can use boosting to reduce the bias</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="current-popular-algorithms">
+<h2>3.3 Current Popular Algorithms<a class="headerlink" href="#current-popular-algorithms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a>/<a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/">LGBM</a>: these are two of the most common algorithms used in practice at the moment. These are both boosting algorithms based on decision trees that vary in their implementation (e.g., how they combine predictions, how they decide on splits, etc.)</p></li>
+<li><p>The above are not built into sklearn, they require separate installation as outlined in the documentation above</p></li>
+<li><p>Stacking: uses the predictions of various different models as inputs to another model which learns how to “aggregate” these predictions to a better prediction.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="beyond-error-rate-and-r2-metrics-20-mins-a-id-4-a">
+<h1>4. Beyond “error rate” and “r2” metrics (20 mins)<a id=4></a><a class="headerlink" href="#beyond-error-rate-and-r2-metrics-20-mins-a-id-4-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>4.1 Probabilistic Predictions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classification">
+<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>We’ve already looked at several examples of generating probabilistic predictions for classification algorithms (e.g., Logistic Regression, Naive Bayes, Random Forests)</p></li>
+<li><p>With these methods we can get a probability for each class label and plot a histogram as an approximate “probability distribution” - you’ll do this in Assignment 3</p></li>
+<li><p>As an example, I’ll use our rain forecasting model from before:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.axisbelow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">dry</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tick_label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No Rain&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture9_advanced_ml_techniques_74_0.png" src="../_images/lecture9_advanced_ml_techniques_74_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="regression">
+<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The reason probabilities are useful is because they helps us understand the uncertainty in our predictions</p></li>
+<li><p>You’ve probably already had some practice generating confidence and/or prediction intervals using linear models, perhaps using the <code class="docutils literal notranslate"><span class="pre">confint</span></code> or <code class="docutils literal notranslate"><span class="pre">predict</span></code> functions</p></li>
+<li><p>You may recall that confidence intervals are intervals around the expected value of Y given x: $E[Y|x]$ (they have 1 source of uncertainty, uncertainty in model parameters)</p></li>
+<li><p>Prediction intervals are intervals around some $\hat{y}$ given x: $\hat{y}|x$ (they have 2 sources of uncertainty, uncertainty in model parameters and uncertainty in our data)</p></li>
+<li><p>Prediction intervals are really what we are interested in here</p></li>
+<li><p>In your linear regression courses, you may have seen the following formula for calculating prediction intervals:
+$$\hat{y}\pm{}t_{\frac{\alpha}{2},{n-2}}*\sqrt{MSE(1+\frac{1}{n}+\frac{(x-\bar{x}^2)}{\sum{(x_i-\bar{x}^2)}}}$$</p></li>
+<li><p>Unfortunately, this formula <strong>strongly</strong> relies on the condition that the residuals are normally distributed (which often they are not)</p></li>
+<li><p>An alternative strategy to forming prediction intervals that does not make assumptions on the distribution of the residuals is <strong>quantile regression</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>Quantile regression is conceptually the same as the OLS method you’ve seen so far</p></li>
+<li><p>But instead of regressing on the conditional expectation (the mean) we fit a model to a particular quantile, e.g., the 0.5 quantile (the median), the 0.1 quantile, the 0.9 quantile, etc.</p></li>
+<li><p>We can easily do quantile regression with a standard linear model, using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package</p></li>
+<li><p>The below example is adapted from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> docs <a class="reference external" href="https://www.statsmodels.org/dev/examples/notebooks/generated/quantile_regression.html">here</a>, predicting <code class="docutils literal notranslate"><span class="pre">food</span> <span class="pre">expenditure</span></code> vs <code class="docutils literal notranslate"><span class="pre">income</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">engel</span><span class="o">.</span><span class="n">load_pandas</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;income&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;foodexp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="mi">56587</span><span class="n">a846dd5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>I’ll leave it to you to run through the code if you’re interested, I’m going to skip straight to the plot…</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define alpha level (will draw PI between alpha and 1-alpha)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="c1"># Get model predictions</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">quantreg</span><span class="p">(</span><span class="s1">&#39;foodexp ~ income&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">y_upper</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span> <span class="c1"># prediction of alpha quantile</span>
+<span class="n">y_lower</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">))</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>  <span class="c1"># prediction of 1 - alpha quantile</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;foodexp ~ income&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>  <span class="c1"># prediction of OLS model for comparison</span>
+<span class="c1"># plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>
+                 <span class="n">y_lower</span><span class="p">,</span>
+                 <span class="n">y_upper</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">alpha</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;% PI&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Food expenditure&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture9_advanced_ml_techniques_79_0.png" src="../_images/lecture9_advanced_ml_techniques_79_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Quantile regression has also been implemented in tree-based models</p></li>
+<li><p>For example, sklearn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor"><code class="docutils literal notranslate"><span class="pre">GradientBoostingRegressor</span></code></a> implements quantile regression, the below code is adapted from <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html">this example</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="c1"># create model and specify alpha level</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;quantile&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+                                  <span class="n">n_estimators</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                  <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">income</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="o">.</span><span class="n">income</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># grid for predictions</span>
+<span class="n">y_upper</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="c1"># predictions for alpha quantile</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1"># change to 1 - alpha</span>
+<span class="n">y_lower</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="c1"># predictions for 1 - alpha quantile</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span> <span class="c1"># change to OLS</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="c1"># predictions for OLS (mean)</span>
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span>
+                 <span class="n">y_upper</span><span class="p">,</span>
+                 <span class="n">y_lower</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                 <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">alpha</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;% PI&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Food expenditure&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture9_advanced_ml_techniques_81_0.png" src="../_images/lecture9_advanced_ml_techniques_81_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classification-metrics">
+<h2>4.2 Classification Metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Until now, we’ve only used error/accuracy to measure the performance of our models</p></li>
+<li><p>However, this is not the whole story</p></li>
+<li><p>It’s helpful to look at the distribution of our predictions in a <strong>confusion matrix</strong></p></li>
+<li><p>This is a table of our predictions, available in the sklearn function <code class="docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code></p></li>
+<li><p>(this function was only introduced in v 0.22.1, you may need to update: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">scikit-learn=0.22.1</span></code>)</p></li>
+<li><p>I’ll plot the confusion matrix for our rainfall prediction model from earlier</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_drop</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test_drop</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGn&#39;</span><span class="p">,</span> <span class="n">values_format</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture9_advanced_ml_techniques_85_0.png" src="../_images/lecture9_advanced_ml_techniques_85_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>The confusion matrix helps us see where our model does well and where it does poorly</p></li>
+<li><p>We can see that our model predicts “No” correctly 95% of the time</p></li>
+<li><p>But we also see that our model predicts “No” when it does in fact rain, 48% of the time…</p></li>
+<li><p>Let’s introduce two new metrics:</p>
+<ul>
+<li><p>$Precision=\frac{TP}{TP+FP}$ (what proportion of positive predictions was actually correct?)</p></li>
+<li><p>$Recall=\frac{TP}{TP+FN}$ (what proportion of true positives was identified correctly?)</p></li>
+</ul>
+</li>
+<li><p>For the above confusion matrix:</p>
+<ul>
+<li><p>$Precision=\frac{1443}{1443+544}=0.73$</p></li>
+<li><p>$Recall=\frac{1443}{1443+1254}=0.54$</p></li>
+</ul>
+</li>
+<li><p>Read more about these metrics <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall">here</a></p></li>
+<li><p>There’s generally a trade-off between precision and recall: improving precision typically reduces recall and vice versa</p></li>
+<li><p>We typically use two other popular measures of performance known as <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">ROC and AUC</a> to find the best balance (but outside the scope of this course)</p></li>
+<li><p>What you need to know is that “error” is not always the best metric! Looking at the confusion matrix above, we may decide to change our model so that we get more <strong>True Positives</strong>, we have two options here</p></li>
+</ul>
+<div class="section" id="change-the-classification-threshold">
+<h3>Change the classification threshold!<a class="headerlink" href="#change-the-classification-threshold" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>We can use the probabilistic predictions of our random forest classifier to make our own predictions based on some threshold</p></li>
+<li><p>We can get more <em>true positive</em> by decreasing our threshold (i.e., classifying more observations as positive)</p></li>
+<li><p>But that means we also get more <em>false positives</em>)</p></li>
+<li><p>This requires some manual coding…</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">predicted_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test_drop</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Yes&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="s1">&#39;No&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span> <span class="n">y_predicted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[8080, 1607],
+       [ 644, 2053]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>In this case, my recall will go up, but my precision will go down</p>
+<ul>
+<li><p>$Precision=\frac{2068}{2068+1608}=0.56$</p></li>
+<li><p>$Recall=\frac{2068}{2068+629}=0.77$</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="weight-classes-differently">
+<h3>Weight classes differently!<a class="headerlink" href="#weight-classes-differently" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Yes&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">})</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_drop</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test_drop</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGn&#39;</span><span class="p">,</span> <span class="n">values_format</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture9_advanced_ml_techniques_91_0.png" src="../_images/lecture9_advanced_ml_techniques_91_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="regression-metrics">
+<h2>4.3 Regression Metrics<a class="headerlink" href="#regression-metrics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We only looked at one regression metric during the course: $R^2$</p></li>
+<li><p>But there are <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics">many more</a></p></li>
+<li><p>Some other common ones are:</p>
+<ul>
+<li><p>Mean absolute error (MAE) - good if you want error to add linearly, so an error of 10 is twice as bad as an error of 5</p></li>
+<li><p>Mean squared error (MSE) - good if you want to penalise outliers heavily, so an error of 10 is 4x as bad as an error of 5</p></li>
+<li><p>Root-mean squared error (RMSE) - like MSE but on the same scale as the response</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="remaining-time-is-to-work-on-your-final-project-a-id-5-a">
+<h1>5. Remaining time is to work on your final project! <a id=5></a><a class="headerlink" href="#remaining-time-is-to-work-on-your-final-project-a-id-5-a" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Hayley Boyce<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

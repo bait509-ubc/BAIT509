@@ -1,0 +1,21 @@
+- file: intro
+
+- part: Things You Should Know
+  chapters:
+  - file: things_to_know/who
+  - file: things_to_know/how
+  - file: things_to_know/what
+
+- part: Lectures
+  chapters:
+    - file: lectures/lecture1
+    - file: markdown
+
+- part: Assignments
+  chapters:
+    - file: markdown
+    - file: notebooks
+
+- part: References
+  chapters:
+    - file: attribution
