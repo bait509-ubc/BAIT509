@@ -26,12 +26,11 @@ By the end of the course, students are expected to be able to:
 
 
 
-<<<<<<< HEAD
-=======
+
 | Name         | Position   | GitHub Handle |
 | :---:        | :---:      | :---:         |
 | [Hayley Boyce](www.hayleyfboyce.com) | Instructor | @hfboyce |
->>>>>>> 162f66f4892a0b0a1c383f2caae6418689b7f1b9
+
 
 ## Class Meetings
 
