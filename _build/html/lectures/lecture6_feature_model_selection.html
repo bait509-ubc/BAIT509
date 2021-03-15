@@ -1,0 +1,1681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAIT 509: Business Applications of Machine Learning &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/bait_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Hayley Boyce
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture6_feature_model_selection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture6_feature_model_selection.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture6_feature_model_selection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   BAIT 509: Business Applications of Machine Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-6-model-and-feature-selection">
+     Lecture 6 - Model and feature selection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-outline">
+   Lecture outline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap-5-mins-a-id-0-a">
+   0. Recap  (5 mins)
+   <a id="0">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives-a-id-1-a">
+   1. Lecture learning objectives
+   <a id="1">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-and-model-selection-5-mins-a-id-2-a">
+   2. Feature and model selection (5 mins)
+   <a id="2">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reducing-irreducible-error">
+     Reducing irreducible error
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reducing-reducible-error-bias-variance">
+     Reducing reducible error (bias &amp; variance)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection-30-mins-a-id-3-a">
+   3. Feature selection (30 mins)
+   <a id="3">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#univariate-feature-selection">
+     3.1 Univariate feature selection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#categorical-data">
+       3.1.1 Categorical data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numeric-data">
+       3.1.2 Numeric data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wrapper-feature-selection">
+     3.2 Wrapper feature selection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exhaustive-wrapper-selection">
+       3.2.1 Exhaustive wrapper selection
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#greedy-wrapper-selection">
+       3.2.2 Greedy wrapper selection
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#forward-selection">
+         1. Forward Selection
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#backward-selection">
+         2. Backward Selection
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#stepwise-selection">
+         3. Stepwise Selection
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-feature-selection-topics">
+     3.3 Other feature selection topics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#break-10-mins-a-id-break-a">
+   ——– Break (10 mins) ——–
+   <a id="break">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-selection-10-mins-a-id-4-a">
+   4. Model Selection (10 mins)
+   <a id="4">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantitative-choice">
+     Quantitative choice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qualitative-choice">
+     Qualitative choice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretability-other-contraints">
+     Interpretability/other contraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-hyperparameter-optimization-20-mins-a-id-5-a">
+   5. Advanced hyperparameter optimization (20 mins)
+   <a id="5">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sklearn-s-gridsearchcv">
+     5.1 sklearn’s GridSearchCV
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sklearn-s-randomizedsearchcv">
+     5.2 sklearn’s RandomizedSearchCV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-exercise-feature-and-model-selection-20-mins-a-id-6-a">
+   6. Class Exercise: feature and model selection (20 mins)
+   <a id="6">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-questions-to-ponder-a-id-7-a">
+   7. Summary questions to ponder
+   <a id="7">
+   </a>
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bait-509-business-applications-of-machine-learning">
+<h1>BAIT 509: Business Applications of Machine Learning<a class="headerlink" href="#bait-509-business-applications-of-machine-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lecture-6-model-and-feature-selection">
+<h2>Lecture 6 - Model and feature selection<a class="headerlink" href="#lecture-6-model-and-feature-selection" title="Permalink to this headline">¶</a></h2>
+<p>Tomas Beuzen, 22th January 2020</p>
+</div>
+</div>
+<div class="section" id="lecture-outline">
+<h1>Lecture outline<a class="headerlink" href="#lecture-outline" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="#0">0. Recap (5 mins)</a></p></li>
+<li><p><a class="reference external" href="#1">1. Lecture learning objectives</a></p></li>
+<li><p><a class="reference external" href="#2">2. Feature and model selection (5 mins)</a></p></li>
+<li><p><a class="reference external" href="#3">3. Feature selection (30 mins)</a></p></li>
+<li><p><a class="reference external" href="#break">— Break — (10 mins)</a></p></li>
+<li><p><a class="reference external" href="#4">4. Model Selection (10 mins)</a></p></li>
+<li><p><a class="reference external" href="#5">5. Advanced hyperparameter optimization (20 mins)</a></p></li>
+<li><p><a class="reference external" href="#6">6. Class Exercise: feature and model selection (20 mins)</a></p></li>
+<li><p><a class="reference external" href="#7">7. Summary questions to ponder</a></p></li>
+</ul>
+</div>
+<div class="section" id="announcements">
+<h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Assignment 2 has been released and will be due next <strong>Monday (27th Jan) at 11:59pm</strong>.</p></li>
+</ul>
+</div>
+<div class="section" id="recap-5-mins-a-id-0-a">
+<h1>0. Recap  (5 mins) <a id=0></a><a class="headerlink" href="#recap-5-mins-a-id-0-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Logistic regression</p></li>
+<li><p>Naive Bayes</p></li>
+</ul>
+</div>
+<div class="section" id="lecture-learning-objectives-a-id-1-a">
+<h1>1. Lecture learning objectives <a id=1></a><a class="headerlink" href="#lecture-learning-objectives-a-id-1-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Feature selection: how to select features that are important for your models</p></li>
+<li><p>Model selection: how to choose the best model for your problem</p></li>
+</ul>
+</div>
+<div class="section" id="feature-and-model-selection-5-mins-a-id-2-a">
+<h1>2. Feature and model selection (5 mins) <a id=2></a><a class="headerlink" href="#feature-and-model-selection-5-mins-a-id-2-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>In supervised learning, we generally seek a model that gives us the lowest generalization error possible. This involves two aspects:</p>
+<ol class="simple">
+<li><p>Reducing the irreducible error</p></li>
+<li><p>Reducing the reducible error</p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="reducing-irreducible-error">
+<h2>Reducing irreducible error<a class="headerlink" href="#reducing-irreducible-error" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Recall that irreducible error is related to our <strong>data</strong></p></li>
+<li><p>We can’t measure everything about a system, and all those things we don’t measure contribute to irreducible error</p></li>
+<li><p>To reduce irreducible error we can use <strong>feature selection</strong></p></li>
+<li><p>This is about finding and choosing features (data) that gives us as much information about the response as we can get</p></li>
+<li><p>Recall our example of predicting a persons height</p></li>
+</ul>
+<p>Predicting height with no other information:
+<a class="reference internal" href="../_images/height.png"><img alt="../_images/height.png" src="../_images/height.png" style="width: 400px;" /></a></p>
+<p>Predicting height knowing that sex=female:
+<a class="reference internal" href="../_images/height_female.png"><img alt="../_images/height_female.png" src="../_images/height_female.png" style="width: 400px;" /></a></p>
+<p>Predicting height knowing that sex=female &amp; weight=65kg:
+<a class="reference internal" href="../_images/height_female_65.png"><img alt="../_images/height_female_65.png" src="../_images/height_female_65.png" style="width: 400px;" /></a></p>
+</div>
+<div class="section" id="reducing-reducible-error-bias-variance">
+<h2>Reducing reducible error (bias &amp; variance)<a class="headerlink" href="#reducing-reducible-error-bias-variance" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Recall that reducible error is related to the <strong>model</strong> we are using to relate our features and response</p></li>
+<li><p>We want to extract the maximum amount of information that the features hold about the response</p></li>
+<li><p>We can do this by <strong>model selection</strong> (choosing a good model) and <strong>hyperparameter optimization (tuning)</strong></p></li>
+<li><p>Recall that reducible error can be decomposed into <strong>bias</strong> and <strong>variance</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/tradeoff.png"><img alt="../_images/tradeoff.png" src="../_images/tradeoff.png" style="width: 500px;" /></a>
+<p><a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">Source: dziganto.github.io</a></p>
+</div>
+</div>
+<div class="section" id="feature-selection-30-mins-a-id-3-a">
+<h1>3. Feature selection (30 mins) <a id=3></a><a class="headerlink" href="#feature-selection-30-mins-a-id-3-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Feature selection is about choosing the best set of features for modelling our response</p></li>
+<li><p>You can think of feature selection as a hyperparameter</p></li>
+<li><p><strong>Importantly</strong> feature selection should only be done using the training data! (just like hyperparameter tuning)</p></li>
+<li><p>Unfortunately, we can’t just throw lots and lots of features at the problem</p></li>
+<li><p>Recall that, when tuning a supervised learning method (such as choosing <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> in a decision tree), we can make the training error arbitrarily small (even 0) – but this results in overfitting the training data. The same thing generally applies to the number of features you add - the more features, the more likely you are to overfit.</p></li>
+<li><p>Furthermore, more features:</p>
+<ul>
+<li><p>add computational cost</p></li>
+<li><p>can disrupt the interpretability of your model,</p></li>
+<li><p>require you to collect more data to actually use your model</p></li>
+</ul>
+</li>
+<li><p>So we generally want to select as few features as possible whilst maximising our model performance (<a class="reference external" href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam’s razor</a>)</p></li>
+<li><p>There are two main kinds of feature selection we’ll focus on here:</p>
+<ol class="simple">
+<li><p>Univariate feature selection</p></li>
+<li><p>Wrapper feature selection</p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="univariate-feature-selection">
+<h2>3.1 Univariate feature selection<a class="headerlink" href="#univariate-feature-selection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="categorical-data">
+<h3>3.1.1 Categorical data<a class="headerlink" href="#categorical-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Univariate feature selection is the simplest feature selection method</p></li>
+<li><p>It works by selecting features based on a univariate statistical metric/test</p></li>
+<li><p>For example:</p>
+<ul>
+<li><p>Pearson correlation ($r^2$): numeric data</p></li>
+<li><p>Chi-squared ($\chi^2$): categorical data</p></li>
+<li><p>Mutual information: mixed data</p></li>
+<li><p>etc</p></li>
+</ul>
+</li>
+<li><p>The sklearn function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html"><code class="docutils literal notranslate"><span class="pre">SelectKBest</span></code></a> is provided for simple univariate feature selection</p></li>
+<li><p>It allows us to select the <code class="docutils literal notranslate"><span class="pre">k</span></code> “best” features based on a particular metric</p></li>
+<li><p>To demonstrate the method, we will revisit the twitter dataset from last lecture of airline tweets and their sentiments (positive or negative)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import required packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">chi2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Load in the twitter data</p></li>
+<li><p>Split into train/test sets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/twitter-airline-sentiment.csv&#39;</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tweet&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                    <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>I’m going to use Naive Bayes to model my dataset</p></li>
+<li><p>There’s no hyperparameter tuning here, but I will be making a decision about which features to keep in my model, so I can’t use my test data to help me make those decision</p></li>
+<li><p>Instead I need to use cross-validation to get an estimate of model performance</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">cv_score</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Mean error rate = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cv_score</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Mean error rate = 0.11
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>So I get a pretty low error-rate which is great</p></li>
+<li><p>But now I’m going to do some feature selection using <code class="docutils literal notranslate"><span class="pre">SelectKBest</span></code></p></li>
+<li><p>This function works similar to the preprocessing functions we’ve seen previously</p></li>
+<li><p>It has a <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">.transform()</span></code></p></li>
+<li><p>There are just 2 arguments:</p>
+<ol class="simple">
+<li><p>The scoring function (chi2 for classification)</p></li>
+<li><p>The number of features to keep</p></li>
+</ol>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SelectKBest(k=20, score_func=&lt;function chi2 at 0x12a7618b0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Before we transform our data, let’s remind ourselves how many features there were originally</p></li>
+<li><p>There were 12,364 features. That’s quite a lot!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9232, 12364)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now let’s transform our data and pick only the best 20 features</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_new</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_new</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9232, 20)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>And now use this subset of data to train a new model and do cross-validation again</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_score</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Mean error rate = </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cv_score</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Mean error rate = 0.11
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We have very similar error but by using a much simpler model, only 20 features versus 12,364!!!</p></li>
+<li><p>Let’s have a look at what those features are to see if they make sense</p></li>
+<li><p>The best features are revealed by the <code class="docutils literal notranslate"><span class="pre">get_support</span></code> method of our selector, and their scores are in the <code class="docutils literal notranslate"><span class="pre">selector.scores_</span></code> attribute</p></li>
+<li><p>It’s a little convoluted to access them, so take your time to understand the code below, which extracts this information and stores it in a nice neat dataframe</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_features</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">get_support</span><span class="p">(</span><span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())[</span><span class="n">best_features</span><span class="p">],</span> 
+              <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">selector</span><span class="o">.</span><span class="n">scores_</span><span class="p">[</span><span class="n">best_features</span><span class="p">]})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>16</th>
+      <td>thank</td>
+      <td>1044.243959</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>thanks</td>
+      <td>938.900996</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>great</td>
+      <td>451.583250</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>love</td>
+      <td>230.509507</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>awesome</td>
+      <td>223.013462</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>jetblue</td>
+      <td>183.832946</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>amazing</td>
+      <td>182.531895</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>flight</td>
+      <td>136.000069</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>best</td>
+      <td>135.021187</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>usairways</td>
+      <td>131.826308</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>southwestair</td>
+      <td>124.393423</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>hours</td>
+      <td>122.566715</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cancelled</td>
+      <td>118.922146</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>hold</td>
+      <td>115.491527</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>virginamerica</td>
+      <td>102.930274</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>delayed</td>
+      <td>79.992183</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>rock</td>
+      <td>77.444498</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>appreciate</td>
+      <td>74.970037</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>good</td>
+      <td>70.778108</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>kudos</td>
+      <td>68.375200</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="numeric-data">
+<h3>3.1.2 Numeric data<a class="headerlink" href="#numeric-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>With regression problems, feature selection is often based on Pearson correlation</p></li>
+<li><p>This can be done in sklearn using the <code class="docutils literal notranslate"><span class="pre">f_regression</span></code> functions</p></li>
+<li><p>But often people will just do it manually</p></li>
+<li><p>I’m going to read in some data describing diabetes patients (the data is available on scikit-learn <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html">here</a>)</p></li>
+<li><p>It contains 10 numeric features of patient physiology and 1 target which is a continuous measure of disease progression</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/diabetes.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+      <th>disease</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.038076</td>
+      <td>0.050680</td>
+      <td>0.061696</td>
+      <td>0.021872</td>
+      <td>-0.044223</td>
+      <td>-0.034821</td>
+      <td>-0.043401</td>
+      <td>-0.002592</td>
+      <td>0.019908</td>
+      <td>-0.017646</td>
+      <td>151</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.001882</td>
+      <td>-0.044642</td>
+      <td>-0.051474</td>
+      <td>-0.026328</td>
+      <td>-0.008449</td>
+      <td>-0.019163</td>
+      <td>0.074412</td>
+      <td>-0.039493</td>
+      <td>-0.068330</td>
+      <td>-0.092204</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.085299</td>
+      <td>0.050680</td>
+      <td>0.044451</td>
+      <td>-0.005671</td>
+      <td>-0.045599</td>
+      <td>-0.034194</td>
+      <td>-0.032356</td>
+      <td>-0.002592</td>
+      <td>0.002864</td>
+      <td>-0.025930</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.089063</td>
+      <td>-0.044642</td>
+      <td>-0.011595</td>
+      <td>-0.036656</td>
+      <td>0.012191</td>
+      <td>0.024991</td>
+      <td>-0.036038</td>
+      <td>0.034309</td>
+      <td>0.022692</td>
+      <td>-0.009362</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.005383</td>
+      <td>-0.044642</td>
+      <td>-0.036385</td>
+      <td>0.021872</td>
+      <td>0.003935</td>
+      <td>0.015596</td>
+      <td>0.008142</td>
+      <td>-0.002592</td>
+      <td>-0.031991</td>
+      <td>-0.046641</td>
+      <td>135</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>We can use the built-in Pandas function <code class="docutils literal notranslate"><span class="pre">.corr()</span></code> to calculate Pearson correlation</p></li>
+<li><p>We are interested in which features have the highest/lowest correlation with the target</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+      <th>disease</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>age</th>
+      <td>1.000000</td>
+      <td>0.173737</td>
+      <td>0.185085</td>
+      <td>0.335427</td>
+      <td>0.260061</td>
+      <td>0.219243</td>
+      <td>-0.075181</td>
+      <td>0.203841</td>
+      <td>0.270777</td>
+      <td>0.301731</td>
+      <td>0.187889</td>
+    </tr>
+    <tr>
+      <th>sex</th>
+      <td>0.173737</td>
+      <td>1.000000</td>
+      <td>0.088161</td>
+      <td>0.241013</td>
+      <td>0.035277</td>
+      <td>0.142637</td>
+      <td>-0.379090</td>
+      <td>0.332115</td>
+      <td>0.149918</td>
+      <td>0.208133</td>
+      <td>0.043062</td>
+    </tr>
+    <tr>
+      <th>bmi</th>
+      <td>0.185085</td>
+      <td>0.088161</td>
+      <td>1.000000</td>
+      <td>0.395415</td>
+      <td>0.249777</td>
+      <td>0.261170</td>
+      <td>-0.366811</td>
+      <td>0.413807</td>
+      <td>0.446159</td>
+      <td>0.388680</td>
+      <td>0.586450</td>
+    </tr>
+    <tr>
+      <th>bp</th>
+      <td>0.335427</td>
+      <td>0.241013</td>
+      <td>0.395415</td>
+      <td>1.000000</td>
+      <td>0.242470</td>
+      <td>0.185558</td>
+      <td>-0.178761</td>
+      <td>0.257653</td>
+      <td>0.393478</td>
+      <td>0.390429</td>
+      <td>0.441484</td>
+    </tr>
+    <tr>
+      <th>s1</th>
+      <td>0.260061</td>
+      <td>0.035277</td>
+      <td>0.249777</td>
+      <td>0.242470</td>
+      <td>1.000000</td>
+      <td>0.896663</td>
+      <td>0.051519</td>
+      <td>0.542207</td>
+      <td>0.515501</td>
+      <td>0.325717</td>
+      <td>0.212022</td>
+    </tr>
+    <tr>
+      <th>s2</th>
+      <td>0.219243</td>
+      <td>0.142637</td>
+      <td>0.261170</td>
+      <td>0.185558</td>
+      <td>0.896663</td>
+      <td>1.000000</td>
+      <td>-0.196455</td>
+      <td>0.659817</td>
+      <td>0.318353</td>
+      <td>0.290600</td>
+      <td>0.174054</td>
+    </tr>
+    <tr>
+      <th>s3</th>
+      <td>-0.075181</td>
+      <td>-0.379090</td>
+      <td>-0.366811</td>
+      <td>-0.178761</td>
+      <td>0.051519</td>
+      <td>-0.196455</td>
+      <td>1.000000</td>
+      <td>-0.738493</td>
+      <td>-0.398577</td>
+      <td>-0.273697</td>
+      <td>-0.394789</td>
+    </tr>
+    <tr>
+      <th>s4</th>
+      <td>0.203841</td>
+      <td>0.332115</td>
+      <td>0.413807</td>
+      <td>0.257653</td>
+      <td>0.542207</td>
+      <td>0.659817</td>
+      <td>-0.738493</td>
+      <td>1.000000</td>
+      <td>0.617857</td>
+      <td>0.417212</td>
+      <td>0.430453</td>
+    </tr>
+    <tr>
+      <th>s5</th>
+      <td>0.270777</td>
+      <td>0.149918</td>
+      <td>0.446159</td>
+      <td>0.393478</td>
+      <td>0.515501</td>
+      <td>0.318353</td>
+      <td>-0.398577</td>
+      <td>0.617857</td>
+      <td>1.000000</td>
+      <td>0.464670</td>
+      <td>0.565883</td>
+    </tr>
+    <tr>
+      <th>s6</th>
+      <td>0.301731</td>
+      <td>0.208133</td>
+      <td>0.388680</td>
+      <td>0.390429</td>
+      <td>0.325717</td>
+      <td>0.290600</td>
+      <td>-0.273697</td>
+      <td>0.417212</td>
+      <td>0.464670</td>
+      <td>1.000000</td>
+      <td>0.382483</td>
+    </tr>
+    <tr>
+      <th>disease</th>
+      <td>0.187889</td>
+      <td>0.043062</td>
+      <td>0.586450</td>
+      <td>0.441484</td>
+      <td>0.212022</td>
+      <td>0.174054</td>
+      <td>-0.394789</td>
+      <td>0.430453</td>
+      <td>0.565883</td>
+      <td>0.382483</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>It’s kind of difficult to look at all those numbers</p></li>
+<li><p>A more visually-friendly way of doing this is using the plotting package seaborn</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 10.0)
+</pre></div>
+</div>
+<img alt="../_images/lecture6_feature_model_selection_39_1.png" src="../_images/lecture6_feature_model_selection_39_1.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Things to look for:</p>
+<ul>
+<li><p>Features with low correlation with the response (these could be dropped)</p></li>
+<li><p>Features with high correlation with the response (these should be kept and may be important)</p></li>
+<li><p>Features with high correlation with each other (could drop one of these as they are contributing redundant information to the response)</p></li>
+</ul>
+</li>
+<li><p>For the plot above I might:</p>
+<ul>
+<li><p>drop the <code class="docutils literal notranslate"><span class="pre">sex</span></code> feature (it has ~0 correlation)</p></li>
+<li><p>drop <code class="docutils literal notranslate"><span class="pre">s2</span></code> (it has high correlation with <code class="docutils literal notranslate"><span class="pre">s1</span></code>)</p></li>
+<li><p>drop <code class="docutils literal notranslate"><span class="pre">s4</span></code> because it is highly correlated with <code class="docutils literal notranslate"><span class="pre">s1</span></code>, <code class="docutils literal notranslate"><span class="pre">s3</span></code>, and <code class="docutils literal notranslate"><span class="pre">s5</span></code></p></li>
+</ul>
+</li>
+<li><p>Often people will try dropping/keeping different features in the training data set and see how it affects the cross-validation score</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="wrapper-feature-selection">
+<h2>3.2 Wrapper feature selection<a class="headerlink" href="#wrapper-feature-selection" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Wrapper feature selection uses the model itself to evaluate the best subset of features</p></li>
+<li><p>It is more computationally expensive than univariate selection, but can give better results because we are using the model itself to help us pick features</p></li>
+<li><p>There are two main kinds of wrapper selection:</p>
+<ol class="simple">
+<li><p>Exhaustive</p></li>
+<li><p>Greedy</p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="exhaustive-wrapper-selection">
+<h3>3.2.1 Exhaustive wrapper selection<a class="headerlink" href="#exhaustive-wrapper-selection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>This involves testing every single combination of input features</p></li>
+<li><p>Guaranteed to give you the global optimum solution for your setup, but computational expensive</p></li>
+<li><p>If we have $d$ features, there are approximately $2^d$ subsets of those features to consider/models to build</p></li>
+<li><p>For 10 features, that’s 1000 models. For 20 features, that’s over 1,000,000 models</p></li>
+<li><p>Here’s how the number of models scales with the numer of features:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/combinations.png"><img alt="../_images/combinations.png" src="../_images/combinations.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>This functionality is not even built into sklearn at the moment because it’s rarely used</p></li>
+<li><p>However, there is a package called <a class="reference external" href="http://rasbt.github.io/mlxtend/">mlxtend</a> which facilitates wrapper selection</p></li>
+</ul>
+</div>
+<div class="section" id="greedy-wrapper-selection">
+<h3>3.2.2 Greedy wrapper selection<a class="headerlink" href="#greedy-wrapper-selection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Instead of fitting all models, we can take a “greedy approach”. This may not result in the optimal model, but the hope is that we get close. One of three methods are typically used:</p></li>
+</ul>
+<div class="section" id="forward-selection">
+<h4>1. Forward Selection<a class="headerlink" href="#forward-selection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The idea here is to start with the null model: no features.</p></li>
+<li><p>Then, add one predictor at a time, each time choosing the best one in terms of error reduction.</p></li>
+<li><p>Sometimes, a hypothesis test (e.g., F-test) is used to determine whether the addition of the predictor is significant enough.</p></li>
+<li><p>Usually we define a threshold that we want the error to decrease by if we add a feature. If we can’t exceed this threshold by adding any other feature, we stop.</p></li>
+</ul>
+</div>
+<div class="section" id="backward-selection">
+<h4>2. Backward Selection<a class="headerlink" href="#backward-selection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The idea here is opposite to <strong>Forward Selection</strong>, we start with the full model: all features.</p></li>
+<li><p>Then, we step-wise remove feature based on their effect on error, or based on a hypothesis test.</p></li>
+<li><p>Once again, we usually define a threshold to help us stop the algorithm.</p></li>
+</ul>
+</div>
+<div class="section" id="stepwise-selection">
+<h4>3. Stepwise Selection<a class="headerlink" href="#stepwise-selection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>This is a combination of forward and backward selection.</p></li>
+<li><p>At each step we consider both adding <strong>or</strong> removing features.</p></li>
+</ul>
+<ul class="simple">
+<li><p>There is a <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/pull/8684">pull request on GitHub</a> to make this functionality available in sklearn but currently it is not</p></li>
+<li><p>They are included in the <a class="reference external" href="http://rasbt.github.io/mlxtend/">mlxtend</a> package though</p></li>
+<li><p>sklearn does have something similar called <a class="reference external" href="https://scikit-learn.org/stable/modules/feature_selection.html#recursive-feature-elimination">Recursive Feature Selection</a>. This is similar to the above, except that instead of choosing features based on model error, it chooses features based on their <code class="docutils literal notranslate"><span class="pre">feature</span> <span class="pre">importance</span></code>. As a result, it can only be used with models that have a <code class="docutils literal notranslate"><span class="pre">feature</span> <span class="pre">importance</span></code> attribute, e.g., Decision trees, Logistic regression, Naive Bayes, Random Forest, etc.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="other-feature-selection-topics">
+<h2>3.3 Other feature selection topics<a class="headerlink" href="#other-feature-selection-topics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Regularization</strong> = adding a penalty into your optimization function which can reduce/”shrink” the value of unimportant features to 0 (e.g., <a class="reference external" href="https://www.youtube.com/watch?v=Q81RR3yKn30">Ridge regression</a>, <a class="reference external" href="https://www.youtube.com/watch?v=NGf0voTMlcs">Lasso regression</a>).</p></li>
+<li><p><strong>Dimensionality reduction</strong> = try to represent information in multiple features using fewer contrived features (e.g., <a class="reference external" href="https://www.youtube.com/watch?v=FgakZw6K1QQ">Principal Component Analysis</a>)</p></li>
+<li><p><strong>Feature engineering</strong> = creating new features based on expert knowledge or systematic analysis, <a class="reference external" href="https://www.youtube.com/watch?v=d12ra3b_M-0">this video</a> does a decent job at explaining it (it’s specifically in regards to TensorFlow, another ML library, but the concepts are the same)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="break-10-mins-a-id-break-a">
+<h1>——– Break (10 mins) ——– <a id="break"></a><a class="headerlink" href="#break-10-mins-a-id-break-a" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="model-selection-10-mins-a-id-4-a">
+<h1>4. Model Selection (10 mins) <a id=4></a><a class="headerlink" href="#model-selection-10-mins-a-id-4-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The question here is, what supervised learning method should you use? Usually we develop multiple different models and then need to choose one. There are a few things you should consider.</p></li>
+</ul>
+<div class="section" id="quantitative-choice">
+<h2>Quantitative choice<a class="headerlink" href="#quantitative-choice" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This is about choosing the best model for your problem</p></li>
+<li><p>Suppose you’ve gone ahead and fit your best decision tree model, kNN model, logistic regression model, etc. Which do you choose?</p></li>
+<li><p>You should have estimated the generalization error for each model (for example, using cross-validation) – so choose the one that gives the lowest error.</p></li>
+<li><p>You might find that some models have roughly the same validation error. In this case, you have a few options:</p>
+<ol class="simple">
+<li><p>Choose a model based on other criteria (discussed below)</p></li>
+<li><p>Choose the simplest model (least risk of being overfit)</p></li>
+<li><p>Use all the model to make predictions of new data (i.e., an ensemble - more to come in a later lecture)</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="qualitative-choice">
+<h2>Qualitative choice<a class="headerlink" href="#qualitative-choice" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This could also be called “expert choice”</p></li>
+<li><p>It’s about adding assumptions to the modelling process based on your expert opinion</p></li>
+<li><p>Say that, after exploring the data you think that your response looks linear in your features. If so, it may be reasonable to assume linearity, and fit a linear regression model.</p></li>
+</ul>
+</div>
+<div class="section" id="interpretability-other-contraints">
+<h2>Interpretability/other contraints<a class="headerlink" href="#interpretability-other-contraints" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Sometimes your choice of model is based on considerations other than just error</p></li>
+<li><p>For example, you (or your client) might want an interpretable model, like a Decision Tree or Logistic Regression</p></li>
+<li><p>You might want a model that predicts in real-time, in which case you need something fast and light-weight</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="advanced-hyperparameter-optimization-20-mins-a-id-5-a">
+<h1>5. Advanced hyperparameter optimization (20 mins) <a id="5"></a><a class="headerlink" href="#advanced-hyperparameter-optimization-20-mins-a-id-5-a" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Hyperparameter optimization is also about reducing the reducible error</p></li>
+<li><p>It is to do with how well our model generalizes our data</p></li>
+<li><p>We’ve already done quite a bit of hyperparameter optimization manually, by changing the values of a hyperparameter, doing cross-validation, checking the error, and repeating</p></li>
+<li><p>But I now want to introduce you to a more efficient way to tune one or more hyperparameters</p></li>
+</ul>
+<div class="section" id="sklearn-s-gridsearchcv">
+<h2>5.1 sklearn’s GridSearchCV<a class="headerlink" href="#sklearn-s-gridsearchcv" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>sklearn provides the function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">GridSearchCV</a> to help optimise model hyperparameters</p></li>
+<li><p>This method does exactly the process described above, but all wrapped up in one nice convenient function</p></li>
+<li><p>It’s best illustrated by example</p></li>
+<li><p>We will use our good-old cities dataset to demonstrate <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code></p></li>
+<li><p>Let’s load up the data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/cities_USA.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;vote&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;vote&#39;</span><span class="p">]]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                    <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let’s import the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> library along with a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The first part of a <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> workflow is to define the hyperparameters you want to test</p></li>
+<li><p>You do this in a dictionary which we will call “hyperparams”</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyperparams</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We then treat the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object just like any other model in sklearn</p></li>
+<li><p>Except that we pass in as arguments, our model and our hyperparameters</p></li>
+<li><p>I’m also specifying here <code class="docutils literal notranslate"><span class="pre">cv=10</span></code> to ensure my grid search tests each hyperparameter using 10-fold cross-validation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">model_grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can now fit our model using our training data</p></li>
+<li><p>In the fit stage, our grid search is testing every single hyperparameter combination using cross-validation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=10, estimator=DecisionTreeClassifier(),
+             param_grid={&#39;max_depth&#39;: [1, 3, 5, 10]})
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can now access the results of our grid search by exploring its attributes</p></li>
+<li><p>The best hyperparameter combination can be found in the <code class="docutils literal notranslate"><span class="pre">best_params_</span></code> attribute</p></li>
+<li><p>The best cross-validation score (associated with the best hyperparameter) can be accessed using <code class="docutils literal notranslate"><span class="pre">best_score_</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best hyperparameter: </span><span class="si">{</span><span class="n">model_grid</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best score: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model_grid</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best hyperparameter: {&#39;max_depth&#39;: 10}
+Best score: 0.11
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If we use our <code class="docutils literal notranslate"><span class="pre">model_grid</span></code> to get a score on our test data, it will automatically use the best hyperparameter combination</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data: </span><span class="si">{</span><span class="mi">1</span><span class="o">-</span> <span class="n">model_grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error on test data: 0.12
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Of course, the real utility here is that we can test multiple hyperparameters at the same time like in the code below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyperparams</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+               <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">model_grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model_grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best hyperparameters: </span><span class="si">{</span><span class="n">model_grid</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best score: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model_grid</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best hyperparameters: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 10, &#39;min_samples_leaf&#39;: 2}
+Best score: 0.09
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_search.py:847: FutureWarning: The parameter &#39;iid&#39; is deprecated in 0.22 and will be removed in 0.24.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model_grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error on test data: 0.04
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sklearn-s-randomizedsearchcv">
+<h2>5.2 sklearn’s RandomizedSearchCV<a class="headerlink" href="#sklearn-s-randomizedsearchcv" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The problem with GridSearchCV is that, if we have many hyperparameters to tune, it can be computationally expensive</p></li>
+<li><p>For example, if we want to tune 3 different hyperparameters, and we are trying 10 different values of each one then we have:</p>
+<ul>
+<li><p>10^3 possible combinations of hyperparameters</p></li>
+<li><p>We usually evaluate each combination using 10-fold cross-validation</p></li>
+<li><p>Which means that we are calling <code class="docutils literal notranslate"><span class="pre">.fit()/.predict()</span></code> 10^4 times</p></li>
+</ul>
+</li>
+<li><p>sklearn provides the function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">RandomizedSearchCV</a> as an alternative to GridSearchCV</p></li>
+<li><p>In contrast to GridSearchCV, not all hyperparameter combinations are evaluated</p></li>
+<li><p>Instead, only a fixed number of hyperparameter combinations is randomly sampled from the set provided</p></li>
+<li><p>This is commonly used in practice for hyperparam optimization</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-exercise-feature-and-model-selection-20-mins-a-id-6-a">
+<h1>6. Class Exercise: feature and model selection (20 mins) <a id="6"></a><a class="headerlink" href="#class-exercise-feature-and-model-selection-20-mins-a-id-6-a" title="Permalink to this headline">¶</a></h1>
+<p>In this class exercise we will practice doing feature and model selection on the airline tweets dataset we’ve seen a few times already.</p>
+<p>Your tasks:</p>
+<ol class="simple">
+<li><p>Load the data and vectorize it using the <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> function.</p></li>
+<li><p>Split the data into 2 parts: 80% training, 20% testing.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">SelectKBest</span></code> function with a <code class="docutils literal notranslate"><span class="pre">chi2</span></code> metric to select the best <strong>30</strong> features from the dataset;</p></li>
+<li><p>Now, using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> for parameter tuning and 5-fold cross-validation, develop four optimum models:</p>
+<ol class="simple">
+<li><p>KNNClassifier</p></li>
+<li><p>DecisionTreeClassifier</p></li>
+<li><p>LogisitcRegression</p></li>
+<li><p>MultinomialNaiveBayes</p></li>
+</ol>
+</li>
+<li><p>Select your best model and test it on the your test data.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="kn">import</span> <span class="n">DataConversionWarning</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">DataConversionWarning</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">VotingClassifier</span>
+
+<span class="c1"># Question 1 and 2</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/twitter-airline-sentiment.csv&#39;</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tweet&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span>
+                                                    <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Question 3</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">X_train_30</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test_30</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Question 4</span>
+<span class="c1"># I will first define a dictionary of the different models I want to test</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;KNN&#39;</span><span class="p">:</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">KNeighborsClassifier</span><span class="p">(),</span>
+                        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span>
+                        <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="s1">&#39;DT&#39;</span><span class="p">:</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+                       <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span>
+                       <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="s1">&#39;LR&#39;</span><span class="p">:</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">),</span>
+                       <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]},</span>
+                       <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">MultinomialNB</span><span class="p">(),</span>
+                       <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span>
+                       <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)}</span>
+<span class="c1"># I will now loop over each model in my dictionary and find the score</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** Hyperparameter tuning ***&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_30</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> best hyperparams = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> error: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Question 5</span>
+<span class="c1"># Naive Bayes is the best model (although they are all similar)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** Best model ***&quot;</span><span class="p">)</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_30</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">best_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_30</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bonus material</span>
+<span class="c1"># All our classifiers did well so why not use all of them to make predictions?</span>
+<span class="c1"># We can do this with the VotingClassifier (which we&#39;ll learn about in a later lecture)</span>
+<span class="c1"># Turns out that this ensemble approach doesn&#39;t really do much better than our single Naive Bayes model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** Voting classifier ***&quot;</span><span class="p">)</span>
+<span class="n">voter</span> <span class="o">=</span> <span class="n">VotingClassifier</span><span class="p">(</span><span class="n">estimators</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)),</span>
+                                     <span class="p">(</span><span class="s1">&#39;DT&#39;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">)),</span>
+                                     <span class="p">(</span><span class="s1">&#39;LR&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+                                     <span class="p">(</span><span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))],</span>
+                         <span class="n">voting</span><span class="o">=</span><span class="s1">&#39;soft&#39;</span><span class="p">)</span>
+<span class="n">voter</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_30</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error on test data: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="n">voter</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_30</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** Hyperparameter tuning ***
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNN best hyperparams = {&#39;n_neighbors&#39;: 7}.
+KNN error: 0.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DT best hyperparams = {&#39;max_depth&#39;: 15}.
+DT error: 0.13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LR best hyperparams = {&#39;C&#39;: 1.0}.
+LR error: 0.12
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB best hyperparams = {&#39;alpha&#39;: 0.01}.
+NB error: 0.12
+
+*** Best model ***
+Error on test data: 0.12
+
+*** Voting classifier ***
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error on test data: 0.11
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary-questions-to-ponder-a-id-7-a">
+<h1>7. Summary questions to ponder <a id=7></a><a class="headerlink" href="#summary-questions-to-ponder-a-id-7-a" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>How can we start forming good business questions that can be addressed with Machine Learning</p></li>
+<li><p>Is there any easier way to group our models, preprocessing, feature selection, etc into one workflow?</p></li>
+</ol>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Hayley Boyce<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

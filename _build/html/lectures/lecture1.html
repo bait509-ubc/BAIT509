@@ -1,0 +1,3325 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="What: Learning Outcomes" href="../things_to_know/what.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/bait_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Hayley Boyce
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture1.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#welcome">
+   Welcome
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#course-learning-objectives">
+     Course Learning Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#course-structure">
+     Course Structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#who-i-am">
+     Who I am
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-jupyter-visualizations">
+     Python, Jupyter, Visualizations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-learning-objectives">
+     Lecture Learning Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-machine-learning-ml">
+   What is Machine Learning (ML)?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-machine-learning">
+     Examples of Machine Learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-1-predict-housing-prices">
+       Example 1: Predict Housing Prices
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-2-predict-creditcard-default">
+       Example 2: Predict Creditcard Default
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-3-image-classification">
+       Example 3: Image Classification
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-machine-learning">
+   Types of Machine Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     Supervised Learning:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning-not-going-into-detail-here">
+     Supervised Learning: (not going into detail here)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-supervised-learning-classification-vs-regressiion">
+   Types of Supervised Learning: Classification vs Regressiion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifications">
+     Classifications
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   Let’s Practice!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabular-data-and-terminology">
+   Tabular Data and Terminology
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#splitting-the-data">
+     Splitting the data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree-algorithm">
+   Decision Tree Algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-conceptual-introduction-to-decision-trees">
+     A conceptual introduction to Decision Trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implimentation-with-scikit-learn">
+     Implimentation with Scikit-learn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-predict-work">
+     How does
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .predict()
+      </span>
+     </code>
+     work?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-fit-work">
+     How does
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .fit()
+      </span>
+     </code>
+     work?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Let’s Practice!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters-and-hyperparameters">
+   Parameters and Hyperparameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parameters">
+     Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameters">
+     Hyperparameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree-regressor">
+   Decision Tree Regressor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
+   What We’ve Learned Today
+   <a id="9">
+   </a>
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="lecture-1-introduction-to-machine-learning-the-decision-tree-algorithm">
+<h1>Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm<a class="headerlink" href="#lecture-1-introduction-to-machine-learning-the-decision-tree-algorithm" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, Monday April 19th 2021</em></p>
+<div class="section" id="welcome">
+<h2>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h2>
+<p>Welcome to Bait 509 - Business Application of Machine Learning.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Buckle up because there are going to be a lot of new concepts here but in the lyrics of Trooper “We’re here for a good time,
+Not a long time”.</p>
+</div>
+<div class="section" id="course-learning-objectives">
+<h3>Course Learning Objectives<a class="headerlink" href="#course-learning-objectives" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training/validation/testing error, parameters and hyperparameters, and the golden rule.</p></li>
+<li><p>Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and logistic regression.</p></li>
+<li><p>Identify when and why to apply data pre-processing techniques such as scaling and one-hot encoding.</p></li>
+<li><p>Use Python and the scikit-learn package to develop an end-to-end supervised machine learning pipeline.</p></li>
+<li><p>Apply and interpret machine learning methods to carry out supervised learning projects and to answer business objectives.</p></li>
+</ol>
+</div>
+<div class="section" id="course-structure">
+<h3>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>2 lectures per week (Synchonus lecture + class activity)</p></li>
+<li><p>My office hours: 1-2pm Thursday on Zoom</p></li>
+<li><p>TA office hours: TBD</p></li>
+<li><p>Camera on policy!</p></li>
+<li><p>Additional resources here: Canvas course URL</p></li>
+<li><p>We will be using <a class="reference external" href="https://piazza.com/configure-classes/winterterm22020/bait509ba1">Piazza</a> for discussions and questions.</p></li>
+<li><p>Assessments:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Assessment</p></th>
+<th class="text-align:center head"><p>Weight</p></th>
+<th class="text-align:center head"><p>Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>3 Assignments</p></td>
+<td class="text-align:center"><p>60%(20% each)</p></td>
+<td class="text-align:center"><p>April 28th, May 10th, May 19th</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1 Quiz</p></td>
+<td class="text-align:center"><p>10%</p></td>
+<td class="text-align:center"><p>May 5th (24 hours to complete)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Final Project</p></td>
+<td class="text-align:center"><p>30%</p></td>
+<td class="text-align:center"><p>May 29th</p></td>
+</tr>
+</tbody>
+</table>
+<p>All assessments will be submitted via Canvas</p>
+</div>
+<div class="section" id="who-i-am">
+<h3>Who I am<a class="headerlink" href="#who-i-am" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../_images/hi.png" /></p>
+<ul class="simple">
+<li><p>I am have an undergraduate degree in Applied Mathematics from the University of Western Ontario</p></li>
+<li><p>I have a master’s degree in Data Science</p></li>
+<li><p>I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none.</p></li>
+</ul>
+</div>
+<div class="section" id="python-jupyter-visualizations">
+<h3>Python, Jupyter, Visualizations<a class="headerlink" href="#python-jupyter-visualizations" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>In this course we be using Python and Jupyter notebooks for lectures as well as assignments.</p></li>
+<li><p>You are free to use <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda distribution</a> to install and manage your Python package installations</p></li>
+<li><p>If you are using anaconda, you can install a few key packages we will be using in the course, by typing the following at the command line:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pandas</span> <span class="pre">numpy</span> <span class="pre">scikit-learn</span> <span class="pre">matplotlib</span> <span class="pre">jupyter</span> <span class="pre">altair</span> <span class="pre">seaborn</span> <span class="pre">python-graphviz</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Or you can simpling use pip and type in at the command line:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span> <span class="pre">numpy</span> <span class="pre">scikit-learn</span> <span class="pre">matplotlib</span> <span class="pre">jupyter</span> <span class="pre">altair</span> <span class="pre">seaborn</span> <span class="pre">graphviz</span></code></p>
+</div></blockquote>
+</li>
+<li><p>We will be making visualizations for this course and I give the option of plotting using any Python library but I strongly recommend getting familar with <a class="reference external" href="https://altair-viz.github.io/index.html"><code class="docutils literal notranslate"><span class="pre">altair</span></code></a>. I have 2 very quick slide decks that teach you a bit about how to plot using <code class="docutils literal notranslate"><span class="pre">altair</span></code>.
+From the course <a class="reference external" href="https://prog-learn.mds.ubc.ca/en/">Programming in Python for Data Science</a></p></li>
+<li><p>Module 1, exercise 31, 32, 33</p></li>
+<li><p>Module 2, exercise 29, 30</p></li>
+</ul>
+<p>And if you want to dive further there is a whole course dedicated to visualizing plots using <code class="docutils literal notranslate"><span class="pre">altair</span></code> called <a class="reference external" href="https://viz-learn.mds.ubc.ca/en/">Data Visualization</a>.</p>
+</div>
+<div class="section" id="lecture-learning-objectives">
+<h3>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Explain motivation to study machine learning.</p></li>
+<li><p>Differentiate between supervised and unsupervised learning.</p></li>
+<li><p>Differentiate between classification and regression problems.</p></li>
+<li><p>Explain machine learning terminology such as features, targets, training, and error.</p></li>
+<li><p>Explain the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> paradigm and use <code class="docutils literal notranslate"><span class="pre">.score()</span></code> method of ML models.</p></li>
+<li><p>Broadly describe how decision trees make predictions.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier()</span></code> and <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor()</span></code> to build decision trees using scikit-learn.</p></li>
+<li><p>Explain the difference between parameters and hyperparameters.</p></li>
+<li><p>Explain how decision boundaries change with <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="what-is-machine-learning-ml">
+<h2>What is Machine Learning (ML)?<a class="headerlink" href="#what-is-machine-learning-ml" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s import our libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Machine learning is all around us. You can find it in things like:</p>
+<p><img alt="" src="../_images/examples.png" /></p>
+<ul class="simple">
+<li><p>Voice assistance</p></li>
+<li><p>Google news</p></li>
+<li><p>Recommender systems</p></li>
+<li><p>Face recognition</p></li>
+<li><p>Auto completion</p></li>
+<li><p>Stock market predictions</p></li>
+<li><p>Character recognition</p></li>
+<li><p>Self-driving cars</p></li>
+<li><p>Cancer diagnosis</p></li>
+<li><p>Drug discovery</p></li>
+</ul>
+<p>Machine Learning has no clear consensus in how it is define but essentially it is a different way to think about problem solving.</p>
+<ul class="simple">
+<li><p>As the <a class="reference external" href="http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf">ISLR</a> book puts it, ML is a “<em>vast set of tools for understanding data</em>”</p></li>
+<li><p>Usually we think logically and mathematically. In the Machine Learning paradiagm we instead take data and some output and our Machine Learning algorithm will return a program which can be used to make predictions and give an output for data it has yet to see.</p></li>
+</ul>
+<div class="section" id="examples-of-machine-learning">
+<h3>Examples of Machine Learning<a class="headerlink" href="#examples-of-machine-learning" title="Permalink to this headline">¶</a></h3>
+<p><em>In all the the upcoming examples, Don’t worry about the code. Just focus on the input and output in each example.</em></p>
+<div class="section" id="example-1-predict-housing-prices">
+<h4>Example 1: Predict Housing Prices<a class="headerlink" href="#example-1-predict-housing-prices" title="Permalink to this headline">¶</a></h4>
+<p><strong>Data Attribution:</strong> <a href="https://www.kaggle.com/harlfoxem/housesalesprediction" target="_blank">house sales prediction dataset.</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/kc_house_data.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">])</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>sqft_living</th>
+      <th>sqft_lot</th>
+      <th>floors</th>
+      <th>waterfront</th>
+      <th>view</th>
+      <th>condition</th>
+      <th>grade</th>
+      <th>sqft_above</th>
+      <th>sqft_basement</th>
+      <th>yr_built</th>
+      <th>yr_renovated</th>
+      <th>zipcode</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>sqft_living15</th>
+      <th>sqft_lot15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8583</th>
+      <td>509000.0</td>
+      <td>2</td>
+      <td>1.50</td>
+      <td>1930</td>
+      <td>3521</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>1930</td>
+      <td>0</td>
+      <td>1989</td>
+      <td>0</td>
+      <td>98007</td>
+      <td>47.6092</td>
+      <td>-122.146</td>
+      <td>1840</td>
+      <td>3576</td>
+    </tr>
+    <tr>
+      <th>19257</th>
+      <td>675000.0</td>
+      <td>5</td>
+      <td>2.75</td>
+      <td>2570</td>
+      <td>12906</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>2570</td>
+      <td>0</td>
+      <td>1987</td>
+      <td>0</td>
+      <td>98075</td>
+      <td>47.5814</td>
+      <td>-122.050</td>
+      <td>2580</td>
+      <td>12927</td>
+    </tr>
+    <tr>
+      <th>1295</th>
+      <td>420000.0</td>
+      <td>3</td>
+      <td>1.00</td>
+      <td>1150</td>
+      <td>5120</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>6</td>
+      <td>800</td>
+      <td>350</td>
+      <td>1946</td>
+      <td>0</td>
+      <td>98116</td>
+      <td>47.5588</td>
+      <td>-122.392</td>
+      <td>1220</td>
+      <td>5120</td>
+    </tr>
+    <tr>
+      <th>15670</th>
+      <td>680000.0</td>
+      <td>8</td>
+      <td>2.75</td>
+      <td>2530</td>
+      <td>4800</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>7</td>
+      <td>1390</td>
+      <td>1140</td>
+      <td>1901</td>
+      <td>0</td>
+      <td>98112</td>
+      <td>47.6241</td>
+      <td>-122.305</td>
+      <td>1540</td>
+      <td>4800</td>
+    </tr>
+    <tr>
+      <th>3913</th>
+      <td>357823.0</td>
+      <td>3</td>
+      <td>1.50</td>
+      <td>1240</td>
+      <td>9196</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>1240</td>
+      <td>0</td>
+      <td>1968</td>
+      <td>0</td>
+      <td>98072</td>
+      <td>47.7562</td>
+      <td>-122.094</td>
+      <td>1690</td>
+      <td>10800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBRegressor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted price&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="s2">&quot;Actual price&quot;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+<span class="n">df_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pred_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_concat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>sqft_living</th>
+      <th>sqft_lot</th>
+      <th>floors</th>
+      <th>waterfront</th>
+      <th>view</th>
+      <th>condition</th>
+      <th>grade</th>
+      <th>sqft_above</th>
+      <th>sqft_basement</th>
+      <th>yr_built</th>
+      <th>yr_renovated</th>
+      <th>zipcode</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>sqft_living15</th>
+      <th>sqft_lot15</th>
+      <th>Predicted price</th>
+      <th>Actual price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>2.25</td>
+      <td>2130</td>
+      <td>8078</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>7</td>
+      <td>1380</td>
+      <td>750</td>
+      <td>1977</td>
+      <td>0</td>
+      <td>98055</td>
+      <td>47.4482</td>
+      <td>-122.209</td>
+      <td>2300</td>
+      <td>8112</td>
+      <td>333981.6250</td>
+      <td>311100.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>2.50</td>
+      <td>2210</td>
+      <td>7620</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>2210</td>
+      <td>0</td>
+      <td>1994</td>
+      <td>0</td>
+      <td>98052</td>
+      <td>47.6938</td>
+      <td>-122.130</td>
+      <td>1920</td>
+      <td>7440</td>
+      <td>615222.4375</td>
+      <td>535000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>1.50</td>
+      <td>1800</td>
+      <td>9576</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>7</td>
+      <td>1800</td>
+      <td>0</td>
+      <td>1977</td>
+      <td>0</td>
+      <td>98045</td>
+      <td>47.4664</td>
+      <td>-121.747</td>
+      <td>1370</td>
+      <td>9576</td>
+      <td>329770.0625</td>
+      <td>271000.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>2.50</td>
+      <td>1580</td>
+      <td>1321</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>8</td>
+      <td>1080</td>
+      <td>500</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>98107</td>
+      <td>47.6688</td>
+      <td>-122.402</td>
+      <td>1530</td>
+      <td>1357</td>
+      <td>565091.6250</td>
+      <td>705000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="example-2-predict-creditcard-default">
+<h4>Example 2: Predict Creditcard Default<a class="headerlink" href="#example-2-predict-creditcard-default" title="Permalink to this headline">¶</a></h4>
+<p><strong>Data Attribution:</strong> <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card fraud detection data set</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/creditcard_sample.csv&quot;</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cc_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">603</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>...</th>
+      <th>V21</th>
+      <th>V22</th>
+      <th>V23</th>
+      <th>V24</th>
+      <th>V25</th>
+      <th>V26</th>
+      <th>V27</th>
+      <th>V28</th>
+      <th>Amount</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>435</th>
+      <td>11635.0</td>
+      <td>0.919137</td>
+      <td>4.199633</td>
+      <td>-7.535607</td>
+      <td>7.426940</td>
+      <td>1.118215</td>
+      <td>-2.886722</td>
+      <td>-1.341036</td>
+      <td>0.363933</td>
+      <td>-2.203224</td>
+      <td>...</td>
+      <td>0.316094</td>
+      <td>0.055179</td>
+      <td>0.210692</td>
+      <td>-0.417918</td>
+      <td>-0.911188</td>
+      <td>0.466524</td>
+      <td>0.627393</td>
+      <td>0.157851</td>
+      <td>1.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>92731</th>
+      <td>131346.0</td>
+      <td>-3.941407</td>
+      <td>4.044901</td>
+      <td>-2.533298</td>
+      <td>-0.993555</td>
+      <td>-0.898294</td>
+      <td>-1.503311</td>
+      <td>-0.105561</td>
+      <td>0.980689</td>
+      <td>1.849424</td>
+      <td>...</td>
+      <td>0.203494</td>
+      <td>1.136865</td>
+      <td>0.237484</td>
+      <td>-0.007889</td>
+      <td>-0.112597</td>
+      <td>-0.194324</td>
+      <td>0.998080</td>
+      <td>0.859768</td>
+      <td>1.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18116</th>
+      <td>150854.0</td>
+      <td>2.165206</td>
+      <td>-1.581097</td>
+      <td>-0.198485</td>
+      <td>-1.538046</td>
+      <td>-1.799368</td>
+      <td>-0.423766</td>
+      <td>-1.546484</td>
+      <td>0.047633</td>
+      <td>-1.120714</td>
+      <td>...</td>
+      <td>-0.287639</td>
+      <td>-0.421235</td>
+      <td>0.439597</td>
+      <td>-0.054263</td>
+      <td>-0.675064</td>
+      <td>-0.463137</td>
+      <td>0.036825</td>
+      <td>-0.041266</td>
+      <td>32.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>89892</th>
+      <td>43946.0</td>
+      <td>-0.750949</td>
+      <td>0.705118</td>
+      <td>1.548844</td>
+      <td>1.527885</td>
+      <td>-0.396129</td>
+      <td>1.405321</td>
+      <td>-0.100160</td>
+      <td>0.788641</td>
+      <td>0.326592</td>
+      <td>...</td>
+      <td>-0.273203</td>
+      <td>-0.495237</td>
+      <td>0.076831</td>
+      <td>-0.758812</td>
+      <td>-0.212445</td>
+      <td>-0.386653</td>
+      <td>0.094166</td>
+      <td>0.089781</td>
+      <td>71.38</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>118178</th>
+      <td>124744.0</td>
+      <td>2.047701</td>
+      <td>-0.131199</td>
+      <td>-1.695760</td>
+      <td>0.028476</td>
+      <td>0.516568</td>
+      <td>-0.315328</td>
+      <td>0.100865</td>
+      <td>-0.127223</td>
+      <td>0.375452</td>
+      <td>...</td>
+      <td>0.264380</td>
+      <td>0.815539</td>
+      <td>-0.055716</td>
+      <td>0.227954</td>
+      <td>0.318705</td>
+      <td>-0.130535</td>
+      <td>-0.032855</td>
+      <td>-0.064604</td>
+      <td>17.76</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;predicted_label&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+<span class="n">df_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pred_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_concat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>...</th>
+      <th>V22</th>
+      <th>V23</th>
+      <th>V24</th>
+      <th>V25</th>
+      <th>V26</th>
+      <th>V27</th>
+      <th>V28</th>
+      <th>Amount</th>
+      <th>Class</th>
+      <th>predicted_label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>151602.0</td>
+      <td>0.205476</td>
+      <td>1.160871</td>
+      <td>-0.995535</td>
+      <td>-0.008945</td>
+      <td>0.275216</td>
+      <td>-1.463541</td>
+      <td>0.569464</td>
+      <td>0.108019</td>
+      <td>-0.148083</td>
+      <td>...</td>
+      <td>0.944338</td>
+      <td>-0.098098</td>
+      <td>-0.024528</td>
+      <td>-0.274065</td>
+      <td>-0.152174</td>
+      <td>-0.067689</td>
+      <td>-0.047006</td>
+      <td>6.29</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>130541.0</td>
+      <td>2.158602</td>
+      <td>0.750699</td>
+      <td>-3.464304</td>
+      <td>0.547413</td>
+      <td>1.664424</td>
+      <td>-1.236616</td>
+      <td>0.874736</td>
+      <td>-0.495646</td>
+      <td>-0.069968</td>
+      <td>...</td>
+      <td>-0.044555</td>
+      <td>-0.138957</td>
+      <td>-0.059689</td>
+      <td>0.525239</td>
+      <td>0.718488</td>
+      <td>-0.076391</td>
+      <td>-0.017809</td>
+      <td>0.76</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>166751.0</td>
+      <td>1.901019</td>
+      <td>0.318082</td>
+      <td>0.029605</td>
+      <td>3.671496</td>
+      <td>-0.038030</td>
+      <td>0.502431</td>
+      <td>-0.535448</td>
+      <td>0.187708</td>
+      <td>-0.403365</td>
+      <td>...</td>
+      <td>0.495025</td>
+      <td>0.247919</td>
+      <td>0.683891</td>
+      <td>-0.271071</td>
+      <td>-0.033795</td>
+      <td>0.001203</td>
+      <td>-0.025669</td>
+      <td>0.76</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>40486.0</td>
+      <td>1.190896</td>
+      <td>0.258268</td>
+      <td>0.374576</td>
+      <td>1.198681</td>
+      <td>-0.203164</td>
+      <td>-0.421405</td>
+      <td>0.007650</td>
+      <td>-0.022832</td>
+      <td>0.083098</td>
+      <td>...</td>
+      <td>0.313190</td>
+      <td>-0.071199</td>
+      <td>0.072382</td>
+      <td>0.578706</td>
+      <td>-0.249102</td>
+      <td>0.030429</td>
+      <td>0.017239</td>
+      <td>4.00</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 32 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-3-image-classification">
+<h4>Example 3: Image Classification<a class="headerlink" href="#example-3-image-classification" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;code/&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">toy_classifier</span> <span class="kn">import</span> <span class="n">classify_image</span>
+
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;imgs/apple.jpg&quot;</span><span class="p">)</span>
+<span class="n">img</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_25_0.png" src="../_images/lecture1_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classify_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class, Probability
+------------------
+Granny Smith, 0.80
+pomegranate, 0.08
+fig, 0.07
+strawberry, 0.04
+buckeye, horse chestnut, conker, 0.00
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="types-of-machine-learning">
+<h2>Types of Machine Learning<a class="headerlink" href="#types-of-machine-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Supervised learning</strong> (this course)</p></li>
+<li><p>Unsupervised learning</p></li>
+</ul>
+<div class="section" id="supervised-learning">
+<h3>Supervised Learning:<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Example: Labelling emails as spam or not</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>In supervised machine learning, we have a set of observations usually denoted with an uppercase <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></li>
+<li><p>We also have a set of corresponding targets usually denoted with a lowercase <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p>Our goal is to define a function that relates <code class="docutils literal notranslate"><span class="pre">X</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p>We then use this function to predict the targets of new examples.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/sup-learning.png"><img alt="404 image" src="../_images/sup-learning.png" style="width: 75%;" /></a>
+</div>
+<div class="section" id="supervised-learning-not-going-into-detail-here">
+<h3>Supervised Learning: (not going into detail here)<a class="headerlink" href="#supervised-learning-not-going-into-detail-here" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Example: Categorizing Google News articles.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>In unsupervised learning, we are not given targets and are only given observations <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></li>
+<li><p>We apply some clustering algorithms to create a model that finds patterns in our data and groups together similar characteristics from our data.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/unsup-learning.png"><img alt="404 image" src="../_images/unsup-learning.png" style="width: 75%;" /></a>
+</div>
+</div>
+<div class="section" id="types-of-supervised-learning-classification-vs-regressiion">
+<h2>Types of Supervised Learning: Classification vs Regressiion<a class="headerlink" href="#types-of-supervised-learning-classification-vs-regressiion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Classification</p></li>
+<li><p>Regression</p></li>
+</ul>
+<div class="section" id="classifications">
+<h3>Classifications<a class="headerlink" href="#classifications" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><strong>Classification</strong> predicting among two or more categories, also known as classes.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Example1</em>: Predict whether a customer will default on their credit card or not.</p></li>
+<li><p><em>Example2</em>: Predict whether the letter grade of a student (A,B,C,D or F)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<br>
+<ul>
+<li><p><strong>Regression</strong> predicting a continuous (in other words, a number) value.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example1: Predict housing prices</p></li>
+<li><p>Example2: Predict a student’s score in this course’s quiz2</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/classification-vs-regression2.png"><img alt="../_images/classification-vs-regression2.png" src="../_images/classification-vs-regression2.png" style="width: 1500px; height: 1500px;" /></a>
+</div>
+</div>
+<div class="section" id="let-s-practice">
+<h2>Let’s Practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<p>Are the following supervised or unsupervised problems?</p>
+<ol class="simple">
+<li><p>Finding groups of similar properties in a real estate data set.</p></li>
+<li><p>Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.</p></li>
+<li><p>Idenitfying groups of animals given features such as “number of legs”, “wings/no wings”, “fur/no fur”, etc.</p></li>
+<li><p>Detecting heart disease in patients based on different test results and history.</p></li>
+<li><p>Grouping articles on different topics from different news sources (something like Google News app).</p></li>
+</ol>
+<p>Are the following classification or regression problems?</p>
+<ol class="simple">
+<li><p>Predicting the price of a house based on features such as number of rooms and the year built.</p></li>
+<li><p>Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.</p></li>
+<li><p>Predicting your grade in BAIT 509 based on past grades.</p></li>
+<li><p>Predicting what product a consumer is most likely to purchase based on their internet browsing patterns.</p></li>
+<li><p>Predicting a cereal’s manufacturer given the nutritional information.</p></li>
+</ol>
+</div>
+<div class="section" id="tabular-data-and-terminology">
+<h2>Tabular Data and Terminology<a class="headerlink" href="#tabular-data-and-terminology" title="Permalink to this headline">¶</a></h2>
+<p>Basic terminology used in ML:</p>
+<ul class="simple">
+<li><p><strong>examples/observations</strong> = rows</p></li>
+<li><p><strong>features/variables</strong> = inputs (columns)</p></li>
+<li><p><strong>targets</strong> = outputs (one special column)</p></li>
+<li><p><strong>training</strong> = learning = fitting</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/sup-ml-terminology2.png"><img alt="../_images/sup-ml-terminology2.png" src="../_images/sup-ml-terminology2.png" style="width: 1000px; height: 1000px;" /></a>
+<div class="section" id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>This <a class="reference external" href="http://simplemaps.com/static/demos/resources/us-cities/cities.csv">dataset</a> contains longtitude and latitude data for 400 cities in the US.</p></li>
+<li><p>Each city is labelled as <code class="docutils literal notranslate"><span class="pre">red</span></code> or <code class="docutils literal notranslate"><span class="pre">blue</span></code> depending on how they voted in the 2012 election.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/cities_USA.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>104</th>
+      <td>-83.015008</td>
+      <td>35.882967</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>-105.065549</td>
+      <td>39.828572</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>-95.827648</td>
+      <td>41.364378</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>-83.304149</td>
+      <td>42.629449</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>-89.115371</td>
+      <td>32.757224</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>-81.640596</td>
+      <td>29.559354</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>-86.242893</td>
+      <td>41.700570</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>-82.852313</td>
+      <td>37.421491</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>-85.678746</td>
+      <td>32.166252</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>-85.606726</td>
+      <td>40.861792</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>-122.158705</td>
+      <td>37.720467</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>-122.494555</td>
+      <td>37.860147</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>-82.182297</td>
+      <td>36.618093</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>-81.372907</td>
+      <td>34.908396</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>-94.634047</td>
+      <td>38.901798</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>-85.379384</td>
+      <td>34.933512</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>-76.959802</td>
+      <td>39.121343</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>-101.129464</td>
+      <td>40.338668</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>-103.199724</td>
+      <td>32.112816</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>-81.418375</td>
+      <td>34.167569</td>
+      <td>red</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this dataset, we have:</p>
+<ul class="simple">
+<li><p>2 <strong>features</strong>, (3 columns = 2 <strong>features</strong> + 1 target) and,</p></li>
+<li><p>20 <strong>examples</strong>.</p></li>
+</ul>
+<p>Our <strong>target</strong> column is <code class="docutils literal notranslate"><span class="pre">vote</span></code> since that is what we are interesting in predicting.</p>
+</div>
+<div class="section" id="splitting-the-data">
+<h3>Splitting the data<a class="headerlink" href="#splitting-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Before we build any model (we are getting to that so hang tight), we need to make sure we have the right “parts” aka inputs and outputs.</p>
+<p>That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.</p>
+<p>$X$ is all of our features in our data, which we also call our <em><strong>feature table</strong></em>. <br>
+$y$ is our target, which is what we are predicting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vote&quot;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;vote&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>104</th>
+      <td>-83.015008</td>
+      <td>35.882967</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>-105.065549</td>
+      <td>39.828572</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>-95.827648</td>
+      <td>41.364378</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>-83.304149</td>
+      <td>42.629449</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>-89.115371</td>
+      <td>32.757224</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104     red
+205    blue
+267    blue
+314    blue
+53      red
+Name: vote, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decision-tree-algorithm">
+<h2>Decision Tree Algorithm<a class="headerlink" href="#decision-tree-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-conceptual-introduction-to-decision-trees">
+<h3>A conceptual introduction to Decision Trees<a class="headerlink" href="#a-conceptual-introduction-to-decision-trees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).</p></li>
+<li><p>The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'><strong>BLUE</strong></font> or <font color='orange'><strong>ORANGE</strong></font> class.</p></li>
+<li><p>A fairly intuitive way to do this is to simply use thresholds to split the data up.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/scatter_dt1.png"><img alt="../_images/scatter_dt1.png" src="../_images/scatter_dt1.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>For example, we can <strong>split</strong> the data at <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>.</p></li>
+<li><p>Everything <strong>less than</strong> the split we can classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+<li><p>Everything <strong>greater than</strong> the split we can classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>By this method, we can successfully classify 7 / 9 observations.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/scatter_dt2.png"><img alt="../_images/scatter_dt2.png" src="../_images/scatter_dt2.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>But we don’t have to stop there, we can make another split!</p></li>
+<li><p>Let’s now split the section that is greater than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.52</span></code>.</p></li>
+<li><p>We now have the following conditions:</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+</ul>
+</li>
+<li><p>Using these rules, we now successfully classify 8 / 9 observations.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/scatter_dt3.png"><img alt="../_images/scatter_dt3.png" src="../_images/scatter_dt3.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>Okay, let’s add one more threshhold.</p></li>
+<li><p>Let’s make a final split of the section that is less than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.6</span></code>.</p></li>
+<li><p>By this methodology we have successfully classified all of our data.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/scatter_dt4.png"><img alt="../_images/scatter_dt4.png" src="../_images/scatter_dt4.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>What we’ve really done here is create a group of <code class="docutils literal notranslate"><span class="pre">if</span></code> statements:</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.6</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.6</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+</ul>
+</li>
+<li><p>This is easier to visualize as a tree:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/toy_tree.png"><img alt="../_images/toy_tree.png" src="../_images/toy_tree.png" style="width: 450px;" /></a>
+<ul class="simple">
+<li><p>We just made our first decision tree!</p></li>
+</ul>
+<p>Before we go forward with learning about decision tree classifiers and aggressors we need to understand the structure of a decision tree.
+Here is the key terminology that you will have to know:</p>
+<ul class="simple">
+<li><p><strong>Root</strong>: Where we start making our conditions.</p></li>
+<li><p><strong>Branch</strong>:  A branch connects to the next node (statement). Each branch represents either true or false.</p></li>
+<li><p><strong>Internal node</strong>: conditions within the tree.</p></li>
+<li><p><strong>Leaf</strong>: the value predicted from the conditions.</p></li>
+<li><p><strong>Tree depth</strong>: The longest path from the root to a leaf.</p></li>
+</ul>
+<p>With the decision tree algorithm in machine learning, the tree can have at most two nodes resulting from it, also known as children.</p>
+<p>If a tree only has a depth of 1, we call that a <strong>decision stump</strong>.</p>
+<a class="reference internal image-reference" href="../_images/lingo_tree.png"><img alt="404 image" src="../_images/lingo_tree.png" style="width: 55%;" /></a>
+<p>This tree  and the one in our example above, both have a depth of 2.</p>
+<p>Trees do not need to be balanced. (You’ll see this shortly)</p>
+</div>
+<div class="section" id="implimentation-with-scikit-learn">
+<h3>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.</p></li>
+</ul>
+<ul class="simple">
+<li><p>We generally import a particular ML algorithm using the following syntax:</p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sklearn.module</span> <span class="pre">import</span> <span class="pre">algorithm</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The decision tree classification algorithm (<code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>) sits within the <code class="docutils literal notranslate"><span class="pre">tree</span></code> module.</p></li>
+<li><p>(Note there is also a Decision Tree Regression algorithm in this module which we’ll come to later…)</p></li>
+<li><p>Let’s import the classifier using the following code:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can begin creating a model by instantiating an instance of the algorithm class.</p></li>
+<li><p>Here we are naming our decision tree model <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeClassifier()
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>At this point we just have the framework of a model</p></li>
+<li><p>We can’t do anything with our algorithm yet, because it hasn’t seen any data!</p></li>
+<li><p>We need to give our algorithm some data to learn/train/fit a model</p></li>
+<li><p>Let’s use the election data we imported previously to make a decision tree model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>104</th>
+      <td>-83.015008</td>
+      <td>35.882967</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>-105.065549</td>
+      <td>39.828572</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>-95.827648</td>
+      <td>41.364378</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>-83.304149</td>
+      <td>42.629449</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>-89.115371</td>
+      <td>32.757224</td>
+      <td>red</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Remember that we split this data into our features table and target values or our <code class="docutils literal notranslate"><span class="pre">x</span></code> and  <code class="docutils literal notranslate"><span class="pre">y</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>104</th>
+      <td>-83.015008</td>
+      <td>35.882967</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>-105.065549</td>
+      <td>39.828572</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>-95.827648</td>
+      <td>41.364378</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>-83.304149</td>
+      <td>42.629449</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>-89.115371</td>
+      <td>32.757224</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104     red
+205    blue
+267    blue
+314    blue
+53      red
+Name: vote, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can now use the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method to train our model using the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> data.</p></li>
+<li><p>When we call fit on our model object, the actual learning happens.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeClassifier()
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now we’ve used data to learn a model, let’s take a look at the model we made!</p></li>
+<li><p>The code below prints out our model structure for us (like the tree we made ourselves earlier)</p></li>
+</ul>
+<p><em>Note: This <code class="docutils literal notranslate"><span class="pre">display_tree</span></code>, function was adapted from the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> library with some amendments to make the trees easier to understand. You can find the code in the <code class="docutils literal notranslate"><span class="pre">script</span></code> file on Canvas.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;code/&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">display_tree</span> <span class="kn">import</span> <span class="n">display_tree</span>
+<span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&quot;imgs/decision_tree&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_70_0.svg" src="../_images/lecture1_70_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>We can better visualize what’s going on by actually plotting our data and the model’s  <strong>decision boundaries</strong>.</p></li>
+</ul>
+<p><em>Note: This <code class="docutils literal notranslate"><span class="pre">plot_classifier</span></code> made by Mike Gelbart, function is available for installation <a class="reference external" href="https://github.com/mgelbart/plot-classifier">here</a> or using:</em></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/mgelbart/plot-classifier.git</span></code></p>
+</div></blockquote>
+<p>or with conda</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pip</span></code><br>
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/mgelbart/plot-classifier.git</span></code></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_classifier</span> <span class="kn">import</span> <span class="n">plot_classifier</span>
+
+<span class="n">plot_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_72_0.png" src="../_images/lecture1_72_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>In this plot the shaded regions show what our model predicts for different feature values</p></li>
+<li><p>The scatter points are our actual 20 observations</p></li>
+<li><p>From the above plot, we can see that our model is classifying all our observations correctly</p></li>
+<li><p>But there’s an easier way to find out how our model is doing</p></li>
+</ul>
+<p>We can predict the target of examples by calling <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> on the classifier object.</p>
+<p>Let’s see what it predicts for a single randomly new observation first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_ex</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">87.4</span><span class="p">,</span> <span class="mi">59</span><span class="p">]</span>
+<span class="n">new_example</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="p">[</span><span class="n">new_ex</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">])</span>
+<span class="n">new_example</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-87.4</td>
+      <td>59</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>we get a prediction of <code class="docutils literal notranslate"><span class="pre">red</span></code> for this example!</p>
+<p>We can also predict on our whole feature table - Here, we are predicting on all of X.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;, &#39;blue&#39;, &#39;blue&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
+       &#39;red&#39;, &#39;blue&#39;, &#39;blue&#39;, &#39;blue&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;red&#39;,
+       &#39;blue&#39;, &#39;red&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;true_values&#39;</span> <span class="p">:</span> <span class="n">y</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="s1">&#39;predicted&#39;</span> <span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_values</th>
+      <th>predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>blue</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>red</td>
+      <td>red</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Or if we just want to know how many we got right, in the classification setting, we can use  <code class="docutils literal notranslate"><span class="pre">score()</span></code> which gives the accuracy of the model, i.e., the proportion of correctly predicted examples.</p>
+<p>Sometimes we will also see people reporting <strong>error</strong>, which is usually 1 - accuracy.</p>
+<p>Our model has an accurary of 100% (or 0% error)!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-does-predict-work">
+<h3>How does <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> work?<a class="headerlink" href="#how-does-predict-work" title="Permalink to this headline">¶</a></h3>
+<p>For us to see how our algorithm predicts for each example, all we have to do is return to our Decision Tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&quot;imgs/decision_tree&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_83_0.svg" src="../_images/lecture1_83_0.svg" /></div>
+</div>
+<p>Let’s use our <code class="docutils literal notranslate"><span class="pre">new_example</span></code> object for this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_example</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-87.4</td>
+      <td>59</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>First we start at the root. <br>
+Is <code class="docutils literal notranslate"><span class="pre">lon</span></code> &lt; -102.165? False, so we go down the right branch. <br>
+Is <code class="docutils literal notranslate"><span class="pre">lon</span></code> &lt; -81.529? True , so we go down the left branch . <br>
+We arrive at another node. Is <code class="docutils literal notranslate"><span class="pre">lat</span></code> &lt; 41.113? True , so we go down the left branch and arrive at a prediction of <code class="docutils literal notranslate"><span class="pre">red</span></code>! <br></p>
+<p>Let’s check this using predict again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nice!</p>
+</div>
+<div class="section" id="how-does-fit-work">
+<h3>How does <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> work?<a class="headerlink" href="#how-does-fit-work" title="Permalink to this headline">¶</a></h3>
+<p>Or “How does do Decision Trees decide what values to split on?”</p>
+<p>We will not go into detail here, but there the important thing to note here is:</p>
+<ul class="simple">
+<li><p>We evaluate the utility of a split using a mathematical formula (see <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation">here</a>) where we minimize impurity at each question/node (gives you the least hetegeneous splits)</p></li>
+<li><p>Common criteria to minimize impurity</p>
+<ul>
+<li><p>Gini Index</p></li>
+<li><p>Information gain</p></li>
+<li><p>Cross entropy</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Let’s Practice!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder to aswer the following questions:</p>
+<ol class="simple">
+<li><p>how many features are there?</p></li>
+<li><p>How many observations are there?</p></li>
+<li><p>What would be suitable target for a classification problem?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">)</span>
+<span class="n">candy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>candy bar</th>
+      <th>chocolate</th>
+      <th>peanuts</th>
+      <th>caramel</th>
+      <th>nougat</th>
+      <th>cookie_wafer_rice</th>
+      <th>coconut</th>
+      <th>white_chocolate</th>
+      <th>multi</th>
+      <th>availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CoffeeCrisp</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Butterfinger</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>America</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Skor</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Both</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Smarties</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Twix</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Both</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Answer as either <code class="docutils literal notranslate"><span class="pre">fit</span></code>  or <code class="docutils literal notranslate"><span class="pre">predict</span></code></strong></em></p>
+<ol class="simple">
+<li><p>Is called first (before the other one).</p></li>
+<li><p>Only takes X as an argument.</p></li>
+<li><p>In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.</p></li>
+</ol>
+<p><em><strong>Quick Questions</strong></em></p>
+<ol class="simple">
+<li><p>What is the top node in a decision tree called?</p></li>
+<li><p>What Python structure/syntax are the nodes in a decision tree similar to?</p></li>
+</ol>
+</div>
+<div class="section" id="parameters-and-hyperparameters">
+<h2>Parameters and Hyperparameters<a class="headerlink" href="#parameters-and-hyperparameters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em><strong>Parameters</strong></em>:  Derived during training</p></li>
+<li><p><em><strong>Hyperparameters</strong></em>: Adjustable parameters that can be set before training.</p></li>
+</ul>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>When you call <code class="docutils literal notranslate"><span class="pre">fit</span></code> (the training stage of building your model), <strong>parameters</strong> get set, like the split variables and split thresholds.</p>
+<a class="reference internal image-reference" href="../_images/parameters.png"><img alt="../_images/parameters.png" src="../_images/parameters.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="hyperparameters">
+<h3>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h3>
+<p>But even before calling <code class="docutils literal notranslate"><span class="pre">fit</span></code> on a specific data set, we can set some some “knobs” which that control the learning which are called <strong>hyperparameters</strong>.</p>
+<p>In scikit-learn, hyperparameters are set in the constructor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>is a hyperparameter (of many) that lets us decide and set how “deep” we allow our tree to grow.</p>
+<p>Let’s practice by making a decision stump (A tree with a depth of 1). Our last model was made where we set the depth to “unlimited” so we need to initial a new model and train a new where where we set the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> hyperparameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_1</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">model_1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeClassifier(max_depth=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what the tree looks like now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model_1</span><span class="p">,</span> <span class="s2">&quot;imgs/decision_stump&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_100_0.svg" src="../_images/lecture1_100_0.svg" /></div>
+</div>
+<p>We see that it’s a depth of one and split on <code class="docutils literal notranslate"><span class="pre">lon</span></code> at -102.165.</p>
+<ul class="simple">
+<li><p>The hyperparameter <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>  is being set by us at 1.</p></li>
+<li><p>The parameter <code class="docutils literal notranslate"><span class="pre">lon</span></code> is set by the algorithm at -102.165.</p></li>
+</ul>
+<p>We can see the decision boundary at <code class="docutils literal notranslate"><span class="pre">lon</span></code>= -102.165 with the vertical line in the plot below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model_1</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_103_0.png" src="../_images/lecture1_103_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Looking  at the score of this model, we get an accuracy of 75%.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.75
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try growing a more complex tree model and now set <code class="docutils literal notranslate"><span class="pre">max_depth</span> <span class="pre">=</span> <span class="pre">3</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_3</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model_3</span><span class="p">,</span> <span class="s2">&quot;imgs/dt_2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_108_0.svg" src="../_images/lecture1_108_0.svg" /></div>
+</div>
+<p>This has 4 splits in the tree so we expect 4 decision boundaries (2 on <code class="docutils literal notranslate"><span class="pre">lon</span></code> and 2 on <code class="docutils literal notranslate"><span class="pre">lat</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model_3</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_110_0.png" src="../_images/lecture1_110_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Looking at the score of this model now get an accuracy of 90%!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_3</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s do one more and set <code class="docutils literal notranslate"><span class="pre">max_depth</span> <span class="pre">=</span> <span class="pre">5</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_5</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model_5</span><span class="p">,</span> <span class="s2">&quot;imgs/dt_5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_115_0.svg" src="../_images/lecture1_115_0.svg" /></div>
+</div>
+<p>This has 7 splits in the tree. How many decision boundaries should there be?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model_5</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture1_117_0.png" src="../_images/lecture1_117_0.png" />
+</div>
+</div>
+<p>And if we check the score of this model we get 100% accuracy!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_5</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see here that as <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> increases, the accuracy of the training data does as well.</p>
+<p>Doing this isn’t always the best idea and we’ll explain this a little bit later on.</p>
+<ul class="simple">
+<li><p>This is just one of many other hyperparameters for decision trees that you can explore -&gt; link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a> There are many other hyperparameters for decision trees that you can explore at the link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a>.</p></li>
+</ul>
+<p>To summarize this section:</p>
+<ul class="simple">
+<li><p><strong>parameters</strong> are automatically learned by an algorithm during training</p></li>
+<li><p><strong>hyperparameters</strong> are specified before training</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="decision-tree-regressor">
+<h2>Decision Tree Regressor<a class="headerlink" href="#decision-tree-regressor" title="Permalink to this headline">¶</a></h2>
+<p>We saw that we can use decision trees for classification problems but we can also use this decision tree algorithm for regression problems.</p>
+<p>Instead of using Gini impurity (which we briefly mentioned this above), we can use <a href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation" target="_blank">some other criteria</a> for splitting.</p>
+<p>(A common one is mean squared error (MSE) which we will discuss shortly)</p>
+<p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> supports regression using decision trees with <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor()</span></code> and the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> paradigm that is similar to classification.</p>
+<p>Let’s do an example using the <code class="docutils literal notranslate"><span class="pre">kc_house_data</span></code> we saw in example 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/kc_house_data.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>sqft_living</th>
+      <th>sqft_lot</th>
+      <th>floors</th>
+      <th>waterfront</th>
+      <th>view</th>
+      <th>condition</th>
+      <th>grade</th>
+      <th>sqft_above</th>
+      <th>sqft_basement</th>
+      <th>yr_built</th>
+      <th>yr_renovated</th>
+      <th>zipcode</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>sqft_living15</th>
+      <th>sqft_lot15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>221900.0</td>
+      <td>3</td>
+      <td>1.00</td>
+      <td>1180</td>
+      <td>5650</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1180</td>
+      <td>0</td>
+      <td>1955</td>
+      <td>0</td>
+      <td>98178</td>
+      <td>47.5112</td>
+      <td>-122.257</td>
+      <td>1340</td>
+      <td>5650</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>538000.0</td>
+      <td>3</td>
+      <td>2.25</td>
+      <td>2570</td>
+      <td>7242</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2170</td>
+      <td>400</td>
+      <td>1951</td>
+      <td>1991</td>
+      <td>98125</td>
+      <td>47.7210</td>
+      <td>-122.319</td>
+      <td>1690</td>
+      <td>7639</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>180000.0</td>
+      <td>2</td>
+      <td>1.00</td>
+      <td>770</td>
+      <td>10000</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>6</td>
+      <td>770</td>
+      <td>0</td>
+      <td>1933</td>
+      <td>0</td>
+      <td>98028</td>
+      <td>47.7379</td>
+      <td>-122.233</td>
+      <td>2720</td>
+      <td>8062</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>604000.0</td>
+      <td>4</td>
+      <td>3.00</td>
+      <td>1960</td>
+      <td>5000</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>7</td>
+      <td>1050</td>
+      <td>910</td>
+      <td>1965</td>
+      <td>0</td>
+      <td>98136</td>
+      <td>47.5208</td>
+      <td>-122.393</td>
+      <td>1360</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>510000.0</td>
+      <td>3</td>
+      <td>2.00</td>
+      <td>1680</td>
+      <td>8080</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>1680</td>
+      <td>0</td>
+      <td>1987</td>
+      <td>0</td>
+      <td>98074</td>
+      <td>47.6168</td>
+      <td>-122.045</td>
+      <td>1800</td>
+      <td>7503</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>sqft_living</th>
+      <th>sqft_lot</th>
+      <th>floors</th>
+      <th>waterfront</th>
+      <th>view</th>
+      <th>condition</th>
+      <th>grade</th>
+      <th>sqft_above</th>
+      <th>sqft_basement</th>
+      <th>yr_built</th>
+      <th>yr_renovated</th>
+      <th>zipcode</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>sqft_living15</th>
+      <th>sqft_lot15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>1.00</td>
+      <td>1180</td>
+      <td>5650</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1180</td>
+      <td>0</td>
+      <td>1955</td>
+      <td>0</td>
+      <td>98178</td>
+      <td>47.5112</td>
+      <td>-122.257</td>
+      <td>1340</td>
+      <td>5650</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>2.25</td>
+      <td>2570</td>
+      <td>7242</td>
+      <td>2.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>2170</td>
+      <td>400</td>
+      <td>1951</td>
+      <td>1991</td>
+      <td>98125</td>
+      <td>47.7210</td>
+      <td>-122.319</td>
+      <td>1690</td>
+      <td>7639</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.00</td>
+      <td>770</td>
+      <td>10000</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>6</td>
+      <td>770</td>
+      <td>0</td>
+      <td>1933</td>
+      <td>0</td>
+      <td>98028</td>
+      <td>47.7379</td>
+      <td>-122.233</td>
+      <td>2720</td>
+      <td>8062</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>3.00</td>
+      <td>1960</td>
+      <td>5000</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>7</td>
+      <td>1050</td>
+      <td>910</td>
+      <td>1965</td>
+      <td>0</td>
+      <td>98136</td>
+      <td>47.5208</td>
+      <td>-122.393</td>
+      <td>1360</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>2.00</td>
+      <td>1680</td>
+      <td>8080</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>1680</td>
+      <td>0</td>
+      <td>1987</td>
+      <td>0</td>
+      <td>98074</td>
+      <td>47.6168</td>
+      <td>-122.045</td>
+      <td>1800</td>
+      <td>7503</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    221900.0
+1    538000.0
+2    180000.0
+3    604000.0
+4    510000.0
+Name: price, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that instead of predicting a categorical column like we did with <code class="docutils literal notranslate"><span class="pre">vote</span></code> before, our target column is now numeric.</p>
+<p>Instead of importing <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>, we import <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code>.</p>
+<p>We follow the same steps as before and can even set hyperparameters as we did in classification.</p>
+<p>Here when we build our model, we are specifying a <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> of 4.</p>
+<p>This means our decision tree is going to be constrained to a depth of 4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+<span class="n">depth</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">depth</span><span class="p">)</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(max_depth=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the tree it produces Our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">reg_model</span><span class="p">,</span> <span class="s2">&quot;imgs/dt_reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/tree/_classes.py:1254: FutureWarning: the classes_ attribute is to be deprecated from version 0.22 and will be removed in 0.24.
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/lecture1_130_1.svg" src="../_images/lecture1_130_1.svg" /></div>
+</div>
+<p>Let’s see what our model predicts for a single example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>sqft_living</th>
+      <th>sqft_lot</th>
+      <th>floors</th>
+      <th>waterfront</th>
+      <th>view</th>
+      <th>condition</th>
+      <th>grade</th>
+      <th>sqft_above</th>
+      <th>sqft_basement</th>
+      <th>yr_built</th>
+      <th>yr_renovated</th>
+      <th>zipcode</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>sqft_living15</th>
+      <th>sqft_lot15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>1.0</td>
+      <td>1180</td>
+      <td>5650</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1180</td>
+      <td>0</td>
+      <td>1955</td>
+      <td>0</td>
+      <td>98178</td>
+      <td>47.5112</td>
+      <td>-122.257</td>
+      <td>1340</td>
+      <td>5650</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([269848.39378011])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our model predicts a housing price of $269848.39</p>
+<p>Should we see what the true value is?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    221900.0
+Name: price, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The true value is $221900.0, but how well did it score?</p>
+<p>With regression problems we can’t use accuracy for a scoring method so instead when we use <code class="docutils literal notranslate"><span class="pre">.score()</span></code>  it returns somethings called an <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" target="_blank"> 𝑅2 </a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6069320183816143
+</pre></div>
+</div>
+</div>
+</div>
+<p>The maximum 𝑅2 is 1 for perfect predictions.</p>
+<p>It can be negative which is very bad (worse than DummyRegressor).</p>
+</div>
+<div class="section" id="id2">
+<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder for the following:</p>
+<ol class="simple">
+<li><p>Define two objects named <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> which contain the features and target column respectively.</p></li>
+<li><p>Using sklearn, create 3 different decision tree classifiers using 3 different <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> values based on this data.</p></li>
+<li><p>What is the accuracy of each classifier on the training data?</p></li>
+<li><p>a) Which <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> value would you choose to predict this data? <br>
+b) Would you choose the same <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> value to predict new data?</p></li>
+<li><p>Do you think most of the computational effort for a decision tree takes place in the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> stage or <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> stage?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">)</span>
+<span class="n">candy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>candy bar</th>
+      <th>chocolate</th>
+      <th>peanuts</th>
+      <th>caramel</th>
+      <th>nougat</th>
+      <th>cookie_wafer_rice</th>
+      <th>coconut</th>
+      <th>white_chocolate</th>
+      <th>multi</th>
+      <th>availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CoffeeCrisp</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Butterfinger</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>America</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Skor</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Both</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Smarties</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Twix</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Both</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="what-we-ve-learned-today-a-id-9-a">
+<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What is machine learning (supervised/unsupervised, classification/regression)</p></li>
+<li><p>Machine learning terminology</p></li>
+<li><p>What is the decision tree algorithm and how does it work</p></li>
+<li><p>The scikit-learn library</p></li>
+<li><p>Parameters and hyperparameters</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../things_to_know/what.html" title="previous page">What: Learning Outcomes</a>
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">Markdown Files</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Hayley Boyce<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
