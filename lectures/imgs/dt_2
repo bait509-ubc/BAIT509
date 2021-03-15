@@ -11,10 +11,10 @@ node [shape=box] ;
 3 -> 4 ;
 5 [label="class = blue"] ;
 3 -> 5 ;
-6 [label="lon <= -81.529\nclass = blue"] ;
+6 [label="lat <= 35.763\nclass = blue"] ;
 2 -> 6 ;
-7 [label="class = blue"] ;
+7 [label="class = red"] ;
 6 -> 7 ;
-8 [label="class = red"] ;
+8 [label="class = blue"] ;
 6 -> 8 ;
 }
