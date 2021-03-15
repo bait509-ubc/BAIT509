@@ -14,8 +14,8 @@
 - part: Assignments
   chapters:
     - file: markdown
-    - file: notebooks
+    - file: markdown
 
 - part: References
   chapters:
-    - file: attribution
+    - file: things_to_know//attribution
