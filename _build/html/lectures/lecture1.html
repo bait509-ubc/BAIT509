@@ -1389,7 +1389,7 @@ buckeye, horse chestnut, conker, 0.00
 </div></blockquote>
 </li>
 </ul>
-<a class="reference internal image-reference" href="../_images/classification-vs-regression2.png"><img alt="../_images/classification-vs-regression2.png" src="../_images/classification-vs-regression2.png" style="width: 1500px; height: 1500px;" /></a>
+<a class="reference internal image-reference" href="../_images/classification-vs-regression2.png"><img alt="404 image" src="../_images/classification-vs-regression2.png" style="width: 90%;" /></a>
 </div>
 </div>
 <div class="section" id="let-s-practice">
@@ -1420,7 +1420,7 @@ buckeye, horse chestnut, conker, 0.00
 <li><p><strong>targets</strong> = outputs (one special column)</p></li>
 <li><p><strong>training</strong> = learning = fitting</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/sup-ml-terminology2.png"><img alt="../_images/sup-ml-terminology2.png" src="../_images/sup-ml-terminology2.png" style="width: 1000px; height: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/sup-ml-terminology2.png"><img alt="404 image" src="../_images/sup-ml-terminology2.png" style="width: 90%;" /></a>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -1703,14 +1703,14 @@ Name: vote, dtype: object
 <li><p>The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'><strong>BLUE</strong></font> or <font color='orange'><strong>ORANGE</strong></font> class.</p></li>
 <li><p>A fairly intuitive way to do this is to simply use thresholds to split the data up.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt1.png"><img alt="../_images/scatter_dt1.png" src="../_images/scatter_dt1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/scatter_dt1.png"><img alt="404 image" src="../_images/scatter_dt1.png" style="width: 40%;" /></a>
 <ul class="simple">
 <li><p>For example, we can <strong>split</strong> the data at <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>.</p></li>
 <li><p>Everything <strong>less than</strong> the split we can classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
 <li><p>Everything <strong>greater than</strong> the split we can classify as <font color='blue'><strong>BLUE</strong></font></p></li>
 <li><p>By this method, we can successfully classify 7 / 9 observations.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt2.png"><img alt="../_images/scatter_dt2.png" src="../_images/scatter_dt2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/scatter_dt2.png"><img alt="404 image" src="../_images/scatter_dt2.png" style="width: 40%;" /></a>
 <ul class="simple">
 <li><p>But we don’t have to stop there, we can make another split!</p></li>
 <li><p>Let’s now split the section that is greater than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.52</span></code>.</p></li>
@@ -1722,13 +1722,13 @@ Name: vote, dtype: object
 </li>
 <li><p>Using these rules, we now successfully classify 8 / 9 observations.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt3.png"><img alt="../_images/scatter_dt3.png" src="../_images/scatter_dt3.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/scatter_dt3.png"><img alt="404 image" src="../_images/scatter_dt3.png" style="width: 40%;" /></a>
 <ul class="simple">
 <li><p>Okay, let’s add one more threshhold.</p></li>
 <li><p>Let’s make a final split of the section that is less than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.6</span></code>.</p></li>
 <li><p>By this methodology we have successfully classified all of our data.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt4.png"><img alt="../_images/scatter_dt4.png" src="../_images/scatter_dt4.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/scatter_dt4.png"><img alt="404 image" src="../_images/scatter_dt4.png" style="width: 40%;" /></a>
 <ul class="simple">
 <li><p>What we’ve really done here is create a group of <code class="docutils literal notranslate"><span class="pre">if</span></code> statements:</p>
 <ul>
@@ -1740,7 +1740,7 @@ Name: vote, dtype: object
 </li>
 <li><p>This is easier to visualize as a tree:</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/toy_tree.png"><img alt="../_images/toy_tree.png" src="../_images/toy_tree.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/toy_tree.png"><img alt="404 image" src="../_images/toy_tree.png" style="width: 40%;" /></a>
 <ul class="simple">
 <li><p>We just made our first decision tree!</p></li>
 </ul>
@@ -2471,7 +2471,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">fit</span></code> (the training stage of building your model), <strong>parameters</strong> get set, like the split variables and split thresholds.</p>
-<a class="reference internal image-reference" href="../_images/parameters.png"><img alt="../_images/parameters.png" src="../_images/parameters.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/parameters.png"><img alt="404 image" src="../_images/parameters.png" style="width: 30%;" /></a>
 </div>
 <div class="section" id="hyperparameters">
 <h3>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h3>
@@ -2500,7 +2500,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_100_0.svg" src="../_images/lecture1_100_0.svg" /></div>
+<img alt="../_images/lecture1_99_0.svg" src="../_images/lecture1_99_0.svg" /></div>
 </div>
 <p>We see that it’s a depth of one and split on <code class="docutils literal notranslate"><span class="pre">lon</span></code> at -102.165.</p>
 <ul class="simple">
@@ -2519,7 +2519,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_103_0.png" src="../_images/lecture1_103_0.png" />
+<img alt="../_images/lecture1_102_0.png" src="../_images/lecture1_102_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2552,7 +2552,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_108_0.svg" src="../_images/lecture1_108_0.svg" /></div>
+<img alt="../_images/lecture1_107_0.svg" src="../_images/lecture1_107_0.svg" /></div>
 </div>
 <p>This has 4 splits in the tree so we expect 4 decision boundaries (2 on <code class="docutils literal notranslate"><span class="pre">lon</span></code> and 2 on <code class="docutils literal notranslate"><span class="pre">lat</span></code>).</p>
 <div class="cell docutils container">
@@ -2566,7 +2566,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_110_0.png" src="../_images/lecture1_110_0.png" />
+<img alt="../_images/lecture1_109_0.png" src="../_images/lecture1_109_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2599,7 +2599,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_115_0.svg" src="../_images/lecture1_115_0.svg" /></div>
+<img alt="../_images/lecture1_114_0.svg" src="../_images/lecture1_114_0.svg" /></div>
 </div>
 <p>This has 7 splits in the tree. How many decision boundaries should there be?</p>
 <div class="cell docutils container">
@@ -2613,7 +2613,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_117_0.png" src="../_images/lecture1_117_0.png" />
+<img alt="../_images/lecture1_116_0.png" src="../_images/lecture1_116_0.png" />
 </div>
 </div>
 <p>And if we check the score of this model we get 100% accuracy!</p>
@@ -3018,7 +3018,7 @@ Name: price, dtype: float64
   warnings.warn(msg, FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/lecture1_130_1.svg" src="../_images/lecture1_130_1.svg" /></div>
+<img alt="../_images/lecture1_129_1.svg" src="../_images/lecture1_129_1.svg" /></div>
 </div>
 <p>Let’s see what our model predicts for a single example.</p>
 <div class="cell docutils container">

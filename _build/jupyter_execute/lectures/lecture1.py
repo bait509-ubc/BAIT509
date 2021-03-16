@@ -227,7 +227,7 @@ classify_image(img, 5)
     > - Example2: Predict a student's score in this course's quiz2
     
     
-<img src="imgs/classification-vs-regression2.png" height="1500" width="1500"> 
+<img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
 
 
 ## Let's Practice! 
@@ -258,7 +258,7 @@ Basic terminology used in ML:
 - **targets** = outputs (one special column)
 - **training** = learning = fitting
 
-<img src="imgs/sup-ml-terminology2.png" height="1000" width="1000"> 
+<img src="imgs/sup-ml-terminology2.png" width = "90%" alt="404 image" />
 
 
 ### Example:
@@ -305,14 +305,14 @@ y.head()
 - The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'>**BLUE**</font> or <font color='orange'>**ORANGE**</font> class.
 - A fairly intuitive way to do this is to simply use thresholds to split the data up.
 
-<img src='imgs/scatter_dt1.png' width="450">
+<img src='imgs/scatter_dt1.png'  width = "40%" alt="404 image" />
 
 - For example, we can **split** the data at `Feature_1 = 0.47`.
 - Everything **less than** the split we can classify as <font color='orange'>**ORANGE**</font>
 - Everything **greater than** the split we can classify as <font color='blue'>**BLUE**</font>
 - By this method, we can successfully classify 7 / 9 observations.
 
-<img src='imgs/scatter_dt2.png' width="450">
+<img src='imgs/scatter_dt2.png'  width = "40%" alt="404 image" />
 
 - But we don't have to stop there, we can make another split!
 - Let's now split the section that is greater than `Feature_1 = 0.47`, using `Feature_2 = 0.52`.
@@ -321,13 +321,13 @@ y.head()
     - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
 - Using these rules, we now successfully classify 8 / 9 observations.
 
-<img src='imgs/scatter_dt3.png' width="450">
+<img src='imgs/scatter_dt3.png'  width = "40%" alt="404 image" />
 
 - Okay, let's add one more threshhold.
 - Let's make a final split of the section that is less than `Feature_1 = 0.47`, using `Feature_2 = 0.6`.
 - By this methodology we have successfully classified all of our data.
 
-<img src='imgs/scatter_dt4.png' width="450">
+<img src='imgs/scatter_dt4.png'  width = "40%" alt="404 image" />
 
 - What we've really done here is create a group of `if` statements:
     - If `Feature_1 < 0.47` and `Feature_2 < 0.6` classify as <font color='orange'>**ORANGE**</font>
@@ -336,7 +336,7 @@ y.head()
     - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
 - This is easier to visualize as a tree:
 
-<img src='imgs/toy_tree.png' width="450">
+<img src='imgs/toy_tree.png'  width = "40%" alt="404 image" />
 
 - We just made our first decision tree!
 
@@ -514,8 +514,6 @@ candy_df.shape
 1. What is the top node in a decision tree called? 
 2. What Python structure/syntax are the nodes in a decision tree similar to? 
 
-
-
 ## Parameters and Hyperparameters
 
 - ***Parameters***:  Derived during training
@@ -528,7 +526,7 @@ candy_df.shape
 When you call `fit` (the training stage of building your model), **parameters** get set, like the split variables and split thresholds. 
 
 
-<img src='imgs/parameters.png' width="400">
+<img src='imgs/parameters.png'  width = "30%" alt="404 image" />
  
 
 ### Hyperparameters
