@@ -210,21 +210,24 @@ classify_image(img, 5)
 
 <img src='imgs/unsup-learning.png'  width = "75%" alt="404 image" />
 
-## Types of Supervised Learning: Classification vs Regressiion
+## Types of Supervised Learning: Classification vs Regression
 
 - Classification
 - Regression
 
-### Classifications 
-- **Classification** predicting among two or more categories, also known as classes.
-    > - *Example1*: Predict whether a customer will default on their credit card or not. 
-    > - *Example2*: Predict whether the letter grade of a student (A,B,C,D or F)
+### Classification
+
+**Classification** predicting among two or more categories, also known as classes.
+- *Example1*: Predict whether a customer will default on their credit card or not. 
+- *Example2*: Predict whether the letter grade of a student (A,B,C,D or F)
     
 <br>
 
-- **Regression** predicting a continuous (in other words, a number) value.
-    > - Example1: Predict housing prices
-    > - Example2: Predict a student's score in this course's quiz2
+### Regression
+
+**Regression** predicting a continuous (in other words, a number) value.
+- Example1: Predict housing prices
+- Example2: Predict a student's score in this course's quiz2
     
     
 <img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
