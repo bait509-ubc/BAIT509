@@ -221,7 +221,6 @@ classify_image(img, 5)
 - *Example1*: Predict whether a customer will default on their credit card or not. 
 - *Example2*: Predict whether the letter grade of a student (A,B,C,D or F)
     
-<br>
 
 ### Regression
 
