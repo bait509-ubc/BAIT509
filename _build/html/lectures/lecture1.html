@@ -327,8 +327,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#supervised-learning-not-going-into-detail-here">
-     Supervised Learning: (not going into detail here)
+    <a class="reference internal nav-link" href="#unsupervised-learning-not-going-into-detail-here">
+     UnSupervised Learning: (not going into detail here)
     </a>
    </li>
   </ul>
@@ -363,11 +363,6 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
      Example:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#splitting-the-data">
-     Splitting the data
     </a>
    </li>
   </ul>
@@ -531,7 +526,7 @@ Not a long time”.</p>
 <h3>Python, Jupyter, Visualizations<a class="headerlink" href="#python-jupyter-visualizations" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>In this course we be using Python and Jupyter notebooks for lectures as well as assignments.</p></li>
-<li><p>You are free to use <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda distribution</a> to install and manage your Python package installations</p></li>
+<li><p>You are free to use <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda distribution</a> to install and manage your Python package installations.</p></li>
 <li><p>If you are using anaconda, you can install a few key packages we will be using in the course, by typing the following at the command line:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pandas</span> <span class="pre">numpy</span> <span class="pre">scikit-learn</span> <span class="pre">matplotlib</span> <span class="pre">jupyter</span> <span class="pre">altair</span> <span class="pre">seaborn</span> <span class="pre">python-graphviz</span></code></p>
@@ -1351,10 +1346,12 @@ buckeye, horse chestnut, conker, 0.00
 <li><p>Our goal is to define a function that relates <code class="docutils literal notranslate"><span class="pre">X</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
 <li><p>We then use this function to predict the targets of new examples.</p></li>
 </ul>
+<br>
+<br>
 <a class="reference internal image-reference" href="../_images/sup-learning.png"><img alt="404 image" src="../_images/sup-learning.png" style="width: 75%;" /></a>
 </div>
-<div class="section" id="supervised-learning-not-going-into-detail-here">
-<h3>Supervised Learning: (not going into detail here)<a class="headerlink" href="#supervised-learning-not-going-into-detail-here" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="unsupervised-learning-not-going-into-detail-here">
+<h3>UnSupervised Learning: (not going into detail here)<a class="headerlink" href="#unsupervised-learning-not-going-into-detail-here" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Example: Categorizing Google News articles.</p>
 </div></blockquote>
@@ -1599,8 +1596,60 @@ buckeye, horse chestnut, conker, 0.00
 </ul>
 <p>Our <strong>target</strong> column is <code class="docutils literal notranslate"><span class="pre">vote</span></code> since that is what we are interesting in predicting.</p>
 </div>
-<div class="section" id="splitting-the-data">
-<h3>Splitting the data<a class="headerlink" href="#splitting-the-data" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="decision-tree-algorithm">
+<h2>Decision Tree Algorithm<a class="headerlink" href="#decision-tree-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-conceptual-introduction-to-decision-trees">
+<h3>A conceptual introduction to Decision Trees<a class="headerlink" href="#a-conceptual-introduction-to-decision-trees" title="Permalink to this headline">¶</a></h3>
+<p>Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).<br />
+The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'><strong>BLUE</strong></font> or <font color='orange'><strong>ORANGE</strong></font> class.<br />
+A fairly intuitive way to do this is to simply use thresholds to split the data up.</p>
+<a class="reference internal image-reference" href="../_images/scatter_dt1.png"><img alt="404 image" src="../_images/scatter_dt1.png" style="width: 40%;" /></a>
+<p>For example, we can <strong>split</strong> the data at <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>.<br />
+Everything <strong>less than</strong> the split we can classify as <font color='orange'><strong>ORANGE</strong></font>.<br />
+Everything <strong>greater than</strong> the split we can classify as <font color='blue'><strong>BLUE</strong></font>.<br />
+By this method, we can successfully classify 7 / 9 observations.</p>
+<a class="reference internal image-reference" href="../_images/scatter_dt2.png"><img alt="404 image" src="../_images/scatter_dt2.png" style="width: 40%;" /></a>
+<p>But we don’t have to stop there, we can make another split!<br />
+Let’s now split the section that is greater than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.52</span></code>.
+We now have the following conditions:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font>.</p></li>
+</ul>
+<p>Using these rules, we now successfully classify 8 / 9 observations.</p>
+<a class="reference internal image-reference" href="../_images/scatter_dt3.png"><img alt="404 image" src="../_images/scatter_dt3.png" style="width: 40%;" /></a>
+<p>Okay, let’s add one more threshhold.<br />
+Let’s make a final split of the section that is less than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.6</span></code>.<br />
+By this methodology we have successfully classified all of our data.</p>
+<a class="reference internal image-reference" href="../_images/scatter_dt4.png"><img alt="404 image" src="../_images/scatter_dt4.png" style="width: 40%;" /></a>
+<p>What we’ve really done here is create a group of <code class="docutils literal notranslate"><span class="pre">if</span></code> statements:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.6</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.6</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
+</ul>
+<p>This is easier to visualize as a tree:</p>
+<a class="reference internal image-reference" href="../_images/toy_tree.png"><img alt="404 image" src="../_images/toy_tree.png" style="width: 40%;" /></a>
+<p>We just made our first decision tree!</p>
+<p>Before we go forward with learning about decision tree classifiers and reggressors we need to understand the structure of a decision tree.
+Here is the key terminology that you will have to know:</p>
+<ul class="simple">
+<li><p><strong>Root</strong>: Where we start making our conditions.</p></li>
+<li><p><strong>Branch</strong>:  A branch connects to the next node (statement). Each branch represents either true or false.</p></li>
+<li><p><strong>Internal node</strong>: conditions within the tree.</p></li>
+<li><p><strong>Leaf</strong>: the value predicted from the conditions.</p></li>
+<li><p><strong>Tree depth</strong>: The longest path from the root to a leaf.</p></li>
+</ul>
+<p>With the decision tree algorithm in machine learning, the tree can have at most two nodes resulting from it, also known as children.</p>
+<p>If a tree only has a depth of 1, we call that a <strong>decision stump</strong>.</p>
+<a class="reference internal image-reference" href="../_images/lingo_tree.png"><img alt="404 image" src="../_images/lingo_tree.png" style="width: 55%;" /></a>
+<p>This tree  and the one in our example above, both have a depth of 2.</p>
+<p>Trees do not need to be balanced. (You’ll see this shortly)</p>
+</div>
+<div class="section" id="implimentation-with-scikit-learn">
+<h3>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Before we build any model (we are getting to that so hang tight), we need to make sure we have the right “parts” aka inputs and outputs.</p>
 <p>That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.</p>
 <p>$X$ is all of our features in our data, which we also call our <em><strong>feature table</strong></em>. <br>
@@ -1689,89 +1738,16 @@ Name: vote, dtype: object
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="decision-tree-algorithm">
-<h2>Decision Tree Algorithm<a class="headerlink" href="#decision-tree-algorithm" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="a-conceptual-introduction-to-decision-trees">
-<h3>A conceptual introduction to Decision Trees<a class="headerlink" href="#a-conceptual-introduction-to-decision-trees" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).</p></li>
-<li><p>The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'><strong>BLUE</strong></font> or <font color='orange'><strong>ORANGE</strong></font> class.</p></li>
-<li><p>A fairly intuitive way to do this is to simply use thresholds to split the data up.</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt1.png"><img alt="404 image" src="../_images/scatter_dt1.png" style="width: 40%;" /></a>
-<ul class="simple">
-<li><p>For example, we can <strong>split</strong> the data at <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>.</p></li>
-<li><p>Everything <strong>less than</strong> the split we can classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
-<li><p>Everything <strong>greater than</strong> the split we can classify as <font color='blue'><strong>BLUE</strong></font></p></li>
-<li><p>By this method, we can successfully classify 7 / 9 observations.</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt2.png"><img alt="404 image" src="../_images/scatter_dt2.png" style="width: 40%;" /></a>
-<ul class="simple">
-<li><p>But we don’t have to stop there, we can make another split!</p></li>
-<li><p>Let’s now split the section that is greater than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.52</span></code>.</p></li>
-<li><p>We now have the following conditions:</p>
-<ul>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
-</ul>
-</li>
-<li><p>Using these rules, we now successfully classify 8 / 9 observations.</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt3.png"><img alt="404 image" src="../_images/scatter_dt3.png" style="width: 40%;" /></a>
-<ul class="simple">
-<li><p>Okay, let’s add one more threshhold.</p></li>
-<li><p>Let’s make a final split of the section that is less than <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">=</span> <span class="pre">0.47</span></code>, using <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">=</span> <span class="pre">0.6</span></code>.</p></li>
-<li><p>By this methodology we have successfully classified all of our data.</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/scatter_dt4.png"><img alt="404 image" src="../_images/scatter_dt4.png" style="width: 40%;" /></a>
-<ul class="simple">
-<li><p>What we’ve really done here is create a group of <code class="docutils literal notranslate"><span class="pre">if</span></code> statements:</p>
-<ul>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.6</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&lt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.6</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&lt;</span> <span class="pre">0.52</span></code> classify as <font color='blue'><strong>BLUE</strong></font></p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">Feature_1</span> <span class="pre">&gt;</span> <span class="pre">0.47</span></code> and <code class="docutils literal notranslate"><span class="pre">Feature_2</span> <span class="pre">&gt;</span> <span class="pre">0.52</span></code> classify as <font color='orange'><strong>ORANGE</strong></font></p></li>
-</ul>
-</li>
-<li><p>This is easier to visualize as a tree:</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/toy_tree.png"><img alt="404 image" src="../_images/toy_tree.png" style="width: 40%;" /></a>
-<ul class="simple">
-<li><p>We just made our first decision tree!</p></li>
-</ul>
-<p>Before we go forward with learning about decision tree classifiers and aggressors we need to understand the structure of a decision tree.
-Here is the key terminology that you will have to know:</p>
-<ul class="simple">
-<li><p><strong>Root</strong>: Where we start making our conditions.</p></li>
-<li><p><strong>Branch</strong>:  A branch connects to the next node (statement). Each branch represents either true or false.</p></li>
-<li><p><strong>Internal node</strong>: conditions within the tree.</p></li>
-<li><p><strong>Leaf</strong>: the value predicted from the conditions.</p></li>
-<li><p><strong>Tree depth</strong>: The longest path from the root to a leaf.</p></li>
-</ul>
-<p>With the decision tree algorithm in machine learning, the tree can have at most two nodes resulting from it, also known as children.</p>
-<p>If a tree only has a depth of 1, we call that a <strong>decision stump</strong>.</p>
-<a class="reference internal image-reference" href="../_images/lingo_tree.png"><img alt="404 image" src="../_images/lingo_tree.png" style="width: 55%;" /></a>
-<p>This tree  and the one in our example above, both have a depth of 2.</p>
-<p>Trees do not need to be balanced. (You’ll see this shortly)</p>
-</div>
-<div class="section" id="implimentation-with-scikit-learn">
-<h3>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.</p></li>
-</ul>
+<p>There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.</p>
 <ul class="simple">
 <li><p>We generally import a particular ML algorithm using the following syntax:</p></li>
 </ul>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sklearn.module</span> <span class="pre">import</span> <span class="pre">algorithm</span></code></p>
 </div></blockquote>
-<ul class="simple">
-<li><p>The decision tree classification algorithm (<code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>) sits within the <code class="docutils literal notranslate"><span class="pre">tree</span></code> module.</p></li>
-<li><p>(Note there is also a Decision Tree Regression algorithm in this module which we’ll come to later…)</p></li>
-<li><p>Let’s import the classifier using the following code:</p></li>
-</ul>
+<p>The decision tree classification algorithm (<code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>) sits within the <code class="docutils literal notranslate"><span class="pre">tree</span></code> module.<br />
+(Note there is also a Decision Tree Regression algorithm in this module which we’ll come to later…)<br />
+Let’s import the classifier using the following code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -1779,10 +1755,8 @@ Here is the key terminology that you will have to know:</p>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>We can begin creating a model by instantiating an instance of the algorithm class.</p></li>
-<li><p>Here we are naming our decision tree model <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p></li>
-</ul>
+<p>We can begin creating a model by instantiating an instance of the algorithm class.<br />
+Here we are naming our decision tree model <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
@@ -1796,158 +1770,11 @@ Here is the key terminology that you will have to know:</p>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>At this point we just have the framework of a model</p></li>
-<li><p>We can’t do anything with our algorithm yet, because it hasn’t seen any data!</p></li>
-<li><p>We need to give our algorithm some data to learn/train/fit a model</p></li>
-<li><p>Let’s use the election data we imported previously to make a decision tree model</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lon</th>
-      <th>lat</th>
-      <th>vote</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>104</th>
-      <td>-83.015008</td>
-      <td>35.882967</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>205</th>
-      <td>-105.065549</td>
-      <td>39.828572</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>267</th>
-      <td>-95.827648</td>
-      <td>41.364378</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>314</th>
-      <td>-83.304149</td>
-      <td>42.629449</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>-89.115371</td>
-      <td>32.757224</td>
-      <td>red</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Remember that we split this data into our features table and target values or our <code class="docutils literal notranslate"><span class="pre">x</span></code> and  <code class="docutils literal notranslate"><span class="pre">y</span></code> object.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lon</th>
-      <th>lat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>104</th>
-      <td>-83.015008</td>
-      <td>35.882967</td>
-    </tr>
-    <tr>
-      <th>205</th>
-      <td>-105.065549</td>
-      <td>39.828572</td>
-    </tr>
-    <tr>
-      <th>267</th>
-      <td>-95.827648</td>
-      <td>41.364378</td>
-    </tr>
-    <tr>
-      <th>314</th>
-      <td>-83.304149</td>
-      <td>42.629449</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>-89.115371</td>
-      <td>32.757224</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104     red
-205    blue
-267    blue
-314    blue
-53      red
-Name: vote, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>We can now use the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method to train our model using the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> data.</p></li>
-<li><p>When we call fit on our model object, the actual learning happens.</p></li>
-</ul>
+<p>At this point we just have the framework of a model.<br />
+We can’t do anything with our algorithm yet, because it hasn’t seen any data!<br />
+We need to give our algorithm some data to learn/train/fit a model.</p>
+<p>We can now use the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method to train our model using the feature <code class="docutils literal notranslate"><span class="pre">X</span></code> and target <code class="docutils literal notranslate"><span class="pre">y</span></code> data we just separated.<br />
+When we call fit on our model object, the actual learning happens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1960,10 +1787,8 @@ Name: vote, dtype: object
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>Now we’ve used data to learn a model, let’s take a look at the model we made!</p></li>
-<li><p>The code below prints out our model structure for us (like the tree we made ourselves earlier)</p></li>
-</ul>
+<p>Now we’ve used data to learn a model, let’s take a look at the model we made!<br />
+The code below prints out our model structure for us (like the tree we made ourselves earlier)</p>
 <p><em>Note: This <code class="docutils literal notranslate"><span class="pre">display_tree</span></code>, function was adapted from the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> library with some amendments to make the trees easier to understand. You can find the code in the <code class="docutils literal notranslate"><span class="pre">script</span></code> file on Canvas.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1974,11 +1799,9 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_70_0.svg" src="../_images/lecture1_70_0.svg" /></div>
+<img alt="../_images/lecture1_66_0.svg" src="../_images/lecture1_66_0.svg" /></div>
 </div>
-<ul class="simple">
-<li><p>We can better visualize what’s going on by actually plotting our data and the model’s  <strong>decision boundaries</strong>.</p></li>
-</ul>
+<p>We can better visualize what’s going on by actually plotting our data and the model’s  <strong>decision boundaries</strong>.</p>
 <p><em>Note: This <code class="docutils literal notranslate"><span class="pre">plot_classifier</span></code> made by Mike Gelbart, function is available for installation <a class="reference external" href="https://github.com/mgelbart/plot-classifier">here</a> or using:</em></p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/mgelbart/plot-classifier.git</span></code></p>
@@ -2002,17 +1825,14 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_72_0.png" src="../_images/lecture1_72_0.png" />
+<img alt="../_images/lecture1_68_0.png" src="../_images/lecture1_68_0.png" />
 </div>
 </div>
-<ul class="simple">
-<li><p>In this plot the shaded regions show what our model predicts for different feature values</p></li>
-<li><p>The scatter points are our actual 20 observations</p></li>
-<li><p>From the above plot, we can see that our model is classifying all our observations correctly</p></li>
-<li><p>But there’s an easier way to find out how our model is doing</p></li>
-</ul>
-<p>We can predict the target of examples by calling <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> on the classifier object.</p>
-<p>Let’s see what it predicts for a single randomly new observation first:</p>
+<p>In this plot the shaded regions show what our model predicts for different feature values.<br />
+The scatter points are our actual 20 observations.<br />
+From the above plot, we can see that our model is classifying all our observations correctly, but there’s an easier way to find out how our model is doing.<br />
+We can predict the target of examples by calling <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> on the classifier object.<br />
+Let’s see what it predicts for a single randomly new observation first:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_ex</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">87.4</span><span class="p">,</span> <span class="mi">59</span><span class="p">]</span>
@@ -2061,7 +1881,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;blue&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -2242,7 +2062,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_83_0.svg" src="../_images/lecture1_83_0.svg" /></div>
+<img alt="../_images/lecture1_78_0.svg" src="../_images/lecture1_78_0.svg" /></div>
 </div>
 <p>Let’s use our <code class="docutils literal notranslate"><span class="pre">new_example</span></code> object for this example.</p>
 <div class="cell docutils container">
@@ -2296,7 +2116,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;blue&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -2497,7 +2317,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_99_0.svg" src="../_images/lecture1_99_0.svg" /></div>
+<img alt="../_images/lecture1_94_0.svg" src="../_images/lecture1_94_0.svg" /></div>
 </div>
 <p>We see that it’s a depth of one and split on <code class="docutils literal notranslate"><span class="pre">lon</span></code> at -102.165.</p>
 <ul class="simple">
@@ -2516,7 +2336,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_102_0.png" src="../_images/lecture1_102_0.png" />
+<img alt="../_images/lecture1_97_0.png" src="../_images/lecture1_97_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2549,7 +2369,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_107_0.svg" src="../_images/lecture1_107_0.svg" /></div>
+<img alt="../_images/lecture1_102_0.svg" src="../_images/lecture1_102_0.svg" /></div>
 </div>
 <p>This has 4 splits in the tree so we expect 4 decision boundaries (2 on <code class="docutils literal notranslate"><span class="pre">lon</span></code> and 2 on <code class="docutils literal notranslate"><span class="pre">lat</span></code>).</p>
 <div class="cell docutils container">
@@ -2563,7 +2383,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_109_0.png" src="../_images/lecture1_109_0.png" />
+<img alt="../_images/lecture1_104_0.png" src="../_images/lecture1_104_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2596,7 +2416,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_114_0.svg" src="../_images/lecture1_114_0.svg" /></div>
+<img alt="../_images/lecture1_109_0.svg" src="../_images/lecture1_109_0.svg" /></div>
 </div>
 <p>This has 7 splits in the tree. How many decision boundaries should there be?</p>
 <div class="cell docutils container">
@@ -2610,7 +2430,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_116_0.png" src="../_images/lecture1_116_0.png" />
+<img alt="../_images/lecture1_111_0.png" src="../_images/lecture1_111_0.png" />
 </div>
 </div>
 <p>And if we check the score of this model we get 100% accuracy!</p>
@@ -2985,8 +2805,8 @@ Name: price, dtype: float64
 <p>We can see that instead of predicting a categorical column like we did with <code class="docutils literal notranslate"><span class="pre">vote</span></code> before, our target column is now numeric.</p>
 <p>Instead of importing <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>, we import <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code>.</p>
 <p>We follow the same steps as before and can even set hyperparameters as we did in classification.</p>
-<p>Here when we build our model, we are specifying a <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> of 4.</p>
-<p>This means our decision tree is going to be constrained to a depth of 4.</p>
+<p>Here, when we build our model, we are specifying a <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> of 3.</p>
+<p>This means our decision tree is going to be constrained to a depth of 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -3003,7 +2823,7 @@ Name: price, dtype: float64
 </div>
 </div>
 </div>
-<p>Let’s look at the tree it produces Our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.</p>
+<p>Let’s look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">reg_model</span><span class="p">,</span> <span class="s2">&quot;imgs/dt_reg&quot;</span><span class="p">)</span>
@@ -3015,7 +2835,7 @@ Name: price, dtype: float64
   warnings.warn(msg, FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/lecture1_129_1.svg" src="../_images/lecture1_129_1.svg" /></div>
+<img alt="../_images/lecture1_124_1.svg" src="../_images/lecture1_124_1.svg" /></div>
 </div>
 <p>Let’s see what our model predicts for a single example.</p>
 <div class="cell docutils container">
@@ -3131,7 +2951,7 @@ Name: price, dtype: float64
 </div>
 </div>
 <p>The maximum 𝑅2 is 1 for perfect predictions.</p>
-<p>It can be negative which is very bad (worse than DummyRegressor).</p>
+<p>It can be negative which is very bad.</p>
 </div>
 <div class="section" id="id2">
 <h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>

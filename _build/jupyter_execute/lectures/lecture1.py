@@ -49,7 +49,7 @@ All assessments will be submitted via Canvas
 ### Python, Jupyter, Visualizations 
 
 - In this course we be using Python and Jupyter notebooks for lectures as well as assignments. 
-- You are free to use [Anaconda distribution](https://www.anaconda.com/distribution/) to install and manage your Python package installations
+- You are free to use [Anaconda distribution](https://www.anaconda.com/distribution/) to install and manage your Python package installations.
 - If you are using anaconda, you can install a few key packages we will be using in the course, by typing the following at the command line:
     > `conda install pandas numpy scikit-learn matplotlib jupyter altair seaborn python-graphviz`
 
@@ -177,7 +177,6 @@ classify_image(img, 5)
 ## Types of Machine Learning
 
 - **Supervised learning** (this course)
-
 - Unsupervised learning
 
 ### Supervised Learning: 
@@ -185,25 +184,22 @@ classify_image(img, 5)
 > Example: Labelling emails as spam or not
 
 - In supervised machine learning, we have a set of observations usually denoted with an uppercase `X`.
-
 - We also have a set of corresponding targets usually denoted with a lowercase `y`. 
-
 - Our goal is to define a function that relates `X` to `y`. 
-
 - We then use this function to predict the targets of new examples. 
 
-
+<br>
+<br>
 
 <img src='imgs/sup-learning.png'  width = "75%" alt="404 image" />
 
 
-### Supervised Learning: (not going into detail here)  
+### UnSupervised Learning: (not going into detail here)  
 
 > Example: Categorizing Google News articles.
 
 
 - In unsupervised learning, we are not given targets and are only given observations `X`. 
-
 - We apply some clustering algorithms to create a model that finds patterns in our data and groups together similar characteristics from our data.
 
 
@@ -279,70 +275,52 @@ In this dataset, we have:
 
 Our **target** column is `vote` since that is what we are interesting in predicting. 
 
-### Splitting the data
-
-Before we build any model (we are getting to that so hang tight), we need to make sure we have the right "parts" aka inputs and outputs. 
-
-That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.
-
-$X$ is all of our features in our data, which we also call our ***feature table***. <br>
-$y$ is our target, which is what we are predicting.
-
-
-
-
-
-X = df.drop(columns=["vote"])
-y = df["vote"]
-
-X.head()
-
-y.head()
-
 ## Decision Tree Algorithm
 
 ### A conceptual introduction to Decision Trees
 
-- Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).
-- The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'>**BLUE**</font> or <font color='orange'>**ORANGE**</font> class.
-- A fairly intuitive way to do this is to simply use thresholds to split the data up.
+Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).   
+The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'>**BLUE**</font> or <font color='orange'>**ORANGE**</font> class.    
+A fairly intuitive way to do this is to simply use thresholds to split the data up.
 
 <img src='imgs/scatter_dt1.png'  width = "40%" alt="404 image" />
 
-- For example, we can **split** the data at `Feature_1 = 0.47`.
-- Everything **less than** the split we can classify as <font color='orange'>**ORANGE**</font>
-- Everything **greater than** the split we can classify as <font color='blue'>**BLUE**</font>
-- By this method, we can successfully classify 7 / 9 observations.
+For example, we can **split** the data at `Feature_1 = 0.47`.   
+Everything **less than** the split we can classify as <font color='orange'>**ORANGE**</font>.  
+Everything **greater than** the split we can classify as <font color='blue'>**BLUE**</font>.   
+By this method, we can successfully classify 7 / 9 observations.
 
 <img src='imgs/scatter_dt2.png'  width = "40%" alt="404 image" />
 
-- But we don't have to stop there, we can make another split!
-- Let's now split the section that is greater than `Feature_1 = 0.47`, using `Feature_2 = 0.52`.
-- We now have the following conditions:
-    - If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>
-    - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
-- Using these rules, we now successfully classify 8 / 9 observations.
+But we don't have to stop there, we can make another split!   
+Let's now split the section that is greater than `Feature_1 = 0.47`, using `Feature_2 = 0.52`.
+We now have the following conditions:    
+- If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>.    
+- If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>.    
+
+Using these rules, we now successfully classify 8 / 9 observations.  
 
 <img src='imgs/scatter_dt3.png'  width = "40%" alt="404 image" />
 
-- Okay, let's add one more threshhold.
-- Let's make a final split of the section that is less than `Feature_1 = 0.47`, using `Feature_2 = 0.6`.
-- By this methodology we have successfully classified all of our data.
+Okay, let's add one more threshhold.    
+Let's make a final split of the section that is less than `Feature_1 = 0.47`, using `Feature_2 = 0.6`.   
+By this methodology we have successfully classified all of our data.   
 
 <img src='imgs/scatter_dt4.png'  width = "40%" alt="404 image" />
 
-- What we've really done here is create a group of `if` statements:
-    - If `Feature_1 < 0.47` and `Feature_2 < 0.6` classify as <font color='orange'>**ORANGE**</font>
-    - If `Feature_1 < 0.47` and `Feature_2 > 0.6` classify as <font color='blue'>**BLUE**</font>
-    - If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>
-    - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
-- This is easier to visualize as a tree:
+What we've really done here is create a group of `if` statements:     
+- If `Feature_1 < 0.47` and `Feature_2 < 0.6` classify as <font color='orange'>**ORANGE**</font>
+- If `Feature_1 < 0.47` and `Feature_2 > 0.6` classify as <font color='blue'>**BLUE**</font>
+- If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>
+- If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
+
+This is easier to visualize as a tree:
 
 <img src='imgs/toy_tree.png'  width = "40%" alt="404 image" />
 
-- We just made our first decision tree!
+We just made our first decision tree!
 
-Before we go forward with learning about decision tree classifiers and aggressors we need to understand the structure of a decision tree.
+Before we go forward with learning about decision tree classifiers and reggressors we need to understand the structure of a decision tree.
 Here is the key terminology that you will have to know: 
 
 - **Root**: Where we start making our conditions.
@@ -363,52 +341,58 @@ Trees do not need to be balanced. (You'll see this shortly)
 
 ### Implimentation with Scikit-learn
 
-- There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.
+Before we build any model (we are getting to that so hang tight), we need to make sure we have the right "parts" aka inputs and outputs. 
+
+That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.
+
+$X$ is all of our features in our data, which we also call our ***feature table***. <br>
+$y$ is our target, which is what we are predicting.
 
 
-- We generally import a particular ML algorithm using the following syntax:
-> `from sklearn.module import algorithm`
-- The decision tree classification algorithm (`DecisionTreeClassifier`) sits within the `tree` module.
-- (Note there is also a Decision Tree Regression algorithm in this module which we'll come to later...)
-- Let's import the classifier using the following code:
-
-from sklearn.tree import DecisionTreeClassifier
-
-- We can begin creating a model by instantiating an instance of the algorithm class.
-
-- Here we are naming our decision tree model `model`:
-
-model = DecisionTreeClassifier()
-model
-
-- At this point we just have the framework of a model
-- We can't do anything with our algorithm yet, because it hasn't seen any data! 
-- We need to give our algorithm some data to learn/train/fit a model
-- Let's use the election data we imported previously to make a decision tree model
-
-df.head()
-
-Remember that we split this data into our features table and target values or our `x` and  `y` object. 
+X = df.drop(columns=["vote"])
+y = df["vote"]
 
 X.head()
 
 y.head()
 
-- We can now use the `.fit()` method to train our model using the `X` and `y` data. 
-- When we call fit on our model object, the actual learning happens. 
+There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.
+
+
+- We generally import a particular ML algorithm using the following syntax:
+> `from sklearn.module import algorithm`
+
+The decision tree classification algorithm (`DecisionTreeClassifier`) sits within the `tree` module.  
+(Note there is also a Decision Tree Regression algorithm in this module which we'll come to later...)  
+Let's import the classifier using the following code:  
+
+from sklearn.tree import DecisionTreeClassifier
+
+We can begin creating a model by instantiating an instance of the algorithm class.    
+Here we are naming our decision tree model `model`:   
+
+model = DecisionTreeClassifier()
+model
+
+At this point we just have the framework of a model.    
+We can't do anything with our algorithm yet, because it hasn't seen any data!     
+We need to give our algorithm some data to learn/train/fit a model.    
+
+We can now use the `.fit()` method to train our model using the feature `X` and target `y` data we just separated.  
+When we call fit on our model object, the actual learning happens. 
 
 model.fit(X, y)
 
-- Now we've used data to learn a model, let's take a look at the model we made!
-- The code below prints out our model structure for us (like the tree we made ourselves earlier)
+Now we've used data to learn a model, let's take a look at the model we made!    
+The code below prints out our model structure for us (like the tree we made ourselves earlier)   
 
-*Note: This `display_tree`, function was adapted from the `graphviz` library with some amendments to make the trees easier to understand. You can find the code in the `script` file on Canvas.* 
+*Note: This `display_tree`, function was adapted from the `graphviz` library with some amendments to make the trees easier to understand. You can find the code in the `script` file on Canvas.*   
 
 sys.path.append('code/')
 from display_tree import display_tree
 display_tree(X.columns, model, "imgs/decision_tree")
 
-- We can better visualize what's going on by actually plotting our data and the model's  **decision boundaries**.
+We can better visualize what's going on by actually plotting our data and the model's  **decision boundaries**.
 
 *Note: This `plot_classifier` made by Mike Gelbart, function is available for installation [here](https://github.com/mgelbart/plot-classifier) or using:*
 >`pip install git+git://github.com/mgelbart/plot-classifier.git`
@@ -427,13 +411,10 @@ plt.yticks(fontsize= 20);
 plt.xlabel('lon', fontsize=20);
 plt.ylabel('lat', fontsize=20);  
 
-- In this plot the shaded regions show what our model predicts for different feature values
-- The scatter points are our actual 20 observations
-- From the above plot, we can see that our model is classifying all our observations correctly 
-- But there's an easier way to find out how our model is doing
-
-We can predict the target of examples by calling `.predict()` on the classifier object.
-
+In this plot the shaded regions show what our model predicts for different feature values.  
+The scatter points are our actual 20 observations.    
+From the above plot, we can see that our model is classifying all our observations correctly, but there's an easier way to find out how our model is doing.   
+We can predict the target of examples by calling `.predict()` on the classifier object.     
 Let’s see what it predicts for a single randomly new observation first:
 
 new_ex = [-87.4, 59]
@@ -639,9 +620,9 @@ Instead of importing `DecisionTreeClassifier`, we import `DecisionTreeRegressor`
 
 We follow the same steps as before and can even set hyperparameters as we did in classification. 
 
-Here when we build our model, we are specifying a `max_depth` of 4. 
+Here, when we build our model, we are specifying a `max_depth` of 3. 
 
-This means our decision tree is going to be constrained to a depth of 4.
+This means our decision tree is going to be constrained to a depth of 3.
 
 from sklearn.tree import DecisionTreeRegressor
 
@@ -649,7 +630,7 @@ depth = 3
 reg_model = DecisionTreeRegressor(max_depth=depth)
 reg_model.fit(X, y)
 
-Let's look at the tree it produces Our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.
+Let's look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.
 
 display_tree(X.columns, reg_model, "imgs/dt_reg")
 
@@ -673,7 +654,7 @@ reg_model.score(X,y)
 
 The maximum 𝑅2 is 1 for perfect predictions. 
 
-It can be negative which is very bad (worse than DummyRegressor). 
+It can be negative which is very bad. 
 
 ## Let's Practice 
 
