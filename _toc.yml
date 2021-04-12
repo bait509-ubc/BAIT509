@@ -11,9 +11,6 @@
     - file: lectures/lecture1
     - file: lectures/lecture2
 
-- part: Assignments
-  chapters:
-    - file: release/assignment1
 
 - part: References
   chapters:

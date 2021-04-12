@@ -25,7 +25,7 @@ Not a long time".
 - TA office hours: TBD
 - Camera on policy!
 - Additional resources here: Canvas course URL
-- We will be using [Piazza](https://piazza.com/ubc.ca/winterterm22021/bait509ba12020w/home) for discussions and questions.
+- We will be using [Piazza](https://piazza.com/configure-classes/winterterm22020/bait509ba1) for discussions and questions.
 - Assessments:
 
 | Assessment       | Weight       | Due                            |
