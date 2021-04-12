@@ -9,12 +9,11 @@
 - part: Lectures
   chapters:
     - file: lectures/lecture1
-    - file: markdown
+    - file: lectures/lecture2
 
 - part: Assignments
   chapters:
-    - file: markdown
-    - file: markdown
+    - file: release/assignment1
 
 - part: References
   chapters:

@@ -45,6 +45,7 @@ All assessments will be submitted via Canvas
 - I am have an undergraduate degree in Applied Mathematics from the University of Western Ontario
 - I have a master's degree in Data Science 
 - I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none. 
+- Worked with companies like Riversol Skincare and Freshprep. 
 
 ### Python, Jupyter, Visualizations 
 
@@ -215,14 +216,14 @@ classify_image(img, 5)
 
 **Classification** predicting among two or more categories, also known as classes.
 - *Example1*: Predict whether a customer will default on their credit card or not. 
-- *Example2*: Predict whether the letter grade of a student (A,B,C,D or F)
+- *Example2*: Predict if an animal is a reptile, mammal or bird. 
     
 
 ### Regression
 
 **Regression** predicting a continuous (in other words, a number) value.
 - Example1: Predict housing prices
-- Example2: Predict a student's score in this course's quiz2
+- Example2: Predict the length of a snake. 
     
     
 <img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
@@ -235,7 +236,7 @@ Are the following supervised or unsupervised problems?
 
 1. Finding groups of similar properties in a real estate data set.
 2. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.
-3. Idenitfying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.
+3. Identifying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.
 4. Detecting heart disease in patients based on different test results and history.
 5. Grouping articles on different topics from different news sources (something like Google News app).
 
@@ -347,7 +348,6 @@ That means we need to split up our tabular data into the features and the target
 
 $X$ is all of our features in our data, which we also call our ***feature table***. <br>
 $y$ is our target, which is what we are predicting.
-
 
 X = df.drop(columns=["vote"])
 y = df["vote"]
@@ -479,11 +479,11 @@ We will not go into detail here, but there the important thing to note here is:
 
 Using the data `candybars.csv` from the datafolder to aswer the following questions:
 
-1. how many features are there?
+1. How many features are there?
 2. How many observations are there? 
-3. What would be suitable target for a classification problem?
+3. What would be a suitable target with this data?
 
-candy_df = pd.read_csv('data/candybars.csv')
+candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
 
 candy_df.shape
@@ -658,7 +658,7 @@ It can be negative which is very bad.
 
 ## Let's Practice 
 
-Using the data `candybars.csv` from the datafolder for the following:
+Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here](https://ml-learn.mds.ubc.ca/en/module2))  for the following:
 1. Define two objects named `X` and `y` which contain the features and target column respectively.
 2. Using sklearn, create 3 different decision tree classifiers using 3 different `min_samples_split` values based on this data.
 3. What is the accuracy of each classifier on the training data?
@@ -676,4 +676,3 @@ candy_df.head()
 - What is the decision tree algorithm and how does it work
 - The scikit-learn library
 - Parameters and hyperparameters
-
