@@ -11,5 +11,5 @@ I have a bachelor's degree in Applied Mathematics and Economics from the Univers
 
 I have worked with companies like Riversol Skincare and Freshprep making visualization and prediction tools. 
 
-For this course, I plan to no only teach you some key topics of machine learning but I really want to make sure that it's an enjoyable process. Machine Learning is my favourite subject to teach and I hope that it shows in the next 5 weeks. 
+For this course, I plan to not only teach you some key topics of machine learning but I really want to make sure that it's an enjoyable process. Machine Learning is one of my favourite subject to teach and I hope that it shows in the next 5 weeks. 
 

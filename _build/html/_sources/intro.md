@@ -1,8 +1,8 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/) for the most up-to-date content and announcements.
+This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/58082) for the most up-to-date content and announcements.
 
-This repository is available as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/).
+This repository is available as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/intro.html).
 
 ## Learning Objectives
 
@@ -19,7 +19,7 @@ By the end of the course, students are expected to be able to:
 
 | Name         | Position   | email | 
 | :---:        | :---:      | :---:         | 
-| [Hayley Boyce](www.hayleyfboyce.com) | Instructor | hfboyce@cs.ubc.ca | 
+| [Hayley Boyce](https://www.hayleyfboyce.com/) | Instructor | hfboyce@cs.ubc.ca | 
 | Ali Seyfi | TA | aliseyfi@cs.ubc.ca | TBD | 
 | Andy Tai | TA | andy.tai@mail.utoronto.ca | TBD | 
 | Daniel Ramandi| TA | ramandi18@gmail.com | TBD | 
@@ -54,7 +54,7 @@ Details about class meetings will appear here as they become available.
 | Assignment 3                                                    | May 19th at 23:59    | 20%    |
 | Final Project                                                   | May 29th at 23:59    | 30%    |
 
-All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/).
+All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/58082).
 
 ## Office Hours
 
