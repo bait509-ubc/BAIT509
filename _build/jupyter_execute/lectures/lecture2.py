@@ -12,8 +12,9 @@ import sys
 sys.path.append('code/')
 from display_tree import display_tree
 from plot_classifier import plot_classifier
+import matplotlib.pyplot as plt
 
-### Lecture Learning Objectives 
+## Lecture Learning Objectives 
 
 - Explain the concept of generalization.
 - Split a dataset into train and test sets using `train_test_split` function.
@@ -84,10 +85,10 @@ voting_df.head()
 
 We then create our feature table and our target objects (`X` and `y`) 
 
-X = cities_df.drop(columns=["vote"])
+X = voting_df.drop(columns=["vote"])
 X.head()
 
-y = cities_df["vote"]
+y = voting_df["vote"]
 y.head()
 
 Let's build our model now. 
@@ -103,7 +104,7 @@ model.score(X, y)
 
 display_tree(X.columns, model, "imgs/dt_md_1")
 
-In this decision tree there is only 1 split.  
+In this decision tree, there is only 1 split.  
 
 model.score(X, y)
 
@@ -127,7 +128,7 @@ model.score(X, y)
 
 display_tree(X.columns, model, "imgs/dt_md_2")
 
-The decision boundaries are created by asking 3 questions (only possible to ask 2 question per observation) and we can see 3 splits now. 
+The decision boundaries are created by asking 3 questions (only possible to ask 2 questions per observation) and we can see 3 splits now. 
 
 Our score here has increased from 74.75% to 82.75%.
 
@@ -182,9 +183,9 @@ The model is now more specific and sensitive to the training data.
 For our decision tree model, we see that score increases as we increase `max_depth`.
 Since we are creating a more complex tree (higher `max_depth`) we can fit all the peculiarities of our data to eventually get 100% accuracy.
 
-Do you think that's going to be helpful for us having a model with a perfect score on all the data?
+Do you think that's going to be helpful for us to have a model with a perfect score on all the data?
 
-### Fundamental goal of machine learning (Soft intro)
+### The Fundamental goal of machine learning
 
 Goal: **to generalize beyond what we see in the training examples**. <br>
 We are only given a sample of the data and do not have the full distribution. <br>
@@ -209,7 +210,7 @@ These new examples should be representative of the training data.
 
 - Although we can get 100% accuracy on our model, do we trust it? 
 
-What if we used the model we saw that gives 100% accuracy, Would you expect this model to perform equallu well on unseen examples? Probably not. 
+What if we used the model we saw that gives 100% accuracy, Would you expect this model to perform equally well on unseen examples? Probably not. 
 
 Given a model in machine learning, people usually talk about two kinds of accuracies (scores):
 
@@ -235,7 +236,7 @@ We can approximate generalization accuracy by splitting our data!
 - Keep a randomly selected portion of our data aside that we call that the testing data. 
 
 - fit (train) a model on the training portion only.
-- score (assess) the trained model on this set aside **Testing** data to get a sense of how well the model would be able to generalize.
+- score (assess) the trained model on this set-aside **Testing** data to get a sense of how well the model would be able to generalize.
 
 
 ###  Simple train and test split
@@ -254,10 +255,10 @@ We can approximate generalization accuracy by splitting our data!
 
 ### How do we do this? 
 
-In our trusty Scikit Learn package we have a function for that! 
+In our trusty Scikit Learn package, we have a function for that! 
 - `train_test_split`
 
-Let's try it out using a similar yet slightly different dataset. Here we still have `latitude` and `longitude` coordinates but this time our target variable is if the citie with these coordinate lies in Canada or the USA. 
+Let's try it out using a similar yet slightly different dataset. Here we still have `latitude` and `longitude` coordinates but this time our target variable is if the city with these coordinates lies in Canada or the USA. 
 
 #### First way
 
@@ -361,7 +362,7 @@ The model is getting 100 percent accuracy on the training and for that to happen
 
 The model got over complicated on the training data and this doesn’t generalize to the test data well.
 
-In the plot on the right, we can see some red triangles in the blue area and that is the model making mistakes which explains the 71% accuracy.
+In the plot on the right, we can see some red triangles in the blue area. That is the model making mistakes which explains the 71% accuracy.
 
 ### Parameters in `.train_test_split()`
 
@@ -430,7 +431,7 @@ We will use **deployment data** to refer to data, where we do not have access to
 
 Deployment score is the thing we really care about.
 
-We use validation and test scores as proxies for deployment score, and we hope they are similar.
+We use validation and test scores as proxies for the deployment score, and we hope they are similar.
 
 So, if our model does well on the validation and test data, we hope it will do well on deployment data.
 
@@ -438,7 +439,6 @@ So, if our model does well on the validation and test data, we hope it will do w
 
 1. When is the most optimal time to split our data? 
 2. Why do we split our data?
-
 3. Fill in the table below:
 
 |            | `.fit()` | `.score()` | `.predict()` |
@@ -447,8 +447,6 @@ So, if our model does well on the validation and test data, we hope it will do w
 | Validation |          |            |              |
 | Test       |          |            |              |
 | Deployment |          |            |              |
-
-
 
 
 ## Cross-validation
@@ -489,19 +487,234 @@ There is! The answer to our problem is called.....
 > ....
 
 
+## Cross-validation using `sk-learn`
+
+There are 2 ways we can do cross-validation with `sk-learn`:
+- `.cross_val_score()`
+- `.cross_validate()`
+
+Before doing cross-validation we still need to split our data into our training set and our test set and separate the features from the targets. 
+So using our `X` and `y` from our Canadian/United States cities data we split it into train/test splits. 
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=123)
+
+### `cross_val_score`
 
 
+from sklearn.model_selection import cross_val_score
+
+model = DecisionTreeClassifier(max_depth=4)
+cv_score = cross_val_score(model, X_train, y_train, cv=5)
+cv_score
+
+Once, we've imported `cross_val_score` we can make our model and call our model, the feature object and target object as arguments. 
+
+- `cv` determines the cross-validation splitting strategy or how many "folds" there are.
+
+-For each fold, the model is fitted on the training portion and scores on the validation portion.
+
+- The output of `cross_val_score()` is the validation score for each fold. 
+
+cv_score.mean()
+
+cv_score = cross_val_score(model, X_train, y_train, cv=10)
+cv_score
+
+cv_score.mean()
+
+### `cross_validate`
+
+- Similar to `cross_val_score` but more informative.
+- Lets us access training ***and*** validation scores using the parameter `return_train_score`.
+- Note: in the dictionary output `test_score` and `test_time` refers to *validation score* and *validation time*
+
+from sklearn.model_selection import cross_validate
+
+scores = cross_validate(model, X_train, y_train, cv=10, return_train_score=True)
+scores
+
+pd.DataFrame(scores)
+
+pd.DataFrame(scores).mean()
+
+pd.DataFrame(scores).std()
+
+## Our typical supervised learning set up is as follows: 
+
+1. Given training data with `X` and `y`.
+2. We split our data into `X_train, y_train, X_test, y_test`.
+3. Hyperparameter optimization using cross-validation on `X_train` and `y_train`. 
+4. We assess the best model using  `X_test` and `y_test`.
+5. The **test score** tells us how well our model generalizes.
+6. If the **test score** is reasonable, we deploy the model.
+
+## Let's Practice 
+
+1. We carry out cross-validation to avoid reusing the same validation set again and again. Let’s say you do 10-fold cross-validation on 1000 examples. For each fold, how many examples do you train on?
+2. With 10-fold cross-validation, you split 1000 examples into 10-folds. For each fold, when you are done, you add up the accuracies from each fold and divide by what?
+
+True/False:
+- 𝑘-fold cross-validation calls fit 𝑘 times and predict 𝑘 times.
 
 
+## Overfitting and Underfitting
+
+### Types of scores 
+We've talked about the different types of splits, now we are going to talk about their scores. 
+
+- **Training score**: The score that our model gets on the same data that it was trained on. (seen data - training data) 
+- **Validation score**: The mean validation score from cross-validation).
+- **Test score**: This is the score from the data that we locked away. 
+
+### Overfitting
+
+- Overfitting occurs when our model is overly specified to the particular training data and often leads to bad results.
+- Training score is high but the validation score is much lower.  
+- The gap between train and validation scores is large.
+- It's usually common to have a bit of overfitting (only a bit!) 
+- This produces more severe results when the training data is minimal or when the model’s complexity is high.
+
+model = DecisionTreeClassifier()
+scores = cross_validate(model, X_train, y_train, cv=10, return_train_score=True)
+
+pd.DataFrame(scores)
+
+print("Train score: " + str(round(scores["train_score"].mean(), 2)))
+print("Validation score: " + str(round(scores["test_score"].mean(), 2)))
+
+model.fit(X_train, y_train);
+plot_classifier(X_train, y_train, model);
+plt.title("Decision tree with no max_depth");
+
+### Underfitting 
+
+- Underfitting is somewhat the opposite of overfitting in the sense that it occurs when the model is not complex enough. 
+- Underfitting is when our model is too simple (`DecisionTreeClassifier` with max_depth=1). 
+- The model doesn't capture the patterns in the training data and the training score is not that high.
+- Both train and validation scores are low and the gap between train and validation scores is low as well.
+
+model = DecisionTreeClassifier(max_depth=1)
+
+scores = cross_validate(model, X_train, y_train, cv=10, return_train_score=True)
+print("Train score: " + str(round(scores["train_score"].mean(), 2)))
+print("Validation score: " + str(round(scores["test_score"].mean(), 2)))
+
+Standard question to ask ourselves: 
+***Which of these scenarios am I in?***
+
+### How can we figure this out?
+
+- If the training and validation scores are very far apart → more likely **overfitting**.     
+    - Try decreasing model complexity.
+
+- If the training and validation scores are very close together → more likely **underfitting**.  
+    - Try increasing model complexity.
+
+## The "Fundamental Tradeoff" of Supervised Learning
+
+As model complexity increases:
+
+$\text{Training score}$  ↑ and ($\text{Training score} − \text{Validation score}$) tend to also  ↑
 
 
+If our model is too simple (underfitting) then we won't really learn any "specific patterns" of the training set. 
 
+**BUT** 
+
+If our model is too complex then we will learn unreliable patterns that get every single training example correct, and there will be a large gap between training error and validation error.
+
+The trade-off is there is tension between these two concepts. 
+
+When we underfit less, we overfit more. 
+
+How do we know how much overfitting is too much and how much is not enough? 
+
+### How to pick a model that would generalize better?
+
+results_dict = {"depth": list(), "mean_train_score": list(), "mean_cv_score": list()}
+
+for depth in range(1,20):
+    model = DecisionTreeClassifier(max_depth=depth)
+    scores = cross_validate(model, X_train, y_train, cv=10, return_train_score=True)
+    results_dict["depth"].append(depth)
+    results_dict["mean_cv_score"].append(scores["test_score"].mean())
+    results_dict["mean_train_score"].append(scores["train_score"].mean())
+
+results_df = pd.DataFrame(results_dict)
+results_df
+
+source = results_df.melt(id_vars=['depth'] , 
+                              value_vars=['mean_train_score', 'mean_cv_score'], 
+                              var_name='plot', value_name='score')
+chart1 = alt.Chart(source).mark_line().encode(
+    alt.X('depth:Q', axis=alt.Axis(title="Tree Depth")),
+    alt.Y('score:Q'),
+    alt.Color('plot:N', scale=alt.Scale(domain=['mean_train_score', 'mean_cv_score'],
+                                           range=['teal', 'gold'])))
+chart1
+
+chart1.encode(alt.Y('score:Q', scale=alt.Scale(zero=False)))
+
+- As we increase our depth (increase our complexity) our training data increases. 
+- As we increase our depth, we overfit more, and the gap between the train score and validation score also increases... except  ... 
+
+- There is a spot where the gap between the validation score and test score is the smallest while still producing a decent validation score.
+- In the plot, this would be around `max_depth` is 5. 
+- Commonly, we look at the cross-validation score and pick the hyperparameter with the highest cross-validation score. 
+
+results_df.sort_values('mean_cv_score', ascending=False)
+
+Now that we know the best value to use for `max_depth`, we can build a new classifier setting `max_depth=5`, train it and now (only now) do we score our model on the test set.
+
+model = DecisionTreeClassifier(max_depth=5)
+model.fit(X_train, y_train);
+print("Score on test set: " + str(round(model.score(X_test, y_test), 2)))
+
+- Is the test error comparable with the cross-validation error?
+- Do we feel confident that this model would give a similar performance when deployed? 
+
+## The Golden Rule 
+
+- Even though we care the most about test error **THE TEST DATA CANNOT INFLUENCE THE TRAINING PHASE IN ANY WAY**. 
+- We have to be very careful not to violate it while developing our ML pipeline. 
+- Why? When this happens, the test data influences our training and the test data is no longer unseen data and so the test score will be too optimistic.
+- Even experts end up breaking it sometimes which leads to misleading results and lack of generalization on the real data. 
+    - https://www.theregister.com/2019/07/03/nature_study_earthquakes/
+    - https://www.technologyreview.com/2015/06/04/72951/why-and-how-baidu-cheated-an-artificial-intelligence-test/
+    
+How do we avoid this? 
+
+The most important thing is when splitting the data, we lock away the test set and keep it separate from the training data.
+
+Forget it exists temporarily - kinda like forgetting where you put your passport until you need to travel. 
+
+The workflow we generally follow is:
+
+- **Splitting**: Before doing anything, split the data `X` and `y` into `X_train`, `X_test`, `y_train`, `y_test` or `train_df` and `test_df` using `train_test_split`.  
+- **Select the best model using cross-validation**: Use `cross_validate` with `return_train_score = True` so that we can get access to training scores in each fold. (If we want to plot train vs validation error plots, for instance.) 
+- **Scoring on test data**: Finally, score on the test data with the chosen hyperparameters to examine the generalization performance.
+
+## Let's Practice
+
+Overfitting or Underfitting
+1. If our train accuracy is much higher than our test accuracy.
+2. If our train accuracy and our test accuracy are both low and relatively similar in value.
+3. If our model is using a Decision Tree Classifier for a classification problem with no limit on `max_depth`.
+
+
+True or False 
+1. In supervised learning, the training score is always higher than the validation score.
+2. The fundamental tradeoff of ML states that as training score goes up, validation score goes down.
+3. More "complicated" models are more likely to overfit than "simple" ones.
+5. If our training score is extremely high, that means we're overfitting.
 
 ## What We've Learned Today<a id="9"></a>
 
-- What is machine learning (supervised/unsupervised, classification/regression)
-- Machine learning terminology
-- What is the decision tree algorithm and how does it work
-- The scikit-learn library
-- Parameters and hyperparameters
-
+- The concept of generalization.
+- How to split a dataset into train and test sets using `train_test_split` function.
+- The difference between train, validation, test, and "deployment" data.
+- The difference between training error, validation error, and test error.
+- Cross-validation and use `cross_val_score()` and `cross_validate()` to calculate cross-validation error.
+- Overfitting, underfitting, and the fundamental tradeoff.
+- Golden rule and identify the scenarios when it's violated.

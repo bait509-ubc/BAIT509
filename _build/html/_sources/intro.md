@@ -1,6 +1,6 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/58082) for the most up-to-date content and announcements.
+This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](https://github.com/bait509-ubc/BAIT509/blob/master/2021BAIT509_course_outline.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/58082) for the most up-to-date content and announcements.
 
 This repository is available as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/intro.html).
 
@@ -23,9 +23,6 @@ By the end of the course, students are expected to be able to:
 | Ali Seyfi | TA | aliseyfi@cs.ubc.ca | TBD | 
 | Andy Tai | TA | andy.tai@mail.utoronto.ca | TBD | 
 | Daniel Ramandi| TA | ramandi18@gmail.com | TBD | 
-
-
-
 
 ## Class Meetings
 
@@ -62,7 +59,7 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 | Teaching Member | When                 | Where    |
 | :---:           | :---:                | :---:    |
-|  [Hayley Boyce](www.hayleyfboyce.com)  | Thursdays 1:00 -2:00 PST | Zoom link in Canvas |
+|  [Hayley Boyce](https://www.hayleyfboyce.com/)  | Thursdays 1:00 -2:00 PST | Zoom link in Canvas |
 | Ali Seyfi | TA | TBD | Zoom link in Canvas |
 | Andy Tai | TA | TBD | Zoom link in Canvas |
 | Daniel Ramandi| TA | TBD | Zoom link in Canvas |
