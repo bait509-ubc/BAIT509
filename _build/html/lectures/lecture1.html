@@ -52,15 +52,27 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture1.html" />
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="next" title="Lecture 2 - Splitting and Cross-validation" href="lecture2.html" />
     <link rel="prev" title="What: Learning Outcomes" href="../things_to_know/what.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm" />
+<meta property="og:description" content="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm  Hayley Boyce, Monday April 19th 2021  Welcome  Welcome to Bait 509 - Business Applic" />
+<meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
+
+<meta name="twitter:card" content="summary" />
 
 
   </head>
@@ -120,25 +132,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Assignments
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
+  <a class="reference internal" href="lecture2.html">
+   Lecture 2 - Splitting and Cross-validation
   </a>
  </li>
 </ul>
@@ -212,7 +207,10 @@
             href="https://github.com/bait509-ubc/BAIT509"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
-        
+        <a class="issues-button"
+            href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2Flectures/lecture1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         <a class="edit-button" href="https://github.com/bait509-ubc/BAIT509/edit/master/lectures/lecture1.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
@@ -520,6 +518,7 @@ Not a long time”.</p>
 <li><p>I am have an undergraduate degree in Applied Mathematics from the University of Western Ontario</p></li>
 <li><p>I have a master’s degree in Data Science</p></li>
 <li><p>I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none.</p></li>
+<li><p>Worked with companies like Riversol Skincare and Freshprep.</p></li>
 </ul>
 </div>
 <div class="section" id="python-jupyter-visualizations">
@@ -1373,7 +1372,7 @@ buckeye, horse chestnut, conker, 0.00
 <p><strong>Classification</strong> predicting among two or more categories, also known as classes.</p>
 <ul class="simple">
 <li><p><em>Example1</em>: Predict whether a customer will default on their credit card or not.</p></li>
-<li><p><em>Example2</em>: Predict whether the letter grade of a student (A,B,C,D or F)</p></li>
+<li><p><em>Example2</em>: Predict if an animal is a reptile, mammal or bird.</p></li>
 </ul>
 </div>
 <div class="section" id="regression">
@@ -1381,7 +1380,7 @@ buckeye, horse chestnut, conker, 0.00
 <p><strong>Regression</strong> predicting a continuous (in other words, a number) value.</p>
 <ul class="simple">
 <li><p>Example1: Predict housing prices</p></li>
-<li><p>Example2: Predict a student’s score in this course’s quiz2</p></li>
+<li><p>Example2: Predict the length of a snake.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/classification-vs-regression2.png"><img alt="404 image" src="../_images/classification-vs-regression2.png" style="width: 90%;" /></a>
 </div>
@@ -1392,7 +1391,7 @@ buckeye, horse chestnut, conker, 0.00
 <ol class="simple">
 <li><p>Finding groups of similar properties in a real estate data set.</p></li>
 <li><p>Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.</p></li>
-<li><p>Idenitfying groups of animals given features such as “number of legs”, “wings/no wings”, “fur/no fur”, etc.</p></li>
+<li><p>Identifying groups of animals given features such as “number of legs”, “wings/no wings”, “fur/no fur”, etc.</p></li>
 <li><p>Detecting heart disease in patients based on different test results and history.</p></li>
 <li><p>Grouping articles on different topics from different news sources (something like Google News app).</p></li>
 </ol>
@@ -1651,9 +1650,9 @@ Here is the key terminology that you will have to know:</p>
 <div class="section" id="implimentation-with-scikit-learn">
 <h3>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Before we build any model (we are getting to that so hang tight), we need to make sure we have the right “parts” aka inputs and outputs.</p>
-<p>That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.</p>
-<p>$X$ is all of our features in our data, which we also call our <em><strong>feature table</strong></em>. <br>
-$y$ is our target, which is what we are predicting.</p>
+<p>That means we need to split up our tabular data into the features and the target, also known as <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(X\)</span> is all of our features in our data, which we also call our <em><strong>feature table</strong></em>. <br>
+<span class="math notranslate nohighlight">\(y\)</span> is our target, which is what we are predicting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vote&quot;</span><span class="p">])</span>
@@ -2143,13 +2142,13 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 <h2>Let’s Practice!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder to aswer the following questions:</p>
 <ol class="simple">
-<li><p>how many features are there?</p></li>
+<li><p>How many features are there?</p></li>
 <li><p>How many observations are there?</p></li>
-<li><p>What would be suitable target for a classification problem?</p></li>
+<li><p>What would be a suitable target with this data?</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">candy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2173,7 +2172,6 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>candy bar</th>
       <th>chocolate</th>
       <th>peanuts</th>
       <th>caramel</th>
@@ -2184,11 +2182,22 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
       <th>multi</th>
       <th>availability</th>
     </tr>
+    <tr>
+      <th>candy bar</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>CoffeeCrisp</td>
+      <th>CoffeeCrisp</th>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -2200,8 +2209,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
       <td>Canada</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Butterfinger</td>
+      <th>Butterfinger</th>
       <td>1</td>
       <td>1</td>
       <td>1</td>
@@ -2213,8 +2221,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
       <td>America</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Skor</td>
+      <th>Skor</th>
       <td>1</td>
       <td>0</td>
       <td>1</td>
@@ -2226,8 +2233,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
       <td>Both</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Smarties</td>
+      <th>Smarties</th>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -2239,8 +2245,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
       <td>Canada</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Twix</td>
+      <th>Twix</th>
       <td>1</td>
       <td>0</td>
       <td>1</td>
@@ -2262,7 +2267,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25, 10)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25, 9)
 </pre></div>
 </div>
 </div>
@@ -2955,7 +2960,7 @@ Name: price, dtype: float64
 </div>
 <div class="section" id="id2">
 <h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder for the following:</p>
+<p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder (or going to exercise 7 <a class="reference external" href="https://ml-learn.mds.ubc.ca/en/module2">here</a>)  for the following:</p>
 <ol class="simple">
 <li><p>Define two objects named <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> which contain the features and target column respectively.</p></li>
 <li><p>Using sklearn, create 3 different decision tree classifiers using 3 different <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> values based on this data.</p></li>
@@ -3111,7 +3116,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../things_to_know/what.html" title="previous page">What: Learning Outcomes</a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">Markdown Files</a>
+    <a class='right-next' id="next-link" href="lecture2.html" title="next page">Lecture 2 - Splitting and Cross-validation</a>
 
         </div>
         

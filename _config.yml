@@ -6,13 +6,10 @@ author: Hayley Boyce
 email: hfboyce@cs.ubc.ca
 logo: imgs/bait_logo.png
 description: >- # this means to ignore newlines until "baseurl:"
-  This is the lecture content for BAIT 509 part, a course of the Sauder School of Business Masters of Business Analytics program.
+  This is the lecture content for BAIT 509, a course of the Sauder School of Business Masters of Business Analytics program.
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
-execute:
-  execute_notebooks: force
-
 only_build_toc_files: true
 
 # Define the name of the latex output file for PDF builds
@@ -20,9 +17,6 @@ latex:
   latex_documents:
     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -36,9 +30,15 @@ html:
   home_page_in_navbar: false
   use_edit_page_button: true
   use_repository_button: true
-
+  use_issues_button: true
+  baseurl: https://bait509-ubc.github.io/BAIT509/intro.html
 parse:
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
     - html_image
+    - dollarmath
+    
+sphinx:
+    extra_extensions:
+        - jupyterbook_latex
