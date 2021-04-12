@@ -2,7 +2,7 @@
 
 ## Where things are
 
-#### [Canvas]()
+#### [Canvas](https://canvas.ubc.ca/courses/58082)
 This is where the course will live.
 You will be able to:
 - Access the lessons here
@@ -13,7 +13,13 @@ You will be able to:
 - Access and submit your assignments and project
 - Read the learning objectives. 
 
-#### [The Website]()
+#### [Piazza](https://piazza.com/ubc.ca/winterterm22021/bait509ba12020w/home)
+
+This is where students can go to ask questions pertaining to the lecture material or Assignments. 
+Instructors and TA will be answerings these however we do encourage students to help their peers by answering questions as well. 
+
+
+#### [The Website](https://bait509-ubc.github.io/BAIT509/intro.html)
 - Access only the lectures
 
 
