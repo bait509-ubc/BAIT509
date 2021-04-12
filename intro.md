@@ -29,7 +29,7 @@ By the end of the course, students are expected to be able to:
 
 ## Class Meetings
 
-Details about class meetings will appear here as they become available. [Optional additional material](additional_resources.pdf) is also available for each lecture. 
+Details about class meetings will appear here as they become available.
 
 |  #    | Topic | Link |
 | :---: | :---: | :---: |
