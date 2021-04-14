@@ -22,9 +22,9 @@ Not a long time".
 ### Course Structure
 - 2 lectures per week (Synchonus lecture + class activity)
 - My office hours: 1-2pm Thursday on Zoom
-- TA office hours: TBD
+- TA office hours: Fridays 12-1 and Wednesday 4-5. (all the links are created 
 - Camera on policy!
-- Additional resources here: Canvas course URL
+- Course content available on [this website](https://bait509-ubc.github.io/BAIT509/intro.html) or on [Canvas](https://canvas.ubc.ca/courses/58082). 
 - We will be using [Piazza](https://piazza.com/configure-classes/winterterm22020/bait509ba1) for discussions and questions.
 - Assessments:
 
@@ -41,11 +41,20 @@ All assessments will be submitted via Canvas
 
 ![](imgs/hi.png)
 
-
-- I am have an undergraduate degree in Applied Mathematics from the University of Western Ontario
-- I have a master's degree in Data Science 
+- I have an undergraduate degree in Applied Mathematics from the University of Western Ontario
+- I have a master's degree in Data Science from UBC.  
 - I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none. 
 - Worked with companies like Riversol Skincare and Freshprep. 
+
+### Your TAs
+
+- **Daniel Ramandi**: in class questions
+- **Ali Seyfi**: Office hours Wednesdays 4-5pm (Starting April 28th) 
+- **Andy Tai**: Office hours Fridays 12-1pm
+
+
+- Marking your assignments, quiz and project. 
+- All 4 of us will be answering questions on Piazza as well
 
 ### Python, Jupyter, Visualizations 
 
