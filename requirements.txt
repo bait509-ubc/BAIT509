@@ -6,7 +6,6 @@ plotly
 altair
 xlrd
 numpy
-python-graphviz
 scikit-learn
 xgboost
 matplotlib
