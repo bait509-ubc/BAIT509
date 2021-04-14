@@ -452,7 +452,7 @@ So, if our model does well on the validation and test data, we hope it will do w
 ## Cross-validation
 
 
-<img src='imgs/train-valid-test-split.png' width="1500" height="1500" />
+<img src='imgs/train-valid-test-split.png' width="100%" />
 
 Problems with having a single train/test split:
 
@@ -657,7 +657,7 @@ chart1 = alt.Chart(source).mark_line().encode(
                                            range=['teal', 'gold'])))
 chart1
 
-chart1.encode(alt.Y('score:Q', scale=alt.Scale(zero=False)))
+chart1.encode(alt.Y('accuracy:Q', scale=alt.Scale(zero=False)))
 
 - As we increase our depth (increase our complexity) our training data increases. 
 - As we increase our depth, we overfit more, and the gap between the train score and validation score also increases... except  ... 
