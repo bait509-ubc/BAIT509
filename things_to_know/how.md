@@ -46,7 +46,7 @@ The quiz will accessible on Canvas for 24 hours. You will have 45 minutes to ans
 
 ## Assignments 
 There will be 3 assignments will be distributed and submitted via Canvas. 
-Each assignment will be a mix of long questions with some auto-graded questions. Assignments will be distributed with a "test file" which is designed to give you instant feedback on the auto-graded questions and hints on where you could be going wrong. 
+Each assignment will be a mix of long questions with some auto-graded questions. Assignments will be distributed with a "test file" which is designed to give you instant feedback on the auto-graded questions and hints on where you could be going wrong. Make sure that you are downloading this file and putting it in the same folder as the Jupyter notebook. 
 
 ## Project 
 
