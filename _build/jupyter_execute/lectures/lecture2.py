@@ -649,11 +649,11 @@ results_df
 
 source = results_df.melt(id_vars=['depth'] , 
                               value_vars=['mean_train_score', 'mean_cv_score'], 
-                              var_name='plot', value_name='score')
+                              var_name='score_type', value_name='accuracy')
 chart1 = alt.Chart(source).mark_line().encode(
     alt.X('depth:Q', axis=alt.Axis(title="Tree Depth")),
-    alt.Y('score:Q'),
-    alt.Color('plot:N', scale=alt.Scale(domain=['mean_train_score', 'mean_cv_score'],
+    alt.Y('accuracy:Q'),
+    alt.Color('score_type:N', scale=alt.Scale(domain=['mean_train_score', 'mean_cv_score'],
                                            range=['teal', 'gold'])))
 chart1
 
