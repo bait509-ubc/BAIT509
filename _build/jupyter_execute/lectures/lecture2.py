@@ -410,7 +410,7 @@ Enter, the ***validation*** set.
 
 So we actually want to split our dataset into 3 splits: train, validation, and test.
 
-<center><img src="imgs/train-valid-test-split.png"  width = "100%" alt="404 image" /></center>
+<img src='imgs/train-valid-test-split.png' width="100%" />
 
 
 ***Note: There isn't a good consensus on the terminology of what is validation and what is test data.***
