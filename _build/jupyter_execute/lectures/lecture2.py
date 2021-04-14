@@ -536,9 +536,12 @@ scores
 
 pd.DataFrame(scores)
 
-pd.DataFrame(scores).mean()
+scores_df = pd.DataFrame(cross_validate(model, X_train, y_train, cv=10, return_train_score=True))
+scores_df
 
-pd.DataFrame(scores).std()
+scores_df.mean()
+
+scores_df.std()
 
 ## Our typical supervised learning set up is as follows: 
 
