@@ -20,9 +20,9 @@ By the end of the course, students are expected to be able to:
 | Name         | Position   | email | 
 | :---:        | :---:      | :---:         | 
 | [Hayley Boyce](https://www.hayleyfboyce.com/) | Instructor | hfboyce@cs.ubc.ca | 
-| Ali Seyfi | TA | aliseyfi@cs.ubc.ca | TBD | 
-| Andy Tai | TA | andy.tai@mail.utoronto.ca | TBD | 
-| Daniel Ramandi| TA | ramandi18@gmail.com | TBD | 
+| Ali Seyfi | TA | aliseyfi@cs.ubc.ca | 
+| Andy Tai | TA | andy.tai@mail.utoronto.ca |  
+| Daniel Ramandi| TA | ramandi18@gmail.com | 
 
 ## Class Meetings
 
@@ -60,6 +60,6 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 | Teaching Member | When                 | Where    |
 | :---:           | :---:                | :---:    |
 |  [Hayley Boyce](https://www.hayleyfboyce.com/)  | Thursdays 1:00 -2:00 PST | Zoom link in Canvas |
-| Ali Seyfi | TA | TBD | Zoom link in Canvas |
-| Andy Tai | TA | TBD | Zoom link in Canvas |
-| Daniel Ramandi| TA | TBD | Zoom link in Canvas |
+| Ali Seyfi | Fridays 12-1 pm | Zoom link in Canvas |
+| Andy Tai | Wedesdays 4:00 -5:00 pm (Starting April 28th) | Zoom link in Canvas |
+| Daniel Ramandi| In Class M/W 8:00-10:00 |  | Zoom link in Canvas |
