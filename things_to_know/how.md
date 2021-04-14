@@ -50,7 +50,7 @@ Each assignment will be a mix of long questions with some auto-graded questions.
 
 ## Project 
 
-The final project is designed to put everything you learned into practice. You will work in groups of ------ and submit a report that will:
+The final project is designed to put everything you learned into practice. You will work in groups of 3 and submit a report that will:
 - Ask a predictive question
 - Build a pipeline 
 - Preprocess features
