@@ -17,10 +17,15 @@ latex:
   latex_documents:
     targetname: book.tex
 
+launch_buttons:
+  notebook_interface : "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url      : "https://mybinder.org"
+  thebe              : true
 
 # Information about where the book exists on the web
 repository:
   url: https://github.com/bait509-ubc/BAIT509  # Online location of your book
+  path_to_book : ""  # A path to your book's folder, relative to the repository root.
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -42,3 +47,4 @@ parse:
 sphinx:
     extra_extensions:
         - jupyterbook_latex
+        - sphinx_thebe

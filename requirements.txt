@@ -1,3 +1,12 @@
 jupyter-book
-matplotlib
+ghp-import
+sphinx-thebe
+pandas
+plotly
+altair
+xlrd
 numpy
+python-graphviz
+scikit-learn
+xgboost
+matplotlib

@@ -23,7 +23,7 @@ node [shape=box] ;
 2 -> 10 ;
 11 [label="class = blue"] ;
 10 -> 11 ;
-12 [label="lat <= 37.015\nclass = red"] ;
+12 [label="lon <= -79.166\nclass = red"] ;
 10 -> 12 ;
 13 [label="class = red"] ;
 12 -> 13 ;
