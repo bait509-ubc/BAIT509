@@ -33,16 +33,16 @@ In addition to these 2 small slide decks, there is an entire course we have deve
 
 ## Content 
 This may be a little different than what you are used to. 
-All my lectures will be made in Jupyter notebooks and presented in a Jupyter Book. You will get access to all the notebooks and the data we used in them so you can launch them locally.
+All my lectures will be made in Jupyter notebooks and presented in a Jupyter Book. You will get access to all the notebooks and the data we used so you can launch them locally.
 
 ## Lecture Plan and Activities
-My lectures will be prerecorded and we will view them synchronously. There will be 3-5 videos and we will break in between for an opportunity to discuss the topics, answer questions and do interactive activities. 
+My lectures synchronous spaced out with practice questions and interactive activities. 
 
 We will be using polls and working in groups with breakout rooms.
 
 ## Quiz 
 
-The Quiz will accessible on Canvas for 24 hours. You will have 45 minutes to answer approximately 15-20 questions. 
+The quiz will accessible on Canvas for 24 hours. You will have 45 minutes to answer approximately 15-20 questions. 
 
 ## Assignments 
 There will be 3 assignments will be distributed and submitted via Canvas. 
