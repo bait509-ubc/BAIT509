@@ -1,6 +1,6 @@
 # Lecture 2 - Splitting and Cross-validation
 
-*Hayley Boyce, Wednesday April 21th 2021*
+*Hayley Boyce, Wednesday, April 21st 2021*
 
 # Importing our libraries
 
@@ -441,7 +441,7 @@ So, if our model does well on the validation and test data, we hope it will do w
 2. Why do we split our data?
 3. Fill in the table below:
 
-|            | `.fit()` | `.score()` | `.predict()` |
+| datasets   | `.fit()` | `.score()` | `.predict()` |
 |------------|:--------:|:----------:|:------------:|
 | Train      |    ✔️     |            |              |
 | Validation |          |            |              |
