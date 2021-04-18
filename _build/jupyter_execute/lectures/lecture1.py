@@ -48,13 +48,13 @@ All assessments will be submitted via Canvas
 
 ### Your TAs
 
-- **Daniel Ramandi**: in class questions
-- **Ali Seyfi**: Office hours Wednesdays 4-5pm (Starting April 28th) 
-- **Andy Tai**: Office hours Fridays 12-1pm
+- **Daniel Ramandi**: in class questions.
+- **Ali Seyfi**: Office hours Wednesdays 4-5pm (Starting April 28th).
+- **Andy Tai**: Office hours Fridays 12-1pm.
 
 
-- Marking your assignments, quiz and project. 
-- All 4 of us will be answering questions on Piazza as well
+- Marking your assignments, quiz and project.
+- All 4 of us will be answering questions on Piazza as well.
 
 ### Python, Jupyter, Visualizations 
 
@@ -163,8 +163,8 @@ y_test = test_df['Class']
 model = XGBClassifier()
 model.fit(X_train, y_train);
 
-pred_df = pd.DataFrame({"predicted_label": model.predict(X_test).tolist()})
-df_concat = pd.concat([test_df.reset_index(drop=True), pred_df], axis=1)
+pred_df = pd.DataFrame({"predicted_label": model.predict(X_train).tolist()})
+df_concat = pd.concat([X_train.reset_index(drop=True), pred_df], axis=1)
 df_concat
 
 model.score(X_test, y_test)
@@ -254,7 +254,7 @@ Are the following classification or regression problems?
 1. Predicting the price of a house based on features such as number of rooms and the year built.
 2. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.
 3. Predicting your grade in BAIT 509 based on past grades.
-4. Predicting what product a consumer is most likely to purchase based on their internet browsing patterns.
+4. Predicting whether you should bicycle tomorrow or not based on the weather forecast.
 5. Predicting a cereal’s manufacturer given the nutritional information.
 
 ## Tabular Data and Terminology

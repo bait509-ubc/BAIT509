@@ -532,11 +532,11 @@ Not a long time”.</p>
 <div class="section" id="your-tas">
 <h3>Your TAs<a class="headerlink" href="#your-tas" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Daniel Ramandi</strong>: in class questions</p></li>
-<li><p><strong>Ali Seyfi</strong>: Office hours Wednesdays 4-5pm (Starting April 28th)</p></li>
-<li><p><strong>Andy Tai</strong>: Office hours Fridays 12-1pm</p></li>
+<li><p><strong>Daniel Ramandi</strong>: in class questions.</p></li>
+<li><p><strong>Ali Seyfi</strong>: Office hours Wednesdays 4-5pm (Starting April 28th).</p></li>
+<li><p><strong>Andy Tai</strong>: Office hours Fridays 12-1pm.</p></li>
 <li><p>Marking your assignments, quiz and project.</p></li>
-<li><p>All 4 of us will be answering questions on Piazza as well</p></li>
+<li><p>All 4 of us will be answering questions on Piazza as well.</p></li>
 </ul>
 </div>
 <div class="section" id="python-jupyter-visualizations">
@@ -1141,8 +1141,8 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;predicted_label&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
-<span class="n">df_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pred_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;predicted_label&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+<span class="n">df_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pred_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_concat</span>
 </pre></div>
 </div>
@@ -1177,6 +1177,7 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
       <th>V8</th>
       <th>V9</th>
       <th>...</th>
+      <th>V21</th>
       <th>V22</th>
       <th>V23</th>
       <th>V24</th>
@@ -1185,110 +1186,277 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
       <th>V27</th>
       <th>V28</th>
       <th>Amount</th>
-      <th>Class</th>
       <th>predicted_label</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>151602.0</td>
-      <td>0.205476</td>
-      <td>1.160871</td>
-      <td>-0.995535</td>
-      <td>-0.008945</td>
-      <td>0.275216</td>
-      <td>-1.463541</td>
-      <td>0.569464</td>
-      <td>0.108019</td>
-      <td>-0.148083</td>
+      <td>11635.0</td>
+      <td>0.919137</td>
+      <td>4.199633</td>
+      <td>-7.535607</td>
+      <td>7.426940</td>
+      <td>1.118215</td>
+      <td>-2.886722</td>
+      <td>-1.341036</td>
+      <td>0.363933</td>
+      <td>-2.203224</td>
       <td>...</td>
-      <td>0.944338</td>
-      <td>-0.098098</td>
-      <td>-0.024528</td>
-      <td>-0.274065</td>
-      <td>-0.152174</td>
-      <td>-0.067689</td>
-      <td>-0.047006</td>
-      <td>6.29</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.316094</td>
+      <td>0.055179</td>
+      <td>0.210692</td>
+      <td>-0.417918</td>
+      <td>-0.911188</td>
+      <td>0.466524</td>
+      <td>0.627393</td>
+      <td>0.157851</td>
+      <td>1.00</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>130541.0</td>
-      <td>2.158602</td>
-      <td>0.750699</td>
-      <td>-3.464304</td>
-      <td>0.547413</td>
-      <td>1.664424</td>
-      <td>-1.236616</td>
-      <td>0.874736</td>
-      <td>-0.495646</td>
-      <td>-0.069968</td>
+      <td>131346.0</td>
+      <td>-3.941407</td>
+      <td>4.044901</td>
+      <td>-2.533298</td>
+      <td>-0.993555</td>
+      <td>-0.898294</td>
+      <td>-1.503311</td>
+      <td>-0.105561</td>
+      <td>0.980689</td>
+      <td>1.849424</td>
       <td>...</td>
-      <td>-0.044555</td>
-      <td>-0.138957</td>
-      <td>-0.059689</td>
-      <td>0.525239</td>
-      <td>0.718488</td>
-      <td>-0.076391</td>
-      <td>-0.017809</td>
-      <td>0.76</td>
-      <td>0</td>
+      <td>0.203494</td>
+      <td>1.136865</td>
+      <td>0.237484</td>
+      <td>-0.007889</td>
+      <td>-0.112597</td>
+      <td>-0.194324</td>
+      <td>0.998080</td>
+      <td>0.859768</td>
+      <td>1.25</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>166751.0</td>
-      <td>1.901019</td>
-      <td>0.318082</td>
-      <td>0.029605</td>
-      <td>3.671496</td>
-      <td>-0.038030</td>
-      <td>0.502431</td>
-      <td>-0.535448</td>
-      <td>0.187708</td>
-      <td>-0.403365</td>
+      <td>150854.0</td>
+      <td>2.165206</td>
+      <td>-1.581097</td>
+      <td>-0.198485</td>
+      <td>-1.538046</td>
+      <td>-1.799368</td>
+      <td>-0.423766</td>
+      <td>-1.546484</td>
+      <td>0.047633</td>
+      <td>-1.120714</td>
       <td>...</td>
-      <td>0.495025</td>
-      <td>0.247919</td>
-      <td>0.683891</td>
-      <td>-0.271071</td>
-      <td>-0.033795</td>
-      <td>0.001203</td>
-      <td>-0.025669</td>
-      <td>0.76</td>
-      <td>0</td>
+      <td>-0.287639</td>
+      <td>-0.421235</td>
+      <td>0.439597</td>
+      <td>-0.054263</td>
+      <td>-0.675064</td>
+      <td>-0.463137</td>
+      <td>0.036825</td>
+      <td>-0.041266</td>
+      <td>32.00</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>40486.0</td>
-      <td>1.190896</td>
-      <td>0.258268</td>
-      <td>0.374576</td>
-      <td>1.198681</td>
-      <td>-0.203164</td>
-      <td>-0.421405</td>
-      <td>0.007650</td>
-      <td>-0.022832</td>
-      <td>0.083098</td>
+      <td>43946.0</td>
+      <td>-0.750949</td>
+      <td>0.705118</td>
+      <td>1.548844</td>
+      <td>1.527885</td>
+      <td>-0.396129</td>
+      <td>1.405321</td>
+      <td>-0.100160</td>
+      <td>0.788641</td>
+      <td>0.326592</td>
       <td>...</td>
-      <td>0.313190</td>
-      <td>-0.071199</td>
-      <td>0.072382</td>
-      <td>0.578706</td>
-      <td>-0.249102</td>
-      <td>0.030429</td>
-      <td>0.017239</td>
-      <td>4.00</td>
+      <td>-0.273203</td>
+      <td>-0.495237</td>
+      <td>0.076831</td>
+      <td>-0.758812</td>
+      <td>-0.212445</td>
+      <td>-0.386653</td>
+      <td>0.094166</td>
+      <td>0.089781</td>
+      <td>71.38</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>124744.0</td>
+      <td>2.047701</td>
+      <td>-0.131199</td>
+      <td>-1.695760</td>
+      <td>0.028476</td>
+      <td>0.516568</td>
+      <td>-0.315328</td>
+      <td>0.100865</td>
+      <td>-0.127223</td>
+      <td>0.375452</td>
+      <td>...</td>
+      <td>0.264380</td>
+      <td>0.815539</td>
+      <td>-0.055716</td>
+      <td>0.227954</td>
+      <td>0.318705</td>
+      <td>-0.130535</td>
+      <td>-0.032855</td>
+      <td>-0.064604</td>
+      <td>17.76</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>122140</th>
+      <td>139707.0</td>
+      <td>-1.552052</td>
+      <td>-0.426797</td>
+      <td>1.851288</td>
+      <td>0.293626</td>
+      <td>0.699572</td>
+      <td>0.532052</td>
+      <td>0.453493</td>
+      <td>0.293692</td>
+      <td>0.506065</td>
+      <td>...</td>
+      <td>0.360463</td>
+      <td>0.894224</td>
+      <td>-0.240568</td>
+      <td>0.505866</td>
+      <td>1.321357</td>
+      <td>-0.272364</td>
+      <td>0.004121</td>
+      <td>0.084357</td>
+      <td>150.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>122141</th>
+      <td>43820.0</td>
+      <td>-0.368688</td>
+      <td>1.830310</td>
+      <td>-0.627941</td>
+      <td>0.576034</td>
+      <td>1.320220</td>
+      <td>-1.710630</td>
+      <td>1.368100</td>
+      <td>-0.145559</td>
+      <td>-1.005464</td>
+      <td>...</td>
+      <td>-0.009978</td>
+      <td>-0.062058</td>
+      <td>-0.226465</td>
+      <td>0.172577</td>
+      <td>-0.271303</td>
+      <td>-0.583125</td>
+      <td>0.186213</td>
+      <td>0.248723</td>
+      <td>1.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>122142</th>
+      <td>44481.0</td>
+      <td>1.335053</td>
+      <td>0.331464</td>
+      <td>-2.057763</td>
+      <td>-0.346175</td>
+      <td>2.583234</td>
+      <td>2.854102</td>
+      <td>-0.187547</td>
+      <td>0.685154</td>
+      <td>-0.286614</td>
+      <td>...</td>
+      <td>-0.191820</td>
+      <td>-0.650118</td>
+      <td>-0.114069</td>
+      <td>0.915936</td>
+      <td>0.730073</td>
+      <td>0.383879</td>
+      <td>-0.031902</td>
+      <td>0.029849</td>
+      <td>0.76</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>122143</th>
+      <td>140320.0</td>
+      <td>1.911069</td>
+      <td>-1.197637</td>
+      <td>-0.869888</td>
+      <td>-0.509239</td>
+      <td>-0.650403</td>
+      <td>0.307150</td>
+      <td>-0.788578</td>
+      <td>0.089105</td>
+      <td>-0.023531</td>
+      <td>...</td>
+      <td>-0.536584</td>
+      <td>-1.215170</td>
+      <td>0.238137</td>
+      <td>-1.249489</td>
+      <td>-0.492226</td>
+      <td>-0.619841</td>
+      <td>0.032800</td>
+      <td>-0.029455</td>
+      <td>118.28</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>122144</th>
+      <td>148735.0</td>
+      <td>0.094569</td>
+      <td>0.754053</td>
+      <td>-0.078262</td>
+      <td>-0.383301</td>
+      <td>1.293257</td>
+      <td>-0.471615</td>
+      <td>1.013384</td>
+      <td>-0.225875</td>
+      <td>-0.398837</td>
+      <td>...</td>
+      <td>-0.176901</td>
+      <td>-0.316803</td>
+      <td>0.158177</td>
+      <td>0.617162</td>
+      <td>-1.318290</td>
+      <td>0.017946</td>
+      <td>0.035546</td>
+      <td>0.042026</td>
+      <td>1.98</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>4 rows × 32 columns</p>
+<p>122145 rows × 31 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1418,7 +1586,7 @@ buckeye, horse chestnut, conker, 0.00
 <li><p>Predicting the price of a house based on features such as number of rooms and the year built.</p></li>
 <li><p>Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.</p></li>
 <li><p>Predicting your grade in BAIT 509 based on past grades.</p></li>
-<li><p>Predicting what product a consumer is most likely to purchase based on their internet browsing patterns.</p></li>
+<li><p>Predicting whether you should bicycle tomorrow or not based on the weather forecast.</p></li>
 <li><p>Predicting a cereal’s manufacturer given the nutritional information.</p></li>
 </ol>
 </div>
