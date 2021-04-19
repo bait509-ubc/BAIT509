@@ -49,7 +49,7 @@ Details about class meetings will appear here as they become available.
 | Quiz                                                            | May 5th at 23:59     | 10%    |
 | Assignment 2                                                    | May 10th at 23:59    | 20%    |
 | Assignment 3                                                    | May 19th at 23:59    | 20%    |
-| Final Project                                                   | May 29th at 23:59    | 30%    |
+| Final Project                                                   | TBD    | 30%    |
 
 All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/58082).
 
