@@ -675,7 +675,7 @@ Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here
    b) Would you choose the same `min_samples_split` value to predict new data?
 5. Do you think most of the computational effort for a decision tree takes place in the `.fit()` stage or `.predict()` stage?
 
-candy_df = pd.read_csv('data/candybars.csv')
+candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
 
 ## What We've Learned Today<a id="9"></a>
