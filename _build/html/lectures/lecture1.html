@@ -3157,7 +3157,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">candy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3181,7 +3181,6 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>candy bar</th>
       <th>chocolate</th>
       <th>peanuts</th>
       <th>caramel</th>
@@ -3192,11 +3191,22 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <th>multi</th>
       <th>availability</th>
     </tr>
+    <tr>
+      <th>candy bar</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>CoffeeCrisp</td>
+      <th>CoffeeCrisp</th>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -3208,8 +3218,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Canada</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Butterfinger</td>
+      <th>Butterfinger</th>
       <td>1</td>
       <td>1</td>
       <td>1</td>
@@ -3221,8 +3230,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>America</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Skor</td>
+      <th>Skor</th>
       <td>1</td>
       <td>0</td>
       <td>1</td>
@@ -3234,8 +3242,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Both</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Smarties</td>
+      <th>Smarties</th>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -3247,8 +3254,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Canada</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Twix</td>
+      <th>Twix</th>
       <td>1</td>
       <td>0</td>
       <td>1</td>
