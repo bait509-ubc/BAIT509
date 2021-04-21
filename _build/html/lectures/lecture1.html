@@ -136,6 +136,15 @@
    Lecture 2 - Splitting and Cross-validation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   Lecture 3 - Baseline,
+   <span class="math notranslate nohighlight">
+    \(K\)
+   </span>
+   -Nearest Neighbours and SVM with RBF Kernel
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -489,8 +498,8 @@ Not a long time”.</p>
 <ul class="simple">
 <li><p>2 lectures per week (Synchonus lecture + class activity)</p></li>
 <li><p>My office hours: 1-2pm Thursday on Zoom</p></li>
-<li><p>TA office hours: Fridays 12-1 and Wednesdays 4-5. (all the links are created)</p></li>
-<li><p>~Camera on policy!~</p></li>
+<li><p>TA office hours: Fridays 12-1 and Wednesday 4-5. (all the links are created</p></li>
+<li><p>Camera on policy!</p></li>
 <li><p>Course content available on <a class="reference external" href="https://bait509-ubc.github.io/BAIT509/intro.html">this website</a> or on <a class="reference external" href="https://canvas.ubc.ca/courses/58082">Canvas</a>.</p></li>
 <li><p>We will be using <a class="reference external" href="https://piazza.com/configure-classes/winterterm22020/bait509ba1">Piazza</a> for discussions and questions.</p></li>
 <li><p>Assessments:</p></li>
@@ -513,7 +522,7 @@ Not a long time”.</p>
 </tr>
 <tr class="row-even"><td class="text-align:center"><p>Final Project</p></td>
 <td class="text-align:center"><p>30%</p></td>
-<td class="text-align:center"><p>TBD</p></td>
+<td class="text-align:center"><p>May 29th</p></td>
 </tr>
 </tbody>
 </table>
@@ -2066,7 +2075,7 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;blue&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -2301,7 +2310,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;blue&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3003,31 +3012,19 @@ Name: price, dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="n">depth</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">reg_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">depth</span><span class="p">)</span>
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(max_depth=3)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(max_depth=3, random_state=1)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Let’s look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_tree</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">reg_model</span><span class="p">,</span> <span class="s2">&quot;imgs/dt_reg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/tree/_classes.py:1254: FutureWarning: the classes_ attribute is to be deprecated from version 0.22 and will be removed in 0.24.
-  warnings.warn(msg, FutureWarning)
-</pre></div>
-</div>
-<img alt="../_images/lecture1_125_1.svg" src="../_images/lecture1_125_1.svg" /></div>
-</div>
+<a class="reference internal image-reference" href="../_images/dt_reg.png"><img alt="404 image" src="../_images/dt_reg.png" style="width: 100%;" /></a>
 <p>Let’s see what our model predicts for a single example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

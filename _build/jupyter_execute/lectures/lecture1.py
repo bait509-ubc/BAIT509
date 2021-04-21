@@ -22,8 +22,8 @@ Not a long time".
 ### Course Structure
 - 2 lectures per week (Synchonus lecture + class activity)
 - My office hours: 1-2pm Thursday on Zoom
-- TA office hours: Fridays 12-1 and Wednesdays 4-5. (all the links are created)
-- ~Camera on policy!~
+- TA office hours: Fridays 12-1 and Wednesday 4-5. (all the links are created 
+- Camera on policy!
 - Course content available on [this website](https://bait509-ubc.github.io/BAIT509/intro.html) or on [Canvas](https://canvas.ubc.ca/courses/58082). 
 - We will be using [Piazza](https://piazza.com/configure-classes/winterterm22020/bait509ba1) for discussions and questions.
 - Assessments:
@@ -32,7 +32,7 @@ Not a long time".
 |     :---:        | :---:        | :---:                          |
 | 3 Assignments    | 60%(20% each)| April 28th, May 10th, May 19th |
 | 1 Quiz           | 10%          | May 5th (24 hours to complete) |
-| Final Project    | 30%          | TBD                            |
+| Final Project    | 30%          | May 29th                       |
 
 
 All assessments will be submitted via Canvas 
@@ -636,12 +636,12 @@ This means our decision tree is going to be constrained to a depth of 3.
 from sklearn.tree import DecisionTreeRegressor
 
 depth = 3
-reg_model = DecisionTreeRegressor(max_depth=depth)
+reg_model = DecisionTreeRegressor(max_depth=depth, random_state=1)
 reg_model.fit(X, y)
 
 Let's look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.
 
-display_tree(X.columns, reg_model, "imgs/dt_reg")
+<img src='imgs/dt_reg.png'  width = "100%" alt="404 image" />
 
 Let's see what our model predicts for a single example. 
 
