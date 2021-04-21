@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Attribution" href="../things_to_know/attribution.html" />
+    <link rel="next" title="Lecture 3 - Baseline, \(K\)-Nearest Neighbours and SVM with RBF Kernel" href="lecture3.html" />
     <link rel="prev" title="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm" href="lecture1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -134,6 +134,15 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Lecture 2 - Splitting and Cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   Lecture 3 - Baseline,
+   <span class="math notranslate nohighlight">
+    \(K\)
+   </span>
+   -Nearest Neighbours and SVM with RBF Kernel
   </a>
  </li>
 </ul>
@@ -1519,12 +1528,12 @@ Name: country, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-986d610045de48b7890a21ae7eac8683"></div>
+<div id="altair-viz-0f75c146974d4e82bb481be8196a5761"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-986d610045de48b7890a21ae7eac8683") {
-      outputDiv = document.getElementById("altair-viz-986d610045de48b7890a21ae7eac8683");
+    if (outputDiv.id !== "altair-viz-0f75c146974d4e82bb481be8196a5761") {
+      outputDiv = document.getElementById("altair-viz-0f75c146974d4e82bb481be8196a5761");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1595,7 +1604,7 @@ Name: country, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 1.0
-Test score: 0.71
+Test score: 0.76
 </pre></div>
 </div>
 </div>
@@ -1699,33 +1708,33 @@ Test score: 0.71
   </thead>
   <tbody>
     <tr>
-      <th>8</th>
-      <td>-97.2049</td>
-      <td>48.9988</td>
+      <th>25</th>
+      <td>-67.9353</td>
+      <td>47.1575</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>169</th>
-      <td>-66.0580</td>
-      <td>45.2788</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>-72.1064</td>
-      <td>45.0004</td>
+      <th>4</th>
+      <td>-122.2691</td>
+      <td>48.9951</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>156</th>
-      <td>-72.5565</td>
-      <td>46.3327</td>
+      <th>138</th>
+      <td>-123.0833</td>
+      <td>49.0833</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>40</th>
-      <td>-121.8906</td>
-      <td>37.3362</td>
+      <th>124</th>
+      <td>-73.7344</td>
+      <td>45.6056</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>-85.7039</td>
+      <td>38.2092</td>
       <td>USA</td>
     </tr>
   </tbody>
@@ -2063,10 +2072,10 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00208688, 0.00159597, 0.00171304, 0.00171804, 0.00164366,
-        0.00202012, 0.0019269 , 0.00170588, 0.00166297, 0.0016098 ]),
- &#39;score_time&#39;: array([0.0012331 , 0.00120902, 0.00132799, 0.00142813, 0.00118017,
-        0.00118923, 0.00122118, 0.00136781, 0.0011878 , 0.00132012]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00199699, 0.00163507, 0.00179577, 0.00158596, 0.00151587,
+        0.0020082 , 0.00163102, 0.001719  , 0.00151706, 0.00216508]),
+ &#39;score_time&#39;: array([0.00131011, 0.00118589, 0.00119019, 0.00116611, 0.0011642 ,
+        0.00117874, 0.0011282 , 0.00112581, 0.00111413, 0.00116205]),
  &#39;test_score&#39;: array([0.76470588, 0.82352941, 0.70588235, 0.94117647, 0.82352941,
         0.82352941, 0.70588235, 0.9375    , 0.9375    , 0.9375    ]),
  &#39;train_score&#39;: array([0.91333333, 0.90666667, 0.90666667, 0.9       , 0.90666667,
@@ -2109,71 +2118,71 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002087</td>
-      <td>0.001233</td>
+      <td>0.001997</td>
+      <td>0.001310</td>
       <td>0.764706</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001596</td>
-      <td>0.001209</td>
+      <td>0.001635</td>
+      <td>0.001186</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001713</td>
-      <td>0.001328</td>
+      <td>0.001796</td>
+      <td>0.001190</td>
       <td>0.705882</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001718</td>
-      <td>0.001428</td>
+      <td>0.001586</td>
+      <td>0.001166</td>
       <td>0.941176</td>
       <td>0.900000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001644</td>
-      <td>0.001180</td>
+      <td>0.001516</td>
+      <td>0.001164</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.002020</td>
-      <td>0.001189</td>
+      <td>0.002008</td>
+      <td>0.001179</td>
       <td>0.823529</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001927</td>
-      <td>0.001221</td>
+      <td>0.001631</td>
+      <td>0.001128</td>
       <td>0.705882</td>
       <td>0.920000</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.001706</td>
-      <td>0.001368</td>
+      <td>0.001719</td>
+      <td>0.001126</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.001663</td>
-      <td>0.001188</td>
+      <td>0.001517</td>
+      <td>0.001114</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.001610</td>
-      <td>0.001320</td>
+      <td>0.002165</td>
+      <td>0.001162</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
@@ -2216,71 +2225,71 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001939</td>
-      <td>0.001219</td>
+      <td>0.002036</td>
+      <td>0.001239</td>
       <td>0.764706</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001892</td>
-      <td>0.001340</td>
+      <td>0.001773</td>
+      <td>0.001170</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001649</td>
-      <td>0.001219</td>
+      <td>0.001590</td>
+      <td>0.001186</td>
       <td>0.705882</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001848</td>
-      <td>0.001192</td>
+      <td>0.001583</td>
+      <td>0.001182</td>
       <td>0.941176</td>
       <td>0.900000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001635</td>
-      <td>0.001249</td>
+      <td>0.002027</td>
+      <td>0.001119</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.001597</td>
-      <td>0.001417</td>
+      <td>0.001659</td>
+      <td>0.001193</td>
       <td>0.823529</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001822</td>
-      <td>0.001182</td>
+      <td>0.001692</td>
+      <td>0.001119</td>
       <td>0.705882</td>
       <td>0.920000</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.001685</td>
-      <td>0.001175</td>
+      <td>0.001751</td>
+      <td>0.001169</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.001817</td>
-      <td>0.001172</td>
+      <td>0.001524</td>
+      <td>0.001239</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.001599</td>
-      <td>0.001163</td>
+      <td>0.001464</td>
+      <td>0.001066</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
@@ -2295,8 +2304,8 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001748
-score_time     0.001233
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001710
+score_time     0.001168
 test_score     0.840074
 train_score    0.906865
 dtype: float64
@@ -2311,8 +2320,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.000129
-score_time     0.000083
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.000195
+score_time     0.000054
 test_score     0.094993
 train_score    0.006822
 dtype: float64
@@ -2401,71 +2410,71 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001887</td>
-      <td>0.001198</td>
-      <td>0.705882</td>
+      <td>0.002039</td>
+      <td>0.001247</td>
+      <td>0.647059</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001817</td>
-      <td>0.001161</td>
+      <td>0.001634</td>
+      <td>0.001236</td>
       <td>0.764706</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001830</td>
-      <td>0.001176</td>
+      <td>0.001702</td>
+      <td>0.001175</td>
       <td>0.764706</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001880</td>
-      <td>0.001159</td>
+      <td>0.001625</td>
+      <td>0.001179</td>
       <td>0.941176</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001699</td>
-      <td>0.001188</td>
+      <td>0.001838</td>
+      <td>0.001150</td>
       <td>0.882353</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.001579</td>
-      <td>0.001120</td>
+      <td>0.001581</td>
+      <td>0.001142</td>
       <td>0.823529</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001514</td>
-      <td>0.001237</td>
+      <td>0.001645</td>
+      <td>0.001685</td>
       <td>0.705882</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.001523</td>
-      <td>0.001220</td>
+      <td>0.002219</td>
+      <td>0.001454</td>
       <td>0.812500</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.001560</td>
-      <td>0.001096</td>
+      <td>0.001654</td>
+      <td>0.001142</td>
       <td>0.937500</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.001904</td>
-      <td>0.001291</td>
+      <td>0.001672</td>
+      <td>0.001192</td>
       <td>0.812500</td>
       <td>1.0</td>
     </tr>
@@ -2482,7 +2491,7 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 1.0
-Validation score: 0.82
+Validation score: 0.81
 </pre></div>
 </div>
 </div>
@@ -2637,37 +2646,37 @@ Validation score: 0.81
       <th>6</th>
       <td>7</td>
       <td>0.954115</td>
-      <td>0.839706</td>
+      <td>0.833824</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
       <td>0.972733</td>
-      <td>0.815441</td>
+      <td>0.821324</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
       <td>0.979382</td>
-      <td>0.827574</td>
+      <td>0.821691</td>
     </tr>
     <tr>
       <th>9</th>
       <td>10</td>
       <td>0.994013</td>
-      <td>0.809191</td>
+      <td>0.803309</td>
     </tr>
     <tr>
       <th>10</th>
       <td>11</td>
-      <td>0.996009</td>
-      <td>0.809191</td>
+      <td>0.996671</td>
+      <td>0.815074</td>
     </tr>
     <tr>
       <th>11</th>
       <td>12</td>
       <td>1.000000</td>
-      <td>0.815074</td>
+      <td>0.809191</td>
     </tr>
     <tr>
       <th>12</th>
@@ -2679,7 +2688,7 @@ Validation score: 0.81
       <th>13</th>
       <td>14</td>
       <td>1.000000</td>
-      <td>0.809191</td>
+      <td>0.815074</td>
     </tr>
     <tr>
       <th>14</th>
@@ -2691,7 +2700,7 @@ Validation score: 0.81
       <th>15</th>
       <td>16</td>
       <td>1.000000</td>
-      <td>0.809191</td>
+      <td>0.803309</td>
     </tr>
     <tr>
       <th>16</th>
@@ -2703,13 +2712,13 @@ Validation score: 0.81
       <th>17</th>
       <td>18</td>
       <td>1.000000</td>
-      <td>0.815074</td>
+      <td>0.803309</td>
     </tr>
     <tr>
       <th>18</th>
       <td>19</td>
       <td>1.000000</td>
-      <td>0.809191</td>
+      <td>0.803309</td>
     </tr>
   </tbody>
 </table>
@@ -2731,12 +2740,12 @@ Validation score: 0.81
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-52128764854a4969bd8adb1ea94ce15b"></div>
+<div id="altair-viz-6553819a0bdb4108a021e66cb5939e70"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-52128764854a4969bd8adb1ea94ce15b") {
-      outputDiv = document.getElementById("altair-viz-52128764854a4969bd8adb1ea94ce15b");
+    if (outputDiv.id !== "altair-viz-6553819a0bdb4108a021e66cb5939e70") {
+      outputDiv = document.getElementById("altair-viz-6553819a0bdb4108a021e66cb5939e70");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -2778,7 +2787,7 @@ Validation score: 0.81
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-2b388e023eafa195973d6140df2b1062"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2b388e023eafa195973d6140df2b1062": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9960088300220751}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8397058823529413}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8275735294117647}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-e840c0073111485092b50a9fd607fdde"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-e840c0073111485092b50a9fd607fdde": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9966710816777041}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8338235294117646}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8213235294117647}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <div class="cell docutils container">
@@ -2789,12 +2798,12 @@ Validation score: 0.81
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-9bc420e242064b568d33e1f1327b49cd"></div>
+<div id="altair-viz-087638a8517d425d94880b68cc7868e4"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9bc420e242064b568d33e1f1327b49cd") {
-      outputDiv = document.getElementById("altair-viz-9bc420e242064b568d33e1f1327b49cd");
+    if (outputDiv.id !== "altair-viz-087638a8517d425d94880b68cc7868e4") {
+      outputDiv = document.getElementById("altair-viz-087638a8517d425d94880b68cc7868e4");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -2836,7 +2845,7 @@ Validation score: 0.81
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-2b388e023eafa195973d6140df2b1062"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy", "scale": {"zero": false}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-2b388e023eafa195973d6140df2b1062": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9960088300220751}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8397058823529413}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8275735294117647}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-e840c0073111485092b50a9fd607fdde"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy", "scale": {"zero": false}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-e840c0073111485092b50a9fd607fdde": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9966710816777041}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8338235294117646}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8213235294117647}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <ul class="simple">
@@ -2895,19 +2904,25 @@ Validation score: 0.81
       <th>6</th>
       <td>7</td>
       <td>0.954115</td>
-      <td>0.839706</td>
+      <td>0.833824</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
       <td>0.979382</td>
-      <td>0.827574</td>
+      <td>0.821691</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
       <td>0.972733</td>
-      <td>0.815441</td>
+      <td>0.821324</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>0.996671</td>
+      <td>0.815074</td>
     </tr>
     <tr>
       <th>12</th>
@@ -2916,14 +2931,8 @@ Validation score: 0.81
       <td>0.815074</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>18</td>
-      <td>1.000000</td>
-      <td>0.815074</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
+      <th>13</th>
+      <td>14</td>
       <td>1.000000</td>
       <td>0.815074</td>
     </tr>
@@ -2940,32 +2949,8 @@ Validation score: 0.81
       <td>0.809926</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>16</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>14</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10</td>
-      <td>0.994013</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>0.996009</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>19</td>
+      <th>11</th>
+      <td>12</td>
       <td>1.000000</td>
       <td>0.809191</td>
     </tr>
@@ -2982,14 +2967,38 @@ Validation score: 0.81
       <td>0.804044</td>
     </tr>
     <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>1.000000</td>
+      <td>0.803309</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>1.000000</td>
+      <td>0.803309</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>0.994013</td>
+      <td>0.803309</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>1.000000</td>
+      <td>0.803309</td>
+    </tr>
+    <tr>
       <th>14</th>
       <td>15</td>
       <td>1.000000</td>
       <td>0.803309</td>
     </tr>
     <tr>
-      <th>16</th>
-      <td>17</td>
+      <th>18</th>
+      <td>19</td>
       <td>1.000000</td>
       <td>0.803309</td>
     </tr>
@@ -3119,7 +3128,7 @@ Validation score: 0.81
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="lecture1.html" title="previous page">Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm</a>
-    <a class='right-next' id="next-link" href="../things_to_know/attribution.html" title="next page">Attribution</a>
+    <a class='right-next' id="next-link" href="lecture3.html" title="next page">Lecture 3 - Baseline, <span class="math notranslate nohighlight">\(K\)</span>-Nearest Neighbours and SVM with RBF Kernel</a>
 
         </div>
         
