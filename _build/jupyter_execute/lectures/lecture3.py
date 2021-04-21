@@ -185,7 +185,7 @@ dummy_reg.score(X_test, y_test)
 
 Below we have the output of `y_train.value_counts()`
 
-```out
+```
 Position
 Forward     13
 Defense      7
@@ -213,7 +213,7 @@ When using a regression model, which of the following is not a possible return v
 3. 
 
 Below are the values for `y` that were used to train  `DummyRegressor(strategy='mean')`:
-```out
+```
 Grade
 0     75
 1     80
@@ -233,7 +233,7 @@ What value will the model predict for every example?
 An intuitive way to classify the test example is by finding the most "similar" example(s) from the training set and using that label for the test example.  
 
 
-<center><img src='imgs/knn-motivation.png' width="80%"></center>
+<img src='imgs/knn-motivation.png' width="100%">
     
 
 In ML, we are given `X` and `y` next, we learn a mapping function from this training data then, given a new unseen example, we predict the target of this new example using our learn-mapping function. 
