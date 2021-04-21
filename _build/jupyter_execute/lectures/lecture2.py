@@ -2,15 +2,22 @@
 
 *Hayley Boyce, Wednesday, April 21st 2021*
 
+#import sys
+#!{sys.executable} -m pip install numpy pandas sklearn graphviz
+
 # Importing our libraries
 
 import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.dummy import DummyClassifier
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+
 from sklearn.model_selection import train_test_split
 import sys
 sys.path.append('code/')
 from display_tree import display_tree
+
 from plot_classifier import plot_classifier
 import matplotlib.pyplot as plt
 
@@ -711,6 +718,26 @@ True or False
 2. The fundamental tradeoff of ML states that as training score goes up, validation score goes down.
 3. More "complicated" models are more likely to overfit than "simple" ones.
 5. If our training score is extremely high, that means we're overfitting.
+
+**Coding practice**
+
+Below is some starter code that creates your feature table and target column from the data from the `bball.csv` dataset (in the data folder).
+
+bball_df = pd.read_csv('data/bball.csv')
+bball_df = bball_df[(bball_df['position'] =='G') | (bball_df['position'] =='F')]
+
+# Define X and y
+X = bball_df.loc[:, ['height', 'weight', 'salary']]
+y = bball_df['position']
+
+1. Split the dataset into 4 objects: `X_train`, `X_test`, `y_train`, `y_test`. Make the test set 0.2 (or the train set 0.8) and make sure to use `random_state=7`.
+2. Build a decision tree model with `max_depth=5`. 
+3. Cross-validate using cross_validate() on the objects X_train and y_train specifying the model and making sure to use 10 fold cross-validation and `return_train_score=True`.
+4. Convert the scores into a dataframe and save it in an object named scores_df.
+5. Calculate the mean value of each column and save this in an object named mean_scores.
+6. Is your model overfitting or underfitting? 
+
+
 
 ## What We've Learned Today<a id="9"></a>
 
