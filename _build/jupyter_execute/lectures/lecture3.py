@@ -1,6 +1,12 @@
-# Lecture 3 - Baseline, $K$-Nearest Neighbours and SVM with RBF Kernel
+# Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel
 
-*Hayley Boyce, Monday, April 26th 2021*
+*Hayley Boyce, Monday, April 26th, 2021*
+
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Baseline-Models" data-toc-modified-id="Baseline-Models-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Baseline Models</a></span><ul class="toc-item"><li><span><a href="#Dummy-Classifier" data-toc-modified-id="Dummy-Classifier-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Dummy Classifier</a></span></li><li><span><a href="#Dummy-Regressor" data-toc-modified-id="Dummy-Regressor-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Dummy Regressor</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Analogy-based-models" data-toc-modified-id="Analogy-based-models-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Analogy-based models</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Example:" data-toc-modified-id="Example:-5.0.1"><span class="toc-item-num">5.0.1&nbsp;&nbsp;</span>Example:</a></span></li></ul></li><li><span><a href="#Analogy-based-models-in-real-life" data-toc-modified-id="Analogy-based-models-in-real-life-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Analogy-based models in real life</a></span></li></ul></li><li><span><a href="#Terminology" data-toc-modified-id="Terminology-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Terminology</a></span><ul class="toc-item"><li><span><a href="#Feature-Vectors" data-toc-modified-id="Feature-Vectors-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>Feature Vectors</a></span></li></ul></li><li><span><a href="#Distance" data-toc-modified-id="Distance-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Distance</a></span><ul class="toc-item"><li><span><a href="#Euclidean-distance" data-toc-modified-id="Euclidean-distance-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Euclidean distance</a></span><ul class="toc-item"><li><span><a href="#Calculating-Euclidean-distance-&quot;by-hand&quot;" data-toc-modified-id="Calculating-Euclidean-distance-&quot;by-hand&quot;-7.1.1"><span class="toc-item-num">7.1.1&nbsp;&nbsp;</span>Calculating Euclidean distance "by hand"</a></span></li><li><span><a href="#Calculating-Euclidean-distance--with-sklearn" data-toc-modified-id="Calculating-Euclidean-distance--with-sklearn-7.1.2"><span class="toc-item-num">7.1.2&nbsp;&nbsp;</span>Calculating Euclidean distance  with <code>sklearn</code></a></span></li></ul></li></ul></li><li><span><a href="#Finding-the-Nearest-Neighbour" data-toc-modified-id="Finding-the-Nearest-Neighbour-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Finding the Nearest Neighbour</a></span><ul class="toc-item"><li><span><a href="#Nearest-city-to-a-query-point" data-toc-modified-id="Nearest-city-to-a-query-point-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span>Nearest city to a query point</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#$k$--Nearest-Neighbours-($k$-NNs)-Classifier" data-toc-modified-id="$k$--Nearest-Neighbours-($k$-NNs)-Classifier-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>$k$ -Nearest Neighbours ($k$-NNs) Classifier</a></span></li><li><span><a href="#Choosing-K" data-toc-modified-id="Choosing-K-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Choosing K</a></span><ul class="toc-item"><li><span><a href="#How-to-choose-$K$-(n_neighbors)?" data-toc-modified-id="How-to-choose-$K$-(n_neighbors)?-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>How to choose $K$ (<code>n_neighbors</code>)?</a></span></li></ul></li><li><span><a href="#Curse-of-Dimensionality" data-toc-modified-id="Curse-of-Dimensionality-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Curse of Dimensionality</a></span></li><li><span><a href="#Let's-practice" data-toc-modified-id="Let's-practice-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Let's practice</a></span></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-15.0.1"><span class="toc-item-num">15.0.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-15.0.2"><span class="toc-item-num">15.0.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-16"><span class="toc-item-num">16&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-17"><span class="toc-item-num">17&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-17.1"><span class="toc-item-num">17.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-17.1.1"><span class="toc-item-num">17.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-17.1.2"><span class="toc-item-num">17.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-18"><span class="toc-item-num">18&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-19"><span class="toc-item-num">19&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div>
+
+#import sys
+#!{sys.executable} -m pip install numpy pandas sklearn graphviz
 
 # Importing our libraries
 
@@ -10,9 +16,8 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.dummy import DummyClassifier
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
-from sklearn.model_selection import cross_validate
+from sklearn.model_selection import cross_validate, train_test_split
 
-from sklearn.model_selection import train_test_split
 import sys
 sys.path.append('code/')
 from display_tree import display_tree
@@ -28,6 +33,13 @@ import matplotlib.pyplot as plt
 - Explain the general idea of SVMs with RBF kernel.
 - Describe the problem of the curse of dimensionality.
 - Broadly describe the relation of `gamma` and `C` hyperparameters and the fundamental tradeoff.
+
+## House Keeping 
+- Assignment due Wednesday April 28th
+- 1.7 on Assignment
+- rounding for Spotify
+- Next Assignment release (either Thursday or Monday depending on how far we get today)
+- Technical issues, [Online resource](https://bait509-ubc.github.io/BAIT509/intro.html), reaching out! 
 
 ## Five Minute Recap/ Lightning Questions 
 
@@ -90,7 +102,7 @@ scores_df
 
 scores_df.mean()
 
-With Dummy Classifiers, we won't need to because if we take just the score on the training dataset, we will get the same as the mean value of the folds with cross-validation. 
+With Dummy Classifiers, we won't need to because we are not hyperparameter tuning. We are using this just to get a base training score. 
 
 dummy_clf.fit(X_train, y_train)
 dummy_clf.score(X_train, y_train)
@@ -550,7 +562,7 @@ This now shows us the 5 distances to the 5 closest cities and their index.
 9      0        0        40          83                65        fruit
 ```
 
-1. Giving the table above and we are trying to predict if each example is either a fruit or a vegetable, what would be the dimension of feature vectors in this problem?
+1. Giving the table above and that we are trying to predict if each example is either a fruit or a vegetable, what would be the dimension of feature vectors in this problem?
 
 
 2. Which of the following would be the feature vector for example 0. 
@@ -578,7 +590,7 @@ This now shows us the 5 distances to the 5 closest cities and their index.
 4. Analogy-based models find examples from the test set that are most similar to the test example we are predicting.
 5. Feature vectors can only be of length 3 since we cannot visualize past that.
 6. A dataset with 10 dimensions is considered low dimensional.
-7. Euclidean distance will always have a positive value
+7. Euclidean distance will always have a positive value.
 8. When finding the nearest neighbour in a dataset using `kneighbors()` from the `sklearn` library, we must `fit`  the data first.
 9. Calculating the distances between an example and a query point takes twice as long as calculating the distances between two examples.
 
@@ -785,7 +797,7 @@ $$ X = \begin{bmatrix}5 & 2\\4 & 3\\  2 & 2\\ 10 & 10\\ 9 & -1\\ 9& 9\end{bmatri
 
 **True or False**    
 
-3. _The classification of the closest neighbour to the test example always contributes the most to the prediction
+3. The classification of the closest neighbour to the test example always contributes the most to the prediction
 4. The `n_neighbors` hyperparameter must be less than the number of examples in the training set.
 5. Similar to decision trees, $k$-NNs find a small set of good features.
 6. With  $k$ -NN, setting the hyperparameter  $k$  to larger values typically increases training score.
@@ -1049,4 +1061,3 @@ y = bball_df['position']
 - What the curse of dimensionality is.
 - How to build an SVM with RBF kernel model. 
 - How changing `gamma` and `C` hyperparameters affects the fundamental tradeoff.
-
