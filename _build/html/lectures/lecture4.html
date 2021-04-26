@@ -708,12 +708,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f"></div>
+<div id="altair-viz-6c7f28af891d44bea02e029df4a99900"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f") {
-      outputDiv = document.getElementById("altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f");
+    if (outputDiv.id !== "altair-viz-6c7f28af891d44bea02e029df4a99900") {
+      outputDiv = document.getElementById("altair-viz-6c7f28af891d44bea02e029df4a99900");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1111,36 +1111,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002538</td>
-      <td>0.001496</td>
+      <td>0.002303</td>
+      <td>0.001535</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001877</td>
-      <td>0.001456</td>
+      <td>0.002177</td>
+      <td>0.001301</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002396</td>
-      <td>0.001422</td>
+      <td>0.001786</td>
+      <td>0.001258</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001874</td>
-      <td>0.001321</td>
+      <td>0.001819</td>
+      <td>0.001264</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001937</td>
-      <td>0.001275</td>
+      <td>0.001844</td>
+      <td>0.001273</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -2903,7 +2903,7 @@ There are many ways to scale your data but we are going to look at 2 of them.</p
 <li><p>Do you see any problem here?</p></li>
 </ul>
 <p>We are using our <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> in our <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> function which already has all our preprocessing done.</p>
-<a class="reference internal image-reference" href="../_images/cross-validation.png"><img alt="../_images/cross-validation.png" src="../_images/cross-validation.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/cross-validation.png"><img alt="../_images/cross-validation.png" src="../_images/cross-validation.png" style="width: 80%;" /></a>
 <p>That means that our validation set information is being used to calculate the mean and standard deviation (or min and max values for <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>) for our training split!</p>
 <p>We are allowing information from the validation set to <strong>leak</strong> into the training step.</p>
 <p>What was our golden rule of machine learning again? Oh yeah -&gt; <em><strong>Our test data should not influence our training data</strong></em>.</p>
