@@ -146,11 +146,6 @@
    Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#numeric-transformations">
-   Numeric Transformations
-  </a>
- </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -271,230 +266,223 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#house-keeping">
+   House Keeping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#house-keeping">
-     House Keeping
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lecture-learning-objectives">
-     Lecture Learning Objectives
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-     Five Minute Recap/ Lightning Questions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#some-lingering-questions">
-       Some lingering questions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-with-k-nn">
-     Regression with
-     <span class="math notranslate nohighlight">
-      \(k\)
-     </span>
-     -NN
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pros-and-cons-of-k-nearest-neighbours">
-     Pros and Cons of 𝑘 -Nearest Neighbours
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pros">
-       Pros:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cons">
-       Cons:
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-practice">
-     Let’s Practice
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#support-vector-machines-svms-with-rbf-kernel">
-     Support Vector Machines (SVMs) with RBF Kernel
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hyperparameters-of-svm">
-       Hyperparameters of SVM
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#gamma-and-the-fundamental-trade-off">
-         <code class="docutils literal notranslate">
-          <span class="pre">
-           gamma
-          </span>
-         </code>
-         and the fundamental trade-off
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#c-and-the-fundamental-trade-off">
-         <code class="docutils literal notranslate">
-          <span class="pre">
-           C
-          </span>
-         </code>
-         and the fundamental trade-off
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Let’s Practice
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     Some lingering questions
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numeric-transformations">
-   Numeric Transformations
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-k-nn">
+   Regression with
+   <span class="math notranslate nohighlight">
+    \(k\)
+   </span>
+   -NN
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pros-and-cons-of-k-nearest-neighbours">
+   Pros and Cons of 𝑘 -Nearest Neighbours
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pros">
+     Pros:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cons">
+     Cons:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-machines-svms-with-rbf-kernel">
+   Support Vector Machines (SVMs) with RBF Kernel
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameters-of-svm">
+     Hyperparameters of SVM
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gamma-and-the-fundamental-trade-off">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         gamma
+        </span>
+       </code>
+       and the fundamental trade-off
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-and-the-fundamental-trade-off">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         C
+        </span>
+       </code>
+       and the fundamental trade-off
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing">
+   Preprocessing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-importance-of-preprocessing-an-example-of-why">
      The importance of Preprocessing - An Example of Why
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#basketball-dataset">
        Basketball dataset
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#sklearn-s-predict-vs-transform">
-       Sklearn’s
-       <em>
-        predict
-       </em>
-       vs
-       <em>
-        transform
-       </em>
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#common-preprocessing-techniques">
-       Common preprocessing techniques
-      </a>
-     </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Let’s Practice!
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sklearn-s-predict-vs-transform">
+     Sklearn’s
+     <em>
+      predict
+     </em>
+     vs
+     <em>
+      transform
+     </em>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#california-housing-data-a-case-study">
-     California housing data (A case study)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-is-it-ok-to-do-things-before-splitting">
-       When is it OK to do things before splitting?
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preprocessing-imputation">
-     Preprocessing: Imputation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-we-don-t-drop-the-rows">
-       Why we don’t drop the rows
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-we-don-t-drop-the-column">
-       Why we don’t drop the column
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-we-use-imputation">
-       Why we use imputation
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preprocessing-scaling">
-     Preprocessing: Scaling
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Let’s Practice
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-transformations-and-the-golden-rule">
-     Feature transformations and the golden rule
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bad-methodology-1-scaling-the-data-separately">
-       Bad methodology 1: Scaling the data separately
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bad-methodology-2-scaling-the-data-together">
-       Bad methodology 2: Scaling the data together
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pipelines">
-     Pipelines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Let’s Practice
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#practice-coding-problem">
-       Practice coding problem
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
-     What We’ve Learned Today
-     <a id="9">
-     </a>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-preprocessing-techniques">
+     Common preprocessing techniques
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Let’s Practice!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#california-housing-data-a-case-study">
+   California housing data (A case study)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-it-ok-to-do-things-before-splitting">
+     When is it OK to do things before splitting?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-imputation">
+   Preprocessing: Imputation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-we-don-t-drop-the-rows">
+     Why we don’t drop the rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-we-don-t-drop-the-column">
+     Why we don’t drop the column
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-we-use-imputation">
+     Why we use imputation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-scaling">
+   Preprocessing: Scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-transformations-and-the-golden-rule">
+   Feature transformations and the golden rule
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bad-methodology-1-scaling-the-data-separately">
+     Bad methodology 1: Scaling the data separately
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bad-methodology-2-scaling-the-data-together">
+     Bad methodology 2: Scaling the data together
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipelines">
+   Pipelines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Let’s Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-coding-problem">
+     Practice coding problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
+   What We’ve Learned Today
+   <a id="9">
+   </a>
+  </a>
  </li>
 </ul>
 
@@ -720,12 +708,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-5810b37d49de4da2aaef3fa2f42e41b7"></div>
+<div id="altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5810b37d49de4da2aaef3fa2f42e41b7") {
-      outputDiv = document.getElementById("altair-viz-5810b37d49de4da2aaef3fa2f42e41b7");
+    if (outputDiv.id !== "altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f") {
+      outputDiv = document.getElementById("altair-viz-3c12b76e328a4b918a5a5f97fc5f3a2f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1123,36 +1111,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002359</td>
-      <td>0.001404</td>
+      <td>0.002538</td>
+      <td>0.001496</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001865</td>
-      <td>0.001262</td>
+      <td>0.001877</td>
+      <td>0.001456</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001755</td>
-      <td>0.001257</td>
+      <td>0.002396</td>
+      <td>0.001422</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002007</td>
-      <td>0.001264</td>
+      <td>0.001874</td>
+      <td>0.001321</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001787</td>
-      <td>0.001251</td>
+      <td>0.001937</td>
+      <td>0.001275</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1293,11 +1281,10 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 <li><p>Calculate the mean training and cross-validation scores.</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="numeric-transformations">
-<h1>Numeric Transformations<a class="headerlink" href="#numeric-transformations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-importance-of-preprocessing-an-example-of-why">
-<h2>The importance of Preprocessing - An Example of Why<a class="headerlink" href="#the-importance-of-preprocessing-an-example-of-why" title="Permalink to this headline">¶</a></h2>
+<h3>The importance of Preprocessing - An Example of Why<a class="headerlink" href="#the-importance-of-preprocessing-an-example-of-why" title="Permalink to this headline">¶</a></h3>
 <p>So far we have seen:</p>
 <ul class="simple">
 <li><p>Models: Decision trees, 𝑘-NNs, SVMs with RBF kernel.</p></li>
@@ -1306,7 +1293,7 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 <p>Now …</p>
 <p><strong>Preprocessing</strong>: Transforming input data into a format a machine learning model can use and understand.</p>
 <div class="section" id="basketball-dataset">
-<h3>Basketball dataset<a class="headerlink" href="#basketball-dataset" title="Permalink to this headline">¶</a></h3>
+<h4>Basketball dataset<a class="headerlink" href="#basketball-dataset" title="Permalink to this headline">¶</a></h4>
 <p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">bball.csv</span></code> dataset we just used in practice.</p>
 <ul class="simple">
 <li><p>Let’s look at the  3 feature columns <code class="docutils literal notranslate"><span class="pre">height</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">salary</span></code>.</p></li>
@@ -1686,6 +1673,7 @@ We will talk about this type of preprocessing in more detail in a hot minute but
   </tbody>
 </table>
 </div></div></div>
+</div>
 </div>
 </div>
 <div class="section" id="sklearn-s-predict-vs-transform">
