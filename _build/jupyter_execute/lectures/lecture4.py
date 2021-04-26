@@ -740,7 +740,7 @@ pd.DataFrame(scores)
 
 We are using our `X_train_scaled` in our `cross_validate()` function which already has all our preprocessing done. 
 
-<img src='imgs/cross-validation.png' width="60%">
+<img src='imgs/cross-validation.png' width="80%">
 
 That means that our validation set information is being used to calculate the mean and standard deviation (or min and max values for `MinMaxScaler`) for our training split! 
 
