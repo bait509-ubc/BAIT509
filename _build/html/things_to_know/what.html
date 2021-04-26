@@ -52,6 +52,8 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/things_to_know/what.html" />
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -137,6 +139,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture3.html">
    Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture4.html">
+   Lecture 4 - Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture4.html#numeric-transformations">
+   Numeric Transformations
   </a>
  </li>
 </ul>
@@ -347,9 +359,26 @@
 </div>
 <div class="section" id="lecture-3">
 <h3>Lecture 3<a class="headerlink" href="#lecture-3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">DummyClassifier</span></code> and <code class="docutils literal notranslate"><span class="pre">DummyRegressor</span></code> as baselines for machine learning problems.</p></li>
+<li><p>Explain the notion of similarity-based algorithms .</p></li>
+<li><p>Broadly describe how KNNs use distances.</p></li>
+<li><p>Discuss the effect of using a small/large value of the hyperparameter <span class="math notranslate nohighlight">\(K\)</span> when using the KNN algorithm</p></li>
+<li><p>Explain the general idea of SVMs with RBF kernel.</p></li>
+<li><p>Describe the problem of the curse of dimensionality.</p></li>
+<li><p>Broadly describe the relation of <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> hyperparameters and the fundamental tradeoff.</p></li>
+</ul>
 </div>
 <div class="section" id="lecture-4">
 <h3>Lecture 4<a class="headerlink" href="#lecture-4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Identify when to implement feature transformations such as imputation and scaling.</p></li>
+<li><p>Describe the difference between normalizing and standardizing and be able to use scikit-learn’s <code class="docutils literal notranslate"><span class="pre">MinMaxScaler()</span></code> and <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code> to pre-process numeric features.</p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">sklearn.pipeline.Pipeline</span></code> to build a machine learning pipeline.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> for applying numerical feature transformations to the data.</p></li>
+<li><p>Discuss the golden rule in the context of feature transformations.</p></li>
+<li><p>Use the scikit-learn <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> function to implement preprocessing functions such as <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> and <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> to numeric and categorical features simultaneously.</p></li>
+</ul>
 </div>
 <div class="section" id="lecture-5">
 <h3>Lecture 5<a class="headerlink" href="#lecture-5" title="Permalink to this headline">¶</a></h3>

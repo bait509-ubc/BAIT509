@@ -32,8 +32,23 @@
 
 ### Lecture 3
 
+- Use `DummyClassifier` and `DummyRegressor` as baselines for machine learning problems.
+- Explain the notion of similarity-based algorithms .
+- Broadly describe how KNNs use distances.
+- Discuss the effect of using a small/large value of the hyperparameter $K$ when using the KNN algorithm 
+- Explain the general idea of SVMs with RBF kernel.
+- Describe the problem of the curse of dimensionality.
+- Broadly describe the relation of `gamma` and `C` hyperparameters and the fundamental tradeoff.
+
 
 ### Lecture 4
+
+- Identify when to implement feature transformations such as imputation and scaling.
+- Describe the difference between normalizing and standardizing and be able to use scikit-learn's `MinMaxScaler()` and `StandardScaler()` to pre-process numeric features.
+- Apply `sklearn.pipeline.Pipeline` to build a machine learning pipeline.
+- Use `sklearn` for applying numerical feature transformations to the data.
+- Discuss the golden rule in the context of feature transformations.
+- Use the scikit-learn `ColumnTransformer` function to implement preprocessing functions such as `MinMaxScaler` and `OneHotEncoder` to numeric and categorical features simultaneously.
 
 
 ### Lecture 5
