@@ -26,7 +26,7 @@ nn.kneighbors(cities_test_X.iloc[1])
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m<ipython-input-55-aa1385389c22>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-56-aa1385389c22>[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m [0mnn[0m [0;34m=[0m [0mNearestNeighbors[0m[0;34m([0m[0mn_neighbors[0m[0;34m=[0m[0;36m5[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0mnn[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mcities_train_df[0m[0;34m[[0m[0;34m[[0m[0;34m'longitude'[0m[0;34m,[0m [0;34m'latitude'[0m[0;34m][0m[0;34m][0m[0;34m)[0m[0;34m;[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 5[0;31m [0mnn[0m[0;34m.[0m[0mkneighbors[0m[0;34m([0m[0mcities_test_X[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
