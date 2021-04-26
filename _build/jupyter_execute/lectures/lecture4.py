@@ -304,9 +304,9 @@ y = bball_df['position']
 3. Cross-validate using cross_validate() on the objects X_train and y_train specifying the model and making sure to use 5 fold cross-validation and `return_train_score=True`.
 4. Calculate the mean training and cross-validation scores.
 
-# Numeric Transformations
+## Preprocessing
 
-## The importance of Preprocessing - An Example of Why
+### The importance of Preprocessing - An Example of Why
 
 So far we have seen:   
  
@@ -320,7 +320,7 @@ Now ...
 **Preprocessing**: Transforming input data into a format a machine learning model can use and understand.
  
 
-### Basketball dataset
+#### Basketball dataset
 
 Let's take a look at the `bball.csv` dataset we just used in practice.
 
