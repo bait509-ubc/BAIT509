@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 4 - Feature Preprocessing &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Attribution" href="../things_to_know/attribution.html" />
-    <link rel="prev" title="Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel" href="lecture3.html" />
+    <link rel="prev" title="Lecture 3 - Baseline, k-Nearest Neighbours" href="lecture3.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture4.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 4 - Feature Preprocessing" />
-<meta property="og:description" content="Lecture 4 - Feature Preprocessing  Hayley Boyce, Wednesday, April 28th 2021  # Importing our libraries import pandas as pd import altair as alt import numpy as " />
+<meta property="og:title"       content="Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing" />
+<meta property="og:description" content="Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing  Hayley Boyce, Wednesday, April 28th 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt;" />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -138,12 +138,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel
+   Lecture 3 - Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 4 - Feature Preprocessing
+   Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
@@ -273,7 +273,7 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Lecture 4 - Feature Preprocessing
+   Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -508,10 +508,11 @@
         
               <div>
                 
-  <div class="section" id="lecture-4-feature-preprocessing">
-<h1>Lecture 4 - Feature Preprocessing<a class="headerlink" href="#lecture-4-feature-preprocessing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lecture-4-and-svm-with-rbf-kernel-and-feature-preprocessing">
+<h1>Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing<a class="headerlink" href="#lecture-4-and-svm-with-rbf-kernel-and-feature-preprocessing" title="Permalink to this headline">¶</a></h1>
 <p><em>Hayley Boyce, Wednesday, April 28th 2021</em></p>
-<div class="cell docutils container">
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-4---Feature-Preprocessing" data-toc-modified-id="Lecture-4---Feature-Preprocessing-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 4 - Feature Preprocessing</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-1.7.1.2"><span class="toc-item-num">1.7.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li></ul></li><li><span><a href="#Numeric-Transformations" data-toc-modified-id="Numeric-Transformations-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Numeric Transformations</a></span><ul class="toc-item"><li><span><a href="#The-importance-of-Preprocessing---An-Example-of-Why" data-toc-modified-id="The-importance-of-Preprocessing---An-Example-of-Why-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>The importance of Preprocessing - An Example of Why</a></span><ul class="toc-item"><li><span><a href="#Basketball-dataset" data-toc-modified-id="Basketball-dataset-2.1.1"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Basketball dataset</a></span></li><li><span><a href="#Sklearn's-predict-vs-transform" data-toc-modified-id="Sklearn's-predict-vs-transform-2.1.2"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Sklearn's <em>predict</em> vs <em>transform</em></a></span></li><li><span><a href="#Common-preprocessing-techniques" data-toc-modified-id="Common-preprocessing-techniques-2.1.3"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Common preprocessing techniques</a></span></li></ul></li><li><span><a href="#Let's-Practice!" data-toc-modified-id="Let's-Practice!-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Let's Practice!</a></span></li><li><span><a href="#California-housing-data-(A-case-study)" data-toc-modified-id="California-housing-data-(A-case-study)-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>California housing data (A case study)</a></span><ul class="toc-item"><li><span><a href="#When-is-it-OK-to-do-things-before-splitting?" data-toc-modified-id="When-is-it-OK-to-do-things-before-splitting?-2.3.1"><span class="toc-item-num">2.3.1&nbsp;&nbsp;</span>When is it OK to do things before splitting?</a></span></li></ul></li><li><span><a href="#Preprocessing:-Imputation" data-toc-modified-id="Preprocessing:-Imputation-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Preprocessing: Imputation</a></span><ul class="toc-item"><li><span><a href="#Why-we-don't-drop-the-rows" data-toc-modified-id="Why-we-don't-drop-the-rows-2.4.1"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Why we don't drop the rows</a></span></li><li><span><a href="#Why-we-don't-drop-the-column" data-toc-modified-id="Why-we-don't-drop-the-column-2.4.2"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Why we don't drop the column</a></span></li><li><span><a href="#Why-we-use-imputation" data-toc-modified-id="Why-we-use-imputation-2.4.3"><span class="toc-item-num">2.4.3&nbsp;&nbsp;</span>Why we use imputation</a></span></li></ul></li><li><span><a href="#Preprocessing:-Scaling" data-toc-modified-id="Preprocessing:-Scaling-2.5"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Preprocessing: Scaling</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-2.6"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-transformations-and-the-golden-rule" data-toc-modified-id="Feature-transformations-and-the-golden-rule-2.7"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Feature transformations and the golden rule</a></span><ul class="toc-item"><li><span><a href="#Bad-methodology-1:-Scaling-the-data-separately" data-toc-modified-id="Bad-methodology-1:-Scaling-the-data-separately-2.7.1"><span class="toc-item-num">2.7.1&nbsp;&nbsp;</span>Bad methodology 1: Scaling the data separately</a></span></li><li><span><a href="#Bad-methodology-2:-Scaling-the-data-together" data-toc-modified-id="Bad-methodology-2:-Scaling-the-data-together-2.7.2"><span class="toc-item-num">2.7.2&nbsp;&nbsp;</span>Bad methodology 2: Scaling the data together</a></span></li></ul></li><li><span><a href="#Pipelines" data-toc-modified-id="Pipelines-2.8"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Pipelines</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-2.9"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Practice-coding-problem" data-toc-modified-id="Practice-coding-problem-2.9.1"><span class="toc-item-num">2.9.1&nbsp;&nbsp;</span>Practice coding problem</a></span></li></ul></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-2.10"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></li></ul></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -719,12 +720,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-1145542bee1d457ea2a5fc41fd20366d"></div>
+<div id="altair-viz-5810b37d49de4da2aaef3fa2f42e41b7"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1145542bee1d457ea2a5fc41fd20366d") {
-      outputDiv = document.getElementById("altair-viz-1145542bee1d457ea2a5fc41fd20366d");
+    if (outputDiv.id !== "altair-viz-5810b37d49de4da2aaef3fa2f42e41b7") {
+      outputDiv = document.getElementById("altair-viz-5810b37d49de4da2aaef3fa2f42e41b7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -856,7 +857,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_17_0.png" src="../_images/lecture4_17_0.png" />
+<img alt="../_images/lecture4_18_0.png" src="../_images/lecture4_18_0.png" />
 </div>
 </div>
 <p>What happens when we use <code class="docutils literal notranslate"><span class="pre">n_neighbors=10</span></code>?</p>
@@ -889,7 +890,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_21_0.png" src="../_images/lecture4_21_0.png" />
+<img alt="../_images/lecture4_22_0.png" src="../_images/lecture4_22_0.png" />
 </div>
 </div>
 </div>
@@ -1122,36 +1123,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002400</td>
-      <td>0.001465</td>
+      <td>0.002359</td>
+      <td>0.001404</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001944</td>
-      <td>0.001423</td>
+      <td>0.001865</td>
+      <td>0.001262</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002247</td>
-      <td>0.001295</td>
+      <td>0.001755</td>
+      <td>0.001257</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001855</td>
-      <td>0.001260</td>
+      <td>0.002007</td>
+      <td>0.001264</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001984</td>
-      <td>0.001533</td>
+      <td>0.001787</td>
+      <td>0.001251</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1192,7 +1193,7 @@ Name: country, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_35_0.png" src="../_images/lecture4_35_0.png" />
+<img alt="../_images/lecture4_36_0.png" src="../_images/lecture4_36_0.png" />
 </div>
 </div>
 <p>An observation is classified as a positive class if on average it looks more like positive examples. An observation is classified as a negative class if on average it looks more like negative examples.</p>
@@ -1233,7 +1234,7 @@ Name: country, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_39_0.png" src="../_images/lecture4_39_0.png" />
+<img alt="../_images/lecture4_40_0.png" src="../_images/lecture4_40_0.png" />
 </div>
 </div>
 </div>
@@ -1258,7 +1259,7 @@ Name: country, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_41_0.png" src="../_images/lecture4_41_0.png" />
+<img alt="../_images/lecture4_42_0.png" src="../_images/lecture4_42_0.png" />
 </div>
 </div>
 <p>Obtaining optimal validation scores requires a hyperparameter search between both <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> to balance the fundamental trade-off.
@@ -3024,7 +3025,7 @@ Test score:  0.71
 </div>
 <div class="section" id="pipelines">
 <h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
-<p><span class="xref myst">scikit-learn Pipeline</span> is here to save the day!</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">scikit-learn Pipeline</a> is here to save the day!</p>
 <p>A <strong>pipeline</strong> is a sklearn function that contains a sequence of steps.</p>
 <p>Essentially we give it all the actions we want to do with our data such as transformers and models and the pipeline will execute them in steps.</p>
 <div class="cell docutils container">
@@ -3296,7 +3297,7 @@ Take the mean of each column and assess your model.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture3.html" title="previous page">Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel</a>
+    <a class='left-prev' id="prev-link" href="lecture3.html" title="previous page">Lecture 3 - Baseline, k-Nearest Neighbours</a>
     <a class='right-next' id="next-link" href="../things_to_know/attribution.html" title="next page">Attribution</a>
 
         </div>

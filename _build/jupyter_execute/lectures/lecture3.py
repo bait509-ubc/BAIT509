@@ -1,4 +1,4 @@
-# Lecture 3 - Baseline, k-Nearest Neighbours and SVM with RBF Kernel
+# Lecture 3 - Baseline, k-Nearest Neighbours
 
 *Hayley Boyce, Monday, April 26th, 2021*
 
@@ -76,6 +76,7 @@ We are going to build a most frequent baseline model which always predicts the m
 from sklearn.dummy import DummyClassifier
 
 voting_df = pd.read_csv('data/cities_USA.csv', index_col=0)
+voting_df.head()
 
 # feature table
 X = voting_df.drop(columns='vote') 
@@ -1056,8 +1057,8 @@ y = bball_df['position']
 - The concept of baseline models.
 - How to initiate a Dummy Classifier and Regressor.
 - How to measure Euclidean distance.
-- How the $k$NN algorithm works for classification and regression.
+- How the $k$NN algorithm works for classification.
 - How changing $k$ (`n_neighbors`) affects a model.
 - What the curse of dimensionality is.
-- How to build an SVM with RBF kernel model. 
-- How changing `gamma` and `C` hyperparameters affects the fundamental tradeoff.
+
+
