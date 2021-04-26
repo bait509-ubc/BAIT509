@@ -907,7 +907,7 @@ We can trust here now that the scores are not influenced but the training data a
 3. We have to be careful of the order we put each transformation and model in a pipeline.
 4. Pipelines will fit and transform on both the training and validation folds during cross-validation
 
-### Practice coding problem
+### Practice Coding Problem
 
 Let's bring in the basketball dataset again.
 
