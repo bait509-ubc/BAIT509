@@ -48,7 +48,6 @@
 - Apply `sklearn.pipeline.Pipeline` to build a machine learning pipeline.
 - Use `sklearn` for applying numerical feature transformations to the data.
 - Discuss the golden rule in the context of feature transformations.
-- Use the scikit-learn `ColumnTransformer` function to implement preprocessing functions such as `MinMaxScaler` and `OneHotEncoder` to numeric and categorical features simultaneously.
 
 
 ### Lecture 5
