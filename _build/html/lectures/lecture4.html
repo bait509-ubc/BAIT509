@@ -500,7 +500,7 @@
 <h1>Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing<a class="headerlink" href="#lecture-4-and-svm-with-rbf-kernel-and-feature-preprocessing" title="Permalink to this headline">¶</a></h1>
 <p><em>Hayley Boyce, Wednesday, April 28th 2021</em></p>
 <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-4---Feature-Preprocessing" data-toc-modified-id="Lecture-4---Feature-Preprocessing-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 4 - Feature Preprocessing</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-1.7.1.2"><span class="toc-item-num">1.7.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li></ul></li><li><span><a href="#Numeric-Transformations" data-toc-modified-id="Numeric-Transformations-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Numeric Transformations</a></span><ul class="toc-item"><li><span><a href="#The-importance-of-Preprocessing---An-Example-of-Why" data-toc-modified-id="The-importance-of-Preprocessing---An-Example-of-Why-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>The importance of Preprocessing - An Example of Why</a></span><ul class="toc-item"><li><span><a href="#Basketball-dataset" data-toc-modified-id="Basketball-dataset-2.1.1"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Basketball dataset</a></span></li><li><span><a href="#Sklearn's-predict-vs-transform" data-toc-modified-id="Sklearn's-predict-vs-transform-2.1.2"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Sklearn's <em>predict</em> vs <em>transform</em></a></span></li><li><span><a href="#Common-preprocessing-techniques" data-toc-modified-id="Common-preprocessing-techniques-2.1.3"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Common preprocessing techniques</a></span></li></ul></li><li><span><a href="#Let's-Practice!" data-toc-modified-id="Let's-Practice!-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Let's Practice!</a></span></li><li><span><a href="#California-housing-data-(A-case-study)" data-toc-modified-id="California-housing-data-(A-case-study)-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>California housing data (A case study)</a></span><ul class="toc-item"><li><span><a href="#When-is-it-OK-to-do-things-before-splitting?" data-toc-modified-id="When-is-it-OK-to-do-things-before-splitting?-2.3.1"><span class="toc-item-num">2.3.1&nbsp;&nbsp;</span>When is it OK to do things before splitting?</a></span></li></ul></li><li><span><a href="#Preprocessing:-Imputation" data-toc-modified-id="Preprocessing:-Imputation-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Preprocessing: Imputation</a></span><ul class="toc-item"><li><span><a href="#Why-we-don't-drop-the-rows" data-toc-modified-id="Why-we-don't-drop-the-rows-2.4.1"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Why we don't drop the rows</a></span></li><li><span><a href="#Why-we-don't-drop-the-column" data-toc-modified-id="Why-we-don't-drop-the-column-2.4.2"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Why we don't drop the column</a></span></li><li><span><a href="#Why-we-use-imputation" data-toc-modified-id="Why-we-use-imputation-2.4.3"><span class="toc-item-num">2.4.3&nbsp;&nbsp;</span>Why we use imputation</a></span></li></ul></li><li><span><a href="#Preprocessing:-Scaling" data-toc-modified-id="Preprocessing:-Scaling-2.5"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Preprocessing: Scaling</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-2.6"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-transformations-and-the-golden-rule" data-toc-modified-id="Feature-transformations-and-the-golden-rule-2.7"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Feature transformations and the golden rule</a></span><ul class="toc-item"><li><span><a href="#Bad-methodology-1:-Scaling-the-data-separately" data-toc-modified-id="Bad-methodology-1:-Scaling-the-data-separately-2.7.1"><span class="toc-item-num">2.7.1&nbsp;&nbsp;</span>Bad methodology 1: Scaling the data separately</a></span></li><li><span><a href="#Bad-methodology-2:-Scaling-the-data-together" data-toc-modified-id="Bad-methodology-2:-Scaling-the-data-together-2.7.2"><span class="toc-item-num">2.7.2&nbsp;&nbsp;</span>Bad methodology 2: Scaling the data together</a></span></li></ul></li><li><span><a href="#Pipelines" data-toc-modified-id="Pipelines-2.8"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Pipelines</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-2.9"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Practice-coding-problem" data-toc-modified-id="Practice-coding-problem-2.9.1"><span class="toc-item-num">2.9.1&nbsp;&nbsp;</span>Practice coding problem</a></span></li></ul></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-2.10"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></li></ul></div><div class="cell docutils container">
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-4---and-SVM-with-RBF-Kernel-and-Feature-Preprocessing" data-toc-modified-id="Lecture-4---and-SVM-with-RBF-Kernel-and-Feature-Preprocessing-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 4 - and SVM with RBF Kernel and Feature Preprocessing</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-1.7.1.2"><span class="toc-item-num">1.7.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Preprocessing" data-toc-modified-id="Preprocessing-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Preprocessing</a></span><ul class="toc-item"><li><span><a href="#The-importance-of-Preprocessing---An-Example-of-Why" data-toc-modified-id="The-importance-of-Preprocessing---An-Example-of-Why-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>The importance of Preprocessing - An Example of Why</a></span><ul class="toc-item"><li><span><a href="#Basketball-dataset" data-toc-modified-id="Basketball-dataset-1.9.1.1"><span class="toc-item-num">1.9.1.1&nbsp;&nbsp;</span>Basketball dataset</a></span></li></ul></li><li><span><a href="#Sklearn's-predict-vs-transform" data-toc-modified-id="Sklearn's-predict-vs-transform-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Sklearn's <em>predict</em> vs <em>transform</em></a></span></li><li><span><a href="#Common-preprocessing-techniques" data-toc-modified-id="Common-preprocessing-techniques-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>Common preprocessing techniques</a></span></li></ul></li><li><span><a href="#Let's-Practice!" data-toc-modified-id="Let's-Practice!-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Let's Practice!</a></span></li><li><span><a href="#California-housing-data-(A-case-study)" data-toc-modified-id="California-housing-data-(A-case-study)-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>California housing data (A case study)</a></span><ul class="toc-item"><li><span><a href="#When-is-it-OK-to-do-things-before-splitting?" data-toc-modified-id="When-is-it-OK-to-do-things-before-splitting?-1.11.1"><span class="toc-item-num">1.11.1&nbsp;&nbsp;</span>When is it OK to do things before splitting?</a></span></li></ul></li><li><span><a href="#Preprocessing:-Imputation" data-toc-modified-id="Preprocessing:-Imputation-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Preprocessing: Imputation</a></span><ul class="toc-item"><li><span><a href="#Why-we-don't-drop-the-rows" data-toc-modified-id="Why-we-don't-drop-the-rows-1.12.1"><span class="toc-item-num">1.12.1&nbsp;&nbsp;</span>Why we don't drop the rows</a></span></li><li><span><a href="#Why-we-don't-drop-the-column" data-toc-modified-id="Why-we-don't-drop-the-column-1.12.2"><span class="toc-item-num">1.12.2&nbsp;&nbsp;</span>Why we don't drop the column</a></span></li><li><span><a href="#Why-we-use-imputation" data-toc-modified-id="Why-we-use-imputation-1.12.3"><span class="toc-item-num">1.12.3&nbsp;&nbsp;</span>Why we use imputation</a></span></li></ul></li><li><span><a href="#Preprocessing:-Scaling" data-toc-modified-id="Preprocessing:-Scaling-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Preprocessing: Scaling</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-transformations-and-the-golden-rule" data-toc-modified-id="Feature-transformations-and-the-golden-rule-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>Feature transformations and the golden rule</a></span><ul class="toc-item"><li><span><a href="#Bad-methodology-1:-Scaling-the-data-separately" data-toc-modified-id="Bad-methodology-1:-Scaling-the-data-separately-1.15.1"><span class="toc-item-num">1.15.1&nbsp;&nbsp;</span>Bad methodology 1: Scaling the data separately</a></span></li><li><span><a href="#Bad-methodology-2:-Scaling-the-data-together" data-toc-modified-id="Bad-methodology-2:-Scaling-the-data-together-1.15.2"><span class="toc-item-num">1.15.2&nbsp;&nbsp;</span>Bad methodology 2: Scaling the data together</a></span></li></ul></li><li><span><a href="#Pipelines" data-toc-modified-id="Pipelines-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>Pipelines</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.17"><span class="toc-item-num">1.17&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Practice-Coding-Problem" data-toc-modified-id="Practice-Coding-Problem-1.17.1"><span class="toc-item-num">1.17.1&nbsp;&nbsp;</span>Practice Coding Problem</a></span></li></ul></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.18"><span class="toc-item-num">1.18&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></li></ul></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -708,12 +708,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-8abb3e961acc4b6f992f31f7dfd3c2c0"></div>
+<div id="altair-viz-7b1718a05560453c8c3b7ebd6bac234d"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8abb3e961acc4b6f992f31f7dfd3c2c0") {
-      outputDiv = document.getElementById("altair-viz-8abb3e961acc4b6f992f31f7dfd3c2c0");
+    if (outputDiv.id !== "altair-viz-7b1718a05560453c8c3b7ebd6bac234d") {
+      outputDiv = document.getElementById("altair-viz-7b1718a05560453c8c3b7ebd6bac234d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1111,36 +1111,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002533</td>
-      <td>0.001703</td>
+      <td>0.002395</td>
+      <td>0.001390</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001963</td>
-      <td>0.001273</td>
+      <td>0.001888</td>
+      <td>0.001289</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001761</td>
-      <td>0.001262</td>
+      <td>0.002096</td>
+      <td>0.001299</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001864</td>
-      <td>0.001273</td>
+      <td>0.001911</td>
+      <td>0.001809</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001786</td>
-      <td>0.001310</td>
+      <td>0.001817</td>
+      <td>0.001257</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1743,11 +1743,6 @@ Test score:  0.89
 <li><p>Scaling</p>
 <ul>
 <li><p>Scaling of numeric features</p></li>
-</ul>
-</li>
-<li><p>One-hot encoding</p>
-<ul>
-<li><p>Tackling categorical variables</p></li>
 </ul>
 </li>
 </ul>
@@ -3215,7 +3210,7 @@ dtype: float64
 </ol>
 <p><strong>True or False</strong><br />
 3. We have to be careful of the order we put each transformation and model in a pipeline.
-4. Pipelines will fit and transform on both the training and validation folds during cross-validation</p>
+4. Pipelines will fit and transform on both the training and validation folds during cross-validation.</p>
 <div class="section" id="practice-coding-problem">
 <h3>Practice Coding Problem<a class="headerlink" href="#practice-coding-problem" title="Permalink to this headline">¶</a></h3>
 <p>Let’s bring in the basketball dataset again.</p>
