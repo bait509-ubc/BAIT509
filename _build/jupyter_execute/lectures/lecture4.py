@@ -28,9 +28,12 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 
 ## House Keeping 
 - Assignment due today at 11:59pm!
-- Course Feedback!
+- Course feedback!
+- Assignment - things I should know?
+- Assignment - before or after the weekend?
+- Polls coming Monday!
 - I hear you don't like breakout rooms, let's try this lecture without them!
-- Per the anouncment Monday, download the data for this lecture [here](https://www.kaggle.com/harrywang/housing) and include it in your `data` folder that resides in `lectures`. 
+- Per the announcement Monday, download the data for this lecture [here](https://www.kaggle.com/harrywang/housing) and include it in your `data` folder that resides in `lectures`. 
 
 ## Lecture Learning Objectives 
 
