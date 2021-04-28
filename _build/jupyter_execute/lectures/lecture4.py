@@ -30,7 +30,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 - Assignment due today at 11:59pm!
 - Course feedback!
 - Assignment - things I should know?
-- Assignment - before or after the weekend?
+- Assignment2 - before or after the weekend?
 - Polls coming Monday!
 - I hear you don't like breakout rooms, let's try this lecture without them!
 - Per the announcement Monday, download the data for this lecture [here](https://www.kaggle.com/harrywang/housing) and include it in your `data` folder that resides in `lectures`. 
@@ -820,7 +820,7 @@ So what do we do? Enter ....
 
 ## Pipelines
 
-[scikit-learn Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) is here to save the day!
+[Scikit-learn Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) is here to save the day!
 
 A **pipeline** is a sklearn function that contains a sequence of steps. 
 
@@ -837,6 +837,8 @@ we will instruct the pipeline to:
 3. Build a `KNeighborsRegressor`. 
 
 (The last step should be a model and earlier steps should be transformers) 
+
+Note: The input for `Pipeline` is a list containing tuples (one for each step). 
 
 pipe = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),

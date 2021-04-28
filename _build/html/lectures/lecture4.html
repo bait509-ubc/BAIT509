@@ -532,7 +532,7 @@
 <li><p>Assignment due today at 11:59pm!</p></li>
 <li><p>Course feedback!</p></li>
 <li><p>Assignment - things I should know?</p></li>
-<li><p>Assignment - before or after the weekend?</p></li>
+<li><p>Assignment2 - before or after the weekend?</p></li>
 <li><p>Polls coming Monday!</p></li>
 <li><p>I hear you don’t like breakout rooms, let’s try this lecture without them!</p></li>
 <li><p>Per the announcement Monday, download the data for this lecture <a class="reference external" href="https://www.kaggle.com/harrywang/housing">here</a> and include it in your <code class="docutils literal notranslate"><span class="pre">data</span></code> folder that resides in <code class="docutils literal notranslate"><span class="pre">lectures</span></code>.</p></li>
@@ -710,12 +710,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-d0b5e822738248c6934c552cdc17f074"></div>
+<div id="altair-viz-d2e9966757384ae3b4e4688332b3ab82"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d0b5e822738248c6934c552cdc17f074") {
-      outputDiv = document.getElementById("altair-viz-d0b5e822738248c6934c552cdc17f074");
+    if (outputDiv.id !== "altair-viz-d2e9966757384ae3b4e4688332b3ab82") {
+      outputDiv = document.getElementById("altair-viz-d2e9966757384ae3b4e4688332b3ab82");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1113,36 +1113,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002573</td>
-      <td>0.001446</td>
+      <td>0.002533</td>
+      <td>0.001479</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001910</td>
-      <td>0.001277</td>
+      <td>0.001870</td>
+      <td>0.001327</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001970</td>
-      <td>0.002024</td>
+      <td>0.001916</td>
+      <td>0.001590</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002675</td>
-      <td>0.001324</td>
+      <td>0.002061</td>
+      <td>0.001794</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001814</td>
-      <td>0.001477</td>
+      <td>0.002334</td>
+      <td>0.003597</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -3010,7 +3010,7 @@ Test score:  0.71
 </div>
 <div class="section" id="pipelines">
 <h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">scikit-learn Pipeline</a> is here to save the day!</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">Scikit-learn Pipeline</a> is here to save the day!</p>
 <p>A <strong>pipeline</strong> is a sklearn function that contains a sequence of steps.</p>
 <p>Essentially we give it all the actions we want to do with our data such as transformers and models and the pipeline will execute them in steps.</p>
 <div class="cell docutils container">
@@ -3028,6 +3028,7 @@ Test score:  0.71
 <li><p>Build a <code class="docutils literal notranslate"><span class="pre">KNeighborsRegressor</span></code>.</p></li>
 </ol>
 <p>(The last step should be a model and earlier steps should be transformers)</p>
+<p>Note: The input for <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> is a list containing tuples (one for each step).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
