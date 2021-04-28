@@ -22,6 +22,7 @@ def test1_3(answer1, answer2):
     assert answer1.shape == (10, 3), "The size of 'X' is incorrect. Are you dropping the target column?"
     assert 'target' not in answer1.columns, "Make sure you are not selecting the target column as part of 'X'"
     assert answer2.shape == (10,), "The size of 'y' is incorrect. Are you only selecting the target column?"
+    return("Success")
     
 def test1_4(answer):
     assert answer.get_params()['criterion'] == 'gini', "Are you initializing a decision tree classifier properly?"
