@@ -1,3 +1,6 @@
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-0"><span class="toc-item-num">0&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Generalization" data-toc-modified-id="Generalization-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Generalization</a></span><ul class="toc-item"><li><span><a href="#Visualizing-model-complexity-using-decision-boundaries" data-toc-modified-id="Visualizing-model-complexity-using-decision-boundaries-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Visualizing model complexity using decision boundaries</a></span></li><li><span><a href="#The-Fundamental-goal-of-machine-learning" data-toc-modified-id="The-Fundamental-goal-of-machine-learning-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>The Fundamental goal of machine learning</a></span></li><li><span><a href="#Generalizing-to-unseen-data" data-toc-modified-id="Generalizing-to-unseen-data-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Generalizing to unseen data</a></span></li><li><span><a href="#Training-score-versus-Generalization-score-(or-Error)" data-toc-modified-id="Training-score-versus-Generalization-score-(or-Error)-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Training score versus Generalization score (or Error)</a></span></li></ul></li><li><span><a href="#Splitting" data-toc-modified-id="Splitting-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Splitting</a></span><ul class="toc-item"><li><span><a href="#Simple-train-and-test-split" data-toc-modified-id="Simple-train-and-test-split-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Simple train and test split</a></span></li><li><span><a href="#How-do-we-do-this?" data-toc-modified-id="How-do-we-do-this?-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>How do we do this?</a></span><ul class="toc-item"><li><span><a href="#First-way" data-toc-modified-id="First-way-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>First way</a></span></li><li><span><a href="#Second-way" data-toc-modified-id="Second-way-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Second way</a></span></li></ul></li><li><span><a href="#Applications-with-Splitting" data-toc-modified-id="Applications-with-Splitting-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Applications with Splitting</a></span></li><li><span><a href="#Parameters-in-.train_test_split()" data-toc-modified-id="Parameters-in-.train_test_split()-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Parameters in <code>.train_test_split()</code></a></span></li></ul></li><li><span><a href="#Train/validation/test-split" data-toc-modified-id="Train/validation/test-split-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Train/validation/test split</a></span></li><li><span><a href="#&quot;Deployment&quot;-data" data-toc-modified-id="&quot;Deployment&quot;-data-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>"Deployment" data</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#Cross-validation-using-sk-learn" data-toc-modified-id="Cross-validation-using-sk-learn-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Cross-validation using <code>sk-learn</code></a></span><ul class="toc-item"><li><span><a href="#cross_val_score" data-toc-modified-id="cross_val_score-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span><code>cross_val_score</code></a></span></li><li><span><a href="#cross_validate" data-toc-modified-id="cross_validate-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span><code>cross_validate</code></a></span></li></ul></li><li><span><a href="#Our-typical-supervised-learning-set-up-is-as-follows:" data-toc-modified-id="Our-typical-supervised-learning-set-up-is-as-follows:-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Our typical supervised learning set up is as follows:</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Overfitting-and-Underfitting" data-toc-modified-id="Overfitting-and-Underfitting-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Overfitting and Underfitting</a></span><ul class="toc-item"><li><span><a href="#Types-of-scores" data-toc-modified-id="Types-of-scores-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>Types of scores</a></span></li><li><span><a href="#Overfitting" data-toc-modified-id="Overfitting-11.2"><span class="toc-item-num">11.2&nbsp;&nbsp;</span>Overfitting</a></span></li><li><span><a href="#Underfitting" data-toc-modified-id="Underfitting-11.3"><span class="toc-item-num">11.3&nbsp;&nbsp;</span>Underfitting</a></span></li><li><span><a href="#How-can-we-figure-this-out?" data-toc-modified-id="How-can-we-figure-this-out?-11.4"><span class="toc-item-num">11.4&nbsp;&nbsp;</span>How can we figure this out?</a></span></li></ul></li><li><span><a href="#The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning" data-toc-modified-id="The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>The "Fundamental Tradeoff" of Supervised Learning</a></span><ul class="toc-item"><li><span><a href="#How-to-pick-a-model-that-would-generalize-better?" data-toc-modified-id="How-to-pick-a-model-that-would-generalize-better?-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>How to pick a model that would generalize better?</a></span></li></ul></li><li><span><a href="#The-Golden-Rule" data-toc-modified-id="The-Golden-Rule-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>The Golden Rule</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div>
+
 # Lecture 2 - Splitting and Cross-validation
 
 *Hayley Boyce, Wednesday, April 21st 2021*
@@ -168,7 +171,7 @@ plt.xlabel('lon', fontsize=14);
 plt.ylabel('lat', fontsize=14);
 plt.title('Decision tree with depth = %d' % (depth), fontsize=18);
 
-What happens if we give the model an unlimited max_depth?
+What happens if we give the model an unlimited `max_depth`?
 
 model = DecisionTreeClassifier()
 model.fit(X, y);
@@ -182,6 +185,8 @@ plt.yticks(fontsize= 12);
 plt.xlabel('lon', fontsize=14);
 plt.ylabel('lat', fontsize=14);
 plt.title('Decision tree with unlimited max depth', fontsize=18);
+
+model.get_depth()
 
 Our score is now 100%.  We can see that with this model we are perfectly fitting every observation.
 
@@ -311,6 +316,8 @@ Instead of splitting our `X` and `y` objects. We can split the whole dataset fir
 
 The earlier to split the data the better!
 
+cities_df
+
 train_df, test_df = train_test_split(cities_df, test_size = 0.2, random_state = 123)
 
 X_train = train_df.drop(columns=["country"])
@@ -373,7 +380,7 @@ In the plot on the right, we can see some red triangles in the blue area. That i
 
 ### Parameters in `.train_test_split()`
 
--`test_size` - test split size (0-1)
+- `test_size` - test split size (0-1)
 - `train_size` - train split size (0-1) (only need to specify one if these
 - `random_state` - randomizes the split
 
@@ -381,7 +388,7 @@ train_df, test_df = train_test_split(cities_df, test_size = 0.2, random_state = 
 
 train_df, test_df = train_test_split(cities_df, train_size = 0.8, random_state = 123)
 
-train_df, test_df = train_test_split(cities_df,test_size = 0.2, train_size = 0.8, random_state = 123)
+train_df, test_df = train_test_split(cities_df, test_size = 0.2, train_size = 0.8, random_state = 123)
 
 There is no hard and fast rule on the split sizes should we use. Some common splits are 90/10, 80/20, 70/30 (training/test).
 
@@ -450,10 +457,10 @@ So, if our model does well on the validation and test data, we hope it will do w
 
 | datasets   | `.fit()` | `.score()` | `.predict()` |
 |------------|:--------:|:----------:|:------------:|
-| Train      |    ✔️     |            |              |
-| Validation |          |            |              |
-| Test       |          |            |              |
-| Deployment |          |            |              |
+| Train      |    ✔️     |   ✔️      |   ✔️          |
+| Validation |          |   ✔️       |     ✔️       |
+| Test       |          |    Once    |   Once       |
+| Deployment |          |            |      ✔️      |
 
 
 ## Cross-validation
