@@ -854,7 +854,9 @@ $$y = \begin{bmatrix}spam \\ non spam \\ spam \end{bmatrix}$$
 
 ## Bag of words (BOW) representation
 
-<center><img src="imgs/bag-of-words.png"  width = "75%" alt="404 image" /></center>
+
+<img src="imgs/bow.png"  width = "85%" alt="404 image" />
+
 
 <a href="https://web.stanford.edu/~jurafsky/slp3/4.pdf" target="_blank">Attribution: Daniel Jurafsky & James H. Martin</a> 
 
