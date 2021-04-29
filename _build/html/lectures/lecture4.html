@@ -715,12 +715,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-fb652073af2e470bbcbccd68fa685ce3"></div>
+<div id="altair-viz-d39410c133034f95b8b3aa11ce5a368a"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-fb652073af2e470bbcbccd68fa685ce3") {
-      outputDiv = document.getElementById("altair-viz-fb652073af2e470bbcbccd68fa685ce3");
+    if (outputDiv.id !== "altair-viz-d39410c133034f95b8b3aa11ce5a368a") {
+      outputDiv = document.getElementById("altair-viz-d39410c133034f95b8b3aa11ce5a368a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1126,36 +1126,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002491</td>
-      <td>0.001403</td>
+      <td>0.002430</td>
+      <td>0.001522</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001800</td>
-      <td>0.001229</td>
+      <td>0.002326</td>
+      <td>0.001310</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001982</td>
-      <td>0.001233</td>
+      <td>0.002009</td>
+      <td>0.001408</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001782</td>
-      <td>0.001231</td>
+      <td>0.001931</td>
+      <td>0.001278</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001978</td>
-      <td>0.001547</td>
+      <td>0.002101</td>
+      <td>0.001595</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1353,36 +1353,36 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002833</td>
-      <td>0.001668</td>
+      <td>0.002975</td>
+      <td>0.001404</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002630</td>
-      <td>0.001389</td>
+      <td>0.002873</td>
+      <td>0.001469</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002669</td>
-      <td>0.001492</td>
+      <td>0.002900</td>
+      <td>0.001427</td>
       <td>0.551020</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002466</td>
-      <td>0.001375</td>
+      <td>0.002629</td>
+      <td>0.002383</td>
       <td>0.530612</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.002344</td>
-      <td>0.001797</td>
+      <td>0.002597</td>
+      <td>0.001645</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
@@ -1397,8 +1397,8 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002588
-score_time     0.001544
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002795
+score_time     0.001666
 test_score     0.559184
 train_score    0.995918
 dtype: float64
@@ -1933,57 +1933,105 @@ Test score:  0.89
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">43</span><span class="o">-</span><span class="mi">541097</span><span class="n">bf4bef</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">housing_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/housing.csv&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">685</span> 
-<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">687</span> 
-<span class="g g-Whitespace">    </span><span class="mi">688</span> 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> 
-<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> 
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> 
-<span class="ne">--&gt; </span><span class="mi">936</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span> 
-<span class="g g-Whitespace">    </span><span class="mi">938</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1167</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1168</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1996</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
-<span class="g g-Whitespace">   </span><span class="mi">1997</span> 
-<span class="ne">-&gt; </span><span class="mi">1998</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1999</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
-<span class="g g-Whitespace">   </span><span class="mi">2000</span> 
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/housing.csv&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>ocean_proximity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6051</th>
+      <td>-117.75</td>
+      <td>34.04</td>
+      <td>22.0</td>
+      <td>2948.0</td>
+      <td>636.0</td>
+      <td>2600.0</td>
+      <td>602.0</td>
+      <td>3.1250</td>
+      <td>113600.0</td>
+      <td>INLAND</td>
+    </tr>
+    <tr>
+      <th>20113</th>
+      <td>-119.57</td>
+      <td>37.94</td>
+      <td>17.0</td>
+      <td>346.0</td>
+      <td>130.0</td>
+      <td>51.0</td>
+      <td>20.0</td>
+      <td>3.4861</td>
+      <td>137500.0</td>
+      <td>INLAND</td>
+    </tr>
+    <tr>
+      <th>14289</th>
+      <td>-117.13</td>
+      <td>32.74</td>
+      <td>46.0</td>
+      <td>3355.0</td>
+      <td>768.0</td>
+      <td>1457.0</td>
+      <td>708.0</td>
+      <td>2.6604</td>
+      <td>170100.0</td>
+      <td>NEAR OCEAN</td>
+    </tr>
+    <tr>
+      <th>13665</th>
+      <td>-117.31</td>
+      <td>34.02</td>
+      <td>18.0</td>
+      <td>1634.0</td>
+      <td>274.0</td>
+      <td>899.0</td>
+      <td>285.0</td>
+      <td>5.2139</td>
+      <td>129300.0</td>
+      <td>INLAND</td>
+    </tr>
+    <tr>
+      <th>14471</th>
+      <td>-117.23</td>
+      <td>32.88</td>
+      <td>18.0</td>
+      <td>5566.0</td>
+      <td>1465.0</td>
+      <td>6303.0</td>
+      <td>1458.0</td>
+      <td>1.8580</td>
+      <td>205000.0</td>
+      <td>NEAR OCEAN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Some column values are mean/median but some are not.</p>
 <p>Before we use this data we need to do some <strong>feature engineering</strong>.</p>
@@ -2186,7 +2234,7 @@ memory usage: 1.6+ MB
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">128</span><span class="o">-</span><span class="mi">144</span><span class="n">fd69ce732</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">48</span><span class="o">-</span><span class="mi">144</span><span class="n">fd69ce732</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/neighbors/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
