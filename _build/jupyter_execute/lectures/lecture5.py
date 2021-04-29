@@ -986,9 +986,9 @@ Which of the following is not a hyperparameter of `CountVectorizer()`?
 
 **True or False**     
 
-3. As you increase the value for the `max_features` hyperparameter of `CountVectorizer`, the training score is likely to go up.
+4. As you increase the value for the `max_features` hyperparameter of `CountVectorizer`, the training score is likely to go up.
 
-4. If we encounter a word in the validation or the test split that's not available in the training data, we'll get an error.
+5. If we encounter a word in the validation or the test split that's not available in the training data, we'll get an error.
 
 
 ### Coding Practice 
