@@ -17,72 +17,65 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-housing_df = pd.read_csv("data/housing.csv")
-train_df, test_df = train_test_split(housing_df, test_size=0.1, random_state=123)
-
-train_df = train_df.assign(rooms_per_household = train_df["total_rooms"]/train_df["households"],
-                           bedrooms_per_household = train_df["total_bedrooms"]/train_df["households"],
-                           population_per_household = train_df["population"]/train_df["households"])
-
-test_df = test_df.assign(rooms_per_household = test_df["total_rooms"]/test_df["households"],
-                         bedrooms_per_household = test_df["total_bedrooms"]/test_df["households"],
-                         population_per_household = test_df["population"]/test_df["households"])
-
-train_df = train_df.drop(columns=['total_rooms', 'total_bedrooms', 'population'])  
-test_df = test_df.drop(columns=['total_rooms', 'total_bedrooms', 'population']) 
-
-train_df.head()
-
+pipe.fit(X_train, y_train)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-2-d0a354487d20>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mhousing_df[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m"data/housing.csv"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mtrain_df[0m[0;34m,[0m [0mtest_df[0m [0;34m=[0m [0mtrain_test_split[0m[0;34m([0m[0mhousing_df[0m[0;34m,[0m [0mtest_size[0m[0;34m=[0m[0;36m0.1[0m[0;34m,[0m [0mrandom_state[0m[0;34m=[0m[0;36m123[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;34m[0m[0m
-[1;32m      4[0m train_df = train_df.assign(rooms_per_household = train_df["total_rooms"]/train_df["households"],
-[1;32m      5[0m                            [0mbedrooms_per_household[0m [0;34m=[0m [0mtrain_df[0m[0;34m[[0m[0;34m"total_bedrooms"[0m[0;34m][0m[0;34m/[0m[0mtrain_df[0m[0;34m[[0m[0;34m"households"[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-5-62f05099a2d9>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mpipe[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mX_train[0m[0;34m,[0m [0my_train[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py[0m in [0;36mfit[0;34m(self, X, y, **fit_params)[0m
+[1;32m    328[0m         """
+[1;32m    329[0m         [0mfit_params_steps[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_check_fit_params[0m[0;34m([0m[0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 330[0;31m         [0mXt[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_fit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params_steps[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    331[0m         with _print_elapsed_time('Pipeline',
+[1;32m    332[0m                                  self._log_message(len(self.steps) - 1)):
 
-[0;32m/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py[0m in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)[0m
-[1;32m    684[0m     )
-[1;32m    685[0m [0;34m[0m[0m
-[0;32m--> 686[0;31m     [0;32mreturn[0m [0m_read[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    687[0m [0;34m[0m[0m
-[1;32m    688[0m [0;34m[0m[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py[0m in [0;36m_fit[0;34m(self, X, y, **fit_params_steps)[0m
+[1;32m    290[0m                 [0mcloned_transformer[0m [0;34m=[0m [0mclone[0m[0;34m([0m[0mtransformer[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    291[0m             [0;31m# Fit or load from cache the current transformer[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 292[0;31m             X, fitted_transformer = fit_transform_one_cached(
+[0m[1;32m    293[0m                 [0mcloned_transformer[0m[0;34m,[0m [0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;32mNone[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    294[0m                 [0mmessage_clsname[0m[0;34m=[0m[0;34m'Pipeline'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py[0m in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    450[0m [0;34m[0m[0m
-[1;32m    451[0m     [0;31m# Create the parser.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 452[0;31m     [0mparser[0m [0;34m=[0m [0mTextFileReader[0m[0;34m([0m[0mfp_or_buf[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    453[0m [0;34m[0m[0m
-[1;32m    454[0m     [0;32mif[0m [0mchunksize[0m [0;32mor[0m [0miterator[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/local/lib/python3.8/site-packages/joblib/memory.py[0m in [0;36m__call__[0;34m(self, *args, **kwargs)[0m
+[1;32m    350[0m [0;34m[0m[0m
+[1;32m    351[0m     [0;32mdef[0m [0m__call__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 352[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mfunc[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    353[0m [0;34m[0m[0m
+[1;32m    354[0m     [0;32mdef[0m [0mcall_and_shelve[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, f, engine, **kwds)[0m
-[1;32m    934[0m             [0mself[0m[0;34m.[0m[0moptions[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m [0;34m=[0m [0mkwds[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m    935[0m [0;34m[0m[0m
-[0;32m--> 936[0;31m         [0mself[0m[0;34m.[0m[0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    937[0m [0;34m[0m[0m
-[1;32m    938[0m     [0;32mdef[0m [0mclose[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py[0m in [0;36m_fit_transform_one[0;34m(transformer, X, y, weight, message_clsname, message, **fit_params)[0m
+[1;32m    738[0m     [0;32mwith[0m [0m_print_elapsed_time[0m[0;34m([0m[0mmessage_clsname[0m[0;34m,[0m [0mmessage[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    739[0m         [0;32mif[0m [0mhasattr[0m[0;34m([0m[0mtransformer[0m[0;34m,[0m [0;34m'fit_transform'[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 740[0;31m             [0mres[0m [0;34m=[0m [0mtransformer[0m[0;34m.[0m[0mfit_transform[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    741[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    742[0m             [0mres[0m [0;34m=[0m [0mtransformer[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m.[0m[0mtransform[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py[0m in [0;36m_make_engine[0;34m(self, engine)[0m
-[1;32m   1166[0m     [0;32mdef[0m [0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mengine[0m[0;34m=[0m[0;34m"c"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1167[0m         [0;32mif[0m [0mengine[0m [0;34m==[0m [0;34m"c"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1168[0;31m             [0mself[0m[0;34m.[0m[0m_engine[0m [0;34m=[0m [0mCParserWrapper[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mself[0m[0;34m.[0m[0moptions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1169[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1170[0m             [0;32mif[0m [0mengine[0m [0;34m==[0m [0;34m"python"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/base.py[0m in [0;36mfit_transform[0;34m(self, X, y, **fit_params)[0m
+[1;32m    691[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    692[0m             [0;31m# fit method of arity 2 (supervised transformation)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 693[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m.[0m[0mtransform[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    694[0m [0;34m[0m[0m
+[1;32m    695[0m [0;34m[0m[0m
 
-[0;32m/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, src, **kwds)[0m
-[1;32m   1996[0m         [0mkwds[0m[0;34m[[0m[0;34m"usecols"[0m[0;34m][0m [0;34m=[0m [0mself[0m[0;34m.[0m[0musecols[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1997[0m [0;34m[0m[0m
-[0;32m-> 1998[0;31m         [0mself[0m[0;34m.[0m[0m_reader[0m [0;34m=[0m [0mparsers[0m[0;34m.[0m[0mTextReader[0m[0;34m([0m[0msrc[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1999[0m         [0mself[0m[0;34m.[0m[0munnamed_cols[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_reader[0m[0;34m.[0m[0munnamed_cols[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2000[0m [0;34m[0m[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/impute/_base.py[0m in [0;36mfit[0;34m(self, X, y)[0m
+[1;32m    275[0m         [0mself[0m [0;34m:[0m [0mSimpleImputer[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    276[0m         """
+[0;32m--> 277[0;31m         [0mX[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_validate_input[0m[0;34m([0m[0mX[0m[0;34m,[0m [0min_fit[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    278[0m         [0msuper[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0m_fit_indicator[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    279[0m [0;34m[0m[0m
 
-[0;32mpandas/_libs/parsers.pyx[0m in [0;36mpandas._libs.parsers.TextReader.__cinit__[0;34m()[0m
+[0;32m/usr/local/lib/python3.8/site-packages/sklearn/impute/_base.py[0m in [0;36m_validate_input[0;34m(self, X, in_fit)[0m
+[1;32m    247[0m                 new_ve = ValueError("Cannot use {} strategy with non-numeric "
+[1;32m    248[0m                                     "data:\n{}".format(self.strategy, ve))
+[0;32m--> 249[0;31m                 [0;32mraise[0m [0mnew_ve[0m [0;32mfrom[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    250[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    251[0m                 [0;32mraise[0m [0mve[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32mpandas/_libs/parsers.pyx[0m in [0;36mpandas._libs.parsers.TextReader._setup_parser_source[0;34m()[0m
-
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'data/housing.csv'
-FileNotFoundError: [Errno 2] No such file or directory: 'data/housing.csv'
+[0;31mValueError[0m: Cannot use median strategy with non-numeric data:
+could not convert string to float: 'INLAND'
+ValueError: Cannot use median strategy with non-numeric data:
+could not convert string to float: 'INLAND'
 
