@@ -482,7 +482,8 @@
         
               <div>
                 
-  <div class="section" id="lecture-2-splitting-and-cross-validation">
+  <h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-0"><span class="toc-item-num">0&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Generalization" data-toc-modified-id="Generalization-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Generalization</a></span><ul class="toc-item"><li><span><a href="#Visualizing-model-complexity-using-decision-boundaries" data-toc-modified-id="Visualizing-model-complexity-using-decision-boundaries-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Visualizing model complexity using decision boundaries</a></span></li><li><span><a href="#The-Fundamental-goal-of-machine-learning" data-toc-modified-id="The-Fundamental-goal-of-machine-learning-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>The Fundamental goal of machine learning</a></span></li><li><span><a href="#Generalizing-to-unseen-data" data-toc-modified-id="Generalizing-to-unseen-data-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Generalizing to unseen data</a></span></li><li><span><a href="#Training-score-versus-Generalization-score-(or-Error)" data-toc-modified-id="Training-score-versus-Generalization-score-(or-Error)-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Training score versus Generalization score (or Error)</a></span></li></ul></li><li><span><a href="#Splitting" data-toc-modified-id="Splitting-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Splitting</a></span><ul class="toc-item"><li><span><a href="#Simple-train-and-test-split" data-toc-modified-id="Simple-train-and-test-split-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Simple train and test split</a></span></li><li><span><a href="#How-do-we-do-this?" data-toc-modified-id="How-do-we-do-this?-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>How do we do this?</a></span><ul class="toc-item"><li><span><a href="#First-way" data-toc-modified-id="First-way-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>First way</a></span></li><li><span><a href="#Second-way" data-toc-modified-id="Second-way-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Second way</a></span></li></ul></li><li><span><a href="#Applications-with-Splitting" data-toc-modified-id="Applications-with-Splitting-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Applications with Splitting</a></span></li><li><span><a href="#Parameters-in-.train_test_split()" data-toc-modified-id="Parameters-in-.train_test_split()-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Parameters in <code>.train_test_split()</code></a></span></li></ul></li><li><span><a href="#Train/validation/test-split" data-toc-modified-id="Train/validation/test-split-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Train/validation/test split</a></span></li><li><span><a href="#&quot;Deployment&quot;-data" data-toc-modified-id="&quot;Deployment&quot;-data-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>"Deployment" data</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#Cross-validation-using-sk-learn" data-toc-modified-id="Cross-validation-using-sk-learn-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Cross-validation using <code>sk-learn</code></a></span><ul class="toc-item"><li><span><a href="#cross_val_score" data-toc-modified-id="cross_val_score-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span><code>cross_val_score</code></a></span></li><li><span><a href="#cross_validate" data-toc-modified-id="cross_validate-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span><code>cross_validate</code></a></span></li></ul></li><li><span><a href="#Our-typical-supervised-learning-set-up-is-as-follows:" data-toc-modified-id="Our-typical-supervised-learning-set-up-is-as-follows:-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Our typical supervised learning set up is as follows:</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Overfitting-and-Underfitting" data-toc-modified-id="Overfitting-and-Underfitting-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Overfitting and Underfitting</a></span><ul class="toc-item"><li><span><a href="#Types-of-scores" data-toc-modified-id="Types-of-scores-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>Types of scores</a></span></li><li><span><a href="#Overfitting" data-toc-modified-id="Overfitting-11.2"><span class="toc-item-num">11.2&nbsp;&nbsp;</span>Overfitting</a></span></li><li><span><a href="#Underfitting" data-toc-modified-id="Underfitting-11.3"><span class="toc-item-num">11.3&nbsp;&nbsp;</span>Underfitting</a></span></li><li><span><a href="#How-can-we-figure-this-out?" data-toc-modified-id="How-can-we-figure-this-out?-11.4"><span class="toc-item-num">11.4&nbsp;&nbsp;</span>How can we figure this out?</a></span></li></ul></li><li><span><a href="#The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning" data-toc-modified-id="The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>The "Fundamental Tradeoff" of Supervised Learning</a></span><ul class="toc-item"><li><span><a href="#How-to-pick-a-model-that-would-generalize-better?" data-toc-modified-id="How-to-pick-a-model-that-would-generalize-better?-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>How to pick a model that would generalize better?</a></span></li></ul></li><li><span><a href="#The-Golden-Rule" data-toc-modified-id="The-Golden-Rule-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>The Golden Rule</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div><div class="section" id="lecture-2-splitting-and-cross-validation">
 <h1>Lecture 2 - Splitting and Cross-validation<a class="headerlink" href="#lecture-2-splitting-and-cross-validation" title="Permalink to this headline">¶</a></h1>
 <p><em>Hayley Boyce, Wednesday, April 21st 2021</em></p>
 <div class="cell docutils container">
@@ -824,7 +825,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_15_0.svg" src="../_images/lecture2_15_0.svg" /></div>
+<img alt="../_images/lecture2_16_0.svg" src="../_images/lecture2_16_0.svg" /></div>
 </div>
 <p>In this decision tree, there is only 1 split.</p>
 <div class="cell docutils container">
@@ -853,7 +854,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_20_0.png" src="../_images/lecture2_20_0.png" />
+<img alt="../_images/lecture2_21_0.png" src="../_images/lecture2_21_0.png" />
 </div>
 </div>
 <p>Ok, now let’s see what happens to our decision boundaries when we change our maximum tree depth to 2.</p>
@@ -879,7 +880,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_23_0.svg" src="../_images/lecture2_23_0.svg" /></div>
+<img alt="../_images/lecture2_24_0.svg" src="../_images/lecture2_24_0.svg" /></div>
 </div>
 <p>The decision boundaries are created by asking 3 questions (only possible to ask 2 questions per observation) and we can see 3 splits now.</p>
 <p>Our score here has increased from 74.75% to 82.75%.</p>
@@ -896,7 +897,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_25_0.png" src="../_images/lecture2_25_0.png" />
+<img alt="../_images/lecture2_26_0.png" src="../_images/lecture2_26_0.png" />
 </div>
 </div>
 <p>Now let’s continue on making a new model with a hyperparameter <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> equal to 4.</p>
@@ -922,7 +923,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_28_0.svg" src="../_images/lecture2_28_0.svg" /></div>
+<img alt="../_images/lecture2_29_0.svg" src="../_images/lecture2_29_0.svg" /></div>
 </div>
 <p>Our score now has shot up to 90.25% and we have way more splits now.</p>
 <p>We can see our boundaries are getting more complex.</p>
@@ -938,10 +939,10 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_30_0.png" src="../_images/lecture2_30_0.png" />
+<img alt="../_images/lecture2_31_0.png" src="../_images/lecture2_31_0.png" />
 </div>
 </div>
-<p>What happens if we give the model an unlimited max_depth?</p>
+<p>What happens if we give the model an unlimited <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
@@ -963,7 +964,7 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_33_0.svg" src="../_images/lecture2_33_0.svg" /></div>
+<img alt="../_images/lecture2_34_0.svg" src="../_images/lecture2_34_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -977,7 +978,19 @@ Name: vote, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_34_0.png" src="../_images/lecture2_34_0.png" />
+<img alt="../_images/lecture2_35_0.png" src="../_images/lecture2_35_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">get_depth</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
 </div>
 </div>
 <p>Our score is now 100%.  We can see that with this model we are perfectly fitting every observation.</p>
@@ -1443,6 +1456,108 @@ Name: country, dtype: object
 <p>The earlier to split the data the better!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cities_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-130.0437</td>
+      <td>55.9773</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-134.4197</td>
+      <td>58.3019</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-123.0780</td>
+      <td>48.9854</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-122.7436</td>
+      <td>48.9881</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-122.2691</td>
+      <td>48.9951</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>-72.7218</td>
+      <td>45.3990</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>-66.6458</td>
+      <td>45.9664</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>-79.2506</td>
+      <td>42.9931</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>-72.9406</td>
+      <td>45.6275</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>-79.4608</td>
+      <td>46.3092</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+</table>
+<p>209 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">123</span><span class="p">)</span>
 
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">])</span>
@@ -1529,12 +1644,12 @@ Name: country, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-2ee51602ee154d2983ed6bbcaf708224"></div>
+<div id="altair-viz-72026c24f591414dbd59904bb9f31bb5"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-2ee51602ee154d2983ed6bbcaf708224") {
-      outputDiv = document.getElementById("altair-viz-2ee51602ee154d2983ed6bbcaf708224");
+    if (outputDiv.id !== "altair-viz-72026c24f591414dbd59904bb9f31bb5") {
+      outputDiv = document.getElementById("altair-viz-72026c24f591414dbd59904bb9f31bb5");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1593,7 +1708,7 @@ Name: country, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_58_0.svg" src="../_images/lecture2_58_0.svg" /></div>
+<img alt="../_images/lecture2_61_0.svg" src="../_images/lecture2_61_0.svg" /></div>
 </div>
 <p>Let’s see how on model scores on the training data and the test data.</p>
 <div class="cell docutils container">
@@ -1605,7 +1720,7 @@ Name: country, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 1.0
-Test score: 0.76
+Test score: 0.71
 </pre></div>
 </div>
 </div>
@@ -1631,7 +1746,7 @@ Test score: 0.76
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_62_0.png" src="../_images/lecture2_62_0.png" />
+<img alt="../_images/lecture2_65_0.png" src="../_images/lecture2_65_0.png" />
 </div>
 </div>
 <p>On the left and the right, we have the same boundaries But different data being shown.</p>
@@ -1641,8 +1756,8 @@ Test score: 0.76
 </div>
 <div class="section" id="parameters-in-train-test-split">
 <h3>Parameters in <code class="docutils literal notranslate"><span class="pre">.train_test_split()</span></code><a class="headerlink" href="#parameters-in-train-test-split" title="Permalink to this headline">¶</a></h3>
-<p>-<code class="docutils literal notranslate"><span class="pre">test_size</span></code> - test split size (0-1)</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_size</span></code> - test split size (0-1)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">train_size</span></code> - train split size (0-1) (only need to specify one if these</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">random_state</span></code> - randomizes the split</p></li>
 </ul>
@@ -1662,7 +1777,7 @@ Test score: 0.76
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span><span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">123</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">train_size</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">123</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1709,34 +1824,34 @@ Test score: 0.76
   </thead>
   <tbody>
     <tr>
-      <th>194</th>
-      <td>-122.7979</td>
-      <td>49.0235</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>88</th>
-      <td>-94.5648</td>
-      <td>48.7227</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>-79.7967</td>
-      <td>43.3249</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>-111.9626</td>
-      <td>48.9971</td>
+      <th>51</th>
+      <td>-71.0583</td>
+      <td>42.3603</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>121</th>
-      <td>-79.8729</td>
-      <td>43.2561</td>
+      <th>150</th>
+      <td>-79.2441</td>
+      <td>43.1580</td>
       <td>Canada</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>-86.7744</td>
+      <td>36.1622</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>-121.4944</td>
+      <td>38.5816</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>-80.8431</td>
+      <td>35.2272</td>
+      <td>USA</td>
     </tr>
   </tbody>
 </table>
@@ -1922,23 +2037,23 @@ What dataset do we use if we want to find which hyperparameters produce the best
 <tbody>
 <tr class="row-even"><td><p>Train</p></td>
 <td class="text-align:center"><p>✔️</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>✔️</p></td>
+<td class="text-align:center"><p>✔️</p></td>
 </tr>
 <tr class="row-odd"><td><p>Validation</p></td>
 <td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>✔️</p></td>
+<td class="text-align:center"><p>✔️</p></td>
 </tr>
 <tr class="row-even"><td><p>Test</p></td>
 <td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>Once</p></td>
+<td class="text-align:center"><p>Once</p></td>
 </tr>
 <tr class="row-odd"><td><p>Deployment</p></td>
 <td class="text-align:center"><p></p></td>
 <td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p>✔️</p></td>
 </tr>
 </tbody>
 </table>
@@ -2073,10 +2188,10 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00216389, 0.00176406, 0.00183988, 0.00175524, 0.00162888,
-        0.00164318, 0.00162792, 0.0016892 , 0.00161791, 0.00169492]),
- &#39;score_time&#39;: array([0.00133705, 0.00166893, 0.00124598, 0.00119972, 0.00119615,
-        0.00119781, 0.001441  , 0.0012908 , 0.00140905, 0.00130606]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00227809, 0.00164318, 0.00174284, 0.00160599, 0.00169611,
+        0.00190902, 0.00178695, 0.00175405, 0.00162005, 0.00154877]),
+ &#39;score_time&#39;: array([0.00127912, 0.00118899, 0.00128102, 0.00136805, 0.00118804,
+        0.00120592, 0.00118899, 0.0012958 , 0.00118876, 0.001302  ]),
  &#39;test_score&#39;: array([0.76470588, 0.82352941, 0.70588235, 0.94117647, 0.82352941,
         0.82352941, 0.70588235, 0.9375    , 0.9375    , 0.9375    ]),
  &#39;train_score&#39;: array([0.91333333, 0.90666667, 0.90666667, 0.9       , 0.90666667,
@@ -2119,71 +2234,71 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002164</td>
-      <td>0.001337</td>
+      <td>0.002278</td>
+      <td>0.001279</td>
       <td>0.764706</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001764</td>
-      <td>0.001669</td>
+      <td>0.001643</td>
+      <td>0.001189</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001840</td>
-      <td>0.001246</td>
+      <td>0.001743</td>
+      <td>0.001281</td>
       <td>0.705882</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001755</td>
-      <td>0.001200</td>
+      <td>0.001606</td>
+      <td>0.001368</td>
       <td>0.941176</td>
       <td>0.900000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001629</td>
-      <td>0.001196</td>
+      <td>0.001696</td>
+      <td>0.001188</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.001643</td>
-      <td>0.001198</td>
+      <td>0.001909</td>
+      <td>0.001206</td>
       <td>0.823529</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001628</td>
-      <td>0.001441</td>
+      <td>0.001787</td>
+      <td>0.001189</td>
       <td>0.705882</td>
       <td>0.920000</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.001689</td>
-      <td>0.001291</td>
+      <td>0.001754</td>
+      <td>0.001296</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.001618</td>
-      <td>0.001409</td>
+      <td>0.001620</td>
+      <td>0.001189</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.001695</td>
-      <td>0.001306</td>
+      <td>0.001549</td>
+      <td>0.001302</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
@@ -2226,71 +2341,71 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002299</td>
-      <td>0.001259</td>
+      <td>0.002359</td>
+      <td>0.001251</td>
       <td>0.764706</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002117</td>
-      <td>0.001185</td>
+      <td>0.001774</td>
+      <td>0.001175</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001618</td>
-      <td>0.001413</td>
+      <td>0.001598</td>
+      <td>0.001181</td>
       <td>0.705882</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001714</td>
-      <td>0.001185</td>
+      <td>0.001574</td>
+      <td>0.001165</td>
       <td>0.941176</td>
       <td>0.900000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001602</td>
-      <td>0.001131</td>
+      <td>0.001832</td>
+      <td>0.001342</td>
       <td>0.823529</td>
       <td>0.906667</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.001651</td>
-      <td>0.001649</td>
+      <td>0.001613</td>
+      <td>0.001164</td>
       <td>0.823529</td>
       <td>0.913333</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001647</td>
-      <td>0.001212</td>
+      <td>0.001623</td>
+      <td>0.001307</td>
       <td>0.705882</td>
       <td>0.920000</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.001672</td>
-      <td>0.001421</td>
+      <td>0.001650</td>
+      <td>0.001218</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.002404</td>
-      <td>0.001254</td>
+      <td>0.001742</td>
+      <td>0.001160</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.001990</td>
-      <td>0.001188</td>
+      <td>0.001750</td>
+      <td>0.001155</td>
       <td>0.937500</td>
       <td>0.900662</td>
     </tr>
@@ -2305,8 +2420,8 @@ So using our <code class="docutils literal notranslate"><span class="pre">X</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001871
-score_time     0.001290
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001752
+score_time     0.001212
 test_score     0.840074
 train_score    0.906865
 dtype: float64
@@ -2321,8 +2436,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.000306
-score_time     0.000159
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.000230
+score_time     0.000067
 test_score     0.094993
 train_score    0.006822
 dtype: float64
@@ -2411,71 +2526,71 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002102</td>
-      <td>0.001320</td>
-      <td>0.647059</td>
+      <td>0.002301</td>
+      <td>0.001331</td>
+      <td>0.588235</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001980</td>
-      <td>0.001909</td>
+      <td>0.001816</td>
+      <td>0.001166</td>
       <td>0.764706</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001690</td>
-      <td>0.001206</td>
+      <td>0.001617</td>
+      <td>0.001148</td>
       <td>0.764706</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002194</td>
-      <td>0.001270</td>
+      <td>0.001611</td>
+      <td>0.001504</td>
       <td>0.941176</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001922</td>
-      <td>0.001290</td>
+      <td>0.001652</td>
+      <td>0.001150</td>
       <td>0.882353</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.001992</td>
-      <td>0.001183</td>
+      <td>0.001679</td>
+      <td>0.001180</td>
       <td>0.823529</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.001846</td>
-      <td>0.001460</td>
+      <td>0.001594</td>
+      <td>0.001325</td>
       <td>0.705882</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.002455</td>
-      <td>0.001456</td>
+      <td>0.001580</td>
+      <td>0.001095</td>
       <td>0.812500</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.001979</td>
-      <td>0.001401</td>
+      <td>0.001481</td>
+      <td>0.001238</td>
       <td>0.937500</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.002327</td>
-      <td>0.001321</td>
+      <td>0.001664</td>
+      <td>0.001063</td>
       <td>0.812500</td>
       <td>1.0</td>
     </tr>
@@ -2492,7 +2607,7 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 1.0
-Validation score: 0.81
+Validation score: 0.8
 </pre></div>
 </div>
 </div>
@@ -2506,7 +2621,7 @@ Validation score: 0.81
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture2_102_0.png" src="../_images/lecture2_102_0.png" />
+<img alt="../_images/lecture2_105_0.png" src="../_images/lecture2_105_0.png" />
 </div>
 </div>
 </div>
@@ -2635,7 +2750,7 @@ Validation score: 0.81
       <th>4</th>
       <td>5</td>
       <td>0.918848</td>
-      <td>0.845956</td>
+      <td>0.851838</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2647,18 +2762,18 @@ Validation score: 0.81
       <th>6</th>
       <td>7</td>
       <td>0.954115</td>
-      <td>0.833824</td>
+      <td>0.839706</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
-      <td>0.973400</td>
+      <td>0.972733</td>
       <td>0.815441</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
-      <td>0.980049</td>
+      <td>0.979382</td>
       <td>0.821691</td>
     </tr>
     <tr>
@@ -2670,8 +2785,8 @@ Validation score: 0.81
     <tr>
       <th>10</th>
       <td>11</td>
-      <td>0.996675</td>
-      <td>0.809191</td>
+      <td>0.998671</td>
+      <td>0.803309</td>
     </tr>
     <tr>
       <th>11</th>
@@ -2707,7 +2822,7 @@ Validation score: 0.81
       <th>16</th>
       <td>17</td>
       <td>1.000000</td>
-      <td>0.815074</td>
+      <td>0.809191</td>
     </tr>
     <tr>
       <th>17</th>
@@ -2719,7 +2834,7 @@ Validation score: 0.81
       <th>18</th>
       <td>19</td>
       <td>1.000000</td>
-      <td>0.809191</td>
+      <td>0.815074</td>
     </tr>
   </tbody>
 </table>
@@ -2741,12 +2856,12 @@ Validation score: 0.81
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-eff9de7bb0b6487bba92cf5d9ea8cade"></div>
+<div id="altair-viz-ef83de3036ca4c728047531761888132"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-eff9de7bb0b6487bba92cf5d9ea8cade") {
-      outputDiv = document.getElementById("altair-viz-eff9de7bb0b6487bba92cf5d9ea8cade");
+    if (outputDiv.id !== "altair-viz-ef83de3036ca4c728047531761888132") {
+      outputDiv = document.getElementById("altair-viz-ef83de3036ca4c728047531761888132");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -2788,7 +2903,7 @@ Validation score: 0.81
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-963d720f2cdde4c5330b7987a00cf920"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-963d720f2cdde4c5330b7987a00cf920": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.973399558498896}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.980048565121413}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9966754966887417}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8338235294117646}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-6e3e4c4d209ab31bee09f1b1c0e856ba"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-6e3e4c4d209ab31bee09f1b1c0e856ba": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9986710816777041}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8518382352941176}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8397058823529413}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <div class="cell docutils container">
@@ -2799,12 +2914,12 @@ Validation score: 0.81
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-08139895abe748c08e46c04a3e486787"></div>
+<div id="altair-viz-bd19980b7c7147d7a8b2329cd3bd2882"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-08139895abe748c08e46c04a3e486787") {
-      outputDiv = document.getElementById("altair-viz-08139895abe748c08e46c04a3e486787");
+    if (outputDiv.id !== "altair-viz-bd19980b7c7147d7a8b2329cd3bd2882") {
+      outputDiv = document.getElementById("altair-viz-bd19980b7c7147d7a8b2329cd3bd2882");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -2846,7 +2961,7 @@ Validation score: 0.81
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-963d720f2cdde4c5330b7987a00cf920"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy", "scale": {"zero": false}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-963d720f2cdde4c5330b7987a00cf920": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.973399558498896}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.980048565121413}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9966754966887417}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8459558823529412}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8338235294117646}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-6e3e4c4d209ab31bee09f1b1c0e856ba"}, "mark": "line", "encoding": {"color": {"type": "nominal", "field": "score_type", "scale": {"domain": ["mean_train_score", "mean_cv_score"], "range": ["teal", "gold"]}}, "x": {"type": "quantitative", "axis": {"title": "Tree Depth"}, "field": "depth"}, "y": {"type": "quantitative", "field": "accuracy", "scale": {"zero": false}}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-6e3e4c4d209ab31bee09f1b1c0e856ba": [{"depth": 1, "score_type": "mean_train_score", "accuracy": 0.8343487858719646}, {"depth": 2, "score_type": "mean_train_score", "accuracy": 0.8449889624724062}, {"depth": 3, "score_type": "mean_train_score", "accuracy": 0.8629668874172186}, {"depth": 4, "score_type": "mean_train_score", "accuracy": 0.9068653421633552}, {"depth": 5, "score_type": "mean_train_score", "accuracy": 0.9188476821192054}, {"depth": 6, "score_type": "mean_train_score", "accuracy": 0.9308167770419427}, {"depth": 7, "score_type": "mean_train_score", "accuracy": 0.9541147902869757}, {"depth": 8, "score_type": "mean_train_score", "accuracy": 0.9727328918322297}, {"depth": 9, "score_type": "mean_train_score", "accuracy": 0.9793818984547462}, {"depth": 10, "score_type": "mean_train_score", "accuracy": 0.9940132450331127}, {"depth": 11, "score_type": "mean_train_score", "accuracy": 0.9986710816777041}, {"depth": 12, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 13, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 14, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 15, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 16, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 17, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 18, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 19, "score_type": "mean_train_score", "accuracy": 1.0}, {"depth": 1, "score_type": "mean_cv_score", "accuracy": 0.8099264705882353}, {"depth": 2, "score_type": "mean_cv_score", "accuracy": 0.8040441176470589}, {"depth": 3, "score_type": "mean_cv_score", "accuracy": 0.8044117647058824}, {"depth": 4, "score_type": "mean_cv_score", "accuracy": 0.8400735294117647}, {"depth": 5, "score_type": "mean_cv_score", "accuracy": 0.8518382352941176}, {"depth": 6, "score_type": "mean_cv_score", "accuracy": 0.8150735294117647}, {"depth": 7, "score_type": "mean_cv_score", "accuracy": 0.8397058823529413}, {"depth": 8, "score_type": "mean_cv_score", "accuracy": 0.8154411764705882}, {"depth": 9, "score_type": "mean_cv_score", "accuracy": 0.8216911764705882}, {"depth": 10, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 11, "score_type": "mean_cv_score", "accuracy": 0.8033088235294118}, {"depth": 12, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 13, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 14, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 15, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 16, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 17, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 18, "score_type": "mean_cv_score", "accuracy": 0.8091911764705882}, {"depth": 19, "score_type": "mean_cv_score", "accuracy": 0.8150735294117648}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <ul class="simple">
@@ -2893,7 +3008,7 @@ Validation score: 0.81
       <th>4</th>
       <td>5</td>
       <td>0.918848</td>
-      <td>0.845956</td>
+      <td>0.851838</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2905,23 +3020,23 @@ Validation score: 0.81
       <th>6</th>
       <td>7</td>
       <td>0.954115</td>
-      <td>0.833824</td>
+      <td>0.839706</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
-      <td>0.980049</td>
+      <td>0.979382</td>
       <td>0.821691</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
-      <td>0.973400</td>
+      <td>0.972733</td>
       <td>0.815441</td>
     </tr>
     <tr>
-      <th>16</th>
-      <td>17</td>
+      <th>18</th>
+      <td>19</td>
       <td>1.000000</td>
       <td>0.815074</td>
     </tr>
@@ -2938,32 +3053,8 @@ Validation score: 0.81
       <td>0.809926</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>14</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>18</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>16</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>15</td>
-      <td>1.000000</td>
-      <td>0.809191</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>19</td>
+      <th>11</th>
+      <td>12</td>
       <td>1.000000</td>
       <td>0.809191</td>
     </tr>
@@ -2974,15 +3065,33 @@ Validation score: 0.81
       <td>0.809191</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>12</td>
+      <th>13</th>
+      <td>14</td>
       <td>1.000000</td>
       <td>0.809191</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>0.996675</td>
+      <th>14</th>
+      <td>15</td>
+      <td>1.000000</td>
+      <td>0.809191</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>1.000000</td>
+      <td>0.809191</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>1.000000</td>
+      <td>0.809191</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>1.000000</td>
       <td>0.809191</td>
     </tr>
     <tr>
@@ -2996,6 +3105,12 @@ Validation score: 0.81
       <td>2</td>
       <td>0.844989</td>
       <td>0.804044</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>0.998671</td>
+      <td>0.803309</td>
     </tr>
     <tr>
       <th>9</th>
