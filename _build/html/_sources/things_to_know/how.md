@@ -29,7 +29,7 @@ In this course, you will need to make graphs. You can make plots using any libra
 - Module 1, Exercise 31 - Quick Viz with Altair (practice question 32 and 33)
 - Module 2, Exercise 29 - Plotting with Altair (practice question 30)
 
-In addition to these 2 small slide decks, there is an entire course we have developed that is open source and available if you want to learn more about plotting with Altair and the art of visualization. Altair is especially handy since you have the opportunity to make your plots interactive with very little additional code. 
+In addition to these 2 small slide decks, there is an [entire course](https://viz-learn.mds.ubc.ca/en/) we have developed that is open source and available if you want to learn more about plotting with Altair and the art of visualization. Altair is especially handy since you have the opportunity to make your plots interactive with very little additional code. 
 
 ## Content 
 This may be a little different than what you are used to. 
