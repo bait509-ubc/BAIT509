@@ -32,12 +32,12 @@ Details about class meetings will appear here as they become available.
 | :---: | :---: | :---: |
 | 1     | Introduction to machine learning and decision trees | [Lecture 1](https://bait509-ubc.github.io/BAIT509/lectures/lecture1.html)|
 | 2     | Splitting and Cross-validation | [Lecture 2](https://bait509-ubc.github.io/BAIT509/lectures/lecture2.html) | 
-| 3     | Baseline Models, KNN and SVM|[Lecture 3](https://bait509-ubc.github.io/BAIT509/lectures/lecture3.html) | 
-| 4     | Feature Pre-processing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | 
-| 5     | Naïve Bayes/ Hyperparameter optimization| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) |
-| 6     | Linear Regression/ Logistic Regression| Lecture 6|
-| 7     | Feature and Model Selection | Lecture 7|
-| 8     | Business questions and workflows | Lecture 8|
+| 3     | Baseline, k-Nearest Neighbours |[Lecture 3](https://bait509-ubc.github.io/BAIT509/lectures/lecture3.html) | 
+| 4     | SVM with RBF Kernel and Feature Preprocessing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | 
+| 5     | Preprocessing Categorical Features and Column Transformer| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) |
+| 6     | Naive Bayes and Hyperparameter Optimization| [Lecture 6](https://bait509-ubc.github.io/BAIT509/lectures/lecture6.html)|
+| 7     | Linear Regression/ Logistic Regression | Lecture 7|
+| 8     | Business Questions and Feature Selection | Lecture 8|
 | 9     | Classification and Regression Metrics | Lecture 9|
 | 10    | Topics related to the group project | Lecture 10| 
 

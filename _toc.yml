@@ -13,6 +13,7 @@
     - file: lectures/lecture3
     - file: lectures/lecture4
     - file: lectures/lecture5
+    - file: lectures/lecture6
 
 - part: References
   chapters:
