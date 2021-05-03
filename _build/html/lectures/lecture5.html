@@ -489,7 +489,7 @@
 <h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Quiz on Wednesday</p></li>
-<li><p>Grading issues contact these TA:</p>
+<li><p>Grading issues contact these TAs:</p>
 <ul>
 <li><p>Question 1 and 2: Andy</p></li>
 <li><p>Question 3: Daniel</p></li>
@@ -1941,8 +1941,6 @@ Remember we engineered some of the features in the data.</p>
 </div>
 </div>
 </div>
-<p>Do we really need 2 columns for this though?</p>
-<p>Either something contains caffeine, or it does not. So we only really need 1 column for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -2051,6 +2049,8 @@ Remember we engineered some of the features in the data.</p>
 </table>
 </div></div></div>
 </div>
+<p>Do we really need 2 columns for this though?</p>
+<p>Either something contains caffeine, or it does not. So we only really need 1 column for this.</p>
 <p>So, for this feature with binary values, we can use an argument called <code class="docutils literal notranslate"><span class="pre">drop</span></code> within <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">&quot;if_binary&quot;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3392,11 +3392,11 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> converts a collection of text documents to a matrix of word counts.</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> to convert text data into feature vectors where:</p>
 <ul class="simple">
 <li><p>Each row represents a “document” (e.g., a text message in our example).</p></li>
-<li><p>Each column represents a word in the vocabulary in the training data.</p></li>
-<li><p>Each cell represents how often the word occurs in the document.</p></li>
+<li><p>Each feature is a unique word in the text</p></li>
+<li><p>Each feature value represents the frequency or presence/absence of the word in the given message</p></li>
 </ul>
 <p>In the NLP community, a text data set is referred to as a <strong>corpus</strong> (plural: corpora).</p>
 <p>The features should be a 1 dimension array as an input.</p>
@@ -4042,7 +4042,7 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </ol>
 <div class="section" id="coding-practice">
 <h3>Coding Practice<a class="headerlink" href="#coding-practice" title="Permalink to this headline">¶</a></h3>
-<p>We are going to bring in a new dataset for you to practice on. (Make sure you’ve downloaded it from the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder from the <code class="docutils literal notranslate"><span class="pre">lectures</span></code> section in Canvas).</p>
+<p>We are going to bring in a new dataset for you to practice on. (Make sure you’ve downloaded it from the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder from the <code class="docutils literal notranslate"><span class="pre">lectures</span></code> section in Canvas - we’ve named it <code class="docutils literal notranslate"><span class="pre">balanced_tweets.csv</span></code>).</p>
 <p>This dataset contains a text column containing tweets associated with disaster keywords and a target column denoting whether a tweet is about a real disaster (1) or not (0). [<a class="reference external" href="https://www.kaggle.com/vstepanenko/disaster-tweets">Source</a>]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
