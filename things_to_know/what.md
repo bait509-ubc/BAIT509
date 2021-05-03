@@ -63,6 +63,14 @@
 
 ### Lecture 6
 
+- Identify when it's appropriate to apply ordinal encoding vs one-hot encoding.
+- Explain strategies to deal with categorical variables with too many categories.
+- Explain `handle_unknown="ignore"` hyperparameter of `scikit-learn`'s `OneHotEncoder`.
+- Use the scikit-learn `ColumnTransformer` function to implement preprocessing functions such as `MinMaxScaler` and `OneHotEncoder` to numeric and categorical features simultaneously.
+- Use `ColumnTransformer` to build all our transformations together into one object and use it with `scikit-learn` pipelines.
+- Explain why text data needs a different treatment than categorical variables.
+- Use `scikit-learn`'s `CountVectorizer` to encode text data.
+- Explain different hyperparameters of `CountVectorizer`.
 
 ### Lecture 7
 
