@@ -29,7 +29,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 
 ## House Keeping 
 - Quiz on Wednesday 
-- Grading issues contact these TA:
+- Grading issues contact these TAs:
     - Question 1 and 2: Andy
     - Question 3: Daniel
     - Question 4: Ali
@@ -307,15 +307,15 @@ X_toy_ohe = ohe.transform(X_toy)
 
 X_toy_ohe
 
-Do we really need 2 columns for this though? 
-
-Either something contains caffeine, or it does not. So we only really need 1 column for this. 
-
 pd.DataFrame(
     data=X_toy_ohe,
     columns=ohe.get_feature_names(['Caffeine']),
     index=X_toy.index,
 )
+
+Do we really need 2 columns for this though? 
+
+Either something contains caffeine, or it does not. So we only really need 1 column for this. 
 
 So, for this feature with binary values, we can use an argument called `drop` within `OneHotEncoder` and set it to `"if_binary"`.
 
@@ -885,11 +885,10 @@ We import a tool called `CountVectorizer`.
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-`CountVectorizer` converts a collection of text documents to a matrix of word counts.     
-
+We use `CountVectorizer` to convert text data into feature vectors where:
 - Each row represents a "document" (e.g., a text message in our example). 
-- Each column represents a word in the vocabulary in the training data. 
-- Each cell represents how often the word occurs in the document. 
+- Each feature is a unique word in the text  
+- Each feature value represents the frequency or presence/absence of the word in the given message         
     
     
 In the NLP community, a text data set is referred to as a **corpus** (plural: corpora).  
@@ -995,7 +994,7 @@ Which of the following is not a hyperparameter of `CountVectorizer()`?
 
 ### Coding Practice 
 
-We are going to bring in a new dataset for you to practice on. (Make sure you've downloaded it from the `data` folder from the `lectures` section in Canvas). 
+We are going to bring in a new dataset for you to practice on. (Make sure you've downloaded it from the `data` folder from the `lectures` section in Canvas - we've named it `balanced_tweets.csv`). 
 
 This dataset contains a text column containing tweets associated with disaster keywords and a target column denoting whether a tweet is about a real disaster (1) or not (0). [[Source](https://www.kaggle.com/vstepanenko/disaster-tweets)]
 
@@ -1026,6 +1025,3 @@ X_train.head()
 - How to work with text data.
 - How to use `CountVectorizer` to encode text data.
 - What the different hyperparameters of `CountVectorizer` are.
-
-
-

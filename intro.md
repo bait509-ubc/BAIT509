@@ -61,5 +61,5 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 | :---:           | :---:                | :---:    |
 |  [Hayley Boyce](https://www.hayleyfboyce.com/)  | Thursdays 1:00 -2:00 PST | Zoom link in Canvas |
 | Ali Seyfi | Fridays 12-1 pm | Zoom link in Canvas |
-| Andy Tai | Wedesdays 4:00 -5:00 pm (Starting April 28th) | Zoom link in Canvas |
-| Daniel Ramandi| In Class M/W 8:00-10:00 |  | Zoom link in Canvas |
+| Andy Tai | Wedesdays 4-5 pm (Starting April 28th) | Zoom link in Canvas |
+| Daniel Ramandi| In class; Monday and Wednesdays 8-10 am | Zoom link in Canvas |
