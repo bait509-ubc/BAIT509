@@ -37,10 +37,10 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 - Explain the naive assumption of naive Bayes. 
 - Predict targets by hands-on toy examples using naive Bayes.
 - Use `scikit-learn`'s `MultiNomialNB`.
-- Use `predict_proba' and explain its usefulness. 
+- Use `predict_proba` and explain its usefulness. 
 - Explain the need for smoothing in naive Bayes.
 - Explain how `alpha` controls the fundamental tradeoff. 
-- explain the need for hyperparameter optimization  
+- Explain the need for hyperparameter optimization  
 - Carry out hyperparameter optimization using `sklearn`'s `GridSearchCV` and `RandomizedSearchCV`.
 
 ## Five Minute Recap/ Lightning Questions 
@@ -160,6 +160,8 @@ $$P(\text{free} = 1, \text{prize} = 0,\text{sauder} = 0, \text{urgent} = 1|\text
         
 
 ### Naive Bayes' approximation
+
+We assume each feature (word) is conditionally independent. (Assume that all features in $X$ are mutually independent, conditional on the target class.)
 
 - In general, 
 $$P(\text{message} \mid \text{spam}) = P(w_1, w_2, . . . , w_d \mid \text{spam}) \approx \prod_{i=1}^{d}P(w_i \mid \text{spam})$$
@@ -282,7 +284,7 @@ has been calculated to
 
 0.07407407407407407 > 0.0
 
-and since our left side is greater than the right side, our text is classified as **spam**!
+Since our left side is greater than the right side, our text is classified as **spam**!
 
 We could normalize this result and say 100% spam and 0% non spam so that the probabilities add up to 100%. 
 
@@ -355,16 +357,9 @@ How can we fix this?
 
 - The simplest way to avoid zero probabilities is to add a value($\alpha$) to all the counts. This is called **Laplace smoothing**
 
-It looks something like this in terms of equations:
-
-$$P_i = \frac{word_i+\alpha}{N+\alpha d}$$
-
-- $word_i$ is the count of word *i*
-- *N* is the number of unique words across all classes (14)
-- *d* is the number of total words in a particular class (spam = 3, non spam = 3)
-- $\alpha$  is a small value that we can add.
-
 Generally, we set alpha ($\alpha$) equal to 1 and in `scikit-learn` we control it using hyperparameter `alpha`.
+
+This means that we give an instance of every word appearing once with a target of spam, as well as a target of non spam. 
 
 By default `alpha=1.0` in `scikit-learn`.
 
@@ -399,7 +394,7 @@ train_df.head()
 
 Next, we make a pipeline and cross-validate!
 
-pipe_nb = make_pipeline(CountVectorizer(), MultinomialNB())
+pipe_nb = make_pipeline(CountVectorizer(), MultinomialNB(alpha=1))
 scores = cross_validate(pipe_nb, X_train, y_train, return_train_score=True)
 pd.DataFrame(scores)
 
@@ -718,6 +713,7 @@ random_gs = RandomizedSearchCV(pipe, param_grid, n_jobs=-1, cv=10, return_train_
 random_gs.fit(X_train, y_train);
 
 random_gs.best_params_
+
 random_gs.best_score_
 
 random_gs.score(X_test, y_test)
@@ -737,8 +733,6 @@ Since we are repeating cross-validation over and over again, it’s not necessar
 This may produce overly optimistic results. 
 
 If our dataset is small and if our validation set is hit too many times, we suffer from **optimization bias** or **overfitting the validation set**. 
-
-
 
 ### Example: overfitting the validation set
 Attribution: [Mark Scmidt](https://www.cs.ubc.ca/~schmidtm/)
@@ -796,7 +790,7 @@ But it’s still non-zero and growing if you over-use your validation set!
 
 Essentially our odds of doing well on a multiple-choice exam (if we are guessing) increases the more times we can repeat and randomly take the exam again. 
 
-Because we have so many chances you’ll eventually do well and perhaps not representative of your knowledge (remember you are randomly guessing) 
+Because we have so many chances you’ll eventually do well and perhaps this is not representative of your knowledge (remember you are randomly guessing) 
 
 The same occurs with selecting hyperparameters. 
 

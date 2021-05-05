@@ -536,10 +536,10 @@
 <li><p>Explain the naive assumption of naive Bayes.</p></li>
 <li><p>Predict targets by hands-on toy examples using naive Bayes.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">MultiNomialNB</span></code>.</p></li>
-<li><p>Use `predict_proba’ and explain its usefulness.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and explain its usefulness.</p></li>
 <li><p>Explain the need for smoothing in naive Bayes.</p></li>
 <li><p>Explain how <code class="docutils literal notranslate"><span class="pre">alpha</span></code> controls the fundamental tradeoff.</p></li>
-<li><p>explain the need for hyperparameter optimization</p></li>
+<li><p>Explain the need for hyperparameter optimization</p></li>
 <li><p>Carry out hyperparameter optimization using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p></li>
 </ul>
 </div>
@@ -848,6 +848,7 @@
 </ol>
 <div class="section" id="naive-bayes-approximation">
 <h3>Naive Bayes’ approximation<a class="headerlink" href="#naive-bayes-approximation" title="Permalink to this headline">¶</a></h3>
+<p>We assume each feature (word) is conditionally independent. (Assume that all features in <span class="math notranslate nohighlight">\(X\)</span> are mutually independent, conditional on the target class.)</p>
 <ul class="simple">
 <li><p>In general,
 $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam}) = P(w_1, w_2, . . . , w_d \mid \text{spam}) \approx \prod_{i=1}^{d}P(w_i \mid \text{spam})\)</span>$</p></li>
@@ -1192,7 +1193,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 \[ P(\text{free} = 1 \mid \text{non spam}) \times P(\text{prize} = 0 \mid \text{non spam}) \times P(\text{sauder} = 0 \mid \text{non spam}) \times P(\text{urgent} = 1 \mid \text{non spam}) *P(\textrm{non spam})\]</div>
 <p>has been calculated to</p>
 <p>0.07407407407407407 &gt; 0.0</p>
-<p>and since our left side is greater than the right side, our text is classified as <strong>spam</strong>!</p>
+<p>Since our left side is greater than the right side, our text is classified as <strong>spam</strong>!</p>
 <p>We could normalize this result and say 100% spam and 0% non spam so that the probabilities add up to 100%.</p>
 <p>Now let’s verify our result using sklearn.</p>
 </div>
@@ -1447,16 +1448,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <ul class="simple">
 <li><p>The simplest way to avoid zero probabilities is to add a value(<span class="math notranslate nohighlight">\(\alpha\)</span>) to all the counts. This is called <strong>Laplace smoothing</strong></p></li>
 </ul>
-<p>It looks something like this in terms of equations:</p>
-<div class="math notranslate nohighlight">
-\[P_i = \frac{word_i+\alpha}{N+\alpha d}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(word_i\)</span> is the count of word <em>i</em></p></li>
-<li><p><em>N</em> is the number of unique words across all classes (14)</p></li>
-<li><p><em>d</em> is the number of total words in a particular class (spam = 3, non spam = 3)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>  is a small value that we can add.</p></li>
-</ul>
 <p>Generally, we set alpha (<span class="math notranslate nohighlight">\(\alpha\)</span>) equal to 1 and in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> we control it using hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.</p>
+<p>This means that we give an instance of every word appearing once with a target of spam, as well as a target of non spam.</p>
 <p>By default <code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code> in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <p>Let’s see what our probabilities are now using alpha=1.</p>
 <div class="cell docutils container">
@@ -1675,7 +1668,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <p>Next, we make a pipeline and cross-validate!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_nb</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">CountVectorizer</span><span class="p">(),</span> <span class="n">MultinomialNB</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_nb</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">CountVectorizer</span><span class="p">(),</span> <span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe_nb</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 </pre></div>
@@ -1709,36 +1702,36 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.063397</td>
-      <td>0.012490</td>
+      <td>0.061967</td>
+      <td>0.012895</td>
       <td>0.796875</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.085302</td>
-      <td>0.017699</td>
+      <td>0.056339</td>
+      <td>0.010178</td>
       <td>0.801562</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.087781</td>
-      <td>0.012919</td>
+      <td>0.053390</td>
+      <td>0.010822</td>
       <td>0.801562</td>
       <td>0.946875</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.078557</td>
-      <td>0.013298</td>
+      <td>0.053776</td>
+      <td>0.011692</td>
       <td>0.837500</td>
       <td>0.945703</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.076791</td>
-      <td>0.017398</td>
+      <td>0.054724</td>
+      <td>0.011090</td>
       <td>0.814063</td>
       <td>0.944531</td>
     </tr>
@@ -1753,8 +1746,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.078365
-score_time     0.014761
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.056039
+score_time     0.011335
 test_score     0.810312
 train_score    0.946797
 dtype: float64
@@ -2140,22 +2133,18 @@ dtype: float64
 [CV] gamma=100 .......................................................
 [CV] ........................................ gamma=100, total=   0.0s
 [CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
 [Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.0s remaining:    0.0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] ........................................ gamma=100, total=   0.1s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Done  20 out of  20 | elapsed:    0.2s finished
+[Parallel(n_jobs=1)]: Done  20 out of  20 | elapsed:    0.1s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(estimator=SVC(), param_grid={&#39;gamma&#39;: [0.1, 1.0, 10, 100]},
@@ -2191,8 +2180,8 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.5s
-[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.6s finished
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.4s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.5s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=SVC(), n_jobs=-1,
@@ -2280,7 +2269,7 @@ dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.2s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.1s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.2s finished
@@ -2534,12 +2523,23 @@ These both give the same results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_gs</span><span class="o">.</span><span class="n">best_params_</span>
-<span class="n">random_gs</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7808823529411765
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 42.199719068857355, &#39;svc__gamma&#39;: 4.8994508498081295}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_gs</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7985294117647059
 </pre></div>
 </div>
 </div>
@@ -2666,9 +2666,7 @@ The expected grade among the best of 10 tests is : 0.47
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 2 tests is : 0.27
+The expected grade among the best of 2 tests is : 0.27
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 10 tests is : 0.32
@@ -2686,7 +2684,7 @@ The expected grade among the best of 10 tests is : 0.47
 But, optimization bias <strong>shrinks quickly with the number of examples</strong>.<br />
 But it’s still non-zero and growing if you over-use your validation set!</p>
 <p>Essentially our odds of doing well on a multiple-choice exam (if we are guessing) increases the more times we can repeat and randomly take the exam again.</p>
-<p>Because we have so many chances you’ll eventually do well and perhaps not representative of your knowledge (remember you are randomly guessing)</p>
+<p>Because we have so many chances you’ll eventually do well and perhaps this is not representative of your knowledge (remember you are randomly guessing)</p>
 <p>The same occurs with selecting hyperparameters.</p>
 <p>The more hyperparameters values and combinations we try, the more likely we will randomly get a better scoring model by chance and not because the model represents the data well.</p>
 <p>This overfitting can be decreased somewhat by increasing the number of questions or in our case, the number of examples we have.</p>
