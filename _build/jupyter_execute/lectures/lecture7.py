@@ -823,7 +823,7 @@ Use this output to answer the following questions.
 ['hired', 'hired', 'hired', 'not hired', 'not hired']
 ```
 
-**True or False?**     
+**True or False:**     
 5. Increasing logistic regression's `C` hyperparameter increases the model's complexity.   
 6. Unlike with `Ridge` regression, coefficients are not interpretable with logistic regression.    
 7.  `predict` returns the positive class if the predicted probability of the positive class is greater than 0.5.     
@@ -949,11 +949,11 @@ ovo.score(X_train, y_train)
 
 1. Which wrapper is more computationally expensive?
 2. Name a model that can handle multi-class problems without any issues or needing any additional strategies.
-4. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?
-5. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?
+3. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?
+4. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?
 
-**True or False**    
-6. Decision Trees use coefficients for multi-class data.
+**True or False:**    
+5. Decision Trees use coefficients for multi-class data.
 
 ## What We've Learned Today<a id="9"></a>
 
