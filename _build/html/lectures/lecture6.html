@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Attribution" href="../things_to_know/attribution.html" />
+    <link rel="next" title="Lecture 7 - Linear Models" href="lecture7.html" />
     <link rel="prev" title="Lecture 5 - Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -154,6 +154,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Lecture 6 - Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture7.html">
+   Lecture 7 - Linear Models
   </a>
  </li>
 </ul>
@@ -1702,36 +1707,36 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.061967</td>
-      <td>0.012895</td>
+      <td>0.062481</td>
+      <td>0.011597</td>
       <td>0.796875</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.056339</td>
-      <td>0.010178</td>
+      <td>0.071916</td>
+      <td>0.011497</td>
       <td>0.801562</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.053390</td>
-      <td>0.010822</td>
+      <td>0.061183</td>
+      <td>0.013472</td>
       <td>0.801562</td>
       <td>0.946875</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.053776</td>
-      <td>0.011692</td>
+      <td>0.058847</td>
+      <td>0.011563</td>
       <td>0.837500</td>
       <td>0.945703</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.054724</td>
-      <td>0.011090</td>
+      <td>0.059253</td>
+      <td>0.011622</td>
       <td>0.814063</td>
       <td>0.944531</td>
     </tr>
@@ -1746,8 +1751,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.056039
-score_time     0.011335
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.062736
+score_time     0.011950
 test_score     0.810312
 train_score    0.946797
 dtype: float64
@@ -2180,8 +2185,9 @@ dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.4s
-[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.5s finished
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.7s
+[Parallel(n_jobs=-1)]: Done  65 out of  80 | elapsed:    1.8s remaining:    0.4s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.8s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=SVC(), n_jobs=-1,
@@ -2269,10 +2275,10 @@ dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.2s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.2s finished
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.3s finished
 </pre></div>
 </div>
 </div>
@@ -2527,7 +2533,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 42.199719068857355, &#39;svc__gamma&#39;: 4.8994508498081295}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 28.425726918430527, &#39;svc__gamma&#39;: 16.307997807769514}
 </pre></div>
 </div>
 </div>
@@ -2539,7 +2545,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7985294117647059
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7452205882352942
 </pre></div>
 </div>
 </div>
@@ -2551,7 +2557,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7142857142857143
 </pre></div>
 </div>
 </div>
@@ -2775,7 +2781,7 @@ But it’s still non-zero and growing if you over-use your validation set!</p>
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="lecture5.html" title="previous page">Lecture 5 - Preprocessing Categorical Features and Column Transformer</a>
-    <a class='right-next' id="next-link" href="../things_to_know/attribution.html" title="next page">Attribution</a>
+    <a class='right-next' id="next-link" href="lecture7.html" title="next page">Lecture 7 - Linear Models</a>
 
         </div>
         
