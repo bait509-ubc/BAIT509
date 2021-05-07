@@ -14,6 +14,7 @@
     - file: lectures/lecture4
     - file: lectures/lecture5
     - file: lectures/lecture6
+    - file: lectures/lecture7
 
 - part: References
   chapters:
