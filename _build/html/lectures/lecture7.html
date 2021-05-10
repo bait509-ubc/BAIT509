@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Attribution" href="../things_to_know/attribution.html" />
+    <link rel="next" title="Lecture 8 - Forming good ML questions from business objectives and Feature Selection" href="lecture8.html" />
     <link rel="prev" title="Lecture 6 - Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -159,6 +159,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Lecture 7 - Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
 </ul>
@@ -469,10 +474,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today">
    What We’ve Learned Today
-   <a id="9">
-   </a>
   </a>
  </li>
 </ul>
@@ -872,12 +875,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-189ea247df134e6aaaa5de6ec243621e"></div>
+<div id="altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-189ea247df134e6aaaa5de6ec243621e") {
-      outputDiv = document.getElementById("altair-viz-189ea247df134e6aaaa5de6ec243621e");
+    if (outputDiv.id !== "altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595") {
+      outputDiv = document.getElementById("altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1658,36 +1661,36 @@ Logistic regression = linear model for classification.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.005652</td>
-      <td>0.001429</td>
+      <td>0.006139</td>
+      <td>0.001471</td>
       <td>0.852941</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.005255</td>
-      <td>0.001458</td>
+      <td>0.006879</td>
+      <td>0.001587</td>
       <td>0.823529</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.005128</td>
-      <td>0.001443</td>
+      <td>0.005636</td>
+      <td>0.001561</td>
       <td>0.696970</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.004842</td>
-      <td>0.001499</td>
+      <td>0.005425</td>
+      <td>0.001528</td>
       <td>0.818182</td>
       <td>0.828358</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.004642</td>
-      <td>0.001435</td>
+      <td>0.005699</td>
+      <td>0.001605</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1702,8 +1705,8 @@ Logistic regression = linear model for classification.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005104
-score_time     0.001453
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005956
+score_time     0.001550
 test_score     0.826203
 train_score    0.829335
 dtype: float64
@@ -2018,13 +2021,6 @@ Model intercept: [-0.30837315]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    1.6s
-[Parallel(n_jobs=-1)]: Done  50 out of  50 | elapsed:    1.7s finished
 </pre></div>
 </div>
 </div>
@@ -3031,10 +3027,10 @@ b.As the capture rate value increases, will the model more likely predict a lege
 <p><strong>True or False:</strong><br />
 5. Decision Trees use coefficients for multi-class data.</p>
 </div>
-<div class="section" id="what-we-ve-learned-today-a-id-9-a">
-<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-we-ve-learned-today">
+<h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>The name of the function used to bound our probabilities between 0 and 1</p></li>
+<li><p>The name of the function used to bound our values between 0 and 1</p></li>
 <li><p>How <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> can be particularly useful when it comes to Logistic Regression.</p></li>
 <li><p>The advantages and limitations of linear classifiers.</p></li>
 <li><p>How to use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p></li>
@@ -3072,7 +3068,7 @@ b.As the capture rate value increases, will the model more likely predict a lege
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="lecture6.html" title="previous page">Lecture 6 - Naive Bayes and Hyperparameter Optimization</a>
-    <a class='right-next' id="next-link" href="../things_to_know/attribution.html" title="next page">Attribution</a>
+    <a class='right-next' id="next-link" href="lecture8.html" title="next page">Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a>
 
         </div>
         

@@ -161,6 +161,11 @@
    Lecture 7 - Linear Models
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -706,18 +711,18 @@ Remember we engineered some of the features in the data.</p>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span><span class="sd">         fit_params_steps = self._check_fit_params(**fit_params)</span>
-<span class="ne">--&gt; </span><span class="mi">330</span><span class="sd">         Xt = self._fit(X, y, **fit_params_steps)</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span><span class="sd">         with _print_elapsed_time(&#39;Pipeline&#39;,</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span><span class="sd">                                  self._log_message(len(self.steps) - 1)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span><span class="sd">         fit_params_steps = self._check_fit_params(**fit_params)</span>
+<span class="ne">--&gt; </span><span class="mi">341</span><span class="sd">         Xt = self._fit(X, y, **fit_params_steps)</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span><span class="sd">         with _print_elapsed_time(&#39;Pipeline&#39;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span><span class="sd">                                  self._log_message(len(self.steps) - 1)):</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py</span> in <span class="ni">_fit</span><span class="nt">(self, X, y, **fit_params_steps)</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span><span class="sd">                 cloned_transformer = clone(transformer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span><span class="sd">             # Fit or load from cache the current transformer</span>
-<span class="ne">--&gt; </span><span class="mi">292</span><span class="sd">             X, fitted_transformer = fit_transform_one_cached(</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span><span class="sd">                 cloned_transformer, X, y, None,</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span><span class="sd">                 message_clsname=&#39;Pipeline&#39;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span><span class="sd">                 cloned_transformer = clone(transformer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span><span class="sd">             # Fit or load from cache the current transformer</span>
+<span class="ne">--&gt; </span><span class="mi">303</span><span class="sd">             X, fitted_transformer = fit_transform_one_cached(</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="sd">                 cloned_transformer, X, y, None,</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span><span class="sd">                 message_clsname=&#39;Pipeline&#39;,</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/joblib/memory.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">350</span><span class="sd"> </span>
@@ -727,32 +732,32 @@ Remember we engineered some of the features in the data.</p>
 <span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">     def call_and_shelve(self, *args, **kwargs):</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py</span> in <span class="ni">_fit_transform_one</span><span class="nt">(transformer, X, y, weight, message_clsname, message, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">738</span><span class="sd">     with _print_elapsed_time(message_clsname, message):</span>
-<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="sd">         if hasattr(transformer, &#39;fit_transform&#39;):</span>
-<span class="ne">--&gt; </span><span class="mi">740</span><span class="sd">             res = transformer.fit_transform(X, y, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">741</span><span class="sd">         else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">742</span><span class="sd">             res = transformer.fit(X, y, **fit_params).transform(X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span><span class="sd">     with _print_elapsed_time(message_clsname, message):</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span><span class="sd">         if hasattr(transformer, &#39;fit_transform&#39;):</span>
+<span class="ne">--&gt; </span><span class="mi">754</span><span class="sd">             res = transformer.fit_transform(X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span><span class="sd">             res = transformer.fit(X, y, **fit_params).transform(X)</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/base.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, X, y, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span><span class="sd">         else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span><span class="sd">             # fit method of arity 2 (supervised transformation)</span>
-<span class="ne">--&gt; </span><span class="mi">693</span><span class="sd">             return self.fit(X, y, **fit_params).transform(X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">695</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="sd">             # fit method of arity 2 (supervised transformation)</span>
+<span class="ne">--&gt; </span><span class="mi">702</span><span class="sd">             return self.fit(X, y, **fit_params).transform(X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="sd"> </span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/impute/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span><span class="sd">         self : SimpleImputer</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">277</span>         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">in_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_fit_indicator</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span> 
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd">         self : SimpleImputer</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">288</span>         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">in_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span> 
+<span class="g g-Whitespace">    </span><span class="mi">290</span>         <span class="c1"># default fill_value is 0 for numerical input and &quot;missing_value&quot;</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/impute/_base.py</span> in <span class="ni">_validate_input</span><span class="nt">(self, X, in_fit)</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>                 <span class="n">new_ve</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot use </span><span class="si">{}</span><span class="s2"> strategy with non-numeric &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>                                     <span class="s2">&quot;data:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span> <span class="n">ve</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">249</span>                 <span class="k">raise</span> <span class="n">new_ve</span> <span class="kn">from</span> <span class="bp">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span>                 <span class="k">raise</span> <span class="n">ve</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span>                 <span class="n">new_ve</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot use </span><span class="si">{}</span><span class="s2"> strategy with non-numeric &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>                                     <span class="s2">&quot;data:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span> <span class="n">ve</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">260</span>                 <span class="k">raise</span> <span class="n">new_ve</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>                 <span class="k">raise</span> <span class="n">ve</span>
 
 <span class="ne">ValueError</span>: Cannot use median strategy with non-numeric data:
 <span class="n">could</span> <span class="ow">not</span> <span class="n">convert</span> <span class="n">string</span> <span class="n">to</span> <span class="nb">float</span><span class="p">:</span> <span class="s1">&#39;INLAND&#39;</span>
