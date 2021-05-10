@@ -32,25 +32,25 @@ nn.kneighbors(cities_test_X.iloc[1])
 [0;32m----> 5[0;31m [0mnn[0m[0;34m.[0m[0mkneighbors[0m[0;34m([0m[0mcities_test_X[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m/usr/local/lib/python3.8/site-packages/sklearn/neighbors/_base.py[0m in [0;36mkneighbors[0;34m(self, X, n_neighbors, return_distance)[0m
-[1;32m    604[0m                 [0mX[0m [0;34m=[0m [0m_check_precomputed[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    605[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 606[0;31m                 [0mX[0m [0;34m=[0m [0mcheck_array[0m[0;34m([0m[0mX[0m[0;34m,[0m [0maccept_sparse[0m[0;34m=[0m[0;34m'csr'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    607[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    608[0m             [0mquery_is_train[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    668[0m                 [0mX[0m [0;34m=[0m [0m_check_precomputed[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    669[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 670[0;31m                 [0mX[0m [0;34m=[0m [0mcheck_array[0m[0;34m([0m[0mX[0m[0;34m,[0m [0maccept_sparse[0m[0;34m=[0m[0;34m'csr'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    671[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    672[0m             [0mquery_is_train[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py[0m in [0;36minner_f[0;34m(*args, **kwargs)[0m
-[1;32m     70[0m                           FutureWarning)
-[1;32m     71[0m         [0mkwargs[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0;34m{[0m[0mk[0m[0;34m:[0m [0marg[0m [0;32mfor[0m [0mk[0m[0;34m,[0m [0marg[0m [0;32min[0m [0mzip[0m[0;34m([0m[0msig[0m[0;34m.[0m[0mparameters[0m[0;34m,[0m [0margs[0m[0;34m)[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 72[0;31m         [0;32mreturn[0m [0mf[0m[0;34m([0m[0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     73[0m     [0;32mreturn[0m [0minner_f[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     74[0m [0;34m[0m[0m
+[1;32m     61[0m             [0mextra_args[0m [0;34m=[0m [0mlen[0m[0;34m([0m[0margs[0m[0;34m)[0m [0;34m-[0m [0mlen[0m[0;34m([0m[0mall_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     62[0m             [0;32mif[0m [0mextra_args[0m [0;34m<=[0m [0;36m0[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 63[0;31m                 [0;32mreturn[0m [0mf[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     64[0m [0;34m[0m[0m
+[1;32m     65[0m             [0;31m# extra_args > 0[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py[0m in [0;36mcheck_array[0;34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)[0m
-[1;32m    617[0m             [0;31m# If input is 1D raise error[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    618[0m             [0;32mif[0m [0marray[0m[0;34m.[0m[0mndim[0m [0;34m==[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 619[0;31m                 raise ValueError(
-[0m[1;32m    620[0m                     [0;34m"Expected 2D array, got 1D array instead:\narray={}.\n"[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    621[0m                     [0;34m"Reshape your data either using array.reshape(-1, 1) if "[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    635[0m             [0;31m# If input is 1D raise error[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    636[0m             [0;32mif[0m [0marray[0m[0;34m.[0m[0mndim[0m [0;34m==[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 637[0;31m                 raise ValueError(
+[0m[1;32m    638[0m                     [0;34m"Expected 2D array, got 1D array instead:\narray={}.\n"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    639[0m                     [0;34m"Reshape your data either using array.reshape(-1, 1) if "[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mValueError[0m: Expected 2D array, got 1D array instead:
 array=[-82.4066  42.9746].

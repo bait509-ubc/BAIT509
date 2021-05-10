@@ -955,9 +955,9 @@ ovo.score(X_train, y_train)
 **True or False:**    
 5. Decision Trees use coefficients for multi-class data.
 
-## What We've Learned Today<a id="9"></a>
+## What We've Learned Today
 
-- The name of the function used to bound our probabilities between 0 and 1
+- The name of the function used to bound our values between 0 and 1
 - How `predict_proba` can be particularly useful when it comes to Logistic Regression. 
 - The advantages and limitations of linear classifiers. 
 - How to use `scikit-learn`'s `LogisticRegression` classifier.
@@ -965,3 +965,4 @@ ovo.score(X_train, y_train)
 - One of the hyperparameters of `LogisticRegression` (`C`).
 - How logistic regression is compared to naive Bayes.
 - How to carry out multi-class classification.
+

@@ -161,6 +161,11 @@
    Lecture 7 - Linear Models
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -1369,7 +1374,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/naive_bayes.py:511: UserWarning: alpha too small will result in numeric errors, setting alpha = 1.0e-10
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/naive_bayes.py:508: UserWarning: alpha too small will result in numeric errors, setting alpha = 1.0e-10
   warnings.warn(&#39;alpha too small will result in numeric errors, &#39;
 </pre></div>
 </div>
@@ -1707,36 +1712,36 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.062481</td>
-      <td>0.011597</td>
+      <td>0.059756</td>
+      <td>0.010967</td>
       <td>0.796875</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.071916</td>
-      <td>0.011497</td>
+      <td>0.055398</td>
+      <td>0.010831</td>
       <td>0.801562</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.061183</td>
-      <td>0.013472</td>
+      <td>0.053985</td>
+      <td>0.011361</td>
       <td>0.801562</td>
       <td>0.946875</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.058847</td>
-      <td>0.011563</td>
+      <td>0.055988</td>
+      <td>0.011835</td>
       <td>0.837500</td>
       <td>0.945703</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.059253</td>
-      <td>0.011622</td>
+      <td>0.055097</td>
+      <td>0.011033</td>
       <td>0.814063</td>
       <td>0.944531</td>
     </tr>
@@ -1751,8 +1756,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.062736
-score_time     0.011950
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.056045
+score_time     0.011205
 test_score     0.810312
 train_score    0.946797
 dtype: float64
@@ -2105,51 +2110,26 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 4 candidates, totalling 20 fits
-[CV] gamma=0.1 .......................................................
-[CV] ........................................ gamma=0.1, total=   0.0s
-[CV] gamma=0.1 .......................................................
-[CV] ........................................ gamma=0.1, total=   0.0s
-[CV] gamma=0.1 .......................................................
-[CV] ........................................ gamma=0.1, total=   0.0s
-[CV] gamma=0.1 .......................................................
-[CV] ........................................ gamma=0.1, total=   0.0s
-[CV] gamma=0.1 .......................................................
-[CV] ........................................ gamma=0.1, total=   0.0s
-[CV] gamma=1.0 .......................................................
-[CV] ........................................ gamma=1.0, total=   0.0s
-[CV] gamma=1.0 .......................................................
-[CV] ........................................ gamma=1.0, total=   0.0s
-[CV] gamma=1.0 .......................................................
-[CV] ........................................ gamma=1.0, total=   0.0s
-[CV] gamma=1.0 .......................................................
-[CV] ........................................ gamma=1.0, total=   0.0s
-[CV] gamma=1.0 .......................................................
-[CV] ........................................ gamma=1.0, total=   0.0s
-[CV] gamma=10 ........................................................
-[CV] ......................................... gamma=10, total=   0.0s
-[CV] gamma=10 ........................................................
-[CV] ......................................... gamma=10, total=   0.0s
-[CV] gamma=10 ........................................................
-[CV] ......................................... gamma=10, total=   0.0s
-[CV] gamma=10 ........................................................
-[CV] ......................................... gamma=10, total=   0.0s
-[CV] gamma=10 ........................................................
-[CV] ......................................... gamma=10, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-[CV] gamma=100 .......................................................
-[CV] ........................................ gamma=100, total=   0.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
-[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.0s remaining:    0.0s
-[Parallel(n_jobs=1)]: Done  20 out of  20 | elapsed:    0.1s finished
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(estimator=SVC(), param_grid={&#39;gamma&#39;: [0.1, 1.0, 10, 100]},
@@ -2180,14 +2160,6 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.7s
-[Parallel(n_jobs=-1)]: Done  65 out of  80 | elapsed:    1.8s remaining:    0.4s
-[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.8s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=SVC(), n_jobs=-1,
@@ -2269,16 +2241,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.2s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.3s finished
 </pre></div>
 </div>
 </div>
@@ -2468,12 +2431,6 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done  50 out of  50 | elapsed:    0.1s finished
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
 </pre></div>
 </div>
@@ -2533,7 +2490,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 28.425726918430527, &#39;svc__gamma&#39;: 16.307997807769514}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 29.702896485259345, &#39;svc__gamma&#39;: 7.56965536573293}
 </pre></div>
 </div>
 </div>
@@ -2545,7 +2502,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7452205882352942
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.775
 </pre></div>
 </div>
 </div>
@@ -2557,7 +2514,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7142857142857143
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
 </pre></div>
 </div>
 </div>

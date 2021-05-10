@@ -161,6 +161,11 @@
    Lecture 7 - Linear Models
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -725,12 +730,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-aef2d96ca2824f978db2d7e6c1af9db1"></div>
+<div id="altair-viz-7a3e0d6496c04f6cb77b30506a47cd39"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-aef2d96ca2824f978db2d7e6c1af9db1") {
-      outputDiv = document.getElementById("altair-viz-aef2d96ca2824f978db2d7e6c1af9db1");
+    if (outputDiv.id !== "altair-viz-7a3e0d6496c04f6cb77b30506a47cd39") {
+      outputDiv = document.getElementById("altair-viz-7a3e0d6496c04f6cb77b30506a47cd39");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1136,36 +1141,36 @@ Name: country, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002667</td>
-      <td>0.001523</td>
+      <td>0.002531</td>
+      <td>0.001494</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001937</td>
-      <td>0.001666</td>
+      <td>0.001966</td>
+      <td>0.001649</td>
       <td>0.823529</td>
       <td>0.842105</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002730</td>
-      <td>0.001406</td>
+      <td>0.002155</td>
+      <td>0.001419</td>
       <td>0.727273</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002196</td>
-      <td>0.002041</td>
+      <td>0.002118</td>
+      <td>0.001768</td>
       <td>0.787879</td>
       <td>0.843284</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001980</td>
-      <td>0.001339</td>
+      <td>0.001994</td>
+      <td>0.001479</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1363,36 +1368,36 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.003036</td>
-      <td>0.001493</td>
+      <td>0.003327</td>
+      <td>0.002420</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002817</td>
-      <td>0.001471</td>
+      <td>0.003127</td>
+      <td>0.002001</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003408</td>
-      <td>0.001663</td>
+      <td>0.003064</td>
+      <td>0.002177</td>
       <td>0.551020</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003009</td>
-      <td>0.002196</td>
+      <td>0.002776</td>
+      <td>0.002316</td>
       <td>0.530612</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003472</td>
-      <td>0.001707</td>
+      <td>0.003315</td>
+      <td>0.002175</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
@@ -1407,8 +1412,8 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.003148
-score_time     0.001706
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.003122
+score_time     0.002218
 test_score     0.559184
 train_score    0.995918
 dtype: float64
@@ -2247,54 +2252,61 @@ memory usage: 1.6+ MB
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">48</span><span class="o">-</span><span class="mi">144</span><span class="n">fd69ce732</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/neighbors/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1106</span><span class="s2">         if not isinstance(X, (KDTree, BallTree)):</span>
-<span class="ne">-&gt; </span><span class="mi">1107</span><span class="s2">             X, y = self._validate_data(X, y, accept_sparse=&quot;csr&quot;,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1108</span><span class="s2">                                        multi_output=True)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1109</span><span class="s2">         self._y = y</span>
+<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/neighbors/_regression.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>             <span class="n">The</span> <span class="n">fitted</span> <span class="n">k</span><span class="o">-</span><span class="n">nearest</span> <span class="n">neighbors</span> <span class="n">regressor</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">190</span><span class="s2">         return self._fit(X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span><span class="s2">     def predict(self, X):</span>
+
+<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/neighbors/_base.py</span> in <span class="ni">_fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span><span class="s2">         if self._get_tags()[&quot;requires_y&quot;]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span><span class="s2">             if not isinstance(X, (KDTree, BallTree, NeighborsBase)):</span>
+<span class="ne">--&gt; </span><span class="mi">363</span><span class="s2">                 X, y = self._validate_data(X, y, accept_sparse=&quot;csr&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="s2">                                            multi_output=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="s2"> </span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">430</span><span class="s2">                 y = check_array(y, **check_y_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2">             else:</span>
-<span class="ne">--&gt; </span><span class="mi">432</span><span class="s2">                 X, y = check_X_y(X, y, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span><span class="s2">             out = X, y</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="s2">                 y = check_array(y, **check_y_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span><span class="s2">             else:</span>
+<span class="ne">--&gt; </span><span class="mi">433</span><span class="s2">                 X, y = check_X_y(X, y, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span><span class="s2">             out = X, y</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span><span class="s2"> </span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="s2">                           FutureWarning)</span>
-<span class="nn">     71         kwargs.update({k: arg for k, arg</span> in <span class="ni">zip</span><span class="nt">(sig.parameters, args)})</span>
-<span class="ne">---&gt; </span><span class="mi">72</span><span class="s2">         return f(**kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">     return inner_f</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2">             extra_args = len(args) - len(all_args)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">             if extra_args &lt;= 0:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">                 return f(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2">             # extra_args &gt; 0</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span><span class="s2">         raise ValueError(&quot;y cannot be None&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">795</span><span class="s2">     X = check_array(X, accept_sparse=accept_sparse,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span><span class="s2">                     accept_large_sparse=accept_large_sparse,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span><span class="s2">                     dtype=dtype, order=order, copy=copy,</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span><span class="s2">         raise ValueError(&quot;y cannot be None&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">813</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">814</span><span class="s2">     X = check_array(X, accept_sparse=accept_sparse,</span>
+<span class="g g-Whitespace">    </span><span class="mi">815</span><span class="s2">                     accept_large_sparse=accept_large_sparse,</span>
+<span class="g g-Whitespace">    </span><span class="mi">816</span><span class="s2">                     dtype=dtype, order=order, copy=copy,</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="s2">                           FutureWarning)</span>
-<span class="nn">     71         kwargs.update({k: arg for k, arg</span> in <span class="ni">zip</span><span class="nt">(sig.parameters, args)})</span>
-<span class="ne">---&gt; </span><span class="mi">72</span><span class="s2">         return f(**kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">     return inner_f</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2">             extra_args = len(args) - len(all_args)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">             if extra_args &lt;= 0:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">                 return f(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2">             # extra_args &gt; 0</span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">642</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span><span class="s2">         if force_all_finite:</span>
-<span class="ne">--&gt; </span><span class="mi">644</span><span class="s2">             _assert_all_finite(array,</span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span><span class="s2">                                allow_nan=force_all_finite == &#39;allow-nan&#39;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">646</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">661</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span><span class="s2">         if force_all_finite:</span>
+<span class="ne">--&gt; </span><span class="mi">663</span><span class="s2">             _assert_all_finite(array,</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span><span class="s2">                                allow_nan=force_all_finite == &#39;allow-nan&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span><span class="s2"> </span>
 
 <span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype)</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2">                 not allow_nan and not np.isfinite(X).all()):</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">             type_err = &#39;infinity&#39; if allow_nan else &#39;NaN, infinity&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">96</span><span class="s2">             raise ValueError(</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2">                     msg_err.format</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="s2">                     (type_err,</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span><span class="s2">                 not allow_nan and not np.isfinite(X).all()):</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="s2">             type_err = &#39;infinity&#39; if allow_nan else &#39;NaN, infinity&#39;</span>
+<span class="ne">--&gt; </span><span class="mi">103</span><span class="s2">             raise ValueError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="s2">                     msg_err.format</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="s2">                     (type_err,</span>
 
 <span class="ne">ValueError</span>: Input contains NaN, infinity or a value too large for dtype(&#39;float64&#39;).
 </pre></div>
