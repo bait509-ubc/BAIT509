@@ -49,12 +49,12 @@ def test_1_5_1(answer):
 
 def test_1_5_2(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(round(answer,3)).encode('utf8')).hexdigest() == "856b62aa687c0aa2b0deb2980b3dd887b3c93ff8", "Your answer is incorrect. Please try again."
+    assert sha1(str(round(answer,3)).encode('utf8')).hexdigest() == "98250286db92ccc336dc6f622c10c8bc09286693", "Your answer is incorrect. Please try again."
     return("Success")
 
 def test_1_5_3(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(round(answer,3)).encode('utf8')).hexdigest() == "eccfe3795ea096a036ba46a7c1acc2d38f016506", "Your answer is incorrect. Please try again."
+    assert sha1(str(round(answer,3)).encode('utf8')).hexdigest() == "18739de0047c291fd062b8733600651cf952d304", "Your answer is incorrect. Please try again."
     return("Success")
 
 def test_2_1(answer1,answer2,answer3,answer4):
