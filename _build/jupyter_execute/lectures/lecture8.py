@@ -30,6 +30,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.compose import make_column_transformer
+from sklearn.linear_model import LogisticRegression
 
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler, MinMaxScaler
 
@@ -189,9 +190,10 @@ Examples of statistical questions:
 3. In supervised learning, once we have our business objective, part of our statistical question is identifying what?
 
 **True or False:**
-4. When writing your reports, it's important to consider who is reading it.   
-5. Sometimes you may need to dig a little to figure out exactly what the client wants.    
-6. In supervised learning, we should take into consideration the uncertainty of our models.    
+
+4. When writing your reports, it's important to consider who is reading it.     
+5. Sometimes you may need to dig a little to figure out exactly what the client wants.      
+6. In supervised learning, we should take into consideration the uncertainty of our models.      
 
 ## Feature Selection 
 
@@ -202,13 +204,12 @@ Remember the curse of dimensionality?
 <img src='imgs/curse.png' width="50%"> 
 
 We spoke about this briefly when we discussed $k$-nn and how when we add many different dimensions (features) it can confuse the model with any irrelevant features and the model can disintegrate into predictions no better than random guessing.
+
 Reasons like this are why we need to be careful about which features we include.
 
-Reasons like this is why we need to be careful about which features we include. 
+**Feature selection** can be described as *finding the features (columns) $X$ that are important for predicting $y$ and removing the features that aren’t.*
 
-When we choose the best set of features we call this **Feature Selection**. 
-
-Feature selection a lot of the time can be done using domain knowledge and manually however we can also use tools that help us either tell us:
+Feature selection can be aided using domain knowledge and manually however we can also use tools that help us either tell us:
 
 - which features are most important to a model 
 - or that can select a number of features that will result with the optimal validation score. 
@@ -240,10 +241,10 @@ display_tree(X_train.columns, dt_model, "imgs/decision_tree")
 
 ### New housing data 
 
-I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example I really want to show you an example with LOTS of features. 
+I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example, I really want to show you an example with LOTS of features. 
 
-For this example, I really want to show you an example with LOTS of features.
-Here is (yet another) housing dataset we acquired from [this GitHub repo](https://github.com/melindaleung/Ames-Iowa-Housing-Dataset), originally created by Dean De Cock. (We are using the raw data so we do not need to store it and import it simply from the url)
+Here is (yet another) housing dataset we acquired from [this GitHub repo](https://github.com/melindaleung/Ames-Iowa-Housing-Dataset), originally created by Dean De Cock. 
+*(We are using the raw data so we do not need to store it and import it simply from the url.)*
 
 
 **Attribution:** 
@@ -253,7 +254,7 @@ The Ames Housing dataset was compiled by Dean De Cock for use in data science ed
 His publication can be found [here](http://jse.amstat.org/v19n3/decock.pdf).
 
 ames_df = pd.read_csv('https://raw.githubusercontent.com/melindaleung/Ames-Iowa-Housing-Dataset/master/data/ames%20iowa%20housing.csv', index_col=0)
-ames_df = ames_df[(ames_df['SaleCondition'] != 'Alloca') &  (ames_df['SaleCondition'] != 'AdjLand')]
+ames_df.loc[ames_df['SaleCondition'] != 'Normal', 'SaleCondition'] = 'Abnormal'
 ames_df
 
 ames_df.info()
@@ -267,8 +268,8 @@ train_df, test_df = train_test_split(ames_df, test_size=0.2, random_state=77)
 X_train = train_df.drop(columns=['SaleCondition', 'PoolQC', 'MiscFeature', 'Alley'])
 X_test =  test_df.drop(columns=['SaleCondition', 'PoolQC', 'MiscFeature', 'Alley'])
 
-y_train = train_df[['SaleCondition']]
-y_test = test_df[['SaleCondition']]
+y_train = train_df['SaleCondition']
+y_test = test_df['SaleCondition']
 
  Note, you should be looking at these individually but I'm being a little lazy here. 
 
@@ -295,26 +296,28 @@ categoric_pipe = make_pipeline(SimpleImputer(strategy="constant", fill_value="mi
 preprocessor = make_column_transformer((numeric_pipe, numeric_features),
                                        (categoric_pipe, categorical_features))
 
-main_pipe = make_pipeline(preprocessor, DecisionTreeClassifier())
+main_pipe = make_pipeline(preprocessor, LogisticRegression(max_iter=1000))
 
 
 scores = cross_validate(main_pipe, X_train, y_train, return_train_score=True)
 
 pd.DataFrame(scores).mean()
 
-Once we fit our pipeline outside of `cross_validate()` we can use `feature_importances_` to get our percentages. 
+Once we fit our pipeline outside of `cross_validate()` we can use `coef_` to get our features that contribute to our predictions. 
 
 main_pipe.fit(X_train, y_train)
-feats_importance = main_pipe.named_steps['decisiontreeclassifier'].feature_importances_
-feats_importance
+feats_coef = main_pipe.named_steps['logisticregression'].coef_
+feats_coef
 
 The problem here, is we don't know which value corresponds to which feature! 
 
 Let's first take a look at how many features we have now after preprocessing. 
 
-len(feats_importance)
+feats_coef.shape
 
-Ok 286, let's get the feature names after preprocessing.  
+The 282 is refering to the number of features after preprocessing!
+
+Let's get the feature names after preprocessing.  
 
 We can obtain the categorical features and combine them with the  numeric features.
 
@@ -323,15 +326,15 @@ cat_feats = preprocessor.named_transformers_['pipeline-2'].named_steps[
 
 all_feat_names = numeric_features + cat_feats
 
-We can see now that we have the name number of feature names as we do feature_importance values. 
+We can see now that we have the same number of feature names as we do coefficients. 
 
 len(all_feat_names)
 
 Let's get them into a dataframe now and sort them:
 
 features_df = pd.DataFrame(data = [all_feat_names,
-                                feats_importance.flatten()]).T.rename(columns={0:'feature', 1:'feature_importance'})
-features_df.sort_values('feature_importance',key= abs, ascending=False)
+                                feats_coef.flatten()]).T.rename(columns={0:'feature', 1:'feature_coefs'})
+features_df.sort_values('feature_coefs',key= abs, ascending=False)
 
 
 We can see that `SaleType_New` is the most important feature in our model.
@@ -367,7 +370,7 @@ This is going to take about 1-2 minutes to run because now, it's recursively rem
 
 <img src='imgs/waiting2.png' width="50%"> 
 
-main_pipe = make_pipeline(preprocessor, RFE(DecisionTreeClassifier(), 
+main_pipe = make_pipeline(preprocessor, RFE(LogisticRegression(max_iter=1000), 
                                             n_features_to_select=30))
 
 scores = cross_validate(main_pipe, X_train, y_train, return_train_score=True)
@@ -376,7 +379,7 @@ pd.DataFrame(scores)
 
 pd.DataFrame(scores).mean()
 
-Looking at this mean validation score compared to when the model was using all the features, we can see it increased a bit! 
+Looking at this mean validation score compared to when the model was using all the features, we can see it increased a tiny bit! 
 
 But now our next question is how do we set $k$? How do we know how many features is the optimal amount... Well, you guessed it! There is a tool for that too! 
 
@@ -399,7 +402,7 @@ Instead of `RFE` now we simply use `RFECV` in our pipeline and we do not need to
 
 
 
-main_pipe = make_pipeline(preprocessor, RFECV(DecisionTreeClassifier(), cv=5))
+main_pipe = make_pipeline(preprocessor, RFECV(LogisticRegression(max_iter=1000), cv=5))
 
 scores = cross_validate(main_pipe, X_train, y_train, return_train_score=True)
 
@@ -418,7 +421,7 @@ support = main_pipe.named_steps["rfecv"].support_
 RFE_selected_feats = np.array(feature_names)[support]
 RFE_selected_feats
 
-RFECV selects the features by references their `feature_importances` as well as the validation score after each feature is removed and seeing if it is increasing. 
+RFECV selects the features by references their `feature_importances`/`coefs_` as well as the validation score after each feature is removed and seeing if it is increasing. 
 
 When a feature is removed and the validation score is no longer increasing, then it stops removing features. 
 
@@ -440,10 +443,10 @@ from sklearn.feature_selection import SequentialFeatureSelector
 We can import it as follows: 
 
 pipe_forward = make_pipeline(preprocessor, 
-                             SequentialFeatureSelector(DecisionTreeClassifier(), 
+                             SequentialFeatureSelector(LogisticRegression(max_iter=1000), 
                                                        direction='forward',
                                                        n_features_to_select=20),
-                            DecisionTreeClassifier())
+                            LogisticRegression(max_iter=1000))
 
 Running this next cell is going to take a LONG LONG LONG time. 
 
@@ -459,9 +462,11 @@ pd.DataFrame(scores).mean()
 2. Between `RFE` and `RFECV` which one finds the optimal number of features for us?
 3. Which method starts with all our features and iteratively removes them from our model?
 4. Which method starts with no features and iteratively adds features?
-5. Which method does not take into consideration `feature_importance` when adding/removing features? 
+5. Which method does not take into consideration `feature_importances_`/`coefs_` when adding/removing features? 
 
-## Extra time? 
+## Extra time? Project time
+
+First -> Project expectations. 
 
 Breakout rooms in your project groups! 
 

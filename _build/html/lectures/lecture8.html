@@ -403,8 +403,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extra-time">
-   Extra time?
+  <a class="reference internal nav-link" href="#extra-time-project-time">
+   Extra time? Project time
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -456,6 +456,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">OrdinalEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
 
@@ -678,10 +679,12 @@
 <li><p>What model needs to be made for all problems?</p></li>
 <li><p>In supervised learning, once we have our business objective, part of our statistical question is identifying what?</p></li>
 </ol>
-<p><strong>True or False:</strong>
-4. When writing your reports, it’s important to consider who is reading it.<br />
-5. Sometimes you may need to dig a little to figure out exactly what the client wants.<br />
-6. In supervised learning, we should take into consideration the uncertainty of our models.</p>
+<p><strong>True or False:</strong></p>
+<ol class="simple">
+<li><p>When writing your reports, it’s important to consider who is reading it.</p></li>
+<li><p>Sometimes you may need to dig a little to figure out exactly what the client wants.</p></li>
+<li><p>In supervised learning, we should take into consideration the uncertainty of our models.</p></li>
+</ol>
 </div>
 <div class="section" id="feature-selection">
 <h2>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h2>
@@ -689,11 +692,10 @@
 <h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
 <p>Remember the curse of dimensionality?</p>
 <a class="reference internal image-reference" href="../_images/curse.png"><img alt="../_images/curse.png" src="../_images/curse.png" style="width: 50%;" /></a>
-<p>We spoke about this briefly when we discussed <span class="math notranslate nohighlight">\(k\)</span>-nn and how when we add many different dimensions (features) it can confuse the model with any irrelevant features and the model can disintegrate into predictions no better than random guessing.
-Reasons like this are why we need to be careful about which features we include.</p>
-<p>Reasons like this is why we need to be careful about which features we include.</p>
-<p>When we choose the best set of features we call this <strong>Feature Selection</strong>.</p>
-<p>Feature selection a lot of the time can be done using domain knowledge and manually however we can also use tools that help us either tell us:</p>
+<p>We spoke about this briefly when we discussed <span class="math notranslate nohighlight">\(k\)</span>-nn and how when we add many different dimensions (features) it can confuse the model with any irrelevant features and the model can disintegrate into predictions no better than random guessing.</p>
+<p>Reasons like this are why we need to be careful about which features we include.</p>
+<p><strong>Feature selection</strong> can be described as <em>finding the features (columns) <span class="math notranslate nohighlight">\(X\)</span> that are important for predicting <span class="math notranslate nohighlight">\(y\)</span> and removing the features that aren’t.</em></p>
+<p>Feature selection can be aided using domain knowledge and manually however we can also use tools that help us either tell us:</p>
 <ul class="simple">
 <li><p>which features are most important to a model</p></li>
 <li><p>or that can select a number of features that will result with the optimal validation score.</p></li>
@@ -814,16 +816,16 @@ Reasons like this are why we need to be careful about which features we include.
 </div>
 <div class="section" id="new-housing-data">
 <h3>New housing data<a class="headerlink" href="#new-housing-data" title="Permalink to this headline">¶</a></h3>
-<p>I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example I really want to show you an example with LOTS of features.</p>
-<p>For this example, I really want to show you an example with LOTS of features.
-Here is (yet another) housing dataset we acquired from <a class="reference external" href="https://github.com/melindaleung/Ames-Iowa-Housing-Dataset">this GitHub repo</a>, originally created by Dean De Cock. (We are using the raw data so we do not need to store it and import it simply from the url)</p>
+<p>I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example, I really want to show you an example with LOTS of features.</p>
+<p>Here is (yet another) housing dataset we acquired from <a class="reference external" href="https://github.com/melindaleung/Ames-Iowa-Housing-Dataset">this GitHub repo</a>, originally created by Dean De Cock.
+<em>(We are using the raw data so we do not need to store it and import it simply from the url.)</em></p>
 <p><strong>Attribution:</strong></p>
 <p>The Ames Housing dataset was compiled by Dean De Cock for use in data science education.</p>
 <p>His publication can be found <a class="reference external" href="http://jse.amstat.org/v19n3/decock.pdf">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/melindaleung/Ames-Iowa-Housing-Dataset/master/data/ames</span><span class="si">%20i</span><span class="s1">owa</span><span class="si">%20ho</span><span class="s1">using.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ames_df</span> <span class="o">=</span> <span class="n">ames_df</span><span class="p">[(</span><span class="n">ames_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Alloca&#39;</span><span class="p">)</span> <span class="o">&amp;</span>  <span class="p">(</span><span class="n">ames_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;AdjLand&#39;</span><span class="p">)]</span>
+<span class="n">ames_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ames_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Abnormal&#39;</span>
 <span class="n">ames_df</span>
 </pre></div>
 </div>
@@ -988,7 +990,7 @@ Here is (yet another) housing dataset we acquired from <a class="reference exter
       <td>2</td>
       <td>2006</td>
       <td>WD</td>
-      <td>Abnorml</td>
+      <td>Abnormal</td>
       <td>140000</td>
     </tr>
     <tr>
@@ -1161,7 +1163,7 @@ Here is (yet another) housing dataset we acquired from <a class="reference exter
     </tr>
   </tbody>
 </table>
-<p>1444 rows × 80 columns</p>
+<p>1460 rows × 80 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1172,92 +1174,92 @@ Here is (yet another) housing dataset we acquired from <a class="reference exter
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 1444 entries, 1 to 1460
+Int64Index: 1460 entries, 1 to 1460
 Data columns (total 80 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
- 0   MSSubClass     1444 non-null   int64  
- 1   MSZoning       1444 non-null   object 
- 2   LotFrontage    1187 non-null   float64
- 3   LotArea        1444 non-null   int64  
- 4   Street         1444 non-null   object 
+ 0   MSSubClass     1460 non-null   int64  
+ 1   MSZoning       1460 non-null   object 
+ 2   LotFrontage    1201 non-null   float64
+ 3   LotArea        1460 non-null   int64  
+ 4   Street         1460 non-null   object 
  5   Alley          91 non-null     object 
- 6   LotShape       1444 non-null   object 
- 7   LandContour    1444 non-null   object 
- 8   Utilities      1444 non-null   object 
- 9   LotConfig      1444 non-null   object 
- 10  LandSlope      1444 non-null   object 
- 11  Neighborhood   1444 non-null   object 
- 12  Condition1     1444 non-null   object 
- 13  Condition2     1444 non-null   object 
- 14  BldgType       1444 non-null   object 
- 15  HouseStyle     1444 non-null   object 
- 16  OverallQual    1444 non-null   int64  
- 17  OverallCond    1444 non-null   int64  
- 18  YearBuilt      1444 non-null   int64  
- 19  YearRemodAdd   1444 non-null   int64  
- 20  RoofStyle      1444 non-null   object 
- 21  RoofMatl       1444 non-null   object 
- 22  Exterior1st    1444 non-null   object 
- 23  Exterior2nd    1444 non-null   object 
- 24  MasVnrType     1437 non-null   object 
- 25  MasVnrArea     1437 non-null   float64
- 26  ExterQual      1444 non-null   object 
- 27  ExterCond      1444 non-null   object 
- 28  Foundation     1444 non-null   object 
- 29  BsmtQual       1411 non-null   object 
- 30  BsmtCond       1411 non-null   object 
- 31  BsmtExposure   1410 non-null   object 
- 32  BsmtFinType1   1411 non-null   object 
- 33  BsmtFinSF1     1444 non-null   int64  
- 34  BsmtFinType2   1410 non-null   object 
- 35  BsmtFinSF2     1444 non-null   int64  
- 36  BsmtUnfSF      1444 non-null   int64  
- 37  TotalBsmtSF    1444 non-null   int64  
- 38  Heating        1444 non-null   object 
- 39  HeatingQC      1444 non-null   object 
- 40  CentralAir     1444 non-null   object 
- 41  Electrical     1443 non-null   object 
- 42  1stFlrSF       1444 non-null   int64  
- 43  2ndFlrSF       1444 non-null   int64  
- 44  LowQualFinSF   1444 non-null   int64  
- 45  GrLivArea      1444 non-null   int64  
- 46  BsmtFullBath   1444 non-null   int64  
- 47  BsmtHalfBath   1444 non-null   int64  
- 48  FullBath       1444 non-null   int64  
- 49  HalfBath       1444 non-null   int64  
- 50  BedroomAbvGr   1444 non-null   int64  
- 51  KitchenAbvGr   1444 non-null   int64  
- 52  KitchenQual    1444 non-null   object 
- 53  TotRmsAbvGrd   1444 non-null   int64  
- 54  Functional     1444 non-null   object 
- 55  Fireplaces     1444 non-null   int64  
- 56  FireplaceQu    766 non-null    object 
- 57  GarageType     1367 non-null   object 
- 58  GarageYrBlt    1367 non-null   float64
- 59  GarageFinish   1367 non-null   object 
- 60  GarageCars     1444 non-null   int64  
- 61  GarageArea     1444 non-null   int64  
- 62  GarageQual     1367 non-null   object 
- 63  GarageCond     1367 non-null   object 
- 64  PavedDrive     1444 non-null   object 
- 65  WoodDeckSF     1444 non-null   int64  
- 66  OpenPorchSF    1444 non-null   int64  
- 67  EnclosedPorch  1444 non-null   int64  
- 68  3SsnPorch      1444 non-null   int64  
- 69  ScreenPorch    1444 non-null   int64  
- 70  PoolArea       1444 non-null   int64  
- 71  PoolQC         6 non-null      object 
- 72  Fence          279 non-null    object 
- 73  MiscFeature    53 non-null     object 
- 74  MiscVal        1444 non-null   int64  
- 75  MoSold         1444 non-null   int64  
- 76  YrSold         1444 non-null   int64  
- 77  SaleType       1444 non-null   object 
- 78  SaleCondition  1444 non-null   object 
- 79  SalePrice      1444 non-null   int64  
+ 6   LotShape       1460 non-null   object 
+ 7   LandContour    1460 non-null   object 
+ 8   Utilities      1460 non-null   object 
+ 9   LotConfig      1460 non-null   object 
+ 10  LandSlope      1460 non-null   object 
+ 11  Neighborhood   1460 non-null   object 
+ 12  Condition1     1460 non-null   object 
+ 13  Condition2     1460 non-null   object 
+ 14  BldgType       1460 non-null   object 
+ 15  HouseStyle     1460 non-null   object 
+ 16  OverallQual    1460 non-null   int64  
+ 17  OverallCond    1460 non-null   int64  
+ 18  YearBuilt      1460 non-null   int64  
+ 19  YearRemodAdd   1460 non-null   int64  
+ 20  RoofStyle      1460 non-null   object 
+ 21  RoofMatl       1460 non-null   object 
+ 22  Exterior1st    1460 non-null   object 
+ 23  Exterior2nd    1460 non-null   object 
+ 24  MasVnrType     1452 non-null   object 
+ 25  MasVnrArea     1452 non-null   float64
+ 26  ExterQual      1460 non-null   object 
+ 27  ExterCond      1460 non-null   object 
+ 28  Foundation     1460 non-null   object 
+ 29  BsmtQual       1423 non-null   object 
+ 30  BsmtCond       1423 non-null   object 
+ 31  BsmtExposure   1422 non-null   object 
+ 32  BsmtFinType1   1423 non-null   object 
+ 33  BsmtFinSF1     1460 non-null   int64  
+ 34  BsmtFinType2   1422 non-null   object 
+ 35  BsmtFinSF2     1460 non-null   int64  
+ 36  BsmtUnfSF      1460 non-null   int64  
+ 37  TotalBsmtSF    1460 non-null   int64  
+ 38  Heating        1460 non-null   object 
+ 39  HeatingQC      1460 non-null   object 
+ 40  CentralAir     1460 non-null   object 
+ 41  Electrical     1459 non-null   object 
+ 42  1stFlrSF       1460 non-null   int64  
+ 43  2ndFlrSF       1460 non-null   int64  
+ 44  LowQualFinSF   1460 non-null   int64  
+ 45  GrLivArea      1460 non-null   int64  
+ 46  BsmtFullBath   1460 non-null   int64  
+ 47  BsmtHalfBath   1460 non-null   int64  
+ 48  FullBath       1460 non-null   int64  
+ 49  HalfBath       1460 non-null   int64  
+ 50  BedroomAbvGr   1460 non-null   int64  
+ 51  KitchenAbvGr   1460 non-null   int64  
+ 52  KitchenQual    1460 non-null   object 
+ 53  TotRmsAbvGrd   1460 non-null   int64  
+ 54  Functional     1460 non-null   object 
+ 55  Fireplaces     1460 non-null   int64  
+ 56  FireplaceQu    770 non-null    object 
+ 57  GarageType     1379 non-null   object 
+ 58  GarageYrBlt    1379 non-null   float64
+ 59  GarageFinish   1379 non-null   object 
+ 60  GarageCars     1460 non-null   int64  
+ 61  GarageArea     1460 non-null   int64  
+ 62  GarageQual     1379 non-null   object 
+ 63  GarageCond     1379 non-null   object 
+ 64  PavedDrive     1460 non-null   object 
+ 65  WoodDeckSF     1460 non-null   int64  
+ 66  OpenPorchSF    1460 non-null   int64  
+ 67  EnclosedPorch  1460 non-null   int64  
+ 68  3SsnPorch      1460 non-null   int64  
+ 69  ScreenPorch    1460 non-null   int64  
+ 70  PoolArea       1460 non-null   int64  
+ 71  PoolQC         7 non-null      object 
+ 72  Fence          281 non-null    object 
+ 73  MiscFeature    54 non-null     object 
+ 74  MiscVal        1460 non-null   int64  
+ 75  MoSold         1460 non-null   int64  
+ 76  YrSold         1460 non-null   int64  
+ 77  SaleType       1460 non-null   object 
+ 78  SaleCondition  1460 non-null   object 
+ 79  SalePrice      1460 non-null   int64  
 dtypes: float64(3), int64(34), object(43)
-memory usage: 913.8+ KB
+memory usage: 923.9+ KB
 </pre></div>
 </div>
 </div>
@@ -1271,8 +1273,8 @@ memory usage: 913.8+ KB
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;PoolQC&#39;</span><span class="p">,</span> <span class="s1">&#39;MiscFeature&#39;</span><span class="p">,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">])</span>
 <span class="n">X_test</span> <span class="o">=</span>  <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;PoolQC&#39;</span><span class="p">,</span> <span class="s1">&#39;MiscFeature&#39;</span><span class="p">,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">])</span>
 
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1400,7 @@ memory usage: 913.8+ KB
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">((</span><span class="n">numeric_pipe</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span>
                                        <span class="p">(</span><span class="n">categoric_pipe</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">))</span>
 
-<span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1408,97 +1410,119 @@ memory usage: 913.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.064192
-score_time     0.011967
-test_score     0.862338
-train_score    1.000000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.099587
+score_time     0.010683
+test_score     0.900704
+train_score    0.937073
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Once we fit our pipeline outside of <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> we can use <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> to get our percentages.</p>
+<p>Once we fit our pipeline outside of <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> we can use <code class="docutils literal notranslate"><span class="pre">coef_</span></code> to get our features that contribute to our predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">feats_importance</span> <span class="o">=</span> <span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;decisiontreeclassifier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span>
-<span class="n">feats_importance</span>
+<span class="n">feats_coef</span> <span class="o">=</span> <span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;logisticregression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">feats_coef</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.83693524e-03, 1.83123069e-02, 1.73629734e-02, 4.60432228e-03,
-       0.00000000e+00, 5.03597750e-03, 6.71463666e-03, 0.00000000e+00,
-       3.04088314e-02, 2.66956175e-03, 6.82007753e-03, 1.09469307e-02,
-       8.72396338e-03, 0.00000000e+00, 0.00000000e+00, 9.87778750e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       1.04386254e-02, 0.00000000e+00, 1.39656847e-02, 0.00000000e+00,
-       3.37670181e-02, 0.00000000e+00, 1.68241792e-02, 1.04412794e-02,
-       1.11496574e-02, 8.81379235e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 1.81520736e-02, 4.12816564e-02,
-       4.18455631e-02, 0.00000000e+00, 0.00000000e+00, 5.26208261e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       2.87770143e-03, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 3.83693524e-03, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 5.45248691e-03, 0.00000000e+00,
-       5.39569017e-03, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 5.46763271e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 4.31655214e-03,
-       5.35008117e-03, 0.00000000e+00, 1.31095287e-03, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 1.60150340e-03, 0.00000000e+00, 4.31655214e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 2.85792341e-04, 0.00000000e+00, 0.00000000e+00,
-       4.18400114e-04, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       2.67652343e-03, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 4.31655214e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 5.58612630e-03,
-       0.00000000e+00, 2.69428006e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 7.05036850e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       5.19397183e-03, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 1.67865917e-03, 0.00000000e+00,
-       0.00000000e+00, 9.54245445e-04, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       7.67387047e-03, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       4.27544212e-03, 0.00000000e+00, 0.00000000e+00, 1.70803741e-03,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       3.83693524e-03, 0.00000000e+00, 0.00000000e+00, 2.26547155e-04,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 9.91899161e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 5.27277248e-03, 0.00000000e+00,
-       9.22155719e-04, 0.00000000e+00, 5.03597750e-03, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 3.55326651e-03, 0.00000000e+00,
-       0.00000000e+00, 4.31655214e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 1.22359798e-03, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
-       0.00000000e+00, 2.03107628e-03, 1.84468040e-03, 1.31581162e-03,
-       0.00000000e+00, 5.90742993e-02, 3.52070508e-03, 0.00000000e+00,
-       5.42732877e-03, 0.00000000e+00, 0.00000000e+00, 4.65536319e-01,
-       5.24870965e-03, 0.00000000e+00])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.18958839e-01,  2.80437565e-02,  2.49130507e-01,
+        -1.40577328e-01,  2.31798834e-01,  2.65544331e-01,
+         8.50348998e-02,  6.52906677e-02, -3.13882034e-01,
+        -7.97876987e-02,  1.05264740e-01, -2.45667334e-01,
+        -2.51739997e-01,  1.04131789e-01,  8.63238306e-02,
+        -9.51492234e-02,  1.72613332e-01, -1.84019116e-01,
+         1.70443856e-01, -5.28290734e-02,  4.55105832e-02,
+        -5.80079522e-02, -2.77296489e-01,  6.36542212e-02,
+         2.58992646e-01, -2.51809696e-01,  2.73972987e-01,
+         1.16505219e-01, -3.43890387e-02,  1.50307516e-01,
+         5.76032866e-03, -1.22385918e-01, -2.22702119e-01,
+         3.89040317e-01,  9.84750685e-02,  3.18748625e-01,
+         8.07870515e-01, -5.43912484e-01, -2.88791745e-01,
+        -3.89542925e-01,  5.73547320e-01,  6.48679034e-01,
+         2.11951560e-01, -2.11972360e-01,  3.63746362e-01,
+         6.26228554e-02, -3.86788012e-01, -3.96020057e-02,
+        -2.83569179e-01, -2.52294113e-01,  1.61988878e-01,
+         3.73853614e-01, -2.08000925e-05, -3.55140696e-01,
+        -3.70345439e-02,  2.24427654e-01,  8.95856444e-02,
+         7.81411419e-02,  7.50966736e-01,  1.87977662e-01,
+        -9.38965198e-01,  6.31309534e-01,  1.56054959e-01,
+        -1.05636659e+00,  1.51781722e-01, -6.47077610e-01,
+         9.39778122e-01, -6.74202514e-01,  5.30054735e-01,
+        -2.60443488e-01,  2.75200135e-01,  1.66192064e-01,
+         8.30646952e-01, -1.26519531e-01, -1.95030237e-01,
+        -4.78993513e-01, -9.92116098e-01,  4.26070374e-01,
+        -2.72630043e-01,  2.61803275e-01,  6.55104632e-01,
+        -4.54961908e-01,  1.06256161e-01, -1.52522176e-01,
+        -5.43387027e-02,  2.34928944e-01, -1.00317824e-01,
+        -4.67378338e-01, -2.41550501e-01,  2.13982659e-01,
+         3.39287808e-01, -3.19643886e-01,  2.08194481e-01,
+         3.67404801e-01, -5.54245239e-01,  1.01170535e-01,
+         2.32518679e-01,  1.43186661e-03, -1.44430886e-01,
+        -2.01365849e-05,  2.33119361e-01,  1.30435020e-01,
+        -3.76844639e-01,  5.35351565e-01,  1.44394638e-01,
+        -3.90428100e-01,  8.75057365e-02, -2.00538899e-01,
+         4.12724564e-01, -2.53132774e-01, -1.74934058e-01,
+         9.30653024e-01,  2.87215952e-01, -1.04772393e+00,
+         4.57153212e-02, -6.74098519e-01, -2.18557392e-01,
+         1.62030340e-01,  3.60068688e-01,  1.45392011e-01,
+         2.25144072e-01,  5.44271071e-05,  1.82967951e-01,
+         7.89862218e-02,  4.86755439e-02, -5.68767168e-01,
+         1.13392139e-01,  1.44670085e-01, -3.67086430e-01,
+         8.44859596e-02, -3.67058918e-01,  2.68303184e-01,
+         1.34567901e-01,  2.31434171e-01,  1.12426593e-01,
+         2.24874308e-01,  1.17863260e-02,  3.43144548e-01,
+        -6.70356418e-01,  4.77501814e-01, -4.37524305e-01,
+        -4.47288030e-01,  4.00768496e-01,  2.11840761e-01,
+         1.74053880e-01, -2.51820740e-01,  1.11264608e+00,
+         1.34567901e-01,  2.50389659e-01,  2.77777003e-03,
+        -8.58230453e-01, -7.20476021e-03, -3.89664900e-01,
+        -8.69852816e-01, -4.34668652e-01, -6.76196375e-02,
+         9.54086294e-01,  3.86788170e-02, -4.97420517e-01,
+         4.61282162e-01,  4.76509455e-01, -6.69151081e-02,
+        -3.73476792e-01, -2.13005004e-02, -1.17026315e-01,
+         5.23385140e-02,  8.59675011e-02,  7.92024071e-02,
+        -8.69455333e-03, -1.31723460e-01,  1.96342696e-01,
+        -1.35147889e-01, -1.88544558e-01,  1.90352188e-01,
+        -1.68708155e-01,  4.38281040e-01, -3.12345756e-01,
+         4.09444401e-02,  3.15034172e-02,  1.49814155e-02,
+        -1.00368837e-02,  6.94173890e-02, -1.05886138e-01,
+         5.19940295e-01, -2.81921366e-01, -2.56031695e-01,
+         1.23878103e-01, -1.05886138e-01,  7.13518816e-02,
+         7.41418709e-02, -2.50009366e-01,  1.89350904e-01,
+        -8.48560912e-02, -6.92821419e-02,  3.53292929e-01,
+        -1.66739663e-02,  2.40792039e-01,  2.15239176e-01,
+        -6.17502698e-01, -1.05886138e-01,  2.83580448e-01,
+        -1.48796728e-01,  1.25557244e-01, -2.62424998e-01,
+         1.89986156e-01, -1.08691711e-01, -7.92312121e-02,
+         3.06131849e-02, -4.94729734e-01,  5.27850443e-01,
+        -1.71411787e-01,  4.81233967e-02,  5.95336960e-02,
+        -4.54720774e-01,  2.86731562e-01,  7.51870519e-01,
+         1.25311067e-02, -5.96433214e-01,  1.23862962e-01,
+        -1.23883762e-01,  2.85546173e-01,  4.03609395e-01,
+        -4.59112126e-01, -4.23918118e-01,  1.93853877e-01,
+        -9.76188829e-01,  5.88611295e-01,  6.30855332e-02,
+         3.24471201e-01,  4.10383570e-01, -1.75731458e-01,
+        -3.24507708e-01,  5.90105708e-01,  4.26751764e-01,
+        -6.51255727e-01, -2.75766950e-01, -3.39802934e-01,
+         4.13633738e-01,  1.93353027e-02,  5.31959397e-01,
+        -6.41596222e-02, -5.60986681e-01,  7.45320060e-02,
+         5.26191977e-01, -5.91524719e-01, -2.69964975e-01,
+        -1.22415812e-01,  4.77544014e-01, -9.43832913e-02,
+        -2.13879058e-01,  1.31840293e-01,  1.76401255e-01,
+        -9.43832913e-02,  2.86789640e-02,  2.12638163e-01,
+        -6.62487740e-03, -3.12318528e-01,  1.71988770e-01,
+        -9.43832913e-02,  2.86789640e-02,  5.62313667e-01,
+        -5.19994269e-01,  1.32379688e-01, -1.09015558e-01,
+        -9.43832913e-02,  5.17278098e-02,  2.54400540e-01,
+        -3.06149150e-01,  2.33419989e-01, -1.11614579e-01,
+        -2.44520667e-01, -2.24168880e-01,  3.46863338e-01,
+         1.44769226e-01, -3.33369381e-01,  2.55671163e-01,
+         4.35447588e-01,  4.81352399e-01,  9.43771644e-01,
+        -3.84055151e+00, -6.86552476e-01,  2.59944055e+00]])
 </pre></div>
 </div>
 </div>
@@ -1507,17 +1531,18 @@ dtype: float64
 <p>Let’s first take a look at how many features we have now after preprocessing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">feats_importance</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feats_coef</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 282)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ok 286, let’s get the feature names after preprocessing.</p>
+<p>The 282 is refering to the number of features after preprocessing!</p>
+<p>Let’s get the feature names after preprocessing.</p>
 <p>We can obtain the categorical features and combine them with the  numeric features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1534,7 +1559,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>We can see now that we have the name number of feature names as we do feature_importance values.</p>
+<p>We can see now that we have the same number of feature names as we do coefficients.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">all_feat_names</span><span class="p">)</span>
@@ -1542,7 +1567,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>286
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>282
 </pre></div>
 </div>
 </div>
@@ -1551,8 +1576,8 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_feat_names</span><span class="p">,</span>
-                                <span class="n">feats_importance</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">})</span>
-<span class="n">features_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">,</span><span class="n">key</span><span class="o">=</span> <span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                <span class="n">feats_coef</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;feature_coefs&#39;</span><span class="p">})</span>
+<span class="n">features_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;feature_coefs&#39;</span><span class="p">,</span><span class="n">key</span><span class="o">=</span> <span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1576,34 +1601,34 @@ dtype: float64
     <tr style="text-align: right;">
       <th></th>
       <th>feature</th>
-      <th>feature_importance</th>
+      <th>feature_coefs</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>283</th>
+      <th>279</th>
       <td>SaleType_New</td>
-      <td>0.465536</td>
+      <td>-3.84055</td>
     </tr>
     <tr>
-      <th>277</th>
-      <td>SaleType_COD</td>
-      <td>0.0590743</td>
+      <th>281</th>
+      <td>SaleType_WD</td>
+      <td>2.59944</td>
     </tr>
     <tr>
-      <th>36</th>
-      <td>SalePrice</td>
-      <td>0.0418456</td>
+      <th>146</th>
+      <td>Exterior2nd_BrkFace</td>
+      <td>1.11265</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>YrSold</td>
-      <td>0.0412817</td>
+      <th>63</th>
+      <td>Neighborhood_BrDale</td>
+      <td>-1.05637</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>GarageYrBlt</td>
-      <td>0.033767</td>
+      <th>113</th>
+      <td>HouseStyle_SFoyer</td>
+      <td>-1.04772</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1611,33 +1636,33 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>122</th>
-      <td>RoofStyle_Shed</td>
-      <td>0</td>
+      <th>149</th>
+      <td>Exterior2nd_HdBoard</td>
+      <td>0.00277777</td>
     </tr>
     <tr>
-      <th>123</th>
+      <th>97</th>
+      <td>Condition2_PosA</td>
+      <td>0.00143187</td>
+    </tr>
+    <tr>
+      <th>121</th>
       <td>RoofMatl_ClyTile</td>
-      <td>0</td>
+      <td>5.44271e-05</td>
     </tr>
     <tr>
-      <th>124</th>
-      <td>RoofMatl_CompShg</td>
-      <td>0</td>
+      <th>52</th>
+      <td>Utilities_AllPub</td>
+      <td>-2.08001e-05</td>
     </tr>
     <tr>
-      <th>125</th>
-      <td>RoofMatl_Membran</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>285</th>
-      <td>SaleType_WD</td>
-      <td>0</td>
+      <th>99</th>
+      <td>Condition2_RRAe</td>
+      <td>-2.01366e-05</td>
     </tr>
   </tbody>
 </table>
-<p>286 rows × 2 columns</p>
+<p>282 rows × 2 columns</p>
 </div></div></div>
 </div>
 <p>We can see that <code class="docutils literal notranslate"><span class="pre">SaleType_New</span></code> is the most important feature in our model.</p>
@@ -1670,7 +1695,7 @@ dtype: float64
 <a class="reference internal image-reference" href="../_images/waiting2.png"><img alt="../_images/waiting2.png" src="../_images/waiting2.png" style="width: 50%;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">RFE</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">RFE</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> 
                                             <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1707,38 +1732,38 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>7.470945</td>
-      <td>0.011375</td>
-      <td>0.896104</td>
-      <td>1.0</td>
+      <td>9.512086</td>
+      <td>0.010259</td>
+      <td>0.901709</td>
+      <td>0.918630</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>6.382802</td>
-      <td>0.010430</td>
-      <td>0.848485</td>
-      <td>1.0</td>
+      <td>10.754893</td>
+      <td>0.010093</td>
+      <td>0.880342</td>
+      <td>0.926124</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>7.073846</td>
-      <td>0.010113</td>
-      <td>0.857143</td>
-      <td>1.0</td>
+      <td>10.472141</td>
+      <td>0.011094</td>
+      <td>0.910256</td>
+      <td>0.919700</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6.283985</td>
-      <td>0.010504</td>
-      <td>0.874459</td>
-      <td>1.0</td>
+      <td>10.415113</td>
+      <td>0.010304</td>
+      <td>0.922747</td>
+      <td>0.914439</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>7.610064</td>
-      <td>0.011440</td>
-      <td>0.896104</td>
-      <td>1.0</td>
+      <td>10.015225</td>
+      <td>0.010336</td>
+      <td>0.901288</td>
+      <td>0.920856</td>
     </tr>
   </tbody>
 </table>
@@ -1751,16 +1776,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       6.964328
-score_time     0.010772
-test_score     0.874459
-train_score    1.000000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       10.233892
+score_time      0.010417
+test_score      0.903268
+train_score     0.919950
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Looking at this mean validation score compared to when the model was using all the features, we can see it increased a bit!</p>
+<p>Looking at this mean validation score compared to when the model was using all the features, we can see it increased a tiny bit!</p>
 <p>But now our next question is how do we set <span class="math notranslate nohighlight">\(k\)</span>? How do we know how many features is the optimal amount… Well, you guessed it! There is a tool for that too!</p>
 </div>
 <div class="section" id="rfecv">
@@ -1783,7 +1808,7 @@ dtype: float64
 <a class="reference internal image-reference" href="../_images/waiting1.png"><img alt="../_images/waiting1.png" src="../_images/waiting1.png" style="width: 50%;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">RFECV</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">RFECV</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1798,10 +1823,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       35.398136
-score_time      0.011110
-test_score      0.912554
-train_score     0.912554
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       58.883550
+score_time      0.011878
+test_score      0.907546
+train_score     0.910961
 dtype: float64
 </pre></div>
 </div>
@@ -1818,27 +1843,27 @@ dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False False False False False False False False False False False False
  False False False False False False False False False False False False
  False False False False False False False False False False False False
+ False  True False  True False False False False False False False False
+ False False False False False False False False False False  True False
+  True False False  True False False  True  True False False False False
+  True False False False False  True False False False False False False
+ False False False False False False False False False False  True False
  False False False False False False False False False False False False
+ False False False  True False  True False  True False False False False
+ False False False False False  True False False  True False False False
+ False False False False False False  True False False  True False False
+ False False  True False False False  True False False  True False False
+  True False False False False False False False False False False False
+ False False False False False False False  True False False False False
  False False False False False False False False False False False False
+ False False False False False False False False False False False  True
+ False False False False False  True False False False False False  True
+ False False False False False False False  True False  True False False
+ False False False False  True  True False False False False False False
+ False  True False False False False False False False False False False
+ False False False False  True False False False False False False False
  False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False False False False False False
- False False False False False False False  True False False]
+ False  True  True  True  True  True]
 </pre></div>
 </div>
 </div>
@@ -1851,7 +1876,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of features selected by RFE:  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of features selected by RFE:  36
 </pre></div>
 </div>
 </div>
@@ -1866,12 +1891,23 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;SaleType_New&#39;], dtype=&#39;&lt;U20&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;MSZoning_C (all)&#39;, &#39;MSZoning_RH&#39;, &#39;LandSlope_Gtl&#39;,
+       &#39;LandSlope_Sev&#39;, &#39;Neighborhood_BrDale&#39;, &#39;Neighborhood_CollgCr&#39;,
+       &#39;Neighborhood_Crawfor&#39;, &#39;Neighborhood_Mitchel&#39;,
+       &#39;Neighborhood_NridgHt&#39;, &#39;Condition2_Artery&#39;, &#39;HouseStyle_2.5Unf&#39;,
+       &#39;HouseStyle_SFoyer&#39;, &#39;RoofStyle_Flat&#39;, &#39;RoofMatl_Tar&amp;Grv&#39;,
+       &#39;Exterior1st_AsbShng&#39;, &#39;Exterior1st_Stone&#39;, &#39;Exterior1st_Wd Sdng&#39;,
+       &#39;Exterior2nd_BrkFace&#39;, &#39;Exterior2nd_ImStucc&#39;, &#39;Exterior2nd_Stone&#39;,
+       &#39;Exterior2nd_Wd Sdng&#39;, &#39;Foundation_Slab&#39;, &#39;BsmtFinType2_LwQ&#39;,
+       &#39;Heating_GasW&#39;, &#39;HeatingQC_Gd&#39;, &#39;Electrical_Mix&#39;, &#39;KitchenQual_Ex&#39;,
+       &#39;Functional_Min2&#39;, &#39;Functional_Mod&#39;, &#39;FireplaceQu_missing&#39;,
+       &#39;GarageQual_Po&#39;, &#39;SaleType_ConLI&#39;, &#39;SaleType_ConLw&#39;,
+       &#39;SaleType_New&#39;, &#39;SaleType_Oth&#39;, &#39;SaleType_WD&#39;], dtype=&#39;&lt;U20&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>RFECV selects the features by references their <code class="docutils literal notranslate"><span class="pre">feature_importances</span></code> as well as the validation score after each feature is removed and seeing if it is increasing.</p>
+<p>RFECV selects the features by references their <code class="docutils literal notranslate"><span class="pre">feature_importances</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> as well as the validation score after each feature is removed and seeing if it is increasing.</p>
 <p>When a feature is removed and the validation score is no longer increasing, then it stops removing features.</p>
 </div>
 </div>
@@ -1894,10 +1930,10 @@ Overfits less</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_forward</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> 
-                             <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> 
+                             <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> 
                                                        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
                                                        <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
-                            <span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+                            <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1913,10 +1949,10 @@ Overfits less</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       73.242775
-score_time      0.010345
-test_score      0.901299
-train_score     0.935714
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       255.511478
+score_time       0.012293
+test_score       0.903272
+train_score      0.912886
 dtype: float64
 </pre></div>
 </div>
@@ -1930,11 +1966,12 @@ dtype: float64
 <li><p>Between <code class="docutils literal notranslate"><span class="pre">RFE</span></code> and <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> which one finds the optimal number of features for us?</p></li>
 <li><p>Which method starts with all our features and iteratively removes them from our model?</p></li>
 <li><p>Which method starts with no features and iteratively adds features?</p></li>
-<li><p>Which method does not take into consideration <code class="docutils literal notranslate"><span class="pre">feature_importance</span></code> when adding/removing features?</p></li>
+<li><p>Which method does not take into consideration <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> when adding/removing features?</p></li>
 </ol>
 </div>
-<div class="section" id="extra-time">
-<h2>Extra time?<a class="headerlink" href="#extra-time" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="extra-time-project-time">
+<h2>Extra time? Project time<a class="headerlink" href="#extra-time-project-time" title="Permalink to this headline">¶</a></h2>
+<p>First -&gt; Project expectations.</p>
 <p>Breakout rooms in your project groups!</p>
 <p>Use this time to:</p>
 <ul class="simple">

@@ -452,28 +452,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-class-classification-if-we-have-time-otherwise-lecture-10">
-   Multi-class classification (if we have time, otherwise Lecture 10)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#one-vs-rest">
-     One-vs-Rest
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#one-vs-one">
-     One-vs-One
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Let’s Practice
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today">
    What We’ve Learned Today
   </a>
@@ -550,7 +528,6 @@
 <li><p>Apply scikit-learn regression model (e.g., Ridge) to regression problems.</p></li>
 <li><p>Relate the Ridge hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p></li>
 <li><p>Compare logistic regression with naive Bayes.</p></li>
-<li><p>Carry out multi-class classification.</p></li>
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
@@ -875,12 +852,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595"></div>
+<div id="altair-viz-61cd829f77e54a5a8eb749104953861f"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595") {
-      outputDiv = document.getElementById("altair-viz-e6c7a8fd9d0f483fb978a1f7548c5595");
+    if (outputDiv.id !== "altair-viz-61cd829f77e54a5a8eb749104953861f") {
+      outputDiv = document.getElementById("altair-viz-61cd829f77e54a5a8eb749104953861f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1661,36 +1638,36 @@ Logistic regression = linear model for classification.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.006139</td>
-      <td>0.001471</td>
+      <td>0.006794</td>
+      <td>0.001586</td>
       <td>0.852941</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.006879</td>
-      <td>0.001587</td>
+      <td>0.006329</td>
+      <td>0.001666</td>
       <td>0.823529</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.005636</td>
-      <td>0.001561</td>
+      <td>0.005916</td>
+      <td>0.001471</td>
       <td>0.696970</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.005425</td>
-      <td>0.001528</td>
+      <td>0.005169</td>
+      <td>0.001594</td>
       <td>0.818182</td>
       <td>0.828358</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.005699</td>
-      <td>0.001605</td>
+      <td>0.005137</td>
+      <td>0.001595</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1705,8 +1682,8 @@ Logistic regression = linear model for classification.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005956
-score_time     0.001550
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005869
+score_time     0.001582
 test_score     0.826203
 train_score    0.829335
 dtype: float64
@@ -2830,203 +2807,6 @@ a. Which feature contributes the most in predicting if an example is legendary o
 b.As the capture rate value increases, will the model more likely predict a legendary or not legendary Pokémon?</p></li>
 </ol>
 </div>
-<div class="section" id="multi-class-classification-if-we-have-time-otherwise-lecture-10">
-<h2>Multi-class classification (if we have time, otherwise Lecture 10)<a class="headerlink" href="#multi-class-classification-if-we-have-time-otherwise-lecture-10" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Often we will come across problems where there are more than two classes to predict</p></li>
-<li><p>We call these multi-class problems</p></li>
-<li><p>There are a few ways of dealing with these outlined below</p></li>
-</ul>
-<ul class="simple">
-<li><p>Some algorithms can natively support multi-class classification, for example:</p>
-<ul>
-<li><p>Decision Trees</p></li>
-<li><p>KNN</p></li>
-<li><p>Naive Bayes</p></li>
-</ul>
-</li>
-<li><p>Below is an example of a Decision Tree Classifier used to classify 3 labels</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/multi_class_dt.png"><img alt="../_images/multi_class_dt.png" src="../_images/multi_class_dt.png" style="width: 60%;" /></a>
-<p>And here’s the graph:</p>
-<a class="reference internal image-reference" href="../_images/multi_class_dt_graph.png"><img alt="../_images/multi_class_dt_graph.png" src="../_images/multi_class_dt_graph.png" style="width: 450px;" /></a>
-<ul class="simple">
-<li><p>Here’s an example of KNN:</p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/multi_class_knn.png"><img alt="../_images/multi_class_knn.png" src="../_images/multi_class_knn.png" style="width: 550px;" /></a>
-<p>Other models, like SVMs and Logistic Regression don’t natively support multi-class classification.</p>
-<p>Instead, there are two common strategies to help us:</p>
-<ul class="simple">
-<li><p>One-vs-rest</p></li>
-<li><p>One-vs-one</p></li>
-</ul>
-<div class="section" id="one-vs-rest">
-<h3>One-vs-Rest<a class="headerlink" href="#one-vs-rest" title="Permalink to this headline">¶</a></h3>
-<p>(also known as one-vs-all)</p>
-<ul class="simple">
-<li><p>It’s the default for most sklearn algorithms, e.g., LogisticRegression, SVM.</p></li>
-<li><p>Turns <span class="math notranslate nohighlight">\(k\)</span>-class classification into <span class="math notranslate nohighlight">\(k\)</span> binary classification problems.</p></li>
-<li><p>Builds <span class="math notranslate nohighlight">\(k\)</span> binary classifiers; for each classifier, the class is fitted against all the other classes.</p></li>
-<li><p>For <em>k</em> classes, that means we need <em>k</em> models in total, e.g.:</p>
-<ul>
-<li><p>blue vs (red &amp; orange)</p></li>
-<li><p>red vs (blue &amp; orange)</p></li>
-<li><p>orange vs (blue &amp; red)</p></li>
-</ul>
-</li>
-<li><p>We use all models to make a prediction, and then choose the category with the highest prediction/probability/confidence.</p></li>
-<li><p>You can do this yourself for any binary classifier using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html"><code class="docutils literal notranslate"><span class="pre">OneVsRestClassifier</span></code></a></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsRestClassifier</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_wine</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;feature_names&quot;</span><span class="p">])</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[[</span><span class="s1">&#39;alcohol&#39;</span><span class="p">,</span> <span class="s1">&#39;malic_acid&#39;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>alcohol</th>
-      <th>malic_acid</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>36</th>
-      <td>13.28</td>
-      <td>1.64</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>11.84</td>
-      <td>2.89</td>
-    </tr>
-    <tr>
-      <th>131</th>
-      <td>12.88</td>
-      <td>2.99</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>13.48</td>
-      <td>1.67</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>13.24</td>
-      <td>2.59</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ovr</span> <span class="o">=</span> <span class="n">OneVsRestClassifier</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">))</span>
-<span class="n">ovr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">ovr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7819548872180451
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot_classifier(X_train, y_train, ovr);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="one-vs-one">
-<h3>One-vs-One<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>One-vs-One fits a model to all pairs of categories.</p></li>
-<li><p>If there are 3 classes (“blue”, “red”, “orange”), we fit a model on:</p>
-<ul>
-<li><p>blue vs red</p></li>
-<li><p>blue vs orange</p></li>
-<li><p>red vs orange</p></li>
-</ul>
-</li>
-<li><p>So we have 3 models in this case, or in general <span class="math notranslate nohighlight">\(\frac{n*(n-1)}{2}\)</span></p></li>
-<li><p>For 100 classes, we fit 4950 models!</p></li>
-<li><p>All models are used during prediction and the classification with the most “votes” is predicted.</p></li>
-<li><p>Computationally expensive, but can be good for models that scale poorly with data, because each model in OvO only uses a fraction of the dataset.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsOneClassifier</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ovo</span> <span class="o">=</span> <span class="n">OneVsOneClassifier</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">))</span>
-<span class="n">ovo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">ovo</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8120300751879699
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot_classifier(X_train, y_train, ovo);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Which wrapper is more computationally expensive?</p></li>
-<li><p>Name a model that can handle multi-class problems without any issues or needing any additional strategies.</p></li>
-<li><p>If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?</p></li>
-<li><p>If I have 6 classes, how many models will be built if I use the One-vs-One strategy?</p></li>
-</ol>
-<p><strong>True or False:</strong><br />
-5. Decision Trees use coefficients for multi-class data.</p>
-</div>
 <div class="section" id="what-we-ve-learned-today">
 <h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -3037,7 +2817,6 @@ b.As the capture rate value increases, will the model more likely predict a lege
 <li><p>One of the hyperparameters of <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> (<code class="docutils literal notranslate"><span class="pre">alpha</span></code>)</p></li>
 <li><p>One of the hyperparameters of <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> (<code class="docutils literal notranslate"><span class="pre">C</span></code>).</p></li>
 <li><p>How logistic regression is compared to naive Bayes.</p></li>
-<li><p>How to carry out multi-class classification.</p></li>
 </ul>
 </div>
 </div>

@@ -10,9 +10,9 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
-only_build_toc_files: true
 
 execute:
+  execute_notebooks: auto
   timeout: -1
   allow_errors: true
 
