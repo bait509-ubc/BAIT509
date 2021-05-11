@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bait509_site &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>BAIT509 - Business Applications of Machine Learning &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -47,11 +47,12 @@
     <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/README.html" />
     <link rel="shortcut icon" href="_static/bait_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -59,6 +60,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/README.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="BAIT509 - Business Applications of Machine Learning" />
+<meta property="og:description" content="BAIT509 - Business Applications of Machine Learning  This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of Britis" />
+<meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
+
+<meta name="twitter:card" content="summary" />
 
 
   </head>
@@ -118,25 +128,38 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Assignments
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="lectures/lecture2.html">
+   Lecture 2 - Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="lectures/lecture3.html">
+   Lecture 3 - Baseline, k-Nearest Neighbours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectures/lecture4.html">
+   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectures/lecture5.html">
+   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectures/lecture6.html">
+   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectures/lecture7.html">
+   Lecture 7 - Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectures/lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
 </ul>
@@ -147,7 +170,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="attribution.html">
+  <a class="reference internal" href="things_to_know/attribution.html">
    Attribution
   </a>
  </li>
@@ -207,11 +230,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/bait509-ubc/BAIT509"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/README.md"><button
+        <a class="issues-button"
+            href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bait509-ubc/BAIT509/edit/master/README.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -231,6 +257,40 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#teaching-team">
+   Teaching Team
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-meetings">
+   Class Meetings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assessments">
+   Assessments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#office-hours">
+   Office Hours
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -239,15 +299,189 @@
         
               <div>
                 
-  <div class="section" id="bait509-site">
-<h1>bait509_site<a class="headerlink" href="#bait509-site" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="bait509-business-applications-of-machine-learning">
+<h1>BAIT509 - Business Applications of Machine Learning<a class="headerlink" href="#bait509-business-applications-of-machine-learning" title="Permalink to this headline">¶</a></h1>
+<p>This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the <span class="xref myst">syllabus</span> for more information about the course. Current students should refer to the <a class="reference external" href="https://canvas.ubc.ca/">UBC Canvas course website</a> for the most up-to-date content and announcements.</p>
+<p>This repository is available as an easy-to-navigate <a class="reference external" href="https://bait509-ubc.github.io/BAIT509/">website</a>.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of the course, students are expected to be able to:</p>
+<ol class="simple">
+<li><p>Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training/validation/testing error, parameters and hyperparameters, and the golden rule.</p></li>
+<li><p>Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and logistic regression.</p></li>
+<li><p>Identify when and why to apply data pre-processing techniques such as scaling and one-hot encoding.</p></li>
+<li><p>Use Python and the scikit-learn package to develop an end-to-end supervised machine learning pipeline.</p></li>
+<li><p>Apply and interpret machine learning methods to carry out supervised learning projects and to answer business objectives.</p></li>
+</ol>
+</div>
+<div class="section" id="teaching-team">
+<h2>Teaching Team<a class="headerlink" href="#teaching-team" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Name</p></th>
+<th class="text-align:center head"><p>Position</p></th>
+<th class="text-align:center head"><p>email</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="xref myst">Hayley Boyce</span></p></td>
+<td class="text-align:center"><p>Instructor</p></td>
+<td class="text-align:center"><p>hfboyce&#64;cs.ubc.ca</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Ali Seyfi</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>aliseyfi&#64;cs.ubc.ca</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Andy Tai</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>andy.tai&#64;mail.utoronto.ca</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Daniel</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>ramandi18&#64;gmail.com</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Name</p></th>
+<th class="text-align:center head"><p>Position</p></th>
+<th class="text-align:center head"><p>GitHub Handle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="xref myst">Hayley Boyce</span></p></td>
+<td class="text-align:center"><p>Instructor</p></td>
+<td class="text-align:center"><p>&#64;hfboyce</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="class-meetings">
+<h2>Class Meetings<a class="headerlink" href="#class-meetings" title="Permalink to this headline">¶</a></h2>
+<p>Details about class meetings will appear here as they become available. <span class="xref myst">Optional additional material</span> is also available for each lecture.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>#</p></th>
+<th class="text-align:center head"><p>Topic</p></th>
+<th class="text-align:center head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>Introduction to machine learning and decision trees</p></td>
+<td class="text-align:center"><p>Lecture 1 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>Splitting and cross-validation</p></td>
+<td class="text-align:center"><p>Lecture 2 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>KNN and SVM</p></td>
+<td class="text-align:center"><p>Lecture 3 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>Feature pre-processing</p></td>
+<td class="text-align:center"><p>Lecture 4 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>5</p></td>
+<td class="text-align:center"><p>Naïve Bayes Hyperparameter optimization</p></td>
+<td class="text-align:center"><p>Lecture 5 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>Linear Regression/ Logistic Regression</p></td>
+<td class="text-align:center"><p>Lecture 6 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>Feature and Model Selection</p></td>
+<td class="text-align:center"><p>Lecture 7 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>8</p></td>
+<td class="text-align:center"><p>Business questions and workflows</p></td>
+<td class="text-align:center"><p>Lecture 8 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>9</p></td>
+<td class="text-align:center"><p>Classification and Regression Metrics</p></td>
+<td class="text-align:center"><p>Lecture 9 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>10</p></td>
+<td class="text-align:center"><p>Topics related to the group project</p></td>
+<td class="text-align:center"><p>Lecture 10 <span class="xref myst">html</span>/<span class="xref myst">notebook</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="assessments">
+<h2>Assessments<a class="headerlink" href="#assessments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Assessment</p></th>
+<th class="text-align:center head"><p>Due</p></th>
+<th class="text-align:center head"><p>Weight</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference internal" href="assignments/assignment1/assignment1.html"><span class="doc std std-doc">Assignment 1</span></a></p></td>
+<td class="text-align:center"><p>April 28th at 23:59</p></td>
+<td class="text-align:center"><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Quiz</p></td>
+<td class="text-align:center"><p>May 5th at 23:59</p></td>
+<td class="text-align:center"><p>10%</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><a class="reference internal" href="assignments/assignment2/assignment2.html"><span class="doc std std-doc">Assignment 2</span></a></p></td>
+<td class="text-align:center"><p>May 10th at 23:59</p></td>
+<td class="text-align:center"><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="xref myst">Assignment 3</span></p></td>
+<td class="text-align:center"><p>May 19th at 23:59</p></td>
+<td class="text-align:center"><p>20%</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="xref myst">Final Project</span></p></td>
+<td class="text-align:center"><p>May 29th at 23:59</p></td>
+<td class="text-align:center"><p>30%</p></td>
+</tr>
+</tbody>
+</table>
+<p>All assessments will be submitted through <a class="reference external" href="https://canvas.ubc.ca/">UBC Canvas</a>.</p>
+</div>
+<div class="section" id="office-hours">
+<h2>Office Hours<a class="headerlink" href="#office-hours" title="Permalink to this headline">¶</a></h2>
+<p>Want to talk about the course outside of lecture? Let’s talk during these dedicated times.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Teaching Member</p></th>
+<th class="text-align:center head"><p>When</p></th>
+<th class="text-align:center head"><p>Where</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="xref myst">Hayley Boyce</span></p></td>
+<td class="text-align:center"><p>Thursdays 1:00 -2:00 PST</p></td>
+<td class="text-align:center"><p>Zoom link in Canvas</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Ali Seyfi</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>TBD</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Andy Tai</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>TBD</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Daniel</p></td>
+<td class="text-align:center"><p>TA</p></td>
+<td class="text-align:center"><p>TBD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "bait509-ubc/BAIT509",
             ref: "master",
         },
         codeMirrorConfig: {

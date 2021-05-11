@@ -49,7 +49,6 @@ from sklearn.model_selection import RandomizedSearchCV
 - Apply scikit-learn regression model (e.g., Ridge) to regression problems.
 - Relate the Ridge hyperparameter `alpha` to the `LogisticRegression` hyperparameter `C`.
 - Compare logistic regression with naive Bayes.
-- Carry out multi-class classification.
 
 ## Five Minute Recap/ Lightning Questions 
 
@@ -869,92 +868,6 @@ preprocessor = make_column_transformer(
 
 
 
-## Multi-class classification (if we have time, otherwise Lecture 10) 
-
-- Often we will come across problems where there are more than two classes to predict
-- We call these multi-class problems 
-- There are a few ways of dealing with these outlined below
-
-- Some algorithms can natively support multi-class classification, for example:
-    - Decision Trees
-    - KNN
-    - Naive Bayes
-- Below is an example of a Decision Tree Classifier used to classify 3 labels
-
-<img src='imgs/multi_class_dt.png' width="60%">
-
-And here's the graph:
-
-<img src='imgs/multi_class_dt_graph.png' width="450">
-
-- Here's an example of KNN:
-
-<img src='imgs/multi_class_knn.png' width="550">
-
-Other models, like SVMs and Logistic Regression don't natively support multi-class classification.
-
-Instead, there are two common strategies to help us:
-- One-vs-rest
- - One-vs-one
-
-### One-vs-Rest
-(also known as one-vs-all)
-
-- It's the default for most sklearn algorithms, e.g., LogisticRegression, SVM.
-- Turns $k$-class classification into $k$ binary classification problems.
-- Builds $k$ binary classifiers; for each classifier, the class is fitted against all the other classes.
-- For *k* classes, that means we need *k* models in total, e.g.:
-    - blue vs (red & orange)
-    - red vs (blue & orange)
-    - orange vs (blue & red)
-- We use all models to make a prediction, and then choose the category with the highest prediction/probability/confidence.
-- You can do this yourself for any binary classifier using [`OneVsRestClassifier`](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)
-
-from sklearn.multiclass import OneVsRestClassifier
-
-data = datasets.load_wine()
-X = pd.DataFrame(data['data'], columns=data["feature_names"])
-X = X[['alcohol', 'malic_acid']]
-y = data['target']
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2021)
-X_train.head()
-
-ovr = OneVsRestClassifier(LogisticRegression(max_iter=100000))
-ovr.fit(X_train, y_train)
-ovr.score(X_train, y_train)
-
-#plot_classifier(X_train, y_train, ovr);
-
-### One-vs-One
-
-- One-vs-One fits a model to all pairs of categories.
-- If there are 3 classes ("blue", "red", "orange"), we fit a model on:
-    - blue vs red
-    - blue vs orange
-    - red vs orange
-- So we have 3 models in this case, or in general $\frac{n*(n-1)}{2}$
-- For 100 classes, we fit 4950 models!
-- All models are used during prediction and the classification with the most “votes” is predicted.
-- Computationally expensive, but can be good for models that scale poorly with data, because each model in OvO only uses a fraction of the dataset.
-
-from sklearn.multiclass import OneVsOneClassifier
-
-ovo = OneVsOneClassifier(LogisticRegression(max_iter=100000))
-ovo.fit(X_train, y_train)
-ovo.score(X_train, y_train)
-
-#plot_classifier(X_train, y_train, ovo);
-
-## Let's Practice 
-
-1. Which wrapper is more computationally expensive?
-2. Name a model that can handle multi-class problems without any issues or needing any additional strategies.
-3. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?
-4. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?
-
-**True or False:**    
-5. Decision Trees use coefficients for multi-class data.
-
 ## What We've Learned Today
 
 - The name of the function used to bound our values between 0 and 1
@@ -964,5 +877,4 @@ ovo.score(X_train, y_train)
 - One of the hyperparameters of `Ridge` (`alpha`)
 - One of the hyperparameters of `LogisticRegression` (`C`).
 - How logistic regression is compared to naive Bayes.
-- How to carry out multi-class classification.
 
