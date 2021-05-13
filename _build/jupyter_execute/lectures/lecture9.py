@@ -393,7 +393,7 @@ Which one is relevant, depends upon whether you think each class should have the
 
 In addition to this lecture, my wonderful colleague [Varada Kolhatkar](https://kvarada.github.io/) has made a cheat sheet for these metrics available in a larger size [here](https://raw.githubusercontent.com/UBC-MDS/introduction-machine-learning/master/static/module7/evaluation-metrics.png).
 
-<img src="https://raw.githubusercontent.com/UBC-MDS/introduction-machine-learning/master/static/module7/evaluation-metrics.png"  width = "50%" alt="404 image" />
+<img src="https://raw.githubusercontent.com/UBC-MDS/introduction-machine-learning/master/static/module7/evaluation-metrics.png"  width = "70%" alt="404 image" />
 
 ### Imbalanced datasets
 
