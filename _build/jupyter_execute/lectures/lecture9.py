@@ -527,7 +527,7 @@ We are paying a "fee" in precision for a greater recall value.
 
 ## Let's Practice
 
-<img src="imgs/Q_cm.png"  width = "50%" alt="404 image" />
+<img src="imgs/Q_cm.png"  width = "70%" alt="404 image" />
 
 Use the diagram above to answer the next .... questions.
 
