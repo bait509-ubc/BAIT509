@@ -162,6 +162,11 @@
    Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -552,136 +557,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>workclass</th>
-      <th>fnlwgt</th>
-      <th>education</th>
-      <th>education_num</th>
-      <th>marital_status</th>
-      <th>occupation</th>
-      <th>relationship</th>
-      <th>race</th>
-      <th>sex</th>
-      <th>capital_gain</th>
-      <th>capital_loss</th>
-      <th>hours_per_week</th>
-      <th>native_country</th>
-      <th>income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>74</td>
-      <td>State-gov</td>
-      <td>88638</td>
-      <td>Doctorate</td>
-      <td>16</td>
-      <td>Never-married</td>
-      <td>Prof-specialty</td>
-      <td>Other-relative</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>3683</td>
-      <td>20</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>41</td>
-      <td>Private</td>
-      <td>70037</td>
-      <td>Some-college</td>
-      <td>10</td>
-      <td>Never-married</td>
-      <td>Craft-repair</td>
-      <td>Unmarried</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>3004</td>
-      <td>60</td>
-      <td>?</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>45</td>
-      <td>Private</td>
-      <td>172274</td>
-      <td>Doctorate</td>
-      <td>16</td>
-      <td>Divorced</td>
-      <td>Prof-specialty</td>
-      <td>Unmarried</td>
-      <td>Black</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>3004</td>
-      <td>35</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>38</td>
-      <td>Self-emp-not-inc</td>
-      <td>164526</td>
-      <td>Prof-school</td>
-      <td>15</td>
-      <td>Never-married</td>
-      <td>Prof-specialty</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>2824</td>
-      <td>45</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52</td>
-      <td>Private</td>
-      <td>129177</td>
-      <td>Bachelors</td>
-      <td>13</td>
-      <td>Widowed</td>
-      <td>Other-service</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>2824</td>
-      <td>20</td>
-      <td>United-States</td>
-      <td>&gt;50K</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="section" id="data-splitting">
 <h3>1.1 Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h3>
@@ -696,31 +571,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_1</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span><span class="n">test_df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">e3de9bf1b3dc</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_1_1</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span><span class="n">test_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;train_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -736,20 +590,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">de5dab7a10f0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### BEGIN STARTER CODE</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">train_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">### END STARTER CODE</span>
-
-<span class="ne">NameError</span>: name &#39;train_df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>We see some missing values represented with a “?”. Probably these were the questions not answered by some people during the census.  Usually <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> or <code class="docutils literal notranslate"><span class="pre">.info()</span></code> methods would give you information on missing values. But here, they won’t pick “?” as missing values as they are encoded as strings instead of an actual NaN in Python. So let’s replace them with <code class="docutils literal notranslate"><span class="pre">np.NaN</span></code> before we carry out EDA. If you do not do it, you’ll encounter an error later on when you try to pass this data to a classifier.</p>
 <div class="cell docutils container">
@@ -760,20 +600,6 @@
 <span class="n">test_df_nan</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
 <span class="n">train_df_nan</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="c1">### END STARTER CODE</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">0</span><span class="n">c08bda7d053</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### BEGIN STARTER CODE</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">train_df_nan</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">test_df_nan</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">train_df_nan</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;train_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -796,18 +622,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">d6e3116b0e10</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -815,44 +629,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">85408</span><span class="n">b15f349</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_1_2_1</span><span class="p">(</span><span class="n">numeric_features</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_1_2_1</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">answer</span><span class="p">)]</span>
-<span class="ne">---&gt; </span><span class="mi">23</span>     <span class="k">assert</span> <span class="n">sha1</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;9b2c609d4b4ff7198bafcf7cb922e7624ddd8782&#39;</span><span class="p">,</span> <span class="s2">&quot;Your answer is incorrect. Are you analysing the dataframe correctly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> 
-
-<span class="ne">AssertionError</span>: Your answer is incorrect. Are you analysing the dataframe correctly?
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_2_2</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mf">6e17</span><span class="n">d3ac1980</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_1_2_2</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_1_2_2</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">answer</span><span class="p">)]</span>
-<span class="ne">---&gt; </span><span class="mi">29</span>     <span class="k">assert</span> <span class="n">sha1</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;fa4f9a4ffa58804eb3108765beeeaf2497beb8c2&#39;</span><span class="p">,</span> <span class="s2">&quot;Your answer is incorrect. Are you analysing the dataframe correctly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> 
-
-<span class="ne">AssertionError</span>: Your answer is incorrect. Are you analysing the dataframe correctly?
 </pre></div>
 </div>
 </div>
@@ -872,39 +652,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">5</span><span class="n">d9cfc4fabfd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_3</span><span class="p">(</span><span class="n">train_stats</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">95</span><span class="n">fee903aad4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_1_3</span><span class="p">(</span><span class="n">train_stats</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_1_3</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> 
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="k">def</span> <span class="nf">test_1_3</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">33</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">assert</span> <span class="n">answer</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;The dimensions of your solution is incorrect. Are you using the describe function?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="k">assert</span> <span class="s1">&#39;std&#39;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="s2">&quot;Your solution is missing some values. Are you using the describe function?&quot;</span>
-
-<span class="ne">AssertionError</span>: Your answer does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -960,18 +711,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="n">ce9655156f64</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> 
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="c1"># your code here</span>
-<span class="ne">---&gt; </span><span class="mi">39</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="explaining-the-visualizations">
@@ -996,39 +735,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">bd80cc601a11</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_6</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mi">19</span><span class="n">cc7719022f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_1_6</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_1_6</span><span class="nt">(answer1, answer2, answer3, answer4)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> 
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="k">def</span> <span class="nf">test_1_6</span><span class="p">(</span><span class="n">answer1</span><span class="p">,</span><span class="n">answer2</span><span class="p">,</span><span class="n">answer3</span><span class="p">,</span><span class="n">answer4</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">41</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer3</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-
-<span class="ne">AssertionError</span>: Your answer does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -1117,39 +827,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="mi">642</span><span class="n">b4bb33097</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_2_2</span><span class="p">(</span><span class="n">numeric_transformer</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="n">fe04c5ce5f13</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_2_2</span><span class="p">(</span><span class="n">numeric_transformer</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_2_2</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> 
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">def</span> <span class="nf">test_2_2</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">assert</span> <span class="s1">&#39;median&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Make sure your using the simple imputer with the median strategy.&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;StandardScaler()&#39;</span><span class="p">,</span> <span class="s2">&quot;Make sure you are using the standard scaler for scaling of the data.&quot;</span>
-
-<span class="ne">AssertionError</span>: Your answer does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -1170,39 +851,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mf">30e25</span><span class="n">db296b5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_2_3</span><span class="p">(</span><span class="n">categorical_transformer</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="n">c7d7badaabaa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_2_3</span><span class="p">(</span><span class="n">categorical_transformer</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment2/test_assignment2.py</span> in <span class="ni">test_2_3</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> 
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="k">def</span> <span class="nf">test_2_3</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="k">assert</span> <span class="s1">&#39;int&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="p">)[</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;Make sure you are specifying the data type to be int for the encoding.&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="k">assert</span> <span class="s1">&#39;ignore&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">answer</span><span class="p">)[</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;Make sure you are using the &#39;ignore&#39; method to handle unknown cases.&quot;</span>
-
-<span class="ne">AssertionError</span>: Your answer does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -1227,32 +879,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="mi">62</span><span class="n">b111ea18d2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_2_4</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">571470752</span><span class="n">bc9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test_2_4</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;preprocessor&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1274,17 +904,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="main-pipeline">
@@ -1298,18 +917,6 @@
 
 <span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="mi">55</span><span class="n">d03ae13a25</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -1336,18 +943,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="n">e0922e7a2861</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s take a look at the scores below:</p>
 <div class="cell docutils container">
@@ -1358,20 +953,6 @@
                                          <span class="s2">&quot;mean_train_score&quot;</span><span class="p">,</span>
                                          <span class="s2">&quot;rank_test_score&quot;</span><span class="p">]]</span>
 <span class="c1">### END STARTER CODE</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">f19147859a06</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### BEGIN STARTER CODE</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">random_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)[[</span><span class="s2">&quot;params&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                                          <span class="s2">&quot;mean_test_score&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                                          <span class="s2">&quot;mean_train_score&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                                          <span class="s2">&quot;rank_test_score&quot;</span><span class="p">]]</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;cv_results_&#39;
 </pre></div>
 </div>
 </div>
@@ -1393,18 +974,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="n">cf1e6f969f07</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <p>YOUR ANSWER HERE</p>
 </div>
@@ -1422,17 +991,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>

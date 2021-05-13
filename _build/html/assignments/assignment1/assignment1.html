@@ -164,6 +164,11 @@
    Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -615,56 +620,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SupportiveRUS</th>
-      <th>Flexiblez</th>
-      <th>SadStartup</th>
-      <th>target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>?</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Next, you ask the following questions to some of your friends (who you think have similar notions of happiness) regarding their jobs:</p>
 <ol class="simple">
@@ -701,105 +656,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SupportiveRUS</th>
-      <th>Flexiblez</th>
-      <th>SadStartup</th>
-      <th>target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>happy</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>happy</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>happy</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>unhappy</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>unhappy</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>happy</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>happy</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>unhappy</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>unhappy</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>unhappy</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 <div class="section" id="decision-stump-by-hand">
@@ -822,39 +678,10 @@ example:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="n">a001083204c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_1</span><span class="p">(</span><span class="n">predict_employees</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">98</span><span class="n">ee7308be67</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_1</span><span class="p">(</span><span class="n">predict_employees</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_1</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">def</span> <span class="nf">test1_1</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Your answer does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="s2">&quot;Make sure your answer is of type list.&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">answer</span><span class="p">]</span>
-
-<span class="ne">AssertionError</span>: Your answer does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -874,39 +701,10 @@ example:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">422</span><span class="n">f53a0f168</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_2</span><span class="p">(</span><span class="n">supportive_colleagues_acc</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">3</span><span class="n">bf9678a9742</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_2</span><span class="p">(</span><span class="n">supportive_colleagues_acc</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_2</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> 
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">def</span> <span class="nf">test1_2</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">assert</span> <span class="n">sha1</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;356a192b7913b04c54574d18c28d46e6395428ab&quot;</span><span class="p">,</span> <span class="s2">&quot;Your answer is incorrect. Are you counting the cases correctly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
-
-<span class="ne">TypeError</span>: type NoneType doesn&#39;t define __round__ method
 </pre></div>
 </div>
 </div>
@@ -928,39 +726,10 @@ example:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">6949</span><span class="n">c984c79e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_3</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">7</span><span class="n">b729f7d9271</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_3</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_3</span><span class="nt">(answer1, answer2)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">def</span> <span class="nf">test1_3</span><span class="p">(</span><span class="n">answer1</span><span class="p">,</span> <span class="n">answer2</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">20</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The &#39;X&#39; variable does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The &#39;y&#39; variable does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">assert</span> <span class="n">answer1</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;The size of &#39;X&#39; is incorrect. Are you dropping the target column?&quot;</span>
-
-<span class="ne">AssertionError</span>: The &#39;X&#39; variable does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -982,39 +751,10 @@ Build a decision tree named <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">7</span><span class="n">d175fbe51fa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_4</span><span class="p">(</span><span class="n">toy_tree</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="n">f7b7e0544b8c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_4</span><span class="p">(</span><span class="n">toy_tree</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_4</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> 
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">def</span> <span class="nf">test1_4</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">28</span>     <span class="k">assert</span> <span class="n">answer</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;criterion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s2">&quot;Are you initializing a decision tree classifier properly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="k">assert</span> <span class="n">answer</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;splitter&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s2">&quot;Are you initializing a decision tree classifier properly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;get_params&#39;
 </pre></div>
 </div>
 </div>
@@ -1034,39 +774,10 @@ Save the results in an object named <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">0</span><span class="n">a916d6e4009</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_5</span><span class="p">(</span><span class="n">toy_score</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">a2bcc05b4488</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_5</span><span class="p">(</span><span class="n">toy_score</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_5</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> 
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="k">def</span> <span class="nf">test1_5</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">33</span>     <span class="k">assert</span> <span class="n">sha1</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">answer</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;936931368287d72a5bda62a8a3e0d2ed6638fa8f&quot;</span><span class="p">,</span> <span class="s2">&quot;The score is incorrect. Are you fitting the model correctly?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> 
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#39;
 </pre></div>
 </div>
 </div>
@@ -1092,39 +803,10 @@ Drop the column <code class="docutils literal notranslate"><span class="pre">tar
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mf">00e6992</span><span class="n">e5a28</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_7</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="mi">0</span><span class="n">d73d8b5bf65</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_7</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
-
-<span class="nn">~/Documents/BAIT509/BAIT509/assignments/assignment1/tests_assignment1.py</span> in <span class="ni">test1_7</span><span class="nt">(answer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> 
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">def</span> <span class="nf">test1_7</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">37</span>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The &#39;X&#39; variable does not exist. Have you passed in the correct variable?&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="k">assert</span> <span class="s1">&#39;target&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">answer</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;Make sure you are not selecting the target column as part of &#39;X&#39;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="k">assert</span> <span class="n">answer</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;The size of &#39;X&#39; is incorrect. Are you dropping the target column?&quot;</span>
-
-<span class="ne">AssertionError</span>: The &#39;X&#39; variable does not exist. Have you passed in the correct variable?
 </pre></div>
 </div>
 </div>
@@ -1141,31 +823,10 @@ Drop the column <code class="docutils literal notranslate"><span class="pre">tar
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test1_8</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="n">c8080a22831c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test1_8</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;predicted&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1202,59 +863,6 @@ The dataset contains a number of features of songs from 2017 and a binary target
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="mi">89</span><span class="n">cf9eb628b5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### BEGIN STARTER CODE</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">spotify_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;spotify.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">spotify_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">### END STARTER CODE</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">685</span> 
-<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">687</span> 
-<span class="g g-Whitespace">    </span><span class="mi">688</span> 
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> 
-<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> 
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> 
-<span class="ne">--&gt; </span><span class="mi">936</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span> 
-<span class="g g-Whitespace">    </span><span class="mi">938</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1167</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1168</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1996</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
-<span class="g g-Whitespace">   </span><span class="mi">1997</span> 
-<span class="ne">-&gt; </span><span class="mi">1998</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1999</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
-<span class="g g-Whitespace">   </span><span class="mi">2000</span> 
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;spotify.csv&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="split-your-data">
@@ -1268,31 +876,10 @@ The dataset contains a number of features of songs from 2017 and a binary target
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test2_1</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">8</span><span class="n">d1de27b493f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">t</span><span class="o">.</span><span class="n">test2_1</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;test_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1309,86 +896,6 @@ The dataset contains a number of features of songs from 2017 and a binary target
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/api.py</span> in <span class="ni">to_dict</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> 
-<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">373</span>             <span class="n">dct</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TopLevelMixin</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="n">dct</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/schema/channels.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>             <span class="k">elif</span> <span class="ow">not</span> <span class="p">(</span><span class="n">type_in_shorthand</span> <span class="ow">or</span> <span class="n">type_defined_explicitly</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">40</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> encoding field is specified without a type; &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>                                      <span class="s2">&quot;the type cannot be inferred because it does not &quot;</span>
-<span class="nn">     42                                      &quot;match any column</span> in <span class="ni">the data.&quot;.format</span><span class="nt">(shorthand))</span>
-
-<span class="ne">ValueError</span>: danceability encoding field is specified without a type; the type cannot be inferred because it does not match any column in the data.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alt.Chart(...)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Instead, let’s make a separate plot a look at the <code class="docutils literal notranslate"><span class="pre">danceability</span></code> distribution for songs that are disliked vs liked (a <code class="docutils literal notranslate"><span class="pre">target</span></code> value of <code class="docutils literal notranslate"><span class="pre">1</span></code> vs <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
 <div class="cell docutils container">
@@ -1398,121 +905,6 @@ The dataset contains a number of features of songs from 2017 and a binary target
     <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
     <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Distribution for separate target values values&#39;</span><span class="p">)</span>
 <span class="n">histogram_facet</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/api.py</span> in <span class="ni">to_dict</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> 
-<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">373</span>             <span class="n">dct</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TopLevelMixin</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="n">dct</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/api.py</span> in <span class="ni">to_dict</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> 
-<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">373</span>             <span class="n">dct</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TopLevelMixin</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="n">dct</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/schema/channels.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>             <span class="k">elif</span> <span class="ow">not</span> <span class="p">(</span><span class="n">type_in_shorthand</span> <span class="ow">or</span> <span class="n">type_defined_explicitly</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">40</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> encoding field is specified without a type; &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>                                      <span class="s2">&quot;the type cannot be inferred because it does not &quot;</span>
-<span class="nn">     42                                      &quot;match any column</span> in <span class="ni">the data.&quot;.format</span><span class="nt">(shorthand))</span>
-
-<span class="ne">ValueError</span>: danceability encoding field is specified without a type; the type cannot be inferred because it does not match any column in the data.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alt.FacetChart(...)
 </pre></div>
 </div>
 </div>
@@ -1526,86 +918,6 @@ The dataset contains a number of features of songs from 2017 and a binary target
     <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;target:N&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
     <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Distribution for separate target values values&#39;</span><span class="p">)</span>
 <span class="n">histogram_overlayed</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/api.py</span> in <span class="ni">to_dict</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span> 
-<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">373</span>             <span class="n">dct</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TopLevelMixin</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>         <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>             <span class="n">dct</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">325</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>                 <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span><span class="p">},</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>                 <span class="n">validate</span><span class="o">=</span><span class="n">sub_validate</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="k">return</span> <span class="p">{</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>             <span class="n">k</span><span class="p">:</span> <span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-<span class="nn">     62             for k, v</span> in <span class="ni">obj.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>             <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Undefined</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/utils/schemapi.py</span> in <span class="ni">_todict</span><span class="nt">(obj, validate, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="sd">&quot;&quot;&quot;Convert an object to a dict representation.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SchemaBase</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">return</span> <span class="p">[</span><span class="n">_todict</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/altair/vegalite/v4/schema/channels.py</span> in <span class="ni">to_dict</span><span class="nt">(self, validate, ignore, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>             <span class="k">elif</span> <span class="ow">not</span> <span class="p">(</span><span class="n">type_in_shorthand</span> <span class="ow">or</span> <span class="n">type_defined_explicitly</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">40</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> encoding field is specified without a type; &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>                                      <span class="s2">&quot;the type cannot be inferred because it does not &quot;</span>
-<span class="nn">     42                                      &quot;match any column</span> in <span class="ni">the data.&quot;.format</span><span class="nt">(shorthand))</span>
-
-<span class="ne">ValueError</span>: danceability encoding field is specified without a type; the type cannot be inferred because it does not match any column in the data.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alt.Chart(...)
 </pre></div>
 </div>
 </div>
@@ -1659,18 +971,6 @@ The dataset contains a number of features of songs from 2017 and a binary target
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">bdd75fdf9389</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> 
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="c1"># your code here</span>
-<span class="ne">---&gt; </span><span class="mi">31</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="explaining-histograms">
@@ -1697,48 +997,6 @@ Recall that in machine learning what we care about is generalization; we want to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="n">b12d5f00f166</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### BEGIN STARTER CODE</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">,</span> <span class="s1">&#39;artist&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">,</span> <span class="s1">&#39;artist&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4158</span>                 <span class="n">weight</span>  <span class="mf">1.0</span>     <span class="mf">0.8</span>
-<span class="g g-Whitespace">   </span><span class="mi">4159</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">4160</span><span class="s2">         return super().drop(</span>
-<span class="g g-Whitespace">   </span><span class="mi">4161</span><span class="s2">             labels=labels,</span>
-<span class="g g-Whitespace">   </span><span class="mi">4162</span><span class="s2">             axis=axis,</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3876</span><span class="s2">         for axis, labels in axes.items():</span>
-<span class="g g-Whitespace">   </span><span class="mi">3877</span><span class="s2">             if labels is not None:</span>
-<span class="ne">-&gt; </span><span class="mi">3878</span><span class="s2">                 obj = obj._drop_axis(labels, axis, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3879</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3880</span><span class="s2">         if inplace:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">_drop_axis</span><span class="nt">(self, labels, axis, level, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3910</span><span class="s2">                 new_axis = axis.drop(labels, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3911</span><span class="s2">             else:</span>
-<span class="ne">-&gt; </span><span class="mi">3912</span><span class="s2">                 new_axis = axis.drop(labels, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3913</span><span class="s2">             result = self.reindex(**{axis_name: new_axis})</span>
-<span class="g g-Whitespace">   </span><span class="mi">3914</span><span class="s2"> </span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5274</span><span class="s2">         if mask.any():</span>
-<span class="g g-Whitespace">   </span><span class="mi">5275</span><span class="s2">             if errors != &quot;ignore&quot;:</span>
-<span class="ne">-&gt; </span><span class="mi">5276</span><span class="s2">                 raise KeyError(f&quot;</span><span class="si">{labels[mask]}</span><span class="s2"> not found in axis&quot;)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5277</span><span class="s2">             indexer = indexer[~mask]</span>
-<span class="g g-Whitespace">   </span><span class="mi">5278</span><span class="s2">         return self.delete(indexer)</span>
-
-<span class="ne">KeyError</span>: &quot;[&#39;song_title&#39; &#39;artist&#39;] not found in axis&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="building-a-dummy-classifier">
 <h3>3.1 Building a Dummy Classifier<a class="headerlink" href="#building-a-dummy-classifier" title="Permalink to this headline">¶</a></h3>
@@ -1749,17 +1007,6 @@ Recall that in machine learning what we care about is generalization; we want to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -1777,17 +1024,6 @@ Recall that in machine learning what we care about is generalization; we want to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="question-3-3-decision-tree-training-and-validation-scores">
@@ -1798,17 +1034,6 @@ Recall that in machine learning what we care about is generalization; we want to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">28</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -1827,17 +1052,6 @@ Recall that in machine learning what we care about is generalization; we want to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">29</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="question-3-5-k-nn-training-and-validation-scores">
@@ -1848,17 +1062,6 @@ Recall that in machine learning what we care about is generalization; we want to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">30</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -1893,17 +1096,6 @@ Recall that in machine learning what we care about is generalization; we want to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="plotting-and-interpreting">
 <h3>4.2 Plotting and interpreting<a class="headerlink" href="#plotting-and-interpreting" title="Permalink to this headline">¶</a></h3>
@@ -1914,17 +1106,6 @@ Recall that in machine learning what we care about is generalization; we want to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">32</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -1941,17 +1122,6 @@ Recall that in machine learning what we care about is generalization; we want to
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <p>YOUR ANSWER HERE</p>
 </div>
@@ -1963,17 +1133,6 @@ Recall that in machine learning what we care about is generalization; we want to
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="mi">23</span><span class="n">c3e733453d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your code here</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>

@@ -164,6 +164,11 @@
    Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -820,10 +825,10 @@ For min_sample_split = 10 accuracy= 0.64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001942
-score_time     0.001334
-test_score     0.836667
-train_score    0.958278
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002964
+score_time     0.001910
+test_score     0.832667
+train_score    0.957826
 dtype: float64
 </pre></div>
 </div>
@@ -1269,8 +1274,8 @@ Take the mean of each column and assess your model.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.004259
-score_time     0.003423
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.009682
+score_time     0.006163
 test_score     0.881633
 train_score    0.915306
 dtype: float64
@@ -1572,55 +1577,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="n">a60dc7446742</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Loading in the data</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">tweets_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/balanced_tweets.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Split the dataset into the feature table `X` and the target value `y`</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">X</span> <span class="o">=</span> <span class="n">tweets_df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
-<span class="g g-Whitespace">    </span><span class="mi">684</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">685</span> 
-<span class="ne">--&gt; </span><span class="mi">686</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">687</span> 
-<span class="g g-Whitespace">    </span><span class="mi">688</span> 
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> 
-<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">452</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">fp_or_buf</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> 
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> 
-<span class="ne">--&gt; </span><span class="mi">936</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span> 
-<span class="g g-Whitespace">    </span><span class="mi">938</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">def</span> <span class="nf">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1167</span>         <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1168</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">CParserWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span>             <span class="k">if</span> <span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1996</span>         <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;usecols&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usecols</span>
-<span class="g g-Whitespace">   </span><span class="mi">1997</span> 
-<span class="ne">-&gt; </span><span class="mi">1998</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">TextReader</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1999</span>         <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
-<span class="g g-Whitespace">   </span><span class="mi">2000</span> 
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/parsers.pyx</span> in <span class="ni">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="nt">()</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/balanced_tweets.csv&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3219    Buri handwoven bags : • Buri handbag - Php 280...
+3825    Energetic and Comedic Redhead Teen, just seen ...
+1544    A 63 year old man charged in connection with a...
+1050    Water levels in Venice drastically drop two mo...
+296     2 buildings on fire at seminole State College ...
+Name: text, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1658,159 +1620,9 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean training score: nan
-Mean Validation score: nan
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py:610: FitFailedWarning: Estimator fit failed. The score on this train-test partition for these parameters will be set to nan. Details: 
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py&quot;, line 593, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py&quot;, line 346, in fit
-    self._final_estimator.fit(Xt, y, **fit_params_last_step)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py&quot;, line 169, in fit
-    X, y = self._validate_data(X, y, dtype=np.float64,
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/base.py&quot;, line 433, in _validate_data
-    X, y = check_X_y(X, y, **check_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 63, in inner_f
-    return f(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 831, in check_X_y
-    check_consistent_length(X, y)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 262, in check_consistent_length
-    raise ValueError(&quot;Found input variables with inconsistent numbers of&quot;
-ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
-
-  warnings.warn(&quot;Estimator fit failed. The score on this train-test&quot;
-/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py:610: FitFailedWarning: Estimator fit failed. The score on this train-test partition for these parameters will be set to nan. Details: 
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py&quot;, line 593, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py&quot;, line 346, in fit
-    self._final_estimator.fit(Xt, y, **fit_params_last_step)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py&quot;, line 169, in fit
-    X, y = self._validate_data(X, y, dtype=np.float64,
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/base.py&quot;, line 433, in _validate_data
-    X, y = check_X_y(X, y, **check_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 63, in inner_f
-    return f(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 831, in check_X_y
-    check_consistent_length(X, y)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 262, in check_consistent_length
-    raise ValueError(&quot;Found input variables with inconsistent numbers of&quot;
-ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
-
-  warnings.warn(&quot;Estimator fit failed. The score on this train-test&quot;
-/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py:610: FitFailedWarning: Estimator fit failed. The score on this train-test partition for these parameters will be set to nan. Details: 
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py&quot;, line 593, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py&quot;, line 346, in fit
-    self._final_estimator.fit(Xt, y, **fit_params_last_step)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py&quot;, line 169, in fit
-    X, y = self._validate_data(X, y, dtype=np.float64,
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/base.py&quot;, line 433, in _validate_data
-    X, y = check_X_y(X, y, **check_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 63, in inner_f
-    return f(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 831, in check_X_y
-    check_consistent_length(X, y)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 262, in check_consistent_length
-    raise ValueError(&quot;Found input variables with inconsistent numbers of&quot;
-ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
-
-  warnings.warn(&quot;Estimator fit failed. The score on this train-test&quot;
-/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py:610: FitFailedWarning: Estimator fit failed. The score on this train-test partition for these parameters will be set to nan. Details: 
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py&quot;, line 593, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py&quot;, line 346, in fit
-    self._final_estimator.fit(Xt, y, **fit_params_last_step)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py&quot;, line 169, in fit
-    X, y = self._validate_data(X, y, dtype=np.float64,
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/base.py&quot;, line 433, in _validate_data
-    X, y = check_X_y(X, y, **check_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 63, in inner_f
-    return f(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 831, in check_X_y
-    check_consistent_length(X, y)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 262, in check_consistent_length
-    raise ValueError(&quot;Found input variables with inconsistent numbers of&quot;
-ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
-
-  warnings.warn(&quot;Estimator fit failed. The score on this train-test&quot;
-/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py:610: FitFailedWarning: Estimator fit failed. The score on this train-test partition for these parameters will be set to nan. Details: 
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/model_selection/_validation.py&quot;, line 593, in _fit_and_score
-    estimator.fit(X_train, y_train, **fit_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py&quot;, line 346, in fit
-    self._final_estimator.fit(Xt, y, **fit_params_last_step)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py&quot;, line 169, in fit
-    X, y = self._validate_data(X, y, dtype=np.float64,
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/base.py&quot;, line 433, in _validate_data
-    X, y = check_X_y(X, y, **check_params)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 63, in inner_f
-    return f(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 831, in check_X_y
-    check_consistent_length(X, y)
-  File &quot;/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py&quot;, line 262, in check_consistent_length
-    raise ValueError(&quot;Found input variables with inconsistent numbers of&quot;
-ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
-
-  warnings.warn(&quot;Estimator fit failed. The score on this train-test&quot;
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">a44062d38543</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> 
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># 5. Train your pipeline on the training set</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># 6. Score the pipeline  on the test set</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span> <span class="o">!=</span> <span class="s1">&#39;passthrough&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>                 <span class="n">fit_params_last_step</span> <span class="o">=</span> <span class="n">fit_params_steps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
-<span class="ne">--&gt; </span><span class="mi">346</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params_last_step</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> 
-<span class="g g-Whitespace">    </span><span class="mi">348</span>         <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/svm/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>             <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">169</span>             <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span>                                        <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>                                        <span class="n">accept_large_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span>                 <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">432</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">433</span>                 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span>             <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> 
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="n">extra_args</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_args</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>             <span class="k">if</span> <span class="n">extra_args</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">63</span>                 <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> 
-<span class="g g-Whitespace">     </span><span class="mi">65</span>             <span class="c1"># extra_args &gt; 0</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">829</span>         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">830</span> 
-<span class="ne">--&gt; </span><span class="mi">831</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">832</span> 
-<span class="g g-Whitespace">    </span><span class="mi">833</span>     <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-
-<span class="nn">/usr/local/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_consistent_length</span><span class="nt">(*arrays)</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span>     <span class="n">uniques</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">262</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Found input variables with inconsistent numbers of&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">263</span>                          <span class="s2">&quot; samples: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span> 
-
-<span class="ne">ValueError</span>: Found input variables with inconsistent numbers of samples: [3, 245]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean training score: 0.9821853538313572
+Mean Validation score: 0.8326422696721526
+Test score: 0.83451536643026
 </pre></div>
 </div>
 </div>
@@ -1938,15 +1750,41 @@ ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">7</span><span class="n">da0048388e0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">test_bow_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;test_bow_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>urgent</th>
+      <th>prize</th>
+      <th>sauder</th>
+      <th>free</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>I like Sauder</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Let’s do some of the steps here:</p>
 <div class="section" id="spam">
@@ -2082,16 +1920,20 @@ ValueError: Found input variables with inconsistent numbers of samples: [3, 196]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">a8bbf3627c97</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># 2. Conduct grid search with 10 fold cross-validation</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">bb_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># 3. Train your  pipeline with grid search.</span>
-
-<span class="ne">NameError</span>: name &#39;GridSearchCV&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 10 folds for each of 14 candidates, totalling 140 fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    2.0s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 40, &#39;knn__weights&#39;: &#39;uniform&#39;}
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Done 140 out of 140 | elapsed:    2.2s finished
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9193548387096774
 </pre></div>
 </div>
 </div>
@@ -2313,19 +2155,65 @@ b.As the capture rate value increases, will the model more likely predict a lege
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">5</span><span class="n">dccab5d9f6e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># 1. Build a pipeline containing the column transformer and a Logistic Regression model</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># use the parameter class_weight=&quot;balanced&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">pkm_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># 1. Fit your pipeline on the training data</span>
-
-<span class="ne">NameError</span>: name &#39;LogisticRegression&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logistic Regression Test Score: 0.9006211180124224
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>features</th>
+      <th>coefficients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>attack</td>
+      <td>0.690834</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>defense</td>
+      <td>1.126300</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sp_attack</td>
+      <td>1.026617</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sp_defense</td>
+      <td>0.655162</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>speed</td>
+      <td>1.116679</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>capture_rt</td>
+      <td>-0.792950</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>a. Which feature contributes the most in predicting if an example is legendary or not.</p>
 <blockquote>

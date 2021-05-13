@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAIT 509 Assignment 3: Logistic Regression and Evaluation Metrics &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/assignments/assignment3/assignment3.html" />
+    <link rel="shortcut icon" href="../../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/assignments/assignment3/assignment3.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="BAIT 509 Assignment 3: Logistic Regression and Evaluation Metrics" />
+<meta property="og:description" content="BAIT 509 Assignment 3: Logistic Regression and Evaluation Metrics  Evaluates: Lectures 7 - 9.  Rubrics: Your solutions will be assessed primarily on the accurac" />
+<meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/bait_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../things_to_know/who.html">
+   Who: Hayley Boyce
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture1.html">
+   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture2.html">
+   Lecture 2 - Splitting and Cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture3.html">
+   Lecture 3 - Baseline, k-Nearest Neighbours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture4.html">
+   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture5.html">
+   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture6.html">
+   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture7.html">
+   Lecture 7 - Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture8.html">
+   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lectures/lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../things_to_know/attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/assignments/assignment3/assignment3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bait509-ubc/BAIT509"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2Fassignments/assignment3/assignment3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bait509-ubc/BAIT509/edit/master/assignments/assignment3/assignment3.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bait509-ubc/BAIT509/master?urlpath=tree/assignments/assignment3/assignment3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-submission">
+   Tidy Submission
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answering-questions">
+   Answering Questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-and-learning-goals-a-name-in-a">
+   Introduction and learning goals
+   <a name="in">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-precision-recall-and-f1-score-by-hand-without-sklearn-a-name-1-a">
+   Exercise 1:  Precision, recall, and f1 score “by hand” (without
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sklearn
+    </span>
+   </code>
+   )
+   <a name="1">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-a">
+     Model A
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-b">
+     Model B
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#positive-vs-negative-class">
+     1.1 Positive vs. negative class
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy">
+     1.2 Accuracy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-model-would-you-pick">
+     1.3 Which model would you pick?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-a-precision-recall-f1-score">
+     1.4 Model A - Precision, recall, f1-score
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-b-precision-recall-f1-score">
+     1.5 Model B - Precision, recall, f1-score
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metric-choice">
+     1.6 Metric choice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-choice">
+     1.7 Model choice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-sentiment-analysis-on-the-imdb-dataset-model-building-a-name-3-a">
+   Exercise 2: Sentiment analysis on the IMDB dataset: model building
+   <a name="3">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-and-target-objects">
+     2.1 Feature and target objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dummy-classifier">
+     2.2 Dummy classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dummy-classifier-mean">
+     2.3 Dummy classifier mean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pipeline">
+     2.4 Pipeline
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization">
+     2.5 Hyperparameter optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-hyperparameters">
+     2.6  Best hyperparameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-and-test-scores-of-best-scoring-model">
+     2.7 Train and test scores of best scoring model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameters-and-the-fundamental-tradeoff">
+     2.8 Hyperparameters and the fundamental tradeoff
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     2.9 Confusion matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-report">
+     2.10 Classification report
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-remarks">
+     2.11 Model Remarks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-model-interpretation-a-name-4-a">
+   Exercise 3: Model Interpretation
+   <a name="4">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-most-informative-positive-words">
+     3.1 Get the most informative positive words
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-most-informative-negative-words">
+     3.2 Get the most informative negative words
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explaining-the-coefficients">
+     3.3 Explaining the coefficients?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-predict-vs-predict-proba">
+     3.4 Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       predict
+      </span>
+     </code>
+     vs
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       predict_proba
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-into-the-probability-scores-with-positive-reviews">
+     3.5 Looking into the probability scores with positive reviews
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-into-the-probability-scores-with-negative-reviews">
+     3.6 Looking into the probability scores with negative reviews
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-at-uncertain-reviews-optional">
+     3.7 Looking at uncertain reviews (optional)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-at-wrongly-predicted-reviews-optional">
+     3.8 Looking at wrongly predicted reviews. (optional)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission-to-canvas">
+     Submission to Canvas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#congratulations-on-finishing-assignment-3">
+     Congratulations on finishing Assignment 3!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bait-509-assignment-3-logistic-regression-and-evaluation-metrics">
+<h1>BAIT 509 Assignment 3: Logistic Regression and Evaluation Metrics<a class="headerlink" href="#bait-509-assignment-3-logistic-regression-and-evaluation-metrics" title="Permalink to this headline">¶</a></h1>
+<p><strong>Evaluates</strong>: Lectures 7 - 9.</p>
+<p><strong>Rubrics</strong>: Your solutions will be assessed primarily on the accuracy of your coding, as well as the clarity and correctness of your written responses. The MDS rubrics provide a good guide as to what is expected of you in your responses to the assignment questions and how the TAs will grade your answers. See the following links for more details:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/UBC-MDS/public/blob/master/rubric/rubric_mech.md">mechanics_rubric</a>: submit an assignment correctly.</p></li>
+<li><p><a class="reference external" href="https://github.com/UBC-MDS/public/blob/master/rubric/rubric_accuracy.md">accuracy rubric</a>: evaluating your code.</p></li>
+<li><p><a class="reference external" href="https://github.com/UBC-MDS/public/blob/master/rubric/rubric_autograde.md">autograde rubric</a>: evaluating questions that are either right or wrong.</p></li>
+<li><p><a class="reference external" href="https://github.com/UBC-MDS/public/blob/master/rubric/rubric_reasoning.md">reasoning rubric</a>: evaluating your written responses.</p></li>
+</ul>
+<div class="section" id="tidy-submission">
+<h2>Tidy Submission<a class="headerlink" href="#tidy-submission" title="Permalink to this headline">¶</a></h2>
+<p>rubric={mechanics:2}</p>
+<ul class="simple">
+<li><p>Complete this assignment by filling out this jupyter notebook.</p></li>
+<li><p>You must use proper English, spelling, and grammar.</p></li>
+<li><p>You will submit two things to Canvas:</p>
+<ol class="simple">
+<li><p>This jupyter notebook file containing your responses ( an <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file); and,</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">.html</span></code> file of your completed notebook (use <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbconvert</span> <span class="pre">--to</span> <span class="pre">html_embed</span> <span class="pre">assignment.ipynb</span></code> in the terminal to generate the html file or under <code class="docutils literal notranslate"><span class="pre">File</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Export</span> <span class="pre">Notebook</span> <span class="pre">As</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">HTML</span></code>).</p></li>
+</ol>
+</li>
+</ul>
+ <br>  
+<p>Submit your assignment through <a class="reference external" href="https://canvas.ubc.ca/courses/58082">UBC Canvas</a> by <strong>11:59 pm Monday, May 19th</strong>.</p>
+</div>
+<div class="section" id="answering-questions">
+<h2>Answering Questions<a class="headerlink" href="#answering-questions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Places that you see <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">NotImplementedError</span> <span class="pre">#</span> <span class="pre">No</span> <span class="pre">Answer</span> <span class="pre">-</span> <span class="pre">remove</span> <span class="pre">if</span> <span class="pre">you</span> <span class="pre">provide</span> <span class="pre">an</span> <span class="pre">answer</span></code>. Substitute the <code class="docutils literal notranslate"><span class="pre">None</span></code> above it and replace the <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">NotImplementedError</span> <span class="pre">#</span> <span class="pre">No</span> <span class="pre">Answer</span> <span class="pre">-</span> <span class="pre">remove</span> <span class="pre">if</span> <span class="pre">you</span> <span class="pre">provide</span> <span class="pre">an</span> <span class="pre">answer</span></code> with your completed code and answers, then proceed to run the cell!</p></li>
+<li><p>Any place you see <code class="docutils literal notranslate"><span class="pre">____</span></code>, you must fill in the function, variable, or data to complete the code.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">disable_max_rows</span><span class="p">()</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_colwidth&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+
+<span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">RandomizedSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">lognorm</span><span class="p">,</span> <span class="n">loguniform</span><span class="p">,</span> <span class="n">randint</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+
+<span class="kn">import</span> <span class="nn">test_assignment3</span> <span class="k">as</span> <span class="nn">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction-and-learning-goals-a-name-in-a">
+<h2>Introduction and learning goals <a name="in"></a><a class="headerlink" href="#introduction-and-learning-goals-a-name-in-a" title="Permalink to this headline">¶</a></h2>
+<hr>
+<p>Welcome to the assignment! After working on this assignment, you should be able to:</p>
+<ul class="simple">
+<li><p>Explain components of a confusion matrix.</p></li>
+<li><p>Define precision, recall, and f1-score and use them to evaluate different classifiers.</p></li>
+<li><p>Identify whether there is class imbalance and whether you need to deal with it.</p></li>
+<li><p>Explain <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> and use it to deal with data imbalance.</p></li>
+<li><p>Apply different scoring functions with <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> and <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p></li>
+<li><p>Explain the general intuition behind linear models.</p></li>
+<li><p>Explain the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> paradigm of linear models.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">fit</span></code>, <code class="docutils literal notranslate"><span class="pre">predict</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">coef_</span></code> to interpret the model weights.</p></li>
+</ul>
+</li>
+<li><p>Explain the advantages and limitations of linear classifiers.</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-1-precision-recall-and-f1-score-by-hand-without-sklearn-a-name-1-a">
+<h2>Exercise 1:  Precision, recall, and f1 score “by hand” (without <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>) <a name="1"></a><a class="headerlink" href="#exercise-1-precision-recall-and-f1-score-by-hand-without-sklearn-a-name-1-a" title="Permalink to this headline">¶</a></h2>
+<hr>
+<p>Consider the problem of predicting whether a new product will be successful or not and is worth investing in. Below are confusion matrices of two machine learning models: Model A and Model B.</p>
+<div class="section" id="model-a">
+<h3>Model A<a class="headerlink" href="#model-a" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Actual/Predicted</p></th>
+<th class="text-align:right head"><p>Predicted successful</p></th>
+<th class="text-align:right head"><p>Predicted not successful</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><strong>Actually successful</strong></p></td>
+<td class="text-align:right"><p>3</p></td>
+<td class="text-align:right"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>Actually not successful</strong></p></td>
+<td class="text-align:right"><p>6</p></td>
+<td class="text-align:right"><p>96</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="model-b">
+<h3>Model B<a class="headerlink" href="#model-b" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Actual/Predicted</p></th>
+<th class="text-align:right head"><p>Predicted successful</p></th>
+<th class="text-align:right head"><p>Predicted not successful</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><strong>Actually successful</strong></p></td>
+<td class="text-align:right"><p>6</p></td>
+<td class="text-align:right"><p>14</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><strong>Actually not successful</strong></p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>90</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="positive-vs-negative-class">
+<h3>1.1 Positive vs. negative class<a class="headerlink" href="#positive-vs-negative-class" title="Permalink to this headline">¶</a></h3>
+<p>rubric={autograde:1, reasoning:1}</p>
+<p>Precision, recall, and f1 score depend crucially upon which class is considered “positive”, that is the thing you wish to find. In the example above, which class ( <code class="docutils literal notranslate"><span class="pre">Actually</span> <span class="pre">successful</span></code> or <code class="docutils literal notranslate"><span class="pre">Actually</span> <span class="pre">not</span> <span class="pre">successful</span></code>)  is likely to be the “positive” class and why?</p>
+<p>Save the label name in a string object named <code class="docutils literal notranslate"><span class="pre">answer_1_1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer_1_1</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+<span class="n">answer_1_1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_1</span><span class="p">(</span><span class="n">answer_1_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="accuracy">
+<h3>1.2 Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
+<p>rubric={autograde:2}</p>
+<p>Calculate accuracies for Model A and Model B.</p>
+<p>Save the values of each calculations as a fraction in objects name <code class="docutils literal notranslate"><span class="pre">model_a_acc</span></code> and <code class="docutils literal notranslate"><span class="pre">model_b_acc</span></code> respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_a_acc</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">model_b_acc</span> <span class="o">=</span> <span class="kc">None</span> 
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_2_1</span><span class="p">(</span><span class="n">model_a_acc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_2_2</span><span class="p">(</span><span class="n">model_b_acc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="which-model-would-you-pick">
+<h3>1.3 Which model would you pick?<a class="headerlink" href="#which-model-would-you-pick" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:1}</p>
+<p>Which model would you pick simply based on the accuracy metric?</p>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="model-a-precision-recall-f1-score">
+<h3>1.4 Model A - Precision, recall, f1-score<a class="headerlink" href="#model-a-precision-recall-f1-score" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:3}</p>
+<p>Calculate precision, recall, f1-score for <strong>Model A</strong> by designating the appropriate fraction to objects named <code class="docutils literal notranslate"><span class="pre">a_precision</span></code>, <code class="docutils literal notranslate"><span class="pre">a_recall</span></code> and <code class="docutils literal notranslate"><span class="pre">a_f1</span></code>.</p>
+<p>You can use the objects <code class="docutils literal notranslate"><span class="pre">a_precision</span></code> and <code class="docutils literal notranslate"><span class="pre">a_recall</span></code> to use in your <code class="docutils literal notranslate"><span class="pre">a_f1</span></code> calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_precision</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">a_recall</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">a_f1</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_4_1</span><span class="p">(</span><span class="n">a_precision</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_4_2</span><span class="p">(</span><span class="n">a_recall</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_4_3</span><span class="p">(</span><span class="n">a_f1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-b-precision-recall-f1-score">
+<h3>1.5 Model B - Precision, recall, f1-score<a class="headerlink" href="#model-b-precision-recall-f1-score" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:3}</p>
+<p>Calculate precision, recall, f1-score for <strong>Model B</strong> by designating the appropriate fraction to objects named <code class="docutils literal notranslate"><span class="pre">b_precision</span></code>, <code class="docutils literal notranslate"><span class="pre">b_recall</span></code> and <code class="docutils literal notranslate"><span class="pre">b_f1</span></code>.</p>
+<p>You can use the objects <code class="docutils literal notranslate"><span class="pre">b_precision</span></code> and <code class="docutils literal notranslate"><span class="pre">b_recall</span></code> to use in your <code class="docutils literal notranslate"><span class="pre">b_f1</span></code> calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_precision</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">b_recall</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">b_f1</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_5_1</span><span class="p">(</span><span class="n">b_precision</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_5_2</span><span class="p">(</span><span class="n">b_recall</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_1_5_3</span><span class="p">(</span><span class="n">b_f1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metric-choice">
+<h3>1.6 Metric choice<a class="headerlink" href="#metric-choice" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:2}</p>
+<p>Which metric(s) is more informative in this case? Why?</p>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="model-choice">
+<h3>1.7 Model choice<a class="headerlink" href="#model-choice" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:2}</p>
+<p>Which model would you pick based on this information and why?</p>
+<p>YOUR ANSWER HERE</p>
+</div>
+</div>
+<div class="section" id="exercise-2-sentiment-analysis-on-the-imdb-dataset-model-building-a-name-3-a">
+<h2>Exercise 2: Sentiment analysis on the IMDB dataset: model building <a name="3"></a><a class="headerlink" href="#exercise-2-sentiment-analysis-on-the-imdb-dataset-model-building-a-name-3-a" title="Permalink to this headline">¶</a></h2>
+<hr>
+<a class="reference internal image-reference" href="https://ia.media-imdb.com/images/M/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE&#64;._V1_.png"><img alt="404 image" src="https://ia.media-imdb.com/images/M/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE&#64;._V1_.png" style="width: 40%;" /></a>
+<p>In this exercise, you will carry out sentiment analysis on a real corpus, <a class="reference external" href="https://www.kaggle.com/utathya/imdb-review-dataset">the IMDB movie review dataset</a>.
+The starter code below loads the data CSV file (assuming that it’s in the data directory) as a pandas DataFrame called <code class="docutils literal notranslate"><span class="pre">imdb_df</span></code>.</p>
+<p>The supervised learning task is, given the text of a movie review, to predict whether the review sentiment is positive (reviewer liked the movie) or negative (reviewer disliked the movie). We have done a bit of preprocessing on the dataset already where the positive review are labelled <code class="docutils literal notranslate"><span class="pre">1</span></code> and the negative reviews are labelled <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### BEGIN STARTER CODE</span>
+<span class="n">imdb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;imdb_speed.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imdb_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1">### END STARTER CODE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-and-target-objects">
+<h3>2.1 Feature and target objects<a class="headerlink" href="#feature-and-target-objects" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>Separate our feature vectors from the target.</p>
+<p>You will need to do this for both <code class="docutils literal notranslate"><span class="pre">train_df</span></code> and <code class="docutils literal notranslate"><span class="pre">test_df</span></code>.</p>
+<p>Save the results in objects named <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code> and <code class="docutils literal notranslate"><span class="pre">y_test</span></code>.</p>
+<p>(Makes sure that all 4 of these objects are of type Pandas Series. We will be using <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> for future questions and this transformation requires an input of Pandas Series)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_2_1</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dummy-classifier">
+<h3>2.2 Dummy classifier<a class="headerlink" href="#dummy-classifier" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:3}</p>
+<p>Make a baseline model using <code class="docutils literal notranslate"><span class="pre">DummyClassifier</span></code>.</p>
+<p>Carry out cross-validation using the <code class="docutils literal notranslate"><span class="pre">stratified</span></code> strategy. Pass the following <code class="docutils literal notranslate"><span class="pre">scoring</span></code> metrics to <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code>.</p>
+<ul class="simple">
+<li><p>accuracy</p></li>
+<li><p>f1</p></li>
+<li><p>recall</p></li>
+<li><p>precision</p></li>
+</ul>
+<p>(We are using cross-validation here since we can obtain multiple scores at once)</p>
+<p>Make sure you use  <code class="docutils literal notranslate"><span class="pre">return_train_score=True</span></code> and 5-fold cross-validation.</p>
+<p>Save your results in a dataframe named <code class="docutils literal notranslate"><span class="pre">dummy_scores_df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_scores_df</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+
+<span class="n">dummy_scores_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_2_2</span><span class="p">(</span><span class="n">dummy_scores_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dummy-classifier-mean">
+<h3>2.3 Dummy classifier mean<a class="headerlink" href="#dummy-classifier-mean" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:1}</p>
+<p>What is the mean of each column in <code class="docutils literal notranslate"><span class="pre">dummy_scores_df</span></code>?</p>
+<p>Save your result in an object named <code class="docutils literal notranslate"><span class="pre">dummy_mean</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_mean</span> <span class="o">=</span> <span class="kc">None</span> 
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+
+<span class="n">dummy_mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pipeline">
+<h3>2.4 Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>Let’s make a pipeline now.</p>
+<p>Since we only have 1 column to preprocess, we only need 1 main pipeline for this question.</p>
+<p>Create a pipeline with 2 steps, one for <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> and one with a <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> model. For the LogisticRegression model, it’s a good idea to set the argument <code class="docutils literal notranslate"><span class="pre">max_iter=1000</span></code> to avoid any warnings and convergence issues. Also let’s balance the classes in our splits by setting the appropriate argument in <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> to “balanced”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hyperparameter-optimization">
+<h3>2.5 Hyperparameter optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:4}</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> to jointly optimize the hyperparameters in the <code class="docutils literal notranslate"><span class="pre">params_grid</span></code> that we have provided for you. Name your <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> object <code class="docutils literal notranslate"><span class="pre">random_search</span></code> as we have some code we will be giving you in exercise 3 that relies on this object name.</p>
+<p>Specify <code class="docutils literal notranslate"><span class="pre">n_iter=10</span></code>, <code class="docutils literal notranslate"><span class="pre">cv=5</span></code>, <code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code>, <code class="docutils literal notranslate"><span class="pre">verbose=2</span></code>, <code class="docutils literal notranslate"><span class="pre">return_train_score=True</span></code> and <strong>make sure  to use an f1 scoring metric here</strong>.</p>
+<p>Make sure to fit your model on the training portion of the IMDB dataset.</p>
+<p>This can take quite a while (2-5 minutes for me!) so please be patient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### BEGIN STARTER CODE</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;countvectorizer__max_features&quot;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+    <span class="s2">&quot;logisticregression__C&quot;</span><span class="p">:</span> <span class="n">loguniform</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> 
+<span class="p">}</span>
+<span class="c1">### END STARTER CODE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="best-hyperparameters">
+<h3>2.6  Best hyperparameters<a class="headerlink" href="#best-hyperparameters" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>What are the best hyperparameter values found by <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> for <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">max_features</span></code>.
+What was the corresponding validation score?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimal_parameters</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">optimal_score</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-and-test-scores-of-best-scoring-model">
+<h3>2.7 Train and test scores of best scoring model<a class="headerlink" href="#train-and-test-scores-of-best-scoring-model" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>What is the train and test <code class="docutils literal notranslate"><span class="pre">f1</span></code> score of the best scoring model?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hyperparameters-and-the-fundamental-tradeoff">
+<h3>2.8 Hyperparameters and the fundamental tradeoff<a class="headerlink" href="#hyperparameters-and-the-fundamental-tradeoff" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:3}</p>
+<p>From the set of possible models in the search, did your search return a relatively simple CountVectorizer or a relatively complex one? Did it return a relatively simple LogisticRegression or a relatively complex one? Here ‘simple’ and ‘complex’ we mean with respect to the fundamental tradeoff.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="confusion-matrix">
+<h3>2.9 Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>Plot a confusion matrix on the test set using your random search object as your estimator. You may also want to add <code class="docutils literal notranslate"><span class="pre">display_labels</span></code> so that it’s easier to recognized which class is a positive review and which is negative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classification-report">
+<h3>2.10 Classification report<a class="headerlink" href="#classification-report" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:4}</p>
+<p>Print a classification report on the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> predictions of your random search object’s best model with measurements to 4 decimal places . Use this information to answer the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A) What is the recall if we classify <code class="docutils literal notranslate"><span class="pre">1</span></code> as our “positive” class?</p>
+<p>B) What is the precision weighted average? Save the result to 4 decimal places.</p>
+<p>C) What is the <code class="docutils literal notranslate"><span class="pre">f1</span></code> score using <code class="docutils literal notranslate"><span class="pre">1</span></code> as your positive class? Save the result to 4 decimal places in an object named <code class="docutils literal notranslate"><span class="pre">answer3_5c</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-remarks">
+<h3>2.11 Model Remarks<a class="headerlink" href="#model-remarks" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:2}</p>
+<p>How well did your model do classifying the movie reviews? Take into consideration the new metrics we have learned.</p>
+<p>YOUR ANSWER HERE</p>
+</div>
+</div>
+<div class="section" id="exercise-3-model-interpretation-a-name-4-a">
+<h2>Exercise 3: Model Interpretation <a name="4"></a><a class="headerlink" href="#exercise-3-model-interpretation-a-name-4-a" title="Permalink to this headline">¶</a></h2>
+<hr>
+<p>One of the primary advantage of linear models is their ability to interpret models in terms of important features. In this exercise, we’ll explore the weights learned by logistic regression classifier.</p>
+<p>Below we’ve create a dataframe that contains the words used in our optimal model along with their coefficients (remember to name your <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> object in question 2.5 <code class="docutils literal notranslate"><span class="pre">random_search</span></code> or the code here will return an error)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### BEGIN STARTER CODE</span>
+<span class="n">best_estimator</span> <span class="o">=</span> <span class="n">random_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="n">coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;words&#39;</span><span class="p">:</span> <span class="n">best_estimator</span><span class="p">[</span> <span class="s2">&quot;countvectorizer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span>
+              <span class="s1">&#39;coefficient&#39;</span><span class="p">:</span> <span class="n">best_estimator</span><span class="p">[</span><span class="s2">&quot;logisticregression&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+
+<span class="n">coef_df</span>
+<span class="c1">### END STARTER CODE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-the-most-informative-positive-words">
+<h3>3.1 Get the most informative positive words<a class="headerlink" href="#get-the-most-informative-positive-words" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:1, reasoning:1}</p>
+<p>Using the dataframe <code class="docutils literal notranslate"><span class="pre">coef_df</span></code> above, find the 10 words that are most indicative of a positive review.</p>
+<p>Elaborate on the positive words here - Do they make sense with their target value?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="get-the-most-informative-negative-words">
+<h3>3.2 Get the most informative negative words<a class="headerlink" href="#get-the-most-informative-negative-words" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:1, reasoning:1}</p>
+<p>Using the dataframe <code class="docutils literal notranslate"><span class="pre">coef_df</span></code> above, find the 10 words that are most indicative of a positive review.</p>
+<p>Elaborate on the positive words here - Do they make sense with their target value?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="explaining-the-coefficients">
+<h3>3.3 Explaining the coefficients?<a class="headerlink" href="#explaining-the-coefficients" title="Permalink to this headline">¶</a></h3>
+<p>rubric={reasoning:2}</p>
+<p>Do the words associated with positive and negative reviews make sense? Why is it useful to get access to this information?</p>
+<p>YOUR ANSWER HERE</p>
+</div>
+<div class="section" id="using-predict-vs-predict-proba">
+<h3>3.4 Using <code class="docutils literal notranslate"><span class="pre">predict</span></code> vs <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code><a class="headerlink" href="#using-predict-vs-predict-proba" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:3}</p>
+<p>Make a dataframe named <code class="docutils literal notranslate"><span class="pre">results_df</span></code> that contains these 5 columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">review</span></code> - this should contain the reviews from <code class="docutils literal notranslate"><span class="pre">X_test</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">true_label</span></code> - This should contain the true <code class="docutils literal notranslate"><span class="pre">y_test</span></code> values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predicted_y</span></code> - The predicted labels generated from <code class="docutils literal notranslate"><span class="pre">best_model</span></code> for the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> reviews using <code class="docutils literal notranslate"><span class="pre">.predict()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">neg_label_prob</span></code> - The probabilities of class <code class="docutils literal notranslate"><span class="pre">0</span></code> generated from <code class="docutils literal notranslate"><span class="pre">best_model</span></code> for the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> reviews. These can be found at index 0 of the <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> output (you can get that using <code class="docutils literal notranslate"><span class="pre">[:,0]</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pos_label_prob</span></code> - The probabilities of class <code class="docutils literal notranslate"><span class="pre">1</span></code> generated from <code class="docutils literal notranslate"><span class="pre">best_model</span></code> for the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> reviews. These can be found at index 0 of the <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> output (you can get that using <code class="docutils literal notranslate"><span class="pre">[:,1]</span></code>).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">test_3_4</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="looking-into-the-probability-scores-with-positive-reviews">
+<h3>3.5 Looking into the probability scores with positive reviews<a class="headerlink" href="#looking-into-the-probability-scores-with-positive-reviews" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>Find the top 5 movie reviews in <code class="docutils literal notranslate"><span class="pre">results_df</span></code> with the highest predicted probability of being positive (i.e., where the model is most confident that the review is positive).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Feel free to explore these reviews and see how positive they read!</p>
+</div>
+<div class="section" id="looking-into-the-probability-scores-with-negative-reviews">
+<h3>3.6 Looking into the probability scores with negative reviews<a class="headerlink" href="#looking-into-the-probability-scores-with-negative-reviews" title="Permalink to this headline">¶</a></h3>
+<p>rubric={accuracy:2}</p>
+<p>Find the top 5 movie reviews in <code class="docutils literal notranslate"><span class="pre">results_df</span></code> with the highest predicted probability of being negative (i.e., where the model is most confident that the review is negative).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="looking-at-uncertain-reviews-optional">
+<h3>3.7 Looking at uncertain reviews (optional)<a class="headerlink" href="#looking-at-uncertain-reviews-optional" title="Permalink to this headline">¶</a></h3>
+<p>rubric={0}</p>
+<p>This is an optional question!</p>
+<p>(You’ll get 0 marks for this one but you may have fun doing it?!)</p>
+<p>Find the 5 movie reviews in the test set with the most divided probability of being negative or positive (i.e., where the model is least confident in either review sentiment).</p>
+<p>Can you see why the model is confused?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="looking-at-wrongly-predicted-reviews-optional">
+<h3>3.8 Looking at wrongly predicted reviews. (optional)<a class="headerlink" href="#looking-at-wrongly-predicted-reviews-optional" title="Permalink to this headline">¶</a></h3>
+<p>rubric={0}</p>
+<p>Here is another optional question!</p>
+<p>Examine a review from the test set where our <code class="docutils literal notranslate"><span class="pre">best_model</span></code> is making mistakes, i.e., where the true labels do not match the predicted labels.</p>
+<p>Is is clear why this model predicted this review incorrectly?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span> <span class="c1"># No Answer - remove if you provide an answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="submission-to-canvas">
+<h3>Submission to Canvas<a class="headerlink" href="#submission-to-canvas" title="Permalink to this headline">¶</a></h3>
+<p><strong>PLEASE READ: When you are ready to submit your assignment do the following:</strong></p>
+<ul class="simple">
+<li><p>Read through your solutions</p></li>
+<li><p><strong>Restart your kernel and clear output and rerun your cells from top to bottom</strong></p></li>
+<li><p>Makes sure that none of your code is broken</p></li>
+<li><p>Verify that the tests from the questions you answered have obtained the output “Success”</p></li>
+<li><p>Convert your notebook to .html format by going to File -&gt; Export Notebook As… -&gt; Export Notebook to HTML</p></li>
+<li><p>Upload your <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file and the <code class="docutils literal notranslate"><span class="pre">.html</span></code> file to Canvas under Assignment1.</p></li>
+<li><p><strong>DO NOT</strong> upload any <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files.</p></li>
+</ul>
+</div>
+<div class="section" id="congratulations-on-finishing-assignment-3">
+<h3>Congratulations on finishing Assignment 3!<a class="headerlink" href="#congratulations-on-finishing-assignment-3" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "bait509-ubc/BAIT509",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./assignments/assignment3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Hayley Boyce<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
