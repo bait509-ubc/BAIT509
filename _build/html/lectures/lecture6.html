@@ -166,6 +166,11 @@
    Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -1374,7 +1379,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/naive_bayes.py:508: UserWarning: alpha too small will result in numeric errors, setting alpha = 1.0e-10
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.8/site-packages/sklearn/naive_bayes.py:511: UserWarning: alpha too small will result in numeric errors, setting alpha = 1.0e-10
   warnings.warn(&#39;alpha too small will result in numeric errors, &#39;
 </pre></div>
 </div>
@@ -1712,36 +1717,36 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.058001</td>
-      <td>0.011104</td>
+      <td>0.071928</td>
+      <td>0.013914</td>
       <td>0.796875</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.055574</td>
-      <td>0.011317</td>
+      <td>0.056068</td>
+      <td>0.011731</td>
       <td>0.801562</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.053722</td>
-      <td>0.011311</td>
+      <td>0.059474</td>
+      <td>0.010781</td>
       <td>0.801562</td>
       <td>0.946875</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.057919</td>
-      <td>0.011081</td>
+      <td>0.058180</td>
+      <td>0.010921</td>
       <td>0.837500</td>
       <td>0.945703</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.056023</td>
-      <td>0.011078</td>
+      <td>0.053454</td>
+      <td>0.010474</td>
       <td>0.814063</td>
       <td>0.944531</td>
     </tr>
@@ -1756,8 +1761,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.056248
-score_time     0.011178
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.059821
+score_time     0.011564
 test_score     0.810312
 train_score    0.946797
 dtype: float64
@@ -2110,26 +2115,51 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 4 candidates, totalling 20 fits
-[CV] END ..........................................gamma=0.1; total time=   0.0s
-[CV] END ..........................................gamma=0.1; total time=   0.0s
-[CV] END ..........................................gamma=0.1; total time=   0.0s
-[CV] END ..........................................gamma=0.1; total time=   0.0s
-[CV] END ..........................................gamma=0.1; total time=   0.0s
-[CV] END ..........................................gamma=1.0; total time=   0.0s
-[CV] END ..........................................gamma=1.0; total time=   0.0s
-[CV] END ..........................................gamma=1.0; total time=   0.0s
-[CV] END ..........................................gamma=1.0; total time=   0.0s
-[CV] END ..........................................gamma=1.0; total time=   0.0s
-[CV] END ...........................................gamma=10; total time=   0.0s
-[CV] END ...........................................gamma=10; total time=   0.0s
-[CV] END ...........................................gamma=10; total time=   0.0s
-[CV] END ...........................................gamma=10; total time=   0.0s
-[CV] END ...........................................gamma=10; total time=   0.0s
-[CV] END ..........................................gamma=100; total time=   0.0s
-[CV] END ..........................................gamma=100; total time=   0.0s
-[CV] END ..........................................gamma=100; total time=   0.0s
-[CV] END ..........................................gamma=100; total time=   0.0s
-[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] gamma=0.1 .......................................................
+[CV] ........................................ gamma=0.1, total=   0.0s
+[CV] gamma=0.1 .......................................................
+[CV] ........................................ gamma=0.1, total=   0.0s
+[CV] gamma=0.1 .......................................................
+[CV] ........................................ gamma=0.1, total=   0.0s
+[CV] gamma=0.1 .......................................................
+[CV] ........................................ gamma=0.1, total=   0.0s
+[CV] gamma=0.1 .......................................................
+[CV] ........................................ gamma=0.1, total=   0.0s
+[CV] gamma=1.0 .......................................................
+[CV] ........................................ gamma=1.0, total=   0.0s
+[CV] gamma=1.0 .......................................................
+[CV] ........................................ gamma=1.0, total=   0.0s
+[CV] gamma=1.0 .......................................................
+[CV] ........................................ gamma=1.0, total=   0.0s
+[CV] gamma=1.0 .......................................................
+[CV] ........................................ gamma=1.0, total=   0.0s
+[CV] gamma=1.0 .......................................................
+[CV] ........................................ gamma=1.0, total=   0.0s
+[CV] gamma=10 ........................................................
+[CV] ......................................... gamma=10, total=   0.0s
+[CV] gamma=10 ........................................................
+[CV] ......................................... gamma=10, total=   0.0s
+[CV] gamma=10 ........................................................
+[CV] ......................................... gamma=10, total=   0.0s
+[CV] gamma=10 ........................................................
+[CV] ......................................... gamma=10, total=   0.0s
+[CV] gamma=10 ........................................................
+[CV] ......................................... gamma=10, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+[CV] gamma=100 .......................................................
+[CV] ........................................ gamma=100, total=   0.0s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.0s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done  20 out of  20 | elapsed:    0.1s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(estimator=SVC(), param_grid={&#39;gamma&#39;: [0.1, 1.0, 10, 100]},
@@ -2160,6 +2190,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.6s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.7s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=SVC(), n_jobs=-1,
@@ -2242,6 +2277,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 16 candidates, totalling 80 fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.2s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.4s finished
 </pre></div>
 </div>
 </div>
@@ -2434,6 +2474,10 @@ These both give the same results.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  50 out of  50 | elapsed:    0.2s finished
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomizedSearchCV(cv=5,
                    estimator=Pipeline(steps=[(&#39;simpleimputer&#39;,
                                               SimpleImputer(strategy=&#39;median&#39;)),
@@ -2490,7 +2534,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 77.49127837072052, &#39;svc__gamma&#39;: 1.2630846316056599}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 43.84016760287316, &#39;svc__gamma&#39;: 5.569723214452804}
 </pre></div>
 </div>
 </div>
@@ -2502,7 +2546,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8047794117647058
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7985294117647059
 </pre></div>
 </div>
 </div>
@@ -2514,7 +2558,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
 </pre></div>
 </div>
 </div>
@@ -2539,7 +2583,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
 </pre></div>
 </div>
 </div>
@@ -2589,19 +2633,6 @@ These both give the same results.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
-The expected grade among the best of 2 tests is : 0.33
-The expected grade among the best of 10 tests is : 0.47
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 100 tests is : 0.62
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1000 tests is : 0.73
-</pre></div>
-</div>
-</div>
 </div>
 <p>If we instead used a 100-question test then:</p>
 <ul class="simple">
@@ -2624,21 +2655,6 @@ The expected grade among the best of 10 tests is : 0.47
         <span class="s2">&quot;The expected grade among the best of </span><span class="si">%d</span><span class="s2"> tests is : </span><span class="si">%0.2f</span><span class="s2">&quot;</span>
         <span class="o">%</span> <span class="p">(</span><span class="n">ntests</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">)</span>
     <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
-The expected grade among the best of 2 tests is : 0.27
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 10 tests is : 0.32
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 100 tests is : 0.36
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1000 tests is : 0.40
 </pre></div>
 </div>
 </div>

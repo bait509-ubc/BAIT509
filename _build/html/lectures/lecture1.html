@@ -166,6 +166,11 @@
    Lecture 8 - Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   Lecture 9 - Classification and Regression Metrics
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -2096,7 +2101,7 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;blue&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3199,6 +3204,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>candy bar</th>
       <th>chocolate</th>
       <th>peanuts</th>
       <th>caramel</th>
@@ -3209,22 +3215,11 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <th>multi</th>
       <th>availability</th>
     </tr>
-    <tr>
-      <th>candy bar</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>CoffeeCrisp</th>
+      <th>0</th>
+      <td>CoffeeCrisp</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -3236,7 +3231,8 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Canada</td>
     </tr>
     <tr>
-      <th>Butterfinger</th>
+      <th>1</th>
+      <td>Butterfinger</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
@@ -3248,7 +3244,8 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>America</td>
     </tr>
     <tr>
-      <th>Skor</th>
+      <th>2</th>
+      <td>Skor</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
@@ -3260,7 +3257,8 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Both</td>
     </tr>
     <tr>
-      <th>Smarties</th>
+      <th>3</th>
+      <td>Smarties</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -3272,7 +3270,8 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
       <td>Canada</td>
     </tr>
     <tr>
-      <th>Twix</th>
+      <th>4</th>
+      <td>Twix</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
