@@ -1197,3 +1197,55 @@ a. Which feature contributes the most in predicting if an example is legendary o
     
 b.As the capture rate value increases, will the model more likely predict a legendary or not legendary Pokémon?
 > Not Legendary, since the sign of the coefficient is negative. 
+
+## Lecture 8 
+
+## Let's Practice 
+
+1. What question is usually more complex?
+
+> Business question/objective
+
+2. What model needs to be made for all problems?
+
+> Baseline - Dummy 
+
+3. In supervised learning, once we have our business objective, part of our statistical question is identifying what?
+
+> Our target variable 
+
+**True or False:**
+
+4. When writing your reports, it's important to consider who is reading it.  
+
+> True
+
+5. Sometimes you may need to dig a little to figure out exactly what the client wants.
+
+> True
+
+6. In supervised learning, we should take into consideration the uncertainty of our models.
+
+> True
+
+## Let's Practice 
+
+1. As we increase features, which score will always increase? 
+
+> Training score
+
+2. Between `RFE` and `RFECV` which one finds the optimal number of features for us?
+
+> `RFECV`
+
+3. Which method starts with all our features and iteratively removes them from our model?
+
+> Recursive Feature Elimination
+
+4. Which method starts with no features and iteratively adds features?
+
+> Forward Selection
+
+5. Which method does not take into consideration `feature_importance` when adding/removing features? 
+
+> Forward Selection
