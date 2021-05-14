@@ -396,9 +396,9 @@ YOUR ANSWER HERE
 ### 3.2 Get the most informative negative words
 rubric={accuracy:1, reasoning:1}
 
-Using the dataframe `coef_df` above, find the 10 words that are most indicative of a positive review.
+Using the dataframe `coef_df` above, find the 10 words that are most indicative of a negative review.
 
-Elaborate on the positive words here - Do they make sense with their target value?
+Elaborate on the negative words here - Do they make sense with their target value?
 
 # your code here
 raise NotImplementedError # No Answer - remove if you provide an answer
