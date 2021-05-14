@@ -537,11 +537,11 @@ Use the diagram above to answer the next .... questions.
 
 3. How many examples does the model incorrectly predict?
 
-4. What is the recall of the confusion matrix?
+4. What is the recall of the confusion matrix assuming that **Forward** is the positive label?
 
-5. What is the precision of the confusion matrix?
+5. What is the precision of the confusion matrix assuming that **Forward** is the positive label?
 
-6. What is the f1 score?
+6. What is the f1 score assuming that **Forward** is the positive label?
 
 
 **True or False:**   
