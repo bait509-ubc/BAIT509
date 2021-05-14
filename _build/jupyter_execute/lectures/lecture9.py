@@ -36,6 +36,8 @@ from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 - Big lecture today!
 - Last class on Wednesday. 
 - Assignment 3 due on Wednesday.
+- [My Twitter](https://twitter.com/HayleyFBoyce)
+- Question 3.2 -> most informative negative words
 
 ## Lecture Learning Objectives 
 
