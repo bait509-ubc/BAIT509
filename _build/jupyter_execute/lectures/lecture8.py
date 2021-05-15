@@ -8,6 +8,9 @@
 - Varada Kolhatkar - Heavily guiding me with Feature Selection
 
 
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection" data-toc-modified-id="Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Forming-statistical-questions-to-answer-business-objectives" data-toc-modified-id="Forming-statistical-questions-to-answer-business-objectives-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Forming statistical questions to answer business objectives</a></span></li><li><span><a href="#(1---2)-Asking-useful-statistical-questions" data-toc-modified-id="(1---2)-Asking-useful-statistical-questions-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>(1 - 2) Asking useful statistical questions</a></span><ul class="toc-item"><li><span><a href="#Business-objectives:-examples" data-toc-modified-id="Business-objectives:-examples-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Business objectives: examples</a></span></li><li><span><a href="#Refining-business-objectives-to-statistical-objectives" data-toc-modified-id="Refining-business-objectives-to-statistical-objectives-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Refining business objectives to statistical objectives</a></span></li><li><span><a href="#Statistical-objectives:-examples" data-toc-modified-id="Statistical-objectives:-examples-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Statistical objectives: examples</a></span></li><li><span><a href="#Statistical-questions-are-not-the-full-picture!" data-toc-modified-id="Statistical-questions-are-not-the-full-picture!-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Statistical questions are not the full picture!</a></span></li><li><span><a href="#Statistical-objectives-unrelated-to-supervised-learning" data-toc-modified-id="Statistical-objectives-unrelated-to-supervised-learning-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Statistical objectives unrelated to supervised learning</a></span></li></ul></li><li><span><a href="#(2---3)-Building-a-useful-model" data-toc-modified-id="(2---3)-Building-a-useful-model-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>(2 - 3) Building a useful model</a></span></li><li><span><a href="#(3---4)-Communicating-results" data-toc-modified-id="(3---4)-Communicating-results-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>(3 - 4) Communicating results</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-Selection" data-toc-modified-id="Feature-Selection-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Feature Selection</a></span><ul class="toc-item"><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Feature-importance" data-toc-modified-id="Feature-importance-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Feature importance</a></span></li><li><span><a href="#New-housing-data" data-toc-modified-id="New-housing-data-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>New housing data</a></span></li><li><span><a href="#Recursive-feature-elimination---RFE" data-toc-modified-id="Recursive-feature-elimination---RFE-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Recursive feature elimination - RFE</a></span></li><li><span><a href="#RFECV" data-toc-modified-id="RFECV-1.9.5"><span class="toc-item-num">1.9.5&nbsp;&nbsp;</span>RFECV</a></span></li></ul></li><li><span><a href="#Forward-Selection" data-toc-modified-id="Forward-Selection-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Forward Selection</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Extra-time?-Project-time" data-toc-modified-id="Extra-time?-Project-time-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Extra time? Project time</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div>
+
 # Importing our libraries
 import pandas as pd
 import altair as alt
@@ -41,7 +44,9 @@ from sklearn.model_selection import RandomizedSearchCV
 
 - Project instructions are out!
 - Time in class for groups! 
- - Assignment 3 was released yesterday!
+- Assignment 3 was released yesterday!
+- More reading in this lecture than usual (sorry!) 
+- Run code at your own risk (Think section can take up to 20 minutes so if you are running this locally, Start running everything NOW from top to bottom)
 
 ## Lecture Learning Objectives 
 
@@ -130,7 +135,7 @@ Statistical objectives corresponding to the above business objective examples mi
 | Business Objective | Statistical Question |
 | :--- | :--- |
 | Reduce the amount of spam email received | <ul><li>$Y$ = classifying an email as spam/not spam <li> $X$ = words present in name and the body of email and other metadata (sender email, time, etc.) <li> Cases of spam will be gathered over time as employees identify emails as spam/not spam. The model can be improved as misclassifications are encountered.</ul>
-| Early prediction of product failure, (Kickstarter?) | <ul><li>$Y$ = classifying a product as faulty/not faulty <li> $X$ = Relevant features chosen by an expert <li> Data obtained from the test facility</ul>
+| Early prediction of product failure (Kickstarter?) | <ul><li>$Y$ = classifying a product as faulty/not faulty <li> $X$ = Relevant features chosen by an expert <li> Data obtained from the test facility</ul>
 | Find undervalued mines | <ul><li>$Y$ = total volume of gold and silver at a site <li> $X$ =  concentrations of other minerals found in drill samples, geographic information, historical data, etc <li> Data obtained from mines where total volumes are already known</ul>
 | Make a transit system more efficient | <ul><li>$Y$ = predict the time it takes a bus to travel between set stops <li> $X$ = time of day/week/year, weather, etc. <li> Use data from company server tracking bus movements</ul>
 | Hire efficient staff | <ul><li>$Y$ = predict monthly sales <li> $X$ = a personality test, years of work experience, field of experience, etc. <li> Use data based on current employees</ul>
@@ -156,13 +161,13 @@ Examples of statistical questions:
 - **Unsupervised learning**: What is the mean sentiment of the internal discussion channels from both branches?
     - There is no data of feature + response here, as required by supervised learning (by definition).
 - **Statistical inference**: Estimate the mean difference in monthly revenue generated by both branches, along with how certain you are with that estimate.
-    - Supervised learning typically isn’t concerned about communicating how certain your estimate is. (BUT it should be and changes are being made to change this!)  
+    - Supervised learning typically isn’t concerned about communicating how certain your estimate is. (BUT it should and progress is occuring to change this!)  
 
 ## (2 - 3) Building a useful model
 - This is really the main focus of this course, This is the meat/beyond meat patty in your burger! 
 - This involves using ML algorithms (kNN, loess, decision trees, etc) to build a predictive model from data
 - You always should include a baseline model to assess how well the models you build are giving you some leg up. 
-- A simple model like logistic regression does as well as a more complex approach! At the very least, they can help guide you on what more complex approaches to take next.
+- A simple model like logistic regression does as well as more complex approaches! At the very least, they can help guide you on what more complex approaches to take next.
 
 ## (3 - 4) Communicating results
 
@@ -225,7 +230,7 @@ train_df.head()
 
 Remember our Decision Tree models? Well, we can find out which features are most important in a model using an attribute called `feature_importances_`.
 
-dt_model = DecisionTreeClassifier(max_depth=5)
+dt_modelku_model = DecisionTreeClassifier(max_depth=5)
 dt_model.fit(X_train, y_train)
 dt_model.feature_importances_
 
@@ -361,7 +366,7 @@ First we import `RFE` from `sklearn.feature_selection`:
 
 from sklearn.feature_selection import RFE
 
-Now instead of simply using `DecisionTreeClassifier`, we can wrap it around the `RFE` function and specify how many features we want with `n_features_to_select`. 
+Now instead of simply using `LogisticRegression`, we can wrap it around the `RFE` function and specify how many features we want with `n_features_to_select`. 
 
 Here I'm capping the number of features to 30 (an arbitrary number I picked).
 

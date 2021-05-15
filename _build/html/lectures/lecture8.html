@@ -171,6 +171,11 @@
    Lecture 9 - Classification and Regression Metrics
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10.html">
+   Lecture 10 - Multi-Class, Pandas Profiling!
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -437,7 +442,8 @@
 <li><p>Tomas Beuzen - previous BAIT 509 Lecture 6</p></li>
 <li><p>Varada Kolhatkar - Heavily guiding me with Feature Selection</p></li>
 </ul>
-<div class="cell docutils container">
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection" data-toc-modified-id="Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Forming-statistical-questions-to-answer-business-objectives" data-toc-modified-id="Forming-statistical-questions-to-answer-business-objectives-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Forming statistical questions to answer business objectives</a></span></li><li><span><a href="#(1---2)-Asking-useful-statistical-questions" data-toc-modified-id="(1---2)-Asking-useful-statistical-questions-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>(1 - 2) Asking useful statistical questions</a></span><ul class="toc-item"><li><span><a href="#Business-objectives:-examples" data-toc-modified-id="Business-objectives:-examples-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Business objectives: examples</a></span></li><li><span><a href="#Refining-business-objectives-to-statistical-objectives" data-toc-modified-id="Refining-business-objectives-to-statistical-objectives-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Refining business objectives to statistical objectives</a></span></li><li><span><a href="#Statistical-objectives:-examples" data-toc-modified-id="Statistical-objectives:-examples-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Statistical objectives: examples</a></span></li><li><span><a href="#Statistical-questions-are-not-the-full-picture!" data-toc-modified-id="Statistical-questions-are-not-the-full-picture!-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Statistical questions are not the full picture!</a></span></li><li><span><a href="#Statistical-objectives-unrelated-to-supervised-learning" data-toc-modified-id="Statistical-objectives-unrelated-to-supervised-learning-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Statistical objectives unrelated to supervised learning</a></span></li></ul></li><li><span><a href="#(2---3)-Building-a-useful-model" data-toc-modified-id="(2---3)-Building-a-useful-model-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>(2 - 3) Building a useful model</a></span></li><li><span><a href="#(3---4)-Communicating-results" data-toc-modified-id="(3---4)-Communicating-results-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>(3 - 4) Communicating results</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-Selection" data-toc-modified-id="Feature-Selection-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Feature Selection</a></span><ul class="toc-item"><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Feature-importance" data-toc-modified-id="Feature-importance-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Feature importance</a></span></li><li><span><a href="#New-housing-data" data-toc-modified-id="New-housing-data-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>New housing data</a></span></li><li><span><a href="#Recursive-feature-elimination---RFE" data-toc-modified-id="Recursive-feature-elimination---RFE-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Recursive feature elimination - RFE</a></span></li><li><span><a href="#RFECV" data-toc-modified-id="RFECV-1.9.5"><span class="toc-item-num">1.9.5&nbsp;&nbsp;</span>RFECV</a></span></li></ul></li><li><span><a href="#Forward-Selection" data-toc-modified-id="Forward-Selection-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Forward Selection</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Extra-time?-Project-time" data-toc-modified-id="Extra-time?-Project-time-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Extra time? Project time</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -477,6 +483,8 @@
 <li><p>Project instructions are out!</p></li>
 <li><p>Time in class for groups!</p></li>
 <li><p>Assignment 3 was released yesterday!</p></li>
+<li><p>More reading in this lecture than usual (sorry!)</p></li>
+<li><p>Run code at your own risk (Think section can take up to 20 minutes so if you are running this locally, Start running everything NOW from top to bottom)</p></li>
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
@@ -586,7 +594,7 @@
 <tr class="row-even"><td class="text-align:left"><p>Reduce the amount of spam email received</p></td>
 <td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = classifying an email as spam/not spam <li> <span class="math notranslate nohighlight">\(X\)</span> = words present in name and the body of email and other metadata (sender email, time, etc.) <li> Cases of spam will be gathered over time as employees identify emails as spam/not spam. The model can be improved as misclassifications are encountered.</ul></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Early prediction of product failure, (Kickstarter?)</p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Early prediction of product failure (Kickstarter?)</p></td>
 <td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = classifying a product as faulty/not faulty <li> <span class="math notranslate nohighlight">\(X\)</span> = Relevant features chosen by an expert <li> Data obtained from the test facility</ul></p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>Find undervalued mines</p></td>
@@ -632,7 +640,7 @@
 </li>
 <li><p><strong>Statistical inference</strong>: Estimate the mean difference in monthly revenue generated by both branches, along with how certain you are with that estimate.</p>
 <ul>
-<li><p>Supervised learning typically isn’t concerned about communicating how certain your estimate is. (BUT it should be and changes are being made to change this!)</p></li>
+<li><p>Supervised learning typically isn’t concerned about communicating how certain your estimate is. (BUT it should and progress is occuring to change this!)</p></li>
 </ul>
 </li>
 </ul>
@@ -644,7 +652,7 @@
 <li><p>This is really the main focus of this course, This is the meat/beyond meat patty in your burger!</p></li>
 <li><p>This involves using ML algorithms (kNN, loess, decision trees, etc) to build a predictive model from data</p></li>
 <li><p>You always should include a baseline model to assess how well the models you build are giving you some leg up.</p></li>
-<li><p>A simple model like logistic regression does as well as a more complex approach! At the very least, they can help guide you on what more complex approaches to take next.</p></li>
+<li><p>A simple model like logistic regression does as well as more complex approaches! At the very least, they can help guide you on what more complex approaches to take next.</p></li>
 </ul>
 </div>
 <div class="section" id="communicating-results">
@@ -781,7 +789,7 @@
 <p>Remember our Decision Tree models? Well, we can find out which features are most important in a model using an attribute called <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_modelku_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">dt_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">dt_model</span><span class="o">.</span><span class="n">feature_importances_</span>
 </pre></div>
@@ -816,7 +824,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture8_24_0.svg" src="../_images/lecture8_24_0.svg" /></div>
+<img alt="../_images/lecture8_25_0.svg" src="../_images/lecture8_25_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="new-housing-data">
@@ -1694,7 +1702,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Now instead of simply using <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>, we can wrap it around the <code class="docutils literal notranslate"><span class="pre">RFE</span></code> function and specify how many features we want with <code class="docutils literal notranslate"><span class="pre">n_features_to_select</span></code>.</p>
+<p>Now instead of simply using <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>, we can wrap it around the <code class="docutils literal notranslate"><span class="pre">RFE</span></code> function and specify how many features we want with <code class="docutils literal notranslate"><span class="pre">n_features_to_select</span></code>.</p>
 <p>Here I’m capping the number of features to 30 (an arbitrary number I picked).</p>
 <p>This is going to take about 1-2 minutes to run because now, it’s recursively removing 1 feature at a time and cross-validating on the final result.</p>
 <a class="reference internal image-reference" href="../_images/waiting2.png"><img alt="../_images/waiting2.png" src="../_images/waiting2.png" style="width: 50%;" /></a>
