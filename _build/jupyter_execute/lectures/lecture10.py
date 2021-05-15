@@ -1,4 +1,4 @@
-# Lecture 10 - Multi-Class, Pandas Profiling!
+# Lecture 10 - Multi-Class, Pandas Profiling, finale 
 
 *Hayley Boyce, Wednesday, May 19th, 2021*
 
@@ -36,7 +36,7 @@ from sklearn.model_selection import RandomizedSearchCV
 
 - Our last class 😭!
 - Assignment due at 11:59pm tonight!
-- Project time today.
+- Project time today due on Wednesday May 26th at 11:59pm 
 - [Teaching evaluations](https://canvas.ubc.ca/courses/30777/external_tools/6073) - I know you all are very busy, but I would be super appreciative if you could fill it out for me. ❤️ 
 <img src="imgs/appreciate.png"  width = "30%" alt="404 image" />
 
