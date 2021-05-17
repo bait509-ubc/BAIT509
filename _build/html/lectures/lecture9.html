@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 10 - Multi-Class, Pandas Profiling!" href="lecture10.html" />
+    <link rel="next" title="Lecture 10 - Multi-Class, Pandas Profiling, finale" href="lecture10.html" />
     <link rel="prev" title="Lecture 8 - Forming good ML questions from business objectives and Feature Selection" href="lecture8.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,7 +69,7 @@
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture9.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Lecture 9 - Classification and Regression Metrics" />
-<meta property="og:description" content="Lecture 9 - Classification and Regression Metrics  Hayley Boyce, Monday, May 17th, 2021  # Importing our libraries import pandas as pd import altair as alt impo" />
+<meta property="og:description" content="Lecture 9 - Classification and Regression Metrics  Hayley Boyce, Monday, May 17th, 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt; &lt;div class=&#34;toc" />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -173,7 +173,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   Lecture 10 - Multi-Class, Pandas Profiling, finale
   </a>
  </li>
 </ul>
@@ -518,7 +518,8 @@
   <div class="section" id="lecture-9-classification-and-regression-metrics">
 <h1>Lecture 9 - Classification and Regression Metrics<a class="headerlink" href="#lecture-9-classification-and-regression-metrics" title="Permalink to this headline">¶</a></h1>
 <p><em>Hayley Boyce, Monday, May 17th, 2021</em></p>
-<div class="cell docutils container">
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-9---Classification-and-Regression-Metrics" data-toc-modified-id="Lecture-9---Classification-and-Regression-Metrics-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 9 - Classification and Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Evaluation-Metrics" data-toc-modified-id="Introducing-Evaluation-Metrics-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Evaluation Metrics</a></span><ul class="toc-item"><li><span><a href="#Baseline" data-toc-modified-id="Baseline-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Baseline</a></span></li></ul></li><li><span><a href="#Classification-Metrics-and-tools" data-toc-modified-id="Classification-Metrics-and-tools-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Classification Metrics and tools</a></span><ul class="toc-item"><li><span><a href="#What-is-&quot;positive&quot;-and-&quot;negative&quot;?" data-toc-modified-id="What-is-&quot;positive&quot;-and-&quot;negative&quot;?-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>What is "positive" and "negative"?</a></span></li><li><span><a href="#Confusion-Matrix" data-toc-modified-id="Confusion-Matrix-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Confusion Matrix</a></span><ul class="toc-item"><li><span><a href="#Confusion-Matrix-components" data-toc-modified-id="Confusion-Matrix-components-1.5.2.1"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Confusion Matrix components</a></span></li></ul></li><li><span><a href="#Accuracy-is-only-part-of-the-story..." data-toc-modified-id="Accuracy-is-only-part-of-the-story...-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Accuracy is only part of the story...</a></span></li><li><span><a href="#Recall" data-toc-modified-id="Recall-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Recall</a></span></li><li><span><a href="#Precision" data-toc-modified-id="Precision-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Precision</a></span></li><li><span><a href="#f1-score" data-toc-modified-id="f1-score-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>f1 score</a></span></li><li><span><a href="#Classification-report" data-toc-modified-id="Classification-report-1.5.7"><span class="toc-item-num">1.5.7&nbsp;&nbsp;</span>Classification report</a></span><ul class="toc-item"><li><span><a href="#Macro-average-vs-weighted-average" data-toc-modified-id="Macro-average-vs-weighted-average-1.5.7.1"><span class="toc-item-num">1.5.7.1&nbsp;&nbsp;</span>Macro average vs weighted average</a></span></li></ul></li><li><span><a href="#Imbalanced-datasets" data-toc-modified-id="Imbalanced-datasets-1.5.8"><span class="toc-item-num">1.5.8&nbsp;&nbsp;</span>Imbalanced datasets</a></span><ul class="toc-item"><li><span><a href="#Addressing-class-imbalance" data-toc-modified-id="Addressing-class-imbalance-1.5.8.1"><span class="toc-item-num">1.5.8.1&nbsp;&nbsp;</span>Addressing class imbalance</a></span></li><li><span><a href="#Handling-imbalance" data-toc-modified-id="Handling-imbalance-1.5.8.2"><span class="toc-item-num">1.5.8.2&nbsp;&nbsp;</span>Handling imbalance</a></span></li><li><span><a href="#Changing-the-training-procedure:-class_weight" data-toc-modified-id="Changing-the-training-procedure:-class_weight-1.5.8.3"><span class="toc-item-num">1.5.8.3&nbsp;&nbsp;</span>Changing the training procedure: <code>class_weight</code></a></span></li><li><span><a href="#Are-we-doing-better-with-class_weight=&quot;balanced&quot;?" data-toc-modified-id="Are-we-doing-better-with-class_weight=&quot;balanced&quot;?-1.5.8.4"><span class="toc-item-num">1.5.8.4&nbsp;&nbsp;</span>Are we doing better with <code>class_weight="balanced"</code>?</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Regression-Metrics" data-toc-modified-id="Regression-Metrics-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#Mean-squared-error-(MSE)" data-toc-modified-id="Mean-squared-error-(MSE)-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Mean squared error (MSE)</a></span><ul class="toc-item"><li><span><a href="#The-disadvantages" data-toc-modified-id="The-disadvantages-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>The disadvantages</a></span></li></ul></li><li><span><a href="#Quick-recap-on-$R^2$" data-toc-modified-id="Quick-recap-on-$R^2$-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Quick recap on $R^2$</a></span></li><li><span><a href="#Root-mean-squared-error--(RMSE)" data-toc-modified-id="Root-mean-squared-error--(RMSE)-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Root mean squared error  (RMSE)</a></span></li><li><span><a href="#MAPE---Mean-Absolute-Percent-Error-(MAPE)" data-toc-modified-id="MAPE---Mean-Absolute-Percent-Error-(MAPE)-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>MAPE - Mean Absolute Percent Error (MAPE)</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Passing-Different-Scoring-Methods" data-toc-modified-id="Passing-Different-Scoring-Methods-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Passing Different Scoring Methods</a></span><ul class="toc-item"><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#What-about-hyperparameter-tuning?" data-toc-modified-id="What-about-hyperparameter-tuning?-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>What about hyperparameter tuning?</a></span></li><li><span><a href="#...-and-with-Classification?" data-toc-modified-id="...-and-with-Classification?-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>... and with Classification?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -561,6 +562,7 @@
 <li><p>Assignment 3 due on Wednesday.</p></li>
 <li><p><a class="reference external" href="https://twitter.com/HayleyFBoyce">My Twitter</a></p></li>
 <li><p>Question 3.2 -&gt; most informative negative words</p></li>
+<li><p>Project clarification (If you have a “How” business question)</p></li>
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
@@ -1084,8 +1086,8 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.540501
-score_time     0.010643
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.590032
+score_time     0.011000
 test_score     0.999176
 train_score    0.999249
 dtype: float64
@@ -1135,12 +1137,13 @@ dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> 
                       <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Non fraud&quot;</span><span class="p">,</span> <span class="s2">&quot;Fraud&quot;</span><span class="p">],</span>
-                      <span class="n">values_format</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">);</span>
+                      <span class="n">values_format</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_33_0.png" src="../_images/lecture9_33_0.png" />
+<img alt="../_images/lecture9_34_0.png" src="../_images/lecture9_34_0.png" />
 </div>
 </div>
 <p><strong>Looking at the arguments:</strong></p>
@@ -1159,7 +1162,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_36_0.png" src="../_images/lecture9_36_0.png" />
+<img alt="../_images/lecture9_37_0.png" src="../_images/lecture9_37_0.png" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1811,7 +1814,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_85_0.png" src="../_images/lecture9_85_0.png" />
+<img alt="../_images/lecture9_86_0.png" src="../_images/lecture9_86_0.png" />
 </div>
 </div>
 <p>Now let’s rebuild our pipeline but using the <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> argument and setting it as<code class="docutils literal notranslate"><span class="pre">class_weight={1:100}</span></code>.</p>
@@ -1833,7 +1836,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_88_0.png" src="../_images/lecture9_88_0.png" />
+<img alt="../_images/lecture9_89_0.png" src="../_images/lecture9_89_0.png" />
 </div>
 </div>
 <p>Notice that we now have reduced false negatives and predicted more true positives this time.</p>
@@ -1853,7 +1856,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_91_0.png" src="../_images/lecture9_91_0.png" />
+<img alt="../_images/lecture9_92_0.png" src="../_images/lecture9_92_0.png" />
 </div>
 </div>
 <p>Again, we have reduced the number of false negatives and increased the number of true positives but we have many more false positives now!</p>
@@ -2312,7 +2315,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_127_0.png" src="../_images/lecture9_127_0.png" />
+<img alt="../_images/lecture9_129_0.png" src="../_images/lecture9_129_0.png" />
 </div>
 </div>
 <p>When we plot our predictions versus the examples’ actual value, we can see cases where our prediction is way off.</p>
@@ -2571,6 +2574,81 @@ Name: median_house_value, dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe_regression</span><span class="p">,</span>
                             <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> 
                             <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="c1">#      scoring = &#39;neg_root_mean_squared_error&#39;)</span>
+            <span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fit_time</th>
+      <th>score_time</th>
+      <th>test_score</th>
+      <th>train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.039957</td>
+      <td>0.289924</td>
+      <td>0.695818</td>
+      <td>0.801659</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.032168</td>
+      <td>0.278022</td>
+      <td>0.707483</td>
+      <td>0.799575</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.033430</td>
+      <td>0.300306</td>
+      <td>0.713788</td>
+      <td>0.795944</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.037170</td>
+      <td>0.280229</td>
+      <td>0.686938</td>
+      <td>0.801232</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.031539</td>
+      <td>0.219956</td>
+      <td>0.724608</td>
+      <td>0.832498</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe_regression</span><span class="p">,</span>
+                            <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> 
+                            <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                             <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;neg_root_mean_squared_error&#39;</span><span class="p">)</span>
             <span class="p">)</span>
 </pre></div>
@@ -2604,36 +2682,36 @@ Name: median_house_value, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.037827</td>
-      <td>0.281274</td>
+      <td>0.036687</td>
+      <td>0.292240</td>
       <td>-62462.584290</td>
       <td>-51440.540539</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.033015</td>
-      <td>0.266987</td>
+      <td>0.033530</td>
+      <td>0.250330</td>
       <td>-63437.715015</td>
       <td>-51263.979666</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.032734</td>
-      <td>0.267132</td>
+      <td>0.030526</td>
+      <td>0.250198</td>
       <td>-62613.202523</td>
       <td>-51758.817852</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.033391</td>
-      <td>0.275466</td>
+      <td>0.029188</td>
+      <td>0.274914</td>
       <td>-64204.295214</td>
       <td>-51343.743586</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.030795</td>
-      <td>0.225629</td>
+      <td>0.028573</td>
+      <td>0.208082</td>
       <td>-59217.838633</td>
       <td>-47325.157312</td>
     </tr>
@@ -2705,36 +2783,36 @@ Name: median_house_value, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.045073</td>
-      <td>0.298114</td>
+      <td>0.039827</td>
+      <td>0.394224</td>
       <td>22.709732</td>
       <td>18.420969</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.029377</td>
-      <td>0.268692</td>
+      <td>0.062865</td>
+      <td>0.408991</td>
       <td>22.754570</td>
       <td>18.469125</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.035789</td>
-      <td>0.272355</td>
+      <td>0.032953</td>
+      <td>0.245034</td>
       <td>22.236869</td>
       <td>18.674964</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.032814</td>
-      <td>0.262569</td>
+      <td>0.031604</td>
+      <td>0.255892</td>
       <td>23.016666</td>
       <td>18.510766</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.031146</td>
-      <td>0.219621</td>
+      <td>0.038290</td>
+      <td>0.278134</td>
       <td>21.033519</td>
       <td>16.951021</td>
     </tr>
@@ -2799,8 +2877,8 @@ Name: median_house_value, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.034483</td>
-      <td>0.285025</td>
+      <td>0.037458</td>
+      <td>0.299782</td>
       <td>0.695818</td>
       <td>0.801659</td>
       <td>22.709732</td>
@@ -2812,8 +2890,8 @@ Name: median_house_value, dtype: float64
     </tr>
     <tr>
       <th>1</th>
-      <td>0.031279</td>
-      <td>0.261321</td>
+      <td>0.031972</td>
+      <td>0.261208</td>
       <td>0.707483</td>
       <td>0.799575</td>
       <td>22.754570</td>
@@ -2825,8 +2903,8 @@ Name: median_house_value, dtype: float64
     </tr>
     <tr>
       <th>2</th>
-      <td>0.030562</td>
-      <td>0.257023</td>
+      <td>0.031364</td>
+      <td>0.261568</td>
       <td>0.713788</td>
       <td>0.795944</td>
       <td>22.236869</td>
@@ -2838,8 +2916,8 @@ Name: median_house_value, dtype: float64
     </tr>
     <tr>
       <th>3</th>
-      <td>0.030300</td>
-      <td>0.267901</td>
+      <td>0.030382</td>
+      <td>0.263205</td>
       <td>0.686938</td>
       <td>0.801232</td>
       <td>23.016666</td>
@@ -2851,8 +2929,8 @@ Name: median_house_value, dtype: float64
     </tr>
     <tr>
       <th>4</th>
-      <td>0.032359</td>
-      <td>0.222931</td>
+      <td>0.032217</td>
+      <td>0.221644</td>
       <td>0.724608</td>
       <td>0.832498</td>
       <td>21.033519</td>
@@ -3012,7 +3090,7 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 88}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 91}
 </pre></div>
 </div>
 </div>
@@ -3038,7 +3116,7 @@ Name: median_house_value, dtype: float64
 <ol class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">scoring</span></code> argument only accepts <code class="docutils literal notranslate"><span class="pre">str</span></code> inputs.</p></li>
 <li><p>We are limited to the scoring measures offered from sklearn.</p></li>
-<li><p>If we specify the scoring method in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>, <code class="docutils literal notranslate"><span class="pre">best_param_</span></code>  will return the parameters with the highest specified measure.*</p></li>
+<li><p>If we specify the scoring method in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>, <code class="docutils literal notranslate"><span class="pre">best_param_</span></code>  will return the parameters with the best specified measure.*</p></li>
 </ol>
 <p><strong>Coding Question</strong></p>
 <p>Let’s bring back the Pokémon dataset that we saw previously.</p>
@@ -3080,41 +3158,6 @@ Name: legendary, dtype: int64
 <li><p>Perform cross-validation using cross-validate on the training split using the scoring measures accuracy, precision, recall and f1.</p></li>
 <li><p>Save the results in a dataframe.</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pokemon.csv&#39;</span><span class="p">)</span>
-
-<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">pk_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
-
-<span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deck_no&quot;</span><span class="p">,</span>  
-                    <span class="s2">&quot;attack&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;defense&quot;</span> <span class="p">,</span>
-                    <span class="s2">&quot;sp_attack&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;sp_defense&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;speed&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;capture_rt&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;total_bs&quot;</span><span class="p">]</span>
-
-<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
-
-<span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
-
-<span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">),</span>
-    <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">))</span>
-
-<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span> 
-    <span class="p">(</span><span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="what-we-ve-learned-today">
 <h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
@@ -3154,7 +3197,7 @@ Name: legendary, dtype: int64
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="lecture8.html" title="previous page">Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a>
-    <a class='right-next' id="next-link" href="lecture10.html" title="next page">Lecture 10 - Multi-Class, Pandas Profiling!</a>
+    <a class='right-next' id="next-link" href="lecture10.html" title="next page">Lecture 10 - Multi-Class, Pandas Profiling, finale</a>
 
         </div>
         
