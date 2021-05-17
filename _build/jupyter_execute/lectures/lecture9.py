@@ -2,6 +2,9 @@
 
 *Hayley Boyce, Monday, May 17th, 2021*
 
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-9---Classification-and-Regression-Metrics" data-toc-modified-id="Lecture-9---Classification-and-Regression-Metrics-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 9 - Classification and Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Evaluation-Metrics" data-toc-modified-id="Introducing-Evaluation-Metrics-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Evaluation Metrics</a></span><ul class="toc-item"><li><span><a href="#Baseline" data-toc-modified-id="Baseline-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Baseline</a></span></li></ul></li><li><span><a href="#Classification-Metrics-and-tools" data-toc-modified-id="Classification-Metrics-and-tools-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Classification Metrics and tools</a></span><ul class="toc-item"><li><span><a href="#What-is-&quot;positive&quot;-and-&quot;negative&quot;?" data-toc-modified-id="What-is-&quot;positive&quot;-and-&quot;negative&quot;?-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>What is "positive" and "negative"?</a></span></li><li><span><a href="#Confusion-Matrix" data-toc-modified-id="Confusion-Matrix-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Confusion Matrix</a></span><ul class="toc-item"><li><span><a href="#Confusion-Matrix-components" data-toc-modified-id="Confusion-Matrix-components-1.5.2.1"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Confusion Matrix components</a></span></li></ul></li><li><span><a href="#Accuracy-is-only-part-of-the-story..." data-toc-modified-id="Accuracy-is-only-part-of-the-story...-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Accuracy is only part of the story...</a></span></li><li><span><a href="#Recall" data-toc-modified-id="Recall-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Recall</a></span></li><li><span><a href="#Precision" data-toc-modified-id="Precision-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Precision</a></span></li><li><span><a href="#f1-score" data-toc-modified-id="f1-score-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>f1 score</a></span></li><li><span><a href="#Classification-report" data-toc-modified-id="Classification-report-1.5.7"><span class="toc-item-num">1.5.7&nbsp;&nbsp;</span>Classification report</a></span><ul class="toc-item"><li><span><a href="#Macro-average-vs-weighted-average" data-toc-modified-id="Macro-average-vs-weighted-average-1.5.7.1"><span class="toc-item-num">1.5.7.1&nbsp;&nbsp;</span>Macro average vs weighted average</a></span></li></ul></li><li><span><a href="#Imbalanced-datasets" data-toc-modified-id="Imbalanced-datasets-1.5.8"><span class="toc-item-num">1.5.8&nbsp;&nbsp;</span>Imbalanced datasets</a></span><ul class="toc-item"><li><span><a href="#Addressing-class-imbalance" data-toc-modified-id="Addressing-class-imbalance-1.5.8.1"><span class="toc-item-num">1.5.8.1&nbsp;&nbsp;</span>Addressing class imbalance</a></span></li><li><span><a href="#Handling-imbalance" data-toc-modified-id="Handling-imbalance-1.5.8.2"><span class="toc-item-num">1.5.8.2&nbsp;&nbsp;</span>Handling imbalance</a></span></li><li><span><a href="#Changing-the-training-procedure:-class_weight" data-toc-modified-id="Changing-the-training-procedure:-class_weight-1.5.8.3"><span class="toc-item-num">1.5.8.3&nbsp;&nbsp;</span>Changing the training procedure: <code>class_weight</code></a></span></li><li><span><a href="#Are-we-doing-better-with-class_weight=&quot;balanced&quot;?" data-toc-modified-id="Are-we-doing-better-with-class_weight=&quot;balanced&quot;?-1.5.8.4"><span class="toc-item-num">1.5.8.4&nbsp;&nbsp;</span>Are we doing better with <code>class_weight="balanced"</code>?</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Regression-Metrics" data-toc-modified-id="Regression-Metrics-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#Mean-squared-error-(MSE)" data-toc-modified-id="Mean-squared-error-(MSE)-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Mean squared error (MSE)</a></span><ul class="toc-item"><li><span><a href="#The-disadvantages" data-toc-modified-id="The-disadvantages-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>The disadvantages</a></span></li></ul></li><li><span><a href="#Quick-recap-on-$R^2$" data-toc-modified-id="Quick-recap-on-$R^2$-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Quick recap on $R^2$</a></span></li><li><span><a href="#Root-mean-squared-error--(RMSE)" data-toc-modified-id="Root-mean-squared-error--(RMSE)-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Root mean squared error  (RMSE)</a></span></li><li><span><a href="#MAPE---Mean-Absolute-Percent-Error-(MAPE)" data-toc-modified-id="MAPE---Mean-Absolute-Percent-Error-(MAPE)-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>MAPE - Mean Absolute Percent Error (MAPE)</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Passing-Different-Scoring-Methods" data-toc-modified-id="Passing-Different-Scoring-Methods-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Passing Different Scoring Methods</a></span><ul class="toc-item"><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#What-about-hyperparameter-tuning?" data-toc-modified-id="What-about-hyperparameter-tuning?-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>What about hyperparameter tuning?</a></span></li><li><span><a href="#...-and-with-Classification?" data-toc-modified-id="...-and-with-Classification?-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>... and with Classification?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div>
+
 # Importing our libraries
 import pandas as pd
 import altair as alt
@@ -38,6 +41,7 @@ from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 - Assignment 3 due on Wednesday.
 - [My Twitter](https://twitter.com/HayleyFBoyce)
 - Question 3.2 -> most informative negative words
+- Project clarification (If you have a "How" business question) 
 
 ## Lecture Learning Objectives 
 
@@ -184,7 +188,8 @@ This results in a 2 by 2 matrix with the labels `Non fraud` and `Fraud` on each 
 
 plot_confusion_matrix(pipe, X_valid, y_valid, 
                       display_labels=["Non fraud", "Fraud"],
-                      values_format="d", cmap="Purples");
+                      values_format="d",
+                      cmap="Greens");
 
 **Looking at the arguments:**
 
@@ -621,6 +626,8 @@ predicted_y
 
 y_train.values
 
+
+
 predicted_y == y_train
 
 We need a score that reflects how right/wrong each prediction is or how close we are to the actual numeric value.
@@ -840,6 +847,12 @@ In this case, if we wanted the RMSE measure, we would specify `neg_mean_squared_
 pd.DataFrame(cross_validate(pipe_regression,
                             X_train, y_train, 
                             return_train_score=True,
+                      #      scoring = 'neg_root_mean_squared_error')
+            ))
+
+pd.DataFrame(cross_validate(pipe_regression,
+                            X_train, y_train, 
+                            return_train_score=True,
                             scoring = 'neg_root_mean_squared_error')
             )
 
@@ -958,7 +971,7 @@ This returns the `max_depth` value that results in the highest `f1` score, not t
 **True or False:**     
 1. The `scoring` argument only accepts `str` inputs.
 2. We are limited to the scoring measures offered from sklearn.
-3. If we specify the scoring method in `GridSearchCV` and `RandomizedSearchCV`, `best_param_`  will return the parameters with the highest specified measure.*
+3. If we specify the scoring method in `GridSearchCV` and `RandomizedSearchCV`, `best_param_`  will return the parameters with the best specified measure.*
 
 **Coding Question**
 
@@ -991,36 +1004,6 @@ Let's do cross-validation and look at the scores from cross-validation of not ju
 1. Build a pipeline containing the column transformer and an SVC model and set `class_weight="balanced"` in the SVM classifier. 
 2. Perform cross-validation using cross-validate on the training split using the scoring measures accuracy, precision, recall and f1.
 3. Save the results in a dataframe.
-
-pk_df = pd.read_csv('data/pokemon.csv')
-
-train_df, test_df = train_test_split(pk_df, test_size=0.2, random_state=1)
-
-X_train = train_df.drop(columns=['legendary'])
-y_train = train_df['legendary']
-X_test = test_df.drop(columns=['legendary'])
-y_test = test_df['legendary']
-
-numeric_features = ["deck_no",  
-                    "attack",
-                    "defense" ,
-                    "sp_attack",
-                    "sp_defense",
-                    "speed",
-                    "capture_rt",
-                    "total_bs"]
-
-categorical_features = ["type"]
-
-numeric_transformer = make_pipeline(SimpleImputer(strategy="median"), StandardScaler())
-
-categorical_transformer = make_pipeline(
-    SimpleImputer(strategy="most_frequent"),
-    OneHotEncoder(handle_unknown="ignore"))
-
-preprocessor = make_column_transformer(
-    (numeric_transformer, numeric_features), 
-    (categorical_transformer, categorical_features))
 
 
 

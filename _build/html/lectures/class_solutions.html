@@ -171,7 +171,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   Lecture 10 - Multi-Class, Pandas Profiling, finale
   </a>
  </li>
 </ul>
@@ -491,6 +491,26 @@
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
+     Let’s Practice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-9">
+     Lecture 9
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Let’s Practice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     Let’s Practice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
      Let’s Practice
     </a>
    </li>
@@ -2319,6 +2339,358 @@ b.As the capture rate value increases, will the model more likely predict a lege
 <blockquote>
 <div><p>Forward Selection</p>
 </div></blockquote>
+</div>
+<div class="section" id="lecture-9">
+<h2>Lecture 9<a class="headerlink" href="#lecture-9" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id22">
+<h2>Let’s Practice<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/Q_cm.png"><img alt="404 image" src="../_images/Q_cm.png" style="width: 50%;" /></a>
+<p>Use the diagram above to answer the next …. questions.</p>
+<ol class="simple">
+<li><p>How many examples did the model of this matrix correctly label as “Guard”?</p></li>
+</ol>
+<blockquote>
+<div><p>26</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>If <strong>Forward</strong> is the positive label, how many <em><strong>false-positive</strong></em> values are there?</p></li>
+</ol>
+<blockquote>
+<div><p>4</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>How many examples does the model incorrectly predict?</p></li>
+</ol>
+<blockquote>
+<div><p>7</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>What is the recall of the confusion matrix assuming that <strong>Forward</strong> is the positive label?</p></li>
+</ol>
+<blockquote>
+<div><p>0.86<br />
+19/22</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>What is the precision of the confusion matrix assuming that <strong>Forward</strong> is the positive label?</p></li>
+</ol>
+<blockquote>
+<div><p>0.83
+19/23</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>What is the f1 score assuming that <strong>Forward</strong> is the positive label?</p></li>
+</ol>
+<blockquote>
+<div><p>0.84
+2* (0.86*0.83)/ (0.86 + 0.83) = 0.84</p>
+</div></blockquote>
+<p><strong>True or False:</strong></p>
+<ol class="simple">
+<li><p>In spam classification, false positives are more damaging than false negatives (assume “positive” means the email is spam, “negative” means it’s not).</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>In medical diagnosis, high recall is more important than high precision.</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>The weighted average gives equal importance to all classes.</p></li>
+</ol>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">class_weight={1:100}</span></code> will make the second class label 100 times the weight of the first class.</p></li>
+</ol>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+</div>
+<div class="section" id="id23">
+<h2>Let’s Practice<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Which measurement will have units which are the square values of the target column units?</p></li>
+</ol>
+<blockquote>
+<div><p>MSE</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>For which of the following is it possible to have negative values?</p></li>
+</ol>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(R^2\)</span></p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Which measurement is expressed as a percentage?</p></li>
+</ol>
+<blockquote>
+<div><p>MAPE</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Calculate the MSE from the values given below.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Observation</p></th>
+<th class="head"><p>True Value</p></th>
+<th class="head"><p>Predicted Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>12</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>6</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>9</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>3</p>
+</div></blockquote>
+<p><strong>True or False:</strong></p>
+<ol class="simple">
+<li><p>We can still use recall and precision for regression problems but now we have other measurements we can use as well.</p></li>
+</ol>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>A lower RMSE value indicates a better fit.</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>In regression problems, calculating <span class="math notranslate nohighlight">\(R^2\)</span>  using <code class="docutils literal notranslate"><span class="pre">r2_score()</span></code> and <code class="docutils literal notranslate"><span class="pre">.score()</span></code> (with default values) will produce the same results.</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h2>Let’s Practice<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<p><strong>True or False:</strong></p>
+<ol class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">scoring</span></code> argument only accepts <code class="docutils literal notranslate"><span class="pre">str</span></code> inputs.</p></li>
+</ol>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>We are limited to the scoring measures offered from sklearn.</p></li>
+</ol>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>If we specify the scoring method in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>, <code class="docutils literal notranslate"><span class="pre">best_param_</span></code>  will return the parameters with the highest specified measure.*</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
+<p><strong>Coding Question</strong></p>
+<p>Let’s bring back the Pokémon dataset that we saw previously.</p>
+<p>This time let’s look at the distribution of our target variable <code class="docutils literal notranslate"><span class="pre">legendary</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">pk_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pokemon.csv&#39;</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">pk_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X_train_big</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_train_big</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_train_big</span><span class="p">,</span> 
+                                                      <span class="n">y_train_big</span><span class="p">,</span> 
+                                                      <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> 
+                                                      <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    405
+1     43
+Name: legendary, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s do cross-validation and look at the scores from cross-validation of not just accuracy, but precision and recall and the f1 score as well.</p>
+<ol class="simple">
+<li><p>Build a pipeline containing the column transformer and an SVC model and set <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> in the SVM classifier.</p></li>
+<li><p>Perform cross-validation using cross-validate on the training split using the scoring measures accuracy, precision, recall and f1.</p></li>
+<li><p>Save the results in a dataframe.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pokemon.csv&#39;</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">pk_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+
+<span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deck_no&quot;</span><span class="p">,</span>  
+                    <span class="s2">&quot;attack&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;defense&quot;</span> <span class="p">,</span>
+                    <span class="s2">&quot;sp_attack&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sp_defense&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;speed&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;capture_rt&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;total_bs&quot;</span><span class="p">]</span>
+
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
+
+<span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
+
+<span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">),</span>
+    <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">))</span>
+
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span> 
+    <span class="p">(</span><span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Build a pipeline containing the column transformer and an SVC model, </span>
+<span class="c1"># using the parameter class_weight=&quot;balanced&quot;.</span>
+<span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">))</span>
+
+<span class="c1"># 2. Perform cross-validation using cross-validate on the training split using the scoring</span>
+<span class="c1"># measures accuracy, precision, recall and f1.</span>
+<span class="n">multi_scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span>
+                              <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+                              <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+
+<span class="c1"># 3. Save the results in a dataframe.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">multi_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fit_time</th>
+      <th>score_time</th>
+      <th>test_accuracy</th>
+      <th>train_accuracy</th>
+      <th>test_precision</th>
+      <th>train_precision</th>
+      <th>test_recall</th>
+      <th>train_recall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.017855</td>
+      <td>0.011000</td>
+      <td>0.921875</td>
+      <td>0.972656</td>
+      <td>0.500000</td>
+      <td>0.754386</td>
+      <td>0.600000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.014644</td>
+      <td>0.009241</td>
+      <td>0.984375</td>
+      <td>0.976562</td>
+      <td>0.833333</td>
+      <td>0.781818</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.014496</td>
+      <td>0.008741</td>
+      <td>0.921875</td>
+      <td>0.984375</td>
+      <td>0.545455</td>
+      <td>0.840000</td>
+      <td>0.545455</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.020357</td>
+      <td>0.014639</td>
+      <td>0.953125</td>
+      <td>0.980469</td>
+      <td>0.647059</td>
+      <td>0.807692</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.013667</td>
+      <td>0.008995</td>
+      <td>0.968750</td>
+      <td>0.970703</td>
+      <td>0.733333</td>
+      <td>0.736842</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 </div>
 

@@ -1249,3 +1249,191 @@ b.As the capture rate value increases, will the model more likely predict a lege
 5. Which method does not take into consideration `feature_importance` when adding/removing features? 
 
 > Forward Selection
+
+## Lecture 9 
+
+## Let's Practice
+
+<img src="imgs/Q_cm.png"  width = "50%" alt="404 image" />
+
+Use the diagram above to answer the next .... questions.
+
+1. How many examples did the model of this matrix correctly label as "Guard"?
+
+> 26
+
+2. If **Forward** is the positive label, how many ***false-positive*** values are there?
+
+> 4
+
+3. How many examples does the model incorrectly predict?
+
+> 7
+
+4. What is the recall of the confusion matrix assuming that **Forward** is the positive label?
+
+> 0.86   
+> 19/22
+
+5. What is the precision of the confusion matrix assuming that **Forward** is the positive label?
+
+> 0.83
+> 19/23
+
+6. What is the f1 score assuming that **Forward** is the positive label?
+
+> 0.84
+> 2* (0.86*0.83)/ (0.86 + 0.83) = 0.84 
+
+
+**True or False:**   
+
+7. In spam classification, false positives are more damaging than false negatives (assume "positive" means the email is spam, "negative" means it's not).
+
+> True
+
+8. In medical diagnosis, high recall is more important than high precision.
+
+>  True
+
+9. The weighted average gives equal importance to all classes.
+
+> False
+
+10. Setting `class_weight={1:100}` will make the second class label 100 times the weight of the first class. 
+
+> False
+
+## Let's Practice 
+
+1. Which measurement will have units which are the square values of the target column units?
+
+> MSE
+
+2. For which of the following is it possible to have negative values?
+
+> $R^2$
+
+3. Which measurement is expressed as a percentage?
+
+> MAPE 
+
+4. Calculate the MSE from the values given below. 
+
+
+|Observation | True Value | Predicted Value |
+|------------|------------|-----------------|
+|0           | 4          | 5               |
+|1           | 12         | 10              |
+|2           | 6          | 9               |
+|3           | 9          | 8               |
+|4           | 3          | 3               |
+
+
+> 3
+
+**True or False:**   
+
+5. We can still use recall and precision for regression problems but now we have other measurements we can use as well. 
+
+> False
+
+6. A lower RMSE value indicates a better fit.  
+
+> True
+
+7. In regression problems, calculating $R^2$  using `r2_score()` and `.score()` (with default values) will produce the same results.  
+
+> True
+
+## Let's Practice
+
+**True or False:**     
+
+1. The `scoring` argument only accepts `str` inputs.
+
+> False 
+
+2. We are limited to the scoring measures offered from sklearn.
+
+> False 
+
+3. If we specify the scoring method in `GridSearchCV` and `RandomizedSearchCV`, `best_param_`  will return the parameters with the highest specified measure.*
+
+> True
+
+**Coding Question**
+
+Let’s bring back the Pokémon dataset that we saw previously. 
+
+This time let's look at the distribution of our target variable `legendary`.
+
+from sklearn.model_selection import train_test_split
+
+
+pk_df = pd.read_csv('data/pokemon.csv')
+
+train_df, test_df = train_test_split(pk_df, test_size=0.2, random_state=1)
+
+X_train_big = train_df.drop(columns=['legendary'])
+y_train_big = train_df['legendary']
+X_test = test_df.drop(columns=['legendary'])
+y_test = test_df['legendary']
+
+X_train, X_valid, y_train, y_valid = train_test_split(X_train_big, 
+                                                      y_train_big, 
+                                                      test_size=0.3, 
+                                                      random_state=123)
+
+print(y_train.value_counts())
+
+Let's do cross-validation and look at the scores from cross-validation of not just accuracy, but precision and recall and the f1 score as well.
+
+
+1. Build a pipeline containing the column transformer and an SVC model and set `class_weight="balanced"` in the SVM classifier. 
+2. Perform cross-validation using cross-validate on the training split using the scoring measures accuracy, precision, recall and f1.
+3. Save the results in a dataframe.
+
+pk_df = pd.read_csv('data/pokemon.csv')
+
+train_df, test_df = train_test_split(pk_df, test_size=0.2, random_state=1)
+
+X_train = train_df.drop(columns=['legendary'])
+y_train = train_df['legendary']
+X_test = test_df.drop(columns=['legendary'])
+y_test = test_df['legendary']
+
+numeric_features = ["deck_no",  
+                    "attack",
+                    "defense" ,
+                    "sp_attack",
+                    "sp_defense",
+                    "speed",
+                    "capture_rt",
+                    "total_bs"]
+
+categorical_features = ["type"]
+
+numeric_transformer = make_pipeline(SimpleImputer(strategy="median"), StandardScaler())
+
+categorical_transformer = make_pipeline(
+    SimpleImputer(strategy="most_frequent"),
+    OneHotEncoder(handle_unknown="ignore"))
+
+preprocessor = make_column_transformer(
+    (numeric_transformer, numeric_features), 
+    (categorical_transformer, categorical_features))
+
+# 1. Build a pipeline containing the column transformer and an SVC model, 
+# using the parameter class_weight="balanced".
+main_pipe = make_pipeline(preprocessor, SVC(class_weight="balanced"))
+
+# 2. Perform cross-validation using cross-validate on the training split using the scoring
+# measures accuracy, precision, recall and f1.
+multi_scores = cross_validate(main_pipe,
+                              X_train, y_train,
+                              return_train_score=True,
+                              scoring = ['accuracy', 'precision', 'recall'])
+
+# 3. Save the results in a dataframe.
+pd.DataFrame(multi_scores)
