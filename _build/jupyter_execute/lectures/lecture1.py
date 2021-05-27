@@ -1,6 +1,6 @@
-# Lecture 1 - Introduction to Machine Learning & The Decision Tree Algorithm
+# Intro to ML &  Decision Trees
 
-*Hayley Boyce, Monday April 19th 2021*
+*Hayley Boyce, April 19th 2021*
 
 ## Welcome
 
@@ -238,24 +238,37 @@ classify_image(img, 5)
 <img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
 
 
-## Let's Practice! 
+## Let's Practice
 
+**Are the following supervised or unsupervised problems?**   
 
-Are the following supervised or unsupervised problems?
+1\. Finding groups of similar properties in a real estate data set.   
+2\. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.    
+3\. Identifying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.    
+4\. Detecting heart disease in patients based on different test results and history.    
+5\. Grouping articles on different topics from different news sources (something like Google News app).    
 
-1. Finding groups of similar properties in a real estate data set.
-2. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.
-3. Identifying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.
-4. Detecting heart disease in patients based on different test results and history.
-5. Grouping articles on different topics from different news sources (something like Google News app).
+**Are the following classification or regression problems?**   
 
-Are the following classification or regression problems?
+6\. Predicting the price of a house based on features such as number of rooms and the year built.    
+7\. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.     
+8\. Predicting your grade in BAIT 509 based on past grades.     
+9\. Predicting whether you should bicycle tomorrow or not based on the weather forecast.     
+10\. Predicting a cereal’s manufacturer given the nutritional information.     
 
-1. Predicting the price of a house based on features such as number of rooms and the year built.
-2. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.
-3. Predicting your grade in BAIT 509 based on past grades.
-4. Predicting whether you should bicycle tomorrow or not based on the weather forecast.
-5. Predicting a cereal’s manufacturer given the nutritional information.
+```{admonition} Solutions!
+:class: dropdown
+1. Unsupervised
+2. Supervised
+3. Unsupervised
+4. Supervised
+5. Unsupervised
+6. Regression
+7. Classification
+8. Regression
+9. Classification
+10. Classification 
+```
 
 ## Tabular Data and Terminology
 
@@ -484,27 +497,41 @@ We will not go into detail here, but there the important thing to note here is:
     - Cross entropy 
 
 
-## Let's Practice! 
+## Let's Practice
 
-Using the data `candybars.csv` from the datafolder to aswer the following questions:
+Using the data `candybars.csv` from the datafolder to aswer the following questions:  
 
-1. How many features are there?
-2. How many observations are there? 
-3. What would be a suitable target with this data?
+1\. How many features are there?    
+2\. How many observations are there?     
+3\. What would be a suitable target with this data?    
 
 candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
 
 candy_df.shape
 
-***Answer as either `fit`  or `predict`***
-1. Is called first (before the other one).
-2. Only takes X as an argument.
-3. In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.
+**Answer as either `fit`  or `predict`:**   
 
-***Quick Questions***
-1. What is the top node in a decision tree called? 
-2. What Python structure/syntax are the nodes in a decision tree similar to? 
+4. Is called first (before the other one).    
+5. Only takes X as an argument.    
+6. In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.   
+ 
+**Quick Questions:**   
+
+7. What is the top node in a decision tree called?    
+8. What Python structure/syntax are the nodes in a decision tree similar to?    
+
+```{admonition} Solutions!
+:class: dropdown
+1. 8
+2. 25
+3. Probably `availability` but we could use the other features as well. 
+4. `fit`
+5. `predict`
+6. `fit`
+7. the root
+8. if/else conditions
+```
 
 ## Parameters and Hyperparameters
 
@@ -665,7 +692,7 @@ The maximum 𝑅2 is 1 for perfect predictions.
 
 It can be negative which is very bad. 
 
-## Let's Practice 
+## Let's Practice - Coding 
 
 Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here](https://ml-learn.mds.ubc.ca/en/module2))  for the following:
 1. Define two objects named `X` and `y` which contain the features and target column respectively.
@@ -677,6 +704,8 @@ Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here
 
 candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
+
+
 
 ## What We've Learned Today<a id="9"></a>
 

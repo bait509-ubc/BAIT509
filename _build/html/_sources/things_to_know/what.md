@@ -74,11 +74,40 @@
 
 ### Lecture 7
 
+- Explain the general intuition behind linear models.
+- Explain the `fit` and `predict` paradigm of linear models.
+- Use `scikit-learn`'s `LogisticRegression` classifier.
+    - Use `fit`, `predict` and `predict_proba`.   
+    - Use `coef_` to interpret the model weights.
+- Explain the advantages and limitations of linear classifiers. 
+- Apply scikit-learn regression model (e.g., Ridge) to regression problems.
+- Relate the Ridge hyperparameter `alpha` to the `LogisticRegression` hyperparameter `C`.
+- Compare logistic regression with naive Bayes.
 
 ### Lecture 8
+
+- In the context of supervised learning, form statistical questions  from business questions/objectives.
+- Understand the different forms your client may expect you to communicate results. 
+- Explain the general concept of feature selection.
+- Discuss and compare different feature selection methods at a high level.
+- Use sklearn's implementation of recursive feature elimination (RFE).
+- Implement the forward search algorithm.
 
 
 ### Lecture 9
 
+- Explain why accuracy is not always the best metric in ML.
+- Explain components of a confusion matrix.
+- Define precision, recall, and f1-score and use them to evaluate different classifiers.
+- Identify whether there is class imbalance and whether you need to deal with it.
+- Explain `class_weight` and use it to deal with data imbalance.
+- Appropriately select a scoring metric given a regression problem.
+- Interpret and communicate the meanings of different scoring metrics on regression problems. MSE, RMSE, $R^2$, MAPE.
+- Apply different scoring functions with `cross_validate`, `GridSearchCV` and `RandomizedSearchCV`.
+
 
 ### Lecture 10
+
+- Explain components of a confusion matrix with respect to multi-class classification.
+- Define precision, recall, and f1-score with multi-class classification
+- Carry out multi-class classification using OVR and OVO strategies.

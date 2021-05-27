@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 6 - Naive Bayes and Hyperparameter Optimization &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>6. Naive Bayes and Hyperparameter Optimization &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 7 - Linear Models" href="lecture7.html" />
-    <link rel="prev" title="Lecture 5 - Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
+    <link rel="next" title="7. Linear Models" href="lecture7.html" />
+    <link rel="prev" title="5. Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture6.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 6 - Naive Bayes and Hyperparameter Optimization" />
-<meta property="og:description" content="Lecture 6 - Naive Bayes and Hyperparameter Optimization  Hayley Boyce, Wednesday, May 5th, 2021  # Importing our libraries import pandas as pd import altair as " />
+<meta property="og:title"       content="Naive Bayes and Hyperparameter Optimization" />
+<meta property="og:description" content="Naive Bayes and Hyperparameter Optimization  Hayley Boyce, May 5th, 2021  # Importing our libraries import pandas as pd import altair as alt import numpy as np " />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Business Objectives/Statistical Questions and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,44 +298,44 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   6.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   6.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   6.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     6.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#naive-bayes-introduction-spam-non-spam">
-   Naive Bayes introduction -  spam/non spam
+   6.4. Naive Bayes introduction -  spam/non spam
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#naive-bayes-from-scratch">
-   Naive Bayes from scratch
+   6.5. Naive Bayes from scratch
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#naive-bayes-approximation">
-     Naive Bayes’ approximation
+     6.5.1. Naive Bayes’ approximation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation">
-     Estimating
+     6.5.2. Estimating
      <span class="math notranslate nohighlight">
       \(P(\text{spam} \mid \text{message})\)
      </span>
@@ -344,7 +344,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation">
-     Estimating
+     6.5.3. Estimating
      <span class="math notranslate nohighlight">
       \(P(\text{non spam} \mid \text{message})\)
      </span>
@@ -355,16 +355,17 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#naive-bayes-classifier">
-   Naive Bayes classifier
+   6.6. Naive Bayes classifier
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-simple-solution-laplace-smoothing">
-     A simple solution: Laplace smoothing
+     6.6.1. A simple solution: Laplace smoothing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alpha-hyperparameter-and-the-fundamental-tradeoff">
+     6.6.2.
      <code class="docutils literal notranslate">
       <span class="pre">
        alpha
@@ -377,122 +378,103 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#naive-bayes-on-real-data">
-   Naive Bayes on Real Data
+   6.7. Naive Bayes on Real Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   6.8. Let’s Practice
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spam">
-     spam
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-spam">
-     non spam
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#final-class">
-     Final Class
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#automated-hyperparameter-optimization">
-   Automated Hyperparameter Optimization
+   6.9. Automated Hyperparameter Optimization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-problem-with-hyperparameters">
-     The problem with hyperparameters
+     6.9.1. The problem with hyperparameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-pick-hyperparameters">
-     How to pick hyperparameters
+     6.9.2. How to pick hyperparameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Automated hyperparameter optimization
+     6.9.3. Automated hyperparameter optimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#let-s-apply-it">
-     Let’s Apply it
+     6.9.4. Let’s Apply it
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exhaustive-grid-search-trying-all-the-options">
-   Exhaustive grid search - Trying ALL the options
+   6.10. Exhaustive grid search - Trying ALL the options
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implement-with-pipelines">
-     Implement with Pipelines
+     6.10.1. Implement with Pipelines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-a-grid">
-     Why a grid?
+     6.10.2. Why a grid?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-what">
-     Now what?
+     6.10.3. Now what?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#notice-any-problems">
-     Notice any problems?
+     6.10.4. Notice any problems?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#randomized-hyperparameter-optimization">
-     Randomized hyperparameter optimization
+     6.10.5. Randomized hyperparameter optimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#continuous-values-for-hyperparameter-tuning-optional">
-     Continuous values for hyperparameter tuning - optional
+     6.10.6. Continuous values for hyperparameter tuning - optional
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set">
-   The problem with hyperparameter tuning - overfitting the validation set
+   6.11. The problem with hyperparameter tuning - overfitting the validation set
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-overfitting-the-validation-set">
-     Example: overfitting the validation set
+     6.11.1. Example: overfitting the validation set
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Let’s Practice
+   6.12. Let’s Practice
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coding-practice">
-     Coding Practice
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   6.13. Let’s Practice - Coding
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
-   What We’ve Learned Today
+   6.14. What We’ve Learned Today
    <a id="9">
    </a>
   </a>
@@ -509,9 +491,9 @@
         
               <div>
                 
-  <div class="section" id="lecture-6-naive-bayes-and-hyperparameter-optimization">
-<h1>Lecture 6 - Naive Bayes and Hyperparameter Optimization<a class="headerlink" href="#lecture-6-naive-bayes-and-hyperparameter-optimization" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Wednesday, May 5th, 2021</em></p>
+  <div class="section" id="naive-bayes-and-hyperparameter-optimization">
+<h1><span class="section-number">6. </span>Naive Bayes and Hyperparameter Optimization<a class="headerlink" href="#naive-bayes-and-hyperparameter-optimization" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, May 5th, 2021</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
@@ -540,7 +522,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Quiz Today!</p></li>
 <li><p>Result of Polls</p></li>
@@ -551,7 +533,7 @@
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Explain the naive assumption of naive Bayes.</p></li>
 <li><p>Predict targets by hands-on toy examples using naive Bayes.</p></li>
@@ -564,7 +546,7 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What kind of preprocessing must I do if I have a feature with categories that have an order to them?</p></li>
 <li><p>How many columns do I need for a binary feature?</p></li>
@@ -573,7 +555,7 @@
 <li><p>In text data, what are our features made up of?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>How do I tune multiple hyperparameters at once?</p></li>
 <li><p>What algorithm works well with our <code class="docutils literal notranslate"><span class="pre">spam</span></code>, <code class="docutils literal notranslate"><span class="pre">non</span> <span class="pre">spam</span></code> problem?</p></li>
@@ -581,25 +563,12 @@
 </div>
 </div>
 <div class="section" id="naive-bayes-introduction-spam-non-spam">
-<h2>Naive Bayes introduction -  spam/non spam<a class="headerlink" href="#naive-bayes-introduction-spam-non-spam" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Naive Bayes introduction -  spam/non spam<a class="headerlink" href="#naive-bayes-introduction-spam-non-spam" title="Permalink to this headline">¶</a></h2>
 <p>Last lecture we saw this spam classification problem where we used <code class="docutils literal notranslate"><span class="pre">CountVectorizer()</span></code> to vectorize the text into features and used an <code class="docutils literal notranslate"><span class="pre">SVC</span></code> to classify each text message into either a class of <code class="docutils literal notranslate"><span class="pre">spam</span></code> or <code class="docutils literal notranslate"><span class="pre">non</span> <span class="pre">spam</span></code>.</p>
 <p><span class="math notranslate nohighlight">\(X = \begin{bmatrix}\text{&quot;URGENT!! You have been selected to receive a £900 prize reward!&quot;,}\\ \text{&quot;Lol your always so convincing.&quot;}\\ \text{&quot;Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now!&quot;}\\ \end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(y = \begin{bmatrix}\text{spam} \\ \text{non spam} \\ \text{spam} \end{bmatrix}\)</span></p>
-<p>For years, the best spam filtering methods used naive Bayes.</p>
-<p>Naive Bayes is based on Bayes’ Theorem:</p>
-<a class="reference internal image-reference" href="../_images/bayes.png"><img alt="../_images/bayes.png" src="../_images/bayes.png" style="width: 50%;" /></a>
-<ul class="simple">
-<li><p>This is our first probabilistic classifier where we think of learning as a problem of statistical inference.</p></li>
-<li><p>Other applications of Naive Bayes:</p>
-<ul>
-<li><p>Folder ordering, document clustering, etc.</p></li>
-<li><p>Sentiment analysis (e.g., movies, restaurants, etc.)</p></li>
-<li><p>Classifying products into groups based on descriptions</p></li>
-</ul>
-</li>
-</ul>
 </div>
 <div class="section" id="naive-bayes-from-scratch">
-<h2>Naive Bayes from scratch<a class="headerlink" href="#naive-bayes-from-scratch" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Naive Bayes from scratch<a class="headerlink" href="#naive-bayes-from-scratch" title="Permalink to this headline">¶</a></h2>
 <p>Let’s do some naive Bayes calculations <strong>by hand</strong>🖐 🤚 .</p>
 <p>Yes, there is going to be some math here but it’s going to be really helpful in understanding how this algorithm works!</p>
 <p>Below we have a few texts and they are classed as either being  <strong>spam</strong> or <strong>non spam</strong>.</p>
@@ -867,7 +836,7 @@
 <li><p>We can simplify the numerator</p></li>
 </ol>
 <div class="section" id="naive-bayes-approximation">
-<h3>Naive Bayes’ approximation<a class="headerlink" href="#naive-bayes-approximation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.1. </span>Naive Bayes’ approximation<a class="headerlink" href="#naive-bayes-approximation" title="Permalink to this headline">¶</a></h3>
 <p>We assume each feature (word) is conditionally independent. (Assume that all features in <span class="math notranslate nohighlight">\(X\)</span> are mutually independent, conditional on the target class.)</p>
 <ul class="simple">
 <li><p>In general,
@@ -901,7 +870,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </ul>
 </div>
 <div class="section" id="estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation">
-<h3>Estimating <span class="math notranslate nohighlight">\(P(\text{spam} \mid \text{message})\)</span> (The left side of our equation)<a class="headerlink" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.2. </span>Estimating <span class="math notranslate nohighlight">\(P(\text{spam} \mid \text{message})\)</span> (The left side of our equation)<a class="headerlink" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[P(\text{free} = 1 \mid \text{spam}) \times P(\text{prize} = 0 \mid \text{spam})  \times P(\text{sauder} = 0 \mid \text{spam}) \times P(\text{urgent} = 1 \mid \text{spam})*P(\textrm{spam}) \]</div>
 <p>We need the following:</p>
@@ -1020,11 +989,11 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <ul>
 <li><p>What is  <span class="math notranslate nohighlight">\(P(\text{free} = 1 \mid \text{spam})\)</span> ??</p>
 <ul>
-<li><p>Given target is spam, how often “free”= 0? <span class="math notranslate nohighlight">\(= 2/3\)</span></p></li>
+<li><p>Given target is spam, how often “free”= 1? <span class="math notranslate nohighlight">\(= 2/3\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{spam}) = 1/3\)</span>
--<span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{spam}) = 3/3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{spam}) = 1/3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{spam}) = 3/3\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{spam}) = 2/3\)</span></p></li>
 </ul>
 </li>
@@ -1055,7 +1024,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <p>Ok, So we’ve done our left side! Now we have to do the right!</p>
 </div>
 <div class="section" id="estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation">
-<h3>Estimating <span class="math notranslate nohighlight">\(P(\text{non spam} \mid \text{message})\)</span>  (The right side of our equation)<a class="headerlink" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.3. </span>Estimating <span class="math notranslate nohighlight">\(P(\text{non spam} \mid \text{message})\)</span>  (The right side of our equation)<a class="headerlink" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[P(\text{free} = 1 \mid \text{ non spam}) \times P(\text{prize} = 0 \mid \text{non spam})  \times P(\text{sauder} = 0 \mid \text{non spam}) \times P(\text{urgent} = 1 \mid \text{non spam})*P(\textrm{non spam}) \]</div>
 <p>Now we need the following:</p>
@@ -1219,7 +1188,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="section" id="naive-bayes-classifier">
-<h2>Naive Bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6. </span>Naive Bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Permalink to this headline">¶</a></h2>
 <p>The main Naive Bayes classifier in sklearn is called <code class="docutils literal notranslate"><span class="pre">MultinomialNB</span></code> and exists in the <code class="docutils literal notranslate"><span class="pre">naive_bayes</span></code> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1464,7 +1433,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <p>We have limited data and if we do not see a feature occurring with a class, it doesn’t mean it would never occur with that class.</p>
 <p>How can we fix this?</p>
 <div class="section" id="a-simple-solution-laplace-smoothing">
-<h3>A simple solution: Laplace smoothing<a class="headerlink" href="#a-simple-solution-laplace-smoothing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.1. </span>A simple solution: Laplace smoothing<a class="headerlink" href="#a-simple-solution-laplace-smoothing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The simplest way to avoid zero probabilities is to add a value(<span class="math notranslate nohighlight">\(\alpha\)</span>) to all the counts. This is called <strong>Laplace smoothing</strong></p></li>
 </ul>
@@ -1517,7 +1486,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 <p>A bit smoother now, wouldn’t you say?</p>
 </div>
 <div class="section" id="alpha-hyperparameter-and-the-fundamental-tradeoff">
-<h3><code class="docutils literal notranslate"><span class="pre">alpha</span></code> hyperparameter and the fundamental tradeoff<a class="headerlink" href="#alpha-hyperparameter-and-the-fundamental-tradeoff" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.2. </span><code class="docutils literal notranslate"><span class="pre">alpha</span></code> hyperparameter and the fundamental tradeoff<a class="headerlink" href="#alpha-hyperparameter-and-the-fundamental-tradeoff" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>High alpha <span class="math notranslate nohighlight">\(\rightarrow\)</span> underfitting</p>
 <ul>
@@ -1529,7 +1498,7 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="section" id="naive-bayes-on-real-data">
-<h2>Naive Bayes on Real Data<a class="headerlink" href="#naive-bayes-on-real-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.7. </span>Naive Bayes on Real Data<a class="headerlink" href="#naive-bayes-on-real-data" title="Permalink to this headline">¶</a></h2>
 <p>let’s try <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s implementation of Naive Bayes on a modified version of Kaggle’s <a class="reference external" href="https://www.kaggle.com/vstepanenko/disaster-tweets">Disaster Tweets</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1722,36 +1691,36 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.071928</td>
-      <td>0.013914</td>
+      <td>0.091117</td>
+      <td>0.017300</td>
       <td>0.796875</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.056068</td>
-      <td>0.011731</td>
+      <td>0.076795</td>
+      <td>0.015993</td>
       <td>0.801562</td>
       <td>0.948438</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.059474</td>
-      <td>0.010781</td>
+      <td>0.071020</td>
+      <td>0.015681</td>
       <td>0.801562</td>
       <td>0.946875</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.058180</td>
-      <td>0.010921</td>
+      <td>0.070094</td>
+      <td>0.013736</td>
       <td>0.837500</td>
       <td>0.945703</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.053454</td>
-      <td>0.010474</td>
+      <td>0.076934</td>
+      <td>0.014068</td>
       <td>0.814063</td>
       <td>0.944531</td>
     </tr>
@@ -1766,8 +1735,8 @@ $<span class="math notranslate nohighlight">\(P(\text{message} \mid \text{spam})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.059821
-score_time     0.011564
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.077192
+score_time     0.015356
 test_score     0.810312
 train_score    0.946797
 dtype: float64
@@ -1777,7 +1746,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.8. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
 <p>Using naive Bayes by hand, what class would naive Bayes predict for the second example “I like Sauder”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1916,57 +1885,53 @@ dtype: float64
 </div></div></div>
 </div>
 <p>Let’s do some of the steps here:</p>
-<div class="section" id="spam">
-<h3>spam<a class="headerlink" href="#spam" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Prior probability:
-<span class="math notranslate nohighlight">\(P(\text{spam}) = \)</span></p></li>
-<li><p>Conditional probabilities:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(P(\text{free} = 0 \mid \text{spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{spam}) = \)</span></p></li>
-</ol>
-</li>
-</ol>
+<p><strong>spam side</strong></p>
+<p>1. Prior probability:<br />
+<span class="math notranslate nohighlight">\(P(\text{spam}) = \)</span></p>
+<p>2. Conditional probabilities:</p>
+<p>2.1 <span class="math notranslate nohighlight">\(P(\text{free} = 0 \mid \text{spam}) = \)</span><br />
+2.2 <span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{spam}) = \)</span>
+2.3 <span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{spam}) = \)</span>
+2.4 <span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{spam}) = \)</span></p>
 <br>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(P(\textrm{spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) = \)</span></p></li>
-</ol>
-</div>
-<div class="section" id="non-spam">
-<h3>non spam<a class="headerlink" href="#non-spam" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Prior probability:
-<span class="math notranslate nohighlight">\(P(\text{non spam}) = \)</span></p></li>
-<li><p>Conditional probabilities:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(P(\text{free} = 0 \mid \text{non spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{non spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{non spam}) = \)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{non spam}) = \)</span></p></li>
-</ol>
-</li>
-<li><p><span class="math notranslate nohighlight">\(P(\textrm{non spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) =\)</span></p></li>
-</ol>
-</div>
-<div class="section" id="final-class">
-<h3>Final Class<a class="headerlink" href="#final-class" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>CLASS AS:</p></li>
-</ol>
+<p>3. <span class="math notranslate nohighlight">\(P(\textrm{spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) = \)</span></p>
+<p><strong>non spam side</strong></p>
+<p>4. Prior probability:<br />
+<span class="math notranslate nohighlight">\(P(\text{non spam}) = \)</span></p>
+<p>5. Conditional probabilities:<br />
+5.1 <span class="math notranslate nohighlight">\(P(\text{free} = 0 \mid \text{non spam}) = \)</span><br />
+5.2 <span class="math notranslate nohighlight">\(P(\text{prize} = 0 \mid \text{non spam}) = \)</span><br />
+5.3 <span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{non spam}) = \)</span><br />
+5.4 <span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{non spam}) = \)</span></p>
+<p>6. <span class="math notranslate nohighlight">\(P(\textrm{non spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) =\)</span></p>
+<p><strong>Final Class</strong></p>
+<p>7. CLASS AS:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<p>1/. <span class="math notranslate nohighlight">\(3/6\)</span><br />
+2.1 <span class="math notranslate nohighlight">\(1/3\)</span><br />
+2.2 <span class="math notranslate nohighlight">\(1/3\)</span><br />
+2.3 <span class="math notranslate nohighlight">\(0/3\)</span><br />
+2.4 <span class="math notranslate nohighlight">\(1/3\)</span><br />
+3. <span class="math notranslate nohighlight">\(\frac{1}{3} * \frac{1}{3}* \frac{0}{3} * \frac{1}{3} *\frac{3}{6} = 0\)</span></p>
+<p>4. <span class="math notranslate nohighlight">\(3/6\)</span><br />
+5.1 <span class="math notranslate nohighlight">\(3/3\)</span><br />
+5.2 <span class="math notranslate nohighlight">\(3/3\)</span><br />
+5.3 <span class="math notranslate nohighlight">\(2/3\)</span><br />
+5.4 <span class="math notranslate nohighlight">\(3/3\)</span></p>
+<p>6. <span class="math notranslate nohighlight">\(\frac{3}{3} * \frac{3}{3}* \frac{2}{3} * \frac{3}{3} *\frac{3}{6} = 1/3\)</span><br />
+7. Non spam</p>
 </div>
 </div>
 <div class="section" id="automated-hyperparameter-optimization">
-<h2>Automated Hyperparameter Optimization<a class="headerlink" href="#automated-hyperparameter-optimization" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.9. </span>Automated Hyperparameter Optimization<a class="headerlink" href="#automated-hyperparameter-optimization" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen quite a few different hyperparameters for different models.</p>
 <p>We’ve seen <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> and <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> for decision trees.</p>
 <p>We’ve seen <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and <code class="docutils literal notranslate"><span class="pre">weights</span></code> for K-Nearest Neighbours and we’ve seen <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> for SVMs with RBF.</p>
 <p>We’ve even seen hyperparameters for our transformations like <code class="docutils literal notranslate"><span class="pre">strategy</span></code> for our <code class="docutils literal notranslate"><span class="pre">SimpleImputer()</span></code>.</p>
 <p>They are important and we’ve seen they can really help optimize your model, but we’ve also seen how difficult it can be to figure out how to set them.</p>
 <div class="section" id="the-problem-with-hyperparameters">
-<h3>The problem with hyperparameters<a class="headerlink" href="#the-problem-with-hyperparameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.9.1. </span>The problem with hyperparameters<a class="headerlink" href="#the-problem-with-hyperparameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>We may have a lot of them. (deep learning!)</p></li>
 <li><p>Picking reasonable hyperparameters is important -&gt; it helps avoid underfit or overfit models.</p></li>
@@ -1977,7 +1942,7 @@ dtype: float64
 </ul>
 </div>
 <div class="section" id="how-to-pick-hyperparameters">
-<h3>How to pick hyperparameters<a class="headerlink" href="#how-to-pick-hyperparameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.9.2. </span>How to pick hyperparameters<a class="headerlink" href="#how-to-pick-hyperparameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Manual hyperparameter optimization (What we’ve done so far)</p>
 <ul>
@@ -2000,14 +1965,14 @@ dtype: float64
 </ul>
 </div>
 <div class="section" id="id1">
-<h3>Automated hyperparameter optimization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.9.3. </span>Automated hyperparameter optimization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Exhaustive grid search: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html"><code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.GridSearchCV</span></code></a></p></li>
 <li><p>Randomized hyperparameter optimization: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html" target="_blank"><code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.RandomizedSearchCV</span></code></a></p></li>
 </ul>
 </div>
 <div class="section" id="let-s-apply-it">
-<h3>Let’s Apply it<a class="headerlink" href="#let-s-apply-it" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.9.4. </span>Let’s Apply it<a class="headerlink" href="#let-s-apply-it" title="Permalink to this headline">¶</a></h3>
 <p>Let’s bring back the cities dataset we worked with in previous lectures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2075,7 +2040,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="exhaustive-grid-search-trying-all-the-options">
-<h2>Exhaustive grid search - Trying ALL the options<a class="headerlink" href="#exhaustive-grid-search-trying-all-the-options" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.10. </span>Exhaustive grid search - Trying ALL the options<a class="headerlink" href="#exhaustive-grid-search-trying-all-the-options" title="Permalink to this headline">¶</a></h2>
 <p>We import <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2089,9 +2054,7 @@ dtype: float64
 <p>After that, we built a dictionary called <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> and we specify the values we wish to look over for the hyperparameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
@@ -2198,8 +2161,8 @@ dtype: float64
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    1.6s
-[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    1.7s finished
+[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    2.4s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    2.6s finished
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=SVC(), n_jobs=-1,
@@ -2219,7 +2182,7 @@ dtype: float64
 <p>This is a little more complex.</p>
 <p>Setting this to -1 helps make this process faster by running hyperparameter optimization in parallel instead of in a sequence.</p>
 <div class="section" id="implement-with-pipelines">
-<h3>Implement with Pipelines<a class="headerlink" href="#implement-with-pipelines" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.1. </span>Implement with Pipelines<a class="headerlink" href="#implement-with-pipelines" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
@@ -2285,8 +2248,8 @@ dtype: float64
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    0.2s
-[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    0.4s finished
+[Parallel(n_jobs=-1)]: Done  25 tasks      | elapsed:    2.2s
+[Parallel(n_jobs=-1)]: Done  80 out of  80 | elapsed:    2.6s finished
 </pre></div>
 </div>
 </div>
@@ -2304,7 +2267,7 @@ dtype: float64
 <p>In this case, we can see from the output that 80 executions are done, just like we calculated (4 x 4 x 5 = 80).</p>
 </div>
 <div class="section" id="why-a-grid">
-<h3>Why a grid?<a class="headerlink" href="#why-a-grid" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.2. </span>Why a grid?<a class="headerlink" href="#why-a-grid" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../_images/cross.gif"><img alt="404 image" src="../_images/cross.gif" style="width: 60%;" /></a>
 <p>If we fix <code class="docutils literal notranslate"><span class="pre">C</span></code> with a value of 1 and loop over the values of 1, 10 and 100 for <code class="docutils literal notranslate"><span class="pre">gamma</span></code>.</p>
 <p>This results in <code class="docutils literal notranslate"><span class="pre">100</span></code> having the best score with 0.82.</p>
@@ -2317,7 +2280,7 @@ dtype: float64
 <p>This is why it is so important not to fix either of the hyperparameters since it won’t necessarily help you find the most optimal values.</p>
 </div>
 <div class="section" id="now-what">
-<h3>Now what?<a class="headerlink" href="#now-what" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.3. </span>Now what?<a class="headerlink" href="#now-what" title="Permalink to this headline">¶</a></h3>
 <p>How do we know what the best hyperparameter values are after fitting?</p>
 <p>We can extract the best hyperparameter values with <code class="docutils literal notranslate"><span class="pre">.best_params_</span></code> and their corresponding score with <code class="docutils literal notranslate"><span class="pre">.best_score_</span></code>.</p>
 <div class="cell docutils container">
@@ -2442,7 +2405,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="section" id="notice-any-problems">
-<h3>Notice any problems?<a class="headerlink" href="#notice-any-problems" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.4. </span>Notice any problems?<a class="headerlink" href="#notice-any-problems" title="Permalink to this headline">¶</a></h3>
 <p>This seems pretty nice and obeys the golden rule however the new problem is the execution time.</p>
 <p>Think about how much time it would take if we had 5 hyperparameters each with 10 different values.</p>
 <p>That would mean we would be needing to call <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> 100,000 times!</p>
@@ -2450,7 +2413,7 @@ These both give the same results.</p>
 <p><strong>Enter randomized hyperparameter search!</strong></p>
 </div>
 <div class="section" id="randomized-hyperparameter-optimization">
-<h3>Randomized hyperparameter optimization<a class="headerlink" href="#randomized-hyperparameter-optimization" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.5. </span>Randomized hyperparameter optimization<a class="headerlink" href="#randomized-hyperparameter-optimization" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
@@ -2470,8 +2433,8 @@ These both give the same results.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2480,19 +2443,7 @@ These both give the same results.</p>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend LokyBackend with 8 concurrent workers.
-[Parallel(n_jobs=-1)]: Done  50 out of  50 | elapsed:    0.2s finished
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomizedSearchCV(cv=5,
-                   estimator=Pipeline(steps=[(&#39;simpleimputer&#39;,
-                                              SimpleImputer(strategy=&#39;median&#39;)),
-                                             (&#39;standardscaler&#39;,
-                                              StandardScaler()),
-                                             (&#39;svc&#39;, SVC())]),
-                   n_jobs=-1,
-                   param_distributions={&#39;svc__C&#39;: [0.1, 1.0, 10, 100],
-                                        &#39;svc__gamma&#39;: [0.1, 1.0, 10, 100]},
-                   verbose=1)
+[Parallel(n_jobs=-1)]: Done  50 out of  50 | elapsed:    0.3s finished
 </pre></div>
 </div>
 </div>
@@ -2505,7 +2456,7 @@ These both give the same results.</p>
 <p>This time we see only 50 fits (10 combinations instead of 16 and 5 folds)!</p>
 </div>
 <div class="section" id="continuous-values-for-hyperparameter-tuning-optional">
-<h3>Continuous values for hyperparameter tuning - optional<a class="headerlink" href="#continuous-values-for-hyperparameter-tuning-optional" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.10.6. </span>Continuous values for hyperparameter tuning - optional<a class="headerlink" href="#continuous-values-for-hyperparameter-tuning-optional" title="Permalink to this headline">¶</a></h3>
 <p>For randomized grid search we can search over a range of continuous values instead of discrete values like in <code class="docutils literal notranslate"><span class="pre">GridSearchCV()</span></code>.</p>
 <p>We can specify a range of values instead of a list of values for each hyperparameter.</p>
 <div class="cell docutils container">
@@ -2539,7 +2490,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 43.84016760287316, &#39;svc__gamma&#39;: 5.569723214452804}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 30.962086187979253, &#39;svc__gamma&#39;: 17.526459755968204}
 </pre></div>
 </div>
 </div>
@@ -2551,7 +2502,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7985294117647059
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7452205882352942
 </pre></div>
 </div>
 </div>
@@ -2563,7 +2514,7 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7142857142857143
 </pre></div>
 </div>
 </div>
@@ -2597,12 +2548,12 @@ These both give the same results.</p>
 </div>
 </div>
 <div class="section" id="the-problem-with-hyperparameter-tuning-overfitting-the-validation-set">
-<h2>The problem with hyperparameter tuning - overfitting the validation set<a class="headerlink" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.11. </span>The problem with hyperparameter tuning - overfitting the validation set<a class="headerlink" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set" title="Permalink to this headline">¶</a></h2>
 <p>Since we are repeating cross-validation over and over again, it’s not necessarily unseen data anymore.</p>
 <p>This may produce overly optimistic results.</p>
 <p>If our dataset is small and if our validation set is hit too many times, we suffer from <strong>optimization bias</strong> or <strong>overfitting the validation set</strong>.</p>
 <div class="section" id="example-overfitting-the-validation-set">
-<h3>Example: overfitting the validation set<a class="headerlink" href="#example-overfitting-the-validation-set" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.11.1. </span>Example: overfitting the validation set<a class="headerlink" href="#example-overfitting-the-validation-set" title="Permalink to this headline">¶</a></h3>
 <p>Attribution: <a class="reference external" href="https://www.cs.ubc.ca/~schmidtm/">Mark Scmidt</a></p>
 <p>This exercise helps explain the concept of overfitting on the validation set.</p>
 <p>Consider a multiple-choice (a,b,c,d) “test” with 10 questions:</p>
@@ -2638,6 +2589,15 @@ These both give the same results.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
+The expected grade among the best of 2 tests is : 0.33
+The expected grade among the best of 10 tests is : 0.47
+The expected grade among the best of 100 tests is : 0.62
+The expected grade among the best of 1000 tests is : 0.74
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we instead used a 100-question test then:</p>
 <ul class="simple">
@@ -2663,6 +2623,15 @@ These both give the same results.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
+The expected grade among the best of 2 tests is : 0.27
+The expected grade among the best of 10 tests is : 0.32
+The expected grade among the best of 100 tests is : 0.36
+The expected grade among the best of 1000 tests is : 0.40
+</pre></div>
+</div>
+</div>
 </div>
 <p>The optimization bias <strong>grows with the number of things we try</strong>.<br />
 But, optimization bias <strong>shrinks quickly with the number of examples</strong>.<br />
@@ -2676,19 +2645,29 @@ But it’s still non-zero and growing if you over-use your validation set!</p>
 </div>
 </div>
 <div class="section" id="id2">
-<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Which method will attempt to find the optimal hyperparameter for the data by searching every combination possible of hyperparameter values given?</p></li>
-<li><p>Which method gives you fine-grained control over the amount of time spent searching?</p></li>
-<li><p>If I want to search for the most optimal hyperparameter values among 3 different hyperparameters each with 3 different values how many trials of cross-validation would be needed?</p></li>
-</ol>
+<h2><span class="section-number">6.12. </span>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1. Which method will attempt to find the optimal hyperparameter for the data by searching every combination possible of hyperparameter values given?<br />
+2. Which method gives you fine-grained control over the amount of time spent searching?<br />
+3. If I want to search for the most optimal hyperparameter values among 3 different hyperparameters each with 3 different values how many trials of cross-validation would be needed?</p>
+<p><span class="math notranslate nohighlight">\(x= [1,2,3]\)</span><br />
+<span class="math notranslate nohighlight">\(y= [4,5,6]\)</span><br />
+<span class="math notranslate nohighlight">\(z= [7,8,9]\)</span></p>
 <p><strong>True or False</strong></p>
+<p>4. A Larger <code class="docutils literal notranslate"><span class="pre">n_iter</span></code> will take longer but will search over more hyperparameter values.<br />
+5. Automated hyperparameter optimization can only be used for multiple hyperparameters.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>A Larger <code class="docutils literal notranslate"><span class="pre">n_iter</span></code> will take longer but will search over more hyperparameter values.</p></li>
-<li><p>Automated hyperparameter optimization can only be used for multiple hyperparameters.</p></li>
+<li><p>Exhaustive Grid Search (<code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>)</p></li>
+<li><p>Randomized Grid Search (<code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3 * 3 * 3 = 27\)</span></p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
-<div class="section" id="coding-practice">
-<h3>Coding Practice<a class="headerlink" href="#coding-practice" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">6.13. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>We are going to practice grid search using our basketball dataset that we have seen before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2720,9 +2699,8 @@ But it’s still non-zero and growing if you over-use your validation set!</p>
 <li><p>Lastly, score your model on the test set.</p></li>
 </ol>
 </div>
-</div>
 <div class="section" id="what-we-ve-learned-today-a-id-9-a">
-<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.14. </span>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>How to predict by using naive Bayes.</p></li>
 <li><p>How to use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">MultiNomialNB</span></code>.</p></li>
@@ -2758,8 +2736,8 @@ But it’s still non-zero and growing if you over-use your validation set!</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture5.html" title="previous page">Lecture 5 - Preprocessing Categorical Features and Column Transformer</a>
-    <a class='right-next' id="next-link" href="lecture7.html" title="next page">Lecture 7 - Linear Models</a>
+    <a class='left-prev' id="prev-link" href="lecture5.html" title="previous page"><span class="section-number">5. </span>Preprocessing Categorical Features and Column Transformer</a>
+    <a class='right-next' id="next-link" href="lecture7.html" title="next page"><span class="section-number">7. </span>Linear Models</a>
 
         </div>
         

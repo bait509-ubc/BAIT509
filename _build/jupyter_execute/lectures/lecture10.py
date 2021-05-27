@@ -1,6 +1,6 @@
-# Lecture 10 - Multi-Class, Pandas Profiling, finale 
+# Multi-Class, Pandas Profiling, Finale 
 
-*Hayley Boyce, Wednesday, May 19th, 2021*
+*Hayley Boyce, May 19th, 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -37,6 +37,7 @@ from sklearn.model_selection import RandomizedSearchCV
 - Our last class 😭!
 - Assignment due at 11:59pm tonight!
 - Project time today due on Wednesday May 26th at 11:59pm 
+- Extra office hours on Tuesday(12:00pm)? -> Poll
 - [Teaching evaluations](https://canvas.ubc.ca/courses/30777/external_tools/6073) - I know you all are very busy, but I would be super appreciative if you could fill it out for me. ❤️ 
 <img src="imgs/appreciate.png"  width = "30%" alt="404 image" />
 
@@ -50,9 +51,9 @@ from sklearn.model_selection import RandomizedSearchCV
 ## Five Minute Recap/ Lightning Questions 
 
 - What metrics is calculated using the equation $\frac{TP}{TP + FP}$ ?
-- What can be used to find the calculated values of precision, recall, and f1? 
-- What do we use to identify the number of false positives, false negatives and correctly identified positive and negative values? 
-- What argument is important to use when we make our own scorer where lower values are better? 
+- What function can be used to find the calculated values of precision, recall, and f1? 
+- What function do we use to identify the number of false positives, false negatives and correctly identified positive and negative values? 
+- What argument/parameter is important to use when we make our own scorer where lower values are better? 
 - What regression metric will give funky units? 
 
 ### Some lingering questions
@@ -62,9 +63,8 @@ from sklearn.model_selection import RandomizedSearchCV
 
 ## Multi-class classification
 
-- Often we will come across problems where there are more than two classes to predict
-- We call these multi-class problems 
-- There are a few ways of dealing with these outlined below
+- Often we will come across problems where there are more than two classes to predict.
+- We call these multi-class problems.
 
 - Some algorithms can natively support multi-class classification, for example:
     - Decision Trees
@@ -227,21 +227,37 @@ pipe.predict_proba(X_test)[:5]
 
 ## Let's Practice 
 
-1. Which wrapper is more computationally expensive?
-2. Name a model that can handle multi-class problems without any issues or needing any additional strategies.
-3. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?
-4. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?
+1\. Which wrapper is more computationally expensive?    
+2\. Name a model that can handle multi-class problems without any issues or needing any additional strategies.    
+3\. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?    
+4\. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?    
 
-Use the diagram below to answer the next few questions: 
+Use the diagram below to answer the next few questions:    
 <img src="imgs/multi-classQ.png"  width = "70%" alt="404 image" />
 
-5. How many examples did the model correctly predict? 
-6. How many examples were incorrectly labelled as `G`? 
-7. How many `F-C` labels were in the data?
+5\. How many examples did the model correctly predict?     
+6\. How many examples were incorrectly labelled as `G`?    
+7\. How many `F-C` labels were in the data?     
 
-**True or False:**    
-8. Decision Trees use coefficients for multi-class data.   
-9. Using 1 target label as the positive class will make all other target labels negative.
+**True or False:**      
+
+8\. Decision Trees use coefficients for multi-class data.      
+9\. Using 1 target label as the positive class will make all other target labels negative.   
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. One-vs-One
+2. Decision Trees, K-nn
+3. 6
+4. $6(5)/2=15$
+5. 52
+6. 3
+7. 6 
+8. False
+9. True
+
+```
 
 ## Pandas Profiler 
 

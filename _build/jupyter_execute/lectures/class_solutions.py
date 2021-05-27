@@ -335,6 +335,8 @@ What value will the model predict for every example?
 7. Euclidean distance will always have a positive value.
 
 > True (0 and positive) 
+
+
 8. When finding the nearest neighbour in a dataset using `kneighbors()` from the `sklearn` library, we must `fit`  the data first.
 
 > True
@@ -452,7 +454,7 @@ Yikes! I wonder how this can be improved?! More on this in the next class :)
 
 1. Name a model that will still produce meaningful predictions with different scaled column values.
 
-> Decision Tree Classifier
+> Decision Tree Algorithm
 
 2. Complete the following statement: Preprocessing is done ____.  
 
@@ -505,7 +507,7 @@ Yikes! I wonder how this can be improved?! More on this in the next class :)
 
 5. Which scaling method will produce values where the range depends on the values in the data?
 
-> Standardization (StandardScaler)
+> Standardization (`StandardScaler`)
 
 
 
@@ -780,7 +782,7 @@ Pipeline(
 
 5. What model is the pipeline fitting on?
 
-> DecisionTreeClassifier
+> `DecisionTreeClassifier`
 
 **True or False**     
 6. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.   
@@ -943,7 +945,7 @@ $ = 1/3$
 
 
 #### Final Class
-7. CLASS AS: 
+7. CLASS AS: non spam
 
 ## Let's Practice
 
@@ -1091,7 +1093,7 @@ The input feature value would be the number of times the word appears in the rev
 
 2. Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?
 
-- Positive review
+> Positive review
 
 We are trying to predict if a job applicant would be hired based on some features contained in their resume. 
 
@@ -1437,3 +1439,50 @@ multi_scores = cross_validate(main_pipe,
 
 # 3. Save the results in a dataframe.
 pd.DataFrame(multi_scores)
+
+## Lecture 10
+
+## Let's Practice 
+
+1. Which wrapper is more computationally expensive?
+
+> One-vs-One
+
+2. Name a model that can handle multi-class problems without any issues or needing any additional strategies.
+
+> Decision Trees, K-nn 
+
+3. If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?
+
+> 6
+
+4. If I have 6 classes, how many models will be built if I use the One-vs-One strategy?
+
+> $6(5)/2 = 15$
+
+
+
+Use the diagram below to answer the next few questions: 
+
+<img src="imgs/multi-classQ.png"  width = "70%" alt="404 image" />
+
+5. How many examples did the model correctly predict? 
+
+> 52
+
+6. How many examples were incorrectly labeled as `G`? 
+
+> 3
+
+7. How many `F-C` labels were in the data?
+
+> 6
+
+**True or False:**    
+8. Decision Trees use coefficients for multi-class data.   
+
+> False
+
+9. Using 1 target label as the positive class will make all other target labels negative.
+
+> True

@@ -1,9 +1,6 @@
-# Lecture 9 - Classification and Regression Metrics
+# Classification and Regression Metrics
 
-*Hayley Boyce, Monday, May 17th, 2021*
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-9---Classification-and-Regression-Metrics" data-toc-modified-id="Lecture-9---Classification-and-Regression-Metrics-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 9 - Classification and Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Evaluation-Metrics" data-toc-modified-id="Introducing-Evaluation-Metrics-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Evaluation Metrics</a></span><ul class="toc-item"><li><span><a href="#Baseline" data-toc-modified-id="Baseline-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Baseline</a></span></li></ul></li><li><span><a href="#Classification-Metrics-and-tools" data-toc-modified-id="Classification-Metrics-and-tools-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Classification Metrics and tools</a></span><ul class="toc-item"><li><span><a href="#What-is-&quot;positive&quot;-and-&quot;negative&quot;?" data-toc-modified-id="What-is-&quot;positive&quot;-and-&quot;negative&quot;?-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>What is "positive" and "negative"?</a></span></li><li><span><a href="#Confusion-Matrix" data-toc-modified-id="Confusion-Matrix-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Confusion Matrix</a></span><ul class="toc-item"><li><span><a href="#Confusion-Matrix-components" data-toc-modified-id="Confusion-Matrix-components-1.5.2.1"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Confusion Matrix components</a></span></li></ul></li><li><span><a href="#Accuracy-is-only-part-of-the-story..." data-toc-modified-id="Accuracy-is-only-part-of-the-story...-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Accuracy is only part of the story...</a></span></li><li><span><a href="#Recall" data-toc-modified-id="Recall-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Recall</a></span></li><li><span><a href="#Precision" data-toc-modified-id="Precision-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Precision</a></span></li><li><span><a href="#f1-score" data-toc-modified-id="f1-score-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>f1 score</a></span></li><li><span><a href="#Classification-report" data-toc-modified-id="Classification-report-1.5.7"><span class="toc-item-num">1.5.7&nbsp;&nbsp;</span>Classification report</a></span><ul class="toc-item"><li><span><a href="#Macro-average-vs-weighted-average" data-toc-modified-id="Macro-average-vs-weighted-average-1.5.7.1"><span class="toc-item-num">1.5.7.1&nbsp;&nbsp;</span>Macro average vs weighted average</a></span></li></ul></li><li><span><a href="#Imbalanced-datasets" data-toc-modified-id="Imbalanced-datasets-1.5.8"><span class="toc-item-num">1.5.8&nbsp;&nbsp;</span>Imbalanced datasets</a></span><ul class="toc-item"><li><span><a href="#Addressing-class-imbalance" data-toc-modified-id="Addressing-class-imbalance-1.5.8.1"><span class="toc-item-num">1.5.8.1&nbsp;&nbsp;</span>Addressing class imbalance</a></span></li><li><span><a href="#Handling-imbalance" data-toc-modified-id="Handling-imbalance-1.5.8.2"><span class="toc-item-num">1.5.8.2&nbsp;&nbsp;</span>Handling imbalance</a></span></li><li><span><a href="#Changing-the-training-procedure:-class_weight" data-toc-modified-id="Changing-the-training-procedure:-class_weight-1.5.8.3"><span class="toc-item-num">1.5.8.3&nbsp;&nbsp;</span>Changing the training procedure: <code>class_weight</code></a></span></li><li><span><a href="#Are-we-doing-better-with-class_weight=&quot;balanced&quot;?" data-toc-modified-id="Are-we-doing-better-with-class_weight=&quot;balanced&quot;?-1.5.8.4"><span class="toc-item-num">1.5.8.4&nbsp;&nbsp;</span>Are we doing better with <code>class_weight="balanced"</code>?</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Regression-Metrics" data-toc-modified-id="Regression-Metrics-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#Mean-squared-error-(MSE)" data-toc-modified-id="Mean-squared-error-(MSE)-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Mean squared error (MSE)</a></span><ul class="toc-item"><li><span><a href="#The-disadvantages" data-toc-modified-id="The-disadvantages-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>The disadvantages</a></span></li></ul></li><li><span><a href="#Quick-recap-on-$R^2$" data-toc-modified-id="Quick-recap-on-$R^2$-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Quick recap on $R^2$</a></span></li><li><span><a href="#Root-mean-squared-error--(RMSE)" data-toc-modified-id="Root-mean-squared-error--(RMSE)-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Root mean squared error  (RMSE)</a></span></li><li><span><a href="#MAPE---Mean-Absolute-Percent-Error-(MAPE)" data-toc-modified-id="MAPE---Mean-Absolute-Percent-Error-(MAPE)-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>MAPE - Mean Absolute Percent Error (MAPE)</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Passing-Different-Scoring-Methods" data-toc-modified-id="Passing-Different-Scoring-Methods-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Passing Different Scoring Methods</a></span><ul class="toc-item"><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#What-about-hyperparameter-tuning?" data-toc-modified-id="What-about-hyperparameter-tuning?-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>What about hyperparameter tuning?</a></span></li><li><span><a href="#...-and-with-Classification?" data-toc-modified-id="...-and-with-Classification?-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>... and with Classification?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div>
+*Hayley Boyce, May 17th, 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -534,32 +531,39 @@ We are paying a "fee" in precision for a greater recall value.
 
 ## Let's Practice
 
-<img src="imgs/Q_cm.png"  width = "70%" alt="404 image" />
+<img src="imgs/Q_cm.png"  width = "60%" alt="404 image" />
 
 Use the diagram above to answer the next .... questions.
 
-1. How many examples did the model of this matrix correctly label as "Guard"?
-
-2. If **Forward** is the positive label, how many ***false-positive*** values are there?
-
-3. How many examples does the model incorrectly predict?
-
-4. What is the recall of the confusion matrix assuming that **Forward** is the positive label?
-
-5. What is the precision of the confusion matrix assuming that **Forward** is the positive label?
-
-6. What is the f1 score assuming that **Forward** is the positive label?
+1\. How many examples did the model of this matrix correctly label as "Guard"?   
+2\. If **Forward** is the positive label, how many ***false-positive*** values are there?   
+3\. How many examples does the model incorrectly predict?   
+4\. What is the recall of the confusion matrix assuming that **Forward** is the positive label?    
+5\. What is the precision of the confusion matrix assuming that **Forward** is the positive label?   
+6\. What is the f1 score assuming that **Forward** is the positive label?   
 
 
-**True or False:**   
+**True or False:**       
 
-7. In spam classification, false positives are more damaging than false negatives (assume "positive" means the email is spam, "negative" means it's not).
+7\. In spam classification, false positives are more damaging than false negatives (assume "positive" means the email is spam, "negative" means it's not).    
+8\. In medical diagnosis, high recall is more important than high precision.    
+9\. The weighted average gives equal importance to all classes.    
+10\. Setting `class_weight={1:100}` will make the second class label 100 times the weight of the first class.    
 
-8. In medical diagnosis, high recall is more important than high precision.
+```{admonition} Solutions!
+:class: dropdown
 
-9. The weighted average gives equal importance to all classes.
-
-10. Setting `class_weight={1:100}` will make the second class label 100 times the weight of the first class. 
+1. 26
+2. 4
+3. 7
+4. $0.86 = 19/22$
+5. $0.83 = 19/23$
+6. $ 2 * \frac{0.86 * 0.83}{0.86 + 0.83} = 0.84$
+7. True
+8. True
+9. False
+10. False
+```
 
 ## Regression Metrics 
 
@@ -625,8 +629,6 @@ predicted_y = pipe.predict(X_train)
 predicted_y
 
 y_train.values
-
-
 
 predicted_y == y_train
 
@@ -782,10 +784,10 @@ This is quite interpretable. We can see that on average, we have around 18% erro
 
 ## Let's Practice 
 
-1. Which measurement will have units which are the square values of the target column units?
-2. For which of the following is it possible to have negative values?
-3. Which measurement is expressed as a percentage?
-4. Calculate the MSE from the values given below. 
+1\. Which measurement will have units which are the square values of the target column units?    
+2\. For which of the following is it possible to have negative values?    
+3\. Which measurement is expressed as a percentage?    
+4\. Calculate the MSE from the values given below.     
 
 
 |Observation | True Value | Predicted Value |
@@ -799,9 +801,22 @@ This is quite interpretable. We can see that on average, we have around 18% erro
 
 **True or False:**   
 
-5. We can still use recall and precision for regression problems but now we have other measurements we can use as well.  
-6. A lower RMSE value indicates a better fit.  
-7. In regression problems, calculating $R^2$  using `r2_score()` and `.score()` (with default values) will produce the same results.  
+5\. We can still use recall and precision for regression problems but now we have other measurements we can use as well.      
+6\. A lower RMSE value indicates a better model.      
+7\. In regression problems, calculating $R^2$  using `r2_score()` and `.score()` (with default values) will produce the same results.     
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. $MSE$
+2. $R^2$
+3. $MAPE$
+4. 3
+5. False
+6. True
+7. True
+
+```
 
 ## Passing Different Scoring Methods
 
@@ -969,11 +984,20 @@ This returns the `max_depth` value that results in the highest `f1` score, not t
 ## Let's Practice
 
 **True or False:**     
-1. The `scoring` argument only accepts `str` inputs.
-2. We are limited to the scoring measures offered from sklearn.
-3. If we specify the scoring method in `GridSearchCV` and `RandomizedSearchCV`, `best_param_`  will return the parameters with the best specified measure.*
+1\. The `scoring` argument only accepts `str` inputs.   
+2\. We are limited to the scoring measures offered from sklearn.    
+3\. If we specify the scoring method in `GridSearchCV` and `RandomizedSearchCV`, `best_param_`  will return the parameters with the best specified measure.*    
 
-**Coding Question**
+```{admonition} Solutions!
+:class: dropdown
+
+1. False
+2. False
+3. True
+
+```
+
+## Let's Practice - Coding
 
 Let’s bring back the Pokémon dataset that we saw previously. 
 

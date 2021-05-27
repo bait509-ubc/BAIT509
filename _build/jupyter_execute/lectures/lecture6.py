@@ -1,6 +1,6 @@
-# Lecture 6 - Naive Bayes and Hyperparameter Optimization
+# Naive Bayes and Hyperparameter Optimization
 
-*Hayley Boyce, Wednesday, May 5th, 2021*
+*Hayley Boyce, May 5th, 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -215,9 +215,9 @@ train_bow_df
     
 - Conditional probabilities
     -  What is  $P(\text{free} = 1 \mid \text{spam})$ ??
-       - Given target is spam, how often "free"= 0? $= 2/3$ 
-    - $P(\text{prize} = 0 \mid \text{spam}) = 1/3$
-     -$P(\text{sauder} = 0 \mid \text{spam}) = 3/3$
+       - Given target is spam, how often "free"= 1? $= 2/3$ 
+    - $P(\text{prize} = 0 \mid \text{spam}) = 1/3$  
+    - $P(\text{sauder} = 0 \mid \text{spam}) = 3/3$   
     - $P(\text{urgent} = 1 \mid \text{spam}) = 2/3$
 
 Now we have everything we need to do our calculations!
@@ -410,36 +410,61 @@ test_bow_df.iloc[[1]]
 
 Let's do some of the steps here: 
 
-#### spam
+**spam side**
 
-1. Prior probability: 
-    $P(\text{spam}) = $ 
+1\. Prior probability:     
+$P(\text{spam}) = $ 
 
-2. Conditional probabilities: 
-    1. $P(\text{free} = 0 \mid \text{spam}) = $
-    2. $P(\text{prize} = 0 \mid \text{spam}) = $
-    3. $P(\text{sauder} = 1 \mid \text{spam}) = $
-    4. $P(\text{urgent} = 0 \mid \text{spam}) = $
+2\. Conditional probabilities: 
+
+2.1 $P(\text{free} = 0 \mid \text{spam}) = $     
+2.2 $P(\text{prize} = 0 \mid \text{spam}) = $
+2.3 $P(\text{sauder} = 1 \mid \text{spam}) = $
+2.4 $P(\text{urgent} = 0 \mid \text{spam}) = $
     
 <br>
 
-3. $P(\textrm{spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) = $
+3\. $P(\textrm{spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) = $
 
 
-#### non spam
-4. Prior probability: 
-    $P(\text{non spam}) = $ 
+**non spam side**   
 
-5. Conditional probabilities: 
-    1. $P(\text{free} = 0 \mid \text{non spam}) = $
-    2. $P(\text{prize} = 0 \mid \text{non spam}) = $
-    3. $P(\text{sauder} = 1 \mid \text{non spam}) = $
-    4. $P(\text{urgent} = 0 \mid \text{non spam}) = $
+4\. Prior probability:       
+$P(\text{non spam}) = $ 
+
+5\. Conditional probabilities:     
+5.1 $P(\text{free} = 0 \mid \text{non spam}) = $    
+5.2 $P(\text{prize} = 0 \mid \text{non spam}) = $   
+5.3 $P(\text{sauder} = 1 \mid \text{non spam}) = $     
+5.4 $P(\text{urgent} = 0 \mid \text{non spam}) = $    
     
-6.  $P(\textrm{non spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) =$
+6\. $P(\textrm{non spam}|\text{free} = 0, \text{prize} = 0, \text{sauder} = 1,  \text{urgent} = 0) =$    
 
-#### Final Class
-7. CLASS AS: 
+
+**Final Class**      
+
+7\. CLASS AS:     
+
+```{admonition} Solutions!
+:class: dropdown
+
+1/. $3/6$       
+2.1 $1/3$    
+2.2 $1/3$     
+2.3 $0/3$     
+2.4 $1/3$      
+3\. $\frac{1}{3} * \frac{1}{3}* \frac{0}{3} * \frac{1}{3} *\frac{3}{6} = 0$         
+
+4\. $3/6$    
+5.1 $3/3$        
+5.2 $3/3$   
+5.3 $2/3$    
+5.4 $3/3$    
+
+6\. $\frac{3}{3} * \frac{3}{3}* \frac{2}{3} * \frac{3}{3} *\frac{3}{6} = 1/3$    
+7\. Non spam     
+
+```
 
 ## Automated Hyperparameter Optimization
 
@@ -506,9 +531,7 @@ We are going to use an SVC classifier.
 
 After that, we built a dictionary called `param_grid` and we specify the values we wish to look over for the hyperparameter. 
 
-param_grid = {
-    "gamma": [0.1, 1.0, 10, 100]
-}
+param_grid = {"gamma": [0.1, 1.0, 10, 100]}
 
 Then we initiate our model: 
 
@@ -529,7 +552,6 @@ param_grid = {
 
 svc = SVC()
 grid_search = GridSearchCV(svc, param_grid, cv= 5, verbose=2, n_jobs=-1)
-
 
 
 grid_search.fit(X_train, y_train)
@@ -682,8 +704,8 @@ param_grid = {
     "svc__C": [0.1, 1.0, 10, 100]
 }
 
-random_search = RandomizedSearchCV(pipe, param_grid, cv=5, verbose=1, n_jobs=-1, n_iter=10)
-random_search.fit(X_train, y_train)
+random_search = RandomizedSearchCV(pipe, param_grid, cv=5, verbose=2, n_jobs=-1, n_iter=10)
+random_search.fit(X_train, y_train);
 
 Notice that we use the same arguments in `RandomizedSearchCV()` as in `GridSearchCV()` however with 1 new addition - `n_iter`. 
 
@@ -802,17 +824,31 @@ TLDR: If your test score is lower than your validation score, it may be because 
 
 ## Let's Practice
 
-1. Which method will attempt to find the optimal hyperparameter for the data by searching every combination possible of hyperparameter values given?
-2. Which method gives you fine-grained control over the amount of time spent searching?
-3. If I want to search for the most optimal hyperparameter values among 3 different hyperparameters each with 3 different values how many trials of cross-validation would be needed?
+1\. Which method will attempt to find the optimal hyperparameter for the data by searching every combination possible of hyperparameter values given?    
+2\. Which method gives you fine-grained control over the amount of time spent searching?    
+3\. If I want to search for the most optimal hyperparameter values among 3 different hyperparameters each with 3 different values how many trials of cross-validation would be needed?    
 
+$x= [1,2,3]$   
+$y= [4,5,6]$     
+$z= [7,8,9]$    
+ 
 
 **True or False** 
 
-4. A Larger `n_iter` will take longer but will search over more hyperparameter values.
-5. Automated hyperparameter optimization can only be used for multiple hyperparameters.
+4\. A Larger `n_iter` will take longer but will search over more hyperparameter values.    
+5\. Automated hyperparameter optimization can only be used for multiple hyperparameters.   
 
-### Coding Practice 
+```{admonition} Solutions!
+:class: dropdown
+
+1. Exhaustive Grid Search (`GridSearchCV`)
+2. Randomized Grid Search (`RandomizedSearchCV`)
+3. $3 * 3 * 3 = 27$
+4. True
+5. False
+```
+
+## Let's Practice - Coding  
 
 We are going to practice grid search using our basketball dataset that we have seen before. 
 
