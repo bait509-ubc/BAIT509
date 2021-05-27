@@ -126,52 +126,52 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Business Objectives/Statistical Questions and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling, finale
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -511,6 +511,16 @@
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id24">
+     Let’s Practice
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lecture-10">
+     Lecture 10
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
      Let’s Practice
     </a>
    </li>
@@ -1150,7 +1160,7 @@ d) 1.5</p>
 <li><p>Name a model that will still produce meaningful predictions with different scaled column values.</p></li>
 </ol>
 <blockquote>
-<div><p>Decision Tree Classifier</p>
+<div><p>Decision Tree Algorithm</p>
 </div></blockquote>
 <ol class="simple">
 <li><p>Complete the following statement: Preprocessing is done ____.</p></li>
@@ -1220,7 +1230,7 @@ d) 1.5</p>
 <li><p>Which scaling method will produce values where the range depends on the values in the data?</p></li>
 </ol>
 <blockquote>
-<div><p>Standardization (StandardScaler)</p>
+<div><p>Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</p>
 </div></blockquote>
 <p><strong>True or False</strong><br />
 6. <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> is a type of transformer.</p>
@@ -1529,7 +1539,7 @@ dtype: float64
 <li><p>What model is the pipeline fitting on?</p></li>
 </ol>
 <blockquote>
-<div><p>DecisionTreeClassifier</p>
+<div><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></p>
 </div></blockquote>
 <p><strong>True or False</strong><br />
 6. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.</p>
@@ -1866,7 +1876,7 @@ Test score: 0.83451536643026
 <div class="section" id="final-class">
 <h3>Final Class<a class="headerlink" href="#final-class" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>CLASS AS:</p></li>
+<li><p>CLASS AS: non spam</p></li>
 </ol>
 </div>
 </div>
@@ -2083,9 +2093,9 @@ The input for the feature value is the number of times the word appears in the r
 <ol class="simple">
 <li><p>Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?</p></li>
 </ol>
-<ul class="simple">
-<li><p>Positive review</p></li>
-</ul>
+<blockquote>
+<div><p>Positive review</p>
+</div></blockquote>
 <p>We are trying to predict if a job applicant would be hired based on some features contained in their resume.</p>
 <p>Below we have the output of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> where column 0 shows the probability the model would predict “hired” and column 1 shows the probability the model would predict “not hired”.</p>
 <div class="highlight-out notranslate"><div class="highlight"><pre><span></span>array([[0.04971843, 0.95028157],
@@ -2691,6 +2701,67 @@ Name: legendary, dtype: int64
 </table>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="lecture-10">
+<h2>Lecture 10<a class="headerlink" href="#lecture-10" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id25">
+<h2>Let’s Practice<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Which wrapper is more computationally expensive?</p></li>
+</ol>
+<blockquote>
+<div><p>One-vs-One</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Name a model that can handle multi-class problems without any issues or needing any additional strategies.</p></li>
+</ol>
+<blockquote>
+<div><p>Decision Trees, K-nn</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>If I have 6 classes, how many models will be built if I use the One-vs-Rest strategy?</p></li>
+</ol>
+<blockquote>
+<div><p>6</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>If I have 6 classes, how many models will be built if I use the One-vs-One strategy?</p></li>
+</ol>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(6(5)/2 = 15\)</span></p>
+</div></blockquote>
+<p>Use the diagram below to answer the next few questions:</p>
+<a class="reference internal image-reference" href="../_images/multi-classQ.png"><img alt="404 image" src="../_images/multi-classQ.png" style="width: 70%;" /></a>
+<ol class="simple">
+<li><p>How many examples did the model correctly predict?</p></li>
+</ol>
+<blockquote>
+<div><p>52</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>How many examples were incorrectly labeled as <code class="docutils literal notranslate"><span class="pre">G</span></code>?</p></li>
+</ol>
+<blockquote>
+<div><p>3</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>How many <code class="docutils literal notranslate"><span class="pre">F-C</span></code> labels were in the data?</p></li>
+</ol>
+<blockquote>
+<div><p>6</p>
+</div></blockquote>
+<p><strong>True or False:</strong><br />
+8. Decision Trees use coefficients for multi-class data.</p>
+<blockquote>
+<div><p>False</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Using 1 target label as the positive class will make all other target labels negative.</p></li>
+</ol>
+<blockquote>
+<div><p>True</p>
+</div></blockquote>
 </div>
 </div>
 

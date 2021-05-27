@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 9 - Classification and Regression Metrics &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>9. Classification and Regression Metrics &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 10 - Multi-Class, Pandas Profiling, finale" href="lecture10.html" />
-    <link rel="prev" title="Lecture 8 - Forming good ML questions from business objectives and Feature Selection" href="lecture8.html" />
+    <link rel="next" title="10. Multi-Class, Pandas Profiling, Finale" href="lecture10.html" />
+    <link rel="prev" title="8. Business Objectives/Statistical Questions and Feature Selection" href="lecture8.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture9.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 9 - Classification and Regression Metrics" />
-<meta property="og:description" content="Lecture 9 - Classification and Regression Metrics  Hayley Boyce, Monday, May 17th, 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt; &lt;div class=&#34;toc" />
+<meta property="og:title"       content="Classification and Regression Metrics" />
+<meta property="og:description" content="Classification and Regression Metrics  Hayley Boyce, May 17th, 2021  # Importing our libraries import pandas as pd import altair as alt import numpy as np from " />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Business Objectives/Statistical Questions and Feature Selection
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling, finale
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,110 +298,110 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   9.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   9.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   9.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     9.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-evaluation-metrics">
-   Introducing Evaluation Metrics
+   9.4. Introducing Evaluation Metrics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#baseline">
-     Baseline
+     9.4.1. Baseline
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classification-metrics-and-tools">
-   Classification Metrics and tools
+   9.5. Classification Metrics and tools
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-positive-and-negative">
-     What is “positive” and “negative”?
+     9.5.1. What is “positive” and “negative”?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#confusion-matrix">
-     Confusion Matrix
+     9.5.2. Confusion Matrix
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#confusion-matrix-components">
-       Confusion Matrix components
+       9.5.2.1. Confusion Matrix components
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#accuracy-is-only-part-of-the-story">
-     Accuracy is only part of the story…
+     9.5.3. Accuracy is only part of the story…
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recall">
-     Recall
+     9.5.4. Recall
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#precision">
-     Precision
+     9.5.5. Precision
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#f1-score">
-     f1 score
+     9.5.6. f1 score
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification-report">
-     Classification report
+     9.5.7. Classification report
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#macro-average-vs-weighted-average">
-       Macro average vs weighted average
+       9.5.7.1. Macro average vs weighted average
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#imbalanced-datasets">
-     Imbalanced datasets
+     9.5.8. Imbalanced datasets
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#addressing-class-imbalance">
-       Addressing class imbalance
+       9.5.8.1. Addressing class imbalance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#handling-imbalance">
-       Handling imbalance
+       9.5.8.2. Handling imbalance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#changing-the-training-procedure-class-weight">
-       Changing the training procedure:
+       9.5.8.3. Changing the training procedure:
        <code class="docutils literal notranslate">
         <span class="pre">
          class_weight
@@ -411,7 +411,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#are-we-doing-better-with-class-weight-balanced">
-       Are we doing better with
+       9.5.8.4. Are we doing better with
        <code class="docutils literal notranslate">
         <span class="pre">
          class_weight="balanced"
@@ -426,29 +426,29 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   9.6. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-metrics">
-   Regression Metrics
+   9.7. Regression Metrics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mean-squared-error-mse">
-     Mean squared error (MSE)
+     9.7.1. Mean squared error (MSE)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#the-disadvantages">
-       The disadvantages
+       9.7.1.1. The disadvantages
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#quick-recap-on-r-2">
-     Quick recap on
+     9.7.2. Quick recap on
      <span class="math notranslate nohighlight">
       \(R^2\)
      </span>
@@ -456,51 +456,56 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#root-mean-squared-error-rmse">
-     Root mean squared error  (RMSE)
+     9.7.3. Root mean squared error  (RMSE)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mape-mean-absolute-percent-error-mape">
-     MAPE - Mean Absolute Percent Error (MAPE)
+     9.7.4. MAPE - Mean Absolute Percent Error (MAPE)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice
+   9.8. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#passing-different-scoring-methods">
-   Passing Different Scoring Methods
+   9.9. Passing Different Scoring Methods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cross-validation">
-     Cross-validation
+     9.9.1. Cross-validation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-about-hyperparameter-tuning">
-     What about hyperparameter tuning?
+     9.9.2. What about hyperparameter tuning?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and-with-classification">
-     … and with Classification?
+     9.9.3. … and with Classification?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Let’s Practice
+   9.10. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   9.11. Let’s Practice - Coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today">
-   What We’ve Learned Today
+   9.12. What We’ve Learned Today
   </a>
  </li>
 </ul>
@@ -515,11 +520,10 @@
         
               <div>
                 
-  <div class="section" id="lecture-9-classification-and-regression-metrics">
-<h1>Lecture 9 - Classification and Regression Metrics<a class="headerlink" href="#lecture-9-classification-and-regression-metrics" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Monday, May 17th, 2021</em></p>
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-9---Classification-and-Regression-Metrics" data-toc-modified-id="Lecture-9---Classification-and-Regression-Metrics-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 9 - Classification and Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Evaluation-Metrics" data-toc-modified-id="Introducing-Evaluation-Metrics-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Evaluation Metrics</a></span><ul class="toc-item"><li><span><a href="#Baseline" data-toc-modified-id="Baseline-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Baseline</a></span></li></ul></li><li><span><a href="#Classification-Metrics-and-tools" data-toc-modified-id="Classification-Metrics-and-tools-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Classification Metrics and tools</a></span><ul class="toc-item"><li><span><a href="#What-is-&quot;positive&quot;-and-&quot;negative&quot;?" data-toc-modified-id="What-is-&quot;positive&quot;-and-&quot;negative&quot;?-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>What is "positive" and "negative"?</a></span></li><li><span><a href="#Confusion-Matrix" data-toc-modified-id="Confusion-Matrix-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Confusion Matrix</a></span><ul class="toc-item"><li><span><a href="#Confusion-Matrix-components" data-toc-modified-id="Confusion-Matrix-components-1.5.2.1"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Confusion Matrix components</a></span></li></ul></li><li><span><a href="#Accuracy-is-only-part-of-the-story..." data-toc-modified-id="Accuracy-is-only-part-of-the-story...-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Accuracy is only part of the story...</a></span></li><li><span><a href="#Recall" data-toc-modified-id="Recall-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Recall</a></span></li><li><span><a href="#Precision" data-toc-modified-id="Precision-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Precision</a></span></li><li><span><a href="#f1-score" data-toc-modified-id="f1-score-1.5.6"><span class="toc-item-num">1.5.6&nbsp;&nbsp;</span>f1 score</a></span></li><li><span><a href="#Classification-report" data-toc-modified-id="Classification-report-1.5.7"><span class="toc-item-num">1.5.7&nbsp;&nbsp;</span>Classification report</a></span><ul class="toc-item"><li><span><a href="#Macro-average-vs-weighted-average" data-toc-modified-id="Macro-average-vs-weighted-average-1.5.7.1"><span class="toc-item-num">1.5.7.1&nbsp;&nbsp;</span>Macro average vs weighted average</a></span></li></ul></li><li><span><a href="#Imbalanced-datasets" data-toc-modified-id="Imbalanced-datasets-1.5.8"><span class="toc-item-num">1.5.8&nbsp;&nbsp;</span>Imbalanced datasets</a></span><ul class="toc-item"><li><span><a href="#Addressing-class-imbalance" data-toc-modified-id="Addressing-class-imbalance-1.5.8.1"><span class="toc-item-num">1.5.8.1&nbsp;&nbsp;</span>Addressing class imbalance</a></span></li><li><span><a href="#Handling-imbalance" data-toc-modified-id="Handling-imbalance-1.5.8.2"><span class="toc-item-num">1.5.8.2&nbsp;&nbsp;</span>Handling imbalance</a></span></li><li><span><a href="#Changing-the-training-procedure:-class_weight" data-toc-modified-id="Changing-the-training-procedure:-class_weight-1.5.8.3"><span class="toc-item-num">1.5.8.3&nbsp;&nbsp;</span>Changing the training procedure: <code>class_weight</code></a></span></li><li><span><a href="#Are-we-doing-better-with-class_weight=&quot;balanced&quot;?" data-toc-modified-id="Are-we-doing-better-with-class_weight=&quot;balanced&quot;?-1.5.8.4"><span class="toc-item-num">1.5.8.4&nbsp;&nbsp;</span>Are we doing better with <code>class_weight="balanced"</code>?</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Regression-Metrics" data-toc-modified-id="Regression-Metrics-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Regression Metrics</a></span><ul class="toc-item"><li><span><a href="#Mean-squared-error-(MSE)" data-toc-modified-id="Mean-squared-error-(MSE)-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Mean squared error (MSE)</a></span><ul class="toc-item"><li><span><a href="#The-disadvantages" data-toc-modified-id="The-disadvantages-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>The disadvantages</a></span></li></ul></li><li><span><a href="#Quick-recap-on-$R^2$" data-toc-modified-id="Quick-recap-on-$R^2$-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Quick recap on $R^2$</a></span></li><li><span><a href="#Root-mean-squared-error--(RMSE)" data-toc-modified-id="Root-mean-squared-error--(RMSE)-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Root mean squared error  (RMSE)</a></span></li><li><span><a href="#MAPE---Mean-Absolute-Percent-Error-(MAPE)" data-toc-modified-id="MAPE---Mean-Absolute-Percent-Error-(MAPE)-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>MAPE - Mean Absolute Percent Error (MAPE)</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Passing-Different-Scoring-Methods" data-toc-modified-id="Passing-Different-Scoring-Methods-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Passing Different Scoring Methods</a></span><ul class="toc-item"><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#What-about-hyperparameter-tuning?" data-toc-modified-id="What-about-hyperparameter-tuning?-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>What about hyperparameter tuning?</a></span></li><li><span><a href="#...-and-with-Classification?" data-toc-modified-id="...-and-with-Classification?-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>... and with Classification?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div><div class="cell docutils container">
+  <div class="section" id="classification-and-regression-metrics">
+<h1><span class="section-number">9. </span>Classification and Regression Metrics<a class="headerlink" href="#classification-and-regression-metrics" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, May 17th, 2021</em></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -555,7 +559,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Big lecture today!</p></li>
 <li><p>Last class on Wednesday.</p></li>
@@ -566,7 +570,7 @@
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Explain why accuracy is not always the best metric in ML.</p></li>
 <li><p>Explain components of a confusion matrix.</p></li>
@@ -579,7 +583,7 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What are the 2 types of feature selection methods we saw last class?</p></li>
 <li><p>What is the name of the function that helps us discover features that potentially contribute to our model in Decision Trees (and other models too)</p></li>
@@ -587,7 +591,7 @@
 <li><p>Should we ever question our clients’ requests?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>What happens if we have data where there is a lot of one class and very few of another?</p></li>
 <li><p>How can we measure our model’s success besides using accuracy or <span class="math notranslate nohighlight">\(R2\)</span>?</p></li>
@@ -595,7 +599,7 @@
 </div>
 </div>
 <div class="section" id="introducing-evaluation-metrics">
-<h2>Introducing Evaluation Metrics<a class="headerlink" href="#introducing-evaluation-metrics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4. </span>Introducing Evaluation Metrics<a class="headerlink" href="#introducing-evaluation-metrics" title="Permalink to this headline">¶</a></h2>
 <p>Up until this point, we have been scoring our models the same way every time.</p>
 <p>We’ve been using the percentage of correctly predicted examples for classification problems and the <span class="math notranslate nohighlight">\(R^2\)</span> metric for regression problems.</p>
 <p>Let’s discuss how we need to expand our horizons and why it’s important to evaluate our models in other ways.</p>
@@ -1018,7 +1022,7 @@
 </div>
 </div>
 <div class="section" id="baseline">
-<h3>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.4.1. </span>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">¶</a></h3>
 <p>Just like and predictive question, we start our analysis by building a simple <code class="docutils literal notranslate"><span class="pre">DummyClassifier</span></code> model as our baseline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1100,9 +1104,9 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="classification-metrics-and-tools">
-<h2>Classification Metrics and tools<a class="headerlink" href="#classification-metrics-and-tools" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5. </span>Classification Metrics and tools<a class="headerlink" href="#classification-metrics-and-tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-positive-and-negative">
-<h3>What is “positive” and “negative”?<a class="headerlink" href="#what-is-positive-and-negative" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.1. </span>What is “positive” and “negative”?<a class="headerlink" href="#what-is-positive-and-negative" title="Permalink to this headline">¶</a></h3>
 <p>There are two kinds of binary classification problems:</p>
 <ul class="simple">
 <li><p>Distinguishing between two classes</p></li>
@@ -1113,7 +1117,7 @@ dtype: float64
 <p>In our example, we want to spot <strong>fraudulent</strong> transactions and so fraudulent is the “positive” class.</p>
 </div>
 <div class="section" id="confusion-matrix">
-<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.2. </span>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>confusion matrix</strong> is a table that visualizes the performance of an algorithm. It shows the possible labels and how many of each label the model predicts correctly and incorrectly.</p>
 <p>We can import <code class="docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.</p>
 <div class="cell docutils container">
@@ -1143,7 +1147,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_34_0.png" src="../_images/lecture9_34_0.png" />
+<img alt="../_images/lecture9_33_0.png" src="../_images/lecture9_33_0.png" />
 </div>
 </div>
 <p><strong>Looking at the arguments:</strong></p>
@@ -1152,7 +1156,7 @@ dtype: float64
 <p><code class="docutils literal notranslate"><span class="pre">values_format</span></code> will determine how the numbers are displayed. Specifying <code class="docutils literal notranslate"><span class="pre">d</span></code> avoids scientific notation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cmap</span></code> is the colour argument! The default is <code class="docutils literal notranslate"><span class="pre">viridis</span></code> but other values such as <code class="docutils literal notranslate"><span class="pre">Blues</span></code>, <code class="docutils literal notranslate"><span class="pre">Purples</span></code>, <code class="docutils literal notranslate"><span class="pre">RdPu</span></code> or other colour schemes from <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">here</a> are also possible.</p>
 <div class="section" id="confusion-matrix-components">
-<h4>Confusion Matrix components<a class="headerlink" href="#confusion-matrix-components" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.2.1. </span>Confusion Matrix components<a class="headerlink" href="#confusion-matrix-components" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> 
@@ -1162,7 +1166,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_37_0.png" src="../_images/lecture9_37_0.png" />
+<img alt="../_images/lecture9_36_0.png" src="../_images/lecture9_36_0.png" />
 </div>
 </div>
 <table class="colwidths-auto table">
@@ -1217,7 +1221,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="accuracy-is-only-part-of-the-story">
-<h3>Accuracy is only part of the story…<a class="headerlink" href="#accuracy-is-only-part-of-the-story" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.3. </span>Accuracy is only part of the story…<a class="headerlink" href="#accuracy-is-only-part-of-the-story" title="Permalink to this headline">¶</a></h3>
 <p>We have been using <code class="docutils literal notranslate"><span class="pre">.score</span></code> to assess our models, which returns accuracy by default.</p>
 <p>And we saw that accuracy can be  misleading when we have a class imbalance.</p>
 <p>We need other metrics to assess our models.</p>
@@ -1255,7 +1259,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="recall">
-<h3>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.4. </span>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
 <p><em>“Among all positive examples, how many did you identify?”</em></p>
 <div class="math notranslate nohighlight">
 \[ \text{recall} = \frac{TP}{TP + FN} = \frac{\text{Number of correctly identified positives}}{\text{Total number of true positives}}\]</div>
@@ -1293,7 +1297,7 @@ False Negatives: 38
 </div>
 </div>
 <div class="section" id="precision">
-<h3>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.5. </span>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
 <p><em>“Among the positive examples you identified, how many were actually positive?”</em></p>
 <div class="math notranslate nohighlight">
 \[ \text{precision} = \frac{TP}{TP + FP} = \frac{\text{Number of correctly identified positives}}{\text{Total number of predicted positives}}\]</div>
@@ -1333,7 +1337,7 @@ False Positives: 8
 <p>For credit card fraud detection, recall is really important (catching frauds), precision is less important (reducing false positives).</p>
 </div>
 <div class="section" id="f1-score">
-<h3>f1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.6. </span>f1 score<a class="headerlink" href="#f1-score" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes we need a single score to maximize, e.g., when doing hyperparameter tuning via RandomizedSearchCV.</p>
 <p>Accuracy is often a bad choice.</p>
 <p><em>f1-score combines precision and recall to give one score.</em></p>
@@ -1496,7 +1500,7 @@ Recall: 0.6275
 <p>We can even go one step further and “observe” the scores using a <em>Classification report</em></p>
 </div>
 <div class="section" id="classification-report">
-<h3>Classification report<a class="headerlink" href="#classification-report" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.7. </span>Classification report<a class="headerlink" href="#classification-report" title="Permalink to this headline">¶</a></h3>
 <p>Similar to how a confusion matrix shows the False and True negative and positive labels, a classification report shows us an assortment of metrics, however, we can’t flatten or obtain the results from it and only see what is printed as the output.</p>
 <p>We can import <code class="docutils literal notranslate"><span class="pre">classification_report</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code></p>
 <div class="cell docutils container">
@@ -1546,7 +1550,7 @@ weighted avg       1.00      1.00      1.00     59810
 <p>The <code class="docutils literal notranslate"><span class="pre">support</span></code> column just shows the number of examples in each class.</p>
 <p>You might also be wondering about 2 additional metrics in this report…</p>
 <div class="section" id="macro-average-vs-weighted-average">
-<h4>Macro average vs weighted average<a class="headerlink" href="#macro-average-vs-weighted-average" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.7.1. </span>Macro average vs weighted average<a class="headerlink" href="#macro-average-vs-weighted-average" title="Permalink to this headline">¶</a></h4>
 <p>These metrics are more useful when predicting multiple classes which we will briefly discuss later on.</p>
 <p><strong>Macro average</strong> is useful when you want to give equal importance to all classes irrespective of the number of instances in each class.</p>
 <p><strong>Weighted average</strong> gives equal importance to all examples. So, when you care about the overall score and do not care about the score on a specific class, you could use it.</p>
@@ -1556,7 +1560,7 @@ weighted avg       1.00      1.00      1.00     59810
 </div>
 </div>
 <div class="section" id="imbalanced-datasets">
-<h3>Imbalanced datasets<a class="headerlink" href="#imbalanced-datasets" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.8. </span>Imbalanced datasets<a class="headerlink" href="#imbalanced-datasets" title="Permalink to this headline">¶</a></h3>
 <p>A class imbalance typically refers to having many more examples of one class than another in one’s training set.</p>
 <p>We’ve seen this in our fraud dataset where our <code class="docutils literal notranslate"><span class="pre">class</span></code> target column had many more non-fraud than fraud examples.</p>
 <p>Real-world data is often imbalanced and can be seen in scenarios such as:</p>
@@ -1753,7 +1757,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="section" id="addressing-class-imbalance">
-<h4>Addressing class imbalance<a class="headerlink" href="#addressing-class-imbalance" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.8.1. </span>Addressing class imbalance<a class="headerlink" href="#addressing-class-imbalance" title="Permalink to this headline">¶</a></h4>
 <p>A very important question to ask yourself: <em><strong>“Why do I have a class imbalance?”</strong></em></p>
 <ul class="simple">
 <li><p>Is it because one class is much rarer than the other?</p>
@@ -1770,7 +1774,7 @@ Name: Class, dtype: float64
 <p>But, if you answer “no” to both of these, it may be fine to just ignore the class imbalance.</p>
 </div>
 <div class="section" id="handling-imbalance">
-<h4>Handling imbalance<a class="headerlink" href="#handling-imbalance" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.8.2. </span>Handling imbalance<a class="headerlink" href="#handling-imbalance" title="Permalink to this headline">¶</a></h4>
 <p>Can we change the model itself so that it considers the errors that are important to us?</p>
 <p>There are two common approaches to this:</p>
 <ol class="simple">
@@ -1784,7 +1788,7 @@ Name: Class, dtype: float64
 </ol>
 </div>
 <div class="section" id="changing-the-training-procedure-class-weight">
-<h4>Changing the training procedure: <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#changing-the-training-procedure-class-weight" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.8.3. </span>Changing the training procedure: <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#changing-the-training-procedure-class-weight" title="Permalink to this headline">¶</a></h4>
 <p>Most <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> classifiers have a parameter called <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>.</p>
 <p>This allows you to specify that one class is more important than another.</p>
 <p>For example, maybe a false negative is 10x more problematic than a false positive.</p>
@@ -1814,7 +1818,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_86_0.png" src="../_images/lecture9_86_0.png" />
+<img alt="../_images/lecture9_85_0.png" src="../_images/lecture9_85_0.png" />
 </div>
 </div>
 <p>Now let’s rebuild our pipeline but using the <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> argument and setting it as<code class="docutils literal notranslate"><span class="pre">class_weight={1:100}</span></code>.</p>
@@ -1836,7 +1840,7 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_89_0.png" src="../_images/lecture9_89_0.png" />
+<img alt="../_images/lecture9_88_0.png" src="../_images/lecture9_88_0.png" />
 </div>
 </div>
 <p>Notice that we now have reduced false negatives and predicted more true positives this time.</p>
@@ -1856,13 +1860,13 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_92_0.png" src="../_images/lecture9_92_0.png" />
+<img alt="../_images/lecture9_91_0.png" src="../_images/lecture9_91_0.png" />
 </div>
 </div>
 <p>Again, we have reduced the number of false negatives and increased the number of true positives but we have many more false positives now!</p>
 </div>
 <div class="section" id="are-we-doing-better-with-class-weight-balanced">
-<h4>Are we doing better with <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code>?<a class="headerlink" href="#are-we-doing-better-with-class-weight-balanced" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.5.8.4. </span>Are we doing better with <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code>?<a class="headerlink" href="#are-we-doing-better-with-class-weight-balanced" title="Permalink to this headline">¶</a></h4>
 <p>Let’s compare some metrics and find out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1900,27 +1904,38 @@ Name: Class, dtype: float64
 </div>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/Q_cm.png"><img alt="404 image" src="../_images/Q_cm.png" style="width: 70%;" /></a>
+<h2><span class="section-number">9.6. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/Q_cm.png"><img alt="404 image" src="../_images/Q_cm.png" style="width: 60%;" /></a>
 <p>Use the diagram above to answer the next …. questions.</p>
-<ol class="simple">
-<li><p>How many examples did the model of this matrix correctly label as “Guard”?</p></li>
-<li><p>If <strong>Forward</strong> is the positive label, how many <em><strong>false-positive</strong></em> values are there?</p></li>
-<li><p>How many examples does the model incorrectly predict?</p></li>
-<li><p>What is the recall of the confusion matrix assuming that <strong>Forward</strong> is the positive label?</p></li>
-<li><p>What is the precision of the confusion matrix assuming that <strong>Forward</strong> is the positive label?</p></li>
-<li><p>What is the f1 score assuming that <strong>Forward</strong> is the positive label?</p></li>
-</ol>
+<p>1. How many examples did the model of this matrix correctly label as “Guard”?<br />
+2. If <strong>Forward</strong> is the positive label, how many <em><strong>false-positive</strong></em> values are there?<br />
+3. How many examples does the model incorrectly predict?<br />
+4. What is the recall of the confusion matrix assuming that <strong>Forward</strong> is the positive label?<br />
+5. What is the precision of the confusion matrix assuming that <strong>Forward</strong> is the positive label?<br />
+6. What is the f1 score assuming that <strong>Forward</strong> is the positive label?</p>
 <p><strong>True or False:</strong></p>
+<p>7. In spam classification, false positives are more damaging than false negatives (assume “positive” means the email is spam, “negative” means it’s not).<br />
+8. In medical diagnosis, high recall is more important than high precision.<br />
+9. The weighted average gives equal importance to all classes.<br />
+10. Setting <code class="docutils literal notranslate"><span class="pre">class_weight={1:100}</span></code> will make the second class label 100 times the weight of the first class.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>In spam classification, false positives are more damaging than false negatives (assume “positive” means the email is spam, “negative” means it’s not).</p></li>
-<li><p>In medical diagnosis, high recall is more important than high precision.</p></li>
-<li><p>The weighted average gives equal importance to all classes.</p></li>
-<li><p>Setting <code class="docutils literal notranslate"><span class="pre">class_weight={1:100}</span></code> will make the second class label 100 times the weight of the first class.</p></li>
+<li><p>26</p></li>
+<li><p>4</p></li>
+<li><p>7</p></li>
+<li><p><span class="math notranslate nohighlight">\(0.86 = 19/22\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0.83 = 19/23\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( 2 * \frac{0.86 * 0.83}{0.86 + 0.83} = 0.84\)</span></p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>False</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="regression-metrics">
-<h2>Regression Metrics<a class="headerlink" href="#regression-metrics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.7. </span>Regression Metrics<a class="headerlink" href="#regression-metrics" title="Permalink to this headline">¶</a></h2>
 <p>For this part, since we need to use data that corresponds to a regression problem, we are bringing back our <a class="reference external" href="https://www.kaggle.com/harrywang/housing">California housing dataset</a>.</p>
 <p>We want to predict the median house value for different locations.</p>
 <div class="cell docutils container">
@@ -2140,7 +2155,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 <p>We need a score that reflects how right/wrong each prediction is or how close we are to the actual numeric value.</p>
 <p>We are going to discuss 4 different ones lightly but, if you want to see more regression metrics in detail, you can refer to the <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics">sklearn documentation</a>.</p>
 <div class="section" id="mean-squared-error-mse">
-<h3>Mean squared error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.7.1. </span>Mean squared error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">¶</a></h3>
 <p>Mean Squared Error is a common measure.</p>
 <div class="math notranslate nohighlight">
 \[MSE = \frac{1}{n} \displaystyle\sum_{i=1}^{n} (y_i - {\tilde{y_i}})^2\]</div>
@@ -2207,7 +2222,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 </div>
 </div>
 <div class="section" id="the-disadvantages">
-<h4>The disadvantages<a class="headerlink" href="#the-disadvantages" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">9.7.1.1. </span>The disadvantages<a class="headerlink" href="#the-disadvantages" title="Permalink to this headline">¶</a></h4>
 <p>If we look at MSE here, it’s huge and unreasonable.</p>
 <p>Is this score good or bad?</p>
 <p>Unlike classification, in regression, our target has units.</p>
@@ -2218,7 +2233,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 </div>
 </div>
 <div class="section" id="quick-recap-on-r-2">
-<h3>Quick recap on <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#quick-recap-on-r-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.7.2. </span>Quick recap on <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#quick-recap-on-r-2" title="Permalink to this headline">¶</a></h3>
 <p>We’ve seen this before!</p>
 <p>This is the score that <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> uses by default when you call <code class="docutils literal notranslate"><span class="pre">.score()</span></code> so we’ve already seen <span class="math notranslate nohighlight">\(R^2\)</span> in our regression problems.</p>
 <p>You can <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="_blank">read about it here</a> but we are going to just give you the quick notes.</p>
@@ -2265,7 +2280,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 </div>
 </div>
 <div class="section" id="root-mean-squared-error-rmse">
-<h3>Root mean squared error  (RMSE)<a class="headerlink" href="#root-mean-squared-error-rmse" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.7.3. </span>Root mean squared error  (RMSE)<a class="headerlink" href="#root-mean-squared-error-rmse" title="Permalink to this headline">¶</a></h3>
 <p>Remember the MSE we had before was in <span class="math notranslate nohighlight">\(dollars^2\)</span>. A more relatable metric would be the root mean squared error, or RMSE.</p>
 <p>This is the square root of <span class="math notranslate nohighlight">\(MSE\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -2315,7 +2330,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture9_129_0.png" src="../_images/lecture9_129_0.png" />
+<img alt="../_images/lecture9_128_0.png" src="../_images/lecture9_128_0.png" />
 </div>
 </div>
 <p>When we plot our predictions versus the examples’ actual value, we can see cases where our prediction is way off.</p>
@@ -2329,7 +2344,7 @@ Name: median_house_value, Length: 18576, dtype: bool
 <p>…Enter <strong>MAPE</strong>!</p>
 </div>
 <div class="section" id="mape-mean-absolute-percent-error-mape">
-<h3>MAPE - Mean Absolute Percent Error (MAPE)<a class="headerlink" href="#mape-mean-absolute-percent-error-mape" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.7.4. </span>MAPE - Mean Absolute Percent Error (MAPE)<a class="headerlink" href="#mape-mean-absolute-percent-error-mape" title="Permalink to this headline">¶</a></h3>
 <p>We can calculate a percentage error for each example. Now the errors are both positive (predict too high) and negative (predict too low).</p>
 <p>We can look at the absolute percent error which now shows us how far off we were independent of direction.</p>
 <p>Like MSE, we can take the average over all the examples. This is called <strong>Mean Absolute Percent Error (MAPE)</strong>.</p>
@@ -2389,13 +2404,11 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Which measurement will have units which are the square values of the target column units?</p></li>
-<li><p>For which of the following is it possible to have negative values?</p></li>
-<li><p>Which measurement is expressed as a percentage?</p></li>
-<li><p>Calculate the MSE from the values given below.</p></li>
-</ol>
+<h2><span class="section-number">9.8. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>1. Which measurement will have units which are the square values of the target column units?<br />
+2. For which of the following is it possible to have negative values?<br />
+3. Which measurement is expressed as a percentage?<br />
+4. Calculate the MSE from the values given below.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Observation</p></th>
@@ -2427,14 +2440,24 @@ Name: median_house_value, dtype: float64
 </tbody>
 </table>
 <p><strong>True or False:</strong></p>
+<p>5. We can still use recall and precision for regression problems but now we have other measurements we can use as well.<br />
+6. A lower RMSE value indicates a better model.<br />
+7. In regression problems, calculating <span class="math notranslate nohighlight">\(R^2\)</span>  using <code class="docutils literal notranslate"><span class="pre">r2_score()</span></code> and <code class="docutils literal notranslate"><span class="pre">.score()</span></code> (with default values) will produce the same results.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>We can still use recall and precision for regression problems but now we have other measurements we can use as well.</p></li>
-<li><p>A lower RMSE value indicates a better fit.</p></li>
-<li><p>In regression problems, calculating <span class="math notranslate nohighlight">\(R^2\)</span>  using <code class="docutils literal notranslate"><span class="pre">r2_score()</span></code> and <code class="docutils literal notranslate"><span class="pre">.score()</span></code> (with default values) will produce the same results.</p></li>
+<li><p><span class="math notranslate nohighlight">\(MSE\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(MAPE\)</span></p></li>
+<li><p>3</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="passing-different-scoring-methods">
-<h2>Passing Different Scoring Methods<a class="headerlink" href="#passing-different-scoring-methods" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.9. </span>Passing Different Scoring Methods<a class="headerlink" href="#passing-different-scoring-methods" title="Permalink to this headline">¶</a></h2>
 <p>We now know about all these metrics; how do we implement them?</p>
 <p>We are lucky because it’s relatively easy and can be applied to both classification and regression problems.</p>
 <p>Let’s start with regression and our regression measurements.</p>
@@ -2565,7 +2588,7 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <div class="section" id="cross-validation">
-<h3>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.9.1. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h3>
 <p>Normally after building our pipelines, we would now either do cross-validation or hyperparameter tuning but let’s start with the <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> function.</p>
 <p>All the possible scoring metrics that this argument accepts are available <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter">here in the sklearn documentation</a>.</p>
 <p>In this case, if we wanted the RMSE measure, we would specify <code class="docutils literal notranslate"><span class="pre">neg_mean_squared_error</span></code> and the negated value of the metric will be returned in our dataframe.</p>
@@ -2947,7 +2970,7 @@ Name: median_house_value, dtype: float64
 <p>This returns a validation and training score for each measurement!</p>
 </div>
 <div class="section" id="what-about-hyperparameter-tuning">
-<h3>What about hyperparameter tuning?<a class="headerlink" href="#what-about-hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.9.2. </span>What about hyperparameter tuning?<a class="headerlink" href="#what-about-hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
 <p>We can do exactly the same thing we saw above with <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> but instead with <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3039,7 +3062,7 @@ Name: median_house_value, dtype: float64
 <p>That’s better!</p>
 </div>
 <div class="section" id="and-with-classification">
-<h3>… and with Classification?<a class="headerlink" href="#and-with-classification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.9.3. </span>… and with Classification?<a class="headerlink" href="#and-with-classification" title="Permalink to this headline">¶</a></h3>
 <p>Let’s bring back our credit card data set and build our pipeline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3111,14 +3134,22 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <div class="section" id="id2">
-<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><strong>True or False:</strong></p>
+<h2><span class="section-number">9.10. </span>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><strong>True or False:</strong><br />
+1. The <code class="docutils literal notranslate"><span class="pre">scoring</span></code> argument only accepts <code class="docutils literal notranslate"><span class="pre">str</span></code> inputs.<br />
+2. We are limited to the scoring measures offered from sklearn.<br />
+3. If we specify the scoring method in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>, <code class="docutils literal notranslate"><span class="pre">best_param_</span></code>  will return the parameters with the best specified measure.*</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">scoring</span></code> argument only accepts <code class="docutils literal notranslate"><span class="pre">str</span></code> inputs.</p></li>
-<li><p>We are limited to the scoring measures offered from sklearn.</p></li>
-<li><p>If we specify the scoring method in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>, <code class="docutils literal notranslate"><span class="pre">best_param_</span></code>  will return the parameters with the best specified measure.*</p></li>
+<li><p>False</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
 </ol>
-<p><strong>Coding Question</strong></p>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">9.11. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>Let’s bring back the Pokémon dataset that we saw previously.</p>
 <p>This time let’s look at the distribution of our target variable <code class="docutils literal notranslate"><span class="pre">legendary</span></code>.</p>
 <div class="cell docutils container">
@@ -3160,7 +3191,7 @@ Name: legendary, dtype: int64
 </ol>
 </div>
 <div class="section" id="what-we-ve-learned-today">
-<h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.12. </span>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The components of a confusion matrix.</p></li>
 <li><p>How to calculate precision, recall, and f1-score.</p></li>
@@ -3196,8 +3227,8 @@ Name: legendary, dtype: int64
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture8.html" title="previous page">Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a>
-    <a class='right-next' id="next-link" href="lecture10.html" title="next page">Lecture 10 - Multi-Class, Pandas Profiling, finale</a>
+    <a class='left-prev' id="prev-link" href="lecture8.html" title="previous page"><span class="section-number">8. </span>Business Objectives/Statistical Questions and Feature Selection</a>
+    <a class='right-next' id="next-link" href="lecture10.html" title="next page"><span class="section-number">10. </span>Multi-Class, Pandas Profiling, Finale</a>
 
         </div>
         

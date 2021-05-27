@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 4 - SVM with RBF Kernel and Feature Preprocessing &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>4. SVM with RBF Kernel and Feature Preprocessing &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 5 - Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
-    <link rel="prev" title="Lecture 3 - Baseline, k-Nearest Neighbours" href="lecture3.html" />
+    <link rel="next" title="5. Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
+    <link rel="prev" title="3. Baseline, k-Nearest Neighbours" href="lecture3.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture4.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 4 - SVM with RBF Kernel and Feature Preprocessing" />
-<meta property="og:description" content="Lecture 4 - SVM with RBF Kernel and Feature Preprocessing  Hayley Boyce, Wednesday, April 28th 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt; &lt;di" />
+<meta property="og:title"       content="SVM with RBF Kernel and Feature Preprocessing" />
+<meta property="og:description" content="SVM with RBF Kernel and Feature Preprocessing  Hayley Boyce, April 28th 2021  # Importing our libraries import pandas as pd import altair as alt import numpy as" />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,29 +298,29 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   4.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   4.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   4.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     4.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#regression-with-k-nn">
-   Regression with
+   4.4. Regression with
    <span class="math notranslate nohighlight">
     \(k\)
    </span>
@@ -329,38 +329,39 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pros-and-cons-of-k-nearest-neighbours">
-   Pros and Cons of 𝑘 -Nearest Neighbours
+   4.5. Pros and Cons of 𝑘 -Nearest Neighbours
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pros">
-     Pros:
+     4.5.1. Pros:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cons">
-     Cons:
+     4.5.2. Cons:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   4.6. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vector-machines-svms-with-rbf-kernel">
-   Support Vector Machines (SVMs) with RBF Kernel
+   4.7. Support Vector Machines (SVMs) with RBF Kernel
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hyperparameters-of-svm">
-     Hyperparameters of SVM
+     4.7.1. Hyperparameters of SVM
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#gamma-and-the-fundamental-trade-off">
+       4.7.1.1.
        <code class="docutils literal notranslate">
         <span class="pre">
          gamma
@@ -371,6 +372,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#c-and-the-fundamental-trade-off">
+       4.7.1.2.
        <code class="docutils literal notranslate">
         <span class="pre">
          C
@@ -385,29 +387,34 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice
+   4.8. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   4.9. Let’s Practice - Coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preprocessing">
-   Preprocessing
+   4.10. Preprocessing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-importance-of-preprocessing-an-example-of-why">
-     The importance of Preprocessing - An Example of Why
+     4.10.1. The importance of Preprocessing - An Example of Why
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#basketball-dataset">
-       Basketball dataset
+       4.10.1.1. Basketball dataset
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sklearn-s-predict-vs-transform">
-     Sklearn’s
+     4.10.2. Sklearn’s
      <em>
       predict
      </em>
@@ -419,97 +426,95 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#common-preprocessing-techniques">
-     Common preprocessing techniques
+     4.10.3. Common preprocessing techniques
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Let’s Practice!
+   4.11. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#california-housing-data-a-case-study">
-   California housing data (A case study)
+   4.12. California housing data (A case study)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-is-it-ok-to-do-things-before-splitting">
-     When is it OK to do things before splitting?
+     4.12.1. When is it OK to do things before splitting?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preprocessing-imputation">
-   Preprocessing: Imputation
+   4.13. Preprocessing: Imputation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-we-don-t-drop-the-rows">
-     Why we don’t drop the rows
+     4.13.1. Why we don’t drop the rows
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-we-don-t-drop-the-column">
-     Why we don’t drop the column
+     4.13.2. Why we don’t drop the column
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-we-use-imputation">
-     Why we use imputation
+     4.13.3. Why we use imputation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preprocessing-scaling">
-   Preprocessing: Scaling
+   4.14. Preprocessing: Scaling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Let’s Practice
+   4.15. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-transformations-and-the-golden-rule">
-   Feature transformations and the golden rule
+   4.16. Feature transformations and the golden rule
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bad-methodology-1-scaling-the-data-separately">
-     Bad methodology 1: Scaling the data separately
+     4.16.1. Bad methodology 1: Scaling the data separately
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bad-methodology-2-scaling-the-data-together">
-     Bad methodology 2: Scaling the data together
+     4.16.2. Bad methodology 2: Scaling the data together
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pipelines">
-   Pipelines
+   4.17. Pipelines
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Let’s Practice
+   4.18. Let’s Practice
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-coding-problem">
-     Practice Coding Problem
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   4.19. Let’s Practice - Coding
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
-   What We’ve Learned Today
+   4.20. What We’ve Learned Today
    <a id="9">
    </a>
   </a>
@@ -526,11 +531,10 @@
         
               <div>
                 
-  <div class="section" id="lecture-4-svm-with-rbf-kernel-and-feature-preprocessing">
-<h1>Lecture 4 - SVM with RBF Kernel and Feature Preprocessing<a class="headerlink" href="#lecture-4-svm-with-rbf-kernel-and-feature-preprocessing" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Wednesday, April 28th 2021</em></p>
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-7.1.1"><span class="toc-item-num">7.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-7.1.2"><span class="toc-item-num">7.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Preprocessing" data-toc-modified-id="Preprocessing-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Preprocessing</a></span><ul class="toc-item"><li><span><a href="#The-importance-of-Preprocessing---An-Example-of-Why" data-toc-modified-id="The-importance-of-Preprocessing---An-Example-of-Why-9.1"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>The importance of Preprocessing - An Example of Why</a></span><ul class="toc-item"><li><span><a href="#Basketball-dataset" data-toc-modified-id="Basketball-dataset-9.1.1"><span class="toc-item-num">9.1.1&nbsp;&nbsp;</span>Basketball dataset</a></span></li></ul></li><li><span><a href="#Sklearn's-predict-vs-transform" data-toc-modified-id="Sklearn's-predict-vs-transform-9.2"><span class="toc-item-num">9.2&nbsp;&nbsp;</span>Sklearn's <em>predict</em> vs <em>transform</em></a></span></li><li><span><a href="#Common-preprocessing-techniques" data-toc-modified-id="Common-preprocessing-techniques-9.3"><span class="toc-item-num">9.3&nbsp;&nbsp;</span>Common preprocessing techniques</a></span></li></ul></li><li><span><a href="#Let's-Practice!" data-toc-modified-id="Let's-Practice!-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Let's Practice!</a></span></li><li><span><a href="#California-housing-data-(A-case-study)" data-toc-modified-id="California-housing-data-(A-case-study)-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>California housing data (A case study)</a></span><ul class="toc-item"><li><span><a href="#When-is-it-OK-to-do-things-before-splitting?" data-toc-modified-id="When-is-it-OK-to-do-things-before-splitting?-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>When is it OK to do things before splitting?</a></span></li></ul></li><li><span><a href="#Preprocessing:-Imputation" data-toc-modified-id="Preprocessing:-Imputation-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Preprocessing: Imputation</a></span><ul class="toc-item"><li><span><a href="#Why-we-don't-drop-the-rows" data-toc-modified-id="Why-we-don't-drop-the-rows-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>Why we don't drop the rows</a></span></li><li><span><a href="#Why-we-don't-drop-the-column" data-toc-modified-id="Why-we-don't-drop-the-column-12.2"><span class="toc-item-num">12.2&nbsp;&nbsp;</span>Why we don't drop the column</a></span></li><li><span><a href="#Why-we-use-imputation" data-toc-modified-id="Why-we-use-imputation-12.3"><span class="toc-item-num">12.3&nbsp;&nbsp;</span>Why we use imputation</a></span></li></ul></li><li><span><a href="#Preprocessing:-Scaling" data-toc-modified-id="Preprocessing:-Scaling-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Preprocessing: Scaling</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-transformations-and-the-golden-rule" data-toc-modified-id="Feature-transformations-and-the-golden-rule-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>Feature transformations and the golden rule</a></span><ul class="toc-item"><li><span><a href="#Bad-methodology-1:-Scaling-the-data-separately" data-toc-modified-id="Bad-methodology-1:-Scaling-the-data-separately-15.1"><span class="toc-item-num">15.1&nbsp;&nbsp;</span>Bad methodology 1: Scaling the data separately</a></span></li><li><span><a href="#Bad-methodology-2:-Scaling-the-data-together" data-toc-modified-id="Bad-methodology-2:-Scaling-the-data-together-15.2"><span class="toc-item-num">15.2&nbsp;&nbsp;</span>Bad methodology 2: Scaling the data together</a></span></li></ul></li><li><span><a href="#Pipelines" data-toc-modified-id="Pipelines-16"><span class="toc-item-num">16&nbsp;&nbsp;</span>Pipelines</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-17"><span class="toc-item-num">17&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Practice-Coding-Problem" data-toc-modified-id="Practice-Coding-Problem-17.1"><span class="toc-item-num">17.1&nbsp;&nbsp;</span>Practice Coding Problem</a></span></li></ul></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-18"><span class="toc-item-num">18&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div><div class="cell docutils container">
+  <div class="section" id="svm-with-rbf-kernel-and-feature-preprocessing">
+<h1><span class="section-number">4. </span>SVM with RBF Kernel and Feature Preprocessing<a class="headerlink" href="#svm-with-rbf-kernel-and-feature-preprocessing" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, April 28th 2021</em></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -557,7 +561,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Assignment due today at 11:59pm!</p></li>
 <li><p>Course feedback!</p></li>
@@ -569,7 +573,7 @@
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Identify when to implement feature transformations such as imputation and scaling.</p></li>
 <li><p>Describe the difference between normalizing and standardizing and be able to use scikit-learn’s <code class="docutils literal notranslate"><span class="pre">MinMaxScaler()</span></code> and <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code> to pre-process numeric features.</p></li>
@@ -579,7 +583,7 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>When using a Dummy Regressor what value does the model predict for unseen data?</p></li>
 <li><p>When using a Dummy Classifier (the one we examined in lecture) what class does the model predict for unseen data?</p></li>
@@ -588,7 +592,7 @@
 <li><p>What is the hyperparameter name of the <span class="math notranslate nohighlight">\(k\)</span>-nn classifier we looked at last lecture?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>How does a <span class="math notranslate nohighlight">\(k\)</span>-nn Regressor work?</p></li>
 <li><p>Are we ready to do machine learning on real-world datasets?</p></li>
@@ -599,7 +603,7 @@
 </div>
 </div>
 <div class="section" id="regression-with-k-nn">
-<h2>Regression with <span class="math notranslate nohighlight">\(k\)</span>-NN<a class="headerlink" href="#regression-with-k-nn" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Regression with <span class="math notranslate nohighlight">\(k\)</span>-NN<a class="headerlink" href="#regression-with-k-nn" title="Permalink to this headline">¶</a></h2>
 <p>In <span class="math notranslate nohighlight">\(k\)</span>-nearest neighbour regression, we take the average of <span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours instead of the majority vote.</p>
 <p>Let’s look at an example.</p>
 <p>Here we are creating some synthetic data with fifty examples and only one feature.</p>
@@ -877,7 +881,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_18_0.png" src="../_images/lecture4_18_0.png" />
+<img alt="../_images/lecture4_17_0.png" src="../_images/lecture4_17_0.png" />
 </div>
 </div>
 <p>What happens when we use <code class="docutils literal notranslate"><span class="pre">n_neighbors=10</span></code>?</p>
@@ -910,14 +914,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture4_22_0.png" src="../_images/lecture4_22_0.png" />
+<img alt="../_images/lecture4_21_0.png" src="../_images/lecture4_21_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="pros-and-cons-of-k-nearest-neighbours">
-<h2>Pros and Cons of 𝑘 -Nearest Neighbours<a class="headerlink" href="#pros-and-cons-of-k-nearest-neighbours" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.5. </span>Pros and Cons of 𝑘 -Nearest Neighbours<a class="headerlink" href="#pros-and-cons-of-k-nearest-neighbours" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pros">
-<h3>Pros:<a class="headerlink" href="#pros" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.1. </span>Pros:<a class="headerlink" href="#pros" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Easy to understand, interpret.</p></li>
 <li><p>Simply hyperparameter <span class="math notranslate nohighlight">\(k\)</span> (<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>) controlling the fundamental tradeoff.</p></li>
@@ -927,7 +931,7 @@
 <br>
 </div>
 <div class="section" id="cons">
-<h3>Cons:<a class="headerlink" href="#cons" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.2. </span>Cons:<a class="headerlink" href="#cons" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Can potentially be VERY slow during prediction time.</p></li>
 <li><p>Often not that great test accuracy compared to the modern approaches.</p></li>
@@ -936,13 +940,19 @@
 </div>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split} X = \begin{bmatrix}5 &amp; 2\\4 &amp; 3\\  2 &amp; 2\\ 10 &amp; 10\\ 9 &amp; -1\\ 9&amp; 9\end{bmatrix}, \quad y = \begin{bmatrix}0\\0\\1\\1\\1\\2\end{bmatrix}.\end{split}\]</div>
 <p>If <span class="math notranslate nohighlight">\(k=3\)</span>, what would you predict for <span class="math notranslate nohighlight">\(x=\begin{bmatrix} 0\\0\end{bmatrix}\)</span> if we were doing regression rather than classification?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>1/3 (<span class="math notranslate nohighlight">\(\frac{0 + 0 + 0}{3}\)</span>)</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="support-vector-machines-svms-with-rbf-kernel">
-<h2>Support Vector Machines (SVMs) with RBF Kernel<a class="headerlink" href="#support-vector-machines-svms-with-rbf-kernel" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7. </span>Support Vector Machines (SVMs) with RBF Kernel<a class="headerlink" href="#support-vector-machines-svms-with-rbf-kernel" title="Permalink to this headline">¶</a></h2>
 <p>Another popular similarity-based algorithm is Support Vector Machines (SVM).</p>
 <p>SVMs use a different similarity metric which is called a “kernel” in “SVM land”.</p>
 <p>We are going to concentrate on the specific kernel called Radial Basis Functions (RBFs).</p>
@@ -1231,7 +1241,7 @@ Name: country, dtype: object
 <li><p>When it comes to predicting a query point, we only consider the key examples from the data and only calculate the distance to these key examples. This makes it more efficient than 𝑘-NN.</p></li>
 </ul>
 <div class="section" id="hyperparameters-of-svm">
-<h3>Hyperparameters of SVM<a class="headerlink" href="#hyperparameters-of-svm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.7.1. </span>Hyperparameters of SVM<a class="headerlink" href="#hyperparameters-of-svm" title="Permalink to this headline">¶</a></h3>
 <p>There are  2 main hyperparameters for support vector machines with an RBF kernel;</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gamma</span></code></p></li>
@@ -1242,7 +1252,7 @@ Name: country, dtype: object
 <p>(In short, <code class="docutils literal notranslate"><span class="pre">C</span></code> is the penalty the model accepts for wrongly classified examples, and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> is the curvature (see <a class="reference external" href="https://towardsdatascience.com/hyperparameter-tuning-for-support-vector-machines-c-and-gamma-parameters-6a5097416167">here</a> for more)</p>
 <p>See <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s explanation of RBF SVM parameters</a></p>
 <div class="section" id="gamma-and-the-fundamental-trade-off">
-<h4><code class="docutils literal notranslate"><span class="pre">gamma</span></code> and the fundamental trade-off<a class="headerlink" href="#gamma-and-the-fundamental-trade-off" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.7.1.1. </span><code class="docutils literal notranslate"><span class="pre">gamma</span></code> and the fundamental trade-off<a class="headerlink" href="#gamma-and-the-fundamental-trade-off" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">gamma</span></code> controls the complexity of a model, just like other hyperparameters we’ve seen.</p>
 <ul class="simple">
 <li><p>higher gamma, higher the complexity.</p></li>
@@ -1267,7 +1277,7 @@ Name: country, dtype: object
 </div>
 </div>
 <div class="section" id="c-and-the-fundamental-trade-off">
-<h4><code class="docutils literal notranslate"><span class="pre">C</span></code> and the fundamental trade-off<a class="headerlink" href="#c-and-the-fundamental-trade-off" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.7.1.2. </span><code class="docutils literal notranslate"><span class="pre">C</span></code> and the fundamental trade-off<a class="headerlink" href="#c-and-the-fundamental-trade-off" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">C</span></code> also controls the complexity of a model and in turn the fundamental tradeoff.</p>
 <ul class="simple">
 <li><p>higher <code class="docutils literal notranslate"><span class="pre">C</span></code> values, higher the complexity.</p></li>
@@ -1296,11 +1306,20 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.8. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>True or False</strong></p>
 <p>1.In Scikit Learn’s SVC classifier, large values of gamma tend to result in higher training scores but probably lower validation scores.<br />
 2.If we increase both <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code>, we can’t be certain if the model becomes more complex or less complex.</p>
-<p><strong>Coding practice</strong></p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>True</p></li>
+<li><p>False</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">4.9. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>Below is some starter code that creates your feature table and target column from the data from the <code class="docutils literal notranslate"><span class="pre">bball.csv</span></code> dataset (in the data folder).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1378,36 +1397,36 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.005877</td>
-      <td>0.002746</td>
+      <td>0.036492</td>
+      <td>0.020597</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.003471</td>
-      <td>0.001760</td>
+      <td>0.004584</td>
+      <td>0.002596</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003074</td>
-      <td>0.003266</td>
+      <td>0.007812</td>
+      <td>0.002033</td>
       <td>0.551020</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.004088</td>
-      <td>0.001794</td>
+      <td>0.003463</td>
+      <td>0.001509</td>
       <td>0.530612</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003504</td>
-      <td>0.001565</td>
+      <td>0.003535</td>
+      <td>0.002763</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
@@ -1417,13 +1436,14 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Calculate the mean training and cross-validation scores.</span>
+<span class="n">scores_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.004003
-score_time     0.002226
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.011177
+score_time     0.005900
 test_score     0.559184
 train_score    0.995918
 dtype: float64
@@ -1457,9 +1477,9 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="preprocessing">
-<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.10. </span>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-importance-of-preprocessing-an-example-of-why">
-<h3>The importance of Preprocessing - An Example of Why<a class="headerlink" href="#the-importance-of-preprocessing-an-example-of-why" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.1. </span>The importance of Preprocessing - An Example of Why<a class="headerlink" href="#the-importance-of-preprocessing-an-example-of-why" title="Permalink to this headline">¶</a></h3>
 <p>So far we have seen:</p>
 <ul class="simple">
 <li><p>Models: Decision trees, 𝑘-NNs, SVMs with RBF kernel.</p></li>
@@ -1468,7 +1488,7 @@ dtype: float64
 <p>Now …</p>
 <p><strong>Preprocessing</strong>: Transforming input data into a format a machine learning model can use and understand.</p>
 <div class="section" id="basketball-dataset">
-<h4>Basketball dataset<a class="headerlink" href="#basketball-dataset" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.10.1.1. </span>Basketball dataset<a class="headerlink" href="#basketball-dataset" title="Permalink to this headline">¶</a></h4>
 <p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">bball.csv</span></code> dataset we just used in practice.</p>
 <ul class="simple">
 <li><p>Let’s look at the  3 feature columns <code class="docutils literal notranslate"><span class="pre">height</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">salary</span></code>.</p></li>
@@ -1852,7 +1872,7 @@ We will talk about this type of preprocessing in more detail in a hot minute but
 </div>
 </div>
 <div class="section" id="sklearn-s-predict-vs-transform">
-<h3>Sklearn’s <em>predict</em> vs <em>transform</em><a class="headerlink" href="#sklearn-s-predict-vs-transform" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.2. </span>Sklearn’s <em>predict</em> vs <em>transform</em><a class="headerlink" href="#sklearn-s-predict-vs-transform" title="Permalink to this headline">¶</a></h3>
 <p>When we make models, we <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code>(<code class="docutils literal notranslate"><span class="pre">score</span></code>) with the syntax:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">X_train_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -1907,7 +1927,7 @@ Test score:  0.89
 <p>But when we build any ML models, we should only assess the test set once.</p>
 </div>
 <div class="section" id="common-preprocessing-techniques">
-<h3>Common preprocessing techniques<a class="headerlink" href="#common-preprocessing-techniques" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.3. </span>Common preprocessing techniques<a class="headerlink" href="#common-preprocessing-techniques" title="Permalink to this headline">¶</a></h3>
 <p>Here are some commonly performed feature transformation techniques we will focus on in this lesson.</p>
 <ul class="simple">
 <li><p>Imputation</p>
@@ -1924,27 +1944,32 @@ Test score:  0.89
 </div>
 </div>
 <div class="section" id="id2">
-<h2>Let’s Practice!<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Name a model that will still produce meaningful predictions with different scaled column values.</p></li>
-<li><p>Complete the following statement: Preprocessing is done ____.</p></li>
-</ol>
-<ul class="simple">
-<li><p>To the model but before training</p></li>
-<li><p>To the data before training the model</p></li>
-<li><p>To the model after training</p></li>
-<li><p>To the data after training the model</p></li>
-</ul>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> is a type of what?</p></li>
-<li><p>What data splits does <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> alter (Training, Testing, Validation, None, All)?</p></li>
-</ol>
-<p><strong>True or False</strong><br />
-5. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.<br />
+<h2><span class="section-number">4.11. </span>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1. Name a model that will still produce meaningful predictions with different scaled column values.<br />
+2. Complete the following statement: Preprocessing is done ______.</p>
+<p>a) To the model but before training<br />
+b) To the data before training the model<br />
+c) To the model after training<br />
+d) To the data after training the model</p>
+<p>3. <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> is a type of what?<br />
+4. What data splits does <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> alter (Training, Testing, Validation, None, All)?</p>
+<p><strong>True or False</strong></p>
+<p>5. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.<br />
 6. A model less sensitive to the scale of the data makes it more robust.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>Decision Tree Algorithm</p></li>
+<li><p>b) To the data before training the model</p></li>
+<li><p>Transformer</p></li>
+<li><p>All</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="california-housing-data-a-case-study">
-<h2>California housing data (A case study)<a class="headerlink" href="#california-housing-data-a-case-study" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.12. </span>California housing data (A case study)<a class="headerlink" href="#california-housing-data-a-case-study" title="Permalink to this headline">¶</a></h2>
 <p>For the next few examples of preprocessing,  we are going to be using a dataset exploring the prices of homes in California to demonstrate feature transformation techniques.  The data can be downloaded from this site <a class="reference external" href="https://www.kaggle.com/harrywang/housing">here</a>. Please make sure that you include it in your <code class="docutils literal notranslate"><span class="pre">data</span></code> folder that resides in <code class="docutils literal notranslate"><span class="pre">lectures</span></code>.</p>
 <p>This dataset is a modified version of the California Housing dataset available from <a class="reference external" href="https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html">Luís Torgo’s University of Porto website</a></p>
 <p>The task is to predict median house values in California districts, given several features from these districts.</p>
@@ -2181,7 +2206,7 @@ Test score:  0.89
 </div></div></div>
 </div>
 <div class="section" id="when-is-it-ok-to-do-things-before-splitting">
-<h3>When is it OK to do things before splitting?<a class="headerlink" href="#when-is-it-ok-to-do-things-before-splitting" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.12.1. </span>When is it OK to do things before splitting?<a class="headerlink" href="#when-is-it-ok-to-do-things-before-splitting" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Here it would have been OK to add new features before splitting because we are not using any global information in the data but only looking at one row at a time.</p></li>
 <li><p>But just to be safe and to avoid accidentally breaking the golden rule, it’s better to do it after splitting.</p></li>
@@ -2189,7 +2214,7 @@ Test score:  0.89
 </div>
 </div>
 <div class="section" id="preprocessing-imputation">
-<h2>Preprocessing: Imputation<a class="headerlink" href="#preprocessing-imputation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.13. </span>Preprocessing: Imputation<a class="headerlink" href="#preprocessing-imputation" title="Permalink to this headline">¶</a></h2>
 <p>Imputation is handling missing values in our data so let’s explore this a little.</p>
 <p>We can <code class="docutils literal notranslate"><span class="pre">.info()</span></code> we can we all the different column dtypes and also all the number of null values.</p>
 <div class="cell docutils container">
@@ -2322,7 +2347,7 @@ memory usage: 1.6+ MB
 <p>The classifier can’t deal with missing values (NaNs).</p>
 <p>How can we deal with this problem?</p>
 <div class="section" id="why-we-don-t-drop-the-rows">
-<h3>Why we don’t drop the rows<a class="headerlink" href="#why-we-don-t-drop-the-rows" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.13.1. </span>Why we don’t drop the rows<a class="headerlink" href="#why-we-don-t-drop-the-rows" title="Permalink to this headline">¶</a></h3>
 <p>We could drop any rows that are missing information but that’s problematic too.</p>
 <p>Then we would need to do the same in our test set.</p>
 <p>And what happens if we get missing values in our deployment data? what then?</p>
@@ -2358,7 +2383,7 @@ Perhaps a certain type of house contributes to more missing values.</p>
 </div>
 </div>
 <div class="section" id="why-we-don-t-drop-the-column">
-<h3>Why we don’t drop the column<a class="headerlink" href="#why-we-don-t-drop-the-column" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.13.2. </span>Why we don’t drop the column<a class="headerlink" href="#why-we-don-t-drop-the-column" title="Permalink to this headline">¶</a></h3>
 <p>If we drop the column instead of the rows, we are throwing away, in this case, 18391 values just because we don’t have 185 missing values out of a total of 18567.</p>
 <p>We are throwing away 99% of the column’s data because we are missing 1%.</p>
 <p>But perhaps if we were missing 99.9% of the column values, for example, it would make more sense to drop the column.</p>
@@ -2390,7 +2415,7 @@ Perhaps a certain type of house contributes to more missing values.</p>
 </div>
 </div>
 <div class="section" id="why-we-use-imputation">
-<h3>Why we use imputation<a class="headerlink" href="#why-we-use-imputation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.13.3. </span>Why we use imputation<a class="headerlink" href="#why-we-use-imputation" title="Permalink to this headline">¶</a></h3>
 <p>With <strong>Imputation</strong>, we invent values for the missing data.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <strong>transformer</strong> <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code>, we can impute the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in the data with some value.</p>
 <div class="cell docutils container">
@@ -2741,7 +2766,7 @@ Perhaps a certain type of house contributes to more missing values.</p>
 </div>
 </div>
 <div class="section" id="preprocessing-scaling">
-<h2>Preprocessing: Scaling<a class="headerlink" href="#preprocessing-scaling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.14. </span>Preprocessing: Scaling<a class="headerlink" href="#preprocessing-scaling" title="Permalink to this headline">¶</a></h2>
 <p>So we’ve seen why scaling is important earlier but let’s take a little bit of a closer look here.
 There are many ways to scale your data but we are going to look at 2 of them.</p>
 <p><img alt="" src="https://amueller.github.io/COMS4995-s19/slides/aml-05-preprocessing/images/scaler_comparison_scatter.png" /></p>
@@ -3024,21 +3049,32 @@ There are many ways to scale your data but we are going to look at 2 of them.</p
 <p>So let’s see how we can do this but first…. let’s practice!</p>
 </div>
 <div class="section" id="id3">
-<h2>Let’s Practice<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>When/Why do we need to impute our data?</p></li>
-<li><p>If we have <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in our data, can we simply drop the column missing the data?</p></li>
-<li><p>Which scaling method will never produce negative values?</p></li>
-<li><p>Which scaling method will never produce values greater than 1?</p></li>
-<li><p>Which scaling method will produce values where the range depends on the values in the data?</p></li>
-</ol>
-<p><strong>True or False</strong><br />
-6. <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> is a type of transformer.<br />
+<h2><span class="section-number">4.15. </span>Let’s Practice<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>1. When/Why do we need to impute our data?<br />
+2. If we have <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in our data, can we simply drop the column missing the data?<br />
+3. Which scaling method will never produce negative values?<br />
+4. Which scaling method will never produce values greater than 1?<br />
+5. Which scaling method will produce values where the range depends on the values in the data?</p>
+<p><strong>True or False</strong></p>
+<p>6. <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> is a type of transformer.<br />
 7. Scaling is a form of transformation.<br />
 8. We can use <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> to impute values that are missing from numerical and categorical columns.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>When we have missing data so that sklearn doesn’t give an error.</p></li>
+<li><p>No but we can if the majority of the values are missing from the column.</p></li>
+<li><p>Normalization (<code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>)</p></li>
+<li><p>Normalization (<code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>)</p></li>
+<li><p>Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="feature-transformations-and-the-golden-rule">
-<h2>Feature transformations and the golden rule<a class="headerlink" href="#feature-transformations-and-the-golden-rule" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.16. </span>Feature transformations and the golden rule<a class="headerlink" href="#feature-transformations-and-the-golden-rule" title="Permalink to this headline">¶</a></h2>
 <p>How to carry out cross-validation?</p>
 <ul class="simple">
 <li><p>Last week we saw that cross-validation is a better way to get a realistic assessment of the model.</p></li>
@@ -3132,7 +3168,7 @@ There are many ways to scale your data but we are going to look at 2 of them.</p
 <p>We need to take care that we are keeping our validation data truly as unseen data.</p>
 <p>Before we look at the right approach to this, let’s look at the <strong>WRONG</strong> approaches.</p>
 <div class="section" id="bad-methodology-1-scaling-the-data-separately">
-<h3>Bad methodology 1: Scaling the data separately<a class="headerlink" href="#bad-methodology-1-scaling-the-data-separately" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.16.1. </span>Bad methodology 1: Scaling the data separately<a class="headerlink" href="#bad-methodology-1-scaling-the-data-separately" title="Permalink to this headline">¶</a></h3>
 <p>We make our transformer, we fit it on the training data and then transform the training data.</p>
 <p>Then, we make a second transformer, fit it on the test data and then transform our test data.</p>
 <div class="cell docutils container">
@@ -3167,7 +3203,7 @@ Test score:  0.7
 <p>We should never fit on test data, whether it’s to build a model or with a transforming, test data should never be exposed to the fit function.</p>
 </div>
 <div class="section" id="bad-methodology-2-scaling-the-data-together">
-<h3>Bad methodology 2: Scaling the data together<a class="headerlink" href="#bad-methodology-2-scaling-the-data-together" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.16.2. </span>Bad methodology 2: Scaling the data together<a class="headerlink" href="#bad-methodology-2-scaling-the-data-together" title="Permalink to this headline">¶</a></h3>
 <p>The next mistake is when we scale the data together. So instead of splitting our data, we are combining our training and testing and scaling it together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3230,7 +3266,7 @@ Test score:  0.71
 </div>
 </div>
 <div class="section" id="pipelines">
-<h2>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.17. </span>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">Scikit-learn Pipeline</a> is here to save the day!</p>
 <p>A <strong>pipeline</strong> is a sklearn function that contains a sequence of steps.</p>
 <p>Essentially we give it all the actions we want to do with our data such as transformers and models and the pipeline will execute them in steps.</p>
@@ -3420,23 +3456,28 @@ dtype: float64
 <p>We can trust here now that the scores are not influenced but the training data and all our steps were done efficiently and easily too.</p>
 </div>
 <div class="section" id="id4">
-<h2>Let’s Practice<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Which of the following steps cannot be used in a pipeline?</p>
-<ul class="simple">
-<li><p>Scaling</p></li>
-<li><p>Model building</p></li>
-<li><p>Imputation</p></li>
-<li><p>Data Splitting</p></li>
-</ul>
-</li>
-<li><p>Why can’t we fit and transform the training and test data together?</p></li>
-</ol>
-<p><strong>True or False</strong><br />
-3. We have to be careful of the order we put each transformation and model in a pipeline.<br />
+<h2><span class="section-number">4.18. </span>Let’s Practice<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>1. Which of the following steps cannot be used in a pipeline?</p>
+<p>a) Scaling<br />
+b) Model building<br />
+c) Imputation<br />
+d) Data Splitting</p>
+<p>2. Why can’t we fit and transform the training and test data together?</p>
+<p><strong>True or False</strong></p>
+<p>3. We have to be careful of the order we put each transformation and model in a pipeline.<br />
 4. Pipelines will fit and transform on both the training and validation folds during cross-validation.</p>
-<div class="section" id="practice-coding-problem">
-<h3>Practice Coding Problem<a class="headerlink" href="#practice-coding-problem" title="Permalink to this headline">¶</a></h3>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>Data Splitting</p></li>
+<li><p>It’s violating the golden rule.</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">4.19. </span>Let’s Practice - Coding<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Let’s bring in the basketball dataset again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3464,9 +3505,8 @@ dtype: float64
 <p>Next, do 5 fold cross-validation on the pipeline using <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train</span></code> and save the results in a dataframe.
 Take the mean of each column and assess your model.</p>
 </div>
-</div>
 <div class="section" id="what-we-ve-learned-today-a-id-9-a">
-<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.20. </span>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>How the <span class="math notranslate nohighlight">\(k\)</span>NN algorithm works for regression.</p></li>
 <li><p>How to build an SVM with RBF kernel model.</p></li>
@@ -3504,8 +3544,8 @@ Take the mean of each column and assess your model.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture3.html" title="previous page">Lecture 3 - Baseline, k-Nearest Neighbours</a>
-    <a class='right-next' id="next-link" href="lecture5.html" title="next page">Lecture 5 - Preprocessing Categorical Features and Column Transformer</a>
+    <a class='left-prev' id="prev-link" href="lecture3.html" title="previous page"><span class="section-number">3. </span>Baseline, k-Nearest Neighbours</a>
+    <a class='right-next' id="next-link" href="lecture5.html" title="next page"><span class="section-number">5. </span>Preprocessing Categorical Features and Column Transformer</a>
 
         </div>
         

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 5 - Preprocessing Categorical Features and Column Transformer &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>5. Preprocessing Categorical Features and Column Transformer &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 6 - Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
-    <link rel="prev" title="Lecture 4 - SVM with RBF Kernel and Feature Preprocessing" href="lecture4.html" />
+    <link rel="next" title="6. Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
+    <link rel="prev" title="4. SVM with RBF Kernel and Feature Preprocessing" href="lecture4.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture5.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 5 - Preprocessing Categorical Features and Column Transformer" />
-<meta property="og:description" content="Lecture 5 - Preprocessing Categorical Features and Column Transformer  Hayley Boyce, Monday, May 3rd, 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/" />
+<meta property="og:title"       content="Preprocessing Categorical Features and Column Transformer" />
+<meta property="og:description" content="Preprocessing Categorical Features and Column Transformer  Hayley Boyce, May 3rd, 2021  # Importing our libraries import pandas as pd import altair as alt impor" />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,86 +298,86 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   5.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   5.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   5.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     5.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-categorical-feature-preprocessing">
-   Introducing Categorical Feature Preprocessing
+   5.4. Introducing Categorical Feature Preprocessing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ordinal-encoding">
-   Ordinal encoding
+   5.5. Ordinal encoding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-hot-encoding">
-   One-Hot Encoding
+   5.6. One-Hot Encoding
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-one-hot-encode">
-     How to one-hot encode
+     5.6.1. How to one-hot encode
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-happens-if-there-are-categories-in-the-test-data-that-are-not-in-the-training-data">
-     What happens if there are categories in the test data, that are not in the training data?
+     5.6.2. What happens if there are categories in the test data, that are not in the training data?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cases-where-it-s-ok-to-break-the-golden-rule">
-     Cases where it’s OK to break the golden rule
+     5.6.3. Cases where it’s OK to break the golden rule
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#binary-features">
-   Binary features
+   5.7. Binary features
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#do-we-actually-want-to-use-certain-features-for-prediction">
-   Do we actually want to use certain features for prediction?
+   5.8. Do we actually want to use certain features for prediction?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   5.9. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#columntransformer">
-   ColumnTransformer
+   5.10. ColumnTransformer
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#applying-columntransformer">
-     Applying ColumnTransformer
+     5.10.1. Applying ColumnTransformer
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#do-we-need-to-preprocess-categorical-values-in-the-target-column">
-       Do we need to preprocess categorical values in the target column?
+       5.10.1.1. Do we need to preprocess categorical values in the target column?
       </a>
      </li>
     </ul>
@@ -386,11 +386,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#make-syntax">
-   Make Syntax
+   5.11. Make Syntax
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#make-pipeline">
+     5.11.1.
      <code class="docutils literal notranslate">
       <span class="pre">
        make_pipeline
@@ -402,6 +403,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#make-column-transformer-syntax">
+   5.12.
    <em>
     make_column_transformer
    </em>
@@ -410,22 +412,22 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice
+   5.13. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#text-data">
-   Text Data
+   5.14. Text Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bag-of-words-bow-representation">
-   Bag of words (BOW) representation
+   5.15. Bag of words (BOW) representation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extracting-bow-features-using-scikit-learn">
-     Extracting BOW features using
+     5.15.1. Extracting BOW features using
      <em>
       scikit-learn
      </em>
@@ -433,7 +435,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#important-hyperparameters-of-countvectorizer">
-     Important hyperparameters of
+     5.15.2. Important hyperparameters of
      <code class="docutils literal notranslate">
       <span class="pre">
        CountVectorizer
@@ -443,26 +445,24 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-this-a-realistic-representation-of-text-data">
-     Is this a realistic representation of text data?
+     5.15.3. Is this a realistic representation of text data?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Let’s Practice
+   5.16. Let’s Practice
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coding-practice">
-     Coding Practice
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   5.17. Let’s Practice - Coding
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
-   What We’ve Learned Today
+   5.18. What We’ve Learned Today
    <a id="9">
    </a>
   </a>
@@ -479,11 +479,10 @@
         
               <div>
                 
-  <div class="section" id="lecture-5-preprocessing-categorical-features-and-column-transformer">
-<h1>Lecture 5 - Preprocessing Categorical Features and Column Transformer<a class="headerlink" href="#lecture-5-preprocessing-categorical-features-and-column-transformer" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Monday, May 3rd, 2021</em></p>
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-5---Preprocessing-Categorical-Features-and-Column-Transformer" data-toc-modified-id="Lecture-5---Preprocessing-Categorical-Features-and-Column-Transformer-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 5 - Preprocessing Categorical Features and Column Transformer</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Categorical-Feature-Preprocessing" data-toc-modified-id="Introducing-Categorical-Feature-Preprocessing-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Categorical Feature Preprocessing</a></span></li><li><span><a href="#Ordinal-encoding" data-toc-modified-id="Ordinal-encoding-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Ordinal encoding</a></span></li><li><span><a href="#One-Hot-Encoding" data-toc-modified-id="One-Hot-Encoding-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>One-Hot Encoding</a></span><ul class="toc-item"><li><span><a href="#How-to-one-hot-encode" data-toc-modified-id="How-to-one-hot-encode-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>How to one-hot encode</a></span></li><li><span><a href="#What-happens-if-there-are-categories-in-the-test-data,-that-are-not-in-the-training-data?" data-toc-modified-id="What-happens-if-there-are-categories-in-the-test-data,-that-are-not-in-the-training-data?-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>What happens if there are categories in the test data, that are not in the training data?</a></span></li><li><span><a href="#Cases-where-it's-OK-to-break-the-golden-rule" data-toc-modified-id="Cases-where-it's-OK-to-break-the-golden-rule-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>Cases where it's OK to break the golden rule</a></span></li></ul></li><li><span><a href="#Binary-features" data-toc-modified-id="Binary-features-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Binary features</a></span></li><li><span><a href="#Do-we-actually-want-to-use-certain-features-for-prediction?" data-toc-modified-id="Do-we-actually-want-to-use-certain-features-for-prediction?-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Do we actually want to use certain features for prediction?</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#ColumnTransformer" data-toc-modified-id="ColumnTransformer-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>ColumnTransformer</a></span><ul class="toc-item"><li><span><a href="#Applying-ColumnTransformer" data-toc-modified-id="Applying-ColumnTransformer-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>Applying ColumnTransformer</a></span><ul class="toc-item"><li><span><a href="#Do-we-need-to-preprocess-categorical-values-in-the-target-column?" data-toc-modified-id="Do-we-need-to-preprocess-categorical-values-in-the-target-column?-1.10.1.1"><span class="toc-item-num">1.10.1.1&nbsp;&nbsp;</span>Do we need to preprocess categorical values in the target column?</a></span></li></ul></li></ul></li><li><span><a href="#Make-Syntax" data-toc-modified-id="Make-Syntax-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Make Syntax</a></span><ul class="toc-item"><li><span><a href="#make_pipeline" data-toc-modified-id="make_pipeline-1.11.1"><span class="toc-item-num">1.11.1&nbsp;&nbsp;</span><code>make_pipeline</code></a></span></li></ul></li><li><span><a href="#make_column_transformer-syntax" data-toc-modified-id="make_column_transformer-syntax-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span><em>make_column_transformer</em> syntax</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Text-Data" data-toc-modified-id="Text-Data-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Text Data</a></span></li><li><span><a href="#Bag-of-words-(BOW)-representation" data-toc-modified-id="Bag-of-words-(BOW)-representation-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>Bag of words (BOW) representation</a></span><ul class="toc-item"><li><span><a href="#Extracting-BOW-features-using-scikit-learn" data-toc-modified-id="Extracting-BOW-features-using-scikit-learn-1.15.1"><span class="toc-item-num">1.15.1&nbsp;&nbsp;</span>Extracting BOW features using <em>scikit-learn</em></a></span></li><li><span><a href="#Important-hyperparameters-of-CountVectorizer" data-toc-modified-id="Important-hyperparameters-of-CountVectorizer-1.15.2"><span class="toc-item-num">1.15.2&nbsp;&nbsp;</span>Important hyperparameters of <code>CountVectorizer</code></a></span></li><li><span><a href="#Is-this-a-realistic-representation-of-text-data?" data-toc-modified-id="Is-this-a-realistic-representation-of-text-data?-1.15.3"><span class="toc-item-num">1.15.3&nbsp;&nbsp;</span>Is this a realistic representation of text data?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Coding-Practice" data-toc-modified-id="Coding-Practice-1.16.1"><span class="toc-item-num">1.16.1&nbsp;&nbsp;</span>Coding Practice</a></span></li></ul></li></ul></li></ul></div><div class="cell docutils container">
+  <div class="section" id="preprocessing-categorical-features-and-column-transformer">
+<h1><span class="section-number">5. </span>Preprocessing Categorical Features and Column Transformer<a class="headerlink" href="#preprocessing-categorical-features-and-column-transformer" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, May 3rd, 2021</em></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -511,7 +510,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Quiz on Wednesday</p></li>
 <li><p>Grading issues contact these TAs:</p>
@@ -522,10 +521,11 @@
 </ul>
 </li>
 <li><p>Polls!</p></li>
+<li><p>Assignment2 posted</p></li>
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Identify when it’s appropriate to apply ordinal encoding vs one-hot encoding.</p></li>
 <li><p>Explain strategies to deal with categorical variables with too many categories.</p></li>
@@ -538,16 +538,16 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Where does most of the work happen in <span class="math notranslate nohighlight">\(k\)</span>-nn - <code class="docutils literal notranslate"><span class="pre">fit</span></code> or <code class="docutils literal notranslate"><span class="pre">predict</span></code>?</p></li>
 <li><p>What are the 2 hyperparameters we looked at with Support Vector Machines with RBF kernel?</p></li>
 <li><p>What is the range of values after Normalization?</p></li>
-<li><p>Imputation will help data with missing values by removing which of the following the column or the row?</p></li>
+<li><p>Imputation will help data with missing values by removing which of the following; the column, the row or neither?</p></li>
 <li><p>Pipelines help us not violate what?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>What about categorical features??!  How do we use them in our model!?</p></li>
 <li><p>How do we combine everything?!</p></li>
@@ -556,7 +556,7 @@
 </div>
 </div>
 <div class="section" id="introducing-categorical-feature-preprocessing">
-<h2>Introducing Categorical Feature Preprocessing<a class="headerlink" href="#introducing-categorical-feature-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Introducing Categorical Feature Preprocessing<a class="headerlink" href="#introducing-categorical-feature-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>Let’s bring back our California housing dataset that we explored last class.
 Remember we engineered some of the features in the data.</p>
 <div class="cell docutils container">
@@ -793,7 +793,7 @@ Remember we engineered some of the features in the data.</p>
 </ul>
 </div>
 <div class="section" id="ordinal-encoding">
-<h2>Ordinal encoding<a class="headerlink" href="#ordinal-encoding" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.5. </span>Ordinal encoding<a class="headerlink" href="#ordinal-encoding" title="Permalink to this headline">¶</a></h2>
 <p>Ordinal encoding gives an ordinal numeric value to each unique value in the column.</p>
 <p>Let’s take a look at a dummy dataframe to explain how to use ordinal encoding.</p>
 <p>Here we have a categorical column specifying different movie ratings.</p>
@@ -1312,9 +1312,9 @@ Remember we engineered some of the features in the data.</p>
       <th>English</th>
       <th>Mandarin</th>
       <th>Vietnamese</th>
-      <th>Spanish</th>
       <th>Hindi</th>
       <th>French</th>
+      <th>Spanish</th>
     </tr>
   </thead>
   <tbody>
@@ -1450,7 +1450,7 @@ Remember we engineered some of the features in the data.</p>
 <p>We can do something called …</p>
 </div>
 <div class="section" id="one-hot-encoding">
-<h2>One-Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>One-Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">¶</a></h2>
 <p>One-hot encoding (OHE) creates a new binary column for each category in a categorical column.</p>
 <ul class="simple">
 <li><p>If we have <span class="math notranslate nohighlight">\(c\)</span> categories in our column.</p>
@@ -1460,7 +1460,7 @@ Remember we engineered some of the features in the data.</p>
 </li>
 </ul>
 <div class="section" id="how-to-one-hot-encode">
-<h3>How to one-hot encode<a class="headerlink" href="#how-to-one-hot-encode" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.6.1. </span>How to one-hot encode<a class="headerlink" href="#how-to-one-hot-encode" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
@@ -1787,7 +1787,7 @@ Remember we engineered some of the features in the data.</p>
 </div>
 </div>
 <div class="section" id="what-happens-if-there-are-categories-in-the-test-data-that-are-not-in-the-training-data">
-<h3>What happens if there are categories in the test data, that are not in the training data?<a class="headerlink" href="#what-happens-if-there-are-categories-in-the-test-data-that-are-not-in-the-training-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.6.2. </span>What happens if there are categories in the test data, that are not in the training data?<a class="headerlink" href="#what-happens-if-there-are-categories-in-the-test-data-that-are-not-in-the-training-data" title="Permalink to this headline">¶</a></h3>
 <p>Usually, if this is the case, an error will occur. (Not buying it? Try one hot-encoding in the assignment without this argument!)</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> we can specify <code class="docutils literal notranslate"><span class="pre">handle_unknown=&quot;ignore&quot;</span></code> which will then create a row with all zeros.</p>
 <p>That means that all categories that are not recognized to the transformer will appear the same for this feature.</p>
@@ -1817,7 +1817,7 @@ Remember we engineered some of the features in the data.</p>
 </div>
 </div>
 <div class="section" id="cases-where-it-s-ok-to-break-the-golden-rule">
-<h3>Cases where it’s OK to break the golden rule<a class="headerlink" href="#cases-where-it-s-ok-to-break-the-golden-rule" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.6.3. </span>Cases where it’s OK to break the golden rule<a class="headerlink" href="#cases-where-it-s-ok-to-break-the-golden-rule" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>If it’s some fixed number of categories.</p></li>
 </ul>
@@ -1841,7 +1841,7 @@ Remember we engineered some of the features in the data.</p>
 </div>
 </div>
 <div class="section" id="binary-features">
-<h2>Binary features<a class="headerlink" href="#binary-features" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>Binary features<a class="headerlink" href="#binary-features" title="Permalink to this headline">¶</a></h2>
 <p>Let’s say we have the following toy feature, that contains information on if a beverage has caffeine in it or not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2203,14 +2203,14 @@ Remember we engineered some of the features in the data.</p>
 <p>In this case, alphabetically it was [<code class="docutils literal notranslate"><span class="pre">'No'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Yes'</span></code>] and it dropped the first category; <code class="docutils literal notranslate"><span class="pre">No</span></code>.</p>
 </div>
 <div class="section" id="do-we-actually-want-to-use-certain-features-for-prediction">
-<h2>Do we actually want to use certain features for prediction?<a class="headerlink" href="#do-we-actually-want-to-use-certain-features-for-prediction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.8. </span>Do we actually want to use certain features for prediction?<a class="headerlink" href="#do-we-actually-want-to-use-certain-features-for-prediction" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes we may have column features like <code class="docutils literal notranslate"><span class="pre">race</span></code> or <code class="docutils literal notranslate"><span class="pre">sex</span></code> that may not be a good idea to include in your model.</p>
 <p>The systems you build are going to be used in some applications.</p>
 <p>It’s extremely important to be mindful of the consequences of including certain features in your predictive model.</p>
 <p>Dropping the features like this to avoid racial and gender biases would be a strong suggestion.</p>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.9. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">name</span>    <span class="n">colour</span>    <span class="n">location</span>    <span class="n">seed</span>   <span class="n">shape</span>  <span class="n">sweetness</span>   <span class="n">water</span><span class="o">-</span><span class="n">content</span>  <span class="n">weight</span>  <span class="n">popularity</span>
 <span class="mi">0</span>         <span class="n">apple</span>       <span class="n">red</span>     <span class="n">canada</span>    <span class="kc">True</span>   <span class="nb">round</span>     <span class="kc">True</span>          <span class="mi">84</span>         <span class="mi">100</span>      <span class="n">popular</span>
 <span class="mi">1</span>        <span class="n">banana</span>    <span class="n">yellow</span>     <span class="n">mexico</span>   <span class="kc">False</span>    <span class="n">long</span>     <span class="kc">True</span>          <span class="mi">75</span>         <span class="mi">120</span>      <span class="n">popular</span>
@@ -2225,20 +2225,14 @@ Remember we engineered some of the features in the data.</p>
 
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>What would be the unique values given to the categories in the <code class="docutils literal notranslate"><span class="pre">popularity</span></code> column, if we transformed it with ordinal encoding?</p></li>
-</ol>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></li>
-</ul>
-<ol class="simple">
-<li><p>Does it make sense to be doing ordinal transformations on the <code class="docutils literal notranslate"><span class="pre">colour</span></code> column?</p></li>
-<li><p>If we one hot encoded the <code class="docutils literal notranslate"><span class="pre">shape</span></code> column, what datatype would be the output after using <code class="docutils literal notranslate"><span class="pre">transform</span></code>?</p></li>
-<li><p>Which of the following outputs is the result of one-hot encoding the <code class="docutils literal notranslate"><span class="pre">shape</span></code> column?</p></li>
-</ol>
+<p>1.  What would be the unique values given to the categories in the <code class="docutils literal notranslate"><span class="pre">popularity</span></code> column, if we transformed it with ordinal encoding?</p>
+<p>a) <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9]</span></code><br />
+b) <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code><br />
+c) <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code><br />
+d) <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p>
+<p>2. Does it make sense to be doing ordinal transformations on the <code class="docutils literal notranslate"><span class="pre">colour</span></code> column?<br />
+3. If we one hot encoded the <code class="docutils literal notranslate"><span class="pre">shape</span></code> column, what datatype would be the output after using <code class="docutils literal notranslate"><span class="pre">transform</span></code>?<br />
+4. Which of the following outputs is the result of one-hot encoding the <code class="docutils literal notranslate"><span class="pre">shape</span></code> column?</p>
 <p>a)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
@@ -2289,24 +2283,35 @@ Remember we engineered some of the features in the data.</p>
 
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>On which column(s) would you use <code class="docutils literal notranslate"><span class="pre">OneHotEncoder(sparse=False,</span> <span class="pre">dtype=int,</span> <span class="pre">drop=&quot;if_binary&quot;)</span></code>?</p></li>
-</ol>
+<p>5. On which column(s) would you use <code class="docutils literal notranslate"><span class="pre">OneHotEncoder(sparse=False,</span> <span class="pre">dtype=int,</span> <span class="pre">drop=&quot;if_binary&quot;)</span></code>?</p>
 <p><strong>True or False?</strong></p>
+<p>6. Whenever we have categorical values, we should use ordinal encoding.<br />
+7. If we include categorical values in our feature table, <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> will throw an error.<br />
+8. One-hot encoding a column with 5 unique categories will produce 5 new transformed columns.<br />
+9. The values in the new transformed columns after one-hot encoding, are all possible integer or float values.<br />
+10. It’s important to be mindful of the consequences of including certain features in your predictive model.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>Whenever we have categorical values, we should use ordinal encoding.</p></li>
-<li><p>If we include categorical values in our feature table, <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> will throw an error.</p></li>
-<li><p>One-hot encoding a column with 5 unique categories will produce 5 new transformed columns.</p></li>
-<li><p>The values in the new transformed columns after one-hot encoding, are all possible integer or float values.</p></li>
-<li><p>It’s important to be mindful of the consequences of including certain features in your predictive model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code></p></li>
+<li><p>No</p></li>
+<li><p>NumPy array</p></li>
+<li><p>b)</p></li>
+<li><p>seed, sweetness</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
 </ol>
+</div>
 <p><strong>But ….now what?</strong></p>
 <p>How do we put this together with other columns in the data before fitting a regressor?</p>
 <p>We want to apply different transformations to different columns.</p>
 <p>Enter… <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>.</p>
 </div>
 <div class="section" id="columntransformer">
-<h2>ColumnTransformer<a class="headerlink" href="#columntransformer" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.10. </span>ColumnTransformer<a class="headerlink" href="#columntransformer" title="Permalink to this headline">¶</a></h2>
 <p>We left off wondering where to go after we transform our categorical features.</p>
 <p>Problem: Different transformations on different columns.</p>
 <p>Right now before we can even fit our regressor we have to apply different transformations on different columns:</p>
@@ -2333,7 +2338,7 @@ Remember we engineered some of the features in the data.</p>
 <p>Otherwise, we might, for example, do the OHE on both train and test but forget to scale the test data.</p>
 <a class="reference internal image-reference" href="../_images/column-transformer.png"><img alt="../_images/column-transformer.png" src="../_images/column-transformer.png" style="width: 100%;" /></a>
 <div class="section" id="applying-columntransformer">
-<h3>Applying ColumnTransformer<a class="headerlink" href="#applying-columntransformer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.10.1. </span>Applying ColumnTransformer<a class="headerlink" href="#applying-columntransformer" title="Permalink to this headline">¶</a></h3>
 <p>Let’s use this new tool on our California housing dataset.</p>
 <p>Just like any new tool we use, we need to import it.</p>
 <div class="cell docutils container">
@@ -2785,36 +2790,36 @@ Let’s say I wanted to see the newly created columns from One-hot-encoding? How
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.036617</td>
-      <td>0.287318</td>
+      <td>0.057024</td>
+      <td>0.410002</td>
       <td>0.695818</td>
       <td>0.801659</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.035169</td>
-      <td>0.277411</td>
+      <td>0.039643</td>
+      <td>0.321133</td>
       <td>0.707483</td>
       <td>0.799575</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.032765</td>
-      <td>0.285914</td>
+      <td>0.043101</td>
+      <td>0.346134</td>
       <td>0.713788</td>
       <td>0.795944</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.032263</td>
-      <td>0.290920</td>
+      <td>0.041929</td>
+      <td>0.356720</td>
       <td>0.686938</td>
       <td>0.801232</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.034064</td>
-      <td>0.228176</td>
+      <td>0.038765</td>
+      <td>0.286461</td>
       <td>0.724608</td>
       <td>0.832498</td>
     </tr>
@@ -2829,8 +2834,8 @@ Let’s say I wanted to see the newly created columns from One-hot-encoding? How
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.034176
-score_time     0.273948
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.044092
+score_time     0.344090
 test_score     0.705727
 train_score    0.806182
 dtype: float64
@@ -2850,7 +2855,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="b03df1bf-eb6c-41bc-8c4b-bd761cc04035" type="checkbox" ><label class="sk-toggleable__label" for="b03df1bf-eb6c-41bc-8c4b-bd761cc04035">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('preprocessor',
+<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="0b8e591f-8bbd-42b5-851b-dcc19d93c3c6" type="checkbox" ><label class="sk-toggleable__label" for="0b8e591f-8bbd-42b5-851b-dcc19d93c3c6">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('preprocessor',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('numeric',
                                                   Pipeline(steps=[('imputer',
@@ -2871,7 +2876,7 @@ dtype: float64
                                                                   ('onehot',
                                                                    OneHotEncoder(handle_unknown='ignore'))]),
                                                   ['ocean_proximity'])])),
-                ('reg', KNeighborsRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="5b8c15e6-488d-4ad3-ae2c-a9189b65a0bc" type="checkbox" ><label class="sk-toggleable__label" for="5b8c15e6-488d-4ad3-ae2c-a9189b65a0bc">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder='passthrough',
+                ('reg', KNeighborsRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="4f5099d7-586b-4809-b8b2-dbd2c0e7edff" type="checkbox" ><label class="sk-toggleable__label" for="4f5099d7-586b-4809-b8b2-dbd2c0e7edff">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder='passthrough',
                   transformers=[('numeric',
                                  Pipeline(steps=[('imputer',
                                                   SimpleImputer(strategy='median')),
@@ -2887,7 +2892,7 @@ dtype: float64
                                                                 strategy='constant')),
                                                  ('onehot',
                                                   OneHotEncoder(handle_unknown='ignore'))]),
-                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="99204708-8e5b-4f4d-aa3d-8f5b813f0766" type="checkbox" ><label class="sk-toggleable__label" for="99204708-8e5b-4f4d-aa3d-8f5b813f0766">numeric</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="59c642e7-5a8f-4938-8ba9-16e7312e8448" type="checkbox" ><label class="sk-toggleable__label" for="59c642e7-5a8f-4938-8ba9-16e7312e8448">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="21b4f3f1-bd83-4a1e-bb61-1b1aff71de56" type="checkbox" ><label class="sk-toggleable__label" for="21b4f3f1-bd83-4a1e-bb61-1b1aff71de56">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="21378e29-bb85-4dc7-b258-775a5c5f8a83" type="checkbox" ><label class="sk-toggleable__label" for="21378e29-bb85-4dc7-b258-775a5c5f8a83">categorical</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="9826d67c-b9a6-4996-914d-c02d9dbb6a8b" type="checkbox" ><label class="sk-toggleable__label" for="9826d67c-b9a6-4996-914d-c02d9dbb6a8b">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="735fbeab-1e24-410b-af5d-d5f6614ff13b" type="checkbox" ><label class="sk-toggleable__label" for="735fbeab-1e24-410b-af5d-d5f6614ff13b">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown='ignore')</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="5801cd15-2901-4af9-8816-b62c4b279a3a" type="checkbox" ><label class="sk-toggleable__label" for="5801cd15-2901-4af9-8816-b62c4b279a3a">KNeighborsRegressor</label><div class="sk-toggleable__content"><pre>KNeighborsRegressor()</pre></div></div></div></div></div></div></div></div></div>
+                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="5d97e63e-89fe-4a26-8f77-64cc5ca05b1b" type="checkbox" ><label class="sk-toggleable__label" for="5d97e63e-89fe-4a26-8f77-64cc5ca05b1b">numeric</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="db29e8d1-7d14-4713-a43c-8cc45c80cddc" type="checkbox" ><label class="sk-toggleable__label" for="db29e8d1-7d14-4713-a43c-8cc45c80cddc">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="becd2761-ef15-4957-a28a-641543c762b5" type="checkbox" ><label class="sk-toggleable__label" for="becd2761-ef15-4957-a28a-641543c762b5">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="83185967-323a-41a6-acbf-6031aa78bc4b" type="checkbox" ><label class="sk-toggleable__label" for="83185967-323a-41a6-acbf-6031aa78bc4b">categorical</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="6ae8d01b-f33b-45ab-ba56-f00528faa39f" type="checkbox" ><label class="sk-toggleable__label" for="6ae8d01b-f33b-45ab-ba56-f00528faa39f">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="c07de4df-ead3-4b78-b387-0d9419c79289" type="checkbox" ><label class="sk-toggleable__label" for="c07de4df-ead3-4b78-b387-0d9419c79289">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown='ignore')</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="54e2bff1-fc36-420a-adbb-3c8d8b05ad1b" type="checkbox" ><label class="sk-toggleable__label" for="54e2bff1-fc36-420a-adbb-3c8d8b05ad1b">KNeighborsRegressor</label><div class="sk-toggleable__content"><pre>KNeighborsRegressor()</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2924,7 +2929,7 @@ dtype: float64
 </div>
 <p>We can also look at this image which shows the more generic version of what happens in <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> and where it stands in our main pipeline.</p>
 <center><img src="imgs/pipeline.png"  width = "90%" alt="404 image" /></center><div class="section" id="do-we-need-to-preprocess-categorical-values-in-the-target-column">
-<h4>Do we need to preprocess categorical values in the target column?<a class="headerlink" href="#do-we-need-to-preprocess-categorical-values-in-the-target-column" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.10.1.1. </span>Do we need to preprocess categorical values in the target column?<a class="headerlink" href="#do-we-need-to-preprocess-categorical-values-in-the-target-column" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Generally, there is no need for this when doing classification.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> is fine with categorical labels (y-values) for classification problems.</p></li>
@@ -2933,7 +2938,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="make-syntax">
-<h2>Make Syntax<a class="headerlink" href="#make-syntax" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.11. </span>Make Syntax<a class="headerlink" href="#make-syntax" title="Permalink to this headline">¶</a></h2>
 <p>When we looked at our California housing dataset we had the following pipelines, ColumnTransformer and main pipeline with our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2981,7 +2986,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="make-pipeline">
-<h3><code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code><a class="headerlink" href="#make-pipeline" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.11.1. </span><code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code><a class="headerlink" href="#make-pipeline" title="Permalink to this headline">¶</a></h3>
 <p>We can shorten our code when we use <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> from this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3000,7 +3005,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="9eda3a87-4587-4fcd-a8f6-d65173425b36" type="checkbox" ><label class="sk-toggleable__label" for="9eda3a87-4587-4fcd-a8f6-d65173425b36">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('scaling', StandardScaler()), ('reg', SVR())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="e2a6c82f-cd28-4d94-a7d4-0a2f16e5704a" type="checkbox" ><label class="sk-toggleable__label" for="e2a6c82f-cd28-4d94-a7d4-0a2f16e5704a">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="28c57a78-6341-4019-89d9-7a1894f2b5dc" type="checkbox" ><label class="sk-toggleable__label" for="28c57a78-6341-4019-89d9-7a1894f2b5dc">SVR</label><div class="sk-toggleable__content"><pre>SVR()</pre></div></div></div></div></div></div></div></div></div>
+<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="c91f50c7-a006-45ff-9906-5277837700a6" type="checkbox" ><label class="sk-toggleable__label" for="c91f50c7-a006-45ff-9906-5277837700a6">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('scaling', StandardScaler()), ('reg', SVR())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a4f22320-6c35-48d0-8c2d-bb73db841051" type="checkbox" ><label class="sk-toggleable__label" for="a4f22320-6c35-48d0-8c2d-bb73db841051">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="f4b7f329-6937-46dc-be2a-0d38ad1bd40c" type="checkbox" ><label class="sk-toggleable__label" for="f4b7f329-6937-46dc-be2a-0d38ad1bd40c">SVR</label><div class="sk-toggleable__content"><pre>SVR()</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3009,7 +3014,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;standardscaler&#39;, StandardScaler()), (&#39;svr&#39;, SVR())])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;scaling&#39;, StandardScaler()), (&#39;reg&#39;, SVR())])
 </pre></div>
 </div>
 </div>
@@ -3030,7 +3035,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="f399270a-a789-4153-8774-cf295be3ebe7" type="checkbox" ><label class="sk-toggleable__label" for="f399270a-a789-4153-8774-cf295be3ebe7">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('standardscaler', StandardScaler()), ('svr', SVR())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="443c07bf-da71-4b26-a567-eeb46201863b" type="checkbox" ><label class="sk-toggleable__label" for="443c07bf-da71-4b26-a567-eeb46201863b">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="f3248eef-e4ae-4308-b64a-ca5a9faef2bd" type="checkbox" ><label class="sk-toggleable__label" for="f3248eef-e4ae-4308-b64a-ca5a9faef2bd">SVR</label><div class="sk-toggleable__content"><pre>SVR()</pre></div></div></div></div></div></div></div></div></div>
+<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="33c8976d-4c27-472c-b9a1-45ed0db3f621" type="checkbox" ><label class="sk-toggleable__label" for="33c8976d-4c27-472c-b9a1-45ed0db3f621">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[('standardscaler', StandardScaler()), ('svr', SVR())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="9716f61d-8a3d-4f5a-b5db-11fa9fe72f74" type="checkbox" ><label class="sk-toggleable__label" for="9716f61d-8a3d-4f5a-b5db-11fa9fe72f74">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="fc342fda-93d3-43c2-8cc4-0cdc389e99f1" type="checkbox" ><label class="sk-toggleable__label" for="fc342fda-93d3-43c2-8cc4-0cdc389e99f1">SVR</label><div class="sk-toggleable__content"><pre>SVR()</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3074,7 +3079,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="make-column-transformer-syntax">
-<h2><em>make_column_transformer</em> syntax<a class="headerlink" href="#make-column-transformer-syntax" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.12. </span><em>make_column_transformer</em> syntax<a class="headerlink" href="#make-column-transformer-syntax" title="Permalink to this headline">¶</a></h2>
 <p>Just like <code class="docutils literal notranslate"><span class="pre">make_pipeline()</span></code>,  we can make our column transformer with <code class="docutils literal notranslate"><span class="pre">make_column_transformer()</span></code>.</p>
 <p>This eliminates the need to designate names for the numeric and categorical transformations.</p>
 <p>Our code goes from this:</p>
@@ -3096,7 +3101,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="d4babc9c-8d15-4b43-ada6-e84fed12eb00" type="checkbox" ><label class="sk-toggleable__label" for="d4babc9c-8d15-4b43-ada6-e84fed12eb00">ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[('num',
+<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="49b7fdf5-c75b-42c8-bccc-16baff1e6a20" type="checkbox" ><label class="sk-toggleable__label" for="49b7fdf5-c75b-42c8-bccc-16baff1e6a20">ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[('num',
                                  Pipeline(steps=[('simpleimputer',
                                                   SimpleImputer(strategy='median')),
                                                  ('standardscaler',
@@ -3112,7 +3117,7 @@ dtype: float64
                                                                 strategy='constant')),
                                                  ('onehotencoder',
                                                   OneHotEncoder())]),
-                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="f0b9e775-619b-40a5-b993-58c3e2bbbcbd" type="checkbox" ><label class="sk-toggleable__label" for="f0b9e775-619b-40a5-b993-58c3e2bbbcbd">num</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="d32b2188-629f-4e85-a1cf-0caac12eff80" type="checkbox" ><label class="sk-toggleable__label" for="d32b2188-629f-4e85-a1cf-0caac12eff80">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="d355adbc-6121-40e8-8898-5b2aa6469c3c" type="checkbox" ><label class="sk-toggleable__label" for="d355adbc-6121-40e8-8898-5b2aa6469c3c">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="572157f2-908a-4f59-abff-6fd8a39aea00" type="checkbox" ><label class="sk-toggleable__label" for="572157f2-908a-4f59-abff-6fd8a39aea00">cat</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a66b81c9-cee6-460d-88b1-e2240dbac9c9" type="checkbox" ><label class="sk-toggleable__label" for="a66b81c9-cee6-460d-88b1-e2240dbac9c9">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a184ad74-3084-4efd-a0c4-d5f204ad741d" type="checkbox" ><label class="sk-toggleable__label" for="a184ad74-3084-4efd-a0c4-d5f204ad741d">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="4e6d14be-b3f0-44b1-a4f6-bc18f05f1307" type="checkbox" ><label class="sk-toggleable__label" for="4e6d14be-b3f0-44b1-a4f6-bc18f05f1307">num</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="4dc440f3-690c-42d9-af67-fb0e88d8e0bc" type="checkbox" ><label class="sk-toggleable__label" for="4dc440f3-690c-42d9-af67-fb0e88d8e0bc">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="664484b7-dd34-43ac-b501-9eb5c2bd3f6b" type="checkbox" ><label class="sk-toggleable__label" for="664484b7-dd34-43ac-b501-9eb5c2bd3f6b">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="01fb71d2-4f33-497d-b986-2596fe49c7a0" type="checkbox" ><label class="sk-toggleable__label" for="01fb71d2-4f33-497d-b986-2596fe49c7a0">cat</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="e2fa4cae-19dd-4530-becd-95d50ccebc65" type="checkbox" ><label class="sk-toggleable__label" for="e2fa4cae-19dd-4530-becd-95d50ccebc65">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="04d70766-a4f5-4809-9cb7-99682a266583" type="checkbox" ><label class="sk-toggleable__label" for="04d70766-a4f5-4809-9cb7-99682a266583">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3159,7 +3164,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a10e5a81-d03f-42f8-81fa-f40cec371e4e" type="checkbox" ><label class="sk-toggleable__label" for="a10e5a81-d03f-42f8-81fa-f40cec371e4e">ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[('pipeline-1',
+<div class="output text_html"><style>div.sk-top-container {color: black;background-color: white;}div.sk-toggleable {background-color: white;}label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.2em 0.3em;box-sizing: border-box;text-align: center;}div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}div.sk-estimator {font-family: monospace;background-color: #f0f8ff;margin: 0.25em 0.25em;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;}div.sk-estimator:hover {background-color: #d4ebff;}div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;}div.sk-item {z-index: 1;}div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}div.sk-parallel-item:only-child::after {width: 0;}div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0.2em;box-sizing: border-box;padding-bottom: 0.1em;background-color: white;position: relative;}div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}div.sk-label-container {position: relative;z-index: 2;text-align: center;}div.sk-container {display: inline-block;position: relative;}</style><div class="sk-top-container"><div class="sk-container"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="136a73f3-a779-434a-b515-3c653d7c8c47" type="checkbox" ><label class="sk-toggleable__label" for="136a73f3-a779-434a-b515-3c653d7c8c47">ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[('pipeline-1',
                                  Pipeline(steps=[('simpleimputer',
                                                   SimpleImputer(strategy='median')),
                                                  ('standardscaler',
@@ -3175,7 +3180,7 @@ dtype: float64
                                                                 strategy='constant')),
                                                  ('onehotencoder',
                                                   OneHotEncoder())]),
-                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="77cd8052-ea1e-43ae-936e-dce2ffe3053c" type="checkbox" ><label class="sk-toggleable__label" for="77cd8052-ea1e-43ae-936e-dce2ffe3053c">pipeline-1</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="93ae0944-cb6a-4d92-800f-fb356f8d551e" type="checkbox" ><label class="sk-toggleable__label" for="93ae0944-cb6a-4d92-800f-fb356f8d551e">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="eddaa289-9c5f-4fa0-befe-aee79222b269" type="checkbox" ><label class="sk-toggleable__label" for="eddaa289-9c5f-4fa0-befe-aee79222b269">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="8cad02f2-eb1b-40c6-bbb6-d5a8d0beeadd" type="checkbox" ><label class="sk-toggleable__label" for="8cad02f2-eb1b-40c6-bbb6-d5a8d0beeadd">pipeline-2</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="851c5b78-4774-40bb-9264-9958cc251489" type="checkbox" ><label class="sk-toggleable__label" for="851c5b78-4774-40bb-9264-9958cc251489">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="954bd065-c8ab-4831-9912-8e37817cebd6" type="checkbox" ><label class="sk-toggleable__label" for="954bd065-c8ab-4831-9912-8e37817cebd6">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+                                 ['ocean_proximity'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="55811df2-d3d2-451c-ba09-351aca53dbc9" type="checkbox" ><label class="sk-toggleable__label" for="55811df2-d3d2-451c-ba09-351aca53dbc9">pipeline-1</label><div class="sk-toggleable__content"><pre>['longitude', 'latitude', 'housing_median_age', 'households', 'median_income', 'rooms_per_household', 'bedrooms_per_household', 'population_per_household']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="ad0a7b48-57c3-40d9-8570-0fd67f6fa937" type="checkbox" ><label class="sk-toggleable__label" for="ad0a7b48-57c3-40d9-8570-0fd67f6fa937">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy='median')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="3d757972-0386-47f4-9712-2e5b64183b01" type="checkbox" ><label class="sk-toggleable__label" for="3d757972-0386-47f4-9712-2e5b64183b01">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="058ef6e3-369b-4bd1-ba4d-7bd59267f777" type="checkbox" ><label class="sk-toggleable__label" for="058ef6e3-369b-4bd1-ba4d-7bd59267f777">pipeline-2</label><div class="sk-toggleable__content"><pre>['ocean_proximity']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="22b09333-5ec5-4d55-8160-4a2f6f68ee82" type="checkbox" ><label class="sk-toggleable__label" for="22b09333-5ec5-4d55-8160-4a2f6f68ee82">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value='missing', strategy='constant')</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="8be41a07-d618-4086-b9ee-a27fd330e6fb" type="checkbox" ><label class="sk-toggleable__label" for="8be41a07-d618-4086-b9ee-a27fd330e6fb">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3266,36 +3271,36 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>6.856732</td>
-      <td>1.011320</td>
+      <td>9.149653</td>
+      <td>1.284505</td>
       <td>-0.029288</td>
       <td>-0.048769</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>6.839377</td>
-      <td>1.015495</td>
+      <td>8.712222</td>
+      <td>1.326230</td>
       <td>-0.060164</td>
       <td>-0.046902</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6.561479</td>
-      <td>1.079988</td>
+      <td>8.995087</td>
+      <td>1.212516</td>
       <td>-0.057491</td>
       <td>-0.048523</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>7.193426</td>
-      <td>1.095606</td>
+      <td>8.452476</td>
+      <td>1.250952</td>
       <td>-0.046167</td>
       <td>-0.047366</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6.937953</td>
-      <td>1.027145</td>
+      <td>8.512399</td>
+      <td>1.317137</td>
       <td>-0.050141</td>
       <td>-0.049123</td>
     </tr>
@@ -3305,7 +3310,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.13. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Refer to the dataframe to answer the following question.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">colour</span>   <span class="n">location</span>    <span class="n">shape</span>   <span class="n">water_content</span>  <span class="n">weight</span>
 <span class="mi">0</span>       <span class="n">red</span>      <span class="n">canada</span>      <span class="n">NaN</span>         <span class="mi">84</span>          <span class="mi">100</span>
@@ -3321,10 +3326,8 @@ dtype: float64
 </pre></div>
 </div>
 <br>
-<ol class="simple">
-<li><p>How many categorical columns are there and how many numeric?</p></li>
-<li><p>What transformations are being done to both numeric and categorical columns?</p></li>
-</ol>
+<p>1. How many categorical columns are there and how many numeric?<br />
+2. What transformations are being done to both numeric and categorical columns?</p>
 <p>Use the diagram below to answer the following questions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pipeline</span><span class="p">(</span>
     <span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;columntransformer&#39;</span><span class="p">,</span>
@@ -3348,18 +3351,29 @@ dtype: float64
          <span class="p">(</span><span class="s1">&#39;decisiontreeclassifier&#39;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">())])</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>How many columns are being transformed in <code class="docutils literal notranslate"><span class="pre">pipeline-1</span></code>?</p></li>
-<li><p>Which pipeline is transforming the categorical columns?</p></li>
-<li><p>What model is the pipeline fitting on?</p></li>
-</ol>
-<p><strong>True or False</strong><br />
-6. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.<br />
-7. If we do not specify <code class="docutils literal notranslate"><span class="pre">remainder=&quot;passthrough&quot;</span></code> as an argument in <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>, the columns not being transformed will be dropped.
+<p>3. How many columns are being transformed in <code class="docutils literal notranslate"><span class="pre">pipeline-1</span></code>?<br />
+4. Which pipeline is transforming the categorical columns?<br />
+5. What model is the pipeline fitting on?</p>
+<p><strong>True or False</strong></p>
+<p>6. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.<br />
+7. If we do not specify <code class="docutils literal notranslate"><span class="pre">remainder=&quot;passthrough&quot;</span></code> as an argument in <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>, the columns not being transformed will be dropped.<br />
 8. <code class="docutils literal notranslate"><span class="pre">Pipeline()</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">make_pipeline()</span></code> but  <code class="docutils literal notranslate"><span class="pre">make_pipeline()</span></code> requires you to name the steps.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>3 categoric columns and 2 numeric columns</p></li>
+<li><p>Imputation</p></li>
+<li><p>3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pipeline-2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="text-data">
-<h2>Text Data<a class="headerlink" href="#text-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.14. </span>Text Data<a class="headerlink" href="#text-data" title="Permalink to this headline">¶</a></h2>
 <p>Machine Learning algorithms that we have seen so far prefer numeric and fixed-length input that looks like this.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X = \begin{bmatrix}1.0 &amp; 4.0 &amp; \ldots &amp; &amp; 3.0\\ 0.0 &amp; 2.0 &amp; \ldots &amp; &amp; 6.0\\ 1.0 &amp; 0.0 &amp; \ldots &amp; &amp; 0.0\\ \end{bmatrix}\end{split}\]</div>
@@ -3382,7 +3396,7 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </ul>
 </div>
 <div class="section" id="bag-of-words-bow-representation">
-<h2>Bag of words (BOW) representation<a class="headerlink" href="#bag-of-words-bow-representation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.15. </span>Bag of words (BOW) representation<a class="headerlink" href="#bag-of-words-bow-representation" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/bow.png"><img alt="404 image" src="../_images/bow.png" style="width: 85%;" /></a>
 <p><a href="https://web.stanford.edu/~jurafsky/slp3/4.pdf" target="_blank">Attribution: Daniel Jurafsky &amp; James H. Martin</a></p>
 <p>One way is to use a simple bag of words (BOW) representation which involves two components.</p>
@@ -3391,7 +3405,7 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 <li><p>A value indicating either the presence or absence or the count of each word in the document.</p></li>
 </ul>
 <div class="section" id="extracting-bow-features-using-scikit-learn">
-<h3>Extracting BOW features using <em>scikit-learn</em><a class="headerlink" href="#extracting-bow-features-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.15.1. </span>Extracting BOW features using <em>scikit-learn</em><a class="headerlink" href="#extracting-bow-features-using-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Let’s say we have 1 feature in our <code class="docutils literal notranslate"><span class="pre">X</span></code> dataframe consisting of the following text messages.</p>
 <p>In our target column, we have the classification of each message as either <code class="docutils literal notranslate"><span class="pre">spam</span></code> or <code class="docutils literal notranslate"><span class="pre">non</span> <span class="pre">spam</span></code>.</p>
 <div class="cell docutils container">
@@ -3628,7 +3642,7 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </div>
 </div>
 <div class="section" id="important-hyperparameters-of-countvectorizer">
-<h3>Important hyperparameters of <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code><a class="headerlink" href="#important-hyperparameters-of-countvectorizer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.15.2. </span>Important hyperparameters of <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code><a class="headerlink" href="#important-hyperparameters-of-countvectorizer" title="Permalink to this headline">¶</a></h3>
 <p>There are many useful and important hyperparameters of <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">binary</span></code>:</p>
@@ -4026,7 +4040,7 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 <p>It’s not perfect but it seems to do well on this data too.</p>
 </div>
 <div class="section" id="is-this-a-realistic-representation-of-text-data">
-<h3>Is this a realistic representation of text data?<a class="headerlink" href="#is-this-a-realistic-representation-of-text-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.15.3. </span>Is this a realistic representation of text data?<a class="headerlink" href="#is-this-a-realistic-representation-of-text-data" title="Permalink to this headline">¶</a></h3>
 <p>Of course, this is not a great representation of language.</p>
 <ul class="simple">
 <li><p>We are throwing out everything we know about language and losing a lot of information.</p></li>
@@ -4036,37 +4050,36 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </div>
 </div>
 <div class="section" id="id2">
-<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li></li>
-</ol>
-<p>What is the size of the vocabulary for the examples below?</p>
+<h2><span class="section-number">5.16. </span>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1. What is the size of the vocabulary for the examples below?</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Take me to the river&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Drop me in the water&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Push me in the river&quot;</span><span class="p">,</span>
     <span class="s2">&quot;dip me in the water&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li></li>
-</ol>
-<p>Which of the following is not a hyperparameter of <code class="docutils literal notranslate"><span class="pre">CountVectorizer()</span></code>?</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">binary</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_features</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">vocab</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ngram_range</span></code></p></li>
-</ul>
-<ol class="simple">
-<li><p>What kind of representation do we use for our vocabulary?</p></li>
-</ol>
+<p>2. Which of the following is not a hyperparameter of <code class="docutils literal notranslate"><span class="pre">CountVectorizer()</span></code>?</p>
+<p>a) <code class="docutils literal notranslate"><span class="pre">binary</span></code><br />
+b) <code class="docutils literal notranslate"><span class="pre">max_features</span></code><br />
+c) <code class="docutils literal notranslate"><span class="pre">vocab</span></code><br />
+d) <code class="docutils literal notranslate"><span class="pre">ngram_range</span></code></p>
+<p>3. What kind of representation do we use for our vocabulary?</p>
 <p><strong>True or False</strong></p>
+<p>4. As you increase the value for the <code class="docutils literal notranslate"><span class="pre">max_features</span></code> hyperparameter of <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code>, the training score is likely to go up.<br />
+5. If we encounter a word in the validation or the test split that’s not available in the training data, we’ll get an error.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>As you increase the value for the <code class="docutils literal notranslate"><span class="pre">max_features</span></code> hyperparameter of <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code>, the training score is likely to go up.</p></li>
-<li><p>If we encounter a word in the validation or the test split that’s not available in the training data, we’ll get an error.</p></li>
+<li><p>10</p></li>
+<li><p>c) <code class="docutils literal notranslate"><span class="pre">vocab</span></code></p></li>
+<li><p>Bag of Words</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
 </ol>
-<div class="section" id="coding-practice">
-<h3>Coding Practice<a class="headerlink" href="#coding-practice" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">5.17. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>We are going to bring in a new dataset for you to practice on. (Make sure you’ve downloaded it from the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder from the <code class="docutils literal notranslate"><span class="pre">lectures</span></code> section in Canvas - we’ve named it <code class="docutils literal notranslate"><span class="pre">balanced_tweets.csv</span></code>).</p>
 <p>This dataset contains a text column containing tweets associated with disaster keywords and a target column denoting whether a tweet is about a real disaster (1) or not (0). [<a class="reference external" href="https://www.kaggle.com/vstepanenko/disaster-tweets">Source</a>]</p>
 <div class="cell docutils container">
@@ -4085,16 +4098,6 @@ $<span class="math notranslate nohighlight">\(y = \begin{bmatrix}spam \\ non spa
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3219    Buri handwoven bags : • Buri handbag - Php 280...
-3825    Energetic and Comedic Redhead Teen, just seen ...
-1544    A 63 year old man charged in connection with a...
-1050    Water levels in Venice drastically drop two mo...
-296     2 buildings on fire at seminole State College ...
-Name: text, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <ol class="simple">
 <li><p>Make a pipeline with <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> as the first step and <code class="docutils literal notranslate"><span class="pre">SVC()</span></code> as the second.</p></li>
@@ -4105,9 +4108,8 @@ Name: text, dtype: object
 <li><p>Score the pipeline  on the test set.</p></li>
 </ol>
 </div>
-</div>
 <div class="section" id="what-we-ve-learned-today-a-id-9-a">
-<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.18. </span>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>How to process categorical features.</p></li>
 <li><p>How to apply ordinal encoding vs one-hot encoding.</p></li>
@@ -4144,8 +4146,8 @@ Name: text, dtype: object
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture4.html" title="previous page">Lecture 4 - SVM with RBF Kernel and Feature Preprocessing</a>
-    <a class='right-next' id="next-link" href="lecture6.html" title="next page">Lecture 6 - Naive Bayes and Hyperparameter Optimization</a>
+    <a class='left-prev' id="prev-link" href="lecture4.html" title="previous page"><span class="section-number">4. </span>SVM with RBF Kernel and Feature Preprocessing</a>
+    <a class='right-next' id="next-link" href="lecture6.html" title="next page"><span class="section-number">6. </span>Naive Bayes and Hyperparameter Optimization</a>
 
         </div>
         

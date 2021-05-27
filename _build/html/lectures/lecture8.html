@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 8 - Forming good ML questions from business objectives and Feature Selection &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>8. Business Objectives/Statistical Questions and Feature Selection &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 9 - Classification and Regression Metrics" href="lecture9.html" />
-    <link rel="prev" title="Lecture 7 - Linear Models" href="lecture7.html" />
+    <link rel="next" title="9. Classification and Regression Metrics" href="lecture9.html" />
+    <link rel="prev" title="7. Linear Models" href="lecture7.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture8.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 8 - Forming good ML questions from business objectives and Feature Selection" />
-<meta property="og:description" content="Lecture 8 - Forming good ML questions from business objectives and Feature Selection  Hayley Boyce, Wednesday, May 12th, 2021  Attribution:  Tomas Beuzen - prev" />
+<meta property="og:title"       content="Business Objectives/Statistical Questions and Feature Selection" />
+<meta property="og:description" content="Business Objectives/Statistical Questions and Feature Selection  Hayley Boyce, May 12th, 2021  Attribution:  Tomas Beuzen - Previous BAIT 509 Lecture 6  Varada " />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Business Objectives/Statistical Questions and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,128 +298,128 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   8.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   8.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   8.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     8.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forming-statistical-questions-to-answer-business-objectives">
-   Forming statistical questions to answer business objectives
+   8.4. Forming statistical questions to answer business objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#asking-useful-statistical-questions">
-   (1 - 2) Asking useful statistical questions
+   8.5. (1 - 2) Asking useful statistical questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#business-objectives-examples">
-     Business objectives: examples
+     8.5.1. Business objectives: examples
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#refining-business-objectives-to-statistical-objectives">
-     Refining business objectives to statistical objectives
+     8.5.2. Refining business objectives to statistical objectives
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-objectives-examples">
-     Statistical objectives: examples
+     8.5.3. Statistical objectives: examples
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-questions-are-not-the-full-picture">
-     Statistical questions are not the full picture!
+     8.5.4. Statistical questions are not the full picture!
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-objectives-unrelated-to-supervised-learning">
-     Statistical objectives unrelated to supervised learning
+     8.5.5. Statistical objectives unrelated to supervised learning
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#building-a-useful-model">
-   (2 - 3) Building a useful model
+   8.6. (2 - 3) Building a useful model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#communicating-results">
-   (3 - 4) Communicating results
+   8.7. (3 - 4) Communicating results
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   8.8. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-selection">
-   Feature Selection
+   8.9. Feature Selection
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#motivation">
-     Motivation
+     8.9.1. Motivation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#feature-importance">
-     Feature importance
+     8.9.2. Feature importance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#new-housing-data">
-     New housing data
+     8.9.3. New housing data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recursive-feature-elimination-rfe">
-     Recursive feature elimination - RFE
+     8.9.4. Recursive feature elimination - RFE
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rfecv">
-     RFECV
+     8.9.5. RFECV
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forward-selection">
-   Forward Selection
+   8.10. Forward Selection
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice
+   8.11. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extra-time-project-time">
-   Extra time? Project time
+   8.12. Extra time? Project time
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today">
-   What We’ve Learned Today
+   8.13. What We’ve Learned Today
   </a>
  </li>
 </ul>
@@ -434,16 +434,15 @@
         
               <div>
                 
-  <div class="section" id="lecture-8-forming-good-ml-questions-from-business-objectives-and-feature-selection">
-<h1>Lecture 8 - Forming good ML questions from business objectives and Feature Selection<a class="headerlink" href="#lecture-8-forming-good-ml-questions-from-business-objectives-and-feature-selection" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Wednesday, May 12th, 2021</em></p>
+  <div class="section" id="business-objectives-statistical-questions-and-feature-selection">
+<h1><span class="section-number">8. </span>Business Objectives/Statistical Questions and Feature Selection<a class="headerlink" href="#business-objectives-statistical-questions-and-feature-selection" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, May 12th, 2021</em></p>
 <p><strong>Attribution:</strong></p>
 <ul class="simple">
-<li><p>Tomas Beuzen - previous BAIT 509 Lecture 6</p></li>
+<li><p>Tomas Beuzen - Previous BAIT 509 Lecture 6</p></li>
 <li><p>Varada Kolhatkar - Heavily guiding me with Feature Selection</p></li>
 </ul>
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection" data-toc-modified-id="Lecture-8---Forming-good-ML-questions-from-business-objectives-and-Feature-Selection-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Forming-statistical-questions-to-answer-business-objectives" data-toc-modified-id="Forming-statistical-questions-to-answer-business-objectives-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Forming statistical questions to answer business objectives</a></span></li><li><span><a href="#(1---2)-Asking-useful-statistical-questions" data-toc-modified-id="(1---2)-Asking-useful-statistical-questions-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>(1 - 2) Asking useful statistical questions</a></span><ul class="toc-item"><li><span><a href="#Business-objectives:-examples" data-toc-modified-id="Business-objectives:-examples-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Business objectives: examples</a></span></li><li><span><a href="#Refining-business-objectives-to-statistical-objectives" data-toc-modified-id="Refining-business-objectives-to-statistical-objectives-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Refining business objectives to statistical objectives</a></span></li><li><span><a href="#Statistical-objectives:-examples" data-toc-modified-id="Statistical-objectives:-examples-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Statistical objectives: examples</a></span></li><li><span><a href="#Statistical-questions-are-not-the-full-picture!" data-toc-modified-id="Statistical-questions-are-not-the-full-picture!-1.5.4"><span class="toc-item-num">1.5.4&nbsp;&nbsp;</span>Statistical questions are not the full picture!</a></span></li><li><span><a href="#Statistical-objectives-unrelated-to-supervised-learning" data-toc-modified-id="Statistical-objectives-unrelated-to-supervised-learning-1.5.5"><span class="toc-item-num">1.5.5&nbsp;&nbsp;</span>Statistical objectives unrelated to supervised learning</a></span></li></ul></li><li><span><a href="#(2---3)-Building-a-useful-model" data-toc-modified-id="(2---3)-Building-a-useful-model-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>(2 - 3) Building a useful model</a></span></li><li><span><a href="#(3---4)-Communicating-results" data-toc-modified-id="(3---4)-Communicating-results-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>(3 - 4) Communicating results</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-Selection" data-toc-modified-id="Feature-Selection-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Feature Selection</a></span><ul class="toc-item"><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Feature-importance" data-toc-modified-id="Feature-importance-1.9.2"><span class="toc-item-num">1.9.2&nbsp;&nbsp;</span>Feature importance</a></span></li><li><span><a href="#New-housing-data" data-toc-modified-id="New-housing-data-1.9.3"><span class="toc-item-num">1.9.3&nbsp;&nbsp;</span>New housing data</a></span></li><li><span><a href="#Recursive-feature-elimination---RFE" data-toc-modified-id="Recursive-feature-elimination---RFE-1.9.4"><span class="toc-item-num">1.9.4&nbsp;&nbsp;</span>Recursive feature elimination - RFE</a></span></li><li><span><a href="#RFECV" data-toc-modified-id="RFECV-1.9.5"><span class="toc-item-num">1.9.5&nbsp;&nbsp;</span>RFECV</a></span></li></ul></li><li><span><a href="#Forward-Selection" data-toc-modified-id="Forward-Selection-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Forward Selection</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Extra-time?-Project-time" data-toc-modified-id="Extra-time?-Project-time-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Extra time? Project time</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>What We've Learned Today</a></span></li></ul></li></ul></div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -478,7 +477,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Project instructions are out!</p></li>
 <li><p>Time in class for groups!</p></li>
@@ -488,7 +487,7 @@
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>In the context of supervised learning, form statistical questions  from business questions/objectives.</p></li>
 <li><p>Understand the different forms your client may expect you to communicate results.</p></li>
@@ -499,7 +498,7 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What is the name of the function used to bound our values between 0 and 1</p></li>
 <li><p>What is the name of the function that gives “hard” predictions?</p></li>
@@ -508,7 +507,7 @@
 <li><p>What is the hyperparameter we learned for Logistic Regression and how does it affect the Fundamental Trade-off?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>How can we start forming good business questions that can be addressed with Machine Learning?</p></li>
 <li><p>How to select features for our models?</p></li>
@@ -516,7 +515,7 @@
 </div>
 </div>
 <div class="section" id="forming-statistical-questions-to-answer-business-objectives">
-<h2>Forming statistical questions to answer business objectives<a class="headerlink" href="#forming-statistical-questions-to-answer-business-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.4. </span>Forming statistical questions to answer business objectives<a class="headerlink" href="#forming-statistical-questions-to-answer-business-objectives" title="Permalink to this headline">¶</a></h2>
 <p>So far you’ve seen how to solve predictive problems using machine learning but today, we are going to look at the process involved in asking the questions and problems faced by organizations.</p>
 <p>Generally, there are four parts of a machine learning analysis. In order from high to low level:</p>
 <ol class="simple">
@@ -536,7 +535,7 @@
 <p>We’ll look at each of these distillations in turn.</p>
 </div>
 <div class="section" id="asking-useful-statistical-questions">
-<h2>(1 - 2) Asking useful statistical questions<a class="headerlink" href="#asking-useful-statistical-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.5. </span>(1 - 2) Asking useful statistical questions<a class="headerlink" href="#asking-useful-statistical-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Usually, a company is not served up a machine learning problem, complete with data and a description of the response and predictors.</p>
 <ul>
@@ -551,7 +550,7 @@
 <li><p>My Capstone Case study.</p></li>
 </ul>
 <div class="section" id="business-objectives-examples">
-<h3>Business objectives: examples<a class="headerlink" href="#business-objectives-examples" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.5.1. </span>Business objectives: examples<a class="headerlink" href="#business-objectives-examples" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>This <a class="reference external" href="https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/">altexsoft blog post</a> is a great introduction to business use cases of data science/ML</p></li>
 <li><p>Examples of business objectives (for which machine learning is a relevant approach)</p>
@@ -566,7 +565,7 @@
 </ul>
 </div>
 <div class="section" id="refining-business-objectives-to-statistical-objectives">
-<h3>Refining business objectives to statistical objectives<a class="headerlink" href="#refining-business-objectives-to-statistical-objectives" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.5.2. </span>Refining business objectives to statistical objectives<a class="headerlink" href="#refining-business-objectives-to-statistical-objectives" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="https://media.giphy.com/media/bLcMOxvIak4iZieaut/giphy.gif"><img alt="https://media.giphy.com/media/bLcMOxvIak4iZieaut/giphy.gif" src="https://media.giphy.com/media/bLcMOxvIak4iZieaut/giphy.gif" style="width: 50%;" /></a>
 <ul class="simple">
 <li><p>Statistical objectives need to be specific</p></li>
@@ -582,7 +581,7 @@
 </ul>
 </div>
 <div class="section" id="statistical-objectives-examples">
-<h3>Statistical objectives: examples<a class="headerlink" href="#statistical-objectives-examples" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.5.3. </span>Statistical objectives: examples<a class="headerlink" href="#statistical-objectives-examples" title="Permalink to this headline">¶</a></h3>
 <p>Statistical objectives corresponding to the above business objective examples might be:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -610,7 +609,7 @@
 </table>
 </div>
 <div class="section" id="statistical-questions-are-not-the-full-picture">
-<h3>Statistical questions are not the full picture!<a class="headerlink" href="#statistical-questions-are-not-the-full-picture" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.5.4. </span>Statistical questions are not the full picture!<a class="headerlink" href="#statistical-questions-are-not-the-full-picture" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Almost always, the business objective is more complex than the statistical question.</p></li>
 <li><p>By refining a business objective to a statistical one, we may lose part of the essence of the business objective.</p></li>
@@ -619,7 +618,7 @@
 </ul>
 </div>
 <div class="section" id="statistical-objectives-unrelated-to-supervised-learning">
-<h3>Statistical objectives unrelated to supervised learning<a class="headerlink" href="#statistical-objectives-unrelated-to-supervised-learning" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.5.5. </span>Statistical objectives unrelated to supervised learning<a class="headerlink" href="#statistical-objectives-unrelated-to-supervised-learning" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>We are only focussing on statistical questions related to supervised learning and prediction in this course</p></li>
 <li><p>But there are other kinds of questions you can ask too</p></li>
@@ -647,7 +646,7 @@
 </div>
 </div>
 <div class="section" id="building-a-useful-model">
-<h2>(2 - 3) Building a useful model<a class="headerlink" href="#building-a-useful-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.6. </span>(2 - 3) Building a useful model<a class="headerlink" href="#building-a-useful-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>This is really the main focus of this course, This is the meat/beyond meat patty in your burger!</p></li>
 <li><p>This involves using ML algorithms (kNN, loess, decision trees, etc) to build a predictive model from data</p></li>
@@ -656,7 +655,7 @@
 </ul>
 </div>
 <div class="section" id="communicating-results">
-<h2>(3 - 4) Communicating results<a class="headerlink" href="#communicating-results" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.7. </span>(3 - 4) Communicating results<a class="headerlink" href="#communicating-results" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>So you’ve distilled your business objectives to a statistical question.</p></li>
 <li><p>You’ve developed a model to answer the statistical question.</p></li>
@@ -686,23 +685,30 @@
 </ul>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>What question is usually more complex?</p></li>
-<li><p>What model needs to be made for all problems?</p></li>
-<li><p>In supervised learning, once we have our business objective, part of our statistical question is identifying what?</p></li>
-</ol>
+<h2><span class="section-number">8.8. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<p>1. What question is usually more complex?<br />
+2. What model needs to be made for all problems?<br />
+3. In supervised learning, once we have our business objective, part of our statistical question is identifying what?</p>
 <p><strong>True or False:</strong></p>
+<p>4. When writing your reports, it’s important to consider who is reading it.<br />
+5. Sometimes you may need to dig a little to figure out exactly what the client wants.<br />
+6. In supervised learning, we should take into consideration the uncertainty of our models.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>When writing your reports, it’s important to consider who is reading it.</p></li>
-<li><p>Sometimes you may need to dig a little to figure out exactly what the client wants.</p></li>
-<li><p>In supervised learning, we should take into consideration the uncertainty of our models.</p></li>
+<li><p>Business question/objective</p></li>
+<li><p>Baseline - Dummy</p></li>
+<li><p>Our target variable</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="feature-selection">
-<h2>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.9. </span>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="motivation">
-<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.9.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
 <p>Remember the curse of dimensionality?</p>
 <a class="reference internal image-reference" href="../_images/curse.png"><img alt="../_images/curse.png" src="../_images/curse.png" style="width: 50%;" /></a>
 <p>We spoke about this briefly when we discussed <span class="math notranslate nohighlight">\(k\)</span>-nn and how when we add many different dimensions (features) it can confuse the model with any irrelevant features and the model can disintegrate into predictions no better than random guessing.</p>
@@ -785,7 +791,7 @@
 </div>
 </div>
 <div class="section" id="feature-importance">
-<h3>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.9.2. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h3>
 <p>Remember our Decision Tree models? Well, we can find out which features are most important in a model using an attribute called <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -828,7 +834,7 @@
 </div>
 </div>
 <div class="section" id="new-housing-data">
-<h3>New housing data<a class="headerlink" href="#new-housing-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.9.3. </span>New housing data<a class="headerlink" href="#new-housing-data" title="Permalink to this headline">¶</a></h3>
 <p>I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example, I really want to show you an example with LOTS of features.</p>
 <p>Here is (yet another) housing dataset we acquired from <a class="reference external" href="https://github.com/melindaleung/Ames-Iowa-Housing-Dataset">this GitHub repo</a>, originally created by Dean De Cock.
 <em>(We are using the raw data so we do not need to store it and import it simply from the url.)</em></p>
@@ -1683,7 +1689,7 @@ dtype: float64
 <p>Enter - <strong>Recursive feature elimination</strong></p>
 </div>
 <div class="section" id="recursive-feature-elimination-rfe">
-<h3>Recursive feature elimination - RFE<a class="headerlink" href="#recursive-feature-elimination-rfe" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.9.4. </span>Recursive feature elimination - RFE<a class="headerlink" href="#recursive-feature-elimination-rfe" title="Permalink to this headline">¶</a></h3>
 <p>We can use feature importances to eliminate unimportant features.</p>
 <p>The basic idea with recursive feature elimination is we:</p>
 <ol class="simple">
@@ -1802,7 +1808,7 @@ dtype: float64
 <p>But now our next question is how do we set <span class="math notranslate nohighlight">\(k\)</span>? How do we know how many features is the optimal amount… Well, you guessed it! There is a tool for that too!</p>
 </div>
 <div class="section" id="rfecv">
-<h3>RFECV<a class="headerlink" href="#rfecv" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.9.5. </span>RFECV<a class="headerlink" href="#rfecv" title="Permalink to this headline">¶</a></h3>
 <p>You can find the optimal number of features using cross-validation with <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> where the optimal <span class="math notranslate nohighlight">\(k\)</span> value is selected based on the highest validation score.</p>
 <p>You would definitely not want to use the training score! - Why?</p>
 <blockquote>
@@ -1925,7 +1931,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="forward-selection">
-<h2>Forward Selection<a class="headerlink" href="#forward-selection" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.10. </span>Forward Selection<a class="headerlink" href="#forward-selection" title="Permalink to this headline">¶</a></h2>
 <p>Unlike with RFE where we start with all our features and gradually remove the leat important ones, <strong>Forward Selection</strong> is a process where we start with no features and gradually add them!</p>
 <p>With RFE we removed the least important feature, whereas with forward selection we add features untill our cross-validation score starts to decreases.</p>
 <p>Forward Selection does not guaranty finding the best features set but reduces many problems.
@@ -1973,17 +1979,25 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.11. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>1. As we increase features, which score will always increase?<br />
+2. Between <code class="docutils literal notranslate"><span class="pre">RFE</span></code> and <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> which one finds the optimal number of features for us?<br />
+3. Which method starts with all our features and iteratively removes them from our model?<br />
+4. Which method starts with no features and iteratively adds features?<br />
+5. Which method does not take into consideration <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> when adding/removing features?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>As we increase features, which score will always increase?</p></li>
-<li><p>Between <code class="docutils literal notranslate"><span class="pre">RFE</span></code> and <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> which one finds the optimal number of features for us?</p></li>
-<li><p>Which method starts with all our features and iteratively removes them from our model?</p></li>
-<li><p>Which method starts with no features and iteratively adds features?</p></li>
-<li><p>Which method does not take into consideration <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> when adding/removing features?</p></li>
+<li><p>Training score</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RFECV</span></code></p></li>
+<li><p>Recursive Feature Elimination</p></li>
+<li><p>Forward Selection</p></li>
+<li><p>Forward Selection</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="extra-time-project-time">
-<h2>Extra time? Project time<a class="headerlink" href="#extra-time-project-time" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.12. </span>Extra time? Project time<a class="headerlink" href="#extra-time-project-time" title="Permalink to this headline">¶</a></h2>
 <p>First -&gt; Project expectations.</p>
 <p>Breakout rooms in your project groups!</p>
 <p>Use this time to:</p>
@@ -1995,7 +2009,7 @@ dtype: float64
 </ul>
 </div>
 <div class="section" id="what-we-ve-learned-today">
-<h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.13. </span>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>How to construct a statistical question from a business objective.</p></li>
 <li><p>What steps are important in building your analysis.</p></li>
@@ -2030,8 +2044,8 @@ dtype: float64
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture7.html" title="previous page">Lecture 7 - Linear Models</a>
-    <a class='right-next' id="next-link" href="lecture9.html" title="next page">Lecture 9 - Classification and Regression Metrics</a>
+    <a class='left-prev' id="prev-link" href="lecture7.html" title="previous page"><span class="section-number">7. </span>Linear Models</a>
+    <a class='right-next' id="next-link" href="lecture9.html" title="next page"><span class="section-number">9. </span>Classification and Regression Metrics</a>
 
         </div>
         

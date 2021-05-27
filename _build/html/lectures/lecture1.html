@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>1. Intro to ML &amp; Decision Trees &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 2 - Splitting and Cross-validation" href="lecture2.html" />
+    <link rel="next" title="2. Splitting and Cross-validation" href="lecture2.html" />
     <link rel="prev" title="What: Learning Outcomes" href="../things_to_know/what.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture1.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm" />
-<meta property="og:description" content="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm  Hayley Boyce, Monday April 19th 2021  Welcome  Welcome to Bait 509 - Business Applic" />
+<meta property="og:title"       content="Intro to ML &amp;  Decision Trees" />
+<meta property="og:description" content="Intro to ML &amp;  Decision Trees  Hayley Boyce, April 19th 2021  Welcome  Welcome to Bait 509 - Business Application of Machine Learning.  Note  Buckle up because " />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,64 +298,64 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#welcome">
-   Welcome
+   1.1. Welcome
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#course-learning-objectives">
-     Course Learning Objectives
+     1.1.1. Course Learning Objectives
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#course-structure">
-     Course Structure
+     1.1.2. Course Structure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#who-i-am">
-     Who I am
+     1.1.3. Who I am
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#your-tas">
-     Your TAs
+     1.1.4. Your TAs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python-jupyter-visualizations">
-     Python, Jupyter, Visualizations
+     1.1.5. Python, Jupyter, Visualizations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lecture-learning-objectives">
-     Lecture Learning Objectives
+     1.1.6. Lecture Learning Objectives
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-machine-learning-ml">
-   What is Machine Learning (ML)?
+   1.2. What is Machine Learning (ML)?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examples-of-machine-learning">
-     Examples of Machine Learning
+     1.2.1. Examples of Machine Learning
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-1-predict-housing-prices">
-       Example 1: Predict Housing Prices
+       1.2.1.1. Example 1: Predict Housing Prices
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-2-predict-creditcard-default">
-       Example 2: Predict Creditcard Default
+       1.2.1.2. Example 2: Predict Creditcard Default
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#example-3-image-classification">
-       Example 3: Image Classification
+       1.2.1.3. Example 3: Image Classification
       </a>
      </li>
     </ul>
@@ -364,73 +364,73 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types-of-machine-learning">
-   Types of Machine Learning
+   1.3. Types of Machine Learning
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#supervised-learning">
-     Supervised Learning:
+     1.3.1. Supervised Learning:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#unsupervised-learning-not-going-into-detail-here">
-     UnSupervised Learning: (not going into detail here)
+     1.3.2. UnSupervised Learning: (not going into detail here)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types-of-supervised-learning-classification-vs-regression">
-   Types of Supervised Learning: Classification vs Regression
+   1.4. Types of Supervised Learning: Classification vs Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classification">
-     Classification
+     1.4.1. Classification
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression">
-     Regression
+     1.4.2. Regression
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice!
+   1.5. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tabular-data-and-terminology">
-   Tabular Data and Terminology
+   1.6. Tabular Data and Terminology
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     Example:
+     1.6.1. Example:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-tree-algorithm">
-   Decision Tree Algorithm
+   1.7. Decision Tree Algorithm
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-conceptual-introduction-to-decision-trees">
-     A conceptual introduction to Decision Trees
+     1.7.1. A conceptual introduction to Decision Trees
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implimentation-with-scikit-learn">
-     Implimentation with Scikit-learn
+     1.7.2. Implimentation with Scikit-learn
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-does-predict-work">
-     How does
+     1.7.3. How does
      <code class="docutils literal notranslate">
       <span class="pre">
        .predict()
@@ -441,7 +441,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-does-fit-work">
-     How does
+     1.7.4. How does
      <code class="docutils literal notranslate">
       <span class="pre">
        .fit()
@@ -454,39 +454,39 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice!
+   1.8. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameters-and-hyperparameters">
-   Parameters and Hyperparameters
+   1.9. Parameters and Hyperparameters
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#parameters">
-     Parameters
+     1.9.1. Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hyperparameters">
-     Hyperparameters
+     1.9.2. Hyperparameters
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-tree-regressor">
-   Decision Tree Regressor
+   1.10. Decision Tree Regressor
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Let’s Practice
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   1.11. Let’s Practice - Coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
-   What We’ve Learned Today
+   1.12. What We’ve Learned Today
    <a id="9">
    </a>
   </a>
@@ -503,11 +503,11 @@
         
               <div>
                 
-  <div class="section" id="lecture-1-introduction-to-machine-learning-the-decision-tree-algorithm">
-<h1>Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm<a class="headerlink" href="#lecture-1-introduction-to-machine-learning-the-decision-tree-algorithm" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Monday April 19th 2021</em></p>
+  <div class="section" id="intro-to-ml-decision-trees">
+<h1><span class="section-number">1. </span>Intro to ML &amp;  Decision Trees<a class="headerlink" href="#intro-to-ml-decision-trees" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, April 19th 2021</em></p>
 <div class="section" id="welcome">
-<h2>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h2>
 <p>Welcome to Bait 509 - Business Application of Machine Learning.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -515,7 +515,7 @@
 Not a long time”.</p>
 </div>
 <div class="section" id="course-learning-objectives">
-<h3>Course Learning Objectives<a class="headerlink" href="#course-learning-objectives" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.1. </span>Course Learning Objectives<a class="headerlink" href="#course-learning-objectives" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training/validation/testing error, parameters and hyperparameters, and the golden rule.</p></li>
 <li><p>Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and logistic regression.</p></li>
@@ -525,7 +525,7 @@ Not a long time”.</p>
 </ol>
 </div>
 <div class="section" id="course-structure">
-<h3>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.2. </span>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>2 lectures per week (Synchonus lecture + class activity)</p></li>
 <li><p>My office hours: 1-2pm Thursday on Zoom</p></li>
@@ -560,7 +560,7 @@ Not a long time”.</p>
 <p>All assessments will be submitted via Canvas</p>
 </div>
 <div class="section" id="who-i-am">
-<h3>Who I am<a class="headerlink" href="#who-i-am" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.3. </span>Who I am<a class="headerlink" href="#who-i-am" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="../_images/hi.png" /></p>
 <ul class="simple">
 <li><p>I have an undergraduate degree in Applied Mathematics from the University of Western Ontario</p></li>
@@ -570,7 +570,7 @@ Not a long time”.</p>
 </ul>
 </div>
 <div class="section" id="your-tas">
-<h3>Your TAs<a class="headerlink" href="#your-tas" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.4. </span>Your TAs<a class="headerlink" href="#your-tas" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Daniel Ramandi</strong>: in class questions.</p></li>
 <li><p><strong>Ali Seyfi</strong>: Office hours Wednesdays 4-5pm (Starting April 28th).</p></li>
@@ -580,7 +580,7 @@ Not a long time”.</p>
 </ul>
 </div>
 <div class="section" id="python-jupyter-visualizations">
-<h3>Python, Jupyter, Visualizations<a class="headerlink" href="#python-jupyter-visualizations" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.5. </span>Python, Jupyter, Visualizations<a class="headerlink" href="#python-jupyter-visualizations" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>In this course we be using Python and Jupyter notebooks for lectures as well as assignments.</p></li>
 <li><p>You are free to use <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda distribution</a> to install and manage your Python package installations.</p></li>
@@ -602,7 +602,7 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 <p>And if you want to dive further there is a whole course dedicated to visualizing plots using <code class="docutils literal notranslate"><span class="pre">altair</span></code> called <a class="reference external" href="https://viz-learn.mds.ubc.ca/en/">Data Visualization</a>.</p>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h3>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.6. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Explain motivation to study machine learning.</p></li>
 <li><p>Differentiate between supervised and unsupervised learning.</p></li>
@@ -617,7 +617,7 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 </div>
 </div>
 <div class="section" id="what-is-machine-learning-ml">
-<h2>What is Machine Learning (ML)?<a class="headerlink" href="#what-is-machine-learning-ml" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>What is Machine Learning (ML)?<a class="headerlink" href="#what-is-machine-learning-ml" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s import our libraries</span>
@@ -650,10 +650,10 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 <li><p>Usually we think logically and mathematically. In the Machine Learning paradiagm we instead take data and some output and our Machine Learning algorithm will return a program which can be used to make predictions and give an output for data it has yet to see.</p></li>
 </ul>
 <div class="section" id="examples-of-machine-learning">
-<h3>Examples of Machine Learning<a class="headerlink" href="#examples-of-machine-learning" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.1. </span>Examples of Machine Learning<a class="headerlink" href="#examples-of-machine-learning" title="Permalink to this headline">¶</a></h3>
 <p><em>In all the the upcoming examples, Don’t worry about the code. Just focus on the input and output in each example.</em></p>
 <div class="section" id="example-1-predict-housing-prices">
-<h4>Example 1: Predict Housing Prices<a class="headerlink" href="#example-1-predict-housing-prices" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.1. </span>Example 1: Predict Housing Prices<a class="headerlink" href="#example-1-predict-housing-prices" title="Permalink to this headline">¶</a></h4>
 <p><strong>Data Attribution:</strong> <a href="https://www.kaggle.com/harlfoxem/housesalesprediction" target="_blank">house sales prediction dataset.</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -987,7 +987,7 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 </div>
 </div>
 <div class="section" id="example-2-predict-creditcard-default">
-<h4>Example 2: Predict Creditcard Default<a class="headerlink" href="#example-2-predict-creditcard-default" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.2. </span>Example 2: Predict Creditcard Default<a class="headerlink" href="#example-2-predict-creditcard-default" title="Permalink to this headline">¶</a></h4>
 <p><strong>Data Attribution:</strong> <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card fraud detection data set</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1513,7 +1513,7 @@ From the course <a class="reference external" href="https://prog-learn.mds.ubc.c
 </div>
 </div>
 <div class="section" id="example-3-image-classification">
-<h4>Example 3: Image Classification<a class="headerlink" href="#example-3-image-classification" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.3. </span>Example 3: Image Classification<a class="headerlink" href="#example-3-image-classification" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1555,13 +1555,13 @@ buckeye, horse chestnut, conker, 0.00
 </div>
 </div>
 <div class="section" id="types-of-machine-learning">
-<h2>Types of Machine Learning<a class="headerlink" href="#types-of-machine-learning" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Types of Machine Learning<a class="headerlink" href="#types-of-machine-learning" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Supervised learning</strong> (this course)</p></li>
 <li><p>Unsupervised learning</p></li>
 </ul>
 <div class="section" id="supervised-learning">
-<h3>Supervised Learning:<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.1. </span>Supervised Learning:<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Example: Labelling emails as spam or not</p>
 </div></blockquote>
@@ -1576,7 +1576,7 @@ buckeye, horse chestnut, conker, 0.00
 <a class="reference internal image-reference" href="../_images/sup-learning.png"><img alt="404 image" src="../_images/sup-learning.png" style="width: 75%;" /></a>
 </div>
 <div class="section" id="unsupervised-learning-not-going-into-detail-here">
-<h3>UnSupervised Learning: (not going into detail here)<a class="headerlink" href="#unsupervised-learning-not-going-into-detail-here" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>UnSupervised Learning: (not going into detail here)<a class="headerlink" href="#unsupervised-learning-not-going-into-detail-here" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Example: Categorizing Google News articles.</p>
 </div></blockquote>
@@ -1588,13 +1588,13 @@ buckeye, horse chestnut, conker, 0.00
 </div>
 </div>
 <div class="section" id="types-of-supervised-learning-classification-vs-regression">
-<h2>Types of Supervised Learning: Classification vs Regression<a class="headerlink" href="#types-of-supervised-learning-classification-vs-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Types of Supervised Learning: Classification vs Regression<a class="headerlink" href="#types-of-supervised-learning-classification-vs-regression" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Classification</p></li>
 <li><p>Regression</p></li>
 </ul>
 <div class="section" id="classification">
-<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.1. </span>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
 <p><strong>Classification</strong> predicting among two or more categories, also known as classes.</p>
 <ul class="simple">
 <li><p><em>Example1</em>: Predict whether a customer will default on their credit card or not.</p></li>
@@ -1602,7 +1602,7 @@ buckeye, horse chestnut, conker, 0.00
 </ul>
 </div>
 <div class="section" id="regression">
-<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.2. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
 <p><strong>Regression</strong> predicting a continuous (in other words, a number) value.</p>
 <ul class="simple">
 <li><p>Example1: Predict housing prices</p></li>
@@ -1612,26 +1612,37 @@ buckeye, horse chestnut, conker, 0.00
 </div>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
-<p>Are the following supervised or unsupervised problems?</p>
+<h2><span class="section-number">1.5. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<p><strong>Are the following supervised or unsupervised problems?</strong></p>
+<p>1. Finding groups of similar properties in a real estate data set.<br />
+2. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.<br />
+3. Identifying groups of animals given features such as “number of legs”, “wings/no wings”, “fur/no fur”, etc.<br />
+4. Detecting heart disease in patients based on different test results and history.<br />
+5. Grouping articles on different topics from different news sources (something like Google News app).</p>
+<p><strong>Are the following classification or regression problems?</strong></p>
+<p>6. Predicting the price of a house based on features such as number of rooms and the year built.<br />
+7. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.<br />
+8. Predicting your grade in BAIT 509 based on past grades.<br />
+9. Predicting whether you should bicycle tomorrow or not based on the weather forecast.<br />
+10. Predicting a cereal’s manufacturer given the nutritional information.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
 <ol class="simple">
-<li><p>Finding groups of similar properties in a real estate data set.</p></li>
-<li><p>Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.</p></li>
-<li><p>Identifying groups of animals given features such as “number of legs”, “wings/no wings”, “fur/no fur”, etc.</p></li>
-<li><p>Detecting heart disease in patients based on different test results and history.</p></li>
-<li><p>Grouping articles on different topics from different news sources (something like Google News app).</p></li>
-</ol>
-<p>Are the following classification or regression problems?</p>
-<ol class="simple">
-<li><p>Predicting the price of a house based on features such as number of rooms and the year built.</p></li>
-<li><p>Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.</p></li>
-<li><p>Predicting your grade in BAIT 509 based on past grades.</p></li>
-<li><p>Predicting whether you should bicycle tomorrow or not based on the weather forecast.</p></li>
-<li><p>Predicting a cereal’s manufacturer given the nutritional information.</p></li>
+<li><p>Unsupervised</p></li>
+<li><p>Supervised</p></li>
+<li><p>Unsupervised</p></li>
+<li><p>Supervised</p></li>
+<li><p>Unsupervised</p></li>
+<li><p>Regression</p></li>
+<li><p>Classification</p></li>
+<li><p>Regression</p></li>
+<li><p>Classification</p></li>
+<li><p>Classification</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="tabular-data-and-terminology">
-<h2>Tabular Data and Terminology<a class="headerlink" href="#tabular-data-and-terminology" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Tabular Data and Terminology<a class="headerlink" href="#tabular-data-and-terminology" title="Permalink to this headline">¶</a></h2>
 <p>Basic terminology used in ML:</p>
 <ul class="simple">
 <li><p><strong>examples/observations</strong> = rows</p></li>
@@ -1641,7 +1652,7 @@ buckeye, horse chestnut, conker, 0.00
 </ul>
 <a class="reference internal image-reference" href="../_images/sup-ml-terminology2.png"><img alt="404 image" src="../_images/sup-ml-terminology2.png" style="width: 90%;" /></a>
 <div class="section" id="example">
-<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.6.1. </span>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>This <a class="reference external" href="http://simplemaps.com/static/demos/resources/us-cities/cities.csv">dataset</a> contains longtitude and latitude data for 400 cities in the US.</p></li>
 <li><p>Each city is labelled as <code class="docutils literal notranslate"><span class="pre">red</span></code> or <code class="docutils literal notranslate"><span class="pre">blue</span></code> depending on how they voted in the 2012 election.</p></li>
@@ -1823,9 +1834,9 @@ buckeye, horse chestnut, conker, 0.00
 </div>
 </div>
 <div class="section" id="decision-tree-algorithm">
-<h2>Decision Tree Algorithm<a class="headerlink" href="#decision-tree-algorithm" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.7. </span>Decision Tree Algorithm<a class="headerlink" href="#decision-tree-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="a-conceptual-introduction-to-decision-trees">
-<h3>A conceptual introduction to Decision Trees<a class="headerlink" href="#a-conceptual-introduction-to-decision-trees" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.7.1. </span>A conceptual introduction to Decision Trees<a class="headerlink" href="#a-conceptual-introduction-to-decision-trees" title="Permalink to this headline">¶</a></h3>
 <p>Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).<br />
 The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'><strong>BLUE</strong></font> or <font color='orange'><strong>ORANGE</strong></font> class.<br />
 A fairly intuitive way to do this is to simply use thresholds to split the data up.</p>
@@ -1874,7 +1885,7 @@ Here is the key terminology that you will have to know:</p>
 <p>Trees do not need to be balanced. (You’ll see this shortly)</p>
 </div>
 <div class="section" id="implimentation-with-scikit-learn">
-<h3>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.7.2. </span>Implimentation with Scikit-learn<a class="headerlink" href="#implimentation-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Before we build any model (we are getting to that so hang tight), we need to make sure we have the right “parts” aka inputs and outputs.</p>
 <p>That means we need to split up our tabular data into the features and the target, also known as <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(X\)</span> is all of our features in our data, which we also call our <em><strong>feature table</strong></em>. <br>
@@ -2024,7 +2035,7 @@ The code below prints out our model structure for us (like the tree we made ours
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_67_0.svg" src="../_images/lecture1_67_0.svg" /></div>
+<img alt="../_images/lecture1_68_0.svg" src="../_images/lecture1_68_0.svg" /></div>
 </div>
 <p>We can better visualize what’s going on by actually plotting our data and the model’s  <strong>decision boundaries</strong>.</p>
 <p><em>Note: This <code class="docutils literal notranslate"><span class="pre">plot_classifier</span></code> made by Mike Gelbart, function is available for installation <a class="reference external" href="https://github.com/mgelbart/plot-classifier">here</a> or using:</em></p>
@@ -2050,7 +2061,7 @@ The code below prints out our model structure for us (like the tree we made ours
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_69_0.png" src="../_images/lecture1_69_0.png" />
+<img alt="../_images/lecture1_70_0.png" src="../_images/lecture1_70_0.png" />
 </div>
 </div>
 <p>In this plot the shaded regions show what our model predicts for different feature values.<br />
@@ -2278,7 +2289,7 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 </div>
 </div>
 <div class="section" id="how-does-predict-work">
-<h3>How does <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> work?<a class="headerlink" href="#how-does-predict-work" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.7.3. </span>How does <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> work?<a class="headerlink" href="#how-does-predict-work" title="Permalink to this headline">¶</a></h3>
 <p>For us to see how our algorithm predicts for each example, all we have to do is return to our Decision Tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2287,7 +2298,7 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_79_0.svg" src="../_images/lecture1_79_0.svg" /></div>
+<img alt="../_images/lecture1_80_0.svg" src="../_images/lecture1_80_0.svg" /></div>
 </div>
 <p>Let’s use our <code class="docutils literal notranslate"><span class="pre">new_example</span></code> object for this example.</p>
 <div class="cell docutils container">
@@ -2349,7 +2360,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 <p>Nice!</p>
 </div>
 <div class="section" id="how-does-fit-work">
-<h3>How does <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> work?<a class="headerlink" href="#how-does-fit-work" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.7.4. </span>How does <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> work?<a class="headerlink" href="#how-does-fit-work" title="Permalink to this headline">¶</a></h3>
 <p>Or “How does do Decision Trees decide what values to split on?”</p>
 <p>We will not go into detail here, but there the important thing to note here is:</p>
 <ul class="simple">
@@ -2365,13 +2376,11 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder to aswer the following questions:</p>
-<ol class="simple">
-<li><p>How many features are there?</p></li>
-<li><p>How many observations are there?</p></li>
-<li><p>What would be a suitable target with this data?</p></li>
-</ol>
+<p>1. How many features are there?<br />
+2. How many observations are there?<br />
+3. What would be a suitable target with this data?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">candy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/candybars.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2498,31 +2507,44 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 </div>
-<p><em><strong>Answer as either <code class="docutils literal notranslate"><span class="pre">fit</span></code>  or <code class="docutils literal notranslate"><span class="pre">predict</span></code></strong></em></p>
+<p><strong>Answer as either <code class="docutils literal notranslate"><span class="pre">fit</span></code>  or <code class="docutils literal notranslate"><span class="pre">predict</span></code>:</strong></p>
 <ol class="simple">
 <li><p>Is called first (before the other one).</p></li>
 <li><p>Only takes X as an argument.</p></li>
 <li><p>In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.</p></li>
 </ol>
-<p><em><strong>Quick Questions</strong></em></p>
+<p><strong>Quick Questions:</strong></p>
 <ol class="simple">
 <li><p>What is the top node in a decision tree called?</p></li>
 <li><p>What Python structure/syntax are the nodes in a decision tree similar to?</p></li>
 </ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>8</p></li>
+<li><p>25</p></li>
+<li><p>Probably <code class="docutils literal notranslate"><span class="pre">availability</span></code> but we could use the other features as well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fit</span></code></p></li>
+<li><p>the root</p></li>
+<li><p>if/else conditions</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="parameters-and-hyperparameters">
-<h2>Parameters and Hyperparameters<a class="headerlink" href="#parameters-and-hyperparameters" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.9. </span>Parameters and Hyperparameters<a class="headerlink" href="#parameters-and-hyperparameters" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em><strong>Parameters</strong></em>:  Derived during training</p></li>
 <li><p><em><strong>Hyperparameters</strong></em>: Adjustable parameters that can be set before training.</p></li>
 </ul>
 <div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.9.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">fit</span></code> (the training stage of building your model), <strong>parameters</strong> get set, like the split variables and split thresholds.</p>
 <a class="reference internal image-reference" href="../_images/parameters.png"><img alt="404 image" src="../_images/parameters.png" style="width: 30%;" /></a>
 </div>
 <div class="section" id="hyperparameters">
-<h3>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.9.2. </span>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h3>
 <p>But even before calling <code class="docutils literal notranslate"><span class="pre">fit</span></code> on a specific data set, we can set some some “knobs” which that control the learning which are called <strong>hyperparameters</strong>.</p>
 <p>In scikit-learn, hyperparameters are set in the constructor.</p>
 <p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>is a hyperparameter (of many) that lets us decide and set how “deep” we allow our tree to grow.</p>
@@ -2548,7 +2570,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_95_0.svg" src="../_images/lecture1_95_0.svg" /></div>
+<img alt="../_images/lecture1_97_0.svg" src="../_images/lecture1_97_0.svg" /></div>
 </div>
 <p>We see that it’s a depth of one and split on <code class="docutils literal notranslate"><span class="pre">lon</span></code> at -102.165.</p>
 <ul class="simple">
@@ -2567,7 +2589,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_98_0.png" src="../_images/lecture1_98_0.png" />
+<img alt="../_images/lecture1_100_0.png" src="../_images/lecture1_100_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2600,7 +2622,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_103_0.svg" src="../_images/lecture1_103_0.svg" /></div>
+<img alt="../_images/lecture1_105_0.svg" src="../_images/lecture1_105_0.svg" /></div>
 </div>
 <p>This has 4 splits in the tree so we expect 4 decision boundaries (2 on <code class="docutils literal notranslate"><span class="pre">lon</span></code> and 2 on <code class="docutils literal notranslate"><span class="pre">lat</span></code>).</p>
 <div class="cell docutils container">
@@ -2614,7 +2636,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_105_0.png" src="../_images/lecture1_105_0.png" />
+<img alt="../_images/lecture1_107_0.png" src="../_images/lecture1_107_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2647,7 +2669,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_110_0.svg" src="../_images/lecture1_110_0.svg" /></div>
+<img alt="../_images/lecture1_112_0.svg" src="../_images/lecture1_112_0.svg" /></div>
 </div>
 <p>This has 7 splits in the tree. How many decision boundaries should there be?</p>
 <div class="cell docutils container">
@@ -2661,7 +2683,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lecture1_112_0.png" src="../_images/lecture1_112_0.png" />
+<img alt="../_images/lecture1_114_0.png" src="../_images/lecture1_114_0.png" />
 </div>
 </div>
 <p>And if we check the score of this model we get 100% accuracy!</p>
@@ -2690,7 +2712,7 @@ We arrive at another node. Is <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <div class="section" id="decision-tree-regressor">
-<h2>Decision Tree Regressor<a class="headerlink" href="#decision-tree-regressor" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.10. </span>Decision Tree Regressor<a class="headerlink" href="#decision-tree-regressor" title="Permalink to this headline">¶</a></h2>
 <p>We saw that we can use decision trees for classification problems but we can also use this decision tree algorithm for regression problems.</p>
 <p>Instead of using Gini impurity (which we briefly mentioned this above), we can use <a href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation" target="_blank">some other criteria</a> for splitting.</p>
 <p>(A common one is mean squared error (MSE) which we will discuss shortly)</p>
@@ -3172,8 +3194,8 @@ Name: price, dtype: float64
 <p>The maximum 𝑅2 is 1 for perfect predictions.</p>
 <p>It can be negative which is very bad.</p>
 </div>
-<div class="section" id="id2">
-<h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">1.11. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>Using the data <code class="docutils literal notranslate"><span class="pre">candybars.csv</span></code> from the datafolder (or going to exercise 7 <a class="reference external" href="https://ml-learn.mds.ubc.ca/en/module2">here</a>)  for the following:</p>
 <ol class="simple">
 <li><p>Define two objects named <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> which contain the features and target column respectively.</p></li>
@@ -3293,7 +3315,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="section" id="what-we-ve-learned-today-a-id-9-a">
-<h2>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.12. </span>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What is machine learning (supervised/unsupervised, classification/regression)</p></li>
 <li><p>Machine learning terminology</p></li>
@@ -3330,7 +3352,7 @@ b) Would you choose the same <code class="docutils literal notranslate"><span cl
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../things_to_know/what.html" title="previous page">What: Learning Outcomes</a>
-    <a class='right-next' id="next-link" href="lecture2.html" title="next page">Lecture 2 - Splitting and Cross-validation</a>
+    <a class='right-next' id="next-link" href="lecture2.html" title="next page"><span class="section-number">2. </span>Splitting and Cross-validation</a>
 
         </div>
         

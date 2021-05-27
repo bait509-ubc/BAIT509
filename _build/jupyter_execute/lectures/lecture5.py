@@ -1,9 +1,6 @@
-# Lecture 5 - Preprocessing Categorical Features and Column Transformer
+# Preprocessing Categorical Features and Column Transformer
 
-*Hayley Boyce, Monday, May 3rd, 2021*
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-5---Preprocessing-Categorical-Features-and-Column-Transformer" data-toc-modified-id="Lecture-5---Preprocessing-Categorical-Features-and-Column-Transformer-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 5 - Preprocessing Categorical Features and Column Transformer</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Introducing-Categorical-Feature-Preprocessing" data-toc-modified-id="Introducing-Categorical-Feature-Preprocessing-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Introducing Categorical Feature Preprocessing</a></span></li><li><span><a href="#Ordinal-encoding" data-toc-modified-id="Ordinal-encoding-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Ordinal encoding</a></span></li><li><span><a href="#One-Hot-Encoding" data-toc-modified-id="One-Hot-Encoding-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>One-Hot Encoding</a></span><ul class="toc-item"><li><span><a href="#How-to-one-hot-encode" data-toc-modified-id="How-to-one-hot-encode-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>How to one-hot encode</a></span></li><li><span><a href="#What-happens-if-there-are-categories-in-the-test-data,-that-are-not-in-the-training-data?" data-toc-modified-id="What-happens-if-there-are-categories-in-the-test-data,-that-are-not-in-the-training-data?-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>What happens if there are categories in the test data, that are not in the training data?</a></span></li><li><span><a href="#Cases-where-it's-OK-to-break-the-golden-rule" data-toc-modified-id="Cases-where-it's-OK-to-break-the-golden-rule-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>Cases where it's OK to break the golden rule</a></span></li></ul></li><li><span><a href="#Binary-features" data-toc-modified-id="Binary-features-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Binary features</a></span></li><li><span><a href="#Do-we-actually-want-to-use-certain-features-for-prediction?" data-toc-modified-id="Do-we-actually-want-to-use-certain-features-for-prediction?-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Do we actually want to use certain features for prediction?</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#ColumnTransformer" data-toc-modified-id="ColumnTransformer-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>ColumnTransformer</a></span><ul class="toc-item"><li><span><a href="#Applying-ColumnTransformer" data-toc-modified-id="Applying-ColumnTransformer-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>Applying ColumnTransformer</a></span><ul class="toc-item"><li><span><a href="#Do-we-need-to-preprocess-categorical-values-in-the-target-column?" data-toc-modified-id="Do-we-need-to-preprocess-categorical-values-in-the-target-column?-1.10.1.1"><span class="toc-item-num">1.10.1.1&nbsp;&nbsp;</span>Do we need to preprocess categorical values in the target column?</a></span></li></ul></li></ul></li><li><span><a href="#Make-Syntax" data-toc-modified-id="Make-Syntax-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Make Syntax</a></span><ul class="toc-item"><li><span><a href="#make_pipeline" data-toc-modified-id="make_pipeline-1.11.1"><span class="toc-item-num">1.11.1&nbsp;&nbsp;</span><code>make_pipeline</code></a></span></li></ul></li><li><span><a href="#make_column_transformer-syntax" data-toc-modified-id="make_column_transformer-syntax-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span><em>make_column_transformer</em> syntax</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Text-Data" data-toc-modified-id="Text-Data-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Text Data</a></span></li><li><span><a href="#Bag-of-words-(BOW)-representation" data-toc-modified-id="Bag-of-words-(BOW)-representation-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>Bag of words (BOW) representation</a></span><ul class="toc-item"><li><span><a href="#Extracting-BOW-features-using-scikit-learn" data-toc-modified-id="Extracting-BOW-features-using-scikit-learn-1.15.1"><span class="toc-item-num">1.15.1&nbsp;&nbsp;</span>Extracting BOW features using <em>scikit-learn</em></a></span></li><li><span><a href="#Important-hyperparameters-of-CountVectorizer" data-toc-modified-id="Important-hyperparameters-of-CountVectorizer-1.15.2"><span class="toc-item-num">1.15.2&nbsp;&nbsp;</span>Important hyperparameters of <code>CountVectorizer</code></a></span></li><li><span><a href="#Is-this-a-realistic-representation-of-text-data?" data-toc-modified-id="Is-this-a-realistic-representation-of-text-data?-1.15.3"><span class="toc-item-num">1.15.3&nbsp;&nbsp;</span>Is this a realistic representation of text data?</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Coding-Practice" data-toc-modified-id="Coding-Practice-1.16.1"><span class="toc-item-num">1.16.1&nbsp;&nbsp;</span>Coding Practice</a></span></li></ul></li></ul></li></ul></div>
+*Hayley Boyce, May 3rd, 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -34,6 +31,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
     - Question 3: Daniel
     - Question 4: Ali
 - Polls! 
+- Assignment2 posted
 
 ## Lecture Learning Objectives 
 
@@ -51,7 +49,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler,
 - Where does most of the work happen in $k$-nn - `fit` or `predict`?
 - What are the 2 hyperparameters we looked at with Support Vector Machines with RBF kernel? 
 - What is the range of values after Normalization? 
-- Imputation will help data with missing values by removing which of the following the column or the row?
+- Imputation will help data with missing values by removing which of the following; the column, the row or neither?
 - Pipelines help us not violate what?
 
 ### Some lingering questions
@@ -364,16 +362,16 @@ Dropping the features like this to avoid racial and gender biases would be a str
 
 ```
 
-1.  What would be the unique values given to the categories in the `popularity` column, if we transformed it with ordinal encoding?
+1\.  What would be the unique values given to the categories in the `popularity` column, if we transformed it with ordinal encoding?     
 
-- `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`
-- `[0, 1, 2]` 
-- `[1, 2, 3]`
-- `[0, 1, 2, 3]`
+a) `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`    
+b) `[0, 1, 2]`      
+c) `[1, 2, 3]`     
+d) `[0, 1, 2, 3]`    
 
-2. Does it make sense to be doing ordinal transformations on the `colour` column?
-3. If we one hot encoded the `shape` column, what datatype would be the output after using `transform`?
-4. Which of the following outputs is the result of one-hot encoding the `shape` column?    
+2\. Does it make sense to be doing ordinal transformations on the `colour` column?    
+3\. If we one hot encoded the `shape` column, what datatype would be the output after using `transform`?    
+4\. Which of the following outputs is the result of one-hot encoding the `shape` column?        
 
 a)    
 
@@ -433,17 +431,33 @@ array([[0],
 
 ```
 
-5. On which column(s) would you use `OneHotEncoder(sparse=False, dtype=int, drop="if_binary")`?
+5\. On which column(s) would you use `OneHotEncoder(sparse=False, dtype=int, drop="if_binary")`?
 
 
 **True or False?**    
     
-6. Whenever we have categorical values, we should use ordinal encoding.  
-7. If we include categorical values in our feature table, `sklearn` will throw an error.
-8. One-hot encoding a column with 5 unique categories will produce 5 new transformed columns.
-9. The values in the new transformed columns after one-hot encoding, are all possible integer or float values.
-10. It’s important to be mindful of the consequences of including certain features in your predictive model.
+6\. Whenever we have categorical values, we should use ordinal encoding.     
+7\. If we include categorical values in our feature table, `sklearn` will throw an error.   
+8\. One-hot encoding a column with 5 unique categories will produce 5 new transformed columns.   
+9\. The values in the new transformed columns after one-hot encoding, are all possible integer or float values.   
+10\. It’s important to be mindful of the consequences of including certain features in your predictive model.    
 
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. `[0, 1, 2]`
+2. No
+3. NumPy array
+4. b)
+5. seed, sweetness
+6. False
+7. True
+8. True
+9. False
+10. True
+
+```
 
  **But ....now what?**
 
@@ -781,8 +795,8 @@ Refer to the dataframe to answer the following question.
 
 <br>
  
-1. How many categorical columns are there and how many numeric?
-2. What transformations are being done to both numeric and categorical columns?
+1\. How many categorical columns are there and how many numeric?    
+2\. What transformations are being done to both numeric and categorical columns?    
 
 
 Use the diagram below to answer the following questions.
@@ -810,14 +824,29 @@ Pipeline(
          ('decisiontreeclassifier', DecisionTreeClassifier())])
 ```
 
-3. How many columns are being transformed in `pipeline-1`?
-4. Which pipeline is transforming the categorical columns?
-5. What model is the pipeline fitting on?
+3\. How many columns are being transformed in `pipeline-1`?     
+4\. Which pipeline is transforming the categorical columns?      
+5\. What model is the pipeline fitting on?     
 
-**True or False**     
-6. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.   
-7. If we do not specify `remainder="passthrough"` as an argument in `ColumnTransformer`, the columns not being transformed will be dropped.
-8. `Pipeline()` is the same as `make_pipeline()` but  `make_pipeline()` requires you to name the steps.
+**True or False**       
+
+6\. If there are missing values in both numeric and categorical columns, we can specify this in a single step in the main pipeline.        
+7\. If we do not specify `remainder="passthrough"` as an argument in `ColumnTransformer`, the columns not being transformed will be dropped.       
+8\. `Pipeline()` is the same as `make_pipeline()` but  `make_pipeline()` requires you to name the steps.    
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. 3 categoric columns and 2 numeric columns
+2. Imputation
+3. 3
+4. `pipeline-2`
+5. `DecisionTreeClassifier`
+6. False
+7. True
+8. False
+
+```
 
 ## Text Data 
 
@@ -966,8 +995,7 @@ Of course, this is not a great representation of language.
 
 ## Let's Practice
 
-1. 
-What is the size of the vocabulary for the examples below?
+1\. What is the size of the vocabulary for the examples below?   
 
 ```
 X = [ "Take me to the river",
@@ -975,24 +1003,33 @@ X = [ "Take me to the river",
     "Push me in the river",
     "dip me in the water"]
 ```
-2. 
 
-Which of the following is not a hyperparameter of `CountVectorizer()`?   
-- `binary`
-- `max_features` 
-- `vocab`
-- `ngram_range`
+2\. Which of the following is not a hyperparameter of `CountVectorizer()`?     
 
-3. What kind of representation do we use for our vocabulary? 
+a) `binary`    
+b) `max_features`     
+c) `vocab`    
+d) `ngram_range`   
+
+3\. What kind of representation do we use for our vocabulary?   
 
 **True or False**     
 
-4. As you increase the value for the `max_features` hyperparameter of `CountVectorizer`, the training score is likely to go up.
+4\. As you increase the value for the `max_features` hyperparameter of `CountVectorizer`, the training score is likely to go up.    
+5\. If we encounter a word in the validation or the test split that's not available in the training data, we'll get an error.     
 
-5. If we encounter a word in the validation or the test split that's not available in the training data, we'll get an error.
 
+```{admonition} Solutions!
+:class: dropdown
 
-### Coding Practice 
+1. 10
+2. c) `vocab`
+3. Bag of Words
+4. True
+5. False
+```
+
+## Let's Practice - Coding  
 
 We are going to bring in a new dataset for you to practice on. (Make sure you've downloaded it from the `data` folder from the `lectures` section in Canvas - we've named it `balanced_tweets.csv`). 
 

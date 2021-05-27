@@ -1,12 +1,6 @@
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-0"><span class="toc-item-num">0&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Generalization" data-toc-modified-id="Generalization-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Generalization</a></span><ul class="toc-item"><li><span><a href="#Visualizing-model-complexity-using-decision-boundaries" data-toc-modified-id="Visualizing-model-complexity-using-decision-boundaries-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Visualizing model complexity using decision boundaries</a></span></li><li><span><a href="#The-Fundamental-goal-of-machine-learning" data-toc-modified-id="The-Fundamental-goal-of-machine-learning-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>The Fundamental goal of machine learning</a></span></li><li><span><a href="#Generalizing-to-unseen-data" data-toc-modified-id="Generalizing-to-unseen-data-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Generalizing to unseen data</a></span></li><li><span><a href="#Training-score-versus-Generalization-score-(or-Error)" data-toc-modified-id="Training-score-versus-Generalization-score-(or-Error)-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Training score versus Generalization score (or Error)</a></span></li></ul></li><li><span><a href="#Splitting" data-toc-modified-id="Splitting-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Splitting</a></span><ul class="toc-item"><li><span><a href="#Simple-train-and-test-split" data-toc-modified-id="Simple-train-and-test-split-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Simple train and test split</a></span></li><li><span><a href="#How-do-we-do-this?" data-toc-modified-id="How-do-we-do-this?-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>How do we do this?</a></span><ul class="toc-item"><li><span><a href="#First-way" data-toc-modified-id="First-way-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>First way</a></span></li><li><span><a href="#Second-way" data-toc-modified-id="Second-way-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Second way</a></span></li></ul></li><li><span><a href="#Applications-with-Splitting" data-toc-modified-id="Applications-with-Splitting-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Applications with Splitting</a></span></li><li><span><a href="#Parameters-in-.train_test_split()" data-toc-modified-id="Parameters-in-.train_test_split()-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Parameters in <code>.train_test_split()</code></a></span></li></ul></li><li><span><a href="#Train/validation/test-split" data-toc-modified-id="Train/validation/test-split-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Train/validation/test split</a></span></li><li><span><a href="#&quot;Deployment&quot;-data" data-toc-modified-id="&quot;Deployment&quot;-data-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>"Deployment" data</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Cross-validation" data-toc-modified-id="Cross-validation-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Cross-validation</a></span></li><li><span><a href="#Cross-validation-using-sk-learn" data-toc-modified-id="Cross-validation-using-sk-learn-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Cross-validation using <code>sk-learn</code></a></span><ul class="toc-item"><li><span><a href="#cross_val_score" data-toc-modified-id="cross_val_score-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span><code>cross_val_score</code></a></span></li><li><span><a href="#cross_validate" data-toc-modified-id="cross_validate-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span><code>cross_validate</code></a></span></li></ul></li><li><span><a href="#Our-typical-supervised-learning-set-up-is-as-follows:" data-toc-modified-id="Our-typical-supervised-learning-set-up-is-as-follows:-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Our typical supervised learning set up is as follows:</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Overfitting-and-Underfitting" data-toc-modified-id="Overfitting-and-Underfitting-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Overfitting and Underfitting</a></span><ul class="toc-item"><li><span><a href="#Types-of-scores" data-toc-modified-id="Types-of-scores-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>Types of scores</a></span></li><li><span><a href="#Overfitting" data-toc-modified-id="Overfitting-11.2"><span class="toc-item-num">11.2&nbsp;&nbsp;</span>Overfitting</a></span></li><li><span><a href="#Underfitting" data-toc-modified-id="Underfitting-11.3"><span class="toc-item-num">11.3&nbsp;&nbsp;</span>Underfitting</a></span></li><li><span><a href="#How-can-we-figure-this-out?" data-toc-modified-id="How-can-we-figure-this-out?-11.4"><span class="toc-item-num">11.4&nbsp;&nbsp;</span>How can we figure this out?</a></span></li></ul></li><li><span><a href="#The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning" data-toc-modified-id="The-&quot;Fundamental-Tradeoff&quot;-of-Supervised-Learning-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>The "Fundamental Tradeoff" of Supervised Learning</a></span><ul class="toc-item"><li><span><a href="#How-to-pick-a-model-that-would-generalize-better?" data-toc-modified-id="How-to-pick-a-model-that-would-generalize-better?-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>How to pick a model that would generalize better?</a></span></li></ul></li><li><span><a href="#The-Golden-Rule" data-toc-modified-id="The-Golden-Rule-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>The Golden Rule</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div>
+# Splitting and Cross-validation
 
-# Lecture 2 - Splitting and Cross-validation
-
-*Hayley Boyce, Wednesday, April 21st 2021*
-
-#import sys
-#!{sys.executable} -m pip install numpy pandas sklearn graphviz
+*Hayley Boyce, April 21st 2021*
 
 # Importing our libraries
 
@@ -451,17 +445,35 @@ So, if our model does well on the validation and test data, we hope it will do w
 
 ## Let's Practice 
 
-1. When is the most optimal time to split our data? 
-2. Why do we split our data?
+1\. When is the most optimal time to split our data?     
+2\. Why do we split our data?    
+3\. Fill in the table below:    
+
+| datasets   | `.fit()` | `.score()` | `.predict()` |
+|------------|:--------:|:----------:|:------------:|
+| Train      |    ✔️     |         |             |
+| Validation |          |          |            |
+| Test       |          |       |          |
+| Deployment |          |            |            |
+
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. Before we visualize/explore it.
+
+2. To help us assess how well our model generalizes.
+
 3. Fill in the table below:
 
 | datasets   | `.fit()` | `.score()` | `.predict()` |
 |------------|:--------:|:----------:|:------------:|
-| Train      |    ✔️     |   ✔️      |   ✔️          |
-| Validation |          |   ✔️       |     ✔️       |
+| Train      |    ✔️    |   ✔️      |   ✔️         |
+| Validation |          |   ✔️       |     ✔️      |
 | Test       |          |    Once    |   Once       |
 | Deployment |          |            |      ✔️      |
 
+```
 
 ## Cross-validation
 
@@ -568,12 +580,20 @@ scores_df.std()
 
 ## Let's Practice 
 
-1. We carry out cross-validation to avoid reusing the same validation set again and again. Let’s say you do 10-fold cross-validation on 1000 examples. For each fold, how many examples do you train on?
-2. With 10-fold cross-validation, you split 1000 examples into 10-folds. For each fold, when you are done, you add up the accuracies from each fold and divide by what?
+1\. We carry out cross-validation to avoid reusing the same validation set again and again. Let’s say you do 10-fold cross-validation on 1000 examples. For each fold, how many examples do you train on?    
+2\. With 10-fold cross-validation, you split 1000 examples into 10-folds. For each fold, when you are done, you add up the accuracies from each fold and divide by what?     
 
-True/False:
-- 𝑘-fold cross-validation calls fit 𝑘 times and predict 𝑘 times.
+**True/False:**  
 
+3\. 𝑘-fold cross-validation calls fit 𝑘 times and predict 𝑘 times.
+
+
+```{admonition} Solutions!
+:class: dropdown
+1. 900
+2. 10
+3. True
+```
 
 ## Overfitting and Underfitting
 
@@ -714,19 +734,31 @@ The workflow we generally follow is:
 
 ## Let's Practice
 
-Overfitting or Underfitting
-1. If our train accuracy is much higher than our test accuracy.
-2. If our train accuracy and our test accuracy are both low and relatively similar in value.
-3. If our model is using a Decision Tree Classifier for a classification problem with no limit on `max_depth`.
+**Overfitting or Underfitting**:     
 
+1\. If our train accuracy is much higher than our test accuracy.     
+2\. If our train accuracy and our test accuracy are both low and relatively similar in value.     
+3\. If our model is using a Decision Tree Classifier for a classification problem with no limit on `max_depth`.    
+ 
+**True or False**:  
 
-True or False 
-1. In supervised learning, the training score is always higher than the validation score.
-2. The fundamental tradeoff of ML states that as training score goes up, validation score goes down.
-3. More "complicated" models are more likely to overfit than "simple" ones.
-5. If our training score is extremely high, that means we're overfitting.
+4\. In supervised learning, the training score is always higher than the validation score.     
+5\. The fundamental tradeoff of ML states that as training score goes up, validation score goes down.      
+6\. More "complicated" models are more likely to overfit than "simple" ones.      
+7\. If our training score is extremely high, that means we're overfitting.      
 
-**Coding practice**
+```{admonition} Solutions!
+:class: dropdown
+1. Overfitting
+2. Underfitting
+3. Likely overfitting
+4. False
+5. False
+6. True
+7. False
+```
+
+## Let's Practice - Coding 
 
 Below is some starter code that creates your feature table and target column from the data from the `bball.csv` dataset (in the data folder).
 

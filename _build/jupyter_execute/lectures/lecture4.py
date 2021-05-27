@@ -1,9 +1,6 @@
-# Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+# SVM with RBF Kernel and Feature Preprocessing
 
-*Hayley Boyce, Wednesday, April 28th 2021*
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Regression-with-$k$-NN" data-toc-modified-id="Regression-with-$k$-NN-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Regression with $k$-NN</a></span></li><li><span><a href="#Pros-and-Cons-of-𝑘--Nearest-Neighbours" data-toc-modified-id="Pros-and-Cons-of-𝑘--Nearest-Neighbours-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Pros and Cons of 𝑘 -Nearest Neighbours</a></span><ul class="toc-item"><li><span><a href="#Pros:" data-toc-modified-id="Pros:-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Pros:</a></span></li><li><span><a href="#Cons:" data-toc-modified-id="Cons:-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Cons:</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Support-Vector-Machines-(SVMs)-with-RBF-Kernel" data-toc-modified-id="Support-Vector-Machines-(SVMs)-with-RBF-Kernel-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Support Vector Machines (SVMs) with RBF Kernel</a></span><ul class="toc-item"><li><span><a href="#Hyperparameters-of-SVM" data-toc-modified-id="Hyperparameters-of-SVM-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Hyperparameters of SVM</a></span><ul class="toc-item"><li><span><a href="#gamma-and-the-fundamental-trade-off" data-toc-modified-id="gamma-and-the-fundamental-trade-off-7.1.1"><span class="toc-item-num">7.1.1&nbsp;&nbsp;</span><code>gamma</code> and the fundamental trade-off</a></span></li><li><span><a href="#C-and-the-fundamental-trade-off" data-toc-modified-id="C-and-the-fundamental-trade-off-7.1.2"><span class="toc-item-num">7.1.2&nbsp;&nbsp;</span><code>C</code> and the fundamental trade-off</a></span></li></ul></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Preprocessing" data-toc-modified-id="Preprocessing-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Preprocessing</a></span><ul class="toc-item"><li><span><a href="#The-importance-of-Preprocessing---An-Example-of-Why" data-toc-modified-id="The-importance-of-Preprocessing---An-Example-of-Why-9.1"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>The importance of Preprocessing - An Example of Why</a></span><ul class="toc-item"><li><span><a href="#Basketball-dataset" data-toc-modified-id="Basketball-dataset-9.1.1"><span class="toc-item-num">9.1.1&nbsp;&nbsp;</span>Basketball dataset</a></span></li></ul></li><li><span><a href="#Sklearn's-predict-vs-transform" data-toc-modified-id="Sklearn's-predict-vs-transform-9.2"><span class="toc-item-num">9.2&nbsp;&nbsp;</span>Sklearn's <em>predict</em> vs <em>transform</em></a></span></li><li><span><a href="#Common-preprocessing-techniques" data-toc-modified-id="Common-preprocessing-techniques-9.3"><span class="toc-item-num">9.3&nbsp;&nbsp;</span>Common preprocessing techniques</a></span></li></ul></li><li><span><a href="#Let's-Practice!" data-toc-modified-id="Let's-Practice!-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Let's Practice!</a></span></li><li><span><a href="#California-housing-data-(A-case-study)" data-toc-modified-id="California-housing-data-(A-case-study)-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>California housing data (A case study)</a></span><ul class="toc-item"><li><span><a href="#When-is-it-OK-to-do-things-before-splitting?" data-toc-modified-id="When-is-it-OK-to-do-things-before-splitting?-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>When is it OK to do things before splitting?</a></span></li></ul></li><li><span><a href="#Preprocessing:-Imputation" data-toc-modified-id="Preprocessing:-Imputation-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Preprocessing: Imputation</a></span><ul class="toc-item"><li><span><a href="#Why-we-don't-drop-the-rows" data-toc-modified-id="Why-we-don't-drop-the-rows-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>Why we don't drop the rows</a></span></li><li><span><a href="#Why-we-don't-drop-the-column" data-toc-modified-id="Why-we-don't-drop-the-column-12.2"><span class="toc-item-num">12.2&nbsp;&nbsp;</span>Why we don't drop the column</a></span></li><li><span><a href="#Why-we-use-imputation" data-toc-modified-id="Why-we-use-imputation-12.3"><span class="toc-item-num">12.3&nbsp;&nbsp;</span>Why we use imputation</a></span></li></ul></li><li><span><a href="#Preprocessing:-Scaling" data-toc-modified-id="Preprocessing:-Scaling-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Preprocessing: Scaling</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Feature-transformations-and-the-golden-rule" data-toc-modified-id="Feature-transformations-and-the-golden-rule-15"><span class="toc-item-num">15&nbsp;&nbsp;</span>Feature transformations and the golden rule</a></span><ul class="toc-item"><li><span><a href="#Bad-methodology-1:-Scaling-the-data-separately" data-toc-modified-id="Bad-methodology-1:-Scaling-the-data-separately-15.1"><span class="toc-item-num">15.1&nbsp;&nbsp;</span>Bad methodology 1: Scaling the data separately</a></span></li><li><span><a href="#Bad-methodology-2:-Scaling-the-data-together" data-toc-modified-id="Bad-methodology-2:-Scaling-the-data-together-15.2"><span class="toc-item-num">15.2&nbsp;&nbsp;</span>Bad methodology 2: Scaling the data together</a></span></li></ul></li><li><span><a href="#Pipelines" data-toc-modified-id="Pipelines-16"><span class="toc-item-num">16&nbsp;&nbsp;</span>Pipelines</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-17"><span class="toc-item-num">17&nbsp;&nbsp;</span>Let's Practice</a></span><ul class="toc-item"><li><span><a href="#Practice-Coding-Problem" data-toc-modified-id="Practice-Coding-Problem-17.1"><span class="toc-item-num">17.1&nbsp;&nbsp;</span>Practice Coding Problem</a></span></li></ul></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-18"><span class="toc-item-num">18&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></div>
+*Hayley Boyce, April 28th 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -166,6 +163,12 @@ $$ X = \begin{bmatrix}5 & 2\\4 & 3\\  2 & 2\\ 10 & 10\\ 9 & -1\\ 9& 9\end{bmatri
 If $k=3$, what would you predict for $x=\begin{bmatrix} 0\\0\end{bmatrix}$ if we were doing regression rather than classification?
 
 
+```{admonition} Solutions!
+:class: dropdown
+
+1. 1/3 ($\frac{0 + 0 + 0}{3}$) 
+```
+
 ## Support Vector Machines (SVMs) with RBF Kernel
 
 Another popular similarity-based algorithm is Support Vector Machines (SVM).
@@ -290,11 +293,18 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 
 **True or False** 
 
-1.In Scikit Learn’s SVC classifier, large values of gamma tend to result in higher training scores but probably lower validation scores.   
-2.If we increase both `gamma` and `C`, we can't be certain if the model becomes more complex or less complex.
+1\.In Scikit Learn’s SVC classifier, large values of gamma tend to result in higher training scores but probably lower validation scores.     
+2\.If we increase both `gamma` and `C`, we can't be certain if the model becomes more complex or less complex.
 
 
-**Coding practice**
+```{admonition} Solutions!
+:class: dropdown
+
+1. True
+2. False
+```
+
+## Let's Practice - Coding
 
 Below is some starter code that creates your feature table and target column from the data from the `bball.csv` dataset (in the data folder).
 
@@ -319,9 +329,9 @@ model = SVC(gamma=0.1, C=10)
 # 3. Cross-validate
 scores_df = pd.DataFrame(cross_validate(model,X_train,y_train, cv=5, return_train_score=True))
 
-
 scores_df
 
+# 4. Calculate the mean training and cross-validation scores.
 scores_df.mean()
 
 scores_df.mean()['test_score']
@@ -493,21 +503,36 @@ Here are some commonly performed feature transformation techniques we will focus
 - Scaling 
     - Scaling of numeric features
 
-## Let's Practice!
+## Let's Practice
 
-1. Name a model that will still produce meaningful predictions with different scaled column values.
-2. Complete the following statement: Preprocessing is done ____.  
-- To the model but before training
-- To the data before training the model
-- To the model after training
-- To the data after training the model
-3. `StandardScaler` is a type of what?
-4. What data splits does `StandardScaler` alter (Training, Testing, Validation, None, All)?
+1\. Name a model that will still produce meaningful predictions with different scaled column values.     
+2\. Complete the following statement: Preprocessing is done ______.        
 
-**True or False**     
-5. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.      
-6. A model less sensitive to the scale of the data makes it more robust.
+a) To the model but before training    
+b) To the data before training the model     
+c) To the model after training     
+d) To the data after training the model    
 
+3\. `StandardScaler` is a type of what?    
+4\. What data splits does `StandardScaler` alter (Training, Testing, Validation, None, All)?    
+
+**True or False**    
+ 
+5\. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.      
+6\. A model less sensitive to the scale of the data makes it more robust.   
+
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. Decision Tree Algorithm
+2. b) To the data before training the model
+3. Transformer
+4. All
+5. False
+6. True
+
+```
 
 ## California housing data (A case study) 
 
@@ -735,16 +760,30 @@ So let's see how we can do this but first.... let's practice!
 
 ## Let's Practice
 
-1. When/Why do we need to impute our data?
-2. If we have `NaN` values in our data, can we simply drop the column missing the data?
-3. Which scaling method will never produce negative values?
-4. Which scaling method will never produce values greater than 1?
-5. Which scaling method will produce values where the range depends on the values in the data?
+1\. When/Why do we need to impute our data?   
+2\. If we have `NaN` values in our data, can we simply drop the column missing the data?   
+3\. Which scaling method will never produce negative values?   
+4\. Which scaling method will never produce values greater than 1?    
+5\. Which scaling method will produce values where the range depends on the values in the data?   
 
 **True or False**     
-6. `SimpleImputer` is a type of transformer.    
-7. Scaling is a form of transformation.     
-8. We can use `SimpleImputer` to impute values that are missing from numerical and categorical columns.    
+
+6\. `SimpleImputer` is a type of transformer.      
+7\. Scaling is a form of transformation.       
+8\. We can use `SimpleImputer` to impute values that are missing from numerical and categorical columns.      
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. When we have missing data so that sklearn doesn't give an error. 
+2. No but we can if the majority of the values are missing from the column.
+3. Normalization (`MinMaxScaler`)
+4. Normalization (`MinMaxScaler`)
+5. Standardization (`StandardScaler`)
+6. True
+7. True
+8. True
+```
 
 ## Feature transformations and the golden rule 
 
@@ -919,18 +958,30 @@ We can trust here now that the scores are not influenced but the training data a
 
 ## Let's Practice
 
-1. Which of the following steps cannot be used in a pipeline?
-    - Scaling
-    - Model building 
-    - Imputation
-    - Data Splitting
-2. Why can't we fit and transform the training and test data together?
+1\. Which of the following steps cannot be used in a pipeline?
 
-**True or False**     
-3. We have to be careful of the order we put each transformation and model in a pipeline.   
-4. Pipelines will fit and transform on both the training and validation folds during cross-validation.
+a) Scaling   
+b) Model building    
+c) Imputation    
+d) Data Splitting    
 
-### Practice Coding Problem
+2\. Why can't we fit and transform the training and test data together?  
+
+**True or False**        
+
+3\. We have to be careful of the order we put each transformation and model in a pipeline.     
+4\. Pipelines will fit and transform on both the training and validation folds during cross-validation.   
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. Data Splitting
+2. It's violating the golden rule.
+3. True
+4. False
+```
+
+## Let's Practice - Coding
 
 Let's bring in the basketball dataset again.
 
@@ -954,8 +1005,6 @@ Build a pipeline named `bb_pipe` that:
 
 Next, do 5 fold cross-validation on the pipeline using `X_train` and `y_train` and save the results in a dataframe.
 Take the mean of each column and assess your model.
-
-
 
 
 

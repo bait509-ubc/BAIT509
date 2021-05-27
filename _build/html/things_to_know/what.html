@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm" href="../lectures/lecture1.html" />
+    <link rel="next" title="1. Intro to ML &amp; Decision Trees" href="../lectures/lecture1.html" />
     <link rel="prev" title="How: The Course Structure" href="how.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -128,52 +128,52 @@
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture7.html">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Forming good ML questions from business objectives and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../lectures/lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -432,15 +432,52 @@
 </div>
 <div class="section" id="lecture-7">
 <h3>Lecture 7<a class="headerlink" href="#lecture-7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Explain the general intuition behind linear models.</p></li>
+<li><p>Explain the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> paradigm of linear models.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">fit</span></code>, <code class="docutils literal notranslate"><span class="pre">predict</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">coef_</span></code> to interpret the model weights.</p></li>
+</ul>
+</li>
+<li><p>Explain the advantages and limitations of linear classifiers.</p></li>
+<li><p>Apply scikit-learn regression model (e.g., Ridge) to regression problems.</p></li>
+<li><p>Relate the Ridge hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p></li>
+<li><p>Compare logistic regression with naive Bayes.</p></li>
+</ul>
 </div>
 <div class="section" id="lecture-8">
 <h3>Lecture 8<a class="headerlink" href="#lecture-8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In the context of supervised learning, form statistical questions  from business questions/objectives.</p></li>
+<li><p>Understand the different forms your client may expect you to communicate results.</p></li>
+<li><p>Explain the general concept of feature selection.</p></li>
+<li><p>Discuss and compare different feature selection methods at a high level.</p></li>
+<li><p>Use sklearn’s implementation of recursive feature elimination (RFE).</p></li>
+<li><p>Implement the forward search algorithm.</p></li>
+</ul>
 </div>
 <div class="section" id="lecture-9">
 <h3>Lecture 9<a class="headerlink" href="#lecture-9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Explain why accuracy is not always the best metric in ML.</p></li>
+<li><p>Explain components of a confusion matrix.</p></li>
+<li><p>Define precision, recall, and f1-score and use them to evaluate different classifiers.</p></li>
+<li><p>Identify whether there is class imbalance and whether you need to deal with it.</p></li>
+<li><p>Explain <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> and use it to deal with data imbalance.</p></li>
+<li><p>Appropriately select a scoring metric given a regression problem.</p></li>
+<li><p>Interpret and communicate the meanings of different scoring metrics on regression problems. MSE, RMSE, <span class="math notranslate nohighlight">\(R^2\)</span>, MAPE.</p></li>
+<li><p>Apply different scoring functions with <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code>, <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p></li>
+</ul>
 </div>
 <div class="section" id="lecture-10">
 <h3>Lecture 10<a class="headerlink" href="#lecture-10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Explain components of a confusion matrix with respect to multi-class classification.</p></li>
+<li><p>Define precision, recall, and f1-score with multi-class classification</p></li>
+<li><p>Carry out multi-class classification using OVR and OVO strategies.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -471,7 +508,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="how.html" title="previous page">How: The Course Structure</a>
-    <a class='right-next' id="next-link" href="../lectures/lecture1.html" title="next page">Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm</a>
+    <a class='right-next' id="next-link" href="../lectures/lecture1.html" title="next page"><span class="section-number">1. </span>Intro to ML &amp;  Decision Trees</a>
 
         </div>
         

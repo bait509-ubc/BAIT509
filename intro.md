@@ -36,10 +36,10 @@ Details about class meetings will appear here as they become available.
 | 4     | SVM with RBF Kernel and Feature Preprocessing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | 
 | 5     | Preprocessing Categorical Features and Column Transformer| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) |
 | 6     | Naive Bayes and Hyperparameter Optimization| [Lecture 6](https://bait509-ubc.github.io/BAIT509/lectures/lecture6.html)|
-| 7     | Linear Regression/ Logistic Regression | [Lecture 7](https://bait509-ubc.github.io/BAIT509/lectures/lecture7.html)|
-| 8     | Business Questions and Feature Selection | [Lecture 8](https://bait509-ubc.github.io/BAIT509/lectures/lecture8.html)|
+| 7     | Linear Models| [Lecture 7](https://bait509-ubc.github.io/BAIT509/lectures/lecture7.html)|
+| 8     | Business Objectives/Statistical Questions and Feature Selection | [Lecture 8](https://bait509-ubc.github.io/BAIT509/lectures/lecture8.html)|
 | 9     | Classification and Regression Metrics | [Lecture 9](https://bait509-ubc.github.io/BAIT509/lectures/lecture9.html)|
-| 10    | Topics related to the group project | [Lecture 10](https://bait509-ubc.github.io/BAIT509/lectures/lecture10.html)| 
+| 10    | Multi-Class, Pandas Profiling, Finale | [Lecture 10](https://bait509-ubc.github.io/BAIT509/lectures/lecture10.html)| 
 
 ## Assessments
 

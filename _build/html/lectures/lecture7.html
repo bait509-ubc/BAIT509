@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 7 - Linear Models &#8212; BAIT 509 - Business Applications of Machine Learning</title>
+    <title>7. Linear Models &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 8 - Forming good ML questions from business objectives and Feature Selection" href="lecture8.html" />
-    <link rel="prev" title="Lecture 6 - Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
+    <link rel="next" title="8. Business Objectives/Statistical Questions and Feature Selection" href="lecture8.html" />
+    <link rel="prev" title="6. Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -68,8 +68,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture7.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Lecture 7 - Linear Models" />
-<meta property="og:description" content="Lecture 7 - Linear Models  Hayley Boyce, Monday, May 10th, 2021  &lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt; &lt;div class=&#34;toc&#34;&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;" />
+<meta property="og:title"       content="Linear Models" />
+<meta property="og:description" content="Linear Models  Hayley Boyce, May 10th, 2021  # Importing our libraries import pandas as pd import altair as alt import numpy as np from sklearn.tree import Deci" />
 <meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -128,52 +128,52 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
-   Lecture 1 - Introduction to Machine Learning &amp; The Decision Tree Algorithm
+   1. Intro to ML &amp;  Decision Trees
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture2.html">
-   Lecture 2 - Splitting and Cross-validation
+   2. Splitting and Cross-validation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture3.html">
-   Lecture 3 - Baseline, k-Nearest Neighbours
+   3. Baseline, k-Nearest Neighbours
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture4.html">
-   Lecture 4 - SVM with RBF Kernel and Feature Preprocessing
+   4. SVM with RBF Kernel and Feature Preprocessing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture5.html">
-   Lecture 5 - Preprocessing Categorical Features and Column Transformer
+   5. Preprocessing Categorical Features and Column Transformer
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture6.html">
-   Lecture 6 - Naive Bayes and Hyperparameter Optimization
+   6. Naive Bayes and Hyperparameter Optimization
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 7 - Linear Models
+   7. Linear Models
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture8.html">
-   Lecture 8 - Forming good ML questions from business objectives and Feature Selection
+   8. Business Objectives/Statistical Questions and Feature Selection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture9.html">
-   Lecture 9 - Classification and Regression Metrics
+   9. Classification and Regression Metrics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lecture10.html">
-   Lecture 10 - Multi-Class, Pandas Profiling!
+   10. Multi-Class, Pandas Profiling, Finale
   </a>
  </li>
 </ul>
@@ -298,39 +298,39 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#house-keeping">
-   House Keeping
+   7.1. House Keeping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lecture-learning-objectives">
-   Lecture Learning Objectives
+   7.2. Lecture Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
-   Five Minute Recap/ Lightning Questions
+   7.3. Five Minute Recap/ Lightning Questions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-lingering-questions">
-     Some lingering questions
+     7.3.1. Some lingering questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regression">
-   Linear Regression
+   7.4. Linear Regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge">
-     Ridge
+     7.4.1. Ridge
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hyperparameter-alpha">
-     Hyperparameter -
+     7.4.2. Hyperparameter -
      <code class="docutils literal notranslate">
       <span class="pre">
        alpha
@@ -340,32 +340,32 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualizing-linear-regression-ridge">
-     Visualizing linear regression (Ridge)
+     7.4.3. Visualizing linear regression (Ridge)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-intuition-behind-linear-regression">
-     The intuition behind linear regression
+     7.4.4. The intuition behind linear regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-does-predict-work">
-     How does predict work?
+     7.4.5. How does predict work?
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-we-interpret-these-coefficients">
-       How do we interpret these coefficients?
+       7.4.5.1. How do we interpret these coefficients?
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#sign">
-         Sign
+         7.4.5.1.1. Sign
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#magnitude">
-         Magnitude
+         7.4.5.1.2. Magnitude
         </a>
        </li>
       </ul>
@@ -374,49 +374,49 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#components-of-a-linear-model">
-     Components of a linear model
+     7.4.6. Components of a linear model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#using-sklearn">
-     Using sklearn
+     7.4.7. Using sklearn
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#to-summarize">
-     To summarize
+     7.4.8. To summarize
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prediction-example">
-     Prediction Example
+     7.4.9. Prediction Example
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#let-s-practice">
-   Let’s Practice
+   7.5. Let’s Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistic-regression">
-   Logistic regression
+   7.6. Logistic regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coefficients">
-     Coefficients
+     7.6.1. Coefficients
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#predictions">
-     Predictions
+     7.6.2. Predictions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-regression-hyperparameter-c">
-     Logistic Regression Hyperparameter
+     7.6.3. Logistic Regression Hyperparameter
      <code class="docutils literal notranslate">
       <span class="pre">
        C
@@ -426,17 +426,17 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#predicting-probabilities">
-     Predicting probabilities
+     7.6.4. Predicting probabilities
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-is-this-being-done">
-     How is this being done?
+     7.6.5. How is this being done?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-boundaries-with-predict-proba">
-     Decision boundaries with
+     7.6.6. Decision boundaries with
      <code class="docutils literal notranslate">
       <span class="pre">
        predict_proba
@@ -448,22 +448,27 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#limitations-of-linear-classifiers">
-   Limitations of linear classifiers
+   7.7. Limitations of linear classifiers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compare-to-naive-bayes">
-   Compare to naive Bayes
+   7.8. Compare to naive Bayes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Let’s Practice
+   7.9. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   7.10. Let’s Practice - Coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-ve-learned-today">
-   What We’ve Learned Today
+   7.11. What We’ve Learned Today
   </a>
  </li>
 </ul>
@@ -478,11 +483,10 @@
         
               <div>
                 
-  <div class="section" id="lecture-7-linear-models">
-<h1>Lecture 7 - Linear Models<a class="headerlink" href="#lecture-7-linear-models" title="Permalink to this headline">¶</a></h1>
-<p><em>Hayley Boyce, Monday, May 10th, 2021</em></p>
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-7---Linear-Models" data-toc-modified-id="Lecture-7---Linear-Models-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 7 - Linear Models</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Linear-Regression" data-toc-modified-id="Linear-Regression-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Linear Regression</a></span><ul class="toc-item"><li><span><a href="#Ridge" data-toc-modified-id="Ridge-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Ridge</a></span></li><li><span><a href="#Hyperparameter---alpha" data-toc-modified-id="Hyperparameter---alpha-1.4.2"><span class="toc-item-num">1.4.2&nbsp;&nbsp;</span>Hyperparameter - <code>alpha</code></a></span></li><li><span><a href="#Visualizing-linear-regression-(Ridge)" data-toc-modified-id="Visualizing-linear-regression-(Ridge)-1.4.3"><span class="toc-item-num">1.4.3&nbsp;&nbsp;</span>Visualizing linear regression (Ridge)</a></span></li><li><span><a href="#The-intuition-behind-linear-regression" data-toc-modified-id="The-intuition-behind-linear-regression-1.4.4"><span class="toc-item-num">1.4.4&nbsp;&nbsp;</span>The intuition behind linear regression</a></span></li><li><span><a href="#How-does-predict-work?" data-toc-modified-id="How-does-predict-work?-1.4.5"><span class="toc-item-num">1.4.5&nbsp;&nbsp;</span>How does predict work?</a></span><ul class="toc-item"><li><span><a href="#How-do-we-interpret-these-coefficients?" data-toc-modified-id="How-do-we-interpret-these-coefficients?-1.4.5.1"><span class="toc-item-num">1.4.5.1&nbsp;&nbsp;</span>How do we interpret these coefficients?</a></span></li></ul></li><li><span><a href="#Components-of-a-linear-model" data-toc-modified-id="Components-of-a-linear-model-1.4.6"><span class="toc-item-num">1.4.6&nbsp;&nbsp;</span>Components of a linear model</a></span></li><li><span><a href="#Using-sklearn" data-toc-modified-id="Using-sklearn-1.4.7"><span class="toc-item-num">1.4.7&nbsp;&nbsp;</span>Using sklearn</a></span></li><li><span><a href="#To-summarize" data-toc-modified-id="To-summarize-1.4.8"><span class="toc-item-num">1.4.8&nbsp;&nbsp;</span>To summarize</a></span></li><li><span><a href="#Prediction-Example" data-toc-modified-id="Prediction-Example-1.4.9"><span class="toc-item-num">1.4.9&nbsp;&nbsp;</span>Prediction Example</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Logistic-regression" data-toc-modified-id="Logistic-regression-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Logistic regression</a></span><ul class="toc-item"><li><span><a href="#Coefficients" data-toc-modified-id="Coefficients-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Coefficients</a></span></li><li><span><a href="#Predictions" data-toc-modified-id="Predictions-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>Predictions</a></span></li><li><span><a href="#Logistic-Regression-Hyperparameter-C" data-toc-modified-id="Logistic-Regression-Hyperparameter-C-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>Logistic Regression Hyperparameter <code>C</code></a></span></li><li><span><a href="#Predicting-probabilities" data-toc-modified-id="Predicting-probabilities-1.6.4"><span class="toc-item-num">1.6.4&nbsp;&nbsp;</span>Predicting probabilities</a></span></li><li><span><a href="#How-is-this-being-done?" data-toc-modified-id="How-is-this-being-done?-1.6.5"><span class="toc-item-num">1.6.5&nbsp;&nbsp;</span>How is this being done?</a></span></li><li><span><a href="#Decision-boundaries-with-predict_proba" data-toc-modified-id="Decision-boundaries-with-predict_proba-1.6.6"><span class="toc-item-num">1.6.6&nbsp;&nbsp;</span>Decision boundaries with <code>predict_proba</code></a></span></li></ul></li><li><span><a href="#Limitations-of-linear-classifiers" data-toc-modified-id="Limitations-of-linear-classifiers-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Limitations of linear classifiers</a></span></li><li><span><a href="#Compare-to-naive-Bayes" data-toc-modified-id="Compare-to-naive-Bayes-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Compare to naive Bayes</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Multi-class-classification-(if-we-have-time,-otherwise-Lecture-10)" data-toc-modified-id="Multi-class-classification-(if-we-have-time,-otherwise-Lecture-10)-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Multi-class classification (if we have time, otherwise Lecture 10)</a></span><ul class="toc-item"><li><span><a href="#One-vs-Rest" data-toc-modified-id="One-vs-Rest-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>One-vs-Rest</a></span></li><li><span><a href="#One-vs-One" data-toc-modified-id="One-vs-One-1.10.2"><span class="toc-item-num">1.10.2&nbsp;&nbsp;</span>One-vs-One</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></li></ul></div><div class="cell docutils container">
+  <div class="section" id="linear-models">
+<h1><span class="section-number">7. </span>Linear Models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h1>
+<p><em>Hayley Boyce, May 10th, 2021</em></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -516,7 +520,7 @@
 </div>
 </div>
 <div class="section" id="house-keeping">
-<h2>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>House Keeping<a class="headerlink" href="#house-keeping" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The assignment is due today!</p></li>
 <li><p>Project instructions this week!</p></li>
@@ -524,7 +528,7 @@
 </ul>
 </div>
 <div class="section" id="lecture-learning-objectives">
-<h2>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Explain the general intuition behind linear models.</p></li>
 <li><p>Explain the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> paradigm of linear models.</p></li>
@@ -541,7 +545,7 @@
 </ul>
 </div>
 <div class="section" id="five-minute-recap-lightning-questions">
-<h2>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To avoid the problem of zero probability in Naïve Bayes, what technique do we use?</p></li>
 <li><p><em>True or False:</em> We only calculate the probabilities of the words that occur in our spam/non spam case study?</p></li>
@@ -550,7 +554,7 @@
 <li><p>What parameter does <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> have that the Exhaustive Hyperparameter tuning function not have?</p></li>
 </ul>
 <div class="section" id="some-lingering-questions">
-<h3>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>What was that <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> function we looked at briefly when learning about naive Bayes?</p></li>
 <li><p>Are there any models that function in a linear manner?</p></li>
@@ -559,7 +563,7 @@
 </div>
 </div>
 <div class="section" id="linear-regression">
-<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen many regression models such as:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code></p></li>
@@ -646,7 +650,7 @@
 </div></div></div>
 </div>
 <div class="section" id="ridge">
-<h3>Ridge<a class="headerlink" href="#ridge" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>Ridge<a class="headerlink" href="#ridge" title="Permalink to this headline">¶</a></h3>
 <p>We can import the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model as we have for all the previous models we’ve used:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +712,7 @@
 </div>
 </div>
 <div class="section" id="hyperparameter-alpha">
-<h3>Hyperparameter - <code class="docutils literal notranslate"><span class="pre">alpha</span></code><a class="headerlink" href="#hyperparameter-alpha" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span>Hyperparameter - <code class="docutils literal notranslate"><span class="pre">alpha</span></code><a class="headerlink" href="#hyperparameter-alpha" title="Permalink to this headline">¶</a></h3>
 <p>Ridge has hyperparameters just like the rest of the models we learned.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> hyperparameter is what makes it more flexible than using <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>.</p>
 <p>Remember the fundamental trade-off?</p>
@@ -842,7 +846,7 @@
 </ul>
 </div>
 <div class="section" id="visualizing-linear-regression-ridge">
-<h3>Visualizing linear regression (Ridge)<a class="headerlink" href="#visualizing-linear-regression-ridge" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.3. </span>Visualizing linear regression (Ridge)<a class="headerlink" href="#visualizing-linear-regression-ridge" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;length&#39;</span><span class="p">:</span>  <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">],</span>
@@ -919,7 +923,7 @@
 <p>If we extend our line, we can also see that we will get some predictions for values that don’t really make sense, like if a snake had a negative length, we would predict, a negative weight.</p>
 </div>
 <div class="section" id="the-intuition-behind-linear-regression">
-<h3>The intuition behind linear regression<a class="headerlink" href="#the-intuition-behind-linear-regression" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.4. </span>The intuition behind linear regression<a class="headerlink" href="#the-intuition-behind-linear-regression" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>listing number</p></th>
@@ -960,7 +964,7 @@
 <a class="reference internal image-reference" href="../_images/house_table.png"><img alt="404 image" src="../_images/house_table.png" style="width: 50%;" /></a>
 </div>
 <div class="section" id="how-does-predict-work">
-<h3>How does predict work?<a class="headerlink" href="#how-does-predict-work" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.5. </span>How does predict work?<a class="headerlink" href="#how-does-predict-work" title="Permalink to this headline">¶</a></h3>
 <p>Let’s look at the house listing with the following features:</p>
 <br>
 <table class="colwidths-auto table">
@@ -989,16 +993,16 @@
 \text{predicted}(price)  =  3.26
 \)</span></p>
 <div class="section" id="how-do-we-interpret-these-coefficients">
-<h4>How do we interpret these coefficients?<a class="headerlink" href="#how-do-we-interpret-these-coefficients" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.4.5.1. </span>How do we interpret these coefficients?<a class="headerlink" href="#how-do-we-interpret-these-coefficients" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="sign">
-<h5>Sign<a class="headerlink" href="#sign" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">7.4.5.1.1. </span>Sign<a class="headerlink" href="#sign" title="Permalink to this headline">¶</a></h5>
 <p>If the coefficient is a positive number (like 0.03 for the number of bedrooms) that means that this feature is contributing to the prediction in a positive.
 This means that the more bedrooms a house has, the higher the price the model will predict.</p>
 <p>In this, we have a negative coefficient -&gt; age. Here, as age increases, the bigger the feature value, the lower the predicted price. The feature is contributing to the predicted price in a negative way.
 Older houses will have a lower, predicted price.</p>
 </div>
 <div class="section" id="magnitude">
-<h5>Magnitude<a class="headerlink" href="#magnitude" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">7.4.5.1.2. </span>Magnitude<a class="headerlink" href="#magnitude" title="Permalink to this headline">¶</a></h5>
 <p>The magnitude of the coefficient also has a direct effect on the predicted price.
 here for every additional bedroom, we are adding 0.03 million dollars to our prediction.</p>
 <p>Here we are learning every additional bedroom is worth 0.03 million dollars and every additional year is decreasing 0.01 million dollars to our prediction.</p>
@@ -1006,7 +1010,7 @@ here for every additional bedroom, we are adding 0.03 million dollars to our pre
 </div>
 </div>
 <div class="section" id="components-of-a-linear-model">
-<h3>Components of a linear model<a class="headerlink" href="#components-of-a-linear-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.6. </span>Components of a linear model<a class="headerlink" href="#components-of-a-linear-model" title="Permalink to this headline">¶</a></h3>
 <p><font size="3"><em> predicted(price) = (<font  color="#b1d78c">coefficient<sub>bedrooms</sub></font>   x  <font  color="7bd1ec">#bedrooms</font>)   +  (<font  color="#b1d78c">coefficient<sub>bathrooms</sub></font>  x  <font  color="7bd1ec">#bathrooms</font>)  +  (<font  color="#b1d78c">coefficient<sub>sqfeet</sub></font>   x   <font  color="7bd1ec">#sqfeet</font>)  +  (<font  color="#b1d78c">coefficient<sub>age</sub></font>  x <font  color="7bd1ec">age</font>)  +  <font  color="e8b0d0">intercept</font> </em> </font></p>
 <ul class="simple">
 <li><p><font  color="7bd1ec"> Input features</font></p></li>
@@ -1016,7 +1020,7 @@ here for every additional bedroom, we are adding 0.03 million dollars to our pre
 <p>When we build a particular model, the <font  color="#b1d78c"> Coefficients</font> and  <font  color="e8b0d0">intercept</font>  will remain the same, but the blue <font  color="7bd1ec"> Input features</font>  will differ for each observation - in this case for every house listing.</p>
 </div>
 <div class="section" id="using-sklearn">
-<h3>Using sklearn<a class="headerlink" href="#using-sklearn" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.7. </span>Using sklearn<a class="headerlink" href="#using-sklearn" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take a look at a <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set">Taiwan housing dataset</a> that I’ve wrangled a bit. (Available in the data folder)</p>
 <p><strong>Attribution:</strong>
 Real Estate Dataset - The UCI Machine Learning Repository
@@ -1284,7 +1288,7 @@ Yeh, I. C., &amp; Hsu, T. K. (2018). Building real estate valuation models with 
 </div>
 </div>
 <div class="section" id="to-summarize">
-<h3>To summarize<a class="headerlink" href="#to-summarize" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.8. </span>To summarize<a class="headerlink" href="#to-summarize" title="Permalink to this headline">¶</a></h3>
 <p>In linear models:</p>
 <ul class="simple">
 <li><p>if the coefficient is positive, then increasing the feature values increases the prediction value.</p></li>
@@ -1293,7 +1297,7 @@ Yeh, I. C., &amp; Hsu, T. K. (2018). Building real estate valuation models with 
 </ul>
 </div>
 <div class="section" id="prediction-example">
-<h3>Prediction Example<a class="headerlink" href="#prediction-example" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.9. </span>Prediction Example<a class="headerlink" href="#prediction-example" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take a look at a single example here.</p>
 <p>The values in this are the input features.</p>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">predict()</span></code> on our features to get a prediction of 52.36.</p>
@@ -1480,27 +1484,36 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="let-s-practice">
-<h2>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>What is the name of a well-known <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> hyperparameter?</p></li>
-<li><p>What value of this hyperparameter makes it equivalent to using <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>?
-Use the following equation to answer the questions below:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[ \text{predicted(backpack_weight)} =  3.02 * \text{#laptops} + 0.3 * \text{#pencils} + 0.5 \]</div>
-<ol class="simple">
-<li><p>What is our intercept value?</p></li>
-<li><p>If I had 2 laptops 3 pencils in my backpack, what weight would my model predict for my backpack?</p></li>
-</ol>
-<p><strong>True or False:</strong><br />
-5. Ridge is a regression modelling approach.<br />
+<h2><span class="section-number">7.5. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
+<p>1. What is the name of a well-known <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> hyperparameter?<br />
+2. What value of this hyperparameter makes it equivalent to using <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>?</p>
+<p>3. Use the following equation to answer the questions below:</p>
+<p><span class="math notranslate nohighlight">\( \text{predicted(backpack_weight)} =  3.02 * \text{#laptops} + 0.3 * \text{#pencils} + 0.5 \)</span></p>
+<p>What is our intercept value?</p>
+<p>4. If I had 2 laptops 3 pencils in my backpack, what weight would my model predict for my backpack?</p>
+<p><strong>True or False:</strong></p>
+<p>5. Ridge is a regression modelling approach.<br />
 6. Increasing the hyperparameter from Question 1 increases model complexity.<br />
 7. <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> can be used with datasets that have multiple features.<br />
 8. With <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, we learn one coefficient per training example.<br />
 9. Coefficients can help us interpret our model even if unscaled.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></li>
+<li><p>0</p></li>
+<li><p>0.5</p></li>
+<li><p>7.44</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="logistic-regression">
-<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.6. </span>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
 <p>Next, we are going to introduce to you a new model called <strong>logistic regression</strong>.</p>
 <p>It’s very similar to <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> we saw earlier but this one has some key differences.</p>
 <p>For one, we can use it with classification instead of regression problems. (Super confusing, we know -&gt; in stats ‘regression’ means something else)</p>
@@ -1753,7 +1766,7 @@ With the regression plots we saw earlier we could only show a 1 feature problem 
 </div>
 <p>Notice a linear decision boundary (a line in our case).</p>
 <div class="section" id="coefficients">
-<h3>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.1. </span>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">¶</a></h3>
 <p>Just like we saw for <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>. we can get the equation of that line and the coefficients of our <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> features using <code class="docutils literal notranslate"><span class="pre">.coef_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1826,7 +1839,7 @@ Model intercept: [-0.30837315]
 <p>This makes a lot of sense because Canada as a country lies above the USA and so we expect <code class="docutils literal notranslate"><span class="pre">latitude</span></code> values to contribute more to a prediction than <code class="docutils literal notranslate"><span class="pre">longitude</span></code> which Canada and the <code class="docutils literal notranslate"><span class="pre">USA</span></code> have quite similar values.</p>
 </div>
 <div class="section" id="predictions">
-<h3>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.2. </span>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h3>
 <p>Before we said that larger coefficients “contribute” more to the prediction than smaller ones for <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>. What is the analog for logistic regression?</p>
 <p>With logistic regression, the model randomly assigns one of the classes as a positive class and the other as negative.</p>
 <p>Here since “Canada” comes first when we call <code class="docutils literal notranslate"><span class="pre">.classes_</span></code> it is the “negative class and <code class="docutils literal notranslate"><span class="pre">USA</span></code> is the positive class. (This is in alphabetical order).</p>
@@ -1892,7 +1905,7 @@ Model intercept: [-0.30837315]
 <p>These are “hard predictions” but we can also use this for something called “soft predictions” as well. (Remember <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>? That’s going to be coming back in a second)</p>
 </div>
 <div class="section" id="logistic-regression-hyperparameter-c">
-<h3>Logistic Regression Hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code><a class="headerlink" href="#logistic-regression-hyperparameter-c" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.3. </span>Logistic Regression Hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code><a class="headerlink" href="#logistic-regression-hyperparameter-c" title="Permalink to this headline">¶</a></h3>
 <p>At this point, you should be feeling pretty comfortable with hyperparameters.</p>
 <p>We saw that <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> has the hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, well <code class="docutils literal notranslate"><span class="pre">C</span></code> (annoyingly) has the opposite effect on the fundamental trade-off.</p>
 <p>In general, we say smaller <code class="docutils literal notranslate"><span class="pre">C</span></code> leads to a less complex model (whereas with <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, lower <code class="docutils literal notranslate"><span class="pre">alpha</span></code> means higher complexity).</p>
@@ -2038,7 +2051,7 @@ Model intercept: [-0.30837315]
 </div>
 </div>
 <div class="section" id="predicting-probabilities">
-<h3>Predicting probabilities<a class="headerlink" href="#predicting-probabilities" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.4. </span>Predicting probabilities<a class="headerlink" href="#predicting-probabilities" title="Permalink to this headline">¶</a></h3>
 <p>we saw that we can make “hard predictions” with logistic regression using <code class="docutils literal notranslate"><span class="pre">predict</span></code> but logistic regression also can make something called “soft predictions”.</p>
 <p>We saw this when we use <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> in naive Bayes. These are called “soft predictions” because instead of predicting a specific class, the model returns a probability for each class.</p>
 <div class="cell docutils container">
@@ -2139,7 +2152,7 @@ Model intercept: [-0.30837315]
 <p><code class="docutils literal notranslate"><span class="pre">predict</span></code> works by predicting the class with the highest probability.</p>
 </div>
 <div class="section" id="how-is-this-being-done">
-<h3>How is this being done?<a class="headerlink" href="#how-is-this-being-done" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.5. </span>How is this being done?<a class="headerlink" href="#how-is-this-being-done" title="Permalink to this headline">¶</a></h3>
 <p>For linear regression we used something like this:</p>
 <p><span class="math notranslate nohighlight">\(\text{predicted(value)} = \text{coefficient}_\text{feature-1} * \text{feature-1} + \text{coefficient}_\text{feature-2} * \text{feature-2} + ... + \text{coefficient}_\text{feature-n} * \text{feature-n} + \text{intercept} \)</span></p>
 <p>But this won’t work with probabilities.</p>
@@ -2304,7 +2317,7 @@ Model intercept: [-0.30837315]
 <p>For the rest of this selection, the model corrected predicted each city but the model was more confident in some than others.</p>
 </div>
 <div class="section" id="decision-boundaries-with-predict-proba">
-<h3>Decision boundaries with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code><a class="headerlink" href="#decision-boundaries-with-predict-proba" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.6.6. </span>Decision boundaries with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code><a class="headerlink" href="#decision-boundaries-with-predict-proba" title="Permalink to this headline">¶</a></h3>
 <p>When we use <code class="docutils literal notranslate"><span class="pre">predict</span></code>, we get a decision boundary with either blue or red background a colour for each class we are predicting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2699,7 +2712,7 @@ We can see that the model is less confident the closer the observations are to t
 </div>
 </div>
 <div class="section" id="limitations-of-linear-classifiers">
-<h2>Limitations of linear classifiers<a class="headerlink" href="#limitations-of-linear-classifiers" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.7. </span>Limitations of linear classifiers<a class="headerlink" href="#limitations-of-linear-classifiers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Is your data “linearly separable”? Can you draw a hyperplane between these datapoints that separates them with low error?</p></li>
 <li><p>If the training examples can be separated by a linear decision rule, they are <strong>linearly separable</strong>.</p></li>
@@ -2707,7 +2720,7 @@ We can see that the model is less confident the closer the observations are to t
 <p>… but sometimes are data just can’t be linearly separated well and hence these models will not perform well.</p>
 </div>
 <div class="section" id="compare-to-naive-bayes">
-<h2>Compare to naive Bayes<a class="headerlink" href="#compare-to-naive-bayes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.8. </span>Compare to naive Bayes<a class="headerlink" href="#compare-to-naive-bayes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Both are simple, fast, probabilistic classifiers.</p></li>
 <li><p>Both work well with large numbers of features.</p></li>
@@ -2716,8 +2729,8 @@ We can see that the model is less confident the closer the observations are to t
 </ul>
 </div>
 <div class="section" id="id1">
-<h2>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>We have the following text, which we wish to classify as either a positive or negative movie review.<br />
+<h2><span class="section-number">7.9. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>1. We have the following text, which we wish to classify as either a positive or negative movie review.<br />
 Using the words below (which are features in our model) with associated coefficients, answer the next 2 questions.<br />
 The input for the feature value is the number of times the word appears in the review.</p>
 <table class="colwidths-auto table">
@@ -2745,16 +2758,12 @@ The input for the feature value is the number of times the word appears in the r
 </tbody>
 </table>
 <p>Intercept = 1.3</p>
-<ol class="simple">
-<li><p>What value do you calculate after using the weights in the model above for the above review?</p></li>
-</ol>
+<p>What value do you calculate after using the weights in the model above for the above review?</p>
 <p><em><strong>I thought it was going to be excellent but instead, it was unwatchable and boring.</strong></em></p>
 <p>The input feature value would be the number of times the word appears in the review (like <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code>).</p>
-<ol class="simple">
-<li><p>Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?</p></li>
-</ol>
-<p>We are trying to predict if a job applicant would be hired based on some features contained in their resume.</p>
-<p>Below we have the output of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> where column 0 shows the probability the model would predict “hired” and column 1 shows the probability the model would predict “not hired”.</p>
+<p>2. Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?<br />
+We are trying to predict if a job applicant would be hired based on some features contained in their resume.<br />
+Below we have the output of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> where column 0 shows the probability the model would predict “hired” and column 1 shows the probability the model would predict “not hired”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.04971843</span><span class="p">,</span> <span class="mf">0.95028157</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.94173513</span><span class="p">,</span> <span class="mf">0.05826487</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.74133975</span><span class="p">,</span> <span class="mf">0.25866025</span><span class="p">],</span>
@@ -2763,10 +2772,8 @@ The input for the feature value is the number of times the word appears in the r
 </pre></div>
 </div>
 <p>Use this output to answer the following questions.</p>
-<ol class="simple">
-<li><p>If we had used <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> for these examples instead of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code>, how many of the examples would the model have predicted “hired”?</p></li>
-<li><p>If the true class labels are below, how many examples would the model have correctly predicted with <code class="docutils literal notranslate"><span class="pre">predict()</span></code>?</p></li>
-</ol>
+<p>3. If we had used <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> for these examples instead of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code>, how many of the examples would the model have predicted “hired”?<br />
+4. If the true class labels are below, how many examples would the model have correctly predicted with <code class="docutils literal notranslate"><span class="pre">predict()</span></code>?</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;not hired&#39;</span><span class="p">,</span> <span class="s1">&#39;not hired&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2775,7 +2782,22 @@ The input for the feature value is the number of times the word appears in the r
 6. Unlike with <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> regression, coefficients are not interpretable with logistic regression.<br />
 7.  <code class="docutils literal notranslate"><span class="pre">predict</span></code> returns the positive class if the predicted probability of the positive class is greater than 0.5.<br />
 8. In logistic regression, a function is applied to convert the raw model output into probabilities.</p>
-<p><strong>Coding Problem</strong></p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>0.5</p></li>
+<li><p>Positive review</p></li>
+<li><p>2</p></li>
+<li><p>4</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">7.10. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">¶</a></h2>
 <p>Let’s import the Pokémon dataset from our <code class="docutils literal notranslate"><span class="pre">data</span></code> folder. We want to see how well our model does with logistic regression. Let’s try building a simple model with default parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2818,7 +2840,7 @@ b.As the capture rate value increases, will the model more likely predict a lege
 </ol>
 </div>
 <div class="section" id="what-we-ve-learned-today">
-<h2>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.11. </span>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The name of the function used to bound our values between 0 and 1</p></li>
 <li><p>How <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> can be particularly useful when it comes to Logistic Regression.</p></li>
@@ -2856,8 +2878,8 @@ b.As the capture rate value increases, will the model more likely predict a lege
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="lecture6.html" title="previous page">Lecture 6 - Naive Bayes and Hyperparameter Optimization</a>
-    <a class='right-next' id="next-link" href="lecture8.html" title="next page">Lecture 8 - Forming good ML questions from business objectives and Feature Selection</a>
+    <a class='left-prev' id="prev-link" href="lecture6.html" title="previous page"><span class="section-number">6. </span>Naive Bayes and Hyperparameter Optimization</a>
+    <a class='right-next' id="next-link" href="lecture8.html" title="next page"><span class="section-number">8. </span>Business Objectives/Statistical Questions and Feature Selection</a>
 
         </div>
         

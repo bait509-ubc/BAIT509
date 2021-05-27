@@ -1,9 +1,6 @@
-# Lecture 7 - Linear Models
+# Linear Models
 
-*Hayley Boyce, Monday, May 10th, 2021*
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Lecture-7---Linear-Models" data-toc-modified-id="Lecture-7---Linear-Models-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Lecture 7 - Linear Models</a></span><ul class="toc-item"><li><span><a href="#House-Keeping" data-toc-modified-id="House-Keeping-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>House Keeping</a></span></li><li><span><a href="#Lecture-Learning-Objectives" data-toc-modified-id="Lecture-Learning-Objectives-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Lecture Learning Objectives</a></span></li><li><span><a href="#Five-Minute-Recap/-Lightning-Questions" data-toc-modified-id="Five-Minute-Recap/-Lightning-Questions-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Five Minute Recap/ Lightning Questions</a></span><ul class="toc-item"><li><span><a href="#Some-lingering-questions" data-toc-modified-id="Some-lingering-questions-1.3.1"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Some lingering questions</a></span></li></ul></li><li><span><a href="#Linear-Regression" data-toc-modified-id="Linear-Regression-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Linear Regression</a></span><ul class="toc-item"><li><span><a href="#Ridge" data-toc-modified-id="Ridge-1.4.1"><span class="toc-item-num">1.4.1&nbsp;&nbsp;</span>Ridge</a></span></li><li><span><a href="#Hyperparameter---alpha" data-toc-modified-id="Hyperparameter---alpha-1.4.2"><span class="toc-item-num">1.4.2&nbsp;&nbsp;</span>Hyperparameter - <code>alpha</code></a></span></li><li><span><a href="#Visualizing-linear-regression-(Ridge)" data-toc-modified-id="Visualizing-linear-regression-(Ridge)-1.4.3"><span class="toc-item-num">1.4.3&nbsp;&nbsp;</span>Visualizing linear regression (Ridge)</a></span></li><li><span><a href="#The-intuition-behind-linear-regression" data-toc-modified-id="The-intuition-behind-linear-regression-1.4.4"><span class="toc-item-num">1.4.4&nbsp;&nbsp;</span>The intuition behind linear regression</a></span></li><li><span><a href="#How-does-predict-work?" data-toc-modified-id="How-does-predict-work?-1.4.5"><span class="toc-item-num">1.4.5&nbsp;&nbsp;</span>How does predict work?</a></span><ul class="toc-item"><li><span><a href="#How-do-we-interpret-these-coefficients?" data-toc-modified-id="How-do-we-interpret-these-coefficients?-1.4.5.1"><span class="toc-item-num">1.4.5.1&nbsp;&nbsp;</span>How do we interpret these coefficients?</a></span></li></ul></li><li><span><a href="#Components-of-a-linear-model" data-toc-modified-id="Components-of-a-linear-model-1.4.6"><span class="toc-item-num">1.4.6&nbsp;&nbsp;</span>Components of a linear model</a></span></li><li><span><a href="#Using-sklearn" data-toc-modified-id="Using-sklearn-1.4.7"><span class="toc-item-num">1.4.7&nbsp;&nbsp;</span>Using sklearn</a></span></li><li><span><a href="#To-summarize" data-toc-modified-id="To-summarize-1.4.8"><span class="toc-item-num">1.4.8&nbsp;&nbsp;</span>To summarize</a></span></li><li><span><a href="#Prediction-Example" data-toc-modified-id="Prediction-Example-1.4.9"><span class="toc-item-num">1.4.9&nbsp;&nbsp;</span>Prediction Example</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Logistic-regression" data-toc-modified-id="Logistic-regression-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Logistic regression</a></span><ul class="toc-item"><li><span><a href="#Coefficients" data-toc-modified-id="Coefficients-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Coefficients</a></span></li><li><span><a href="#Predictions" data-toc-modified-id="Predictions-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>Predictions</a></span></li><li><span><a href="#Logistic-Regression-Hyperparameter-C" data-toc-modified-id="Logistic-Regression-Hyperparameter-C-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>Logistic Regression Hyperparameter <code>C</code></a></span></li><li><span><a href="#Predicting-probabilities" data-toc-modified-id="Predicting-probabilities-1.6.4"><span class="toc-item-num">1.6.4&nbsp;&nbsp;</span>Predicting probabilities</a></span></li><li><span><a href="#How-is-this-being-done?" data-toc-modified-id="How-is-this-being-done?-1.6.5"><span class="toc-item-num">1.6.5&nbsp;&nbsp;</span>How is this being done?</a></span></li><li><span><a href="#Decision-boundaries-with-predict_proba" data-toc-modified-id="Decision-boundaries-with-predict_proba-1.6.6"><span class="toc-item-num">1.6.6&nbsp;&nbsp;</span>Decision boundaries with <code>predict_proba</code></a></span></li></ul></li><li><span><a href="#Limitations-of-linear-classifiers" data-toc-modified-id="Limitations-of-linear-classifiers-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Limitations of linear classifiers</a></span></li><li><span><a href="#Compare-to-naive-Bayes" data-toc-modified-id="Compare-to-naive-Bayes-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Compare to naive Bayes</a></span></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#Multi-class-classification-(if-we-have-time,-otherwise-Lecture-10)" data-toc-modified-id="Multi-class-classification-(if-we-have-time,-otherwise-Lecture-10)-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Multi-class classification (if we have time, otherwise Lecture 10)</a></span><ul class="toc-item"><li><span><a href="#One-vs-Rest" data-toc-modified-id="One-vs-Rest-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>One-vs-Rest</a></span></li><li><span><a href="#One-vs-One" data-toc-modified-id="One-vs-One-1.10.2"><span class="toc-item-num">1.10.2&nbsp;&nbsp;</span>One-vs-One</a></span></li></ul></li><li><span><a href="#Let's-Practice" data-toc-modified-id="Let's-Practice-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Let's Practice</a></span></li><li><span><a href="#What-We've-Learned-Today" data-toc-modified-id="What-We've-Learned-Today-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>What We've Learned Today<a id="9"></a></a></span></li></ul></li></ul></div>
+*Hayley Boyce, May 10th, 2021*
 
 # Importing our libraries
 import pandas as pd
@@ -376,22 +373,40 @@ When we do this by hand using the model's coefficients and intercept, we get the
 
 ## Let's Practice
 
-1. What is the name of a well-known `Ridge` hyperparameter?
-2. What value of this hyperparameter makes it equivalent to using `LinearRegression`?
-Use the following equation to answer the questions below: 
+1\. What is the name of a well-known `Ridge` hyperparameter?   
+2\. What value of this hyperparameter makes it equivalent to using `LinearRegression`?    
 
-$$ \text{predicted(backpack_weight)} =  3.02 * \text{#laptops} + 0.3 * \text{#pencils} + 0.5 $$
 
-3. What is our intercept value?
-4. If I had 2 laptops 3 pencils in my backpack, what weight would my model predict for my backpack?
+3\. Use the following equation to answer the questions below:     
+
+$ \text{predicted(backpack_weight)} =  3.02 * \text{#laptops} + 0.3 * \text{#pencils} + 0.5 $
+
+What is our intercept value?    
+
+4\. If I had 2 laptops 3 pencils in my backpack, what weight would my model predict for my backpack?   
 
 **True or False:**  
-5. Ridge is a regression modelling approach.   
-6. Increasing the hyperparameter from Question 1 increases model complexity.   
-7. `Ridge` can be used with datasets that have multiple features.   
-8. With `Ridge`, we learn one coefficient per training example.   
-9. Coefficients can help us interpret our model even if unscaled.  
 
+5\. Ridge is a regression modelling approach.       
+6\. Increasing the hyperparameter from Question 1 increases model complexity.      
+7\. `Ridge` can be used with datasets that have multiple features.      
+8\. With `Ridge`, we learn one coefficient per training example.      
+9\. Coefficients can help us interpret our model even if unscaled.    
+
+
+```{admonition} Solutions!
+:class: dropdown
+
+1. `alpha`
+2. 0
+3. 0.5
+4. 7.44
+5. True
+6. False
+7. True
+8. False
+9. True
+```
 
 ## Logistic regression
 
@@ -771,9 +786,9 @@ The cities lie almost completely on the boundary, this makes the model very divi
 
 ## Let's Practice 
 
-We have the following text, which we wish to classify as either a positive or negative movie review.     
-Using the words below (which are features in our model) with associated coefficients, answer the next 2 questions.     
-The input for the feature value is the number of times the word appears in the review. 
+1\. We have the following text, which we wish to classify as either a positive or negative movie review.        
+Using the words below (which are features in our model) with associated coefficients, answer the next 2 questions.        
+The input for the feature value is the number of times the word appears in the review.     
 
 
 |   Word            | Coefficient | 
@@ -784,24 +799,17 @@ The input for the feature value is the number of times the word appears in the r
 |boring              | -1.3        |
 |unwatchable         | -1.7        |
 
-Intercept = 1.3
+Intercept = 1.3    
 
+What value do you calculate after using the weights in the model above for the above review?     
 
-1. What value do you calculate after using the weights in the model above for the above review? 
+***I thought it was going to be excellent but instead, it was unwatchable and boring.***    
 
-***I thought it was going to be excellent but instead, it was unwatchable and boring.***
+The input feature value would be the number of times the word appears in the review (like `CountVectorizer`).   
 
-The input feature value would be the number of times the word appears in the review (like `CountVectorizer`).
-
-2. Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?
-
-
-We are trying to predict if a job applicant would be hired based on some features contained in their resume. 
-
-
-
-Below we have the output of `.predict_proba()` where column 0 shows the probability the model would predict "hired" and column 1 shows the probability the model would predict "not hired".
-
+2\. Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?     
+We are trying to predict if a job applicant would be hired based on some features contained in their resume.     
+Below we have the output of `.predict_proba()` where column 0 shows the probability the model would predict "hired" and column 1 shows the probability the model would predict "not hired".     
 
 ```
 array([[0.04971843, 0.95028157],
@@ -811,25 +819,36 @@ array([[0.04971843, 0.95028157],
        [0.17126403, 0.82873597]])
 ```
 
-Use this output to answer the following questions.
+Use this output to answer the following questions.        
 
-3. If we had used `.predict()` for these examples instead of `.predict_proba()`, how many of the examples would the model have predicted "hired"?
-
-
-4. If the true class labels are below, how many examples would the model have correctly predicted with `predict()`? 
+3\. If we had used `.predict()` for these examples instead of `.predict_proba()`, how many of the examples would the model have predicted "hired"?     
+4\. If the true class labels are below, how many examples would the model have correctly predicted with `predict()`?     
 
 ```
 ['hired', 'hired', 'hired', 'not hired', 'not hired']
 ```
 
-**True or False:**     
-5. Increasing logistic regression's `C` hyperparameter increases the model's complexity.   
-6. Unlike with `Ridge` regression, coefficients are not interpretable with logistic regression.    
-7.  `predict` returns the positive class if the predicted probability of the positive class is greater than 0.5.     
-8. In logistic regression, a function is applied to convert the raw model output into probabilities.    
+**True or False:**        
+5\. Increasing logistic regression's `C` hyperparameter increases the model's complexity.      
+6\. Unlike with `Ridge` regression, coefficients are not interpretable with logistic regression.       
+7\.  `predict` returns the positive class if the predicted probability of the positive class is greater than 0.5.       
+8\. In logistic regression, a function is applied to convert the raw model output into probabilities.      
 
 
-**Coding Problem**
+```{admonition} Solutions!
+:class: dropdown
+
+1. 0.5
+2. Positive review
+3. 2
+4. 4
+5. True
+6. False
+7. True
+8. True
+```
+
+## Let's Practice - Coding
 
 Let’s import the Pokémon dataset from our `data` folder. We want to see how well our model does with logistic regression. Let’s try building a simple model with default parameters.
 
