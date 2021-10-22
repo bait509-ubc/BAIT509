@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercise Solutions &#8212; BAIT 509 - Business Applications of Machine Learning</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,47 +31,38 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/class_solutions.html" />
     <link rel="shortcut icon" href="../_static/bait_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/class_solutions.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="Exercise Solutions" />
-<meta property="og:description" content="Exercise Solutions  import numpy as np import pandas as pd from sklearn.tree import DecisionTreeClassifier from sklearn.neighbors import KNeighborsClassifier fr" />
-<meta property="og:image"       content="https://bait509-ubc.github.io/BAIT509/intro.html/_static/bait_logo.png" />
-
-<meta name="twitter:card" content="summary" />
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -83,25 +71,29 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/bait_logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/bait_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 509 - Business Applications of Machine Learning</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption" role="heading">
  <span class="caption-text">
   Things You Should Know
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../things_to_know/who.html">
    Who: Hayley Boyce
@@ -118,12 +110,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption" role="heading">
  <span class="caption-text">
   Lectures
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture1.html">
    1. Intro to ML &amp;  Decision Trees
@@ -175,12 +167,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../things_to_know/attribution.html">
    Attribution
@@ -188,6 +180,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -255,12 +248,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -289,11 +282,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Exercise Solutions
@@ -303,7 +296,7 @@
   <a class="reference internal nav-link" href="#lecture-1">
    Lecture 1
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#let-s-practice">
      Let’s Practice!
@@ -320,7 +313,7 @@
   <a class="reference internal nav-link" href="#lecture-2">
    Lecture 2
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
      Let’s Practice
@@ -342,7 +335,7 @@
   <a class="reference internal nav-link" href="#lecture-3">
    Lecture 3
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
      Let’s Practice
@@ -364,7 +357,7 @@
   <a class="reference internal nav-link" href="#lecture-4-svm">
    Lecture 4 - SVM
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
      Let’s Practice
@@ -381,7 +374,7 @@
   <a class="reference internal nav-link" href="#lecture-4-pipeline">
    Lecture 4 - Pipeline
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
      Let’s practice
@@ -398,7 +391,7 @@
   <a class="reference internal nav-link" href="#lecture-5">
    Lecture 5
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
      Let’s Practice
@@ -427,7 +420,7 @@
   <a class="reference internal nav-link" href="#lecture-6">
    Lecture 6
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
      Let’s Practice
@@ -468,7 +461,7 @@
   <a class="reference internal nav-link" href="#lecture-7">
    Lecture 7
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
      Let’s Practice
@@ -528,8 +521,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -538,7 +530,7 @@
         
               <div>
                 
-  <div class="section" id="exercise-solutions">
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-solutions">
 <h1>Exercise Solutions<a class="headerlink" href="#exercise-solutions" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,7 +550,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="lecture-1">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-1">
 <h1>Lecture 1<a class="headerlink" href="#lecture-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="let-s-practice">
 <h2>Let’s Practice!<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">¶</a></h2>
@@ -727,7 +719,7 @@ For min_sample_split = 10 accuracy= 0.64
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="lecture-2">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-2">
 <h1>Lecture 2<a class="headerlink" href="#lecture-2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -892,7 +884,7 @@ dtype: float64
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="lecture-3">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-3">
 <h1>Lecture 3<a class="headerlink" href="#lecture-3" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id5">
 <h2>Let’s Practice<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -1084,7 +1076,7 @@ d) 1.5</p>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="lecture-4-svm">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-4-svm">
 <h1>Lecture 4 - SVM<a class="headerlink" href="#lecture-4-svm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id8">
 <h2>Let’s Practice<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
@@ -1152,7 +1144,7 @@ d) 1.5</p>
 <p>Yikes! I wonder how this can be improved?! More on this in the next class :)</p>
 </div>
 </div>
-<div class="section" id="lecture-4-pipeline">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-4-pipeline">
 <h1>Lecture 4 - Pipeline<a class="headerlink" href="#lecture-4-pipeline" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id10">
 <h2>Let’s practice<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
@@ -1335,7 +1327,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="lecture-5">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-5">
 <h1>Lecture 5<a class="headerlink" href="#lecture-5" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id12">
 <h2>Let’s Practice<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
@@ -1680,7 +1672,7 @@ Test score: 0.83451536643026
 </div>
 </div>
 </div>
-<div class="section" id="lecture-6">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-6">
 <h1>Lecture 6<a class="headerlink" href="#lecture-6" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id15">
 <h2>Let’s Practice<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
@@ -1991,7 +1983,7 @@ Test score: 0.83451536643026
 </div>
 </div>
 </div>
-<div class="section" id="lecture-7">
+<div class="tex2jax_ignore mathjax_ignore section" id="lecture-7">
 <h1>Lecture 7<a class="headerlink" href="#lecture-7" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id18">
 <h2>Let’s Practice<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
@@ -2788,20 +2780,24 @@ Name: legendary, dtype: int64
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By Hayley Boyce<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -2810,11 +2806,9 @@ Name: legendary, dtype: int64
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

@@ -50,5 +50,4 @@ parse:
     
 sphinx:
     extra_extensions:
-        - jupyterbook_latex
         - sphinx_thebe

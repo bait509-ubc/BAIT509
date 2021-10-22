@@ -1,93 +1,99 @@
-# Intro to ML &  Decision Trees
+#!/usr/bin/env python
+# coding: utf-8
 
-*Hayley Boyce, April 19th 2021*
+# # Intro to ML &  Decision Trees
+# 
+# *Hayley Boyce, April 19th 2021*
 
-## Welcome
+# ## Welcome
 
-Welcome to Bait 509 - Business Application of Machine Learning.
+# Welcome to Bait 509 - Business Application of Machine Learning.
 
-```{note}
-Buckle up because there are going to be a lot of new concepts here but in the lyrics of Trooper "We're here for a good time, 
-Not a long time". 
-```
+# ```{note}
+# Buckle up because there are going to be a lot of new concepts here but in the lyrics of Trooper "We're here for a good time, 
+# Not a long time". 
+# ```
 
-### Course Learning Objectives
+# ### Course Learning Objectives
+# 
+# 1.	Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training/validation/testing error, parameters and hyperparameters, and the golden rule.
+# 2.	Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and logistic regression.
+# 3.	Identify when and why to apply data pre-processing techniques such as scaling and one-hot encoding.
+# 4.	Use Python and the scikit-learn package to develop an end-to-end supervised machine learning pipeline.
+# 5.	Apply and interpret machine learning methods to carry out supervised learning projects and to answer business objectives.
 
-1.	Describe fundamental machine learning concepts such as: supervised and unsupervised learning, regression and classification, overfitting, training/validation/testing error, parameters and hyperparameters, and the golden rule.
-2.	Broadly explain how common machine learning algorithms work, including: naïve Bayes, k-nearest neighbors, decision trees, support vector machines, and logistic regression.
-3.	Identify when and why to apply data pre-processing techniques such as scaling and one-hot encoding.
-4.	Use Python and the scikit-learn package to develop an end-to-end supervised machine learning pipeline.
-5.	Apply and interpret machine learning methods to carry out supervised learning projects and to answer business objectives.
+# ### Course Structure
+# - 2 lectures per week (Synchonus lecture + class activity)
+# - My office hours: 1-2pm Thursday on Zoom
+# - TA office hours: Fridays 12-1 and Wednesday 4-5. (all the links are created 
+# - Camera on policy!
+# - Course content available on [this website](https://bait509-ubc.github.io/BAIT509/intro.html) or on [Canvas](https://canvas.ubc.ca/courses/58082). 
+# - We will be using [Piazza](https://piazza.com/configure-classes/winterterm22020/bait509ba1) for discussions and questions.
+# - Assessments:
+# 
+# | Assessment       | Weight       | Due                            |
+# |     :---:        | :---:        | :---:                          |
+# | 3 Assignments    | 60%(20% each)| April 28th, May 10th, May 19th |
+# | 1 Quiz           | 10%          | May 5th (24 hours to complete) |
+# | Final Project    | 30%          | May 29th                       |
+# 
+# 
+# All assessments will be submitted via Canvas 
 
-### Course Structure
-- 2 lectures per week (Synchonus lecture + class activity)
-- My office hours: 1-2pm Thursday on Zoom
-- TA office hours: Fridays 12-1 and Wednesday 4-5. (all the links are created 
-- Camera on policy!
-- Course content available on [this website](https://bait509-ubc.github.io/BAIT509/intro.html) or on [Canvas](https://canvas.ubc.ca/courses/58082). 
-- We will be using [Piazza](https://piazza.com/configure-classes/winterterm22020/bait509ba1) for discussions and questions.
-- Assessments:
+# ### Who I am
+# 
+# ![](imgs/hi.png)
+# 
+# - I have an undergraduate degree in Applied Mathematics from the University of Western Ontario
+# - I have a master's degree in Data Science from UBC.  
+# - I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none. 
+# - Worked with companies like Riversol Skincare and Freshprep. 
 
-| Assessment       | Weight       | Due                            |
-|     :---:        | :---:        | :---:                          |
-| 3 Assignments    | 60%(20% each)| April 28th, May 10th, May 19th |
-| 1 Quiz           | 10%          | May 5th (24 hours to complete) |
-| Final Project    | 30%          | May 29th                       |
+# ### Your TAs
+# 
+# - **Daniel Ramandi**: in class questions.
+# - **Ali Seyfi**: Office hours Wednesdays 4-5pm (Starting April 28th).
+# - **Andy Tai**: Office hours Fridays 12-1pm.
+# 
+# 
+# - Marking your assignments, quiz and project.
+# - All 4 of us will be answering questions on Piazza as well.
 
+# ### Python, Jupyter, Visualizations 
+# 
+# - In this course we be using Python and Jupyter notebooks for lectures as well as assignments. 
+# - You are free to use [Anaconda distribution](https://www.anaconda.com/distribution/) to install and manage your Python package installations.
+# - If you are using anaconda, you can install a few key packages we will be using in the course, by typing the following at the command line:
+#     > `conda install pandas numpy scikit-learn matplotlib jupyter altair seaborn python-graphviz`
+# 
+# - Or you can simpling use pip and type in at the command line: 
+#     > `pip install pandas numpy scikit-learn matplotlib jupyter altair seaborn graphviz`
+# 
+# 
+# - We will be making visualizations for this course and I give the option of plotting using any Python library but I strongly recommend getting familar with [`altair`](https://altair-viz.github.io/index.html). I have 2 very quick slide decks that teach you a bit about how to plot using `altair`. 
+# From the course [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/)
+#  - Module 1, exercise 31, 32, 33
+#  - Module 2, exercise 29, 30
+#  
+# And if you want to dive further there is a whole course dedicated to visualizing plots using `altair` called [Data Visualization](https://viz-learn.mds.ubc.ca/en/).
+# 
 
-All assessments will be submitted via Canvas 
+# ### Lecture Learning Objectives 
+# 
+# - Explain motivation to study machine learning.
+# - Differentiate between supervised and unsupervised learning.
+# - Differentiate between classification and regression problems.
+# - Explain machine learning terminology such as features, targets, training, and error.
+# - Explain the `.fit()` and `.predict()` paradigm and use `.score()` method of ML models.
+# - Broadly describe how decision trees make predictions.
+# - Use `DecisionTreeClassifier()` and `DecisionTreeRegressor()` to build decision trees using scikit-learn.
+# - Explain the difference between parameters and hyperparameters.
+# - Explain how decision boundaries change with `max_depth`.
 
-### Who I am
+# ## What is Machine Learning (ML)?
 
-![](imgs/hi.png)
+# In[56]:
 
-- I have an undergraduate degree in Applied Mathematics from the University of Western Ontario
-- I have a master's degree in Data Science from UBC.  
-- I have experience in Python, R, Tableau, some Latex, Some HTML and CSS and dabble in a few other things - Jack of all trades, master of none. 
-- Worked with companies like Riversol Skincare and Freshprep. 
-
-### Your TAs
-
-- **Daniel Ramandi**: in class questions.
-- **Ali Seyfi**: Office hours Wednesdays 4-5pm (Starting April 28th).
-- **Andy Tai**: Office hours Fridays 12-1pm.
-
-
-- Marking your assignments, quiz and project.
-- All 4 of us will be answering questions on Piazza as well.
-
-### Python, Jupyter, Visualizations 
-
-- In this course we be using Python and Jupyter notebooks for lectures as well as assignments. 
-- You are free to use [Anaconda distribution](https://www.anaconda.com/distribution/) to install and manage your Python package installations.
-- If you are using anaconda, you can install a few key packages we will be using in the course, by typing the following at the command line:
-    > `conda install pandas numpy scikit-learn matplotlib jupyter altair seaborn python-graphviz`
-
-- Or you can simpling use pip and type in at the command line: 
-    > `pip install pandas numpy scikit-learn matplotlib jupyter altair seaborn graphviz`
-
-
-- We will be making visualizations for this course and I give the option of plotting using any Python library but I strongly recommend getting familar with [`altair`](https://altair-viz.github.io/index.html). I have 2 very quick slide decks that teach you a bit about how to plot using `altair`. 
-From the course [Programming in Python for Data Science](https://prog-learn.mds.ubc.ca/en/)
- - Module 1, exercise 31, 32, 33
- - Module 2, exercise 29, 30
- 
-And if you want to dive further there is a whole course dedicated to visualizing plots using `altair` called [Data Visualization](https://viz-learn.mds.ubc.ca/en/).
-
-
-### Lecture Learning Objectives 
-
-- Explain motivation to study machine learning.
-- Differentiate between supervised and unsupervised learning.
-- Differentiate between classification and regression problems.
-- Explain machine learning terminology such as features, targets, training, and error.
-- Explain the `.fit()` and `.predict()` paradigm and use `.score()` method of ML models.
-- Broadly describe how decision trees make predictions.
-- Use `DecisionTreeClassifier()` and `DecisionTreeRegressor()` to build decision trees using scikit-learn.
-- Explain the difference between parameters and hyperparameters.
-- Explain how decision boundaries change with `max_depth`.
-
-## What is Machine Learning (ML)?
 
 # Let's import our libraries
 import pandas as pd
@@ -97,63 +103,86 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 
-Machine learning is all around us. You can find it in things like: 
+# Machine learning is all around us. You can find it in things like: 
+# 
+# 
+# ![](imgs/examples.png)
+# 
+# 
+# - Voice assistance
+# - Google news
+# - Recommender systems
+# - Face recognition
+# - Auto completion
+# - Stock market predictions
+# - Character recognition
+# - Self-driving cars
+# - Cancer diagnosis
+# - Drug discovery
 
+# Machine Learning has no clear consensus in how it is define but essentially it is a different way to think about problem solving. 
+# 
+# -  As the [ISLR](http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf) book puts it, ML is a “*vast set of tools for understanding data*” 
+# - Usually we think logically and mathematically. In the Machine Learning paradiagm we instead take data and some output and our Machine Learning algorithm will return a program which can be used to make predictions and give an output for data it has yet to see. 
 
-![](imgs/examples.png)
+# ### Examples of Machine Learning 
+# 
+# *In all the the upcoming examples, Don't worry about the code. Just focus on the input and output in each example.*
+# 
 
+# #### Example 1: Predict Housing Prices
+# **Data Attribution:** <a href="https://www.kaggle.com/harlfoxem/housesalesprediction" target="_blank">house sales prediction dataset.</a>
 
-- Voice assistance
-- Google news
-- Recommender systems
-- Face recognition
-- Auto completion
-- Stock market predictions
-- Character recognition
-- Self-driving cars
-- Cancer diagnosis
-- Drug discovery
+# In[60]:
 
-Machine Learning has no clear consensus in how it is define but essentially it is a different way to think about problem solving. 
-
--  As the [ISLR](http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf) book puts it, ML is a “*vast set of tools for understanding data*” 
-- Usually we think logically and mathematically. In the Machine Learning paradiagm we instead take data and some output and our Machine Learning algorithm will return a program which can be used to make predictions and give an output for data it has yet to see. 
-
-### Examples of Machine Learning 
-
-*In all the the upcoming examples, Don't worry about the code. Just focus on the input and output in each example.*
-
-
-#### Example 1: Predict Housing Prices
-**Data Attribution:** <a href="https://www.kaggle.com/harlfoxem/housesalesprediction" target="_blank">house sales prediction dataset.</a>
 
 df = pd.read_csv("data/kc_house_data.csv")
 df = df.drop(columns=["id", "date"])
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=4)
 train_df.head()
 
+
+# In[61]:
+
+
 X_train = train_df.drop(columns=["price"])
 y_train = train_df["price"]
 X_test = test_df.drop(columns=["price"])
 y_test = test_df["price"]
+
+
+# In[62]:
+
 
 from xgboost import XGBRegressor
 
 model = XGBRegressor()
 model.fit(X_train, y_train);
 
+
+# In[63]:
+
+
 pred_df = pd.DataFrame({"Predicted price": model.predict(X_test[0:4]).tolist(), "Actual price": y_test[0:4].tolist()})
 df_concat = pd.concat([X_test[0:4].reset_index(drop=True), pred_df], axis=1)
 df_concat.head()
 
-#### Example 2: Predict Creditcard Default 
 
-**Data Attribution:** <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card fraud detection data set</a>
+# #### Example 2: Predict Creditcard Default 
+# 
+# **Data Attribution:** <a href="https://www.kaggle.com/mlg-ulb/creditcardfraud" target="_blank">credit card fraud detection data set</a>
+
+# In[64]:
+
 
 cc_df = pd.read_csv("data/creditcard_sample.csv")
 
 train_df, test_df = train_test_split(cc_df, test_size=4, random_state=603)
 train_df.head(5)
+
+
+# In[65]:
+
 
 from xgboost import XGBClassifier
 X_train = train_df.drop(columns=['Class'])
@@ -163,13 +192,25 @@ y_test = test_df['Class']
 model = XGBClassifier()
 model.fit(X_train, y_train);
 
+
+# In[69]:
+
+
 pred_df = pd.DataFrame({"predicted_label": model.predict(X_train).tolist()})
 df_concat = pd.concat([X_train.reset_index(drop=True), pred_df], axis=1)
 df_concat
 
+
+# In[70]:
+
+
 model.score(X_test, y_test)
 
-#### Example 3: Image Classification
+
+# #### Example 3: Image Classification
+
+# In[71]:
+
 
 import pandas as pd
 import numpy as np
@@ -182,248 +223,292 @@ from toy_classifier import classify_image
 img = Image.open("imgs/apple.jpg")
 img
 
+
+# In[11]:
+
+
 classify_image(img, 5)
 
-## Types of Machine Learning
 
-- **Supervised learning** (this course)
-- Unsupervised learning
+# ## Types of Machine Learning
+# 
+# - **Supervised learning** (this course)
+# - Unsupervised learning
 
-### Supervised Learning: 
+# ### Supervised Learning: 
+# 
+# > Example: Labelling emails as spam or not
+# 
+# - In supervised machine learning, we have a set of observations usually denoted with an uppercase `X`.
+# - We also have a set of corresponding targets usually denoted with a lowercase `y`. 
+# - Our goal is to define a function that relates `X` to `y`. 
+# - We then use this function to predict the targets of new examples. 
+# 
+# <br>
+# <br>
+# 
+# <img src='imgs/sup-learning.png'  width = "75%" alt="404 image" />
+# 
 
-> Example: Labelling emails as spam or not
+# ### UnSupervised Learning: (not going into detail here)  
+# 
+# > Example: Categorizing Google News articles.
+# 
+# 
+# - In unsupervised learning, we are not given targets and are only given observations `X`. 
+# - We apply some clustering algorithms to create a model that finds patterns in our data and groups together similar characteristics from our data.
+# 
+# 
+# 
+# <img src='imgs/unsup-learning.png'  width = "75%" alt="404 image" />
 
-- In supervised machine learning, we have a set of observations usually denoted with an uppercase `X`.
-- We also have a set of corresponding targets usually denoted with a lowercase `y`. 
-- Our goal is to define a function that relates `X` to `y`. 
-- We then use this function to predict the targets of new examples. 
+# ## Types of Supervised Learning: Classification vs Regression
+# 
+# - Classification
+# - Regression
+# 
+# ### Classification
+# 
+# **Classification** predicting among two or more categories, also known as classes.
+# - *Example1*: Predict whether a customer will default on their credit card or not. 
+# - *Example2*: Predict if an animal is a reptile, mammal or bird. 
+#     
+# 
+# ### Regression
+# 
+# **Regression** predicting a continuous (in other words, a number) value.
+# - Example1: Predict housing prices
+# - Example2: Predict the length of a snake. 
+#     
+#     
+# <img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
+# 
 
-<br>
-<br>
+# ## Let's Practice
+# 
+# **Are the following supervised or unsupervised problems?**   
+# 
+# 1\. Finding groups of similar properties in a real estate data set.   
+# 2\. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.    
+# 3\. Identifying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.    
+# 4\. Detecting heart disease in patients based on different test results and history.    
+# 5\. Grouping articles on different topics from different news sources (something like Google News app).    
+# 
+# **Are the following classification or regression problems?**   
+# 
+# 6\. Predicting the price of a house based on features such as number of rooms and the year built.    
+# 7\. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.     
+# 8\. Predicting your grade in BAIT 509 based on past grades.     
+# 9\. Predicting whether you should bicycle tomorrow or not based on the weather forecast.     
+# 10\. Predicting a cereal’s manufacturer given the nutritional information.     
 
-<img src='imgs/sup-learning.png'  width = "75%" alt="404 image" />
+# ```{admonition} Solutions!
+# :class: dropdown
+# 1. Unsupervised
+# 2. Supervised
+# 3. Unsupervised
+# 4. Supervised
+# 5. Unsupervised
+# 6. Regression
+# 7. Classification
+# 8. Regression
+# 9. Classification
+# 10. Classification 
+# ```
 
+# ## Tabular Data and Terminology
+# 
+# Basic terminology used in ML:
+# 
+# - **examples/observations** = rows 
+# - **features/variables** = inputs (columns)
+# - **targets** = outputs (one special column)
+# - **training** = learning = fitting
+# 
+# <img src="imgs/sup-ml-terminology2.png" width = "90%" alt="404 image" />
+# 
 
-### UnSupervised Learning: (not going into detail here)  
+# ### Example:
+# 
+# - This [dataset](http://simplemaps.com/static/demos/resources/us-cities/cities.csv) contains longtitude and latitude data for 400 cities in the US.
+# - Each city is labelled as `red` or `blue` depending on how they voted in the 2012 election.
 
-> Example: Categorizing Google News articles.
+# In[72]:
 
-
-- In unsupervised learning, we are not given targets and are only given observations `X`. 
-- We apply some clustering algorithms to create a model that finds patterns in our data and groups together similar characteristics from our data.
-
-
-
-<img src='imgs/unsup-learning.png'  width = "75%" alt="404 image" />
-
-## Types of Supervised Learning: Classification vs Regression
-
-- Classification
-- Regression
-
-### Classification
-
-**Classification** predicting among two or more categories, also known as classes.
-- *Example1*: Predict whether a customer will default on their credit card or not. 
-- *Example2*: Predict if an animal is a reptile, mammal or bird. 
-    
-
-### Regression
-
-**Regression** predicting a continuous (in other words, a number) value.
-- Example1: Predict housing prices
-- Example2: Predict the length of a snake. 
-    
-    
-<img src="imgs/classification-vs-regression2.png" width = "90%" alt="404 image" />
-
-
-## Let's Practice
-
-**Are the following supervised or unsupervised problems?**   
-
-1\. Finding groups of similar properties in a real estate data set.   
-2\. Predicting real estate prices based on house features like number of rooms, learning from past sales as examples.    
-3\. Identifying groups of animals given features such as "number of legs", "wings/no wings", "fur/no fur", etc.    
-4\. Detecting heart disease in patients based on different test results and history.    
-5\. Grouping articles on different topics from different news sources (something like Google News app).    
-
-**Are the following classification or regression problems?**   
-
-6\. Predicting the price of a house based on features such as number of rooms and the year built.    
-7\. Predicting if a house will sell or not based on features like the price of the house, number of rooms, etc.     
-8\. Predicting your grade in BAIT 509 based on past grades.     
-9\. Predicting whether you should bicycle tomorrow or not based on the weather forecast.     
-10\. Predicting a cereal’s manufacturer given the nutritional information.     
-
-```{admonition} Solutions!
-:class: dropdown
-1. Unsupervised
-2. Supervised
-3. Unsupervised
-4. Supervised
-5. Unsupervised
-6. Regression
-7. Classification
-8. Regression
-9. Classification
-10. Classification 
-```
-
-## Tabular Data and Terminology
-
-Basic terminology used in ML:
-
-- **examples/observations** = rows 
-- **features/variables** = inputs (columns)
-- **targets** = outputs (one special column)
-- **training** = learning = fitting
-
-<img src="imgs/sup-ml-terminology2.png" width = "90%" alt="404 image" />
-
-
-### Example:
-
-- This [dataset](http://simplemaps.com/static/demos/resources/us-cities/cities.csv) contains longtitude and latitude data for 400 cities in the US.
-- Each city is labelled as `red` or `blue` depending on how they voted in the 2012 election.
 
 df = pd.read_csv('data/cities_USA.csv', index_col=0).sample(20, random_state=77)
 df
 
+
+# In[13]:
+
+
 df.shape
 
-In this dataset, we have:
-- 2 **features**, (3 columns = 2 **features** + 1 target) and,
-- 20 **examples**.
 
-Our **target** column is `vote` since that is what we are interesting in predicting. 
+# In this dataset, we have:
+# - 2 **features**, (3 columns = 2 **features** + 1 target) and,
+# - 20 **examples**.
+# 
+# Our **target** column is `vote` since that is what we are interesting in predicting. 
 
-## Decision Tree Algorithm
+# ## Decision Tree Algorithm
 
-### A conceptual introduction to Decision Trees
+# ### A conceptual introduction to Decision Trees
 
-Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).   
-The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'>**BLUE**</font> or <font color='orange'>**ORANGE**</font> class.    
-A fairly intuitive way to do this is to simply use thresholds to split the data up.
+# Shown below is some hypothetical data with 2 features (x and y axes) and 1 target (with 2 classes).   
+# The supervised learning problem here is to predict whether a particular observaton belongs to the <font color='blue'>**BLUE**</font> or <font color='orange'>**ORANGE**</font> class.    
+# A fairly intuitive way to do this is to simply use thresholds to split the data up.
 
-<img src='imgs/scatter_dt1.png'  width = "40%" alt="404 image" />
+# <img src='imgs/scatter_dt1.png'  width = "40%" alt="404 image" />
 
-For example, we can **split** the data at `Feature_1 = 0.47`.   
-Everything **less than** the split we can classify as <font color='orange'>**ORANGE**</font>.  
-Everything **greater than** the split we can classify as <font color='blue'>**BLUE**</font>.   
-By this method, we can successfully classify 7 / 9 observations.
+# For example, we can **split** the data at `Feature_1 = 0.47`.   
+# Everything **less than** the split we can classify as <font color='orange'>**ORANGE**</font>.  
+# Everything **greater than** the split we can classify as <font color='blue'>**BLUE**</font>.   
+# By this method, we can successfully classify 7 / 9 observations.
 
-<img src='imgs/scatter_dt2.png'  width = "40%" alt="404 image" />
+# <img src='imgs/scatter_dt2.png'  width = "40%" alt="404 image" />
 
-But we don't have to stop there, we can make another split!   
-Let's now split the section that is greater than `Feature_1 = 0.47`, using `Feature_2 = 0.52`.
-We now have the following conditions:    
-- If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>.    
-- If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>.    
+# But we don't have to stop there, we can make another split!   
+# Let's now split the section that is greater than `Feature_1 = 0.47`, using `Feature_2 = 0.52`.
+# We now have the following conditions:    
+# - If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>.    
+# - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>.    
+# 
+# Using these rules, we now successfully classify 8 / 9 observations.  
 
-Using these rules, we now successfully classify 8 / 9 observations.  
+# <img src='imgs/scatter_dt3.png'  width = "40%" alt="404 image" />
 
-<img src='imgs/scatter_dt3.png'  width = "40%" alt="404 image" />
+# Okay, let's add one more threshhold.    
+# Let's make a final split of the section that is less than `Feature_1 = 0.47`, using `Feature_2 = 0.6`.   
+# By this methodology we have successfully classified all of our data.   
 
-Okay, let's add one more threshhold.    
-Let's make a final split of the section that is less than `Feature_1 = 0.47`, using `Feature_2 = 0.6`.   
-By this methodology we have successfully classified all of our data.   
+# <img src='imgs/scatter_dt4.png'  width = "40%" alt="404 image" />
 
-<img src='imgs/scatter_dt4.png'  width = "40%" alt="404 image" />
+# What we've really done here is create a group of `if` statements:     
+# - If `Feature_1 < 0.47` and `Feature_2 < 0.6` classify as <font color='orange'>**ORANGE**</font>
+# - If `Feature_1 < 0.47` and `Feature_2 > 0.6` classify as <font color='blue'>**BLUE**</font>
+# - If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>
+# - If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
+# 
+# This is easier to visualize as a tree:
 
-What we've really done here is create a group of `if` statements:     
-- If `Feature_1 < 0.47` and `Feature_2 < 0.6` classify as <font color='orange'>**ORANGE**</font>
-- If `Feature_1 < 0.47` and `Feature_2 > 0.6` classify as <font color='blue'>**BLUE**</font>
-- If `Feature_1 > 0.47` and `Feature_2 < 0.52` classify as <font color='blue'>**BLUE**</font>
-- If `Feature_1 > 0.47` and `Feature_2 > 0.52` classify as <font color='orange'>**ORANGE**</font>
+# <img src='imgs/toy_tree.png'  width = "40%" alt="404 image" />
 
-This is easier to visualize as a tree:
+# We just made our first decision tree!
 
-<img src='imgs/toy_tree.png'  width = "40%" alt="404 image" />
+# Before we go forward with learning about decision tree classifiers and reggressors we need to understand the structure of a decision tree.
+# Here is the key terminology that you will have to know: 
+# 
+# - **Root**: Where we start making our conditions.
+# - **Branch**:  A branch connects to the next node (statement). Each branch represents either true or false.
+# - **Internal node**: conditions within the tree.  
+# - **Leaf**: the value predicted from the conditions. 
+# - **Tree depth**: The longest path from the root to a leaf.
+# 
+# With the decision tree algorithm in machine learning, the tree can have at most two nodes resulting from it, also known as children.
+# 
+# If a tree only has a depth of 1, we call that a **decision stump**.
 
-We just made our first decision tree!
+# <img src="imgs/lingo_tree.png"  width = "55%" alt="404 image">
 
-Before we go forward with learning about decision tree classifiers and reggressors we need to understand the structure of a decision tree.
-Here is the key terminology that you will have to know: 
+# This tree  and the one in our example above, both have a depth of 2.
+# 
+# Trees do not need to be balanced. (You'll see this shortly)
 
-- **Root**: Where we start making our conditions.
-- **Branch**:  A branch connects to the next node (statement). Each branch represents either true or false.
-- **Internal node**: conditions within the tree.  
-- **Leaf**: the value predicted from the conditions. 
-- **Tree depth**: The longest path from the root to a leaf.
+# ### Implimentation with Scikit-learn
+# 
+# Before we build any model (we are getting to that so hang tight), we need to make sure we have the right "parts" aka inputs and outputs. 
+# 
+# That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.
+# 
+# $X$ is all of our features in our data, which we also call our ***feature table***. <br>
+# $y$ is our target, which is what we are predicting.
 
-With the decision tree algorithm in machine learning, the tree can have at most two nodes resulting from it, also known as children.
+# In[74]:
 
-If a tree only has a depth of 1, we call that a **decision stump**.
-
-<img src="imgs/lingo_tree.png"  width = "55%" alt="404 image">
-
-This tree  and the one in our example above, both have a depth of 2.
-
-Trees do not need to be balanced. (You'll see this shortly)
-
-### Implimentation with Scikit-learn
-
-Before we build any model (we are getting to that so hang tight), we need to make sure we have the right "parts" aka inputs and outputs. 
-
-That means we need to split up our tabular data into the features and the target, also known as $X$ and $y$.
-
-$X$ is all of our features in our data, which we also call our ***feature table***. <br>
-$y$ is our target, which is what we are predicting.
 
 X = df.drop(columns=["vote"])
 y = df["vote"]
 
+
+# In[75]:
+
+
 X.head()
+
+
+# In[76]:
+
 
 y.head()
 
-There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.
 
+# There are several machine learning libraries available to use but for this course, we will be using the  Scikit-learn (hereafter, referred to as sklearn) library, which is a popular (41.6k stars on Github) Machine Learning library for Python.
+# 
 
-- We generally import a particular ML algorithm using the following syntax:
-> `from sklearn.module import algorithm`
+# - We generally import a particular ML algorithm using the following syntax:
+# > `from sklearn.module import algorithm`
+# 
+# The decision tree classification algorithm (`DecisionTreeClassifier`) sits within the `tree` module.  
+# (Note there is also a Decision Tree Regression algorithm in this module which we'll come to later...)  
+# Let's import the classifier using the following code:  
 
-The decision tree classification algorithm (`DecisionTreeClassifier`) sits within the `tree` module.  
-(Note there is also a Decision Tree Regression algorithm in this module which we'll come to later...)  
-Let's import the classifier using the following code:  
+# In[77]:
+
 
 from sklearn.tree import DecisionTreeClassifier
 
-We can begin creating a model by instantiating an instance of the algorithm class.    
-Here we are naming our decision tree model `model`:   
+
+# We can begin creating a model by instantiating an instance of the algorithm class.    
+# Here we are naming our decision tree model `model`:   
+
+# In[78]:
+
 
 model = DecisionTreeClassifier()
 model
 
-At this point we just have the framework of a model.    
-We can't do anything with our algorithm yet, because it hasn't seen any data!     
-We need to give our algorithm some data to learn/train/fit a model.    
 
-We can now use the `.fit()` method to train our model using the feature `X` and target `y` data we just separated.  
-When we call fit on our model object, the actual learning happens. 
+# At this point we just have the framework of a model.    
+# We can't do anything with our algorithm yet, because it hasn't seen any data!     
+# We need to give our algorithm some data to learn/train/fit a model.    
+
+# We can now use the `.fit()` method to train our model using the feature `X` and target `y` data we just separated.  
+# When we call fit on our model object, the actual learning happens. 
+
+# In[79]:
+
 
 model.fit(X, y)
 
-Now we've used data to learn a model, let's take a look at the model we made!    
-The code below prints out our model structure for us (like the tree we made ourselves earlier)   
 
-*Note: This `display_tree`, function was adapted from the `graphviz` library with some amendments to make the trees easier to understand. You can find the code in the `script` file on Canvas.*   
+# Now we've used data to learn a model, let's take a look at the model we made!    
+# The code below prints out our model structure for us (like the tree we made ourselves earlier)   
+# 
+# *Note: This `display_tree`, function was adapted from the `graphviz` library with some amendments to make the trees easier to understand. You can find the code in the `script` file on Canvas.*   
+
+# In[80]:
+
 
 sys.path.append('code/')
 from display_tree import display_tree
 display_tree(X.columns, model, "imgs/decision_tree")
 
-We can better visualize what's going on by actually plotting our data and the model's  **decision boundaries**.
 
-*Note: This `plot_classifier` made by Mike Gelbart, function is available for installation [here](https://github.com/mgelbart/plot-classifier) or using:*
->`pip install git+git://github.com/mgelbart/plot-classifier.git`
+# We can better visualize what's going on by actually plotting our data and the model's  **decision boundaries**.
+# 
+# *Note: This `plot_classifier` made by Mike Gelbart, function is available for installation [here](https://github.com/mgelbart/plot-classifier) or using:*
+# >`pip install git+git://github.com/mgelbart/plot-classifier.git`
+# 
+# or with conda
+# 
+# > `conda install git` <br>
+# > `conda install pip`<br>
+# > `pip install git+git://github.com/mgelbart/plot-classifier.git`
 
-or with conda
+# In[81]:
 
-> `conda install git` <br>
-> `conda install pip`<br>
-> `pip install git+git://github.com/mgelbart/plot-classifier.git`
 
 from plot_classifier import plot_classifier
 
@@ -433,144 +518,196 @@ plt.yticks(fontsize= 20);
 plt.xlabel('lon', fontsize=20);
 plt.ylabel('lat', fontsize=20);  
 
-In this plot the shaded regions show what our model predicts for different feature values.  
-The scatter points are our actual 20 observations.    
-From the above plot, we can see that our model is classifying all our observations correctly, but there's an easier way to find out how our model is doing.   
-We can predict the target of examples by calling `.predict()` on the classifier object.     
-Let’s see what it predicts for a single randomly new observation first:
+
+# In this plot the shaded regions show what our model predicts for different feature values.  
+# The scatter points are our actual 20 observations.    
+# From the above plot, we can see that our model is classifying all our observations correctly, but there's an easier way to find out how our model is doing.   
+# We can predict the target of examples by calling `.predict()` on the classifier object.     
+# Let’s see what it predicts for a single randomly new observation first:
+
+# In[82]:
+
 
 new_ex = [-87.4, 59]
 new_example = pd.DataFrame(data= [new_ex], columns = ["lon", "lat"])
 new_example
 
+
+# In[83]:
+
+
 model.predict(new_example)
 
-we get a prediction of `red` for this example!
 
-We can also predict on our whole feature table - Here, we are predicting on all of X.
+# we get a prediction of `red` for this example!
+# 
+# We can also predict on our whole feature table - Here, we are predicting on all of X.
+
+# In[84]:
+
 
 model.predict(X)
 
+
+# In[85]:
+
+
 pd.DataFrame({'true_values' : y.to_numpy(), 'predicted' : model.predict(X)})
 
-Or if we just want to know how many we got right, in the classification setting, we can use  `score()` which gives the accuracy of the model, i.e., the proportion of correctly predicted examples.
 
-Sometimes we will also see people reporting **error**, which is usually 1 - accuracy. 
+# Or if we just want to know how many we got right, in the classification setting, we can use  `score()` which gives the accuracy of the model, i.e., the proportion of correctly predicted examples.
+# 
+# Sometimes we will also see people reporting **error**, which is usually 1 - accuracy. 
+# 
+# Our model has an accurary of 100% (or 0% error)!
 
-Our model has an accurary of 100% (or 0% error)!
+# In[86]:
+
 
 model.score(X,y)
 
-### How does `.predict()` work?
 
-For us to see how our algorithm predicts for each example, all we have to do is return to our Decision Tree. 
+# ### How does `.predict()` work?
+# 
+# For us to see how our algorithm predicts for each example, all we have to do is return to our Decision Tree. 
+
+# In[87]:
+
 
 display_tree(X.columns, model, "imgs/decision_tree")
 
-Let's use our `new_example` object for this example.
+
+# Let's use our `new_example` object for this example.
+
+# In[28]:
+
 
 new_example
 
-First we start at the root. <br>
-Is `lon` < -102.165? False, so we go down the right branch. <br>
-Is `lon` < -81.529? True , so we go down the left branch . <br>
-We arrive at another node. Is `lat` < 41.113? True , so we go down the left branch and arrive at a prediction of `red`! <br>
 
-Let's check this using predict again. 
+# First we start at the root. <br>
+# Is `lon` < -102.165? False, so we go down the right branch. <br>
+# Is `lon` < -81.529? True , so we go down the left branch . <br>
+# We arrive at another node. Is `lat` < 41.113? True , so we go down the left branch and arrive at a prediction of `red`! <br>
+# 
+# Let's check this using predict again. 
+
+# In[29]:
+
 
 model.predict(new_example)
 
-Nice!
 
-### How does `.fit()` work?
+# Nice!
 
-Or "How does do Decision Trees decide what values to split on?"
+# ### How does `.fit()` work?
+# 
+# Or "How does do Decision Trees decide what values to split on?"
+# 
+# 
+# We will not go into detail here, but there the important thing to note here is: 
+# 
+# - We evaluate the utility of a split using a mathematical formula (see [here](https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation)) where we minimize impurity at each question/node (gives you the least hetegeneous splits)
+# 
+# - Common criteria to minimize impurity
+#     - Gini Index
+#     - Information gain
+#     - Cross entropy 
+# 
 
+# ## Let's Practice
+# 
+# Using the data `candybars.csv` from the datafolder to aswer the following questions:  
+# 
+# 1\. How many features are there?    
+# 2\. How many observations are there?     
+# 3\. What would be a suitable target with this data?    
 
-We will not go into detail here, but there the important thing to note here is: 
+# In[30]:
 
-- We evaluate the utility of a split using a mathematical formula (see [here](https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation)) where we minimize impurity at each question/node (gives you the least hetegeneous splits)
-
-- Common criteria to minimize impurity
-    - Gini Index
-    - Information gain
-    - Cross entropy 
-
-
-## Let's Practice
-
-Using the data `candybars.csv` from the datafolder to aswer the following questions:  
-
-1\. How many features are there?    
-2\. How many observations are there?     
-3\. What would be a suitable target with this data?    
 
 candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
 
+
+# In[31]:
+
+
 candy_df.shape
 
-**Answer as either `fit`  or `predict`:**   
 
-4. Is called first (before the other one).    
-5. Only takes X as an argument.    
-6. In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.   
- 
-**Quick Questions:**   
+# **Answer as either `fit`  or `predict`:**   
+# 
+# 4. Is called first (before the other one).    
+# 5. Only takes X as an argument.    
+# 6. In scikit-learn, we can ignore its output.In scikit-learn, we can ignore its output.   
+#  
+# **Quick Questions:**   
+# 
+# 7. What is the top node in a decision tree called?    
+# 8. What Python structure/syntax are the nodes in a decision tree similar to?    
 
-7. What is the top node in a decision tree called?    
-8. What Python structure/syntax are the nodes in a decision tree similar to?    
+# ```{admonition} Solutions!
+# :class: dropdown
+# 1. 8
+# 2. 25
+# 3. Probably `availability` but we could use the other features as well. 
+# 4. `fit`
+# 5. `predict`
+# 6. `fit`
+# 7. the root
+# 8. if/else conditions
+# ```
 
-```{admonition} Solutions!
-:class: dropdown
-1. 8
-2. 25
-3. Probably `availability` but we could use the other features as well. 
-4. `fit`
-5. `predict`
-6. `fit`
-7. the root
-8. if/else conditions
-```
+# ## Parameters and Hyperparameters
+# 
+# - ***Parameters***:  Derived during training
+# - ***Hyperparameters***: Adjustable parameters that can be set before training. 
+# 
+# 
+# 
+# ### Parameters 
+# 
+# When you call `fit` (the training stage of building your model), **parameters** get set, like the split variables and split thresholds. 
+# 
+# 
+# <img src='imgs/parameters.png'  width = "30%" alt="404 image" />
+#  
 
-## Parameters and Hyperparameters
+# ### Hyperparameters
+# 
+# But even before calling `fit` on a specific data set, we can set some some "knobs" which that control the learning which are called **hyperparameters**. 
+# 
+# In scikit-learn, hyperparameters are set in the constructor.
+# 
+# `max_depth`is a hyperparameter (of many) that lets us decide and set how "deep" we allow our tree to grow.
 
-- ***Parameters***:  Derived during training
-- ***Hyperparameters***: Adjustable parameters that can be set before training. 
+# Let's practice by making a decision stump (A tree with a depth of 1). Our last model was made where we set the depth to "unlimited" so we need to initial a new model and train a new where where we set the `max_depth` hyperparameter. 
 
+# In[32]:
 
-
-### Parameters 
-
-When you call `fit` (the training stage of building your model), **parameters** get set, like the split variables and split thresholds. 
-
-
-<img src='imgs/parameters.png'  width = "30%" alt="404 image" />
- 
-
-### Hyperparameters
-
-But even before calling `fit` on a specific data set, we can set some some "knobs" which that control the learning which are called **hyperparameters**. 
-
-In scikit-learn, hyperparameters are set in the constructor.
-
-`max_depth`is a hyperparameter (of many) that lets us decide and set how "deep" we allow our tree to grow.
-
-Let's practice by making a decision stump (A tree with a depth of 1). Our last model was made where we set the depth to "unlimited" so we need to initial a new model and train a new where where we set the `max_depth` hyperparameter. 
 
 model_1 = DecisionTreeClassifier(max_depth=1).fit(X, y)
 model_1.fit(X, y)
 
-Let's see what the tree looks like now.  
+
+# Let's see what the tree looks like now.  
+
+# In[33]:
+
 
 display_tree(X.columns, model_1, "imgs/decision_stump")
 
-We see that it's a depth of one and split on `lon` at -102.165. 
 
-- The hyperparameter `max_depth`  is being set by us at 1.
-- The parameter `lon` is set by the algorithm at -102.165. 
+# We see that it's a depth of one and split on `lon` at -102.165. 
+# 
+# - The hyperparameter `max_depth`  is being set by us at 1.
+# - The parameter `lon` is set by the algorithm at -102.165. 
 
-We can see the decision boundary at `lon`= -102.165 with the vertical line in the plot below. 
+# We can see the decision boundary at `lon`= -102.165 with the vertical line in the plot below. 
+
+# In[34]:
+
 
 plot_classifier(X, y, model_1, ticks=True)
 plt.xticks(fontsize= 20);
@@ -578,17 +715,33 @@ plt.yticks(fontsize= 20);
 plt.xlabel('lon', fontsize=20);
 plt.ylabel('lat', fontsize=20);  
 
-- Looking  at the score of this model, we get an accuracy of 75%.
+
+# - Looking  at the score of this model, we get an accuracy of 75%.
+
+# In[35]:
+
 
 model_1.score(X, y)
 
-Let's try growing a more complex tree model and now set `max_depth = 3`
+
+# Let's try growing a more complex tree model and now set `max_depth = 3`
+
+# In[71]:
+
 
 model_3 = DecisionTreeClassifier(max_depth=3).fit(X, y)
 
+
+# In[37]:
+
+
 display_tree(X.columns, model_3, "imgs/dt_2")
 
-This has 4 splits in the tree so we expect 4 decision boundaries (2 on `lon` and 2 on `lat`). 
+
+# This has 4 splits in the tree so we expect 4 decision boundaries (2 on `lon` and 2 on `lat`). 
+
+# In[38]:
+
 
 plot_classifier(X, y, model_3, ticks=True)
 plt.xticks(fontsize= 20);
@@ -596,17 +749,33 @@ plt.yticks(fontsize= 20);
 plt.xlabel('lon', fontsize=20);
 plt.ylabel('lat', fontsize=20);  
 
-- Looking at the score of this model now get an accuracy of 90%! 
+
+# - Looking at the score of this model now get an accuracy of 90%! 
+
+# In[39]:
+
 
 model_3.score(X, y)
 
-Let's do one more and set `max_depth = 5`.
+
+# Let's do one more and set `max_depth = 5`.
+
+# In[40]:
+
 
 model_5 = DecisionTreeClassifier(max_depth=5).fit(X, y)
 
+
+# In[41]:
+
+
 display_tree(X.columns, model_5, "imgs/dt_5")
 
-This has 7 splits in the tree. How many decision boundaries should there be?
+
+# This has 7 splits in the tree. How many decision boundaries should there be?
+
+# In[42]:
+
 
 plot_classifier(X, y, model_5, ticks=True)
 plt.xticks(fontsize= 20);
@@ -614,51 +783,71 @@ plt.yticks(fontsize= 20);
 plt.xlabel('lon', fontsize=20);
 plt.ylabel('lat', fontsize=20);  
 
-And if we check the score of this model we get 100% accuracy! 
+
+# And if we check the score of this model we get 100% accuracy! 
+
+# In[43]:
+
 
 model_5.score(X, y)
 
-We see here that as `max_depth` increases, the accuracy of the training data does as well.
 
-Doing this isn’t always the best idea and we’ll explain this a little bit later on.
+# We see here that as `max_depth` increases, the accuracy of the training data does as well.
+# 
+# Doing this isn’t always the best idea and we’ll explain this a little bit later on.
+# 
+# - This is just one of many other hyperparameters for decision trees that you can explore -> link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a> There are many other hyperparameters for decision trees that you can explore at the link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a>.
 
-- This is just one of many other hyperparameters for decision trees that you can explore -> link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a> There are many other hyperparameters for decision trees that you can explore at the link <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank">here</a>.
+# To summarize this section:
+# - **parameters** are automatically learned by an algorithm during training
+# - **hyperparameters** are specified before training
 
-To summarize this section:
-- **parameters** are automatically learned by an algorithm during training
-- **hyperparameters** are specified before training
+# ## Decision Tree Regressor 
 
-## Decision Tree Regressor 
+# We saw that we can use decision trees for classification problems but we can also use this decision tree algorithm for regression problems.  
+# 
+# Instead of using Gini impurity (which we briefly mentioned this above), we can use <a href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation" target="_blank">some other criteria</a> for splitting. 
+# 
+# (A common one is mean squared error (MSE) which we will discuss shortly)
+# 
+# `scikit-learn` supports regression using decision trees with `DecisionTreeRegressor()` and the `.fit()` and `.predict()` paradigm that is similar to classification.
+# 
+# Let's do an example using the `kc_house_data` we saw in example 1. 
 
-We saw that we can use decision trees for classification problems but we can also use this decision tree algorithm for regression problems.  
+# In[44]:
 
-Instead of using Gini impurity (which we briefly mentioned this above), we can use <a href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation" target="_blank">some other criteria</a> for splitting. 
-
-(A common one is mean squared error (MSE) which we will discuss shortly)
-
-`scikit-learn` supports regression using decision trees with `DecisionTreeRegressor()` and the `.fit()` and `.predict()` paradigm that is similar to classification.
-
-Let's do an example using the `kc_house_data` we saw in example 1. 
 
 df = pd.read_csv("data/kc_house_data.csv")
 df = df.drop(columns=["id", "date"])
 df.head()
 
+
+# In[45]:
+
+
 X = df.drop(columns=["price"])
 X.head()
+
+
+# In[46]:
+
 
 y = df["price"]
 y.head()
 
-We can see that instead of predicting a categorical column like we did with `vote` before, our target column is now numeric. 
 
-Instead of importing `DecisionTreeClassifier`, we import `DecisionTreeRegressor`.
+# We can see that instead of predicting a categorical column like we did with `vote` before, our target column is now numeric. 
+# 
+# Instead of importing `DecisionTreeClassifier`, we import `DecisionTreeRegressor`.
+# 
+# We follow the same steps as before and can even set hyperparameters as we did in classification. 
+# 
+# Here, when we build our model, we are specifying a `max_depth` of 3. 
+# 
+# This means our decision tree is going to be constrained to a depth of 3.
 
-We follow the same steps as before and can even set hyperparameters as we did in classification. 
+# In[72]:
 
-Here, when we build our model, we are specifying a `max_depth` of 3. 
-
-This means our decision tree is going to be constrained to a depth of 3.
 
 from sklearn.tree import DecisionTreeRegressor
 
@@ -666,51 +855,76 @@ depth = 3
 reg_model = DecisionTreeRegressor(max_depth=depth, random_state=1)
 reg_model.fit(X, y)
 
-Let's look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.
 
-<img src='imgs/dt_reg.png'  width = "100%" alt="404 image" />
+# Let's look at the tree it produces our leaves used to contain a categorical value for prediction, but this time we see our leaves are predicting numerical values.
 
-Let's see what our model predicts for a single example. 
+# <img src='imgs/dt_reg.png'  width = "100%" alt="404 image" />
+
+# Let's see what our model predicts for a single example. 
+
+# In[49]:
+
 
 X.loc[[0]]
 
+
+# In[50]:
+
+
 reg_model.predict(X.loc[[0]])
 
-Our model predicts a housing price of $269848.39 
 
-Should we see what the true value is? 
+# Our model predicts a housing price of $269848.39 
+# 
+# Should we see what the true value is? 
+
+# In[51]:
+
 
 y.loc[[0]]
 
-The true value is $221900.0, but how well did it score? 
 
-With regression problems we can't use accuracy for a scoring method so instead when we use `.score()`  it returns somethings called an <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" target="_blank"> 𝑅2 </a>.
+# The true value is $221900.0, but how well did it score? 
+# 
+# With regression problems we can't use accuracy for a scoring method so instead when we use `.score()`  it returns somethings called an <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" target="_blank"> 𝑅2 </a>.
+
+# In[52]:
+
 
 reg_model.score(X,y)
 
-The maximum 𝑅2 is 1 for perfect predictions. 
 
-It can be negative which is very bad. 
+# The maximum 𝑅2 is 1 for perfect predictions. 
+# 
+# It can be negative which is very bad. 
 
-## Let's Practice - Coding 
+# ## Let's Practice - Coding 
 
-Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here](https://ml-learn.mds.ubc.ca/en/module2))  for the following:
-1. Define two objects named `X` and `y` which contain the features and target column respectively.
-2. Using sklearn, create 3 different decision tree classifiers using 3 different `min_samples_split` values based on this data.
-3. What is the accuracy of each classifier on the training data?
-4. a) Which `min_samples_split` value would you choose to predict this data? <br>
-   b) Would you choose the same `min_samples_split` value to predict new data?
-5. Do you think most of the computational effort for a decision tree takes place in the `.fit()` stage or `.predict()` stage?
+# Using the data `candybars.csv` from the datafolder (or going to exercise 7 [here](https://ml-learn.mds.ubc.ca/en/module2))  for the following:
+# 1. Define two objects named `X` and `y` which contain the features and target column respectively.
+# 2. Using sklearn, create 3 different decision tree classifiers using 3 different `min_samples_split` values based on this data.
+# 3. What is the accuracy of each classifier on the training data?
+# 4. a) Which `min_samples_split` value would you choose to predict this data? <br>
+#    b) Would you choose the same `min_samples_split` value to predict new data?
+# 5. Do you think most of the computational effort for a decision tree takes place in the `.fit()` stage or `.predict()` stage?
+
+# In[90]:
+
 
 candy_df = pd.read_csv('data/candybars.csv', index_col=0)
 candy_df.head()
 
 
+# In[ ]:
 
-## What We've Learned Today<a id="9"></a>
 
-- What is machine learning (supervised/unsupervised, classification/regression)
-- Machine learning terminology
-- What is the decision tree algorithm and how does it work
-- The scikit-learn library
-- Parameters and hyperparameters
+
+
+
+# ## What We've Learned Today<a id="9"></a>
+# 
+# - What is machine learning (supervised/unsupervised, classification/regression)
+# - Machine learning terminology
+# - What is the decision tree algorithm and how does it work
+# - The scikit-learn library
+# - Parameters and hyperparameters
