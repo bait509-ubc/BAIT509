@@ -1,6 +1,12 @@
-# SVM with RBF Kernel and Feature Preprocessing
+#!/usr/bin/env python
+# coding: utf-8
 
-*Hayley Boyce, April 28th 2021*
+# # SVM with RBF Kernel and Feature Preprocessing
+# 
+# *Hayley Boyce, April 28th 2021*
+
+# In[1]:
+
 
 # Importing our libraries
 import pandas as pd
@@ -23,52 +29,56 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler, MinMaxScaler
 
-## House Keeping 
-- Assignment due today at 11:59pm!
-- Course feedback!
-- Assignment - things I should know?
-- Assignment2 - before or after the weekend?
-- Polls coming Monday!
-- I hear you don't like breakout rooms, let's try this lecture without them!
-- Per the announcement Monday, download the data for this lecture [here](https://www.kaggle.com/harrywang/housing) and include it in your `data` folder that resides in `lectures`. 
 
-## Lecture Learning Objectives 
+# ## House Keeping 
+# - Assignment due today at 11:59pm!
+# - Course feedback!
+# - Assignment - things I should know?
+# - Assignment2 - before or after the weekend?
+# - Polls coming Monday!
+# - I hear you don't like breakout rooms, let's try this lecture without them!
+# - Per the announcement Monday, download the data for this lecture [here](https://www.kaggle.com/harrywang/housing) and include it in your `data` folder that resides in `lectures`. 
 
-- Identify when to implement feature transformations such as imputation and scaling.
-- Describe the difference between normalizing and standardizing and be able to use scikit-learn's `MinMaxScaler()` and `StandardScaler()` to pre-process numeric features.
-- Apply `sklearn.pipeline.Pipeline` to build a machine learning pipeline.
-- Use `sklearn` for applying numerical feature transformations to the data.
-- Discuss the golden rule in the context of feature transformations.
+# ## Lecture Learning Objectives 
+# 
+# - Identify when to implement feature transformations such as imputation and scaling.
+# - Describe the difference between normalizing and standardizing and be able to use scikit-learn's `MinMaxScaler()` and `StandardScaler()` to pre-process numeric features.
+# - Apply `sklearn.pipeline.Pipeline` to build a machine learning pipeline.
+# - Use `sklearn` for applying numerical feature transformations to the data.
+# - Discuss the golden rule in the context of feature transformations.
 
-## Five Minute Recap/ Lightning Questions 
+# ## Five Minute Recap/ Lightning Questions 
+# 
+# - When using a Dummy Regressor what value does the model predict for unseen data? 
+# - When using a Dummy Classifier (the one we examined in lecture) what class does the model predict for unseen data? 
+# - What is the name of the distance metric used in the $k$-nn model we looked at?
+# - If a dataset has 14 features and 1 target column, how many dimensions will the feature vector be?
+# - What is the hyperparameter name of the $k$-nn classifier we looked at last lecture?
 
-- When using a Dummy Regressor what value does the model predict for unseen data? 
-- When using a Dummy Classifier (the one we examined in lecture) what class does the model predict for unseen data? 
-- What is the name of the distance metric used in the $k$-nn model we looked at?
-- If a dataset has 14 features and 1 target column, how many dimensions will the feature vector be?
-- What is the hyperparameter name of the $k$-nn classifier we looked at last lecture?
+# ### Some lingering questions
+# 
+# - How does a $k$-nn Regressor work?
+# - Are we ready to do machine learning on real-world datasets?
+# - We've looked at data with numeric features but what do we do if we have features with categories or string values?
+# - What happens if we are missing data in our features?
+# - Is there a cleaner way to do all the steps we need to do? 
 
-### Some lingering questions
+# ## Regression with $k$-NN 
+# 
+# In $k$-nearest neighbour regression, we take the average of $k$-nearest neighbours instead of the majority vote.
+# 
+# Let's look at an example. 
+# 
+# Here we are creating some synthetic data with fifty examples and only one feature. 
+# 
+# We only have one feature of `length` and our goal is to predict `weight`. 
+# 
+# Regression plots more naturally in 1D, classification in 2D, but of course we can do either for any $d$
+# 
+# Right now, do not worry about the code and only focus on data and our model. 
 
-- How does a $k$-nn Regressor work?
-- Are we ready to do machine learning on real-world datasets?
-- We've looked at data with numeric features but what do we do if we have features with categories or string values?
-- What happens if we are missing data in our features?
-- Is there a cleaner way to do all the steps we need to do? 
+# In[73]:
 
-## Regression with $k$-NN 
-
-In $k$-nearest neighbour regression, we take the average of $k$-nearest neighbours instead of the majority vote.
-
-Let's look at an example. 
-
-Here we are creating some synthetic data with fifty examples and only one feature. 
-
-We only have one feature of `length` and our goal is to predict `weight`. 
-
-Regression plots more naturally in 1D, classification in 2D, but of course we can do either for any $d$
-
-Right now, do not worry about the code and only focus on data and our model. 
 
 np.random.seed(0)
 n = 50
@@ -76,13 +86,25 @@ X_1 = np.linspace(0,2,n)+np.random.randn(n)*0.01
 X = pd.DataFrame(X_1[:,None], columns=['length'])
 X.head()
 
+
+# In[75]:
+
+
 y = abs(np.random.randn(n,1))*2 + X_1[:,None]*5
 y = pd.DataFrame(y, columns=['weight'])
 y.head()
 
+
+# In[76]:
+
+
 snake_X_train, snake_X_test, snake_y_train, snake_y_test = train_test_split(X, y, test_size=0.2, random_state=123)
 
-Now let's visualize our training data. 
+
+# Now let's visualize our training data. 
+
+# In[77]:
+
 
 source = pd.concat([snake_X_train, snake_y_train], axis=1)
 
@@ -92,9 +114,13 @@ scatter = alt.Chart(source, width=500, height=300).mark_point(filled=True, color
 
 scatter
 
-Now let's try the $k$-nearest neighbours regressor on this data. 
 
-Then we create our `KNeighborsRegressor` object with `n_neighbors=1` so we are only considering 1 neighbour and with `uniform` weights. 
+# Now let's try the $k$-nearest neighbours regressor on this data. 
+# 
+# Then we create our `KNeighborsRegressor` object with `n_neighbors=1` so we are only considering 1 neighbour and with `uniform` weights. 
+
+# In[6]:
+
 
 from sklearn.neighbors import KNeighborsRegressor
 
@@ -104,11 +130,19 @@ knnr_1.fit(snake_X_train,snake_y_train);
 predicted = knnr_1.predict(snake_X_train)
 predicted
 
-If we scored over regressors we get this perfect score of one since we have `n_neighbors=1` we are likely to overfit.
+
+# If we scored over regressors we get this perfect score of one since we have `n_neighbors=1` we are likely to overfit.
+
+# In[7]:
+
 
 knnr_1.score(snake_X_train, snake_y_train)  
 
-Plotting this we can see our model is trying to get every example correct since n_neighbors=1. (the mean of 1 point is just going to be the point value)
+
+# Plotting this we can see our model is trying to get every example correct since n_neighbors=1. (the mean of 1 point is just going to be the point value)
+
+# In[78]:
+
 
 plt.figure(figsize=(8, 5))
 grid = np.linspace(np.min(snake_X_train), np.max(snake_X_train), 1000)
@@ -119,15 +153,23 @@ plt.yticks(fontsize= 14);
 plt.xlabel("length",fontsize= 14)
 plt.ylabel("weight",fontsize= 14);
 
-What happens when we use `n_neighbors=10`?
+
+# What happens when we use `n_neighbors=10`?
+
+# In[84]:
+
 
 knnr_10 = KNeighborsRegressor(n_neighbors=10, weights="uniform")
 knnr_10.fit(snake_X_train, snake_y_train)
 knnr_10.score(snake_X_train, snake_y_train)
 
- Now we can see we are getting a lower score over the training set. Our score decreased from 1.0 when to had `n_neighbors=1` to now having a score of 0.925.  
 
-When we plot our model, we can see that it no longer is trying to get every example correct. 
+#  Now we can see we are getting a lower score over the training set. Our score decreased from 1.0 when to had `n_neighbors=1` to now having a score of 0.925.  
+# 
+# When we plot our model, we can see that it no longer is trying to get every example correct. 
+
+# In[85]:
+
 
 plt.figure(figsize=(8, 5))
 plt.plot(grid, knnr_10.predict(grid), color='orange', linewidth=1)
@@ -137,51 +179,59 @@ plt.yticks(fontsize= 16);
 plt.xlabel("length",fontsize= 16)
 plt.ylabel("weight",fontsize= 16);
 
-## Pros and Cons of 𝑘 -Nearest Neighbours
 
+# ## Pros and Cons of 𝑘 -Nearest Neighbours
+# 
+# 
+# ### Pros:
+# 
+# - Easy to understand, interpret.
+# - Simply hyperparameter $k$ (`n_neighbors`) controlling the fundamental tradeoff.
+# - Can learn very complex functions given enough data.
+# - Lazy learning: Takes no time to `fit`
+# 
+# <br>
+# 
+# ### Cons:
+# 
+# - Can potentially be VERY slow during prediction time. 
+# - Often not that great test accuracy compared to the modern approaches.
+# - Need to scale your features. We'll be looking into this in an upcoming lecture (lecture 4 I think?). 
+# 
 
-### Pros:
+# ## Let's Practice
+# 
+# $$ X = \begin{bmatrix}5 & 2\\4 & 3\\  2 & 2\\ 10 & 10\\ 9 & -1\\ 9& 9\end{bmatrix}, \quad y = \begin{bmatrix}0\\0\\1\\1\\1\\2\end{bmatrix}.$$
+# 
+# If $k=3$, what would you predict for $x=\begin{bmatrix} 0\\0\end{bmatrix}$ if we were doing regression rather than classification?
+# 
 
-- Easy to understand, interpret.
-- Simply hyperparameter $k$ (`n_neighbors`) controlling the fundamental tradeoff.
-- Can learn very complex functions given enough data.
-- Lazy learning: Takes no time to `fit`
+# ```{admonition} Solutions!
+# :class: dropdown
+# 
+# 1. 1/3 ($\frac{0 + 0 + 0}{3}$) 
+# ```
 
-<br>
+# ## Support Vector Machines (SVMs) with RBF Kernel
+# 
+# Another popular similarity-based algorithm is Support Vector Machines (SVM).
+# 
+# SVMs use a different similarity metric which is called a “kernel” in "SVM land".
+# 
+# We are going to concentrate on the specific kernel called Radial Basis Functions (RBFs).
+# 
+# Back to the good ol' Canadian and USA cities data.
 
-### Cons:
+# In[86]:
 
-- Can potentially be VERY slow during prediction time. 
-- Often not that great test accuracy compared to the modern approaches.
-- Need to scale your features. We'll be looking into this in an upcoming lecture (lecture 4 I think?). 
-
-
-## Let's Practice
-
-$$ X = \begin{bmatrix}5 & 2\\4 & 3\\  2 & 2\\ 10 & 10\\ 9 & -1\\ 9& 9\end{bmatrix}, \quad y = \begin{bmatrix}0\\0\\1\\1\\1\\2\end{bmatrix}.$$
-
-If $k=3$, what would you predict for $x=\begin{bmatrix} 0\\0\end{bmatrix}$ if we were doing regression rather than classification?
-
-
-```{admonition} Solutions!
-:class: dropdown
-
-1. 1/3 ($\frac{0 + 0 + 0}{3}$) 
-```
-
-## Support Vector Machines (SVMs) with RBF Kernel
-
-Another popular similarity-based algorithm is Support Vector Machines (SVM).
-
-SVMs use a different similarity metric which is called a “kernel” in "SVM land".
-
-We are going to concentrate on the specific kernel called Radial Basis Functions (RBFs).
-
-Back to the good ol' Canadian and USA cities data.
 
 cities_df = pd.read_csv("data/canada_usa_cities.csv")
 cities_train_df, cities_test_df = train_test_split(cities_df, test_size=0.2, random_state=123)
 cities_train_df.head()
+
+
+# In[87]:
+
 
 cities_X_train = cities_train_df.drop(columns=['country'])
 cities_y_train = cities_train_df['country']
@@ -190,34 +240,58 @@ cities_y_test = cities_test_df['country']
 
 cities_X_train.head()
 
+
+# In[88]:
+
+
 cities_y_train.head()
 
-Unlike with $k$-nn, we are  not going into detail about how support vector machine classifiers or regressor works but more so on how to use it with `sklearn`.
 
-We can use our training feature table ($X$) and target ($y$) values by using this new SVM model with (RBF) but with the old set up with `.fit()` and `.score()` that we have seen time and time again. 
+# Unlike with $k$-nn, we are  not going into detail about how support vector machine classifiers or regressor works but more so on how to use it with `sklearn`.
+# 
+# We can use our training feature table ($X$) and target ($y$) values by using this new SVM model with (RBF) but with the old set up with `.fit()` and `.score()` that we have seen time and time again. 
 
-We import the `SVC` tool from the `sklearn.svm` library (The "C" in SVC represents  *Classifier*. 
+# We import the `SVC` tool from the `sklearn.svm` library (The "C" in SVC represents  *Classifier*. 
+# 
+# To import the regressor we import `SVR` - R for *Regressor*)
 
-To import the regressor we import `SVR` - R for *Regressor*)
+# In[89]:
+
 
 from sklearn.svm import SVC
 
+
+# In[90]:
+
+
 from sklearn.svm import SVR
 
-We can cross-validate and score exactly how we saw before. 
 
-(For now, ignore `gamma=0.01` we are addressing it coming up)
+# We can cross-validate and score exactly how we saw before. 
+# 
+# (For now, ignore `gamma=0.01` we are addressing it coming up)
+
+# In[91]:
+
 
 svm = SVC(gamma=0.01)
 scores = cross_validate(svm, cities_X_train, cities_y_train, return_train_score=True)
 pd.DataFrame(scores)
 
+
+# In[92]:
+
+
 svm_cv_score = scores['test_score'].mean()
 svm_cv_score
 
-The biggest thing to know about support vector machines is that superficially, support vector machines are very similar to 𝑘-Nearest Neighbours.
 
-You can think of SVM with RBF kernel as a "smoothed" version of the $k$-Nearest Neighbours.
+# The biggest thing to know about support vector machines is that superficially, support vector machines are very similar to 𝑘-Nearest Neighbours.
+# 
+# You can think of SVM with RBF kernel as a "smoothed" version of the $k$-Nearest Neighbours.
+
+# In[93]:
+
 
 svm.fit(cities_X_train, cities_y_train);
 
@@ -232,34 +306,38 @@ plt.subplot(1, 2, 2)
 plt.title("KNN with k = 5")
 plot_classifier(cities_X_train, cities_y_train, kn5_model, ax=plt.gca());
 
-An observation is classified as a positive class if on average it looks more like positive examples. An observation is classified as a negative class if on average it looks more like negative examples.
 
-The primary difference between 𝑘-NNs and SVMs is that:
+# An observation is classified as a positive class if on average it looks more like positive examples. An observation is classified as a negative class if on average it looks more like negative examples.
+# 
+# The primary difference between 𝑘-NNs and SVMs is that:
+# 
+# - Unlike $k$-NNs, SVMs only remember the key examples (Those examples are called **support vectors**). 
+# - When it comes to predicting a query point, we only consider the key examples from the data and only calculate the distance to these key examples. This makes it more efficient than 𝑘-NN. 
 
-- Unlike $k$-NNs, SVMs only remember the key examples (Those examples are called **support vectors**). 
-- When it comes to predicting a query point, we only consider the key examples from the data and only calculate the distance to these key examples. This makes it more efficient than 𝑘-NN. 
+# ### Hyperparameters of SVM
+# 
+# There are  2 main hyperparameters for support vector machines with an RBF kernel;
+# 
+# - `gamma` 
+# - `C`
+#     
+# (told you we were coming back to it!) 
+# 
+# We are not equipped to understand the meaning of these parameters at this point but you are expected to describe their relationship to the fundamental tradeoff. 
+# 
+# (In short, `C` is the penalty the model accepts for wrongly classified examples, and `gamma` is the curvature (see [here](https://towardsdatascience.com/hyperparameter-tuning-for-support-vector-machines-c-and-gamma-parameters-6a5097416167) for more) 
+# 
+# See [`scikit-learn`'s explanation of RBF SVM parameters](https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html)
 
-### Hyperparameters of SVM
+# #### `gamma` and the fundamental trade-off
+# 
+# `gamma` controls the complexity of a model, just like other hyperparameters we've seen.
+# 
+# - higher gamma, higher the complexity.
+# - lower gamma, lower the complexity.
 
-There are  2 main hyperparameters for support vector machines with an RBF kernel;
+# In[94]:
 
-- `gamma` 
-- `C`
-    
-(told you we were coming back to it!) 
-
-We are not equipped to understand the meaning of these parameters at this point but you are expected to describe their relationship to the fundamental tradeoff. 
-
-(In short, `C` is the penalty the model accepts for wrongly classified examples, and `gamma` is the curvature (see [here](https://towardsdatascience.com/hyperparameter-tuning-for-support-vector-machines-c-and-gamma-parameters-6a5097416167) for more) 
-
-See [`scikit-learn`'s explanation of RBF SVM parameters](https://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html)
-
-#### `gamma` and the fundamental trade-off
-
-`gamma` controls the complexity of a model, just like other hyperparameters we've seen.
-
-- higher gamma, higher the complexity.
-- lower gamma, lower the complexity.
 
 plt.figure(figsize=(16, 4))
 for i in range(4):
@@ -270,12 +348,16 @@ for i in range(4):
     plt.title("gamma = %s" % gamma);
     plot_classifier(cities_X_train, cities_y_train, rbf_svm, ax=plt.gca(), show_data=False)
 
-#### `C` and the fundamental trade-off
 
-`C` also controls the complexity of a model and in turn the fundamental tradeoff.
+# #### `C` and the fundamental trade-off
+# 
+# `C` also controls the complexity of a model and in turn the fundamental tradeoff.
+# 
+# - higher `C` values, higher the complexity.
+# - lower `C` values, lower the complexity.
 
-- higher `C` values, higher the complexity.
-- lower `C` values, lower the complexity.
+# In[95]:
+
 
 plt.figure(figsize=(16, 4))
 for i in range(4):
@@ -286,27 +368,31 @@ for i in range(4):
     plt.title("C = %s" % C);
     plot_classifier(cities_X_train, cities_y_train, rbf_svm, ax=plt.gca(), show_data=False)
 
-Obtaining optimal validation scores requires a hyperparameter search between both `gamma` and `C` to balance the fundamental trade-off.
-We will learn how to search over multiple hyperparameters at a time in lecture 5. 
 
-## Let's Practice
+# Obtaining optimal validation scores requires a hyperparameter search between both `gamma` and `C` to balance the fundamental trade-off.
+# We will learn how to search over multiple hyperparameters at a time in lecture 5. 
 
-**True or False** 
+# ## Let's Practice
+# 
+# **True or False** 
+# 
+# 1\.In Scikit Learn’s SVC classifier, large values of gamma tend to result in higher training scores but probably lower validation scores.     
+# 2\.If we increase both `gamma` and `C`, we can't be certain if the model becomes more complex or less complex.
+# 
 
-1\.In Scikit Learn’s SVC classifier, large values of gamma tend to result in higher training scores but probably lower validation scores.     
-2\.If we increase both `gamma` and `C`, we can't be certain if the model becomes more complex or less complex.
+# ```{admonition} Solutions!
+# :class: dropdown
+# 
+# 1. True
+# 2. False
+# ```
 
+# ## Let's Practice - Coding
+# 
+# Below is some starter code that creates your feature table and target column from the data from the `bball.csv` dataset (in the data folder).
 
-```{admonition} Solutions!
-:class: dropdown
+# In[167]:
 
-1. True
-2. False
-```
-
-## Let's Practice - Coding
-
-Below is some starter code that creates your feature table and target column from the data from the `bball.csv` dataset (in the data folder).
 
 bball_df = pd.read_csv('data/bball.csv')
 bball_df = bball_df[(bball_df['position'] =='G') | (bball_df['position'] =='F')]
@@ -315,51 +401,83 @@ bball_df = bball_df[(bball_df['position'] =='G') | (bball_df['position'] =='F')]
 X = bball_df.loc[:, ['height', 'weight', 'salary']]
 y = bball_df['position']
 
-1. Split the dataset into 4 objects: `X_train`, `X_test`, `y_train`, `y_test`. Make the test set 0.2 (or the train set 0.8) and make sure to use `random_state=7`.
-2. Create an `SVM` model with `gamma` equal to 0.1 and `C` equal to 10.
-3. Cross-validate using cross_validate() on the objects X_train and y_train specifying the model and making sure to use 5 fold cross-validation and `return_train_score=True`.
-4. Calculate the mean training and cross-validation scores.
+
+# 1. Split the dataset into 4 objects: `X_train`, `X_test`, `y_train`, `y_test`. Make the test set 0.2 (or the train set 0.8) and make sure to use `random_state=7`.
+# 2. Create an `SVM` model with `gamma` equal to 0.1 and `C` equal to 10.
+# 3. Cross-validate using cross_validate() on the objects X_train and y_train specifying the model and making sure to use 5 fold cross-validation and `return_train_score=True`.
+# 4. Calculate the mean training and cross-validation scores.
+
+# In[168]:
+
 
 # 1. Split the dataset
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=7)
 
+
+# In[102]:
+
+
 model = SVC(gamma=0.1, C=10)
+
+
+# In[169]:
+
 
 # 3. Cross-validate
 scores_df = pd.DataFrame(cross_validate(model,X_train,y_train, cv=5, return_train_score=True))
 
+
+# In[170]:
+
+
 scores_df
+
+
+# In[172]:
+
 
 # 4. Calculate the mean training and cross-validation scores.
 scores_df.mean()
 
+
+# In[173]:
+
+
 scores_df.mean()['test_score']
+
+
+# In[174]:
+
 
 scores_df.mean()['train_score']
 
-## Preprocessing
 
-### The importance of Preprocessing - An Example of Why
+# ## Preprocessing
 
-So far we have seen:   
- 
-- Models: Decision trees, 𝑘-NNs, SVMs with RBF kernel.
-- Fundamentals: Train-validation-test split, cross-validation, the fundamental tradeoff, the golden rule.
- 
+# ### The importance of Preprocessing - An Example of Why
+# 
+# So far we have seen:   
+#  
+# - Models: Decision trees, 𝑘-NNs, SVMs with RBF kernel.
+# - Fundamentals: Train-validation-test split, cross-validation, the fundamental tradeoff, the golden rule.
+#  
+# 
+# 
+# Now ...
+#  
+# **Preprocessing**: Transforming input data into a format a machine learning model can use and understand.
+#  
 
+# #### Basketball dataset
+# 
+# Let's take a look at the `bball.csv` dataset we just used in practice.
+# 
+# - Let's look at the  3 feature columns `height`, `weight` and `salary`. 
+# - Let's see if these features can help predict the `position` basketball players is. 
 
-Now ...
- 
-**Preprocessing**: Transforming input data into a format a machine learning model can use and understand.
- 
+# In[108]:
 
-#### Basketball dataset
-
-Let's take a look at the `bball.csv` dataset we just used in practice.
-
-- Let's look at the  3 feature columns `height`, `weight` and `salary`. 
-- Let's see if these features can help predict the `position` basketball players is. 
 
 bball_df = pd.read_csv('data/bball.csv')
 bball_df = bball_df[(bball_df['position'] =='G') | (bball_df['position'] =='F')]
@@ -367,181 +485,237 @@ X = bball_df[['weight', 'height', 'salary']]
 y =bball_df["position"]
 X_train, X_test, y_train, y_test =train_test_split(X, y, test_size=0.20, random_state=123)
 
+
+# In[109]:
+
+
 X_train.head()
+
+
+# In[110]:
+
 
 y_train.head()
 
-First, let's see what validations scores we get if we simply predict the most occurring target value in the dataset using the dummy classifier model we saw in the last lecture.
+
+# First, let's see what validations scores we get if we simply predict the most occurring target value in the dataset using the dummy classifier model we saw in the last lecture.
+
+# In[111]:
+
 
 dummy = DummyClassifier(strategy="most_frequent")
 scores = cross_validate(dummy, X_train, y_train, return_train_score=True)
 print('Mean training score', scores['train_score'].mean().round(2))
 print('Mean validation score', scores['test_score'].mean().round(2))
 
-Here we get a mean validation score for our 5 fold cross_validation (5 is the default) of 57%. Let's now see how much better a $k$-nn model does on the data. We saw that it doesn't do to well on SVM, let's see if there is a difference with $k$-nn. 
+
+# Here we get a mean validation score for our 5 fold cross_validation (5 is the default) of 57%. Let's now see how much better a $k$-nn model does on the data. We saw that it doesn't do to well on SVM, let's see if there is a difference with $k$-nn. 
+
+# In[112]:
+
 
 knn = KNeighborsClassifier()
 scores = cross_validate(knn, X_train, y_train, return_train_score=True)
 print('Mean training score', scores['train_score'].mean().round(2))
 print('Mean validation score', scores['test_score'].mean().round(2))
 
-Ok, not the score we were hoping for. 
 
-We are getting a worse score than the dummy classifier. This can't be right..... and it isn't and we are going to explain why!
+# Ok, not the score we were hoping for. 
+# 
+# We are getting a worse score than the dummy classifier. This can't be right..... and it isn't and we are going to explain why!
+# 
+# Let's have a look at just 2 players. 
+# 
+# We can see the values in each column. 
 
-Let's have a look at just 2 players. 
+# In[113]:
 
-We can see the values in each column. 
 
 two_players = X_train.sample(2, random_state=42)
 two_players
 
-- The values in the `weight` column are around 100.
-- The values in the `height` column are around 2.
-- The values in the `salary` column are much higher at around 2 million.
 
-Let’s now calculate the distance between the two players.
+# - The values in the `weight` column are around 100.
+# - The values in the `height` column are around 2.
+# - The values in the `salary` column are much higher at around 2 million.
+# 
+# Let’s now calculate the distance between the two players.
+
+# In[114]:
+
 
 euclidean_distances(two_players)
 
-So the distance between the players is 117133.0018.
 
-What happens if we only consider the salary column?
+# So the distance between the players is 117133.0018.
+# 
+# What happens if we only consider the salary column?
+
+# In[115]:
+
 
 euclidean_distances(two_players[["salary"]])
 
-It looks like it's almost the same distance!
 
-The distance is completely dominated by the `salary` column, the feature with the largest values and the `weight` and `height` columns are being ignored in the distance calculation. 
+# It looks like it's almost the same distance!
+# 
+# The distance is completely dominated by the `salary` column, the feature with the largest values and the `weight` and `height` columns are being ignored in the distance calculation. 
+# 
+# **Does it matter?**
+# 
+# Yes! The scale is based on how data was collected.
+# 
+# Features on a smaller scale can be highly informative and there is no good reason to ignore them.
+# We want our model to be robust and not sensitive to the scale.
 
-**Does it matter?**
+# **What about for decision trees? Did scale matter then?**
+# 
+# No. In decision trees we ask questions on one feature at a time and so the nodes are created independently without considering others. 
+# 
+# 
+# We have to scale our columns before we use our $k$-nn algorithm (and many others) so they are all using a similar range of values!
+# 
+# And you guessed it - Sklearn has tools called transformers for this.
+# 
+# We'll be using `sklearn`'s [`StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) for this example.
+# We will talk about this type of preprocessing in more detail in a hot minute but for now, concentrate on the syntax. 
 
-Yes! The scale is based on how data was collected.
+# In[116]:
 
-Features on a smaller scale can be highly informative and there is no good reason to ignore them.
-We want our model to be robust and not sensitive to the scale.
-
-**What about for decision trees? Did scale matter then?**
-
-No. In decision trees we ask questions on one feature at a time and so the nodes are created independently without considering others. 
-
-
-We have to scale our columns before we use our $k$-nn algorithm (and many others) so they are all using a similar range of values!
-
-And you guessed it - Sklearn has tools called transformers for this.
-
-We'll be using `sklearn`'s [`StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) for this example.
-We will talk about this type of preprocessing in more detail in a hot minute but for now, concentrate on the syntax. 
 
 from sklearn.preprocessing import StandardScaler
+
+
+# In[117]:
+
 
 scaler = StandardScaler()                    # Create feature transformer object, can accept hyperparameters like models can! 
 scaler.fit(X_train)                          # Fitting the transformer on the train split
 X_train_scaled = scaler.transform(X_train)   # Transforming the train split
 X_test_scaled = scaler.transform(X_test)     # Transforming the test split
 
-`sklearn` uses `fit` and `transform` paradigms for feature transformations. (In model building it was `fit` and `predict` or `score`)
 
-We `fit` the transformer on the train split and then `transform` the train split as well as the test split.
+# `sklearn` uses `fit` and `transform` paradigms for feature transformations. (In model building it was `fit` and `predict` or `score`)
+# 
+# We `fit` the transformer on the train split and then `transform` the train split as well as the test split.
+
+# In[118]:
+
 
 pd.DataFrame(X_train_scaled, columns=X_train.columns).head()
 
-Now if we look at our features they are all within the same scales as opposed to what it was before: 
+
+# Now if we look at our features they are all within the same scales as opposed to what it was before: 
+
+# In[32]:
+
 
 X_train.head()
 
-### Sklearn's *predict* vs *transform*
 
-When we make models, we `fit` and `predict`(`score`) with the syntax: 
+# ### Sklearn's *predict* vs *transform*
+# 
+# When we make models, we `fit` and `predict`(`score`) with the syntax: 
+# 
+# ```
+# model.fit(X_train, y_train)
+# X_train_predictions = model.predict(X_train)
+# ```
+# 
+# With preprocessing, we replace the `.predict()` step with a `.transform()` step. We can pass `y_train` in `fit` but it's usually ignored. It allows us to pass it just to be consistent with the usual usage of `sklearn`'s `fit` method.  
+# 
+# ```
+# transformer.fit(X_train, [y_train])
+# X_train_transformed = transformer.transform(X_train)
+# ```
+# 
+# 
+# We can also carry out fitting and transforming in one call using `.fit_transform()`, but we must be mindful to use it only on the train split and **NOT** on the test split.
+# 
+# ```
+# X_train_transformed = transformer.fit_transform(X_train)
+# ```
 
-```
-model.fit(X_train, y_train)
-X_train_predictions = model.predict(X_train)
-```
+# Let's scale our features for this basketball dataset and then compare the results with our original score without scaling. 
 
-With preprocessing, we replace the `.predict()` step with a `.transform()` step. We can pass `y_train` in `fit` but it's usually ignored. It allows us to pass it just to be consistent with the usual usage of `sklearn`'s `fit` method.  
+# In[119]:
 
-```
-transformer.fit(X_train, [y_train])
-X_train_transformed = transformer.transform(X_train)
-```
-
-
-We can also carry out fitting and transforming in one call using `.fit_transform()`, but we must be mindful to use it only on the train split and **NOT** on the test split.
-
-```
-X_train_transformed = transformer.fit_transform(X_train)
-```
-
-Let's scale our features for this basketball dataset and then compare the results with our original score without scaling. 
 
 knn_unscaled = KNeighborsClassifier()
 knn_unscaled.fit(X_train, y_train);
 print('Train score: ', (knn_unscaled.score(X_train, y_train).round(2)))
 print('Test score: ', (knn_unscaled.score(X_test, y_test).round(2)))
 
+
+# In[120]:
+
+
 knn_scaled = KNeighborsClassifier()
 knn_scaled.fit(X_train_scaled, y_train);
 print('Train score: ', (knn_scaled.score(X_train_scaled, y_train).round(2)))
 print('Test score: ', (knn_scaled.score(X_test_scaled, y_test).round(2)))
 
-The scores with scaled data are now much better compared to the unscaled data in the case of 𝑘-NNs.
 
-We can see now that 𝑘-NN is doing better than the Dummy Classifier when we scaled our features. 
- 
-We are not carrying out cross-validation here for a reason that we'll look into soon.
- 
-We are being a bit sloppy here by using the test set several times for teaching purposes.
- 
-But when we build any ML models, we should only assess the test set once. 
+# The scores with scaled data are now much better compared to the unscaled data in the case of 𝑘-NNs.
+# 
+# We can see now that 𝑘-NN is doing better than the Dummy Classifier when we scaled our features. 
+#  
+# We are not carrying out cross-validation here for a reason that we'll look into soon.
+#  
+# We are being a bit sloppy here by using the test set several times for teaching purposes.
+#  
+# But when we build any ML models, we should only assess the test set once. 
 
-### Common preprocessing techniques
+# ### Common preprocessing techniques
+# 
+# Here are some commonly performed feature transformation techniques we will focus on in this lesson. 
+# - Imputation 
+#     - Tackling missing values
+# - Scaling 
+#     - Scaling of numeric features
 
-Here are some commonly performed feature transformation techniques we will focus on in this lesson. 
-- Imputation 
-    - Tackling missing values
-- Scaling 
-    - Scaling of numeric features
+# ## Let's Practice
+# 
+# 1\. Name a model that will still produce meaningful predictions with different scaled column values.     
+# 2\. Complete the following statement: Preprocessing is done ______.        
+# 
+# a) To the model but before training    
+# b) To the data before training the model     
+# c) To the model after training     
+# d) To the data after training the model    
+# 
+# 3\. `StandardScaler` is a type of what?    
+# 4\. What data splits does `StandardScaler` alter (Training, Testing, Validation, None, All)?    
+# 
+# **True or False**    
+#  
+# 5\. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.      
+# 6\. A model less sensitive to the scale of the data makes it more robust.   
+# 
 
-## Let's Practice
+# ```{admonition} Solutions!
+# :class: dropdown
+# 
+# 1. Decision Tree Algorithm
+# 2. b) To the data before training the model
+# 3. Transformer
+# 4. All
+# 5. False
+# 6. True
+# 
+# ```
 
-1\. Name a model that will still produce meaningful predictions with different scaled column values.     
-2\. Complete the following statement: Preprocessing is done ______.        
+# ## California housing data (A case study) 
+# 
+# For the next few examples of preprocessing,  we are going to be using a dataset exploring the prices of homes in California to demonstrate feature transformation techniques.  The data can be downloaded from this site [here](https://www.kaggle.com/harrywang/housing). Please make sure that you include it in your `data` folder that resides in `lectures`. 
+# 
+# This dataset is a modified version of the California Housing dataset available from [Luís Torgo's University of Porto website](https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html)
+# 
+# 
+# The task is to predict median house values in California districts, given several features from these districts. 
+# 
 
-a) To the model but before training    
-b) To the data before training the model     
-c) To the model after training     
-d) To the data after training the model    
-
-3\. `StandardScaler` is a type of what?    
-4\. What data splits does `StandardScaler` alter (Training, Testing, Validation, None, All)?    
-
-**True or False**    
- 
-5\. Columns with lower magnitudes compared to columns with higher magnitudes are less important when making predictions.      
-6\. A model less sensitive to the scale of the data makes it more robust.   
-
-
-```{admonition} Solutions!
-:class: dropdown
-
-1. Decision Tree Algorithm
-2. b) To the data before training the model
-3. Transformer
-4. All
-5. False
-6. True
-
-```
-
-## California housing data (A case study) 
-
-For the next few examples of preprocessing,  we are going to be using a dataset exploring the prices of homes in California to demonstrate feature transformation techniques.  The data can be downloaded from this site [here](https://www.kaggle.com/harrywang/housing). Please make sure that you include it in your `data` folder that resides in `lectures`. 
-
-This dataset is a modified version of the California Housing dataset available from [Luís Torgo's University of Porto website](https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html)
-
-
-The task is to predict median house values in California districts, given several features from these districts. 
+# In[121]:
 
 
 housing_df = pd.read_csv("data/housing.csv")
@@ -549,13 +723,17 @@ train_df, test_df = train_test_split(housing_df, test_size=0.1, random_state=123
 
 train_df.head()
 
-Some column values are mean/median but some are not.
 
-Before we use this data we need to do some **feature engineering**. 
+# Some column values are mean/median but some are not.
+# 
+# Before we use this data we need to do some **feature engineering**. 
+# 
+# That means we are going to transform our data into features that may be more meaningful for our prediction.
+# 
+# Let's add some new features to the dataset which could help predict the target: `median_house_value`.
 
-That means we are going to transform our data into features that may be more meaningful for our prediction.
+# In[124]:
 
-Let's add some new features to the dataset which could help predict the target: `median_house_value`.
 
 train_df = train_df.assign(rooms_per_household = train_df["total_rooms"]/train_df["households"],
                            bedrooms_per_household = train_df["total_bedrooms"]/train_df["households"],
@@ -570,28 +748,40 @@ test_df = test_df.drop(columns=['total_rooms', 'total_bedrooms', 'population'])
 
 train_df.head()
 
-### When is it OK to do things before splitting? 
 
-- Here it would have been OK to add new features before splitting because we are not using any global information in the data but only looking at one row at a time. 
-- But just to be safe and to avoid accidentally breaking the golden rule, it's better to do it after splitting. 
+# ### When is it OK to do things before splitting? 
+# 
+# - Here it would have been OK to add new features before splitting because we are not using any global information in the data but only looking at one row at a time. 
+# - But just to be safe and to avoid accidentally breaking the golden rule, it's better to do it after splitting. 
 
-## Preprocessing: Imputation 
+# ## Preprocessing: Imputation 
+# 
+# Imputation is handling missing values in our data so let's explore this a little. 
+# 
+# We can `.info()` we can we all the different column dtypes and also all the number of null values.
 
-Imputation is handling missing values in our data so let's explore this a little. 
+# In[125]:
 
-We can `.info()` we can we all the different column dtypes and also all the number of null values.
 
 train_df.info()
 
-We see that we have all columns with dtype `float64` except for `ocean_proximity` which appears categorical.
 
-We also notice that the `bedrooms_per_household` column appears to have some `Non-Null` rows. 
+# We see that we have all columns with dtype `float64` except for `ocean_proximity` which appears categorical.
+# 
+# We also notice that the `bedrooms_per_household` column appears to have some `Non-Null` rows. 
+
+# In[126]:
+
 
 train_df["bedrooms_per_household"].isnull().sum()
 
-Knowing this information let's build a model. 
 
-When we create our feature table and target objects, we are going to drop the categorical variable `ocean_proximity`.  Currently, we don't know how to build models with categorical data, but we will shortly. We will return to this column soon. 
+# Knowing this information let's build a model. 
+# 
+# When we create our feature table and target objects, we are going to drop the categorical variable `ocean_proximity`.  Currently, we don't know how to build models with categorical data, but we will shortly. We will return to this column soon. 
+
+# In[127]:
+
 
 X_train = train_df.drop(columns=["median_house_value", "ocean_proximity"])
 y_train = train_df["median_house_value"]
@@ -601,80 +791,112 @@ y_test = test_df["median_house_value"]
 
 knn = KNeighborsRegressor()
 
-What happens when we try to fit our model with this data?
+
+# What happens when we try to fit our model with this data?
+
+# In[128]:
+
 
 knn.fit(X_train, y_train)
 
-> `Input contains NaN, infinity or a value too large for dtype('float64').`
 
-The classifier can't deal with missing values (NaNs).
+# > `Input contains NaN, infinity or a value too large for dtype('float64').`
+# 
+# The classifier can't deal with missing values (NaNs).
+# 
+# How can we deal with this problem? 
 
-How can we deal with this problem? 
+# ### Why we don't drop the rows 
+# 
+# We could drop any rows that are missing information but that's problematic too. 
+# 
+# Then we would need to do the same in our test set.
+# 
+# And what happens if we get missing values in our deployment data? what then?
+# 
+# Furthermore, what if the missing values don't occur at random and we're systematically dropping certain data?
+# Perhaps a certain type of house contributes to more missing values. 
+# 
+# Dropping the rows is not a great solution, especially if there's a lot of missing values.
 
-### Why we don't drop the rows 
+# In[129]:
 
-We could drop any rows that are missing information but that's problematic too. 
-
-Then we would need to do the same in our test set.
-
-And what happens if we get missing values in our deployment data? what then?
-
-Furthermore, what if the missing values don't occur at random and we're systematically dropping certain data?
-Perhaps a certain type of house contributes to more missing values. 
-
-Dropping the rows is not a great solution, especially if there's a lot of missing values.
 
 X_train.shape
+
+
+# In[130]:
+
 
 X_train_no_nan = X_train.dropna()
 y_train_no_nan = y_train.dropna()
 
 X_train_no_nan.shape
 
-### Why we don't drop the column 
 
-If we drop the column instead of the rows, we are throwing away, in this case, 18391 values just because we don't have 185 missing values out of a total of 18567. 
+# ### Why we don't drop the column 
+# 
+# If we drop the column instead of the rows, we are throwing away, in this case, 18391 values just because we don't have 185 missing values out of a total of 18567. 
+# 
+# We are throwing away 99% of the column’s data because we are missing 1%.
+# 
+# But perhaps if we were missing 99.9% of the column values, for example, it would make more sense to drop the column.
+# 
 
-We are throwing away 99% of the column’s data because we are missing 1%.
-
-But perhaps if we were missing 99.9% of the column values, for example, it would make more sense to drop the column.
+# In[133]:
 
 
 X_train.shape
+
+
+# In[134]:
+
 
 X_train_no_col = X_train.dropna(axis=1)
 
 X_train_no_col.shape
 
-### Why we use imputation 
 
-With **Imputation**, we invent values for the missing data.
+# ### Why we use imputation 
+# 
+# With **Imputation**, we invent values for the missing data.
+# 
+# Using `sklearn`'s **transformer** `SimpleImputer`, we can impute the `NaN` values in the data with some value. 
 
-Using `sklearn`'s **transformer** `SimpleImputer`, we can impute the `NaN` values in the data with some value. 
+# In[135]:
+
 
 from sklearn.impute import SimpleImputer
 
-We can impute missing values in:
 
-- **Categorical columns**: 
-    - with the most frequent value 
-    - with a constant of our choosing.
-- **Numeric columns**: 
-    - with the mean  of the column
-    - with the median of the column 
-    - or a constant of our choosing.
+# We can impute missing values in:
+# 
+# - **Categorical columns**: 
+#     - with the most frequent value 
+#     - with a constant of our choosing.
+# - **Numeric columns**: 
+#     - with the mean  of the column
+#     - with the median of the column 
+#     - or a constant of our choosing.
 
-If I sort the values by `bedrooms_per_household` and look at the end of the dataframe, we can see our missing values in the `bedrooms_per_household` column. 
+# If I sort the values by `bedrooms_per_household` and look at the end of the dataframe, we can see our missing values in the `bedrooms_per_household` column. 
+# 
+# Pay close attention to index 7763 since we are going to look at this row after imputation. 
 
-Pay close attention to index 7763 since we are going to look at this row after imputation. 
+# In[136]:
+
 
 X_train.sort_values('bedrooms_per_household').tail(10)
 
-Using the same `fit` and `transform` syntax we saw earlier for transformers, we can impute the `NaN` values. 
 
-Here we specify `strategy="median"` which replaces all the missing values with the column median. 
+# Using the same `fit` and `transform` syntax we saw earlier for transformers, we can impute the `NaN` values. 
+# 
+# Here we specify `strategy="median"` which replaces all the missing values with the column median. 
+# 
+# We fit on the training data and transform it on the train and test splits. 
+# 
 
-We fit on the training data and transform it on the train and test splits. 
+# In[138]:
 
 
 imputer = SimpleImputer(strategy="median")
@@ -682,149 +904,201 @@ imputer.fit(X_train);
 X_train_imp = imputer.transform(X_train)
 X_test_imp = imputer.transform(X_test)
 
+
+# In[48]:
+
+
 X_train_imp
 
-Ok, the output of this isn't a dataframe but a NumPy array! 
 
-I can do a bit of wrangling here to take a look at this new array with our previous column labels and as a dataframe. 
+# Ok, the output of this isn't a dataframe but a NumPy array! 
+# 
+# I can do a bit of wrangling here to take a look at this new array with our previous column labels and as a dataframe. 
+# 
+# If I search for our index 7763 which previously contained a `NaN` value, we can see that now I have the median value for the `bedrooms_per_household` column from the `X_train` dataframe. 
 
-If I search for our index 7763 which previously contained a `NaN` value, we can see that now I have the median value for the `bedrooms_per_household` column from the `X_train` dataframe. 
+# In[141]:
+
 
 X_train_imp_df = pd.DataFrame(X_train_imp, columns = X_train.columns, index = X_train.index)
 X_train_imp_df.loc[[7763]]
 
+
+# In[142]:
+
+
 X_train['bedrooms_per_household'].median()
+
+
+# In[143]:
+
 
 X_train.loc[[7763]]
 
-Now when we try and fit our model using `X_train_imp`, it works!
+
+# Now when we try and fit our model using `X_train_imp`, it works!
+
+# In[144]:
+
 
 knn = KNeighborsRegressor();
 knn.fit(X_train_imp, y_train)
 knn.score(X_train_imp, y_train)
 
-## Preprocessing: Scaling 
 
-So we've seen why scaling is important earlier but let's take a little bit of a closer look here. 
-There are many ways to scale your data but we are going to look at 2 of them. 
+# ## Preprocessing: Scaling 
+# 
+# So we've seen why scaling is important earlier but let's take a little bit of a closer look here. 
+# There are many ways to scale your data but we are going to look at 2 of them. 
+# 
+# 
+# ![](https://amueller.github.io/COMS4995-s19/slides/aml-05-preprocessing/images/scaler_comparison_scatter.png)
 
+#  
+# | Approach | What it does | How to update $X$ (but see below!) | sklearn implementation | 
+# |---------|------------|-----------------------|----------------|
+# | normalization | sets range to $[0,1]$   | `X -= np.min(X,axis=0)`<br>`X /= np.max(X,axis=0)`  | [`MinMaxScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
+# | standardization | sets sample mean to $0$, s.d. to $1$   | `X -= np.mean(X,axis=0)`<br>`X /=  np.std(X,axis=0)` | [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler) |
+# 
+# For more resources and articles on this, see [here](http://www.dataminingblog.com/standardization-vs-normalization/) and [here](https://medium.com/@rrfd/standardize-or-normalize-examples-in-python-e3f174b65dfc).
 
-![](https://amueller.github.io/COMS4995-s19/slides/aml-05-preprocessing/images/scaler_comparison_scatter.png)
+# Let's see what happens when we use each of them. 
 
- 
-| Approach | What it does | How to update $X$ (but see below!) | sklearn implementation | 
-|---------|------------|-----------------------|----------------|
-| normalization | sets range to $[0,1]$   | `X -= np.min(X,axis=0)`<br>`X /= np.max(X,axis=0)`  | [`MinMaxScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
-| standardization | sets sample mean to $0$, s.d. to $1$   | `X -= np.mean(X,axis=0)`<br>`X /=  np.std(X,axis=0)` | [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler) |
+# In[145]:
 
-For more resources and articles on this, see [here](http://www.dataminingblog.com/standardization-vs-normalization/) and [here](https://medium.com/@rrfd/standardize-or-normalize-examples-in-python-e3f174b65dfc).
-
-Let's see what happens when we use each of them. 
 
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
-First, let's see how standardization is done first. 
+
+# First, let's see how standardization is done first. 
+
+# In[146]:
+
 
 scaler = StandardScaler()
 X_train_scaled_std = scaler.fit_transform(X_train_imp)
 X_test_scaled_std = scaler.transform(X_test_imp)
 pd.DataFrame(X_train_scaled_std, columns=X_train.columns, index=X_train.index).head()
 
-Here, any negative values represent values that are lower than the calculated feature mean and anything positive and greater than 0 are values greater than the original column mean.
+
+# Here, any negative values represent values that are lower than the calculated feature mean and anything positive and greater than 0 are values greater than the original column mean.
+
+# In[147]:
+
 
 knn = KNeighborsRegressor()
 knn.fit(X_train_imp, y_train);
 print('Unscaled training score :', knn.score(X_train_imp, y_train).round(3))
 
+
+# In[148]:
+
+
 knn = KNeighborsRegressor()
 knn.fit(X_train_scaled_std, y_train)
 print('Scaled training score :',knn.score(X_train_scaled_std, y_train))
+
+
+# In[149]:
+
 
 scaler = MinMaxScaler()
 X_train_scaled_norm = scaler.fit_transform(X_train_imp)
 X_test_scaled_norm = scaler.transform(X_test_imp)
 pd.DataFrame(X_train_scaled_norm, columns=X_train.columns, index=X_train.index).head()
 
-Looking at the data after normalizing it, we see this time there are no negative values and they all are between 0 and 1.
 
-And the score now?
+# Looking at the data after normalizing it, we see this time there are no negative values and they all are between 0 and 1.
+# 
+# And the score now?
+
+# In[150]:
+
 
 knn = KNeighborsRegressor()
 knn.fit(X_train_scaled_norm, y_train)
 print('Scaled training score :',knn.score(X_train_scaled_norm, y_train))
 
-- Big difference in the KNN training performance after scaling the data. 
-- But we saw last week that the training score doesn't tell us much. We should look at the cross-validation score.
 
-So let's see how we can do this but first.... let's practice!
+# - Big difference in the KNN training performance after scaling the data. 
+# - But we saw last week that the training score doesn't tell us much. We should look at the cross-validation score.
+# 
+# So let's see how we can do this but first.... let's practice!
 
-## Let's Practice
+# ## Let's Practice
+# 
+# 1\. When/Why do we need to impute our data?   
+# 2\. If we have `NaN` values in our data, can we simply drop the column missing the data?   
+# 3\. Which scaling method will never produce negative values?   
+# 4\. Which scaling method will never produce values greater than 1?    
+# 5\. Which scaling method will produce values where the range depends on the values in the data?   
+# 
+# **True or False**     
+# 
+# 6\. `SimpleImputer` is a type of transformer.      
+# 7\. Scaling is a form of transformation.       
+# 8\. We can use `SimpleImputer` to impute values that are missing from numerical and categorical columns.      
 
-1\. When/Why do we need to impute our data?   
-2\. If we have `NaN` values in our data, can we simply drop the column missing the data?   
-3\. Which scaling method will never produce negative values?   
-4\. Which scaling method will never produce values greater than 1?    
-5\. Which scaling method will produce values where the range depends on the values in the data?   
+# ```{admonition} Solutions!
+# :class: dropdown
+# 
+# 1. When we have missing data so that sklearn doesn't give an error. 
+# 2. No but we can if the majority of the values are missing from the column.
+# 3. Normalization (`MinMaxScaler`)
+# 4. Normalization (`MinMaxScaler`)
+# 5. Standardization (`StandardScaler`)
+# 6. True
+# 7. True
+# 8. True
+# ```
 
-**True or False**     
+# ## Feature transformations and the golden rule 
+# 
+# How to carry out cross-validation? 
+# 
+# - Last week we saw that cross-validation is a better way to get a realistic assessment of the model. 
+# - Let's try cross-validation with transformed data. 
 
-6\. `SimpleImputer` is a type of transformer.      
-7\. Scaling is a form of transformation.       
-8\. We can use `SimpleImputer` to impute values that are missing from numerical and categorical columns.      
+# In[151]:
 
-```{admonition} Solutions!
-:class: dropdown
-
-1. When we have missing data so that sklearn doesn't give an error. 
-2. No but we can if the majority of the values are missing from the column.
-3. Normalization (`MinMaxScaler`)
-4. Normalization (`MinMaxScaler`)
-5. Standardization (`StandardScaler`)
-6. True
-7. True
-8. True
-```
-
-## Feature transformations and the golden rule 
-
-How to carry out cross-validation? 
-
-- Last week we saw that cross-validation is a better way to get a realistic assessment of the model. 
-- Let's try cross-validation with transformed data. 
 
 knn = KNeighborsRegressor()
 scores = cross_validate(knn, X_train_scaled_std, y_train, return_train_score=True)
 pd.DataFrame(scores)
 
-- Do you see any problem here? 
 
-We are using our `X_train_scaled` in our `cross_validate()` function which already has all our preprocessing done. 
+# - Do you see any problem here? 
+# 
+# We are using our `X_train_scaled` in our `cross_validate()` function which already has all our preprocessing done. 
+# 
+# <img src='imgs/cross-validation.png' width="80%">
 
-<img src='imgs/cross-validation.png' width="80%">
+# That means that our validation set information is being used to calculate the mean and standard deviation (or min and max values for `MinMaxScaler`) for our training split! 
+# 
+# We are allowing information from the validation set to **leak** into the training step.
+#     
+# What was our golden rule of machine learning again? Oh yeah -> ***Our test data should not influence our training data***. 
+# 
+# This applies also to our validation data and that it also should not influence our training data. 
+# 
+# With imputation and scaling, we are scaling and imputing values based on all the information in the data meaning the training data AND the validation data and so we are not adhering to the golden rule anymore. 
+# 
+# Every row in our `x_train_scaled` has now been influenced in a minor way by every other row in `x_train_scaled`. 
+# 
+# With scaling every row has been transformed based on all the data before splitting between training and validation. 
+# 
+# We need to take care that we are keeping our validation data truly as unseen data. 
+# 
+# Before we look at the right approach to this, let's look at the **WRONG** approaches. 
 
-That means that our validation set information is being used to calculate the mean and standard deviation (or min and max values for `MinMaxScaler`) for our training split! 
+# ### Bad methodology 1: Scaling the data separately
+# 
+# We make our transformer, we fit it on the training data and then transform the training data.
+# 
+# Then, we make a second transformer, fit it on the test data and then transform our test data.
 
-We are allowing information from the validation set to **leak** into the training step.
-    
-What was our golden rule of machine learning again? Oh yeah -> ***Our test data should not influence our training data***. 
+# In[60]:
 
-This applies also to our validation data and that it also should not influence our training data. 
-
-With imputation and scaling, we are scaling and imputing values based on all the information in the data meaning the training data AND the validation data and so we are not adhering to the golden rule anymore. 
-
-Every row in our `x_train_scaled` has now been influenced in a minor way by every other row in `x_train_scaled`. 
-
-With scaling every row has been transformed based on all the data before splitting between training and validation. 
-
-We need to take care that we are keeping our validation data truly as unseen data. 
-
-Before we look at the right approach to this, let's look at the **WRONG** approaches. 
-
-### Bad methodology 1: Scaling the data separately
-
-We make our transformer, we fit it on the training data and then transform the training data.
-
-Then, we make a second transformer, fit it on the test data and then transform our test data.
 
 scaler = StandardScaler();
 scaler.fit(X_train_imp);
@@ -842,21 +1116,33 @@ knn.fit(X_train_scaled, y_train);
 print("Training score: ", knn.score(X_train_scaled, y_train).round(2))
 print("Test score: ", knn.score(X_test_scaled, y_test).round(2))
 
-This is bad because we are using two different StandardScaler objects but we want to apply the same transformation on the training and test splits.
 
-The test data will have different values than the training data producing a different transformation than the training data.
+# This is bad because we are using two different StandardScaler objects but we want to apply the same transformation on the training and test splits.
+# 
+# The test data will have different values than the training data producing a different transformation than the training data.
+# 
+# We should never fit on test data, whether it’s to build a model or with a transforming, test data should never be exposed to the fit function.
 
-We should never fit on test data, whether it’s to build a model or with a transforming, test data should never be exposed to the fit function.
+# ### Bad methodology 2: Scaling the data together
+# 
+# The next mistake is when we scale the data together. So instead of splitting our data, we are combining our training and testing and scaling it together.
 
-### Bad methodology 2: Scaling the data together
+# In[152]:
 
-The next mistake is when we scale the data together. So instead of splitting our data, we are combining our training and testing and scaling it together.
 
 X_train_imp.shape, X_test_imp.shape
+
+
+# In[153]:
+
 
 # join the train and test sets back together
 XX = np.vstack((X_train_imp, X_test_imp))## Don't do it! 
 XX.shape 
+
+
+# In[154]:
+
 
 scaler = StandardScaler()
 scaler.fit(XX)
@@ -864,42 +1150,54 @@ XX_scaled = scaler.transform(XX)
 XX_train = XX_scaled[:18576]
 XX_test = XX_scaled[18576:]
 
+
+# In[155]:
+
+
 knn = KNeighborsRegressor()
 knn.fit(XX_train, y_train);
 print('Train score: ', (knn.score(XX_train, y_train).round(2))) # Misleading score
 print('Test score: ', (knn.score(XX_test, y_test).round(2))) # Misleading score
 
-Here we are scaling the train and test splits together.
 
-The golden rule says that the test data shouldn’t influence the training in any way.
+# Here we are scaling the train and test splits together.
+# 
+# The golden rule says that the test data shouldn’t influence the training in any way.
+# 
+# Information from the test split is now affecting the mean for standardization!
+# 
+# This is a clear violation of the golden rule.
+# 
+# So what do we do? Enter ....
 
-Information from the test split is now affecting the mean for standardization!
+# ## Pipelines
+# 
+# [Scikit-learn Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) is here to save the day!
+# 
+# A **pipeline** is a sklearn function that contains a sequence of steps. 
+# 
+# Essentially we give it all the actions we want to do with our data such as transformers and models and the pipeline will execute them in steps. 
 
-This is a clear violation of the golden rule.
+# In[158]:
 
-So what do we do? Enter ....
-
-## Pipelines
-
-[Scikit-learn Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) is here to save the day!
-
-A **pipeline** is a sklearn function that contains a sequence of steps. 
-
-Essentially we give it all the actions we want to do with our data such as transformers and models and the pipeline will execute them in steps. 
 
 from sklearn.pipeline import Pipeline
 
-Let's combine the preprocessing and model with pipeline.
 
-we will instruct the pipeline to:
+# Let's combine the preprocessing and model with pipeline.
+# 
+# we will instruct the pipeline to:
+# 
+# 1. Do imputation using `SimpleImputer()` using a strategy of “median”
+# 2. Scale our data using `StandardScaler` 
+# 3. Build a `KNeighborsRegressor`. 
+# 
+# (The last step should be a model and earlier steps should be transformers) 
+# 
+# Note: The input for `Pipeline` is a list containing tuples (one for each step). 
 
-1. Do imputation using `SimpleImputer()` using a strategy of “median”
-2. Scale our data using `StandardScaler` 
-3. Build a `KNeighborsRegressor`. 
+# In[161]:
 
-(The last step should be a model and earlier steps should be transformers) 
-
-Note: The input for `Pipeline` is a list containing tuples (one for each step). 
 
 pipe = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
@@ -907,83 +1205,107 @@ pipe = Pipeline([
         ("reg", KNeighborsRegressor())
 ])
 
+
+# In[162]:
+
+
 pipe.fit(X_train, y_train)
 
-- Note that we are passing `X_train` and **NOT** the imputed or scaled data here. 
 
-When we call `fit`  the pipeline is carrying out the following steps:
+# - Note that we are passing `X_train` and **NOT** the imputed or scaled data here. 
+# 
+# When we call `fit`  the pipeline is carrying out the following steps:
+# 
+# - Fit `SimpleImputer` on `X_train`.
+# - Transform `X_train` using the fit `SimpleImputer` to create `X_train_imp`.
+# - Fit `StandardScaler` on `X_train_imp`.
+# - Transform `X_train_imp` using the fit `StandardScaler` to create `X_train_imp_scaled`.
+# - Fit the model (`KNeighborsRegressor` in our case) on `X_train_imp_scaled`.
+# 
 
-- Fit `SimpleImputer` on `X_train`.
-- Transform `X_train` using the fit `SimpleImputer` to create `X_train_imp`.
-- Fit `StandardScaler` on `X_train_imp`.
-- Transform `X_train_imp` using the fit `StandardScaler` to create `X_train_imp_scaled`.
-- Fit the model (`KNeighborsRegressor` in our case) on `X_train_imp_scaled`.
+# In[163]:
 
 
 pipe.predict(X_train) 
 
-When we call `predict` on our data, the following steps are carrying out:
 
-- Transform `X_train` using the fit `SimpleImputer` to create `X_train_imp`.
-- Transform `X_train_imp` using the fit `StandardScaler` to create `X_train_imp_scaled`.
-- Predict using the fit model (`KNeighborsRegressor` in our case) on `X_train_imp_scaled`. 
+# When we call `predict` on our data, the following steps are carrying out:
+# 
+# - Transform `X_train` using the fit `SimpleImputer` to create `X_train_imp`.
+# - Transform `X_train_imp` using the fit `StandardScaler` to create `X_train_imp_scaled`.
+# - Predict using the fit model (`KNeighborsRegressor` in our case) on `X_train_imp_scaled`. 
+# 
+# It is not fitting any of the data this time. 
 
-It is not fitting any of the data this time. 
+# 
+# <img src='https://amueller.github.io/COMS4995-s20/slides/aml-04-preprocessing/images/pipeline.png' width="50%">
+# 
+# [Source](https://amueller.github.io/COMS4995-s20/slides/aml-04-preprocessing/#18)
 
+# We can’t accidentally re-fit the preprocessor on the test data as we did before.
+# 
+# It automatically makes sure the same transformations are applied to train and test.
+# 
+# Now when we do cross-validation on the pipeline the transformers and the model are refit on each fold.
+# 
+# The pipeline applies the `fit_transform` on the train portion of the data and only `transform` on the validation portion in **each fold**.   
+# 
+# This is how to avoid the Golden Rule violation!
 
-<img src='https://amueller.github.io/COMS4995-s20/slides/aml-04-preprocessing/images/pipeline.png' width="50%">
+# In[164]:
 
-[Source](https://amueller.github.io/COMS4995-s20/slides/aml-04-preprocessing/#18)
-
-We can’t accidentally re-fit the preprocessor on the test data as we did before.
-
-It automatically makes sure the same transformations are applied to train and test.
-
-Now when we do cross-validation on the pipeline the transformers and the model are refit on each fold.
-
-The pipeline applies the `fit_transform` on the train portion of the data and only `transform` on the validation portion in **each fold**.   
-
-This is how to avoid the Golden Rule violation!
 
 scores_processed = cross_validate(pipe, X_train, y_train, return_train_score=True)
 pd.DataFrame(scores_processed)
 
+
+# In[165]:
+
+
 pd.DataFrame(scores_processed).mean()
+
+
+# In[166]:
+
 
 dummy = DummyRegressor(strategy="median")
 scores = cross_validate(dummy, X_train, y_train, return_train_score=True)
 pd.DataFrame(scores).mean()
 
-We can trust here now that the scores are not influenced but the training data and all our steps were done efficiently and easily too. 
 
-## Let's Practice
+# We can trust here now that the scores are not influenced but the training data and all our steps were done efficiently and easily too. 
 
-1\. Which of the following steps cannot be used in a pipeline?
+# ## Let's Practice
+# 
+# 1\. Which of the following steps cannot be used in a pipeline?
+# 
+# a) Scaling   
+# b) Model building    
+# c) Imputation    
+# d) Data Splitting    
+# 
+# 2\. Why can't we fit and transform the training and test data together?  
+# 
+# **True or False**        
+# 
+# 3\. We have to be careful of the order we put each transformation and model in a pipeline.     
+# 4\. Pipelines will fit and transform on both the training and validation folds during cross-validation.   
 
-a) Scaling   
-b) Model building    
-c) Imputation    
-d) Data Splitting    
+# ```{admonition} Solutions!
+# :class: dropdown
+# 
+# 1. Data Splitting
+# 2. It's violating the golden rule.
+# 3. True
+# 4. False
+# ```
 
-2\. Why can't we fit and transform the training and test data together?  
+# ## Let's Practice - Coding
+# 
+# Let's bring in the basketball dataset again.
 
-**True or False**        
+# In[72]:
 
-3\. We have to be careful of the order we put each transformation and model in a pipeline.     
-4\. Pipelines will fit and transform on both the training and validation folds during cross-validation.   
-
-```{admonition} Solutions!
-:class: dropdown
-
-1. Data Splitting
-2. It's violating the golden rule.
-3. True
-4. False
-```
-
-## Let's Practice - Coding
-
-Let's bring in the basketball dataset again.
 
 # Loading in the data
 bball_df = pd.read_csv('data/bball.csv')
@@ -997,23 +1319,29 @@ y = bball_df['position']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=7)
 
-Build a pipeline named `bb_pipe` that: 
-1. Imputes using "median" as a strategy, 
-2. scale using `StandardScaler` 
-3. builds a `KNeighborsClassifier`.
+
+# Build a pipeline named `bb_pipe` that: 
+# 1. Imputes using "median" as a strategy, 
+# 2. scale using `StandardScaler` 
+# 3. builds a `KNeighborsClassifier`.
+# 
+# 
+# Next, do 5 fold cross-validation on the pipeline using `X_train` and `y_train` and save the results in a dataframe.
+# Take the mean of each column and assess your model.
+
+# In[ ]:
 
 
-Next, do 5 fold cross-validation on the pipeline using `X_train` and `y_train` and save the results in a dataframe.
-Take the mean of each column and assess your model.
 
 
 
-## What We've Learned Today<a id="9"></a>
-
-- How the $k$NN algorithm works for regression.
-- How to build an SVM with RBF kernel model. 
-- How changing `gamma` and `C` hyperparameters affects the fundamental tradeoff.
-- How to imputer values when we are missing data. 
-- Why it's important to scale our features.
-- How to scales our features. 
-- How to build a pipeline that executes a number of steps without breaking the golden rule of ML.
+# ## What We've Learned Today<a id="9"></a>
+# 
+# - How the $k$NN algorithm works for regression.
+# - How to build an SVM with RBF kernel model. 
+# - How changing `gamma` and `C` hyperparameters affects the fundamental tradeoff.
+# - How to imputer values when we are missing data. 
+# - Why it's important to scale our features.
+# - How to scales our features. 
+# - How to build a pipeline that executes a number of steps without breaking the golden rule of ML.
+# 
