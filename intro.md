@@ -1,8 +1,6 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](https://github.com/bait509-ubc/BAIT509/blob/master/2021BAIT509_course_outline.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/58082) for the most up-to-date content and announcements.
-
-This repository is available as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/intro.html).
+This is the home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](https://github.com/bait509-ubc/BAIT509/blob/master/BAIT509-2022.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/82520) for the most up-to-date content and announcements.
 
 ## Learning Objectives
 
@@ -19,10 +17,7 @@ By the end of the course, students are expected to be able to:
 
 | Name         | Position   | email | 
 | :---:        | :---:      | :---:         | 
-| [Hayley Boyce](https://www.hayleyfboyce.com/) | Instructor | hfboyce@cs.ubc.ca | 
-| Ali Seyfi | TA | aliseyfi@cs.ubc.ca | 
-| Andy Tai | TA | andy.tai@mail.utoronto.ca |  
-| Daniel Ramandi| TA | ramandi18@gmail.com | 
+| [Joel Ostblom](https://www.joelostblom.com/) | Instructor | joel.ostblom@cs.ubc.ca | 
 
 ## Class Meetings
 
@@ -59,7 +54,4 @@ Want to talk about the course outside of lecture? Let's talk during these dedica
 
 | Teaching Member | When                 | Where    |
 | :---:           | :---:                | :---:    |
-|  [Hayley Boyce](https://www.hayleyfboyce.com/)  | Thursdays 1:00 -2:00 PST | Zoom link in Canvas |
-| Ali Seyfi | Fridays 12-1 pm | Zoom link in Canvas |
-| Andy Tai | Wedesdays 4-5 pm (Starting April 28th) | Zoom link in Canvas |
-| Daniel Ramandi| In class; Monday and Wednesdays 8-10 am | Zoom link in Canvas |
+|  Joel Ostblom   | Thursdays 2 - 3 PM PST | Zoom link on Canvas |
