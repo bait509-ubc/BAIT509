@@ -10,5 +10,3 @@ scikit-learn
 xgboost
 matplotlib
 graphviz
-torchvision
-torch
