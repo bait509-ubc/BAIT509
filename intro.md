@@ -17,7 +17,7 @@ By the end of the course, students are expected to be able to:
 
 | Name         | Position   | email | 
 | :---:        | :---:      | :---:         | 
-| [Joel Ostblom](https://www.joelostblom.com/) | Instructor | joel.ostblom@cs.ubc.ca | 
+| [Joel Ostblom](https://www.joelostblom.com/) | Instructor | joel.ostblom@ubc.ca | 
 
 ## Class Meetings
 
