@@ -40,18 +40,18 @@ Details about class meetings will appear here as they become available.
 
 | Assessment                                                      | Due                  | Weight |
 | :---:                                                           | :---:                | :---:  |
-| Assignment 1                                                    | April 28th at 23:59  | 20%    |
-| Quiz                                                            | May 5th at 23:59     | 10%    |
-| Assignment 2                                                    | May 10th at 23:59    | 20%    |
-| Assignment 3                                                    | May 19th at 23:59    | 20%    |
-| Final Project                                                   | May 26th 23:59       | 30%    |
+| Assignment 1                                                    | Jan 12 at 23:59      | 20%    |
+| Quiz                                                            | Jan 19 at 23:59      | 10%    |
+| Assignment 2                                                    | Jan 24 at 23:59      | 20%    |
+| Assignment 3                                                    | Feb 2 at 23:59       | 20%    |
+| Final Project                                                   | Feb 12 at 23:59      | 30%    |
 
-All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/58082).
+All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/82520).
 
 ## Office Hours
 
 Want to talk about the course outside of lecture? Let's talk during these dedicated times.
 
-| Teaching Member | When                 | Where    |
-| :---:           | :---:                | :---:    |
+| Teaching Member | When                   | Where    |
+| :---:           | :---:                  | :---:    |
 |  Joel Ostblom   | Thursdays 2 - 3 PM PST | Zoom link on Canvas |
