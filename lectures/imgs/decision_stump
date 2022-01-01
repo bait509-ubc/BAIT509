@@ -1,5 +1,6 @@
 digraph Tree {
-node [shape=box] ;
+node [shape=box, fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
 0 [label="lon <= -102.165\nclass = red"] ;
 1 [label="class = blue"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
