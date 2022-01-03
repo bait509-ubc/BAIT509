@@ -1,6 +1,14 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](https://github.com/bait509-ubc/BAIT509/blob/master/BAIT509-2022.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/82520) for the most up-to-date content and announcements.
+This is the home page for BAIT 509 at the University of British Columbia.
+This course is and introduction to machine learning concepts,
+such as model training, model testing, generalization error and overfitting.
+Exposure to a variety of machine learning techniques,
+with deeper exploration of a few chosen techniques.
+Forming good scientific questions to address business objectives with machine learning.
+Python will be the primary programming language used.
+
+Please see the [syllabus](https://github.com/bait509-ubc/BAIT509/blob/master/BAIT509-2022.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/82520) for the most up-to-date content and announcements.
 
 ## Learning Objectives
 
@@ -15,13 +23,14 @@ By the end of the course, students are expected to be able to:
 
 ## Teaching Team
 
-| Name         | Position   | email | 
-| :---:        | :---:      | :---:         | 
-| [Joel Ostblom](https://www.joelostblom.com/) | Instructor | joel.ostblom@ubc.ca | 
+| Name                                         | Position   | email               |
+| :---:                                        | :---:      | :---:               |
+| [Joel Ostblom](https://www.joelostblom.com/) | Instructor | joel.ostblom@ubc.ca |
+| Ali Seyfi                                    | TA         |                     |
+| Harsh Sharma                                 | TA         |                     |
+| Pranav Garg                                  | TA         |                     |
 
 ## Class Meetings
-
-Details about class meetings will appear here as they become available.
 
 |  #    | Topic | Link |
 | :---: | :---: | :---: |
@@ -38,20 +47,18 @@ Details about class meetings will appear here as they become available.
 
 ## Assessments
 
-| Assessment                                                      | Due                  | Weight |
-| :---:                                                           | :---:                | :---:  |
-| Assignment 1                                                    | Jan 12 at 23:59      | 20%    |
-| Quiz                                                            | Jan 19 at 23:59      | 10%    |
-| Assignment 2                                                    | Jan 24 at 23:59      | 20%    |
-| Assignment 3                                                    | Feb 2 at 23:59       | 20%    |
-| Final Project                                                   | Feb 12 at 23:59      | 30%    |
+| Assessment    | Due             | Weight |
+| :---:         | :---:           | :---:  |
+| Assignment 1  | Jan 12 at 23:59 | 20%    |
+| Quiz          | Jan 19 at 23:59 | 10%    |
+| Assignment 2  | Jan 24 at 23:59 | 20%    |
+| Assignment 3  | Feb 2 at 23:59  | 20%    |
+| Final Project | Feb 12 at 23:59 | 30%    |
 
 All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/82520).
 
 ## Office Hours
 
-Want to talk about the course outside of lecture? Let's talk during these dedicated times.
-
-| Teaching Member | When                   | Where    |
-| :---:           | :---:                  | :---:    |
-|  Joel Ostblom   | Thursdays 2 - 3 PM PST | Zoom link on Canvas |
+| Teaching Member | When                   | Where               |
+| :---:           | :---:                  | :---:               |
+| Joel Ostblom    | Thursdays 2 - 3 PM PST | Zoom link on Canvas |
