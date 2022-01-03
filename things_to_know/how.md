@@ -11,7 +11,6 @@ You will be able to:
 - Find zoom links 
 - Take the quiz
 - Access and submit your assignments and project
-- Read the learning objectives. 
 
 ### [Piazza](https://piazza.com/ubc.ca/winterterm22021/bait509ba12020w/home)
 
@@ -58,4 +57,4 @@ The final project is designed to put everything you learned into practice. You w
 - Report the results using multiple metrics
 - Maintain a narrative 
 
-You will need to submit the data, the notebook and an HTML file to be eligible for full marks. 
+You will need to submit the data, the notebook and an HTML file to be eligible for full marks.
