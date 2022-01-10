@@ -11,7 +11,7 @@ parts:
   chapters:
   - file: lectures/lecture1
   - file: lectures/lecture2
-  # - file: lectures/lecture3
+  - file: lectures/lecture3
   # - file: lectures/lecture4
   # - file: lectures/lecture5
   # - file: lectures/lecture6
