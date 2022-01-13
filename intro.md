@@ -47,13 +47,13 @@ By the end of the course, students are expected to be able to:
 
 ## Assessments
 
-| Assessment    | Due             | Weight |
-| :---:         | :---:           | :---:  |
-| Assignment 1  | Jan 12 at 23:59 | 20%    |
-| Quiz          | Jan 19 at 23:59 | 10%    |
-| Assignment 2  | Jan 24 at 23:59 | 20%    |
-| Assignment 3  | Feb 2 at 23:59  | 20%    |
-| Final Project | Feb 12 at 23:59 | 30%    |
+| Assessment    | Due    | Weight |
+| :---:         | :---:  | :---:  |
+| Assignment 1  | Jan 18 | 20%    |
+| Quiz          | Jan 24 | 10%    |
+| Assignment 2  | Jan 26 | 20%    |
+| Assignment 3  | Feb 2  | 20%    |
+| Final Project | Feb 12 | 30%    |
 
 All assessments will be submitted through [UBC Canvas](https://canvas.ubc.ca/courses/82520).
 
