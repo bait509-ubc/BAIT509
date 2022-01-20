@@ -1,6 +1,8 @@
 # BAIT509 - Business Applications of Machine Learning
 
-This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada. Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/) for the most up-to-date content and announcements.
+This is the GitHub home page for the 2020/2021 iteration of the course BAIT 509 at the University of British Columbia, Vancouver, Canada.
+Please see the [syllabus](BAIT509_syllabus.pdf) for more information about the course.
+Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/) for the most up-to-date content and announcements.
 
 This repository is available as an easy-to-navigate [website](https://bait509-ubc.github.io/BAIT509/).
 
