@@ -1,8 +1,0 @@
-digraph Tree {
-node [shape=box] ;
-0 [label="lat <= 37.682\nclass = blue"] ;
-1 [label="class = red"] ;
-0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="class = blue"] ;
-0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-}
