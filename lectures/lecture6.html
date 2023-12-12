@@ -1,0 +1,2990 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Naive Bayes and Hyperparameter Optimization &#8212; BAIT 509&lt;br&gt;Business Applications of Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture6.html" />
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Linear Models" href="lecture7.html" />
+    <link rel="prev" title="5. Preprocessing Categorical Features and Column Transformer" href="lecture5.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/bait_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 509<br>Business Applications of Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Quan Nguyen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Intro to ML &amp;  Decision Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Splitting and Cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Baseline models &amp; k-Nearest Neighbours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. kNN regression, Support Vector Machines, and Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Preprocessing Categorical Features and Column Transformer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture7.html">
+   7. Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   8. Business Objectives/Statistical Questions and Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   9. Classification and Regression Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10a.html">
+   10. Data Science Ethics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10b.html">
+   11. Multi-Class Classification (Optional)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2Flectures/lecture6.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/lectures/lecture6.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   6.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   6.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     6.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-introduction-spam-non-spam">
+   6.3. Naive Bayes introduction -  spam/non spam
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-from-scratch">
+   6.4. Naive Bayes from scratch
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes-approximation">
+     6.4.1. Naive Bayes’ approximation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation">
+     6.4.2. Estimating
+     <span class="math notranslate nohighlight">
+      \(P(\text{spam} \mid \text{message})\)
+     </span>
+     (The left side of our equation)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation">
+     6.4.3. Estimating
+     <span class="math notranslate nohighlight">
+      \(P(\text{non spam} \mid \text{message})\)
+     </span>
+     (The right side of our equation)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-classifier-in-sklearn">
+   6.5. Naive Bayes classifier in sklearn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smoothing-by-adding-noise-to-avoid-zero-probabilities">
+   6.6. Smoothing by adding noise to avoid zero probabilities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha-hyperparameter-and-the-fundamental-tradeoff">
+     6.6.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       alpha
+      </span>
+     </code>
+     hyperparameter and the fundamental tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-on-real-data">
+   6.7. Naive Bayes on Real Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   6.8. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automated-hyperparameter-optimization">
+   6.9. Automated Hyperparameter Optimization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-problem-with-hyperparameters">
+     6.9.1. The problem with hyperparameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-pick-hyperparameters">
+     6.9.2. How to pick hyperparameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     6.9.3. Automated hyperparameter optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-apply-it">
+     6.9.4. Let’s Apply it
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exhaustive-grid-search-trying-all-the-options">
+   6.10. Exhaustive grid search - Trying ALL the options
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-hyperparameter-tuning-with-pipelines">
+     6.10.1. Implement hyperparameter tuning with Pipelines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-a-grid">
+     6.10.2. Why a grid?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-what">
+     6.10.3. Now what?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notice-any-problems">
+     6.10.4. Notice any problems?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#randomized-hyperparameter-optimization">
+     6.10.5. Randomized hyperparameter optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set">
+   6.11. The problem with hyperparameter tuning - overfitting the validation set
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-overfitting-the-validation-set">
+     6.11.1. Example: overfitting the validation set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alleviate-validation-data-overfitting-during-the-hyperparameter-search">
+   6.12. Alleviate validation data overfitting during the hyperparameter search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collect-more-data">
+     6.12.1. Collect more data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manually-adjust">
+     6.12.2. Manually adjust
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#refined-the-hyperparameter-tuning-procedure">
+     6.12.3. Refined the hyperparameter tuning procedure
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.13. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   6.14. Let’s Practice - Coding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
+   6.15. What We’ve Learned Today
+   <a id="9">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Naive Bayes and Hyperparameter Optimization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   6.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   6.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     6.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-introduction-spam-non-spam">
+   6.3. Naive Bayes introduction -  spam/non spam
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-from-scratch">
+   6.4. Naive Bayes from scratch
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes-approximation">
+     6.4.1. Naive Bayes’ approximation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation">
+     6.4.2. Estimating
+     <span class="math notranslate nohighlight">
+      \(P(\text{spam} \mid \text{message})\)
+     </span>
+     (The left side of our equation)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation">
+     6.4.3. Estimating
+     <span class="math notranslate nohighlight">
+      \(P(\text{non spam} \mid \text{message})\)
+     </span>
+     (The right side of our equation)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-classifier-in-sklearn">
+   6.5. Naive Bayes classifier in sklearn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smoothing-by-adding-noise-to-avoid-zero-probabilities">
+   6.6. Smoothing by adding noise to avoid zero probabilities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alpha-hyperparameter-and-the-fundamental-tradeoff">
+     6.6.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       alpha
+      </span>
+     </code>
+     hyperparameter and the fundamental tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-bayes-on-real-data">
+   6.7. Naive Bayes on Real Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   6.8. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automated-hyperparameter-optimization">
+   6.9. Automated Hyperparameter Optimization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-problem-with-hyperparameters">
+     6.9.1. The problem with hyperparameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-pick-hyperparameters">
+     6.9.2. How to pick hyperparameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     6.9.3. Automated hyperparameter optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-apply-it">
+     6.9.4. Let’s Apply it
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exhaustive-grid-search-trying-all-the-options">
+   6.10. Exhaustive grid search - Trying ALL the options
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-hyperparameter-tuning-with-pipelines">
+     6.10.1. Implement hyperparameter tuning with Pipelines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-a-grid">
+     6.10.2. Why a grid?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-what">
+     6.10.3. Now what?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notice-any-problems">
+     6.10.4. Notice any problems?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#randomized-hyperparameter-optimization">
+     6.10.5. Randomized hyperparameter optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set">
+   6.11. The problem with hyperparameter tuning - overfitting the validation set
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-overfitting-the-validation-set">
+     6.11.1. Example: overfitting the validation set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alleviate-validation-data-overfitting-during-the-hyperparameter-search">
+   6.12. Alleviate validation data overfitting during the hyperparameter search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collect-more-data">
+     6.12.1. Collect more data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manually-adjust">
+     6.12.2. Manually adjust
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#refined-the-hyperparameter-tuning-procedure">
+     6.12.3. Refined the hyperparameter tuning procedure
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.13. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   6.14. Let’s Practice - Coding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today-a-id-9-a">
+   6.15. What We’ve Learned Today
+   <a id="9">
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="naive-bayes-and-hyperparameter-optimization">
+<h1><span class="section-number">6. </span>Naive Bayes and Hyperparameter Optimization<a class="headerlink" href="#naive-bayes-and-hyperparameter-optimization" title="Permalink to this headline">#</a></h1>
+<div class="section" id="lecture-learning-objectives">
+<h2><span class="section-number">6.1. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Explain the naive assumption of naive Bayes.</p></li>
+<li><p>Predict targets by hands-on toy examples using naive Bayes.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">MultiNomialNB</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and explain its usefulness.</p></li>
+<li><p>Explain the need for smoothing in naive Bayes.</p></li>
+<li><p>Explain how <code class="docutils literal notranslate"><span class="pre">alpha</span></code> controls the fundamental tradeoff.</p></li>
+<li><p>Explain the need for hyperparameter optimization</p></li>
+<li><p>Carry out hyperparameter optimization using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="five-minute-recap-lightning-questions">
+<h2><span class="section-number">6.2. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>What kind of preprocessing must I do if I have a feature with categories that have an order to them?</p></li>
+<li><p>How many columns do I need for a binary feature?</p></li>
+<li><p>What tool do we use to preprocess all our pipelines and build a model without breaking the golden rule?</p></li>
+<li><p>Between <code class="docutils literal notranslate"><span class="pre">Pipeline()</span></code> and <code class="docutils literal notranslate"><span class="pre">make_pipeline()</span></code>, which one assigns names to the steps on our behalf?</p></li>
+<li><p>In text data, what are our features made up of?</p></li>
+</ul>
+<div class="section" id="some-lingering-questions">
+<h3><span class="section-number">6.2.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>What algorithm works well with our <code class="docutils literal notranslate"><span class="pre">spam</span></code>, <code class="docutils literal notranslate"><span class="pre">non</span> <span class="pre">spam</span></code> problem?</p></li>
+<li><p>How do I tune multiple hyperparameters at once without writing manual for loops?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="naive-bayes-introduction-spam-non-spam">
+<h2><span class="section-number">6.3. </span>Naive Bayes introduction -  spam/non spam<a class="headerlink" href="#naive-bayes-introduction-spam-non-spam" title="Permalink to this headline">#</a></h2>
+<p>Last lecture we saw this spam classification problem where we used <code class="docutils literal notranslate"><span class="pre">CountVectorizer()</span></code> to vectorize the text into features and used an <code class="docutils literal notranslate"><span class="pre">SVC</span></code> to classify each text message into either a class of <code class="docutils literal notranslate"><span class="pre">spam</span></code> or <code class="docutils literal notranslate"><span class="pre">non</span> <span class="pre">spam</span></code> based on the frequency of each word in the text.</p>
+<p><span class="math notranslate nohighlight">\(X = \begin{bmatrix}\text{&quot;URGENT!! You have been selected to receive a £900 prize reward!&quot;,}\\ \text{&quot;Lol your always so convincing.&quot;}\\ \text{&quot;Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now!&quot;}\\ \end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(y = \begin{bmatrix}\text{spam} \\ \text{non spam} \\ \text{spam} \end{bmatrix}\)</span></p>
+<p>Today we will see a more sophisticated but similar way of classifying text data
+using and algorithm called Naive Bayes.
+For years,
+the best spam filtering methods used naive Bayes
+and it has a relatively cheap computational cost.</p>
+<p>Additional applications of Naive Bayes include:</p>
+<ul class="simple">
+<li><p>Folder ordering, document clustering, etc.</p></li>
+<li><p>Sentiment analysis (e.g., movies, restaurants, etc.)</p></li>
+<li><p>Classifying products into groups based on descriptions</p></li>
+</ul>
+</div>
+<div class="section" id="naive-bayes-from-scratch">
+<h2><span class="section-number">6.4. </span>Naive Bayes from scratch<a class="headerlink" href="#naive-bayes-from-scratch" title="Permalink to this headline">#</a></h2>
+<p>A simplified explanation of Naive Bayes
+is that it will estimate the probability that an email is spam or not
+based on how frequent the words in the email occur in known spam and non-spam emails.</p>
+<p>To fully understand what Naive Bayes does when classifying data,
+let’s do some naive Bayes calculations <strong>by hand</strong>🖐 🤚 .</p>
+<p>Yes, there is going to be some math here but it’s going to be really helpful in understanding how this algorithm works!</p>
+<p>Below we have a few texts and they are classed as either being  <strong>spam</strong> or <strong>non spam</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Lol you are always so convincing.&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Sauder has interesting courses.&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Sauder has been interesting so far.&quot;</span><span class="p">],</span>
+                   <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;non spam&quot;</span><span class="p">,</span> <span class="s2">&quot;non spam&quot;</span><span class="p">,</span> <span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;non spam&quot;</span><span class="p">]})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>URGENT!! As a valued network customer you have...</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Lol you are always so convincing.</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sauder has interesting courses.</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>URGENT! You have won a 1 week FREE membership ...</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Had your mobile 11 months or more? U R entitle...</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sauder has been interesting so far.</td>
+      <td>non spam</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We know that we need to encode categorical data and transform it to numeric data to use it with machine learning since categorical columns throw an error when we try to fit our model.</p>
+<p>This sounds like a job for <code class="docutils literal notranslate"><span class="pre">CountVectorizer()</span></code> since we have words that need to be converted into numerical features!</p>
+<p>Here we are going to set <code class="docutils literal notranslate"><span class="pre">max_features=2</span></code>
+to create a toy example that is easy to follow in our manual calculations.
+We are also setting <code class="docutils literal notranslate"><span class="pre">stop_words='english'</span></code>
+so we are getting meaningful words as features and not commonly used words
+such as “and”, “or”, etc
+(these are referred to as “stop words”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+
+
+<span class="c1"># Transform the data with the count vectorizer</span>
+<span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>  <span class="c1"># Returns a sparse matric which we convert to an array</span>
+
+<span class="c1"># Put together a df with the results</span>
+<span class="n">train_bow_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">count_vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">train_bow_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># tolist() needed since indices are different</span>
+<span class="n">train_bow_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Lol you are always so convincing.</th>
+      <td>0</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has interesting courses.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!</th>
+      <td>0</td>
+      <td>0</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has been interesting so far.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Suppose we are given 2 new text messages and we want to find the targets for these examples, how do we do it using naive Bayes?</p>
+<p>First, let’s get a numeric representation of our made-up new text messages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;URGENT! Free!!&quot;</span><span class="p">,</span> <span class="s2">&quot;I like Sauder&quot;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_texts</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="n">test_bow_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">count_vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">test_texts</span><span class="p">)</span>
+<span class="n">test_bow_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT! Free!!</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>I like Sauder</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s look at the text: “<strong>URGENT! Free!!</strong>” and ask the question: “Is this message <strong>spam</strong>?”</p>
+<p>What we want to use the Naive Bayes algorithm for
+is figuring out the probability that a text message is either spam or not spam <strong>given that</strong> it contains the words “URGENT! Free!!”, which can be expressed like so (the <code class="docutils literal notranslate"><span class="pre">|</span></code> means “given that”/”condition upon”):</p>
+<div class="math notranslate nohighlight">
+\[P(\textrm{spam}|\textrm{&quot;URGENT! Free!!&quot;})\]</div>
+<div class="math notranslate nohighlight">
+\[ \text{and} \]</div>
+<div class="math notranslate nohighlight">
+\[P(\textrm{non spam}|\textrm{&quot;URGENT! Free!!&quot;})\]</div>
+<p>Once we have calculated these probabilities,
+we compare the probabilities for spam and non-spam and classify each text according to the largest probability.</p>
+<p>So what does the calculation for the probabilities look like?
+Naive Bayes relies on Bayes Theorem to compute these numbers,
+and it looks like this (the posterior probability corresponds to our equations above):</p>
+<a class="reference internal image-reference" href="../_images/bayes.png"><img alt="../_images/bayes.png" src="../_images/bayes.png" style="width: 50%;" /></a>
+<p>Substituting into Bayes rule for the “Urgent Free” message, we get the following for computating the probability that this message is spam:</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{spam})*P(\textrm{spam})}{P(\text{sauder} = 0, \text{urgent} = 1 )}\]</div>
+<p>And a similar equation for whether it is not spam</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{non-spam})*P(\textrm{non-spam})}{P(\text{sauder} = 0, \text{urgent} = 1 )}\]</div>
+<p>Since our question is “Is this message spam” we want to compare this probabilities
+and answer “yes” if the spam-probability is larger than the non-spam probability.
+In other words,
+the message is spam if the following condition is true:</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{spam})*P(\textrm{spam})}{P(\text{sauder} = 0, \text{urgent} = 1 )} &gt; \frac{P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{non-spam})*P(\textrm{non-spam})}{P(\text{sauder} = 0, \text{urgent} = 1 )}\]</div>
+<p>Now, there are two reasons naive Bayes is so easy:</p>
+<ol class="simple">
+<li><p>We can cancel out the denominator which leads us to this:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{spam})*P(\textrm{spam})&gt; P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{non-spam})*P(\textrm{non-spam})\]</div>
+<ol class="simple">
+<li><p>We can simplify the numerator via the Naive Bayes approximation.</p></li>
+</ol>
+<div class="section" id="naive-bayes-approximation">
+<h3><span class="section-number">6.4.1. </span>Naive Bayes’ approximation<a class="headerlink" href="#naive-bayes-approximation" title="Permalink to this headline">#</a></h3>
+<p>The reason for the name “Naive” is that word order does not matter in the calculation
+and that we can assume each feature (word) is conditionally independent
+(assume that all features in <span class="math notranslate nohighlight">\(X\)</span> are mutually independent, conditional on the target class).
+It might sound too simplistic to not care about word order and grammatical rules,
+but this has shown to work well enough in practice and dramatically simplifies our calculation.</p>
+<div class="math notranslate nohighlight">
+\[
+P(\text{sauder} = 0, \text{urgent} = 1 \mid \text{spam}) = P(\text{sauder} = 0 \mid \text{spam}) * P(\text{urgent} = 1 \mid \text{spam})
+\]</div>
+<p>If we don’t assume independence, it’s a much bigger probability space, so there won’t be enough training examples to learn. We’d need examples for every combination of words occurring together.</p>
+<p>Now we just need to calculate the probabilities for each word individually from the training data!</p>
+</div>
+<div class="section" id="estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation">
+<h3><span class="section-number">6.4.2. </span>Estimating <span class="math notranslate nohighlight">\(P(\text{spam} \mid \text{message})\)</span> (The left side of our equation)<a class="headerlink" href="#estimating-p-text-spam-mid-text-message-the-left-side-of-our-equation" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0 \mid \text{spam}) * P(\text{urgent} = 1 \mid \text{spam})*P(\textrm{spam}) \]</div>
+<p>We need the following:</p>
+<ol class="simple">
+<li><p>Prior probability:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{spam})\)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{spam})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{spam})\)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>Let’s remind us of what our data looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_bow_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Lol you are always so convincing.</th>
+      <td>0</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has interesting courses.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!</th>
+      <td>0</td>
+      <td>0</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has been interesting so far.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Prior probability (what proportion of messages are spam, aka what we would guess with no information about the words in the message)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(\text{spam}) = 3/6\)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{spam}) = 3/3\)</span></p>
+<ul>
+<li><p>Given target is spam, how often is “sauder”= 0?</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{spam}) = 2/3\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Now we have everything we need to do our calculations!</p>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0 \mid \text{spam}) * P(\text{urgent} = 1 \mid \text{spam})*P(\textrm{spam}) = \frac{3}{3} * \frac{2}{3} * \frac{3}{6}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sauder0_spam</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">urgent1_spam</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">spam_prior</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">spam_prob</span> <span class="o">=</span> <span class="n">sauder0_spam</span> <span class="o">*</span> <span class="n">urgent1_spam</span> <span class="o">*</span> <span class="n">spam_prior</span>
+<span class="n">spam_prob</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that we simplified away the denominator,
+so the number above doesn’t correspond to an actual probability,
+but we can still use it to compare the estimation of spam versus non-spam.</p>
+<p>Ok, So we’ve done our left side! Now we have to do the right!</p>
+</div>
+<div class="section" id="estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation">
+<h3><span class="section-number">6.4.3. </span>Estimating <span class="math notranslate nohighlight">\(P(\text{non spam} \mid \text{message})\)</span>  (The right side of our equation)<a class="headerlink" href="#estimating-p-text-non-spam-mid-text-message-the-right-side-of-our-equation" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0 \mid \text{non-spam}) * P(\text{urgent} = 1 \mid \text{non-spam})*P(\textrm{non-spam}) \]</div>
+<p>Now we need the following:</p>
+<ol class="simple">
+<li><p>Prior probability:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{non spam})\)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{non spam})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{non spam})\)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>Again we use the data to calculate these probabilities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_bow_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Lol you are always so convincing.</th>
+      <td>0</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has interesting courses.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!</th>
+      <td>0</td>
+      <td>0</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has been interesting so far.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Prior probability</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(\text{non spam}) = 3/6\)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{non spam}) =1/3\)</span></p>
+<ul>
+<li><p>Given the target is non spam, how ofter is “sauder”=0?</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{non spam}) = 0/3\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Time for our calculation:</p>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0 \mid \text{non-spam}) * P(\text{urgent} = 1 \mid \text{non-spam})*P(\textrm{non-spam}) = \frac{1}{3} * \frac{0}{3} * \frac{3}{6}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_spam_prior</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">sauder0_non_spam</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">urgent1_non_spam</span> <span class="o">=</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">non_spam_prob</span> <span class="o">=</span> <span class="n">non_spam_prior</span> <span class="o">*</span> <span class="n">sauder0_non_spam</span> <span class="o">*</span> <span class="n">urgent1_non_spam</span>
+<span class="n">non_spam_prob</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>So for the question: “Is the text ‘Urgent!! Free!’ spam”, our initial equation:</p>
+<div class="math notranslate nohighlight">
+\[P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{spam})*P(\textrm{spam})&gt; P(\text{sauder} = 0,  \text{urgent} = 1 |\textrm{non-spam})*P(\textrm{non-spam})\]</div>
+<p>has been calculated to</p>
+<p>0.33333… &gt; 0.0</p>
+<p>Which is True (0.333 is bigger than 0), which means that the answer for this text is “Yes it to be classified as spam”.</p>
+<p>Now let’s see how we can do this in sklearn and see if the results are the same.</p>
+</div>
+</div>
+<div class="section" id="naive-bayes-classifier-in-sklearn">
+<h2><span class="section-number">6.5. </span>Naive Bayes classifier in sklearn<a class="headerlink" href="#naive-bayes-classifier-in-sklearn" title="Permalink to this headline">#</a></h2>
+<p>Let’s split up our data into our features and targets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">train_bow_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_bow_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here I am selecting the first row of our test set which was the <strong>URGENT! Free!!</strong> text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_bow_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT! Free!!</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The main Naive Bayes classifier in sklearn is called <code class="docutils literal notranslate"><span class="pre">MultinomialNB</span></code> and exists in the <code class="docutils literal notranslate"><span class="pre">naive_bayes</span></code> module.
+Here we use it to predict the class label of our test text-message.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+
+<span class="n">nb</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_bow_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;spam&#39;], dtype=&#39;&lt;U8&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead of using <code class="docutils literal notranslate"><span class="pre">predict</span></code>,  we can use something called <code class="docutils literal notranslate"><span class="pre">predict_proba()</span></code>  with Naive Bayes classifier which gives us the <em><strong>proba</strong></em>bilities of each class happening.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> returns the class with the highest probability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> gives us the actual probability scores.</p></li>
+</ul>
+<p><strong>Note:</strong> Although naive Bayes is known as a decent classifier, it is known to be a bad estimator, so the exact probability outputs from predict_proba are not to be taken too seriously. The important is which class’s probability is largest, not the exact number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_bow_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">nb</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>non spam</th>
+      <th>spam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.25</td>
+      <td>0.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Recall that when we worked through a toy example by hand, we estimated</p>
+<ul class="simple">
+<li><p>𝑃(non-spam∣message) = 0</p></li>
+<li><p>𝑃(spam∣message) = 0.3333</p></li>
+</ul>
+<p>The sklearn naive bayes classifier gives the same classification as we calculated by hand,
+but not exactly the same probabilities,
+why not?</p>
+<ul class="simple">
+<li><p>The scores we computed are not normalized. Remember that we ignored the denominator.
+The ones from sklearn ones are normalized so that they sum to 1.</p></li>
+<li><p>The sklearn model is using something called “smoothing” to avoid the problem of zero probabilities.</p></li>
+</ul>
+</div>
+<div class="section" id="smoothing-by-adding-noise-to-avoid-zero-probabilities">
+<h2><span class="section-number">6.6. </span>Smoothing by adding noise to avoid zero probabilities<a class="headerlink" href="#smoothing-by-adding-noise-to-avoid-zero-probabilities" title="Permalink to this headline">#</a></h2>
+<p>Why does the model do smoothing?
+Well, let’s look at our conditional probabilities again from the right side of our equation.</p>
+<ul class="simple">
+<li><p>Conditional probabilities</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 0 \mid \text{non spam}) =  1/3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{non spam}) = 0/3\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Is it wise to say that given a text that is non spam the probability of “urgent” occurring is exactly 0?</p>
+<p>Not really. We only are using 6 examples here and setting this to 0 (and <span class="math notranslate nohighlight">\(P(\text{urgent} = 1 \mid \text{non spam}) = 0\)</span>)   is making the whole right side of the equation equal to 0.
+Naive Bayes “naively” multiplies all the feature likelihoods together, and if any of the terms is zero, it’s going to void all other evidence and the probability of the class is going to be zero.</p>
+<p>This is somewhat problematic, since the absence of a single word will bring the probability down to zero even if the rest of the message indicates that it is highly likely to be spam/non-spam.
+We have limited training data and if we do not see a feature occurring with a class, it doesn’t mean it would never occur with that class.</p>
+<p>How can we fix this?</p>
+<p>A straight-forward way to avoid zero probabilities is to add some noise in the model by adding the same value (<span class="math notranslate nohighlight">\(\alpha\)</span>) to all the counts, e.g. if we add 1, then the smallest count will be 1 instead of zero and the biggest will be max+1 (2 in our example). This is called <strong>Additive/Laplace smoothing</strong>.</p>
+<p>Generally, we set alpha (<span class="math notranslate nohighlight">\(\alpha\)</span>) equal to 1 and in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (the default value) we control it using hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.
+This means that we give an instance of every word appearing once with a target of spam, as well as a target of non spam.</p>
+<div class="section" id="alpha-hyperparameter-and-the-fundamental-tradeoff">
+<h3><span class="section-number">6.6.1. </span><code class="docutils literal notranslate"><span class="pre">alpha</span></code> hyperparameter and the fundamental tradeoff<a class="headerlink" href="#alpha-hyperparameter-and-the-fundamental-tradeoff" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>High alpha <span class="math notranslate nohighlight">\(\rightarrow\)</span> underfitting</p>
+<ul>
+<li><p>We are adding large counts to everything and so we are diluting the signal in the data</p></li>
+</ul>
+</li>
+<li><p>Low alpha <span class="math notranslate nohighlight">\(\rightarrow\)</span> overfitting</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="naive-bayes-on-real-data">
+<h2><span class="section-number">6.7. </span>Naive Bayes on Real Data<a class="headerlink" href="#naive-bayes-on-real-data" title="Permalink to this headline">#</a></h2>
+<p>Let’s try <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s implementation of Naive Bayes on a modified version of Kaggle’s <a class="reference external" href="https://www.kaggle.com/vstepanenko/disaster-tweets">Disaster Tweets</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tweets_mod.csv&quot;</span><span class="p">)</span>
+<span class="n">tweets_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>YOU THERE, PACHIRISU PUNK, PREPARE TO BE DESTR...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Face absolutely flattened against the glass of...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bruhhhh I screamed when she said that 😭 MY HEA...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Granting warrants to "authorise police to ente...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ang lala hahaha I woke up to a deluge of death...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3995</th>
+      <td>As it seems to be fairly contagious, I'm think...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3996</th>
+      <td>#BoundBrookFire Firefighters from several diff...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3997</th>
+      <td>It is turning out to be a very violent storm a...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3998</th>
+      <td>A raging fire in Bound Brook, New Jersey, on S...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3999</th>
+      <td>Hazardous eruption a possibility after Philipp...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>4000 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Let’s split it into our training and test sets as well as our features and target objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">tweets_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="n">train_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1420</th>
+      <td>How low have you sunk Alice, just clickbait fo...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1638</th>
+      <td>Watching this tonight as I was working yesterd...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>616</th>
+      <td>January 14, 2020 at about 08:30 am, personnel ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Next oil spill you drone strike the CEO's neig...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2075</th>
+      <td>Another 6.0 aftershock has hit Puerto Rico aft...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1122</th>
+      <td>Aftershock comics. We prefer working in partne...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1346</th>
+      <td>Two platforms collide to do good, how awesome ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3454</th>
+      <td>More than 23,000 people have been evacuated an...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3437</th>
+      <td>I’m traumatised 😭</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3582</th>
+      <td>A volcano near the Philippine capital is spewi...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>3200 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Next, we make a pipeline and cross-validate!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+
+
+<span class="n">pipe_nb</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">CountVectorizer</span><span class="p">(),</span>
+    <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe_nb</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fit_time</th>
+      <th>score_time</th>
+      <th>test_score</th>
+      <th>train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.057878</td>
+      <td>0.010434</td>
+      <td>0.796875</td>
+      <td>0.948438</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.050771</td>
+      <td>0.009572</td>
+      <td>0.801562</td>
+      <td>0.948438</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.047406</td>
+      <td>0.009335</td>
+      <td>0.801562</td>
+      <td>0.946875</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.045360</td>
+      <td>0.008559</td>
+      <td>0.837500</td>
+      <td>0.945703</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.045094</td>
+      <td>0.008602</td>
+      <td>0.814063</td>
+      <td>0.944531</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.049302
+score_time     0.009300
+test_score     0.810312
+train_score    0.946797
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like we are overfitting to the training data
+and would be advised to try tune/optimize our hyperparameters
+(such as the amount of noise added).</p>
+</div>
+<div class="section" id="let-s-practice">
+<h2><span class="section-number">6.8. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>
+<p>Using naive Bayes by hand, what class would naive Bayes predict for the second test text message: “I like Sauder”?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_bow_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Lol you are always so convincing.</th>
+      <td>0</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has interesting courses.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!</th>
+      <td>0</td>
+      <td>0</td>
+      <td>spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has been interesting so far.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_bow_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>I like Sauder</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s setup some of the steps together:</p>
+<p><strong>spam side</strong></p>
+<ol class="simple">
+<li><p>Prior probability:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{spam}) = \)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{spam}) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{spam}) = \)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(P(\textrm{spam}|\text{sauder} = 1,  \text{urgent} = 0) = \)</span></p></li>
+</ol>
+<p><strong>non spam side</strong></p>
+<ol class="simple">
+<li><p>Prior probability:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{non spam}) = \)</span></p></li>
+</ul>
+</li>
+<li><p>Conditional probabilities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\text{sauder} = 1 \mid \text{non spam}) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\text{urgent} = 0 \mid \text{non spam}) = \)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(P(\textrm{non spam}|\text{sauder} = 1,  \text{urgent} = 0) =\)</span></p></li>
+</ol>
+<p><strong>Final Class</strong></p>
+<p>Which class’s probability is greater?</p>
+<hr class="docutils" />
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<p>Spam:</p>
+<p>1.<span class="math notranslate nohighlight">\(3/6\)</span><br />
+2. <span class="math notranslate nohighlight">\(0/3\)</span> and <span class="math notranslate nohighlight">\(1/3\)</span><br />
+3.<span class="math notranslate nohighlight">\(\frac{0}{3} * \frac{1}{3} *\frac{3}{6} = 0\)</span></p>
+<p>Non-spam:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(3/6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2/3\)</span> and <span class="math notranslate nohighlight">\(3/3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{2}{3} * \frac{3}{3} *\frac{3}{6} = 1/3\)</span></p></li>
+</ol>
+<p>1/3 &gt; 0 so the message is not classified as spam</p>
+</div>
+</div>
+<div class="section" id="automated-hyperparameter-optimization">
+<h2><span class="section-number">6.9. </span>Automated Hyperparameter Optimization<a class="headerlink" href="#automated-hyperparameter-optimization" title="Permalink to this headline">#</a></h2>
+<p>So far we’ve seen quite a few different hyperparameters for different models:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code> and <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> for decision trees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and <code class="docutils literal notranslate"><span class="pre">weights</span></code> for K-Nearest Neighbours.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> for SVMs with RBF.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> for NaiveBayes.</p></li>
+<li><p>We have also seen hyperparameters for our transformations like <code class="docutils literal notranslate"><span class="pre">strategy</span></code> for our <code class="docutils literal notranslate"><span class="pre">SimpleImputer()</span></code>.</p></li>
+</ul>
+<p>We have seen how important these are and that they can optimize your model,
+but we haven’t seen an effective way to optimize them;
+so far we have only used primitive for loops.
+Picking reasonable hyperparameters is important as it helps avoid underfit or overfit models.</p>
+<div class="section" id="the-problem-with-hyperparameters">
+<h3><span class="section-number">6.9.1. </span>The problem with hyperparameters<a class="headerlink" href="#the-problem-with-hyperparameters" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>We may have a lot of them.</p></li>
+<li><p>Nobody knows exactly how to choose them, there is no single function/formula to apply.</p></li>
+<li><p>May interact with each other in unexpected ways.</p></li>
+<li><p>The best settings depend on the specific data/problem.</p></li>
+<li><p>Can take a long time to execute.</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-pick-hyperparameters">
+<h3><span class="section-number">6.9.2. </span>How to pick hyperparameters<a class="headerlink" href="#how-to-pick-hyperparameters" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Manual hyperparameter optimization (What we’ve done so far)</p>
+<ul>
+<li><p>We may have some intuition about what might work.</p></li>
+<li><p>It takes a lot of work.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>OR…</strong></p>
+<ul class="simple">
+<li><p><strong>Automated hyperparameter optimization</strong> (hyperparameter tuning)</p>
+<ul>
+<li><p>Reduce human effort.</p></li>
+<li><p>Less prone to error.</p></li>
+<li><p>Data-driven approaches may be effective.</p></li>
+<li><p>It may be hard to incorporate intuition.</p></li>
+<li><p>Overfitting on the validation set.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">6.9.3. </span>Automated hyperparameter optimization<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Exhaustive grid search: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html"><code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.GridSearchCV</span></code></a></p></li>
+<li><p>Randomized hyperparameter optimization: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html" target="_blank"><code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.RandomizedSearchCV</span></code></a></p></li>
+</ul>
+<p>The “CV” stands for cross-validation; these methods have built-in cross-validation</p>
+</div>
+<div class="section" id="let-s-apply-it">
+<h3><span class="section-number">6.9.4. </span>Let’s Apply it<a class="headerlink" href="#let-s-apply-it" title="Permalink to this headline">#</a></h3>
+<p>Let’s bring back the cities dataset we worked with in previous lectures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cities_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/canada_usa_cities.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]),</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]),</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+<span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>160</th>
+      <td>-76.4813</td>
+      <td>44.2307</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>-81.2496</td>
+      <td>42.9837</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>-66.0580</td>
+      <td>45.2788</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>-73.2533</td>
+      <td>45.3057</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>-67.9245</td>
+      <td>47.1652</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>-76.3305</td>
+      <td>44.1255</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>-74.7287</td>
+      <td>45.0184</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>-121.4944</td>
+      <td>38.5816</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>-79.5656</td>
+      <td>43.6436</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>-66.9195</td>
+      <td>44.8938</td>
+    </tr>
+  </tbody>
+</table>
+<p>167 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160    Canada
+127    Canada
+169    Canada
+188    Canada
+187    Canada
+        ...  
+17        USA
+98     Canada
+66        USA
+126    Canada
+109    Canada
+Name: country, Length: 167, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exhaustive-grid-search-trying-all-the-options">
+<h2><span class="section-number">6.10. </span>Exhaustive grid search - Trying ALL the options<a class="headerlink" href="#exhaustive-grid-search-trying-all-the-options" title="Permalink to this headline">#</a></h2>
+<p>We need to first decide on our model and which hyperparameters we want to tune.
+Let’s use an SVC classifier as an example here.
+Next, we built a dictionary called <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> and we specify the values we wish to look over for the hyperparameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we pass our model to the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Assigning <code class="docutils literal notranslate"><span class="pre">verbose=2</span></code> tells <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to print some output while it’s running.
+To actually execute the grid search,
+we need to call <code class="docutils literal notranslate"><span class="pre">fit</span></code> on the training data.
+Remember that CV is built in,
+so we don’t need to worry about that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 4 candidates, totalling 20 fits
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=0.1; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ..........................................gamma=1.0; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ...........................................gamma=10; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+[CV] END ..........................................gamma=100; total time=   0.0s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(estimator=SVC(), param_grid={&#39;gamma&#39;: [0.1, 1.0, 10, 100]},
+             verbose=2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The nice thing about this is we can do this for multiple hyperparameters simultaneously as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Setting n_jobs=-1 means to use all the CPU cores instead of just 1 (the default)</span>
+<span class="c1"># This allows us to speed up the computation by performing tasks in parallel</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 16 candidates, totalling 48 fits
+[CV] END ...................................C=0.1, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=0.1; total time=   0.0s
+[CV] END ....................................C=0.1, gamma=10; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=100; total time=   0.0s[CV] END ...................................C=0.1, gamma=100; total time=   0.0s
+
+[CV] END ...................................C=0.1, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=100; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=1.0; total time=   0.0s
+[CV] END ....................................C=1.0, gamma=10; total time=   0.0s
+[CV] END ....................................C=1.0, gamma=10; total time=   0.0s
+[CV] END ....................................C=1.0, gamma=10; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=100; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=100; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=1.0, gamma=100; total time=   0.0s
+[CV] END ....................................C=10, gamma=0.1; total time=   0.0s
+[CV] END ....................................C=10, gamma=1.0; total time=   0.0s
+[CV] END ....................................C=10, gamma=0.1; total time=   0.0s
+[CV] END ....................................C=10, gamma=1.0; total time=   0.0s
+[CV] END ....................................C=10, gamma=0.1; total time=   0.0s
+[CV] END ....................................C=10, gamma=1.0; total time=   0.0s
+[CV] END .....................................C=10, gamma=10; total time=   0.0s
+[CV] END .....................................C=10, gamma=10; total time=   0.0s
+[CV] END ....................................C=0.1, gamma=10; total time=   0.0s
+[CV] END .....................................C=10, gamma=10; total time=   0.0s
+[CV] END ....................................C=10, gamma=100; total time=   0.0s
+[CV] END ....................................C=10, gamma=100; total time=   0.0s
+[CV] END ....................................C=10, gamma=100; total time=   0.0s
+[CV] END ...................................C=100, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=100, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=0.1, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=100, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=100, gamma=0.1; total time=   0.0s
+[CV] END ...................................C=100, gamma=1.0; total time=   0.0s
+[CV] END ...................................C=100, gamma=1.0; total time=   0.0s
+[CV] END ....................................C=100, gamma=10; total time=   0.0s
+[CV] END ....................................C=100, gamma=10; total time=   0.0s
+[CV] END ....................................C=100, gamma=10; total time=   0.0s
+[CV] END ...................................C=100, gamma=100; total time=   0.0s
+[CV] END ...................................C=100, gamma=100; total time=   0.0s
+[CV] END ...................................C=100, gamma=100; total time=   0.0s
+[CV] END ....................................C=0.1, gamma=10; total time=   0.0s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=3, estimator=SVC(), n_jobs=-1,
+             param_grid={&#39;C&#39;: [0.1, 1.0, 10, 100],
+                         &#39;gamma&#39;: [0.1, 1.0, 10, 100]},
+             verbose=2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The grid in <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> stands for the way that it’s checking the hyperparameters.</p>
+<p>Since there 4 options for each, grid search is checking every value in each hyperparameter to one another.</p>
+<p>That means it’s checking 4 x 4 = 16 different combinations of hyperparameter values for the model.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> we can specify the number of folds of cross-validation with the argument <code class="docutils literal notranslate"><span class="pre">cv</span></code>.</p>
+<p>Since we are specifying <code class="docutils literal notranslate"><span class="pre">cv=6</span></code> that means that fit is called a total of 48 times (16 different combinations x 3 cross-validation folds).</p>
+<div class="section" id="implement-hyperparameter-tuning-with-pipelines">
+<h3><span class="section-number">6.10.1. </span>Implement hyperparameter tuning with Pipelines<a class="headerlink" href="#implement-hyperparameter-tuning-with-pipelines" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">),</span>
+    <span class="n">StandardScaler</span><span class="p">(),</span>
+    <span class="n">SVC</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After specifying the steps in a pipeline, a user must specify a set of values for each hyperparameter in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> as we did before but this time we specify the name of the step followed by two underscores <code class="docutils literal notranslate"><span class="pre">__</span></code> and the name of the hyperparameter.</p>
+<p>This is because the pipeline would not know which hyperparameter goes with each step. Does <code class="docutils literal notranslate"><span class="pre">gamma</span></code> correspond to the hyperparameter in <code class="docutils literal notranslate"><span class="pre">SimpleImputer()</span></code> or <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code>?</p>
+<p>This now gives the pipeline clear instructions on which hyperparameters correspond with which step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;svc__gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s2">&quot;svc__C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When using <code class="docutils literal notranslate"><span class="pre">make_pipeline()</span></code> remember that the function names the steps by default the lower case name of each transformation or model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;simpleimputer&#39;, SimpleImputer(strategy=&#39;median&#39;)),
+                (&#39;standardscaler&#39;, StandardScaler()), (&#39;svc&#39;, SVC())])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now when we initiate <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, we set the first argument to the pipeline name instead of the model name this time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 16 candidates, totalling 48 fits
+[CV] END .........................svc__C=0.1, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=1.0; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=0.1, svc__gamma=10; total time=   0.0s
+[CV] END ..........................svc__C=0.1, svc__gamma=10; total time=   0.0s
+[CV] END ..........................svc__C=0.1, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=1.0; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=1.0; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=0.1; total time=   0.0s
+[CV] END ..........................svc__C=1.0, svc__gamma=10; total time=   0.0s
+[CV] END ..........................svc__C=1.0, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=1.0; total time=   0.0s[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+[CV] END ..........................svc__C=1.0, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=1.0; total time=   0.0s
+[CV] END ...........................svc__C=10, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s[CV] END ..........................svc__C=10, svc__gamma=100; total time=   0.0s
+
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s
+[CV] END ...........................svc__C=10, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=100, svc__gamma=10; total time=   0.0s
+[CV] END ...........................svc__C=10, svc__gamma=10; total time=   0.0s
+[CV] END ..........................svc__C=100, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=1.0; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=1.0; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+[CV] END ..........................svc__C=100, svc__gamma=10; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looking a bit closer these are the steps being performed with <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">fold</span> <span class="ow">in</span> <span class="n">folds</span><span class="p">:</span>
+                <span class="n">fit</span> <span class="ow">in</span> <span class="n">training</span> <span class="n">portion</span> <span class="k">with</span> <span class="n">the</span> <span class="n">given</span> <span class="n">C</span> <span class="ow">and</span> <span class="n">gamma</span>
+                <span class="n">score</span> <span class="n">on</span> <span class="n">validation</span> <span class="n">portion</span>
+            <span class="n">compute</span> <span class="n">average</span> <span class="n">score</span>
+    <span class="n">pick</span> <span class="n">hyperparameters</span> <span class="k">with</span> <span class="n">the</span> <span class="n">best</span> <span class="n">score</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-a-grid">
+<h3><span class="section-number">6.10.2. </span>Why a grid?<a class="headerlink" href="#why-a-grid" title="Permalink to this headline">#</a></h3>
+<p>Instead of going through all the combinations of hyperparamers in a grid,
+you might think it could be more efficient to optimize one hyperparameter at a time,
+and then use the best values together.
+However,
+since the interactions between hyperparameters can be unpredictable,
+we are not guaranteed to arrive at the best combinatorial result if we look at a single parameter at a time.
+As an example,
+let’s have a look at the grid below:</p>
+<a class="reference internal image-reference" href="../_images/cross.gif"><img alt="404 image" src="../_images/cross.gif" style="width: 60%;" /></a>
+<p>If we fix <code class="docutils literal notranslate"><span class="pre">C</span></code> with a value of 1 and loop over the values of 1, 10 and 100 for <code class="docutils literal notranslate"><span class="pre">gamma</span></code>.
+This results in <code class="docutils literal notranslate"><span class="pre">100</span></code> having the best score with 0.82.</p>
+<p>Next, we fix <code class="docutils literal notranslate"><span class="pre">gamma</span></code> at <code class="docutils literal notranslate"><span class="pre">100</span></code> since that was what we found was the most optimal when <code class="docutils literal notranslate"><span class="pre">C</span></code> was equal to 1.
+When we loop over the values of 1, 10 and 100 for <code class="docutils literal notranslate"><span class="pre">C</span></code> we get the most optimal value to be 10.
+So naturally, we would pick the values <code class="docutils literal notranslate"><span class="pre">100</span></code> for <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code> for <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<p>HOWEVER - if we had performed every possible combination, we would have seen that the optimal values would have actually been <code class="docutils literal notranslate"><span class="pre">10</span></code> for both <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code>.
+The same thing is shown if we did it the other way around, first fixing <code class="docutils literal notranslate"><span class="pre">gamma</span></code> at a value of 1 and then looping over all possible values of <code class="docutils literal notranslate"><span class="pre">C</span></code>.
+This time the most optimal combination is <code class="docutils literal notranslate"><span class="pre">gamma</span></code> equal to 1 and <code class="docutils literal notranslate"><span class="pre">C</span></code> equal to 100 which is again not the optimal value of 10 for each.</p>
+<p>These combinatorial effects is why it is so important not to fix either of the hyperparameters since it won’t necessarily help you find the most optimal values.</p>
+</div>
+<div class="section" id="now-what">
+<h3><span class="section-number">6.10.3. </span>Now what?<a class="headerlink" href="#now-what" title="Permalink to this headline">#</a></h3>
+<p>How do we know what the best hyperparameter values are after fitting?</p>
+<p>We can extract the best hyperparameter values with <code class="docutils literal notranslate"><span class="pre">.best_params_</span></code> and their corresponding score with <code class="docutils literal notranslate"><span class="pre">.best_score_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;svc__C&#39;: 10, &#39;svc__gamma&#39;: 1.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8327922077922079
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can extract the optimal classifier inside with <code class="docutils literal notranslate"><span class="pre">.best_estimator_</span></code>.
+This has already been fully fitted on with all the data and not just a portion from cross-validation so all we need to do is score!
+Instead of extracting and saving the estimator in two steps,
+we can use the <code class="docutils literal notranslate"><span class="pre">.score</span></code> method of the grid search object itself:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8502994011976048
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same can be done for <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> as well, either using the saved model or using the <code class="docutils literal notranslate"><span class="pre">grid_search</span></code> object directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;USA&#39;, &#39;Canada&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;Canada&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;USA&#39;, &#39;Canada&#39;,
+       &#39;Canada&#39;, &#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we wanted to see all the fit combinations we could use <code class="docutils literal notranslate"><span class="pre">.cv_results_</span></code>.</p>
+</div>
+<div class="section" id="notice-any-problems">
+<h3><span class="section-number">6.10.4. </span>Notice any problems?<a class="headerlink" href="#notice-any-problems" title="Permalink to this headline">#</a></h3>
+<p>This seems pretty nice and obeys the golden rule.
+However one issue is the execution time.</p>
+<p>Think about how much time it would take if we had 5 hyperparameters each with 10 different values.
+That would mean we would be needing to call <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> 100,000 times!
+Exhaustive grid search may become infeasible fairly quickly.</p>
+<p><strong>Enter randomized hyperparameter search!</strong></p>
+</div>
+<div class="section" id="randomized-hyperparameter-optimization">
+<h3><span class="section-number">6.10.5. </span>Randomized hyperparameter optimization<a class="headerlink" href="#randomized-hyperparameter-optimization" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;svc__gamma&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s2">&quot;svc__C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+
+<span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 5 candidates, totalling 15 fits
+[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=1.0, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=100, svc__gamma=0.1; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END .........................svc__C=0.1, svc__gamma=100; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+[CV] END ..........................svc__C=10, svc__gamma=0.1; total time=   0.0s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that we use the same arguments in <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV()</span></code> as in <code class="docutils literal notranslate"><span class="pre">GridSearchCV()</span></code> however with 1 new addition - <code class="docutils literal notranslate"><span class="pre">n_iter</span></code>.
+This argument gives us more control and lets us restrict how many hyperparameter candidate values are searched over.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GridSearchCV()</span></code> conducts <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> on every single possible combination of the hyperparameters specified in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>.
+Now we can change and control that using <code class="docutils literal notranslate"><span class="pre">n_iter</span></code> which will pick a random subset containing the specified number of combinations.</p>
+<p>The last time when we used exhaustive grid search, we had 36 fits (4 x 4 x 3).
+This time we see only 15 fits (5 x 3 instead of 16 x 3)!</p>
+<p><strong>How differently does exhaustive and random search score?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
+</pre></div>
+</div>
+</div>
+</div>
+<p>Although we could theoretically run a chance of missing the optimal combination of parameters when we are randomly picking,
+randomized grid search does in practice produce scores that are very similar to an exhaustive search.</p>
+</div>
+</div>
+<div class="section" id="the-problem-with-hyperparameter-tuning-overfitting-the-validation-set">
+<h2><span class="section-number">6.11. </span>The problem with hyperparameter tuning - overfitting the validation set<a class="headerlink" href="#the-problem-with-hyperparameter-tuning-overfitting-the-validation-set" title="Permalink to this headline">#</a></h2>
+<p>Since we are repeating cross-validation over and over again, it’s not necessarily unseen data anymore.</p>
+<p>This may produce overly optimistic results.</p>
+<p>If our dataset is small and if our validation set is hit too many times, we suffer from <strong>optimization bias</strong> or <strong>overfitting the validation set</strong>.</p>
+<div class="section" id="example-overfitting-the-validation-set">
+<h3><span class="section-number">6.11.1. </span>Example: overfitting the validation set<a class="headerlink" href="#example-overfitting-the-validation-set" title="Permalink to this headline">#</a></h3>
+<p>Attribution: <a class="reference external" href="https://www.cs.ubc.ca/~schmidtm/">Mark Scmidt</a></p>
+<p>This exercise helps explain the concept of overfitting on the validation set.</p>
+<p>Consider a multiple-choice (a,b,c,d) “test” with 10 questions:</p>
+<ul class="simple">
+<li><p>If you choose answers randomly, the expected grade is 25% (no bias).</p></li>
+<li><p>If you fill out two tests randomly and pick the best, the expected grade is 33%.</p>
+<ul>
+<li><p>overfitting ~8%.</p></li>
+</ul>
+</li>
+<li><p>If you take the best among 10 random tests, the expected grade is ~47%.</p></li>
+<li><p>If you take the best among 100, the expected grade is ~62%.</p></li>
+<li><p>If you take the best among 1000, the expected grade is ~73%.</p>
+<ul>
+<li><p>You have so many “chances” that you expect to do well.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>But on a single new test, the “random choice” accuracy is still 25%.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># Code attributed to Rodolfo Lourenzutti </span>
+
+<span class="n">number_tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ntests</span> <span class="ow">in</span> <span class="n">number_tests</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">ntests</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;The expected grade among the best of </span><span class="si">%d</span><span class="s2"> tests is : </span><span class="si">%0.2f</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">ntests</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
+The expected grade among the best of 2 tests is : 0.32
+The expected grade among the best of 10 tests is : 0.47
+The expected grade among the best of 100 tests is : 0.62
+The expected grade among the best of 1000 tests is : 0.73
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we instead used a 100-question test then:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code attributed to Rodolfo Lourenzutti </span>
+
+<span class="n">number_tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ntests</span> <span class="ow">in</span> <span class="n">number_tests</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">ntests</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;The expected grade among the best of </span><span class="si">%d</span><span class="s2"> tests is : </span><span class="si">%0.2f</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">ntests</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The expected grade among the best of 1 tests is : 0.25
+The expected grade among the best of 2 tests is : 0.27
+The expected grade among the best of 10 tests is : 0.32
+The expected grade among the best of 100 tests is : 0.36
+The expected grade among the best of 1000 tests is : 0.40
+</pre></div>
+</div>
+</div>
+</div>
+<p>The optimization bias <strong>grows with the number of things we try</strong>.<br />
+But, optimization bias <strong>shrinks quickly with the number of examples</strong>.<br />
+But it’s still non-zero and growing if you over-use your validation set!</p>
+<p>Essentially our odds of doing well on a multiple-choice exam (if we are guessing) increases the more times we can repeat and randomly take the exam again (selecting the best of many random tests).
+Because we have so many chances you’ll eventually do well and perhaps this is not representative of your knowledge (remember you are randomly guessing)</p>
+<p>The same occurs with selecting hyperparameters.
+The more hyperparameters values and combinations we try, the more likely we will randomly get a better scoring model by chance and not because the model represents the data well.<br />
+This overfitting can be decreased somewhat by increasing the number of questions or in our case, the number of examples we have.</p>
+<p>TLDR: If your test score is lower than your validation score, it may be because did so much hyperparameter optimization that you got lucky.</p>
+</div>
+</div>
+<div class="section" id="alleviate-validation-data-overfitting-during-the-hyperparameter-search">
+<h2><span class="section-number">6.12. </span>Alleviate validation data overfitting during the hyperparameter search<a class="headerlink" href="#alleviate-validation-data-overfitting-during-the-hyperparameter-search" title="Permalink to this headline">#</a></h2>
+<p>If you find yourself in the situation of a big difference between your validation and your test score,
+and you suspect that this is due to hyperparameter overfitting,
+there are a few thing your could try:</p>
+<div class="section" id="collect-more-data">
+<h3><span class="section-number">6.12.1. </span>Collect more data<a class="headerlink" href="#collect-more-data" title="Permalink to this headline">#</a></h3>
+<p>Overfitting happens because you only see a bit of data and you learn patterns that are overly specific to your sample.
+Or because you got “lucky” with your validation data split which made it easier to predict and get a high score on.
+If you had larger training and validation data,
+then the notion of “overly specific” or “fortunate split” would be less likely to apply.</p>
+</div>
+<div class="section" id="manually-adjust">
+<h3><span class="section-number">6.12.2. </span>Manually adjust<a class="headerlink" href="#manually-adjust" title="Permalink to this headline">#</a></h3>
+<p>If your test score is much lower than your cross-validation score,
+You could choose simpler models/hyperparameter combinations manually
+or by selecting the top nth percentile model instead of the best one.
+You could also use the test set a couple of times; it’s not the end of the world
+but you need to communicate this clearly when you report the results.</p>
+</div>
+<div class="section" id="refined-the-hyperparameter-tuning-procedure">
+<h3><span class="section-number">6.12.3. </span>Refined the hyperparameter tuning procedure<a class="headerlink" href="#refined-the-hyperparameter-tuning-procedure" title="Permalink to this headline">#</a></h3>
+<p>Both GridSearchCV and RandomizedSearchCV do each trial independently.
+What if you could learn from your experience, e.g. learn that max_depth=3 and then avoid using it in future hyperparameter combinations?
+That could save time because you wouldn’t try combinations involving max_depth=3 in the future.</p>
+<p>There are specific python libraries dedicated to more efficient and generalizable hyperparameter searches.
+In short, these use machine learning to predict what hyperparameters will be good.
+Machine learning on machine learning!
+Examples of such libraries include scikit-optimize, hyperopt, and hyperband.
+The central theme among these is to use infomation from previous hyperparameter combinations
+to influence the choice of future hyperparameters to try.
+Commonly this is done through methods such as
+“Bayesian optimization” and “Gradient Descent”.
+We will not cover this in detail as part of this course.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">6.13. </span>Let’s Practice<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>1. Which method will attempt to find the optimal hyperparameter for the data by searching every combination possible of hyperparameter values given?<br />
+2. Which method gives you fine-grained control over the amount of time spent searching?<br />
+3. If I want to search for the most optimal hyperparameter values among 3 different hyperparameters each with 3 different values how many trials of cross-validation would be needed?</p>
+<p><span class="math notranslate nohighlight">\(x= [1,2,3]\)</span><br />
+<span class="math notranslate nohighlight">\(y= [4,5,6]\)</span><br />
+<span class="math notranslate nohighlight">\(z= [7,8,9]\)</span></p>
+<p><strong>True or False</strong></p>
+<p>4. A Larger <code class="docutils literal notranslate"><span class="pre">n_iter</span></code> will take longer but will search over more hyperparameter values.<br />
+5. Automated hyperparameter optimization can only be used for multiple hyperparameters.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>Exhaustive Grid Search (<code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>)</p></li>
+<li><p>Randomized Grid Search (<code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3 * 3 * 3 = 27\)</span> (* the how many splits you have in your CV)</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">6.14. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">#</a></h2>
+<p>We are going to practice grid search using our basketball dataset that we have seen before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading in the data</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+
+<span class="n">bball_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/bball.csv&#39;</span><span class="p">)</span>
+<span class="n">bball_df</span> <span class="o">=</span> <span class="n">bball_df</span><span class="p">[(</span><span class="n">bball_df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;G&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">bball_df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;F&#39;</span><span class="p">)]</span>
+
+<span class="c1"># Define X and y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bball_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;salary&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bball_df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span>
+
+<span class="c1"># Split the dataset</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">bb_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">),</span>
+    <span class="n">StandardScaler</span><span class="p">(),</span>
+    <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Using the pipeline <code class="docutils literal notranslate"><span class="pre">bb_pipe</span></code> provided, create a parameter grid to search over <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>. Search over the values 1, 5, 10, 20, 30, 40, and 50 for the hyperparameter <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and ‘uniform’ and ‘distance’ for the hyperparameter <code class="docutils literal notranslate"><span class="pre">weights</span></code> (make sure to name them appropriately).</p></li>
+<li><p>Setup a <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to hyperparameter tune using cross-validate equal to 3 folds. Make sure to specify the arguments <code class="docutils literal notranslate"><span class="pre">verbose=2</span></code> and <code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code>.</p></li>
+<li><p>Train/fit your grid search object on the training data to execute the search.</p></li>
+<li><p>Find the best hyperparameter values. Make sure to print these results.</p></li>
+<li><p>Lastly, score your model on the test set.</p></li>
+</ol>
+<p><strong>Solutions</strong></p>
+<p>1.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the names of each step.</span>
+<span class="n">bb_pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;simpleimputer&#39;, SimpleImputer(strategy=&#39;median&#39;)),
+                (&#39;standardscaler&#39;, StandardScaler()),
+                (&#39;kneighborsclassifier&#39;, KNeighborsClassifier())])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;kneighborsclassifier__n_neighbors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="s2">&quot;kneighborsclassifier__weights&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>2.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsearch</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">bb_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>3.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsearch</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 14 candidates, totalling 42 fits
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=5, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=1, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=uniform; total time=   0.0s[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=uniform; total time=   0.0s[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=distance; total time=   0.0s
+
+
+[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=10, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=20, kneighborsclassifier__weights=distance; total time=   0.0s[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=distance; total time=   0.0s
+
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=uniform; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=30, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=50, kneighborsclassifier__weights=distance; total time=   0.0s
+[CV] END kneighborsclassifier__n_neighbors=40, kneighborsclassifier__weights=uniform; total time=   0.0s
+</pre></div>
+</div>
+</div>
+</div>
+<p>4.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsearch</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kneighborsclassifier__n_neighbors&#39;: 50,
+ &#39;kneighborsclassifier__weights&#39;: &#39;uniform&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>5.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gsearch</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9354838709677419
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-we-ve-learned-today-a-id-9-a">
+<h2><span class="section-number">6.15. </span>What We’ve Learned Today<a id="9"></a><a class="headerlink" href="#what-we-ve-learned-today-a-id-9-a" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>How to predict by using naive Bayes.</p></li>
+<li><p>How to use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">MultiNomialNB</span></code>.</p></li>
+<li><p>What <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> is.</p></li>
+<li><p>Why we need smoothing in  naive Bayes.</p></li>
+<li><p>How to carry out hyperparameter optimization using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code>.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-bait-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-bait-py",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-bait-py'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture5.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Preprocessing Categorical Features and Column Transformer</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture7.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Linear Models</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Quan Nguyen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,3022 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. Business Objectives/Statistical Questions and Feature Selection &#8212; BAIT 509&lt;br&gt;Business Applications of Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture8.html" />
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Classification and Regression Metrics" href="lecture9.html" />
+    <link rel="prev" title="7. Linear Models" href="lecture7.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/bait_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 509<br>Business Applications of Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Quan Nguyen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Intro to ML &amp;  Decision Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Splitting and Cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Baseline models &amp; k-Nearest Neighbours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. kNN regression, Support Vector Machines, and Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Preprocessing Categorical Features and Column Transformer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture6.html">
+   6. Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture7.html">
+   7. Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. Business Objectives/Statistical Questions and Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   9. Classification and Regression Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10a.html">
+   10. Data Science Ethics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10b.html">
+   11. Multi-Class Classification (Optional)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2Flectures/lecture8.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/lectures/lecture8.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   8.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   8.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     8.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forming-statistical-questions-to-answer-business-objectives">
+   8.3. Forming statistical questions to answer business objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asking-useful-statistical-questions">
+   8.4. (1 - 2) Asking useful statistical questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#business-objectives-examples">
+     8.4.1. Business objectives: examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#refining-business-objectives-to-statistical-objectives">
+     8.4.2. Refining business objectives to statistical objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-objectives-examples">
+     8.4.3. Statistical objectives: examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-questions-are-not-the-full-picture">
+     8.4.4. Statistical questions are not the full picture!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-objectives-unrelated-to-supervised-learning">
+     8.4.5. Statistical objectives unrelated to supervised learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-useful-model">
+   8.5. (2 - 3) Building a useful model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communicating-results">
+   8.6. (3 - 4) Communicating results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   8.7. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   8.8. Feature Selection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     8.8.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-we-limit-the-number-of-features-in-our-model">
+     8.8.2. How do we limit the number of features in our model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-an-important-feature">
+     8.8.3. What is an important feature?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-importance">
+     8.8.4. Feature importance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#are-impurity-based-features-importances-reliable">
+   8.9. Are impurity based features importances reliable?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#permutation-importances-as-an-alternative-to-impurity-based-feature-importances">
+     8.9.1. Permutation importances as an alternative to impurity-based feature importances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recursive-feature-elimination-rfe">
+     8.9.2. Recursive feature elimination - RFE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-housing-data">
+     8.9.3. New housing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rfecv">
+     8.9.4. RFECV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequantial-feature-selection">
+   8.10. Sequantial Feature Selection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   8.11. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today">
+   8.12. What We’ve Learned Today
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Business Objectives/Statistical Questions and Feature Selection</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   8.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   8.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     8.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forming-statistical-questions-to-answer-business-objectives">
+   8.3. Forming statistical questions to answer business objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asking-useful-statistical-questions">
+   8.4. (1 - 2) Asking useful statistical questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#business-objectives-examples">
+     8.4.1. Business objectives: examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#refining-business-objectives-to-statistical-objectives">
+     8.4.2. Refining business objectives to statistical objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-objectives-examples">
+     8.4.3. Statistical objectives: examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-questions-are-not-the-full-picture">
+     8.4.4. Statistical questions are not the full picture!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-objectives-unrelated-to-supervised-learning">
+     8.4.5. Statistical objectives unrelated to supervised learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-useful-model">
+   8.5. (2 - 3) Building a useful model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communicating-results">
+   8.6. (3 - 4) Communicating results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   8.7. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   8.8. Feature Selection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     8.8.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-we-limit-the-number-of-features-in-our-model">
+     8.8.2. How do we limit the number of features in our model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-an-important-feature">
+     8.8.3. What is an important feature?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-importance">
+     8.8.4. Feature importance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#are-impurity-based-features-importances-reliable">
+   8.9. Are impurity based features importances reliable?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#permutation-importances-as-an-alternative-to-impurity-based-feature-importances">
+     8.9.1. Permutation importances as an alternative to impurity-based feature importances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recursive-feature-elimination-rfe">
+     8.9.2. Recursive feature elimination - RFE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-housing-data">
+     8.9.3. New housing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rfecv">
+     8.9.4. RFECV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequantial-feature-selection">
+   8.10. Sequantial Feature Selection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   8.11. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today">
+   8.12. What We’ve Learned Today
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="business-objectives-statistical-questions-and-feature-selection">
+<h1><span class="section-number">8. </span>Business Objectives/Statistical Questions and Feature Selection<a class="headerlink" href="#business-objectives-statistical-questions-and-feature-selection" title="Permalink to this headline">#</a></h1>
+<div class="section" id="lecture-learning-objectives">
+<h2><span class="section-number">8.1. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>In the context of supervised learning, form statistical questions  from business questions/objectives.</p></li>
+<li><p>Understand the different forms your client may expect you to communicate results.</p></li>
+<li><p>Explain the general concept of feature selection.</p></li>
+<li><p>Discuss and compare different feature selection methods at a high level.</p></li>
+<li><p>Use sklearn’s implementation of recursive feature elimination (RFE).</p></li>
+<li><p>Implement the forward search algorithm.</p></li>
+</ul>
+</div>
+<div class="section" id="five-minute-recap-lightning-questions">
+<h2><span class="section-number">8.2. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>What is the hyperparameter we learned for Ridge and how does it affect the Fundamental Trade-off?</p></li>
+<li><p>What is the hyperparameter we learned for Logistic Regression and how does it affect the Fundamental Trade-off?</p></li>
+<li><p>What is the name of the function used to bound our values between 0 and 1</p></li>
+<li><p>What is the name of the function that gives “hard” predictions?</p></li>
+<li><p>What is the name of the function that gives “soft” predictions?</p></li>
+</ul>
+<div class="section" id="some-lingering-questions">
+<h3><span class="section-number">8.2.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>How can we start forming good business questions that can be addressed with Machine Learning?</p></li>
+<li><p>Is the best model always the one with all the features? If not, how to select features for our models?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="forming-statistical-questions-to-answer-business-objectives">
+<h2><span class="section-number">8.3. </span>Forming statistical questions to answer business objectives<a class="headerlink" href="#forming-statistical-questions-to-answer-business-objectives" title="Permalink to this headline">#</a></h2>
+<p>So far you’ve seen how to solve predictive problems using machine learning but today, we are going to look at the process involved in asking the questions and problems faced by organizations.</p>
+<p>Generally, there are four parts of a machine learning analysis. In order from high to low level:</p>
+<ol class="simple">
+<li><p><strong>The business question/objective</strong></p></li>
+<li><p><strong>The statistical question/objective</strong></p></li>
+<li><p><strong>The data and model</strong></p></li>
+<li><p><strong>The data product</strong></p></li>
+</ol>
+<p>Doing a machine learning analysis is about distilling from the highest level to the lowest level. As such, there are three distillations to keep in mind: 1-2, 2-3, and 3-4:</p>
+<ul class="simple">
+<li><p><strong>1-2 is about asking the right questions</strong></p></li>
+<li><p><strong>2-3 is about building a useful model</strong></p></li>
+<li><p><strong>3-4 is about communicating the results</strong></p></li>
+</ul>
+<!-- <center><img src="https://images.unsplash.com/photo-1511225317751-5c2d61819d58?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80" width="50%"></center> -->
+<p>Note that an analysis isn’t a linear progression through these “steps”; rather, the process is iterative. This is because none of the components are independent. Making progress on any of the three distillations gives you more information as to what the problem is.</p>
+<p>We’ll look at each of these distillations in turn.</p>
+</div>
+<div class="section" id="asking-useful-statistical-questions">
+<h2><span class="section-number">8.4. </span>(1 - 2) Asking useful statistical questions<a class="headerlink" href="#asking-useful-statistical-questions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Usually, a company is not served up a machine learning problem, complete with data and a description of the response and predictors.</p>
+<ul>
+<li><p>Companies don’t exactly know what question is the right question but they do know what they want  to be accomplished.</p></li>
+</ul>
+</li>
+<li><p>Instead, they’re faced with some high-level objective/question that we’ll call the <strong>business question/objective</strong>.</p></li>
+<li><p>This question needs refining to a <strong>statistical question/objective</strong> – one that is directly addressable by machine learning.</p></li>
+</ul>
+<div class="section" id="business-objectives-examples">
+<h3><span class="section-number">8.4.1. </span>Business objectives: examples<a class="headerlink" href="#business-objectives-examples" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>This <a class="reference external" href="https://www.altexsoft.com/blog/business/supervised-learning-use-cases-low-hanging-fruit-in-data-science-for-businesses/">altexsoft blog post</a> is a great introduction to business use cases of data science/ML</p></li>
+<li><p>Examples of business objectives (for which machine learning is a relevant approach)</p>
+<ul>
+<li><p>Reduce the amount of spam email received</p></li>
+<li><p>Early prediction of product failure</p></li>
+<li><p>Find undervalued mines</p></li>
+<li><p>Make a transit system more efficient</p></li>
+<li><p>Hire efficient staff</p></li>
+<li><p>Predict Customer Lifetime Value</p></li>
+<li><p>Understand Sales performance</p></li>
+<li><p>Fraud detection</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="refining-business-objectives-to-statistical-objectives">
+<h3><span class="section-number">8.4.2. </span>Refining business objectives to statistical objectives<a class="headerlink" href="#refining-business-objectives-to-statistical-objectives" title="Permalink to this headline">#</a></h3>
+<!-- <img src='https://media.giphy.com/media/bLcMOxvIak4iZieaut/giphy.gif' width="50%">  -->
+<ul class="simple">
+<li><p>Statistical objectives need to be specific</p></li>
+<li><p>Remember that supervised learning is about predicting a response <span class="math notranslate nohighlight">\(Y\)</span> from predictors <span class="math notranslate nohighlight">\(X_1,…,X_p\)</span></p></li>
+<li><p>So we need to refine our business objectives to a statistical question(s) we can answer</p></li>
+<li><p>This typically involves:</p>
+<ul>
+<li><p>Identifying the <strong>response variable</strong> (<span class="math notranslate nohighlight">\(Y\)</span>) that is most aligned with the business objective.</p></li>
+<li><p>Identifying the <strong>data</strong> (observations + features) that will be used for model development/testing.</p></li>
+<li><p>Note: part of this is the task of feature selection via machine learning methods – but this is also a human decision based on what we think is more informative, as well as a resource questions (what data is actually available?)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="statistical-objectives-examples">
+<h3><span class="section-number">8.4.3. </span>Statistical objectives: examples<a class="headerlink" href="#statistical-objectives-examples" title="Permalink to this headline">#</a></h3>
+<p>Statistical objectives corresponding to the above business objective examples might be:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Business Objective</p></th>
+<th class="text-align:left head"><p>Statistical Question</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Reduce the amount of spam email received</p></td>
+<td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = classifying an email as spam/not spam <li> <span class="math notranslate nohighlight">\(X\)</span> = words present in name and the body of email and other metadata (sender email, time, etc.) <li> Cases of spam will be gathered over time as employees identify emails as spam/not spam. The model can be improved as misclassifications are encountered.</ul></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Early prediction of product failure (Kickstarter?)</p></td>
+<td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = classifying a product as faulty/not faulty <li> <span class="math notranslate nohighlight">\(X\)</span> = Relevant features chosen by an expert <li> Data obtained from the test facility</ul></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Find undervalued mines</p></td>
+<td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = total volume of gold and silver at a site <li> <span class="math notranslate nohighlight">\(X\)</span> =  concentrations of other minerals found in drill samples, geographic information, historical data, etc <li> Data obtained from mines where total volumes are already known</ul></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Make a transit system more efficient</p></td>
+<td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = predict the time it takes a bus to travel between set stops <li> <span class="math notranslate nohighlight">\(X\)</span> = time of day/week/year, weather, etc. <li> Use data from company server tracking bus movements</ul></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Hire efficient staff</p></td>
+<td class="text-align:left"><p><ul><li><span class="math notranslate nohighlight">\(Y\)</span> = predict monthly sales <li> <span class="math notranslate nohighlight">\(X\)</span> = interview questions, years of work experience, field of expertise, etc. <li> Use data based on current employees</ul></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="statistical-questions-are-not-the-full-picture">
+<h3><span class="section-number">8.4.4. </span>Statistical questions are not the full picture!<a class="headerlink" href="#statistical-questions-are-not-the-full-picture" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Almost always, the business objective is more complex than the statistical question.</p></li>
+<li><p>By refining a business objective to a statistical one, we may lose part of the essence of the business objective.</p></li>
+<li><p>It’s important to have a sense of the ways in which your statistical objective falls short, and the ways in which it’s on the mark, so that you keep an idea of the big picture.</p></li>
+<li><p>For example, predicting whether a new staff hire will be efficient or not is a useful statistical question, but doesn’t consider why a company might be attracting certain applicants, how long staff will remain, how staff work together, etc.</p></li>
+</ul>
+</div>
+<div class="section" id="statistical-objectives-unrelated-to-supervised-learning">
+<h3><span class="section-number">8.4.5. </span>Statistical objectives unrelated to supervised learning<a class="headerlink" href="#statistical-objectives-unrelated-to-supervised-learning" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>We are only focussing on statistical questions related to supervised learning and prediction in this course</p></li>
+<li><p>But there are other kinds of questions you can ask too</p></li>
+<li><p>Consider the following example</p></li>
+</ul>
+<p><strong>Business objective</strong>: To gain insight into the productivity of two branches of a company.</p>
+<p>Examples of statistical questions:</p>
+<ul class="simple">
+<li><p><strong>Hypothesis testing</strong>: Is the mean number of sick days per employee different between two branches of a company?</p>
+<ul>
+<li><p>Supervised learning doesn’t cover testing for differences.</p></li>
+</ul>
+</li>
+<li><p><strong>Unsupervised learning</strong>: What is the mean sentiment of the internal discussion channels from both branches?</p>
+<ul>
+<li><p>There is no data of feature + response here, as required by supervised learning (by definition).</p></li>
+</ul>
+</li>
+<li><p><strong>Statistical inference</strong>: Estimate the mean difference in monthly revenue generated by both branches, along with how certain you are with that estimate.</p>
+<ul>
+<li><p>Supervised learning typically isn’t concerned about communicating how certain your estimate is. (BUT it should and progress is occuring to change this!)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="building-a-useful-model">
+<h2><span class="section-number">8.5. </span>(2 - 3) Building a useful model<a class="headerlink" href="#building-a-useful-model" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>This is the main focus of BAIT509.</p></li>
+<li><p>This involves using ML algorithms (kNN, loess, decision trees, etc) to build a predictive model from data</p></li>
+<li><p>You always should include a baseline model to assess how well the models you build are giving you some leg up.</p></li>
+<li><p>Remember that a simple model like logistic regression often does as well as more complex approaches, and has the advantage that it is easier to explain. At the very least, simpler models can help guide you on what more complex approaches to take next, and provide another baseline so that you can assess if a more complex and harder to explain model is worthwhile.</p></li>
+</ul>
+</div>
+<div class="section" id="communicating-results">
+<h2><span class="section-number">8.6. </span>(3 - 4) Communicating results<a class="headerlink" href="#communicating-results" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>So you’ve distilled your business objectives to a statistical question.</p></li>
+<li><p>You’ve developed a model to answer the statistical question.</p></li>
+<li><p>Now your model needs to be delivered and used by others (or your future self)!</p></li>
+<li><p>The final delivery is often called “the data product” because it may consist of a variety of things:</p>
+<ul>
+<li><p>a report</p></li>
+<li><p>a presentation</p></li>
+<li><p>an app</p></li>
+<li><p>a dashboard</p></li>
+<li><p>a software package/pipeline</p></li>
+</ul>
+</li>
+<li><p>Sometimes the client requests a specific data product -&gt; But note that their suggestion might not always be the best option.</p>
+<ul>
+<li><p>Perhaps they request a report and presentation communicating your findings, when a more appropriate product also includes an interactive app that allows them to explore your findings for themselves.</p></li>
+</ul>
+</li>
+<li><p>Either way, the key here is communication. Two import challenges (relevant to your final project):</p>
+<ul>
+<li><p>Using appropriate language: there is a lot of jargon in ML, the key is to talk more about the output and the general idea of your model(s), but not machine learning or statistical jargon.</p></li>
+<li><p>Communication with visual design: this is about choosing what visuals are the most effective for communicating. -&gt; Plug: https://viz-learn.mds.ubc.ca/en/</p></li>
+</ul>
+</li>
+<li><p>Usually, the first step is to set up a framework for your data product. For a report, this means outlining what you intend to write about, and where.</p></li>
+<li><p>Iterating with your client is useful to make sure that you are on track to produce something that the client currently sees as being potentially useful.</p>
+<ul>
+<li><p>Don’t waste your time by working for months on your own and then realizing your misunderstood the ask when you are showing your final product.</p></li>
+</ul>
+</li>
+<li><p>It is easy to get lost in finding the coolest model or using the latest ML technique, and forget about the overarching question and the purpose of your analysis.</p>
+<ul>
+<li><p>Take a step back and look at the big picture.</p></li>
+<li><p>Adapt the mind-set of a researcher rather than an ML engineer.</p></li>
+<li><p>How can I best help the client?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="let-s-practice">
+<h2><span class="section-number">8.7. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>What question is usually more complex: The business or statistical one?</p></li>
+<li><p>What model needs to be made for all problems to create a baseline?</p></li>
+<li><p>In supervised learning, once we have our business objective, part of our statistical question is identifying what?</p></li>
+</ol>
+<p><strong>True or False:</strong></p>
+<ol class="simple">
+<li><p>When writing your reports, it’s important to consider who is reading it.</p></li>
+<li><p>Sometimes you may need to dig a little to figure out exactly what the client wants.</p></li>
+<li><p>In supervised learning, we should take into consideration the uncertainty of our models.</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>Business question/objective</p></li>
+<li><p>Baseline - Dummy</p></li>
+<li><p>Our target variable</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="feature-selection">
+<h2><span class="section-number">8.8. </span>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h2>
+<div class="section" id="motivation">
+<h3><span class="section-number">8.8.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h3>
+<p>Remember the curse of dimensionality?</p>
+<p>We spoke about this briefly when we discussed <span class="math notranslate nohighlight">\(k\)</span>-nn and how when we add many different dimensions (features) it makes the data more sparse since the ratio of observations to features/dimensions goes down.
+This can make it harder for the model to learn which features are relevant to predict the outcome,
+since there is now a lower density of training samples to query.
+With many irrelevant features, the model can disintegrate towards predictions no better than random guessing.</p>
+<p>Another drawback with a model that has many features
+is that it can be harder to interpret and explain
+what is important in the model’s decision making.</p>
+<p>Reasons like this are why we need to be careful about which features we include in our model.</p>
+</div>
+<div class="section" id="how-do-we-limit-the-number-of-features-in-our-model">
+<h3><span class="section-number">8.8.2. </span>How do we limit the number of features in our model<a class="headerlink" href="#how-do-we-limit-the-number-of-features-in-our-model" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><strong>Use domain knowledge</strong> and manually select features (often in combination with one of the approaches below).</p></li>
+<li><p>We could <strong>systematically rearrange and drop features</strong>
+to create one dataset for each possible combination/permutation of features.
+Then we would have a score for each possible feature combination and we could compare which features are the most important for model accuracy.
+Although this makes sense conceptually,
+it is practically infeasible since we would have feature factorial (often written as <span class="math notranslate nohighlight">\(p!\)</span>) as the number of datasets
+and on each dataset we would also need to perform a hyperparameter search.
+This would take too long for most real world datasets.</p></li>
+<li><p>We could <strong>use machine learning</strong> to identify which features are important.
+For example,
+we talked about how lasso regression tries to bring some coefficients to 0,
+which means we can remove them from the model.
+This could be used as a preprocessing step
+before fitting another model on the selected features.</p></li>
+<li><p>We could compute some type of <strong>score for how important a feature is</strong> for the model prediction,
+and then drop features under a threshold.</p></li>
+</ol>
+<p>We will mostly talk about point 4 in this lecture.</p>
+</div>
+<div class="section" id="what-is-an-important-feature">
+<h3><span class="section-number">8.8.3. </span>What is an important feature?<a class="headerlink" href="#what-is-an-important-feature" title="Permalink to this headline">#</a></h3>
+<p>There are several definitions of how to measure how important a feature is.
+We have already seen that in scaled data,
+the magnitude of the coefficients in a linear regression
+can indicate how much the predicted value change
+when the value of that feature changes;
+this is one type of indication of the importance of that feature.
+But what can we do for models that don’t have coefficients,
+such as decision trees?</p>
+<p>Decision trees actually have a built in feature importance estimate.
+Recall that the splits in a decision tree are chosen to maximize the homogeneity
+in each of the groups remaining after the split.
+Another way of saying this,
+is that “impurity” of the sample is decreasing with each split
+.
+The built-in decision tree feature importance
+is based on the total decrease in impurity from all nodes/splits of a particular feature,
+weighted by the number of samples that reach these nodes/splits.
+Features used at the top of the tree
+contribute to the final prediction decision of a larger fraction of the input samples
+and therefore often have a higher contribution to the decrease in impurity
+(a high feature importance).</p>
+<blockquote>
+<div><p>You can think of “impurity” here in a colloquial sense of the word.
+Technically it is defined as proportion of mislabeled observations
+in a node if we were to label the observations at random
+based on the occurrence of each class among the observations in that node.
+Impurity is 0 when all observations in the node come from the same class.</p>
+</div></blockquote>
+</div>
+<div class="section" id="feature-importance">
+<h3><span class="section-number">8.8.4. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h3>
+<p>We can find out which features are most important in a decision tree model using an attribute called <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">cities_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/canada_usa_cities.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]</span>
+
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>160</th>
+      <td>-76.4813</td>
+      <td>44.2307</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>-81.2496</td>
+      <td>42.9837</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>-66.0580</td>
+      <td>45.2788</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>-73.2533</td>
+      <td>45.3057</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>-67.9245</td>
+      <td>47.1652</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+
+<span class="n">dt_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">dt_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">dt_model</span><span class="o">.</span><span class="n">feature_importances_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.23330056, 0.76669944])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.feature_importances_</span></code> attribute to see the decrease in impurity.
+A higher value = a more important features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;longitude&#39;, &#39;latitude&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can see that most of the importance is on the column <code class="docutils literal notranslate"><span class="pre">latitude</span></code>,
+which makes sense since USA and Canada are separated mainly in latitude.</p>
+<p>If we graph this, the root of the decision tree will usually reflect the top feature.
+Just like we can see here (here we also include the impurity of each node, called “gini”):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">dt_model</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">y_train</span><span class="o">.</span><span class="n">unique</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">impurity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># We need to create a figure to control the overall plot size</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture8_24_0.png" src="../_images/lecture8_24_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="are-impurity-based-features-importances-reliable">
+<h2><span class="section-number">8.9. </span>Are impurity based features importances reliable?<a class="headerlink" href="#are-impurity-based-features-importances-reliable" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines">Betteridge’s law of headlines</a>:
+“Any headline that ends in a question mark can be answered by the word no.”
+As is the case here.
+The default feature importance calculated by decisions trees
+is not always reliable and tend to give too high weight to features
+with many unique values.
+Let’s see an example using a dataset from the passengers of the Titanic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example adapted from https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s2">&quot;random_cat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">X</span><span class="p">[</span><span class="s2">&quot;random_num&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">categorical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;embarked&quot;</span><span class="p">,</span> <span class="s2">&quot;random_cat&quot;</span><span class="p">]</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sibsp&quot;</span><span class="p">,</span> <span class="s2">&quot;parch&quot;</span><span class="p">,</span> <span class="s2">&quot;fare&quot;</span><span class="p">,</span> <span class="s2">&quot;random_num&quot;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">categorical_columns</span> <span class="o">+</span> <span class="n">numerical_columns</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>embarked</th>
+      <th>random_cat</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>random_num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1216</th>
+      <td>3.0</td>
+      <td>female</td>
+      <td>Q</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.7333</td>
+      <td>-0.436386</td>
+    </tr>
+    <tr>
+      <th>819</th>
+      <td>3.0</td>
+      <td>female</td>
+      <td>Q</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.7500</td>
+      <td>2.006093</td>
+    </tr>
+    <tr>
+      <th>1286</th>
+      <td>3.0</td>
+      <td>female</td>
+      <td>C</td>
+      <td>2</td>
+      <td>38.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.2292</td>
+      <td>0.521122</td>
+    </tr>
+    <tr>
+      <th>1280</th>
+      <td>3.0</td>
+      <td>male</td>
+      <td>S</td>
+      <td>1</td>
+      <td>22.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.8958</td>
+      <td>-2.135674</td>
+    </tr>
+    <tr>
+      <th>761</th>
+      <td>3.0</td>
+      <td>male</td>
+      <td>S</td>
+      <td>0</td>
+      <td>16.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9.5000</td>
+      <td>1.607346</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>872</th>
+      <td>3.0</td>
+      <td>female</td>
+      <td>S</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0500</td>
+      <td>0.766080</td>
+    </tr>
+    <tr>
+      <th>777</th>
+      <td>3.0</td>
+      <td>male</td>
+      <td>S</td>
+      <td>0</td>
+      <td>19.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0500</td>
+      <td>2.601683</td>
+    </tr>
+    <tr>
+      <th>423</th>
+      <td>2.0</td>
+      <td>male</td>
+      <td>S</td>
+      <td>0</td>
+      <td>34.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>13.0000</td>
+      <td>0.346488</td>
+    </tr>
+    <tr>
+      <th>668</th>
+      <td>3.0</td>
+      <td>male</td>
+      <td>S</td>
+      <td>0</td>
+      <td>22.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0500</td>
+      <td>0.949554</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>female</td>
+      <td>S</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>151.5500</td>
+      <td>0.935678</td>
+    </tr>
+  </tbody>
+</table>
+<p>981 rows × 9 columns</p>
+</div></div></div>
+</div>
+<p>We have added two random columns to the data,
+ideally they should have near 0 feature importance,
+since they are just assigned a random value by us
+and thus have no predictive value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">y</span></code> is whether the passenger survived the titanic or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       1
+1       1
+2       0
+3       0
+4       0
+       ..
+1304    0
+1305    0
+1306    0
+1307    0
+1308    0
+Name: survived, Length: 1309, dtype: category
+Categories (2, object): [&#39;0&#39;, &#39;1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a decision tree pipeline with some preprocessing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+
+
+<span class="n">categorical_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">numerical_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;imputer&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">))])</span>
+
+<span class="n">preprocessing</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">categorical_encoder</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">,</span> <span class="n">numerical_pipe</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;preprocess&quot;</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;classifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_depth</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7530487804878049
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.feature_importances_</span></code> attribute to see the mean decrease in impurity.
+A higher value = a more important features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;classifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.01654092, 0.        , 0.06896032, 0.        , 0.26473697,
+       0.00758303, 0.00801158, 0.0102391 , 0.0161727 , 0.00590995,
+       0.01372136, 0.15099661, 0.0381931 , 0.0167087 , 0.16208436,
+       0.2201413 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot them instead so it is easier to see.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">ohe</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;preprocess&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">]</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_columns</span><span class="p">)</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">]</span>
+
+<span class="n">tree_feature_importances</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;classifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">tree_feature_importances</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">y_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y_ticks</span><span class="p">,</span> <span class="n">tree_feature_importances</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Feature Importances (MDI)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture8_37_0.png" src="../_images/lecture8_37_0.png" />
+</div>
+</div>
+<p>The impurity-based feature importance ranks the numerical features to be the most important features. As a result, the non-predictive random_num variable is ranked the second most important!</p>
+<p>This problem stems from two limitations of impurity-based feature importances:</p>
+<ul class="simple">
+<li><p>impurity-based importances are biased towards high cardinality features (features with many unique values)</p>
+<ul>
+<li><p>You can think of this as a feature with many unique values will be part of many splits in the decision tree (although with few samples). Limiting the depth of the decision tree can reduce this effect, but might lead to underfitting instead.</p></li>
+</ul>
+</li>
+<li><p>impurity-based importances are computed on training set statistics and therefore do not reflect the ability of feature to be useful to make predictions that generalize to the test set.</p></li>
+</ul>
+<p>A reminder about binary OneHotEncoded features is that only one of them is useful.
+You can see here that all the information contained in <code class="docutils literal notranslate"><span class="pre">sex_male</span></code> and <code class="docutils literal notranslate"><span class="pre">sex_female</span></code> is the same,
+and although this is very predictive of the survival outcome,
+the model only needed one of them (the other has 0 feature importance).</p>
+<ul class="simple">
+<li><p>Also note that just because the column is called <code class="docutils literal notranslate"><span class="pre">sex_male</span></code>, it doesn’t mean that males had a higher chance of survival. Remember that this feature is encoded as 0 and 1 so it contains information about males and females. In fact, a much higher proportion of the female passengers survived the Titanic:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">)[</span><span class="s1">&#39;survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex      
+female  0    0.278261
+        1    0.721739
+male    0    0.801887
+        1    0.198113
+Name: survived, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="permutation-importances-as-an-alternative-to-impurity-based-feature-importances">
+<h3><span class="section-number">8.9.1. </span>Permutation importances as an alternative to impurity-based feature importances<a class="headerlink" href="#permutation-importances-as-an-alternative-to-impurity-based-feature-importances" title="Permalink to this headline">#</a></h3>
+<p>From https://christophm.github.io/interpretable-ml-book/feature-importance.html</p>
+<blockquote>
+<div><p>The concept is really straightforward: We measure the importance of a feature by calculating the increase in the model’s prediction error after permuting the feature. A feature is “important” if shuffling its values increases the model error, because in this case the model relied on the feature for the prediction. A feature is “unimportant” if shuffling its values leaves the model error unchanged, because in this case the model ignored the feature for the prediction. The permutation feature importance measurement was introduced by Breiman (2001)43 for random forests</p>
+</div></blockquote>
+<p>Permutation importances can also be computed on the test/validation set
+to show what was most useful for the model in making predictions on unseen data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">permutation_importance</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span>
+    <span class="n">pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;importances_mean&#39;: array([ 0.09603659,  0.14268293,  0.01981707, -0.00579268,  0.03993902,
+         0.01219512,  0.00243902,  0.02987805,  0.00213415]),
+ &#39;importances_std&#39;: array([0.01280851, 0.02115775, 0.01092893, 0.00877816, 0.01949551,
+        0.00304878, 0.00404466, 0.01529261, 0.00862864]),
+ &#39;importances&#39;: array([[ 0.11280488,  0.1097561 ,  0.10060976,  0.10060976,  0.09146341,
+          0.1097561 ,  0.09756098,  0.07926829,  0.08536585,  0.07317073],
+        [ 0.11890244,  0.14939024,  0.17682927,  0.17378049,  0.13719512,
+          0.10670732,  0.12804878,  0.1554878 ,  0.13719512,  0.14329268],
+        [ 0.00609756,  0.02743902,  0.01829268,  0.03963415,  0.        ,
+          0.01829268,  0.02439024,  0.02439024,  0.02743902,  0.01219512],
+        [-0.01219512,  0.00304878,  0.00304878, -0.00609756, -0.00914634,
+         -0.02134146,  0.00304878, -0.01829268,  0.00304878, -0.00304878],
+        [ 0.03353659,  0.03963415,  0.04268293,  0.04268293,  0.05182927,
+          0.08536585,  0.04573171,  0.01829268,  0.0304878 ,  0.00914634],
+        [ 0.00914634,  0.01219512,  0.0152439 ,  0.0152439 ,  0.01829268,
+          0.00914634,  0.00914634,  0.01219512,  0.00914634,  0.01219512],
+        [ 0.00304878,  0.        ,  0.00914634,  0.00609756,  0.00914634,
+          0.        ,  0.        ,  0.        , -0.00304878,  0.        ],
+        [ 0.03963415,  0.04878049,  0.04268293,  0.04268293,  0.0304878 ,
+          0.03353659,  0.00304878,  0.0152439 ,  0.00609756,  0.03658537],
+        [ 0.02134146, -0.00304878,  0.        , -0.00609756,  0.        ,
+          0.00304878,  0.        , -0.00304878,  0.0152439 , -0.00609756]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualize the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">importances_mean</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">importances</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">X_test</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Permutation Importances (test set)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Model error increase when the feature was permutated&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture8_43_0.png" src="../_images/lecture8_43_0.png" />
+</div>
+</div>
+<p>This shows that the low cardinality categorical feature, sex is the most important feature,
+and passenger class affect the model error more than both age and fare.
+Also note that both random features have very low importances (close to 0) as expected.</p>
+<p><strong>Note</strong> Remember that explaining the model <span class="math notranslate nohighlight">\(\neq\)</span> explaining the data.
+Especially if we have a badly performing model,
+it might not matter that much to us what the most important features are
+and they might be quite different for a model that performs well.</p>
+<p>Once we have found a feature importance score that we think is useful for our application,
+we could simply set a threshold for what should be included.
+This threshold might be specific for our application
+and could for example be “Select feature that contribute more than 5% to the model error”.
+We could also have a pre-determined number of features we want to select
+or look for a drastic change in the plot.
+Above it looks like the top two features are quite more important than the rest.</p>
+<p>However,
+although these plots can be informative for the importance of features
+in models where they are all included,
+it doesn’t really tell us how well a model with only the most important features will perform.
+Are we missing some interaction with the other features so that our model will fewer feature will score worse?
+Or are the other features mostly adding noise,
+so that our model will fewer features will score better?
+To find out,
+we would still need to score the model with a different amount of features,
+but now that we have an indication of how important the features are,
+we can use this info to tell us which ones to start removing.</p>
+</div>
+<div class="section" id="recursive-feature-elimination-rfe">
+<h3><span class="section-number">8.9.2. </span>Recursive feature elimination - RFE<a class="headerlink" href="#recursive-feature-elimination-rfe" title="Permalink to this headline">#</a></h3>
+<p>The basic idea with recursive feature elimination is that we remove features according to the following steps:</p>
+<ol class="simple">
+<li><p>We decide <span class="math notranslate nohighlight">\(k\)</span> - the number of features to select.</p></li>
+<li><p>Assign importances to features, e.g. by fitting a model and looking at coef_ or feature_importances_.</p></li>
+<li><p>Remove the least important feature.</p></li>
+<li><p>Repeat steps 2-3 until only <span class="math notranslate nohighlight">\(k\)</span> features are remaining.</p></li>
+</ol>
+<p><strong>Note</strong> This is not the same as just removing all the less important features in one shot. Here we actually evaluate each model to see if it is getting better or worse.</p>
+<p>Unfortunately,
+RFE does currently not work with permutation importances in sklearn (yet),
+so we would have to use models with built-in feature importances,
+such as those in <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> or <code class="docutils literal notranslate"><span class="pre">.feature_importances_</span></code>.
+Here we will fit a logistic regression model
+and show how we can use its coefficients in RFE to select features.</p>
+</div>
+<div class="section" id="new-housing-data">
+<h3><span class="section-number">8.9.3. </span>New housing data<a class="headerlink" href="#new-housing-data" title="Permalink to this headline">#</a></h3>
+<p>I know at this point you are probably annoyed and bored of housing data, but good, interesting open-source data is hard to come by. For this example, I really want to show you an example with LOTS of features.</p>
+<p>Here is (yet another) housing dataset we acquired from <a class="reference external" href="https://github.com/melindaleung/Ames-Iowa-Housing-Dataset">this GitHub repo</a>, originally created by Dean De Cock.
+<em>(We are using the raw data so we do not need to store it and import it simply from the url.)</em></p>
+<p><strong>Attribution:</strong></p>
+<p>The Ames Housing dataset was compiled by Dean De Cock for use in data science education.</p>
+<p>His publication can be found <a class="reference external" href="http://jse.amstat.org/v19n3/decock.pdf">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/melindaleung/Ames-Iowa-Housing-Dataset/master/data/ames</span><span class="si">%20i</span><span class="s1">owa</span><span class="si">%20ho</span><span class="s1">using.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ames_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ames_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Abnormal&#39;</span>
+<span class="n">ames_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MSSubClass</th>
+      <th>MSZoning</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>LotShape</th>
+      <th>LandContour</th>
+      <th>Utilities</th>
+      <th>LotConfig</th>
+      <th>...</th>
+      <th>PoolArea</th>
+      <th>PoolQC</th>
+      <th>Fence</th>
+      <th>MiscFeature</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SaleType</th>
+      <th>SaleCondition</th>
+      <th>SalePrice</th>
+    </tr>
+    <tr>
+      <th>Id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>65.0</td>
+      <td>8450</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>208500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>80.0</td>
+      <td>9600</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2007</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>181500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>68.0</td>
+      <td>11250</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>9</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>223500</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>70</td>
+      <td>RL</td>
+      <td>60.0</td>
+      <td>9550</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Corner</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Abnormal</td>
+      <td>140000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>84.0</td>
+      <td>14260</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>FR2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>250000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1456</th>
+      <td>60</td>
+      <td>RL</td>
+      <td>62.0</td>
+      <td>7917</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>8</td>
+      <td>2007</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>175000</td>
+    </tr>
+    <tr>
+      <th>1457</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>85.0</td>
+      <td>13175</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>210000</td>
+    </tr>
+    <tr>
+      <th>1458</th>
+      <td>70</td>
+      <td>RL</td>
+      <td>66.0</td>
+      <td>9042</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>GdPrv</td>
+      <td>Shed</td>
+      <td>2500</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>266500</td>
+    </tr>
+    <tr>
+      <th>1459</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>68.0</td>
+      <td>9717</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>142125</td>
+    </tr>
+    <tr>
+      <th>1460</th>
+      <td>20</td>
+      <td>RL</td>
+      <td>75.0</td>
+      <td>9937</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>Inside</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2008</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>147500</td>
+    </tr>
+  </tbody>
+</table>
+<p>1460 rows × 80 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 1460 entries, 1 to 1460
+Data columns (total 80 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   MSSubClass     1460 non-null   int64  
+ 1   MSZoning       1460 non-null   object 
+ 2   LotFrontage    1201 non-null   float64
+ 3   LotArea        1460 non-null   int64  
+ 4   Street         1460 non-null   object 
+ 5   Alley          91 non-null     object 
+ 6   LotShape       1460 non-null   object 
+ 7   LandContour    1460 non-null   object 
+ 8   Utilities      1460 non-null   object 
+ 9   LotConfig      1460 non-null   object 
+ 10  LandSlope      1460 non-null   object 
+ 11  Neighborhood   1460 non-null   object 
+ 12  Condition1     1460 non-null   object 
+ 13  Condition2     1460 non-null   object 
+ 14  BldgType       1460 non-null   object 
+ 15  HouseStyle     1460 non-null   object 
+ 16  OverallQual    1460 non-null   int64  
+ 17  OverallCond    1460 non-null   int64  
+ 18  YearBuilt      1460 non-null   int64  
+ 19  YearRemodAdd   1460 non-null   int64  
+ 20  RoofStyle      1460 non-null   object 
+ 21  RoofMatl       1460 non-null   object 
+ 22  Exterior1st    1460 non-null   object 
+ 23  Exterior2nd    1460 non-null   object 
+ 24  MasVnrType     1452 non-null   object 
+ 25  MasVnrArea     1452 non-null   float64
+ 26  ExterQual      1460 non-null   object 
+ 27  ExterCond      1460 non-null   object 
+ 28  Foundation     1460 non-null   object 
+ 29  BsmtQual       1423 non-null   object 
+ 30  BsmtCond       1423 non-null   object 
+ 31  BsmtExposure   1422 non-null   object 
+ 32  BsmtFinType1   1423 non-null   object 
+ 33  BsmtFinSF1     1460 non-null   int64  
+ 34  BsmtFinType2   1422 non-null   object 
+ 35  BsmtFinSF2     1460 non-null   int64  
+ 36  BsmtUnfSF      1460 non-null   int64  
+ 37  TotalBsmtSF    1460 non-null   int64  
+ 38  Heating        1460 non-null   object 
+ 39  HeatingQC      1460 non-null   object 
+ 40  CentralAir     1460 non-null   object 
+ 41  Electrical     1459 non-null   object 
+ 42  1stFlrSF       1460 non-null   int64  
+ 43  2ndFlrSF       1460 non-null   int64  
+ 44  LowQualFinSF   1460 non-null   int64  
+ 45  GrLivArea      1460 non-null   int64  
+ 46  BsmtFullBath   1460 non-null   int64  
+ 47  BsmtHalfBath   1460 non-null   int64  
+ 48  FullBath       1460 non-null   int64  
+ 49  HalfBath       1460 non-null   int64  
+ 50  BedroomAbvGr   1460 non-null   int64  
+ 51  KitchenAbvGr   1460 non-null   int64  
+ 52  KitchenQual    1460 non-null   object 
+ 53  TotRmsAbvGrd   1460 non-null   int64  
+ 54  Functional     1460 non-null   object 
+ 55  Fireplaces     1460 non-null   int64  
+ 56  FireplaceQu    770 non-null    object 
+ 57  GarageType     1379 non-null   object 
+ 58  GarageYrBlt    1379 non-null   float64
+ 59  GarageFinish   1379 non-null   object 
+ 60  GarageCars     1460 non-null   int64  
+ 61  GarageArea     1460 non-null   int64  
+ 62  GarageQual     1379 non-null   object 
+ 63  GarageCond     1379 non-null   object 
+ 64  PavedDrive     1460 non-null   object 
+ 65  WoodDeckSF     1460 non-null   int64  
+ 66  OpenPorchSF    1460 non-null   int64  
+ 67  EnclosedPorch  1460 non-null   int64  
+ 68  3SsnPorch      1460 non-null   int64  
+ 69  ScreenPorch    1460 non-null   int64  
+ 70  PoolArea       1460 non-null   int64  
+ 71  PoolQC         7 non-null      object 
+ 72  Fence          281 non-null    object 
+ 73  MiscFeature    54 non-null     object 
+ 74  MiscVal        1460 non-null   int64  
+ 75  MoSold         1460 non-null   int64  
+ 76  YrSold         1460 non-null   int64  
+ 77  SaleType       1460 non-null   object 
+ 78  SaleCondition  1460 non-null   object 
+ 79  SalePrice      1460 non-null   int64  
+dtypes: float64(3), int64(34), object(43)
+memory usage: 923.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we use <code class="docutils literal notranslate"><span class="pre">.info()</span></code> to identify our categorical and numeric features. I split my features and identify my target.</p>
+<p>The target variable for this question is <code class="docutils literal notranslate"><span class="pre">SaleCondition</span></code> and we are doing classification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">ames_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;PoolQC&#39;</span><span class="p">,</span> <span class="s1">&#39;MiscFeature&#39;</span><span class="p">,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">])</span>
+<span class="n">X_test</span> <span class="o">=</span>  <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;PoolQC&#39;</span><span class="p">,</span> <span class="s1">&#39;MiscFeature&#39;</span><span class="p">,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">])</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;SaleCondition&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, you should be looking at these individually but I’m being a little lazy here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we need to make our pipelines and column transformer.</p>
+<p>We can also cross-validate, but here my main goal is to show you how to get our feature importances from our pipeline!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+
+
+<span class="n">numeric_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">),</span>
+    <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">categoric_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="p">),</span>
+    <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">numeric_pipe</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">categoric_pipe</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># This max_iter is just a detail to avoid an sklearn warning</span>
+<span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+    <span class="n">main_pipe</span><span class="p">,</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.096767
+score_time     0.007980
+test_score     0.900704
+train_score    0.937073
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we fit our pipeline outside of <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> we can use <code class="docutils literal notranslate"><span class="pre">coef_</span></code> to get our features that contribute to our predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">feats_coef</span> <span class="o">=</span> <span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;logisticregression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">feats_coef</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.18933301e-01,  2.80624447e-02,  2.49132864e-01,
+        -1.40590707e-01,  2.31783263e-01,  2.65570346e-01,
+         8.50470929e-02,  6.52628102e-02, -3.13917938e-01,
+        -7.97798026e-02,  1.05265241e-01, -2.45700606e-01,
+        -2.51716876e-01,  1.04134981e-01,  8.63370099e-02,
+        -9.51283873e-02,  1.72637862e-01, -1.84005614e-01,
+         1.70408093e-01, -5.28454157e-02,  4.55049746e-02,
+        -5.80085441e-02, -2.77268489e-01,  6.36099941e-02,
+         2.59018638e-01, -2.51791021e-01,  2.73931399e-01,
+         1.16524037e-01, -3.44323661e-02,  1.50334394e-01,
+         5.73976404e-03, -1.22379856e-01, -2.22706456e-01,
+         3.89058771e-01,  9.84743001e-02,  3.18747469e-01,
+         8.07869809e-01, -5.43891111e-01, -2.88829814e-01,
+        -3.89519565e-01,  5.73620415e-01,  6.48703698e-01,
+         2.12038949e-01, -2.11955326e-01,  3.63854967e-01,
+         6.26812156e-02, -3.86895845e-01, -3.95567146e-02,
+        -2.83614357e-01, -2.52232245e-01,  1.61994852e-01,
+         3.73935373e-01,  8.36232692e-05, -3.55125977e-01,
+        -3.70316904e-02,  2.24462859e-01,  8.95902280e-02,
+         7.81882038e-02,  7.51040124e-01,  1.88005545e-01,
+        -9.38962046e-01,  6.31420013e-01,  1.56077888e-01,
+        -1.05638273e+00,  1.51768906e-01, -6.47126505e-01,
+         9.39744370e-01, -6.74179506e-01,  5.30064004e-01,
+        -2.60472717e-01,  2.75258931e-01,  1.66205559e-01,
+         8.30580848e-01, -1.26565747e-01, -1.95058069e-01,
+        -4.79020204e-01, -9.92076631e-01,  4.26097263e-01,
+        -2.72595638e-01,  2.61812838e-01,  6.55126248e-01,
+        -4.55002749e-01,  1.06361447e-01, -1.52588492e-01,
+        -5.43373515e-02,  2.34971653e-01, -1.00295126e-01,
+        -4.67343956e-01, -2.41568026e-01,  2.14029782e-01,
+         3.39293357e-01, -3.19666099e-01,  2.08155033e-01,
+         3.67478658e-01, -5.54117014e-01,  1.01128089e-01,
+         2.32542717e-01,  1.44587164e-03, -1.44346432e-01,
+        -1.62869940e-05,  2.33052514e-01,  1.30394165e-01,
+        -3.76771189e-01,  5.35405290e-01,  1.44431481e-01,
+        -3.90448640e-01,  8.74666820e-02, -2.00562093e-01,
+         4.12801986e-01, -2.53142602e-01, -1.74950314e-01,
+         9.30777031e-01,  2.87246206e-01, -1.04779772e+00,
+         4.57111290e-02, -6.74056599e-01, -2.18556417e-01,
+         1.62035760e-01,  3.60103624e-01,  1.45434213e-01,
+         2.25123041e-01,  4.40807503e-05,  1.82992462e-01,
+         7.89478745e-02,  4.86640547e-02, -5.68776738e-01,
+         1.13460925e-01,  1.44750964e-01, -3.67112152e-01,
+         8.44775005e-02, -3.67025687e-01,  2.68285847e-01,
+         1.34546502e-01,  2.31449396e-01,  1.12479652e-01,
+         2.24760373e-01,  1.18242766e-02,  3.43209069e-01,
+        -6.70480526e-01,  4.77666585e-01, -4.37506565e-01,
+        -4.47333369e-01,  4.00842722e-01,  2.11902207e-01,
+         1.74079048e-01, -2.51989232e-01,  1.11275956e+00,
+         1.34546502e-01,  2.50451946e-01,  2.76242490e-03,
+        -8.58224960e-01, -7.13454081e-03, -3.89635372e-01,
+        -8.69992217e-01, -4.34719328e-01, -6.76054434e-02,
+         9.54157528e-01,  3.87255057e-02, -4.97376032e-01,
+         4.61299223e-01,  4.76613430e-01, -6.69281813e-02,
+        -3.73524817e-01, -2.12557541e-02, -1.17014240e-01,
+         5.23713609e-02,  8.59822561e-02,  7.91869632e-02,
+        -8.70743678e-03, -1.31709622e-01,  1.96400888e-01,
+        -1.35087169e-01, -1.88532887e-01,  1.90391605e-01,
+        -1.68705126e-01,  4.38343568e-01, -3.12346440e-01,
+         4.09329029e-02,  3.15490827e-02,  1.49418496e-02,
+        -9.99772695e-03,  6.94411301e-02, -1.05850712e-01,
+         5.19999028e-01, -2.81860518e-01, -2.56118341e-01,
+         1.23914167e-01, -1.05850712e-01,  7.13548041e-02,
+         7.41810549e-02, -2.49958058e-01,  1.89343085e-01,
+        -8.48372623e-02, -6.92793634e-02,  3.53357348e-01,
+        -1.66404565e-02,  2.40785809e-01,  2.15214709e-01,
+        -6.17503710e-01, -1.05850712e-01,  2.83629631e-01,
+        -1.48793608e-01,  1.25594001e-01, -2.62402043e-01,
+         1.89941721e-01, -1.08676457e-01, -7.92096221e-02,
+         3.06032259e-02, -4.94681327e-01,  5.27912454e-01,
+        -1.71371243e-01,  4.81451047e-02,  5.94754077e-02,
+        -4.54720488e-01,  2.86755731e-01,  7.51939783e-01,
+         1.25531196e-02, -5.96444522e-01,  1.23911289e-01,
+        -1.23827666e-01,  2.85562500e-01,  4.03642227e-01,
+        -4.59233278e-01, -4.23793288e-01,  1.93905462e-01,
+        -9.76201259e-01,  5.88636548e-01,  6.30919626e-02,
+         3.24556372e-01,  4.10405511e-01, -1.75802801e-01,
+        -3.24535461e-01,  5.90073924e-01,  4.26786586e-01,
+        -6.51069777e-01, -2.75774360e-01, -3.39744382e-01,
+         4.13662302e-01,  1.93307755e-02,  5.31989713e-01,
+        -6.41738166e-02, -5.60980969e-01,  7.45856540e-02,
+         5.26236254e-01, -5.91451791e-01, -2.69895015e-01,
+        -1.22565519e-01,  4.77566293e-01, -9.43922536e-02,
+        -2.13866639e-01,  1.31927453e-01,  1.76415063e-01,
+        -9.43922536e-02,  2.87006723e-02,  2.12622352e-01,
+        -6.58755463e-03, -3.12274873e-01,  1.72015280e-01,
+        -9.43922536e-02,  2.87006723e-02,  5.62310037e-01,
+        -5.19974857e-01,  1.32435679e-01, -1.08995655e-01,
+        -9.43922536e-02,  5.17377943e-02,  2.54406038e-01,
+        -3.06060209e-01,  2.33439447e-01, -1.11594584e-01,
+        -2.44510220e-01, -2.24157320e-01,  3.46906300e-01,
+         1.44812519e-01, -3.33407928e-01,  2.55717400e-01,
+         4.35473241e-01,  4.81412233e-01,  9.43857948e-01,
+        -3.84055137e+00, -6.86763848e-01,  2.59953343e+00]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The problem here, is we don’t know which value corresponds to which feature!</p>
+<p>Let’s first take a look at how many features we have now after preprocessing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feats_coef</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 282)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The 282 is refering to the number of features after preprocessing!</p>
+<p>Let’s get the feature names after preprocessing.</p>
+<p>We can obtain the categorical features and combine them with the  numeric features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_feats</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s1">&#39;pipeline-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span>
+    <span class="s1">&#39;onehotencoder&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_feat_names</span> <span class="o">=</span> <span class="n">numeric_features</span> <span class="o">+</span> <span class="n">cat_feats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see now that we have the same number of feature names as we do coefficients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">all_feat_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>282
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s get them into a dataframe now and sort them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_feat_names</span><span class="p">,</span>
+                                <span class="n">feats_coef</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;feature_coefs&#39;</span><span class="p">})</span>
+<span class="n">features_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;feature_coefs&#39;</span><span class="p">,</span><span class="n">key</span><span class="o">=</span> <span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>feature_coefs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>279</th>
+      <td>SaleType_New</td>
+      <td>-3.840551</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>SaleType_WD</td>
+      <td>2.599533</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>Exterior2nd_BrkFace</td>
+      <td>1.11276</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>Neighborhood_BrDale</td>
+      <td>-1.056383</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>HouseStyle_SFoyer</td>
+      <td>-1.047798</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Exterior2nd_HdBoard</td>
+      <td>0.002762</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Condition2_PosA</td>
+      <td>0.001446</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Utilities_AllPub</td>
+      <td>0.000084</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>RoofMatl_ClyTile</td>
+      <td>0.000044</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Condition2_RRAe</td>
+      <td>-0.000016</td>
+    </tr>
+  </tbody>
+</table>
+<p>282 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>We can see that <code class="docutils literal notranslate"><span class="pre">SaleType_New</span></code> is the most important feature in our model.</p>
+<p>From here we can decide to manually remove some of the columns with a threshold as we mention above,
+or we can use Recursive feature elimination to perform the iterative process of fitting a model
+removing some features
+and then fitting a model again with the reduced number of features.</p>
+<p>Let’s take a look at how we can do this.</p>
+<p>First we import <code class="docutils literal notranslate"><span class="pre">RFE</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now instead of simply using <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>, we can wrap it around the <code class="docutils literal notranslate"><span class="pre">RFE</span></code> function and specify how many features we want with <code class="docutils literal notranslate"><span class="pre">n_features_to_select</span></code>.</p>
+<p>Here I’m capping the number of features to 30 (an arbitrary number I picked).</p>
+<p>This is going to take about 1-2 minutes to run because now, it’s recursively removing 1 feature at a time and cross-validating on the final result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">RFE</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 276 features.
+Fitting estimator with 226 features.
+Fitting estimator with 176 features.
+Fitting estimator with 126 features.
+Fitting estimator with 76 features.
+Fitting estimator with 277 features.
+Fitting estimator with 227 features.
+Fitting estimator with 177 features.
+Fitting estimator with 127 features.
+Fitting estimator with 77 features.
+Fitting estimator with 276 features.
+Fitting estimator with 226 features.
+Fitting estimator with 176 features.
+Fitting estimator with 126 features.
+Fitting estimator with 76 features.
+Fitting estimator with 279 features.
+Fitting estimator with 229 features.
+Fitting estimator with 179 features.
+Fitting estimator with 129 features.
+Fitting estimator with 79 features.
+Fitting estimator with 279 features.
+Fitting estimator with 229 features.
+Fitting estimator with 179 features.
+Fitting estimator with 129 features.
+Fitting estimator with 79 features.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fit_time</th>
+      <th>score_time</th>
+      <th>test_score</th>
+      <th>train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.190379</td>
+      <td>0.006981</td>
+      <td>0.897436</td>
+      <td>0.914347</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.204075</td>
+      <td>0.007054</td>
+      <td>0.871795</td>
+      <td>0.922912</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.204441</td>
+      <td>0.007261</td>
+      <td>0.901709</td>
+      <td>0.919700</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.217459</td>
+      <td>0.007610</td>
+      <td>0.922747</td>
+      <td>0.913369</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.200192</td>
+      <td>0.007031</td>
+      <td>0.914163</td>
+      <td>0.921925</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.203309
+score_time     0.007187
+test_score     0.901570
+train_score    0.918451
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looking at this mean validation score compared to when the model was using all the features, we can see it increased a tiny bit!
+And more importantly, we are using much fewer features now
+so our model is both easier to explain and faster to train:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">main_pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 282 features.
+Fitting estimator with 232 features.
+Fitting estimator with 182 features.
+Fitting estimator with 132 features.
+Fitting estimator with 82 features.
+Fitting estimator with 32 features.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8938356164383562
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;rfe&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">n_features_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+<p>But now our next question is how do we select a good value for <span class="math notranslate nohighlight">\(k\)</span>?
+How do we know how many features is the optimal amount… Well, you guessed it! There is a tool for that too!</p>
+</div>
+<div class="section" id="rfecv">
+<h3><span class="section-number">8.9.4. </span>RFECV<a class="headerlink" href="#rfecv" title="Permalink to this headline">#</a></h3>
+<p>You can find the optimal number of features using cross-validation with <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> where the optimal <span class="math notranslate nohighlight">\(k\)</span> value is selected based on the highest validation score.</p>
+<p>You would definitely not want to use the training score! - Why?</p>
+<blockquote>
+<div><p>Because with training score the more features you add the higher the score, this isn’t the case with validation score.</p>
+</div></blockquote>
+<p>We can import <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code> like we did for <code class="docutils literal notranslate"><span class="pre">RFE</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">RFECV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead of <code class="docutils literal notranslate"><span class="pre">RFE</span></code> now we simply use <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> in our pipeline and we do not need to specify the argument <code class="docutils literal notranslate"><span class="pre">n_features_to_select</span></code> like we did with <code class="docutils literal notranslate"><span class="pre">RFE</span></code> since <span class="math notranslate nohighlight">\(k\)</span> is selected based on the highest validation score.</p>
+<p>(<em>This is also going to take a couple of minutes</em>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">RFECV</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 13 features.
+Fitting estimator with 3 features.
+Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 13 features.
+Fitting estimator with 3 features.
+Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 273 features.
+Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 13 features.
+Fitting estimator with 3 features.
+Fitting estimator with 273 features.
+Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 13 features.
+Fitting estimator with 3 features.
+Fitting estimator with 273 features.
+Fitting estimator with 263 features.
+Fitting estimator with 253 features.
+Fitting estimator with 243 features.
+Fitting estimator with 233 features.
+Fitting estimator with 223 features.
+Fitting estimator with 213 features.
+Fitting estimator with 203 features.
+Fitting estimator with 193 features.
+Fitting estimator with 183 features.
+Fitting estimator with 173 features.
+Fitting estimator with 163 features.
+Fitting estimator with 153 features.
+Fitting estimator with 143 features.
+Fitting estimator with 133 features.
+Fitting estimator with 123 features.
+Fitting estimator with 113 features.
+Fitting estimator with 103 features.
+Fitting estimator with 93 features.
+Fitting estimator with 83 features.
+Fitting estimator with 73 features.
+Fitting estimator with 63 features.
+Fitting estimator with 53 features.
+Fitting estimator with 43 features.
+Fitting estimator with 33 features.
+Fitting estimator with 23 features.
+Fitting estimator with 13 features.
+Fitting estimator with 3 features.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       1.444219
+score_time     0.011036
+test_score     0.905822
+train_score    0.910959
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have ~91% for our validation score!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">main_pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 282 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 282 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 282 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8904109589041096
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;rfecv&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">n_features_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">all_feat_names</span>
+<span class="n">support</span> <span class="o">=</span> <span class="n">main_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;rfecv&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">support_</span>
+<span class="n">RFE_selected_feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">support</span><span class="p">]</span>
+<span class="n">RFE_selected_feats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;MSZoning_RL&#39;, &#39;LandSlope_Sev&#39;, &#39;Neighborhood_BrDale&#39;,
+       &#39;Neighborhood_CollgCr&#39;, &#39;Condition2_Artery&#39;, &#39;HouseStyle_2.5Unf&#39;,
+       &#39;HouseStyle_SFoyer&#39;, &#39;RoofStyle_Flat&#39;, &#39;RoofMatl_Tar&amp;Grv&#39;,
+       &#39;Exterior1st_AsbShng&#39;, &#39;Exterior1st_Stone&#39;, &#39;Exterior1st_Wd Sdng&#39;,
+       &#39;Exterior2nd_BrkFace&#39;, &#39;Exterior2nd_ImStucc&#39;, &#39;Exterior2nd_Stone&#39;,
+       &#39;Exterior2nd_Wd Sdng&#39;, &#39;HeatingQC_Gd&#39;, &#39;Electrical_Mix&#39;,
+       &#39;SaleType_ConLw&#39;, &#39;SaleType_New&#39;, &#39;SaleType_Oth&#39;, &#39;SaleType_WD&#39;],
+      dtype=&#39;&lt;U20&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>RFECV selects the features by references their <code class="docutils literal notranslate"><span class="pre">feature_importances</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> as well as the validation score after each feature is removed and seeing if it is increasing.</p>
+<p>When a feature is removed and the validation score is no longer increasing, then it stops removing features.</p>
+</div>
+</div>
+<div class="section" id="sequantial-feature-selection">
+<h2><span class="section-number">8.10. </span>Sequantial Feature Selection<a class="headerlink" href="#sequantial-feature-selection" title="Permalink to this headline">#</a></h2>
+<p>Sequential Feature Selection is similar to the approach where we try all possible combinations
+of features.
+SFS differs from RFE in that it does not require the underlying model to expose a coef_ or feature_importances_ attribute.
+It may however be slower considering that more models need to be evaluated,
+compared to the other approaches.</p>
+<p>SFS can be either forwards (starting with 0 features and adding one at a time)
+or backwards (starting with all features and removing one at a time).
+With RFE we removed the least important feature like in backwards selection,
+whereas with forward selection we add features until our cross-validation score starts to decreases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can import it as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_forward</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">SequentialFeatureSelector</span><span class="p">(</span>
+        <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="p">),</span>
+    <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Running this next cell is going to take a LONG LONG LONG time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+    <span class="n">pipe_forward</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> 
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       20.473383
+score_time      0.008420
+test_score      0.907546
+train_score     0.907535
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">8.11. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>1. As we increase features, which score will always increase?<br />
+2. Between <code class="docutils literal notranslate"><span class="pre">RFE</span></code> and <code class="docutils literal notranslate"><span class="pre">RFECV</span></code> which one finds the optimal number of features for us?<br />
+3. Which method starts with all our features and iteratively removes them from our model?<br />
+4. Which method starts with no features and iteratively adds features?<br />
+5. Which method does not take into consideration <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>/<code class="docutils literal notranslate"><span class="pre">coefs_</span></code> when adding/removing features?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>Training score</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RFECV</span></code></p></li>
+<li><p>Recursive Feature Elimination</p></li>
+<li><p>Forward Selection</p></li>
+<li><p>Forward Selection</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-we-ve-learned-today">
+<h2><span class="section-number">8.12. </span>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>How to construct a statistical question from a business objective.</p></li>
+<li><p>What steps are important in building your analysis.</p></li>
+<li><p>How to discover important features in your model.</p></li>
+<li><p>the 2 different methods (RFE, Forward selection) to conduct feature selection on your model.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-bait-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-bait-py",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-bait-py'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture7.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Linear Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture9.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Classification and Regression Metrics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Quan Nguyen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

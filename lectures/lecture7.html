@@ -1,0 +1,3279 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Linear Models &#8212; BAIT 509&lt;br&gt;Business Applications of Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="canonical" href="https://bait509-ubc.github.io/BAIT509/intro.html/lectures/lecture7.html" />
+    <link rel="shortcut icon" href="../_static/bait_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Business Objectives/Statistical Questions and Feature Selection" href="lecture8.html" />
+    <link rel="prev" title="6. Naive Bayes and Hyperparameter Optimization" href="lecture6.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/bait_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 509<br>Business Applications of Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Things You Should Know
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/who.html">
+   Who: Quan Nguyen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/how.html">
+   How: The Course Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/what.html">
+   What: Learning Outcomes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Intro to ML &amp;  Decision Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Splitting and Cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Baseline models &amp; k-Nearest Neighbours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. kNN regression, Support Vector Machines, and Feature Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Preprocessing Categorical Features and Column Transformer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture6.html">
+   6. Naive Bayes and Hyperparameter Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Linear Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   8. Business Objectives/Statistical Questions and Feature Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   9. Classification and Regression Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10a.html">
+   10. Data Science Ethics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture10b.html">
+   11. Multi-Class Classification (Optional)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../things_to_know/attribution.html">
+   Attribution
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/bait509-ubc/BAIT509/issues/new?title=Issue%20on%20page%20%2Flectures/lecture7.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/lectures/lecture7.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   7.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   7.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     7.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   7.3. Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief-explanation-of-linear-regression">
+     7.3.1. Brief explanation of linear regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-example-with-data">
+     7.3.2. An example with data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-we-interpret-these-coefficients">
+       7.3.2.1. How do we interpret these coefficients?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#sign">
+         7.3.2.1.1. Sign
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#magnitude">
+         7.3.2.1.2. Magnitude
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression-in-sklearn">
+     7.3.3. Ridge regression in sklearn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-alpha">
+     7.3.4. Hyperparameter -
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       alpha
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-house-prices">
+     7.3.5. Predicting house prices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-summarize">
+     7.3.6. To summarize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-example">
+     7.3.7. Prediction Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   7.4. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-classification-using-regression">
+   7.5. Logistic regression - classification using regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficients">
+     7.5.1. Coefficients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictions">
+     7.5.2. Predictions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression-hyperparameter-c">
+     7.5.3. Logistic Regression Hyperparameter
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       C
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-probabilities">
+     7.5.4. Predicting probabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-is-this-being-done">
+     7.5.5. How is this being done?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-boundaries-with-predict-proba">
+     7.5.6. Decision boundaries with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       predict_proba
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-linear-classifiers">
+   7.6. Limitations of linear classifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-to-naive-bayes">
+   7.7. Compare to naive Bayes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.8. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   7.9. Let’s Practice - Coding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today">
+   7.10. What We’ve Learned Today
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Linear Models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lecture-learning-objectives">
+   7.1. Lecture Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#five-minute-recap-lightning-questions">
+   7.2. Five Minute Recap/ Lightning Questions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-lingering-questions">
+     7.2.1. Some lingering questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   7.3. Linear Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief-explanation-of-linear-regression">
+     7.3.1. Brief explanation of linear regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-example-with-data">
+     7.3.2. An example with data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-we-interpret-these-coefficients">
+       7.3.2.1. How do we interpret these coefficients?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#sign">
+         7.3.2.1.1. Sign
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#magnitude">
+         7.3.2.1.2. Magnitude
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression-in-sklearn">
+     7.3.3. Ridge regression in sklearn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-alpha">
+     7.3.4. Hyperparameter -
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       alpha
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-house-prices">
+     7.3.5. Predicting house prices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-summarize">
+     7.3.6. To summarize
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediction-example">
+     7.3.7. Prediction Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice">
+   7.4. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-classification-using-regression">
+   7.5. Logistic regression - classification using regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficients">
+     7.5.1. Coefficients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictions">
+     7.5.2. Predictions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logistic-regression-hyperparameter-c">
+     7.5.3. Logistic Regression Hyperparameter
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       C
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-probabilities">
+     7.5.4. Predicting probabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-is-this-being-done">
+     7.5.5. How is this being done?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-boundaries-with-predict-proba">
+     7.5.6. Decision boundaries with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       predict_proba
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-linear-classifiers">
+   7.6. Limitations of linear classifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-to-naive-bayes">
+   7.7. Compare to naive Bayes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.8. Let’s Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-practice-coding">
+   7.9. Let’s Practice - Coding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned-today">
+   7.10. What We’ve Learned Today
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-models">
+<h1><span class="section-number">7. </span>Linear Models<a class="headerlink" href="#linear-models" title="Permalink to this headline">#</a></h1>
+<div class="section" id="lecture-learning-objectives">
+<h2><span class="section-number">7.1. </span>Lecture Learning Objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Explain the general intuition behind linear models.</p></li>
+<li><p>Explain the main concepts of the advantages of Ridge regression.</p></li>
+<li><p>Explain the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> paradigm of linear models.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">fit</span></code>, <code class="docutils literal notranslate"><span class="pre">predict</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">coef_</span></code> to interpret the model weights.</p></li>
+</ul>
+</li>
+<li><p>Explain the advantages and limitations of linear classifiers.</p></li>
+<li><p>Apply scikit-learn regression model (e.g., Ridge) to regression problems.</p></li>
+<li><p>Relate the Ridge hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p></li>
+<li><p>Compare logistic regression with naive Bayes.</p></li>
+</ul>
+</div>
+<div class="section" id="five-minute-recap-lightning-questions">
+<h2><span class="section-number">7.2. </span>Five Minute Recap/ Lightning Questions<a class="headerlink" href="#five-minute-recap-lightning-questions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>To avoid the problem of zero probability in Naïve Bayes, what technique do we use?</p></li>
+<li><p>What is the name of the function we use to perform Exhaustive Hyperparameter Optimization?</p></li>
+<li><p>What parameter does <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code> have that the Exhaustive Hyperparameter tuning function not have?</p></li>
+<li><p>Repeating cross-validation over and over again with different hyperparameters can cause our model to suffer from what?</p></li>
+</ul>
+<div class="section" id="some-lingering-questions">
+<h3><span class="section-number">7.2.1. </span>Some lingering questions<a class="headerlink" href="#some-lingering-questions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Is linear regression used in Machine Learning or just in Stats?</p></li>
+<li><p>Can we use a linear model as a classifier?</p></li>
+<li><p>What was that <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> function we looked at briefly when learning about naive Bayes?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="linear-regression">
+<h2><span class="section-number">7.3. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h2>
+<p>We’ve seen many regression models such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KNeighborsRegressor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SVR</span></code></p></li>
+</ul>
+<p>but now we have a new one that we are going to explore called  <strong>linear regression</strong>.
+You might have encountered linear regression previously,
+as it is one of the most basic and popular ML/statistical techniques.</p>
+<div class="section" id="brief-explanation-of-linear-regression">
+<h3><span class="section-number">7.3.1. </span>Brief explanation of linear regression<a class="headerlink" href="#brief-explanation-of-linear-regression" title="Permalink to this headline">#</a></h3>
+<p>Unlike with decision trees where we make predictions with rules and analogy-based models where we predict a certain class using distance to other examples,
+linear regression tries to fit a linear function to the features in the data
+by adjusting <strong>coefficients</strong> (or sometimes known as “weights”) associated with each features.
+These coefficients are model parameters (not hyperparameters) learned from the training data (like decision tree splits).</p>
+<p>Given a feature <span class="math notranslate nohighlight">\(x_1\)</span> and learned coefficient/weight <span class="math notranslate nohighlight">\(w_1\)</span> and intercept <span class="math notranslate nohighlight">\(b\)</span>, we can get the prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span> with the following formula</p>
+<div class="math notranslate nohighlight">
+\[\hat{y} = w_1x_1 + b\]</div>
+<p>If we have <span class="math notranslate nohighlight">\(n\)</span> features, the linear model would look like this</p>
+<div class="math notranslate nohighlight">
+\[\hat{y} = w_1x_1 + w_2x_2 ... + w_nx_n  + b\]</div>
+<p>We can see that a higher weight for a feature would results in a bigger change in the predicted value
+when the value of the feature changes.</p>
+</div>
+<div class="section" id="an-example-with-data">
+<h3><span class="section-number">7.3.2. </span>An example with data<a class="headerlink" href="#an-example-with-data" title="Permalink to this headline">#</a></h3>
+<p>Let’s say we have the following training data:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>listing number</p></th>
+<th class="head"><p>Number of Bedrooms</p></th>
+<th class="head"><p>Number of Bathrooms</p></th>
+<th class="head"><p>Square Footage</p></th>
+<th class="head"><p>Age</p></th>
+<th class="head"><p>Price</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>5</p></td>
+<td><p>6</p></td>
+<td><p>3000</p></td>
+<td><p>2</p></td>
+<td><p>$6.39 million</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>800</p></td>
+<td><p>90</p></td>
+<td><p>$1.67 million</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>1875</p></td>
+<td><p>66</p></td>
+<td><p>$3.92 million</p></td>
+</tr>
+</tbody>
+</table>
+<p>And fitting a linear model to our training data gives these coefficients</p>
+<a class="reference internal image-reference" href="../_images/house_table.png"><img alt="404 image" src="../_images/house_table.png" style="width: 50%;" /></a>
+<div class="section" id="how-do-we-interpret-these-coefficients">
+<h4><span class="section-number">7.3.2.1. </span>How do we interpret these coefficients?<a class="headerlink" href="#how-do-we-interpret-these-coefficients" title="Permalink to this headline">#</a></h4>
+<div class="section" id="sign">
+<h5><span class="section-number">7.3.2.1.1. </span>Sign<a class="headerlink" href="#sign" title="Permalink to this headline">#</a></h5>
+<p>If the coefficient is a positive number (like 0.03 for the number of bedrooms)
+that means that this feature is contributing to the prediction in a positive.
+This means that the more bedrooms a house has, the higher the price the model will predict.</p>
+<p>In this, we have a negative coefficient -&gt; age. Here, as age increases, the predicted price decreases.
+The feature is contributing to the predicted price in a negative way.
+Older houses will have a lower, predicted price.</p>
+</div>
+<div class="section" id="magnitude">
+<h5><span class="section-number">7.3.2.1.2. </span>Magnitude<a class="headerlink" href="#magnitude" title="Permalink to this headline">#</a></h5>
+<p>The magnitude of the coefficient also has a direct effect on the predicted price.
+Here for every additional bedroom, we are adding 0.03 million dollars to our prediction.</p>
+<p>Here we are learning every additional bedroom is worth 0.03 million dollars and every additional year is decreasing 0.01 million dollars to our prediction.</p>
+<p>We need to plug them into the following formula when we see a new observation whose value we want to predict:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\text{predicted}(price) &amp; =\text{coefficient}_{\text{bedrooms}} * \text{#bedrooms}\\
+&amp; +\text{coefficient}_{\text{bathrooms}} * \text{#bathrooms}\\
+&amp; +\text{coefficient}_{\text{sqfeet}} * \text{#sqfeet}\\
+&amp; +\text{coefficient}_{\text{age}} * \text{age}\\
+&amp; +\text{intercept}
+\end{align}\end{split}\]</div>
+<p>Let’s make a prediction for a house listing with the following features:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>listing number</p></th>
+<th class="head"><p>Number of Bedrooms</p></th>
+<th class="head"><p>Number of Bathrooms</p></th>
+<th class="head"><p>Square Footage</p></th>
+<th class="head"><p>Age</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>1875</p></td>
+<td><p>66</p></td>
+</tr>
+</tbody>
+</table>
+<p>When we apply a particular model to our data, the coefficients and  intercept  will remain the same for all observations, and we will plug in each observations numerical values as the input features.
+To calculate our predicted price we sum up the multiplication of each coefficient by its feature value
+plus an intercept (which is 0 in this toy example).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\text{predicted}(price) &amp; = 0.03 * 3\\
+&amp; +0.04 * 2\\
+&amp; +0.002 * 1875\\
+&amp; +-0.01 * 66\\
+&amp; +0
+\end{align}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{predicted}(price)  =  3.26
+\]</div>
+<p>But how do we determine the best values for the coefficients?
+We want the line to be as close as possible to all points,
+so we need a measure of this <em>closeness</em>.
+In linear regression,
+by far the most common measure is to calculate the difference between the real
+value (the red dots in the image below) and the predicted value (the blue line),
+square it and sum it together for all observations:
+This is called ordinary least squares (OLS) regression.</p>
+<p><img alt="image.png" src="../_images/residuals.png" /></p>
+<p>A low OLS means that we have a model that fits our seen/training data very well.
+But remember how much we have stressed the importance of a model not only fitting the training data,
+but also generalizing well to unseen data?
+If we compute coefficients only based on the training data,
+it seems like we are running a risk of overfitting our model.</p>
+<p>Technically we could try a lot of different coefficients at random and see
+which ones perform best on the validation set,
+but this is not very efficient.
+OLS is useful,
+but we would need some way to make sure we don’t overfit to the training data.
+The way to do this is to introduce a penalty (also called a regularization)
+that makes us prefer more general models.</p>
+<p>Consider the following scenario where the red and green line both have the same OLS error.</p>
+<p><img alt="image.png" src="../_images/linear-overfit.png" /></p>
+<p>Which one should we choose?
+Because its coefficients are larger
+the red line is more specific to the training data.
+Another way of thinking of this is that as the training
+is varying just a little bit,
+the predicted value will vary a lot,
+i.e. it depends a lot on the training data.
+On the other hand,
+the most general model we could fit would be a straight line,
+which would be underfitting since it is not specific to our data at all,
+so we want to strike a balance in this fundamental tradeoff.</p>
+<p>Let’s see another example of the same phenomena.
+Before fitting a linear model you can perform feature engineering,
+and change some of your features to capture non-linearity in the model,
+e.g. by constructing polynomials of the original features
+(similar to using polynomial kernels with SVMs,
+the regression line will be linear in a higher dimensionsional transformation of the feature space,
+but not in the original dimensions of X and y).
+Both the degree of the polynomial
+and the magnitude of the coefficients controls the shape of the curve we are fitting.
+If we don’t constrain the coefficients for these polynomial features,
+it might lead to overfitting the training data
+or even coming up with nonsense fits between training points,
+as in the blue line below:</p>
+<p><img alt="image.png" src="../_images/nonlinear-overfit.png" /></p>
+<p>In this image,
+the green and blue functions both incur a perfect score on the training data.
+From the shape of the green model,
+it seems like this would be a better generalization of the overall trend in the data
+and we would expect it to make more accurate predictions on unseen data points,
+that may lie between the training data points
+to avoid overfitting to the training data.
+We could also imagine that a straight line of simpler curve here would underfit the data.</p>
+<p>Hmmm, finding the best tradeoff between overfitting and underfitting… that sounds familiar!
+If we think of the strength of the penalty as a hyperparameter,
+we can find its optimal value via cross-validation!</p>
+<p>There are three common types of linear models that defines a penalty that lets us control the model complexity.
+These all try to minimize the coefficients in the model,
+making the fitted models less specific to the training data
+(i.e. a less complex model with lower slope or less squiggly line):</p>
+<ul class="simple">
+<li><p>Ridge regression: Add a penalty based on the square coefficients</p></li>
+<li><p>Lasso regression: Add a penalty based on the absolute values of the coefficients</p></li>
+<li><p>Elastic net: Combine features of both Ridge and Lasso.</p></li>
+</ul>
+<p>In general, Lasso can lead to models that are easier to interpret
+because tries to bring some coeffiecients to 0,
+so that we can remove those terms from the model.
+However,
+Ridge and Elastic net are often more accurate in their predictions,
+so here we will look closer at ridge regression.</p>
+</div>
+</div>
+</div>
+<div class="section" id="ridge-regression-in-sklearn">
+<h3><span class="section-number">7.3.3. </span>Ridge regression in sklearn<a class="headerlink" href="#ridge-regression-in-sklearn" title="Permalink to this headline">#</a></h3>
+<p>Let’s see how we can perform ridge regression using sklearn.
+First we create some data where we have two features and one target variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="c1"># Create some data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_informative</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">n_targets</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">noise</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;X2&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="c1"># Split into train and test</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7817</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X1</th>
+      <th>X2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>0.488518</td>
+      <td>-0.075572</td>
+      <td>29.204525</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>-1.100619</td>
+      <td>1.144724</td>
+      <td>-121.349297</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.186561</td>
+      <td>0.410052</td>
+      <td>41.954847</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.901591</td>
+      <td>0.502494</td>
+      <td>33.812508</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.659802</td>
+      <td>0.742044</td>
+      <td>127.769330</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, has the same fit-predict paradigm as the other models we have seen.</p>
+<p>That means we can <code class="docutils literal notranslate"><span class="pre">fit</span></code> on the training set and <code class="docutils literal notranslate"><span class="pre">predict</span></code> a numeric prediction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+
+
+<span class="n">rm</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">rm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ridge()
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that <code class="docutils literal notranslate"><span class="pre">predict</span></code> returns the predicted snake weight for our examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 48.14709924, -89.93563854,  20.93794312,  80.61159204,
+       143.34714691])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7264564645701241
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hyperparameter-alpha">
+<h3><span class="section-number">7.3.4. </span>Hyperparameter - <code class="docutils literal notranslate"><span class="pre">alpha</span></code><a class="headerlink" href="#hyperparameter-alpha" title="Permalink to this headline">#</a></h3>
+<p>The name of the parameter for the regularization penalty in Ridge is <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.
+By tuning this hyperparameter we can control the size of the coefficients / the model complexity.
+By default,
+<code class="docutils literal notranslate"><span class="pre">alpha=1</span></code> in sklearn
+and if we set <code class="docutils literal notranslate"><span class="pre">alpha=0</span></code>,
+there is no penalty
+and the results will be that same as using regular OLS linear regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="n">scores_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s2">&quot;coefficients&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+    <span class="s2">&quot;train_scores&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+    <span class="s2">&quot;cv_scores&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">ridge_model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">ridge_model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">avg_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">est</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;estimator&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;coefficients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_coef</span><span class="p">)</span>
+    <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;train_scores&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;train_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;cv_scores&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01
+0.1
+1.0
+10.0
+100.0
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alpha</th>
+      <th>coefficients</th>
+      <th>train_scores</th>
+      <th>cv_scores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.01</td>
+      <td>41.372294</td>
+      <td>0.721559</td>
+      <td>0.377179</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.10</td>
+      <td>41.174877</td>
+      <td>0.721547</td>
+      <td>0.378847</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.00</td>
+      <td>39.296810</td>
+      <td>0.720438</td>
+      <td>0.393447</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.00</td>
+      <td>26.872832</td>
+      <td>0.663075</td>
+      <td>0.426365</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100.00</td>
+      <td>6.233716</td>
+      <td>0.275085</td>
+      <td>0.111138</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>As we increase <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, we are <em><strong>decreasing</strong></em> our model complexity which means our training score is lower and we are more likely to underfit.</p></li>
+<li><p>If we decrease <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, our model complexity is increasing and consequentially our training score is increasing. Our chances of overfitting are going up.</p></li>
+</ul>
+</div>
+<div class="section" id="predicting-house-prices">
+<h3><span class="section-number">7.3.5. </span>Predicting house prices<a class="headerlink" href="#predicting-house-prices" title="Permalink to this headline">#</a></h3>
+<p>Let’s take a look at a <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set">Taiwan housing dataset</a> that I’ve wrangled a bit. (Available in the data folder)</p>
+<p><strong>Attribution:</strong>
+Real Estate Dataset - The UCI Machine Learning Repository
+Yeh, I. C., &amp; Hsu, T. K. (2018). Building real estate valuation models with comparative approach through case-based reasoning. Applied Soft Computing, 65, 260-271.</p>
+<p><code class="docutils literal notranslate"><span class="pre">price</span></code> = house price of unit area (10000 New Taiwan Dollar/Ping, where Ping is a local unit, 1 Ping = 3.3 meter squared)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/real_estate.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>house_age</th>
+      <th>distance_station</th>
+      <th>num_stores</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>172</th>
+      <td>6.6</td>
+      <td>90.45606</td>
+      <td>9</td>
+      <td>24.97433</td>
+      <td>121.54310</td>
+      <td>58.1</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>4.0</td>
+      <td>2147.37600</td>
+      <td>3</td>
+      <td>24.96299</td>
+      <td>121.51284</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>346</th>
+      <td>13.2</td>
+      <td>1712.63200</td>
+      <td>2</td>
+      <td>24.96412</td>
+      <td>121.51670</td>
+      <td>30.8</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>4.8</td>
+      <td>1559.82700</td>
+      <td>3</td>
+      <td>24.97213</td>
+      <td>121.51627</td>
+      <td>21.7</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>15.0</td>
+      <td>1828.31900</td>
+      <td>2</td>
+      <td>24.96464</td>
+      <td>121.51531</td>
+      <td>20.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>I separate this into our <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> objects for each of our splits as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]),</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]),</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we can now use <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> to predict the house price.</p>
+<p>We can create our model as usual and train it, and assess our training score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">training_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">training_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5170145681350131
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+<span class="n">param_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Since we only have 5 alpha values, it doesn&#39;t really matter if we do a random or exhaustive search here</span>
+<span class="n">rsearch</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">param_values</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rsearch</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 5 candidates, totalling 25 fits
+[CV] END .........................................alpha=0.01; total time=   0.0s
+[CV] END .........................................alpha=0.01; total time=   0.0s
+[CV] END .........................................alpha=0.01; total time=   0.0s
+[CV] END .........................................alpha=0.01; total time=   0.0s
+[CV] END .........................................alpha=0.01; total time=   0.0s
+[CV] END ..........................................alpha=0.1; total time=   0.0s
+[CV] END ..........................................alpha=0.1; total time=   0.0s
+[CV] END ..........................................alpha=0.1; total time=   0.0s
+[CV] END ..........................................alpha=0.1; total time=   0.0s
+[CV] END ..........................................alpha=0.1; total time=   0.0s
+[CV] END ..........................................alpha=1.0; total time=   0.0s
+[CV] END ..........................................alpha=1.0; total time=   0.0s
+[CV] END ..........................................alpha=1.0; total time=   0.0s
+[CV] END ..........................................alpha=1.0; total time=   0.0s
+[CV] END ..........................................alpha=1.0; total time=   0.0s
+[CV] END .........................................alpha=10.0; total time=   0.0s
+[CV] END .........................................alpha=10.0; total time=   0.0s
+[CV] END .........................................alpha=10.0; total time=   0.0s
+[CV] END .........................................alpha=10.0; total time=   0.0s
+[CV] END .........................................alpha=10.0; total time=   0.0s
+[CV] END ........................................alpha=100.0; total time=   0.0s
+[CV] END ........................................alpha=100.0; total time=   0.0s
+[CV] END ........................................alpha=100.0; total time=   0.0s
+[CV] END ........................................alpha=100.0; total time=   0.0s
+[CV] END ........................................alpha=100.0; total time=   0.0s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomizedSearchCV(estimator=Ridge(), n_iter=5,
+                   param_distributions={&#39;alpha&#39;: array([1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
+                   verbose=2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsearch</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;alpha&#39;: 0.01}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsearch</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5289537262944801
+</pre></div>
+</div>
+</div>
+</div>
+<p>We saw that with linear classifiers we have coefficients associated with each feature of our model.</p>
+<p>How do we get that? We can use <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> to obtain them from our trained model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return the best model</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="n">rsearch</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="n">lm</span><span class="o">.</span><span class="n">coef_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.57599383e-01, -4.60734705e-03,  1.15078981e+00,  1.93017638e+02,
+       -1.62794938e+01])
+</pre></div>
+</div>
+</div>
+</div>
+<p>It gives us 5 coefficients one for each feature.</p>
+<p>These coefficients are learned during the fit stage.</p>
+<p>We can also get the intercept with <code class="docutils literal notranslate"><span class="pre">.intercept_</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2797.9802786654136
+</pre></div>
+</div>
+</div>
+</div>
+<p>But how are these useful?</p>
+<p>One of the primary advantages of linear classifiers is their ability to interpret models using these coefficients.</p>
+<p>What do these mean?</p>
+<p>We have our coefficients but we should see which feature corresponds to which coefficient.</p>
+<p>We can do that by making a dataframe with both values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words_coeffs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">lm</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Coefficients&#39;</span><span class="p">])</span>
+<span class="n">words_coeffs_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coefficients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>house_age</th>
+      <td>-0.257599</td>
+    </tr>
+    <tr>
+      <th>distance_station</th>
+      <td>-0.004607</td>
+    </tr>
+    <tr>
+      <th>num_stores</th>
+      <td>1.150790</td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td>193.017638</td>
+    </tr>
+    <tr>
+      <th>longitude</th>
+      <td>-16.279494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use these coefficients to interpret our model. They show us how much each of these features affects our <strong>model’s</strong> prediction.</p>
+<p>For example, if we had a house with 2 stores nearby, our <code class="docutils literal notranslate"><span class="pre">num_stores</span></code> value is 2. That means that 2 * 1.15 = 2.3 will contribute to our predicted price!</p>
+<p>The negative coefficients work in the opposite way, for example, every unit increase in age of a house will, subtracts 0.26 from the house’s predicted value.</p>
+<p>We can also look at the absolute values of the coefficients to see how important a feature is.</p>
+<p>However, we have to be very careful about this - remember scaling?! We can’t necessarily say latitude is the most important since latitude may be on a different scale.</p>
+<p>It’s important to be careful here though because this depends on the scaling of the features. Larger features will have smaller coefficients, but if we scale our features before we build our model then they are on a somewhat level playing field! (Another reason we should be scaling our features!)</p>
+</div>
+<div class="section" id="to-summarize">
+<h3><span class="section-number">7.3.6. </span>To summarize<a class="headerlink" href="#to-summarize" title="Permalink to this headline">#</a></h3>
+<p>In linear models:</p>
+<ul class="simple">
+<li><p>if the coefficient is positive, then increasing the feature values increases the prediction value.</p></li>
+<li><p>if the coefficient is negative, then increasing the feature values decreases the prediction value.</p></li>
+<li><p>if the coefficient is zero, the feature is not used in making a prediction</p></li>
+</ul>
+</div>
+<div class="section" id="prediction-example">
+<h3><span class="section-number">7.3.7. </span>Prediction Example<a class="headerlink" href="#prediction-example" title="Permalink to this headline">#</a></h3>
+<p>Let’s take a look at a single example here.</p>
+<p>The values in this are the input features.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">predict()</span></code> on our features to get the prediction value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>house_age</th>
+      <th>distance_station</th>
+      <th>num_stores</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>172</th>
+      <td>6.6</td>
+      <td>90.45606</td>
+      <td>9</td>
+      <td>24.97433</td>
+      <td>121.5431</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([52.08596417])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using our coefficients, and the model’s intercept we can calculate the model’s predictions ourselves as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words_coeffs_df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>house_age</th>
+      <th>distance_station</th>
+      <th>num_stores</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Coefficients</th>
+      <td>-0.257599</td>
+      <td>-0.004607</td>
+      <td>1.15079</td>
+      <td>193.017638</td>
+      <td>-16.279494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>house_age</th>
+      <th>distance_station</th>
+      <th>num_stores</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>172</th>
+      <td>6.6</td>
+      <td>90.45606</td>
+      <td>9</td>
+      <td>24.97433</td>
+      <td>121.5431</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2797.9802786654136
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\text{predicted}(price) \text{       } &amp; =   \text{coefficient}_{\text{house_age}} * \text{house_age}  \\ &amp;+ \text{ }\text{coefficient}_{\text{distance_station}} * \text{distance_station} \\  &amp;+ \text{ } \text{coefficient}_{\text{num_stores}} * \text{num_stores}  \\ &amp;+ \text{ } \text{coefficient}_{\text{latitude}} * \text{latitude}
+\\ &amp;+ \text{ } \text{coefficient}_{\text{longitude}} * \text{longitude} \\ &amp;+ \text{ } \text{intercept}
+\end{align}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lm</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>172    52.085964
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>All of these feature values multiplied by the coefficients then adding the intercept, contribute to our prediction.</p>
+<p>When we do this by hand using the model’s coefficients and intercept, we get the same as if we used <code class="docutils literal notranslate"><span class="pre">predict</span></code>.</p>
+</div>
+</div>
+<div class="section" id="let-s-practice">
+<h2><span class="section-number">7.4. </span>Let’s Practice<a class="headerlink" href="#let-s-practice" title="Permalink to this headline">#</a></h2>
+<p>1. What is the purpose of the alpha hyperparameter in ridge regression?<br />
+2. What value of this hyperparameter makes it equivalent to using <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>?</p>
+<p>3. Use the following equation to answer the questions below:</p>
+<p><span class="math notranslate nohighlight">\( \text{predicted(backpack_weight)} =  3.02 * \text{#laptops} + 0.3 * \text{#pencils} + 0.5 \)</span></p>
+<p>What is our intercept value?</p>
+<p>4. If I had 2 laptops 3 pencils in my backpack, what weight would my model predict for my backpack?</p>
+<p><strong>True or False:</strong></p>
+<p>5. Ridge is a regression modelling approach.<br />
+6. Increasing the alpha hyperparameter increases model complexity.<br />
+7. <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> can be used with datasets that have multiple features.<br />
+8. With <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, we learn one coefficient per training example.<br />
+9. Coefficients can help us interpret our model even if unscaled, but they are easier to compare if features are scaled first.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></li>
+<li><p>0</p></li>
+<li><p>0.5</p></li>
+<li><p>7.44</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="logistic-regression-classification-using-regression">
+<h2><span class="section-number">7.5. </span>Logistic regression - classification using regression<a class="headerlink" href="#logistic-regression-classification-using-regression" title="Permalink to this headline">#</a></h2>
+<p>Next, we are going to introduce to you a new model called <strong>logistic regression</strong>,
+which be used for classification.</p>
+<p>We are going to bring back our cities dataset we saw at the beginning of this course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cities_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/canada_usa_cities.csv&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]</span>
+
+<span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>160</th>
+      <td>-76.4813</td>
+      <td>44.2307</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>-81.2496</td>
+      <td>42.9837</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>-66.0580</td>
+      <td>45.2788</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>-73.2533</td>
+      <td>45.3057</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>-67.9245</td>
+      <td>47.1652</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Although we have not always been doing this, we should always be building a baseline model before we do any type of meaningful modelling.</p>
+<p>Let’s do that before we get straight into it so we can have a better idea of how well our model performs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span>
+
+
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DummyClassifier</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;prior&quot;</span><span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5988023952095808
+</pre></div>
+</div>
+</div>
+</div>
+<p>We import <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> from the <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> library as we did with <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s make a pipeline and obtain the cross-validation scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">log_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(),</span>
+    <span class="n">StandardScaler</span><span class="p">(),</span>
+    <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cross_validate</span><span class="p">(</span><span class="n">log_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fit_time</th>
+      <th>score_time</th>
+      <th>test_score</th>
+      <th>train_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.006916</td>
+      <td>0.001606</td>
+      <td>0.852941</td>
+      <td>0.827068</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.007973</td>
+      <td>0.001584</td>
+      <td>0.823529</td>
+      <td>0.827068</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.004361</td>
+      <td>0.001473</td>
+      <td>0.696970</td>
+      <td>0.858209</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.005226</td>
+      <td>0.001397</td>
+      <td>0.818182</td>
+      <td>0.828358</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.004498</td>
+      <td>0.001338</td>
+      <td>0.939394</td>
+      <td>0.805970</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005795
+score_time     0.001480
+test_score     0.826203
+train_score    0.829335
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This time we can see that our training and cross-validation scores have increased from those of our <code class="docutils literal notranslate"><span class="pre">DummyClassifier</span></code>.</p>
+<p>We saw that with SVMs and decision trees that  we could visualize our model with decision boundaries and we can do the same thing with logistic regression.
+Here, we can see that a linear decision boundary separates our two target classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_classifier</span> <span class="kn">import</span> <span class="n">plot_classifier</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">log_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">log_pipe</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic Regression&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SimpleImputer was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/lecture7_69_1.png" src="../_images/lecture7_69_1.png" />
+</div>
+</div>
+<p>If we look at some other models that we did this in comparison for you can understand a bit more on why we call Logistic Regression a “linear classifier”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;KNN&quot;</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span><span class="p">(),</span>    
+    <span class="s2">&quot;RBF SVM&quot;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">),</span>    
+    <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+  warnings.warn(
+/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
+  warnings.warn(
+/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/lecture7_71_1.png" src="../_images/lecture7_71_1.png" />
+</div>
+</div>
+<p>Notice a linear decision boundary (a line in our case).</p>
+<div class="section" id="coefficients">
+<h3><span class="section-number">7.5.1. </span>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">#</a></h3>
+<p>Just like we saw for <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>. we can get the equation of that line and the coefficients of our <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> features using <code class="docutils literal notranslate"><span class="pre">.coef_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logr_step_pipe</span> <span class="o">=</span> <span class="n">log_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;logisticregression&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model coefficients:&quot;</span><span class="p">,</span> <span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model intercept:&quot;</span><span class="p">,</span> <span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model coefficients: [[-0.72330355 -1.64254763]]
+Model intercept: [-0.30837315]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;coefficients&#39;</span><span class="p">:</span><span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>features</th>
+      <th>coefficients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>longitude</td>
+      <td>-0.723304</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>latitude</td>
+      <td>-1.642548</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this case, we see that both are negative coefficients.</p>
+<p>We also can see that the coefficient of latitude is larger in magnitude than that of longitude.</p>
+<p>This makes a lot of sense because Canada as a country lies above the USA and so we expect <code class="docutils literal notranslate"><span class="pre">latitude</span></code> values to contribute more to a prediction than <code class="docutils literal notranslate"><span class="pre">longitude</span></code> which Canada and the <code class="docutils literal notranslate"><span class="pre">USA</span></code> have quite similar values.</p>
+</div>
+<div class="section" id="predictions">
+<h3><span class="section-number">7.5.2. </span>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">#</a></h3>
+<p>Above we said that larger coefficients “contribute” more to the prediction than smaller ones for <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>. What is the analog for logistic regression?</p>
+<p>With logistic regression, the model randomly assigns one of the classes as the positive class and the other as negative.</p>
+<p>Here since “Canada” comes first when we call <code class="docutils literal notranslate"><span class="pre">.classes_</span></code> it is the “negative class and <code class="docutils literal notranslate"><span class="pre">USA</span></code> is the positive class. (This is in alphabetical order).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">classes_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;, &#39;USA&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>When it comes to the coefficients, when there is a positive coefficient, increasing that feature will make our prediction more positive which means our prediction is going to lean more toward the positive class (in this case <code class="docutils literal notranslate"><span class="pre">USA</span></code>).</p>
+<p>Ok, let’s take an example from our test set and calculate the outcome using our coefficients and intercept.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+<span class="n">example</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-64.8001, 46.098]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do this the exact same way as we did for Ridge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">*</span> <span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">logr_step_pipe</span><span class="o">.</span><span class="n">intercept_</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-29.15639126])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We get a value of -29.15639126.</p>
+<p>What does that mean? I thought we were predicting a class?</p>
+<p>For logistic regression, we check the <strong>sign</strong> of the calculation only.</p>
+<p>If the result was positive, it predicts one class; if negative, it predicts the other.</p>
+<p>That means everything negative corresponds to “Canada” and everything positive predicts a class of “USA”.</p>
+<p>Since it’s negative we predict <code class="docutils literal notranslate"><span class="pre">Canada</span></code>, which is our negative class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">example</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SimpleImputer was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">predict</span></code>, we can see that it predicts the negative class as well!</p>
+<p>These are “hard predictions” but we can also use this for something called “soft predictions” as well. (Remember <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>? That’s going to be coming back in a second)</p>
+</div>
+<div class="section" id="logistic-regression-hyperparameter-c">
+<h3><span class="section-number">7.5.3. </span>Logistic Regression Hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code><a class="headerlink" href="#logistic-regression-hyperparameter-c" title="Permalink to this headline">#</a></h3>
+<p>At this point, you should be feeling pretty comfortable with hyperparameters.</p>
+<p>We saw that <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> has the hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, well <code class="docutils literal notranslate"><span class="pre">C</span></code> (annoyingly) has the opposite effect on the fundamental trade-off.</p>
+<p>In general, we say smaller <code class="docutils literal notranslate"><span class="pre">C</span></code> leads to a less complex model (whereas with <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, lower <code class="docutils literal notranslate"><span class="pre">alpha</span></code> means higher complexity).</p>
+<p>Higher values of <code class="docutils literal notranslate"><span class="pre">C</span></code> leads to more overfitting and lower values to less overfitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_dict</span> <span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;C&quot;</span> <span class="p">:</span><span class="mf">10.0</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="s2">&quot;train_score&quot;</span> <span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+    <span class="s2">&quot;cv_score&quot;</span> <span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]:</span>
+    <span class="n">lr_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">lr_model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;train_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">scores_dict</span><span class="p">[</span><span class="s1">&#39;cv_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>train_score</th>
+      <th>cv_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000001</td>
+      <td>0.598810</td>
+      <td>0.598930</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000010</td>
+      <td>0.598810</td>
+      <td>0.598930</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000100</td>
+      <td>0.664707</td>
+      <td>0.658645</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.001000</td>
+      <td>0.784424</td>
+      <td>0.790731</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.010000</td>
+      <td>0.827842</td>
+      <td>0.826203</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.100000</td>
+      <td>0.832320</td>
+      <td>0.820143</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.000000</td>
+      <td>0.832320</td>
+      <td>0.820143</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>10.000000</td>
+      <td>0.832320</td>
+      <td>0.820143</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>’s default <code class="docutils literal notranslate"><span class="pre">C</span></code> hyperparameter is 1.</p>
+<p>Let’s see what kind of value we get if we do <code class="docutils literal notranslate"><span class="pre">RandomizedGrid</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;logisticregression__C&quot;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)}</span>
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">log_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;logisticregression__C&#39;: 30.246571684158006}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8201426024955436
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="predicting-probabilities">
+<h3><span class="section-number">7.5.4. </span>Predicting probabilities<a class="headerlink" href="#predicting-probabilities" title="Permalink to this headline">#</a></h3>
+<p>we saw that we can make “hard predictions” with logistic regression using <code class="docutils literal notranslate"><span class="pre">predict</span></code> but logistic regression also can make something called “soft predictions”.</p>
+<p>We saw this when we use <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> in naive Bayes. These are called “soft predictions” because instead of predicting a specific class, the model returns a probability for each class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>I just want to state here we are using our pipeline to make a prediction but we could have also used our <code class="docutils literal notranslate"><span class="pre">grid_search</span></code> object that calls <code class="docutils literal notranslate"><span class="pre">log_pipe</span></code> to make the prediction as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could also have called a simple model without the scaling if we did:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now with<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_pipe</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.86175442, 0.13824558]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87829756, 0.12170244]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87848688, 0.12151312]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the last one where we predict with <code class="docutils literal notranslate"><span class="pre">lr</span></code>:</p>
+<p>So these “probabilities” correspond to the classes in the same order as <code class="docutils literal notranslate"><span class="pre">.classes_</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span><span class="o">.</span><span class="n">classes_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;, &#39;USA&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This returns an array with a probability of how confident the model is for each target class.</p>
+<p>We can see that the model is 87.8% sure that example 1 is class 0 (“Canada”) and 12.15% confident that example 1 is class 0 (“USA”).</p>
+<p>We are going to call these values a probability <em>score</em>. It is a score that takes the form of a probability. Take it with a grain of salt.</p>
+<p>We don’t want to say “I am 88% sure that this example is ‘Canada’” That’s too in-depth here, but we can say that we are more sure of one class than another.</p>
+<p><code class="docutils literal notranslate"><span class="pre">predict</span></code> works by predicting the class with the highest probability.</p>
+</div>
+<div class="section" id="how-is-this-being-done">
+<h3><span class="section-number">7.5.5. </span>How is this being done?<a class="headerlink" href="#how-is-this-being-done" title="Permalink to this headline">#</a></h3>
+<p>For linear regression we used something like this:</p>
+<p><span class="math notranslate nohighlight">\(\text{predicted(value)} = \text{coefficient}_\text{feature-1} * \text{feature-1} + \text{coefficient}_\text{feature-2} * \text{feature-2} + ... + \text{coefficient}_\text{feature-n} * \text{feature-n} + \text{intercept} \)</span></p>
+<p>But this is not suitable for probabilities,
+since the linear model with extrapolate below 0 and above 1,
+which are nonsense values for probabilities.</p>
+<p>So how do we calculate these probability scores?</p>
+<p>We need something that will:</p>
+<ol class="simple">
+<li><p>Make our predictions bounded between 0 and 1 (since probabilities as between 0 and 1)</p></li>
+<li><p>Make our predictions change rapidly around 0.5 (the threshold) and slower away from 0.5 (to allow efficient classification).</p></li>
+</ol>
+<p>Enter -&gt; <strong>The sigmoid function</strong>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="n">raw_model_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">raw_model_output</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">raw_model_output</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;--k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;--k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;raw model output&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;predicted probability&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;The sigmoid function&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lecture7_108_0.png" src="../_images/lecture7_108_0.png" />
+</div>
+</div>
+<p>If we now compare <code class="docutils literal notranslate"><span class="pre">predict</span></code> with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> we can see how <code class="docutils literal notranslate"><span class="pre">predict</span></code> made a prediction based on the probabilities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predict_y</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">predict_y</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;, &#39;Canada&#39;, &#39;USA&#39;, &#39;Canada&#39;, &#39;Canada&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_proba</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_proba</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69848481, 0.30151519],
+       [0.76970638, 0.23029362],
+       [0.05301712, 0.94698288],
+       [0.63294488, 0.36705512],
+       [0.81540165, 0.18459835]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can look at the first column and if the probability is greater than 0.5, our <code class="docutils literal notranslate"><span class="pre">predict</span></code> function predicts the target of Canada and if the probability is lower than 0.5, it predicts <code class="docutils literal notranslate"><span class="pre">USA</span></code>.</p>
+<p>Let’s take a look and compare them to the actual correct labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y_train</span><span class="p">,</span> 
+             <span class="s2">&quot;pred y&quot;</span><span class="p">:</span> <span class="n">predict_y</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+             <span class="s2">&quot;probabilities&quot;</span><span class="p">:</span> <span class="n">y_proba</span><span class="o">.</span><span class="n">tolist</span><span class="p">()}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>pred y</th>
+      <th>probabilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>96</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.7047596510140418, 0.2952403489859582]</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>[0.03121394423109458, 0.9687860557689054]</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.6537036743991865, 0.34629632560081347]</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.844426786719836, 0.15557321328016402]</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.6537036743991865, 0.34629632560081347]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>USA</td>
+      <td>Canada</td>
+      <td>[0.6984848138411375, 0.3015151861588626]</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.7697063812753013, 0.23029361872469864]</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>[0.053017116268726516, 0.9469828837312735]</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.6329448842395049, 0.36705511576049504]</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>[0.8154016516676704, 0.18459834833232955]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see that in the example at index 17, the model incorrectly predicted as “Canada” instead of “USA” but we also see that the model was not extremely confident in this prediction. It was 69.8% confident.</p>
+<p>For the rest of this selection, the model corrected predicted each city but the model was more confident in some than others.</p>
+</div>
+<div class="section" id="decision-boundaries-with-predict-proba">
+<h3><span class="section-number">7.5.6. </span>Decision boundaries with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code><a class="headerlink" href="#decision-boundaries-with-predict-proba" title="Permalink to this headline">#</a></h3>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">predict</span></code>, we get a decision boundary with either blue or red background a colour for each class we are predicting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="n">y_train</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="n">lr</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic regression - predict&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="n">y_train</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="n">lr</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic regression - predict_proba&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/lecture7_116_1.png" src="../_images/lecture7_116_1.png" />
+</div>
+</div>
+<p>With probabilities using <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>,  we can now use a colour to represent the probability, a scale.<br />
+We can see that the model is less confident the closer the observations are to the decision boundary.</p>
+<p>Let’s find some examples where the model is pretty confident in its predictions.</p>
+<p>This time, when we make our dataframe, we are only bringing in the probability of predicting “Canada”. This is because if we are 10% confident a prediction is “Canada”, the model is 90% confident in “USA”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_targets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y_train</span><span class="p">,</span>
+                           <span class="s2">&quot;pred y&quot;</span><span class="p">:</span> <span class="n">predict_y</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                           <span class="s2">&quot;probability_canada&quot;</span><span class="p">:</span> <span class="n">y_proba</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+<span class="n">lr_targets</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>pred y</th>
+      <th>probability_canada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>160</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.704607</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.563017</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.838968</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_targets</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;probability_canada&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>pred y</th>
+      <th>probability_canada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>37</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.006547</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.007685</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.008317</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.008958</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.009194</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.924004</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.931792</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>Canada</td>
+      <td>0.932487</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>Canada</td>
+      <td>Canada</td>
+      <td>0.951092</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>USA</td>
+      <td>Canada</td>
+      <td>0.961902</td>
+    </tr>
+  </tbody>
+</table>
+<p>167 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Here we can see both extremes.</p>
+<p>At the bottom are the observations the model is most confident the class is Canada, and at the top, we can see the observations the model was least confident the class is Canada which is the same saying the most confident in USA.</p>
+<p>We are 99.345% (1- 0.006547) confident that city 37 is “USA” and 96.19% confident that city 1 is “Canada”.</p>
+<p>The model got the first example right, but the second one, wrong.</p>
+<p>Let’s plot this and see why.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">37</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>-134.4197</td>
+      <td>58.3019</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>-98.4951</td>
+      <td>29.4246</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>I am get each of these observations by calling the index of each city on our training dataset.</p>
+<p>The top one is index 37 and the bottom one is index 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">37</span><span class="p">]],</span> <span class="n">y_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">37</span><span class="p">]],</span> <span class="n">lr</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">lims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">140</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">60</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic regression - certain predictions&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/lecture7_123_1.png" src="../_images/lecture7_123_1.png" />
+</div>
+</div>
+<p>Both points are “USA” cities but we can now see why the model was so confident in its predictions for both cities.</p>
+<p>The “USA” city it got wrong is likely in Alaska but the model doesn’t know that and predicts more so on how close and on which side it lies to the decision boundary.</p>
+<p>Let’s now find an example where the model is less certain on its prediction.</p>
+<p>We can do this by finding the absolute value of the difference between the two probabilities.</p>
+<p>The smaller the value, the more uncertain the model is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_targets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y_train</span><span class="p">,</span>
+                           <span class="s2">&quot;pred y&quot;</span><span class="p">:</span> <span class="n">predict_y</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                           <span class="s2">&quot;prob_difference&quot;</span><span class="p">:</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y_proba</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()})</span>
+<span class="n">lr_targets</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;prob_difference&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>pred y</th>
+      <th>prob_difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>61</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.001719</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.020025</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>USA</td>
+      <td>USA</td>
+      <td>0.020025</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>Canada</td>
+      <td>USA</td>
+      <td>0.022234</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>Canada</td>
+      <td>USA</td>
+      <td>0.022234</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here we can see that city 61 and 54 have the model pretty stumped.</p>
+<p>Let’s plot them and see why.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">61</span><span class="p">,</span> <span class="mi">54</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>61</th>
+      <td>-87.9225</td>
+      <td>43.0350</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>-83.0466</td>
+      <td>42.3316</td>
+      <td>USA</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">61</span><span class="p">,</span> <span class="mi">54</span><span class="p">]],</span> <span class="n">y_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">61</span><span class="p">,</span> <span class="mi">54</span><span class="p">]],</span> <span class="n">lr</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">lims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">115</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">60</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic regression - uncertain prediction&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/lecture7_128_1.png" src="../_images/lecture7_128_1.png" />
+</div>
+</div>
+<p>Plot the cities with the decision boundary, helps us understand why.</p>
+<p>The cities lie almost completely on the boundary, this makes the model very divided on how to classify them.</p>
+</div>
+</div>
+<div class="section" id="limitations-of-linear-classifiers">
+<h2><span class="section-number">7.6. </span>Limitations of linear classifiers<a class="headerlink" href="#limitations-of-linear-classifiers" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Is your data “linearly separable”? Can you draw a hyperplane between these datapoints that separates them with low error?</p></li>
+<li><p>If the training examples can be separated by a linear decision rule, they are <strong>linearly separable</strong>.</p></li>
+</ul>
+<p>… but sometimes are data just can’t be linearly separated well and hence these models will not perform well
+unless we first perform relevant high dimensional transformations on the input features.</p>
+</div>
+<div class="section" id="compare-to-naive-bayes">
+<h2><span class="section-number">7.7. </span>Compare to naive Bayes<a class="headerlink" href="#compare-to-naive-bayes" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Both are simple, fast, probabilistic classifiers.</p></li>
+<li><p>Both work well with large numbers of features.</p></li>
+<li><p>Naive Bayes has overly strong conditional independence assumptions. So it is not great when features are correlated.</p></li>
+<li><p>Logistic regression is much more robust to correlated features.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">7.8. </span>Let’s Practice<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>1. We have the following text, which we wish to classify as either a positive or negative movie review.<br />
+Using the words below (which are features in our model) with associated coefficients, answer the next 2 questions.<br />
+The input for the feature value is the number of times the word appears in the review.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Word</p></th>
+<th class="head"><p>Coefficient</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>excellent</p></td>
+<td><p>2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>disappointment</p></td>
+<td><p>-2.4</p></td>
+</tr>
+<tr class="row-even"><td><p>flawless</p></td>
+<td><p>1.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>boring</p></td>
+<td><p>-1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>unwatchable</p></td>
+<td><p>-1.7</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">Intercept</span> <span class="pre">=</span> <span class="pre">1.3</span></code></p>
+<p>What value do you calculate after using the weights in the model above for the above review?</p>
+<p><em><strong>I thought it was going to be excellent but instead, it was unwatchable and boring.</strong></em></p>
+<p>The input feature value would be the number of times the word appears in the review (like <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code>).</p>
+<p>2. Would the model classify this review as a positive or negative review (classes are specified alphabetically) ?<br />
+We are trying to predict if a job applicant would be hired based on some features contained in their resume.<br />
+Below we have the output of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> where column 0 shows the probability the model would predict “hired” and column 1 shows the probability the model would predict “not hired”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.04971843</span><span class="p">,</span> <span class="mf">0.95028157</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.94173513</span><span class="p">,</span> <span class="mf">0.05826487</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.74133975</span><span class="p">,</span> <span class="mf">0.25866025</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.13024982</span><span class="p">,</span> <span class="mf">0.86975018</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.17126403</span><span class="p">,</span> <span class="mf">0.82873597</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Use this output to answer the following questions.</p>
+<p>3. If we had used <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> for these examples instead of <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code>, how many of the examples would the model have predicted “hired”?<br />
+4. If the true class labels are below, how many examples would the model have correctly predicted with <code class="docutils literal notranslate"><span class="pre">predict()</span></code>?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;hired&#39;</span><span class="p">,</span> <span class="s1">&#39;not hired&#39;</span><span class="p">,</span> <span class="s1">&#39;not hired&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>True or False:</strong><br />
+5. Increasing logistic regression’s <code class="docutils literal notranslate"><span class="pre">C</span></code> hyperparameter increases the model’s complexity.<br />
+6. Unlike with <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> regression, coefficients are not interpretable with logistic regression.<br />
+7.  <code class="docutils literal notranslate"><span class="pre">predict</span></code> returns the positive class if the predicted probability of the positive class is greater than 0.5.<br />
+8. In logistic regression, a function is applied to convert the raw model output into probabilities.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions!</p>
+<ol class="simple">
+<li><p>0.5</p></li>
+<li><p>Positive review</p></li>
+<li><p>2</p></li>
+<li><p>4</p></li>
+<li><p>True</p></li>
+<li><p>False</p></li>
+<li><p>True</p></li>
+<li><p>True</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="let-s-practice-coding">
+<h2><span class="section-number">7.9. </span>Let’s Practice - Coding<a class="headerlink" href="#let-s-practice-coding" title="Permalink to this headline">#</a></h2>
+<p>Let’s import the Pokémon dataset from our <code class="docutils literal notranslate"><span class="pre">data</span></code> folder. We want to see how well our model does with logistic regression. Let’s try building a simple model with default parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+
+<span class="n">pk_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pokemon.csv&#39;</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">pk_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;legendary&#39;</span><span class="p">]</span>
+
+
+<span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;attack&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;defense&quot;</span> <span class="p">,</span>
+                    <span class="s2">&quot;sp_attack&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;sp_defense&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;speed&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;capture_rt&quot;</span><span class="p">]</span>
+
+<span class="n">drop_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;deck_no&quot;</span><span class="p">,</span> <span class="s2">&quot;gen&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bs&quot;</span><span class="p">]</span>
+
+<span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">),</span>
+    <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="n">drop_features</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Build and fit a pipeline containing the preprocessor column transformer and a logistic regression model using the parameter class_weight=”balanced” (this reduces the error on classes that only have a few observations in the data, you will learn about this in lecture 9!).</p></li>
+<li><p>Score your model on the test set.</p></li>
+<li><p>Find the model’s feature coefficients and answer the below questions</p>
+<ul class="simple">
+<li><p>Which feature contributes the most in predicting if an example is legendary or not.</p></li>
+<li><p>As the capture rate value increases, will the model more likely predict a legendary or not legendary Pokémon?</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Solutions</strong></p>
+<p>1.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;columntransformer&#39;,
+                 ColumnTransformer(transformers=[(&#39;drop&#39;, &#39;drop&#39;,
+                                                  [&#39;type&#39;, &#39;deck_no&#39;, &#39;gen&#39;,
+                                                   &#39;name&#39;, &#39;total_bs&#39;]),
+                                                 (&#39;pipeline&#39;,
+                                                  Pipeline(steps=[(&#39;simpleimputer&#39;,
+                                                                   SimpleImputer(strategy=&#39;median&#39;)),
+                                                                  (&#39;standardscaler&#39;,
+                                                                   StandardScaler())]),
+                                                  [&#39;attack&#39;, &#39;defense&#39;,
+                                                   &#39;sp_attack&#39;, &#39;sp_defense&#39;,
+                                                   &#39;speed&#39;, &#39;capture_rt&#39;])])),
+                (&#39;logisticregression&#39;,
+                 LogisticRegression(class_weight=&#39;balanced&#39;))])
+</pre></div>
+</div>
+</div>
+</div>
+<p>2.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9006211180124224
+</pre></div>
+</div>
+</div>
+</div>
+<p>3.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;logisticregression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="c1"># There is one level of nesting which is why we use [0]</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">drop_features</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Coefficients&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coefficients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>attack</th>
+      <td>0.690834</td>
+    </tr>
+    <tr>
+      <th>defense</th>
+      <td>1.126300</td>
+    </tr>
+    <tr>
+      <th>sp_attack</th>
+      <td>1.026617</td>
+    </tr>
+    <tr>
+      <th>sp_defense</th>
+      <td>0.655162</td>
+    </tr>
+    <tr>
+      <th>speed</th>
+      <td>1.116679</td>
+    </tr>
+    <tr>
+      <th>capture_rt</th>
+      <td>-0.792950</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="toggle docutils container">
+<p>Since the data is normalize we can directly compare the coefficients
+to find out which feature impact the target variable the most.
+The biggest absolute coefficient value are in <code class="docutils literal notranslate"><span class="pre">defense</span></code> and <code class="docutils literal notranslate"><span class="pre">speed</span></code>,
+so variation in these values will change the target value the most.</p>
+<p>The model is <em>less</em> likely to predict “legendary” the higher the capture rate gets
+(the coefficient is negative).</p>
+</div>
+</div>
+<div class="section" id="what-we-ve-learned-today">
+<h2><span class="section-number">7.10. </span>What We’ve Learned Today<a class="headerlink" href="#what-we-ve-learned-today" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The name of the function used to bound our values between 0 and 1</p></li>
+<li><p>How <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> can be particularly useful when it comes to Logistic Regression.</p></li>
+<li><p>The advantages and limitations of linear classifiers.</p></li>
+<li><p>How to use <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> classifier.</p></li>
+<li><p>One of the hyperparameters of <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> (<code class="docutils literal notranslate"><span class="pre">alpha</span></code>)</p></li>
+<li><p>One of the hyperparameters of <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> (<code class="docutils literal notranslate"><span class="pre">C</span></code>).</p></li>
+<li><p>How logistic regression is compared to naive Bayes.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-bait-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-bait-py",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-bait-py'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture6.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Naive Bayes and Hyperparameter Optimization</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture8.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Business Objectives/Statistical Questions and Feature Selection</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Quan Nguyen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
