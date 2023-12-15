@@ -2,7 +2,7 @@
 
 ## Where things are
 
-### Canvas [BA1](https://canvas.ubc.ca/courses/129201) | [BA2](https://canvas.ubc.ca/courses/129202)
+### [Canvas](https://canvas.ubc.ca/courses/129201)
 This is where the course will live.
 You will be able to:
 - Access the lessons here

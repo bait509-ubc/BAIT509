@@ -8,7 +8,7 @@ with deeper exploration of a few chosen techniques.
 Forming good scientific questions to address business objectives with machine learning.
 Python will be the primary programming language used.
 
-Please see the [syllabus](https://bait509-ubc.github.io/BAIT509/2024BAIT509_course_outline.pdf) for more information about the course. Current students should refer to the UBC Canvas course website [BA1](https://canvas.ubc.ca/courses/129201) | [BA2](https://canvas.ubc.ca/courses/129202) for the most up-to-date content and announcements.
+Please see the [syllabus](https://bait509-ubc.github.io/BAIT509/2024BAIT509_course_outline.pdf) for more information about the course. Current students should refer to the [UBC Canvas course website](https://canvas.ubc.ca/courses/129201) for the most up-to-date content and announcements.
 
 ## Learning Objectives
 
@@ -58,7 +58,7 @@ By the end of the course, students are expected to be able to:
 | Assignment 3  | Feb 7  | 20%    |
 | Final Project | Feb 12-17 | 30%    |
 
-All assessments will be submitted through UBC Canvas: [BA1](https://canvas.ubc.ca/courses/129201) | [BA2](https://canvas.ubc.ca/courses/129202)
+All assessments will be submitted through UBC Canvas.
 
 ## Office Hours
 
