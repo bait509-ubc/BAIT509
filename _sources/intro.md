@@ -64,7 +64,7 @@ All assessments will be submitted through UBC Canvas.
 
 | Teaching Member | When                   | Where               |
 | :---:           | :---:                  | :---:               |
-| Quan Nguyen    | Tuesday 12 - 13 PM PST | TBD |
+| Quan Nguyen    | Thursday 11 - 12 PM PST | [Zoom](https://ubc.zoom.us/j/61330948257?pwd=MUw3bmFBR3NiNi9tYlN4TWZPL0FSdz09) |
 
 ## Supplementary Resources
 
