@@ -23,15 +23,15 @@ By the end of the course, students are expected to be able to:
 
 ## Teaching Team
 
-| Name                                         | Position   | Email               |
-| :---:                                        | :---:      | :---:               |
-| Quan Nguyen | Instructor | quan.nguyen@ubc.ca |
-| Armin Saadat Boroujeni| TA         |                     |
-| Ailar Mahdizadeh| TA         |                     |
-| Mohammad Mahdi Asmae| TA         |                     |
-| Harsh Sharma| TA         |                     |
-| Julian Camilo Becerra Leon| TA         |                     |
-| Meltem Omur| TA         |                     |
+| Name                                         | Position   | Email               |Office hour|
+| :---:                                        | :---:      | :---:               |:---:               |
+| Quan Nguyen | Instructor | quan.nguyen@ubc.ca | Thursday 12:00-13:00 on [Zoom](https://ubc.zoom.us/j/61330948257?pwd=MUw3bmFBR3NiNi9tYlN4TWZPL0FSdz09)|
+| Armin Saadat Boroujeni| TA         |                     ||
+| Ailar Mahdizadeh| TA         |                     ||
+| Mohammad Mahdi Asmae| TA         |                     ||
+| Harsh Sharma| TA         |                     ||
+| Julian Camilo Becerra Leon| TA         |                     ||
+| Meltem Omur| TA         |                     ||
 
 ## Class Meetings
 
@@ -59,12 +59,6 @@ By the end of the course, students are expected to be able to:
 | Final Project | Feb 17 | 30%    |
 
 All assessments will be submitted through UBC Canvas.
-
-## Office Hours
-
-| Teaching Member | When                   | Where               |
-| :---:           | :---:                  | :---:               |
-| Quan Nguyen    | Thursday 11 - 12 PM PST | [Zoom](https://ubc.zoom.us/j/61330948257?pwd=MUw3bmFBR3NiNi9tYlN4TWZPL0FSdz09) |
 
 ## Supplementary Resources
 
