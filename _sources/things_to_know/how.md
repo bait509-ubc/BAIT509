@@ -41,7 +41,7 @@ We will be using polls and working in groups with breakout rooms.
 
 ## Quiz 
 
-The quiz will accessible on Canvas for 24 hours. You will have 60 minutes to answer approximately 15-20 questions. 
+The quiz will accessible on Canvas. You will have 45 minutes to answer approximately 10-12 questions. The quiz format is open book. It consists a mix of multiple choice and open-ended questions. The quiz will be invigilated in-person during the lecture. Please see Canvas for the exact date & time.
 
 ## Assignments 
 There will be 3 assignments will be distributed and submitted via Canvas. 
