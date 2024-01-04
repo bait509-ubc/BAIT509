@@ -44,12 +44,12 @@ We will be using polls and working in groups with breakout rooms.
 The quiz will accessible on Canvas. You will have 45 minutes to answer approximately 10-12 questions. The quiz format is open book. It consists a mix of multiple choice and open-ended questions. The quiz will be invigilated in-person during the lecture. Please see Canvas for the exact date & time.
 
 ## Assignments 
-There will be 3 assignments will be distributed and submitted via Canvas. 
+There will be 3 individual assignments will be distributed and submitted via Canvas. 
 Each assignment will be a mix of long questions with some auto-graded questions. Assignments will be distributed with a "test file" which is designed to give you instant feedback on the auto-graded questions and hints on where you could be going wrong. Make sure that you are downloading this file and putting it in the same folder as the Jupyter notebook. 
 
-## Project 
+## Group Project 
 
-The final project is designed to put everything you learned into practice. You will work in groups of 3 and submit a report that will:
+The final project is designed to put everything you learned into practice. You will work in groups of 3-4 and submit a report that will:
 - Ask a predictive question
 - Build a pipeline 
 - Preprocess features
@@ -58,3 +58,5 @@ The final project is designed to put everything you learned into practice. You w
 - Maintain a narrative 
 
 You will need to submit the data, the notebook and an HTML file to be eligible for full marks.
+
+The group will be assigned randomly among students in the same section. Each group will be assigned a mentor (TA) where they can check in their progress on a weekly basis and consult for advice.
