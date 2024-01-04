@@ -35,28 +35,28 @@ By the end of the course, students are expected to be able to:
 
 ## Class Meetings
 
-|  #    | Topic | Link |
-| :---: | :---: | :---: |
-| 1     | Introduction to machine learning and decision trees | [Lecture 1](https://bait509-ubc.github.io/BAIT509/lectures/lecture1.html)|
-| 2     | Splitting and Cross-validation | [Lecture 2](https://bait509-ubc.github.io/BAIT509/lectures/lecture2.html) | 
-| 3     | Baseline, k-Nearest Neighbours |[Lecture 3](https://bait509-ubc.github.io/BAIT509/lectures/lecture3.html) | 
-| 4     | SVM with RBF Kernel and Feature Preprocessing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | 
-| 5     | Preprocessing Categorical Features and Column Transformer| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) |
-| 6     | Naive Bayes and Hyperparameter Optimization| [Lecture 6](https://bait509-ubc.github.io/BAIT509/lectures/lecture6.html)|
-| 7     | Linear Models| [Lecture 7](https://bait509-ubc.github.io/BAIT509/lectures/lecture7.html)|
-| 8     | Business Objectives/Statistical Questions and Feature Selection | [Lecture 8](https://bait509-ubc.github.io/BAIT509/lectures/lecture8.html)|
-| 9     | Classification and Regression Metrics | [Lecture 9](https://bait509-ubc.github.io/BAIT509/lectures/lecture9.html)|
-| 10    | Multi-Class, Pandas Profiling, Finale | [Lecture 10](https://bait509-ubc.github.io/BAIT509/lectures/lecture10.html)| 
+|  #    | Topic | Link | Interactive applets|
+| :---: | :---: | :---: |:---: |
+| 1     | Introduction to machine learning and decision trees | [Lecture 1](https://bait509-ubc.github.io/BAIT509/lectures/lecture1.html)| [Decision tree](https://mlu-explain.github.io/decision-tree/)
+| 2     | Splitting and Cross-validation | [Lecture 2](https://bait509-ubc.github.io/BAIT509/lectures/lecture2.html) | |
+| 3     | Baseline, k-Nearest Neighbours |[Lecture 3](https://bait509-ubc.github.io/BAIT509/lectures/lecture3.html) | |
+| 4     | SVM with RBF Kernel and Feature Preprocessing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | |
+| 5     | Preprocessing Categorical Features and Column Transformer| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) ||
+| 6     | Naive Bayes and Hyperparameter Optimization| [Lecture 6](https://bait509-ubc.github.io/BAIT509/lectures/lecture6.html)||
+| 7     | Linear Models| [Lecture 7](https://bait509-ubc.github.io/BAIT509/lectures/lecture7.html)||
+| 8     | Business Objectives/Statistical Questions and Feature Selection | [Lecture 8](https://bait509-ubc.github.io/BAIT509/lectures/lecture8.html)||
+| 9     | Classification and Regression Metrics | [Lecture 9](https://bait509-ubc.github.io/BAIT509/lectures/lecture9.html)||
+| 10    | Multi-Class, Pandas Profiling, Finale | [Lecture 10](https://bait509-ubc.github.io/BAIT509/lectures/lecture10.html)| |
 
 ## Assessments
 
 | Assessment    | Due    | Weight |
 | :---:         | :---:  | :---:  |
-| Assignment 1  | Jan 17 | 20%    |
-| Quiz          | Jan 24 | 10%    |
-| Assignment 2  | Jan 29 | 20%    |
-| Assignment 3  | Feb 7  | 20%    |
-| Final Project | Feb 12-17 | 30%    |
+| Assignment 1  | Jan 20 | 20%    |
+| Assignment 2  | Jan 27 | 20%    |
+| Quiz          | Jan 31 | 10%    |
+| Assignment 3  | Feb 10 | 20%    |
+| Final Project | Feb 17 | 30%    |
 
 All assessments will be submitted through UBC Canvas.
 
