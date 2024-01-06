@@ -38,7 +38,7 @@ By the end of the course, students are expected to be able to:
 |  #    | Topic | Link | Interactive applets|
 | :---: | :---: | :---: |:---: |
 | 1     | Introduction to machine learning and decision trees | [Lecture 1](https://bait509-ubc.github.io/BAIT509/lectures/lecture1.html)| [Decision tree](https://mlu-explain.github.io/decision-tree/)
-| 2     | Splitting and Cross-validation | [Lecture 2](https://bait509-ubc.github.io/BAIT509/lectures/lecture2.html) | |
+| 2     | Splitting and Cross-validation | [Lecture 2](https://bait509-ubc.github.io/BAIT509/lectures/lecture2.html) | [Train-test-validation](https://mlu-explain.github.io/train-test-validation/), [Cross-validation](https://mlu-explain.github.io/cross-validation/) |
 | 3     | Baseline, k-Nearest Neighbours |[Lecture 3](https://bait509-ubc.github.io/BAIT509/lectures/lecture3.html) | |
 | 4     | SVM with RBF Kernel and Feature Preprocessing | [Lecture 4](https://bait509-ubc.github.io/BAIT509/lectures/lecture4.html) | |
 | 5     | Preprocessing Categorical Features and Column Transformer| [Lecture 5](https://bait509-ubc.github.io/BAIT509/lectures/lecture5.html) ||
