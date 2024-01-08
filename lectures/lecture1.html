@@ -1683,9 +1683,8 @@ but for now you can rely on that I have put these in the expected order.</p>
 <span class="n">plot_tree</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-    <span class="n">class_names</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
     <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># We need to create a figure to control the overall plot size</span>
 <span class="p">);</span>
 </pre></div>
@@ -1928,9 +1927,8 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tree</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-    <span class="n">class_names</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
     <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">);</span>
 </pre></div>
@@ -1983,7 +1981,7 @@ Let’s see what it predicts for a single randomly new observation first:</p>
 <ul class="simple">
 <li><p>First we start at the root.</p></li>
 <li><p>Is <code class="docutils literal notranslate"><span class="pre">lat</span></code> &lt;= 39.727? False, so we go down the right branch.</p></li>
-<li><p>Is <code class="docutils literal notranslate"><span class="pre">lon</span></code> &lt;= -98.139? True , so we go down the left branch.</p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">lon</span></code> &lt;= -98.139? False , so we go down the right branch.</p></li>
 <li><p>and arrive at red!</p></li>
 </ul>
 <p>Let’s check this using predict again.</p>
