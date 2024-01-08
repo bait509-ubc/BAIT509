@@ -1,0 +1,33 @@
+# Install the course conda environment with the following command:
+# conda env create -f env-bait-509.yaml
+# Once you install it, you should be able to see it in your Jupyter Lab. 
+# If not, check the documentation here: https://ipython.readthedocs.io/en/stable/install/kernel_install.html
+name: '509'
+channels:
+    - conda-forge
+    - anaconda
+    - defaults
+dependencies:
+    - python==3.10
+    - ipykernel
+    - matplotlib>=3.8.0
+    - pandas>=2.1.1
+    - scikit-learn>=1.3.1    
+    - requests>=2.24.0
+    - ipython
+    - xgboost
+    - graphviz
+    - python-graphviz
+    - lightgbm
+    - altair=5.1.2
+    - vl-convert-python  # For saving altair charts as static images
+    - vegafusion  # For working with charts > 5,000 graphical objects
+    - vegafusion-python-embed  # Same as the previous one
+    - vegafusion-jupyter  # For working with charts > 100,000 graphical objects
+    - vega_datasets  # Example data    
+    - jinja2
+    - pip>=23.2.1    
+    - pip:
+        - mglearn
+        - graphviz
+        - psutil>=5.7.2

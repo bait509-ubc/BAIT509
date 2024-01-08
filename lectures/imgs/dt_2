@@ -1,0 +1,21 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="lon <= -102.165\nclass = red"] ;
+1 [label="class = blue"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="lon <= -82.517\nclass = red"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="lat <= 41.113\nclass = red"] ;
+2 -> 3 ;
+4 [label="class = red"] ;
+3 -> 4 ;
+5 [label="class = blue"] ;
+3 -> 5 ;
+6 [label="lat <= 35.763\nclass = blue"] ;
+2 -> 6 ;
+7 [label="class = red"] ;
+6 -> 7 ;
+8 [label="class = blue"] ;
+6 -> 8 ;
+}
