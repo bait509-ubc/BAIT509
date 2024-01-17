@@ -840,12 +840,18 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">plot_classifier</span> <span class="kn">import</span> <span class="n">plot_classifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span><span class="p">,</span> <span class="n">DummyRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">plotting_functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
@@ -1025,19 +1031,30 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-453b661ff594410f8382b519c8ca1fe6"></div>
+<style>
+  #altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436.vega-embed details,
+  #altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-453b661ff594410f8382b519c8ca1fe6") {
-      outputDiv = document.getElementById("altair-viz-453b661ff594410f8382b519c8ca1fe6");
+    if (outputDiv.id !== "altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436") {
+      outputDiv = document.getElementById("altair-viz-60720bf3af6b41ccaeb8ec4b6ee8d436");
     }
     const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.17.0?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
     function maybeLoadScript(lib, version) {
@@ -1072,12 +1089,12 @@ title="Print to PDF"
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "4.17.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-b6b36d9253ffa44549ee85a5d64b6eb6"}, "mark": {"type": "point", "color": "green", "filled": true}, "encoding": {"x": {"field": "length", "type": "quantitative"}, "y": {"field": "weight", "type": "quantitative"}}, "height": 300, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-b6b36d9253ffa44549ee85a5d64b6eb6": [{"length": 0.8636790430972607, "weight": 4.576361037001124}, {"length": 1.9261422504970944, "weight": 13.202452240297143}, {"length": 0.4635223269063644, "weight": 3.036717957612905}, {"length": 1.659269208383312, "weight": 10.741236182681416}, {"length": 0.19430885385429708, "weight": 1.8282080103323208}, {"length": 0.04481789861428447, "weight": 0.9978944887899464}, {"length": 0.25439884335892937, "weight": 1.4050286615609828}, {"length": 1.1001689778262722, "weight": 6.658544218660192}, {"length": 1.9978725971978604, "weight": 10.793341712878705}, {"length": 1.00228938297457, "weight": 5.816130197227949}, {"length": 1.269087747645001, "weight": 8.14709171213338}, {"length": 0.6155816412329262, "weight": 3.8814700785811547}, {"length": 1.430134918262468, "weight": 10.942452943373507}, {"length": 1.0616820749689326, "weight": 7.050004673208427}, {"length": 0.2842007136313087, "weight": 2.0259473636361065}, {"length": 0.790796632453904, "weight": 5.412164286624593}, {"length": 1.9430446949938083, "weight": 9.969047660376281}, {"length": 0.1448579115838513, "weight": 3.0855539261640805}, {"length": 0.9313538600000172, "weight": 7.126420940707391}, {"length": 1.790821845529422, "weight": 9.666842021995915}, {"length": 0.18194088602394864, "weight": 0.9660688867970529}, {"length": 0.6680020152213719, "weight": 6.6004067700389495}, {"length": 1.481690661909318, "weight": 9.76601245186589}, {"length": 0.5758672037560256, "weight": 3.2341883032876337}, {"length": 1.7746097947686443, "weight": 10.826327046810647}, {"length": 1.0058645065193186, "weight": 6.3989427144772195}, {"length": 1.5222278801204971, "weight": 7.970989072227188}, {"length": 1.5888137071881239, "weight": 10.052971989802893}, {"length": 0.3714529237948939, "weight": 2.5827469509487457}, {"length": 1.2972445915032906, "weight": 7.4175478369773735}, {"length": 1.3271308108279647, "weight": 9.708141426694272}, {"length": 0.9066035456620644, "weight": 6.811819097396922}, {"length": 1.697223012379464, "weight": 8.902665018051042}, {"length": 0.7669692466886153, "weight": 3.9387370250353544}, {"length": 0.6918259683827501, "weight": 4.384694352965299}, {"length": 1.5471471399891856, "weight": 9.877240942967013}, {"length": 1.3842759805475549, "weight": 9.897884290328975}, {"length": 1.1581849350007274, "weight": 6.414029739258383}, {"length": 0.09142003290228187, "weight": 1.4787104396491553}, {"length": 1.832353950861439, "weight": 10.574916090691092}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b6b36d9253ffa44549ee85a5d64b6eb6"}, "mark": {"type": "point", "color": "green", "filled": true}, "encoding": {"x": {"field": "length", "type": "quantitative"}, "y": {"field": "weight", "type": "quantitative"}}, "height": 300, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-b6b36d9253ffa44549ee85a5d64b6eb6": [{"length": 0.8636790430972607, "weight": 4.576361037001124}, {"length": 1.9261422504970944, "weight": 13.202452240297143}, {"length": 0.4635223269063644, "weight": 3.036717957612905}, {"length": 1.659269208383312, "weight": 10.741236182681416}, {"length": 0.19430885385429708, "weight": 1.8282080103323208}, {"length": 0.04481789861428447, "weight": 0.9978944887899464}, {"length": 0.25439884335892937, "weight": 1.4050286615609828}, {"length": 1.1001689778262722, "weight": 6.658544218660192}, {"length": 1.9978725971978604, "weight": 10.793341712878705}, {"length": 1.00228938297457, "weight": 5.816130197227949}, {"length": 1.269087747645001, "weight": 8.14709171213338}, {"length": 0.6155816412329262, "weight": 3.8814700785811547}, {"length": 1.430134918262468, "weight": 10.942452943373507}, {"length": 1.0616820749689326, "weight": 7.050004673208427}, {"length": 0.2842007136313087, "weight": 2.0259473636361065}, {"length": 0.790796632453904, "weight": 5.412164286624593}, {"length": 1.9430446949938083, "weight": 9.969047660376281}, {"length": 0.1448579115838513, "weight": 3.0855539261640805}, {"length": 0.9313538600000172, "weight": 7.126420940707391}, {"length": 1.790821845529422, "weight": 9.666842021995915}, {"length": 0.18194088602394864, "weight": 0.9660688867970529}, {"length": 0.6680020152213719, "weight": 6.6004067700389495}, {"length": 1.481690661909318, "weight": 9.76601245186589}, {"length": 0.5758672037560256, "weight": 3.2341883032876337}, {"length": 1.7746097947686443, "weight": 10.826327046810647}, {"length": 1.0058645065193186, "weight": 6.3989427144772195}, {"length": 1.5222278801204971, "weight": 7.970989072227188}, {"length": 1.5888137071881239, "weight": 10.052971989802893}, {"length": 0.3714529237948939, "weight": 2.5827469509487457}, {"length": 1.2972445915032906, "weight": 7.4175478369773735}, {"length": 1.3271308108279647, "weight": 9.708141426694272}, {"length": 0.9066035456620644, "weight": 6.811819097396922}, {"length": 1.697223012379464, "weight": 8.902665018051042}, {"length": 0.7669692466886153, "weight": 3.9387370250353544}, {"length": 0.6918259683827501, "weight": 4.384694352965299}, {"length": 1.5471471399891856, "weight": 9.877240942967013}, {"length": 1.3842759805475549, "weight": 9.897884290328975}, {"length": 1.1581849350007274, "weight": 6.414029739258383}, {"length": 0.09142003290228187, "weight": 1.4787104396491553}, {"length": 1.832353950861439, "weight": 10.574916090691092}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <p>Now let’s try the <span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours regressor on this data.</p>
@@ -1155,25 +1172,19 @@ title="Print to PDF"
 <p>Plotting this we can see our model is trying to get every example correct since n_neighbors=1. (the mean of 1 point is just going to be the point value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">knnr_1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">,</span> <span class="n">snake_y_train</span><span class="p">,</span> <span class="s2">&quot;.r&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">knnr_1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">grid</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">,</span> <span class="n">snake_y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsRegressor was fitted with feature names
-  warnings.warn(
-/tmp/ipykernel_701289/2889281394.py:4: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &quot;.r&quot; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
-  plt.plot(snake_X_train, snake_y_train, &quot;.r&quot;, markersize=10, color=&#39;green&#39;)
-</pre></div>
-</div>
-<img alt="../_images/lecture4_16_1.png" src="../_images/lecture4_16_1.png" />
+<img alt="../_images/lecture4_16_0.png" src="../_images/lecture4_16_0.png" />
 </div>
 </div>
 <p>What happens when we use <code class="docutils literal notranslate"><span class="pre">n_neighbors=10</span></code>?</p>
@@ -1195,24 +1206,19 @@ title="Print to PDF"
 <p>When we plot our model, we can see that it no longer is trying to get every example correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">knnr_10</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">,</span> <span class="n">snake_y_train</span><span class="p">,</span> <span class="s2">&quot;.r&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">knnr_10</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">grid</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">snake_X_train</span><span class="p">,</span> <span class="n">snake_y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but KNeighborsRegressor was fitted with feature names
-  warnings.warn(
-/tmp/ipykernel_701289/3006408244.py:3: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &quot;.r&quot; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
-  plt.plot(snake_X_train, snake_y_train, &quot;.r&quot;, markersize=10, color=&#39;green&#39;)
-</pre></div>
-</div>
-<img alt="../_images/lecture4_20_1.png" src="../_images/lecture4_20_1.png" />
+<img alt="../_images/lecture4_20_0.png" src="../_images/lecture4_20_0.png" />
 </div>
 </div>
 </div>
@@ -1563,36 +1569,36 @@ To import the regressor we import <code class="docutils literal notranslate"><sp
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002240</td>
-      <td>0.001367</td>
+      <td>0.005098</td>
+      <td>0.001746</td>
       <td>0.735294</td>
       <td>0.714286</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001958</td>
-      <td>0.001234</td>
+      <td>0.001753</td>
+      <td>0.001185</td>
       <td>0.705882</td>
       <td>0.714286</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001712</td>
-      <td>0.001071</td>
+      <td>0.001614</td>
+      <td>0.001279</td>
       <td>0.636364</td>
       <td>0.761194</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001775</td>
-      <td>0.001104</td>
+      <td>0.001811</td>
+      <td>0.001172</td>
       <td>0.696970</td>
       <td>0.723881</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001784</td>
-      <td>0.001022</td>
+      <td>0.001568</td>
+      <td>0.001114</td>
       <td>0.696970</td>
       <td>0.626866</td>
     </tr>
@@ -1608,8 +1614,8 @@ To import the regressor we import <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001894
-score_time     0.001159
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002369
+score_time     0.001299
 test_score     0.694296
 train_score    0.708102
 dtype: float64
@@ -1623,19 +1629,18 @@ let’s have a look at the decision boundary.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">)</span>
 
-<span class="n">plot_classifier</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">,</span> <span class="n">svm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_2d_separator</span><span class="p">(</span>
+        <span class="n">svm</span><span class="p">,</span> <span class="n">cities_X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span> <span class="p">)</span>
+<span class="n">mglearn</span><span class="o">.</span><span class="n">discrete_scatter</span><span class="p">(</span><span class="n">cities_X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cities_X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cities_y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x17f39fa00&gt;,
+ &lt;matplotlib.lines.Line2D at 0x17f39fca0&gt;]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="../_images/lecture4_36_2.png" src="../_images/lecture4_36_2.png" />
+<img alt="../_images/lecture4_36_1.png" src="../_images/lecture4_36_1.png" />
 </div>
 </div>
 <p>It seems like our model is quite simple,
@@ -1675,29 +1680,17 @@ and in the <a class="reference external" href="https://scikit-learn.org/stable/a
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">rbf_svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
-    <span class="n">rbf_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;gamma = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">gamma</span><span class="p">);</span>
-    <span class="n">plot_classifier</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">,</span> <span class="n">rbf_svm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">plot_svc_gamma</span><span class="p">(</span>
+    <span class="n">gamma</span><span class="p">,</span>
+    <span class="n">cities_X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+    <span class="n">cities_y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="../_images/lecture4_40_1.png" src="../_images/lecture4_40_1.png" />
+<img alt="../_images/lecture4_40_0.png" src="../_images/lecture4_40_0.png" />
 </div>
 </div>
 </div>
@@ -1710,28 +1703,14 @@ and in the <a class="reference external" href="https://scikit-learn.org/stable/a
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">C</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">]):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">rbf_svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">)</span>
-    <span class="n">rbf_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;C = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">C</span><span class="p">);</span>
-    <span class="n">plot_classifier</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">,</span> <span class="n">rbf_svm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">100000.0</span><span class="p">]</span>
+<span class="n">plot_svc_C</span><span class="p">(</span>
+    <span class="n">C</span><span class="p">,</span> <span class="n">cities_X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">cities_y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SVC was fitted with feature names
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="../_images/lecture4_42_1.png" src="../_images/lecture4_42_1.png" />
+<img alt="../_images/lecture4_42_0.png" src="../_images/lecture4_42_0.png" />
 </div>
 </div>
 <p>Obtaining optimal validation scores requires a hyperparameter search between both <code class="docutils literal notranslate"><span class="pre">gamma</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> to balance the fundamental trade-off.
@@ -1833,36 +1812,36 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.004901</td>
-      <td>0.002197</td>
+      <td>0.003713</td>
+      <td>0.002048</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.003920</td>
-      <td>0.002178</td>
+      <td>0.002570</td>
+      <td>0.001840</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003406</td>
-      <td>0.001426</td>
+      <td>0.004793</td>
+      <td>0.001971</td>
       <td>0.551020</td>
       <td>0.994898</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002506</td>
-      <td>0.001989</td>
+      <td>0.002391</td>
+      <td>0.001668</td>
       <td>0.530612</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003672</td>
-      <td>0.001590</td>
+      <td>0.002497</td>
+      <td>0.001880</td>
       <td>0.571429</td>
       <td>0.994898</td>
     </tr>
@@ -1878,8 +1857,8 @@ We will learn how to search over multiple hyperparameters at a time in lecture 5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.003681
-score_time     0.001876
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.003193
+score_time     0.001881
 test_score     0.559184
 train_score    0.995918
 dtype: float64
@@ -2910,7 +2889,7 @@ d) To the data after training the model</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 18576 entries, 6051 to 19966
+Index: 18576 entries, 6051 to 19966
 Data columns (total 10 columns):
  #   Column                    Non-Null Count  Dtype  
 ---  ------                    --------------  -----  
@@ -2969,52 +2948,113 @@ memory usage: 1.6+ MB
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_701289</span><span class="o">/</span><span class="mf">131641130.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">45</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/neighbors/_regression.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">_check_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span> 
-<span class="ne">--&gt; </span><span class="mi">213</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span> 
-<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py:1152,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1149</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1150</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1151</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1152</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/neighbors/_base.py</span> in <span class="ni">_fit</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">398</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_tags</span><span class="p">()[</span><span class="s2">&quot;requires_y&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span>             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">KDTree</span><span class="p">,</span> <span class="n">BallTree</span><span class="p">,</span> <span class="n">NeighborsBase</span><span class="p">)):</span>
-<span class="ne">--&gt; </span><span class="mi">400</span>                 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span> 
-<span class="g g-Whitespace">    </span><span class="mi">402</span>             <span class="k">if</span> <span class="n">is_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/neighbors/_regression.py:218,</span> in <span class="ni">KNeighborsRegressor.fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="nd">@_fit_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="c1"># KNeighborsRegressor.metric is not validated yet</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="n">prefer_skip_nested_validation</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>     <span class="sd">&quot;&quot;&quot;Fit the k-nearest neighbors regressor from the training dataset.</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="sd">         The fitted k-nearest neighbors regressor.</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">218</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">581</span>                 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span>             <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> 
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/neighbors/_base.py:456,</span> in <span class="ni">NeighborsBase._fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_tags</span><span class="p">()[</span><span class="s2">&quot;requires_y&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">KDTree</span><span class="p">,</span> <span class="n">BallTree</span><span class="p">,</span> <span class="n">NeighborsBase</span><span class="p">)):</span>
+<span class="ne">--&gt; </span><span class="mi">456</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>             <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;C&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span>     <span class="k">if</span> <span class="n">is_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="c1"># Classification targets require a specific format</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span>         <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">962</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;y cannot be None&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">963</span> 
-<span class="ne">--&gt; </span><span class="mi">964</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">965</span>         <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">966</span>         <span class="n">accept_sparse</span><span class="o">=</span><span class="n">accept_sparse</span><span class="p">,</span>
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py:622,</span> in <span class="ni">BaseEstimator._validate_data</span><span class="nt">(self, X, y, reset, validate_separately, cast_to_ndarray, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span>         <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">622</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="n">check_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ensure_2d&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span> 
-<span class="g g-Whitespace">    </span><span class="mi">799</span>         <span class="k">if</span> <span class="n">force_all_finite</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">800</span>             <span class="n">_assert_all_finite</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="n">force_all_finite</span> <span class="o">==</span> <span class="s2">&quot;allow-nan&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span> 
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="k">if</span> <span class="n">ensure_min_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/validation.py:1146,</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="n">estimator_name</span> <span class="o">=</span> <span class="n">_check_estimator_name</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1142</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">estimator_name</span><span class="si">}</span><span class="s2"> requires y to be passed, but the target y is None&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1146</span> <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="n">accept_sparse</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1149</span>     <span class="n">accept_large_sparse</span><span class="o">=</span><span class="n">accept_large_sparse</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1150</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1151</span>     <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1152</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1153</span>     <span class="n">force_all_finite</span><span class="o">=</span><span class="n">force_all_finite</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1154</span>     <span class="n">ensure_2d</span><span class="o">=</span><span class="n">ensure_2d</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1155</span>     <span class="n">allow_nd</span><span class="o">=</span><span class="n">allow_nd</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1156</span>     <span class="n">ensure_min_samples</span><span class="o">=</span><span class="n">ensure_min_samples</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1157</span>     <span class="n">ensure_min_features</span><span class="o">=</span><span class="n">ensure_min_features</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1158</span>     <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1159</span>     <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1160</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1162</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="n">multi_output</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="n">y_numeric</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1164</span> <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nn">~/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>             <span class="n">type_err</span> <span class="o">=</span> <span class="s2">&quot;infinity&quot;</span> <span class="k">if</span> <span class="n">allow_nan</span> <span class="k">else</span> <span class="s2">&quot;NaN, infinity&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">114</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>                 <span class="n">msg_err</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>                     <span class="n">type_err</span><span class="p">,</span> <span class="n">msg_dtype</span> <span class="k">if</span> <span class="n">msg_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">X</span><span class="o">.</span><span class="n">dtype</span>
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/validation.py:957,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">951</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">952</span>             <span class="s2">&quot;Found array with dim </span><span class="si">%d</span><span class="s2">. </span><span class="si">%s</span><span class="s2"> expected &lt;= 2.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">953</span>             <span class="o">%</span> <span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">estimator_name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span>     <span class="k">if</span> <span class="n">force_all_finite</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">957</span>         <span class="n">_assert_all_finite</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">958</span>             <span class="n">array</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>             <span class="n">input_name</span><span class="o">=</span><span class="n">input_name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>             <span class="n">estimator_name</span><span class="o">=</span><span class="n">estimator_name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span>             <span class="n">allow_nan</span><span class="o">=</span><span class="n">force_all_finite</span> <span class="o">==</span> <span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">962</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span> <span class="k">if</span> <span class="n">ensure_min_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="n">n_samples</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 
-<span class="ne">ValueError</span>: Input contains NaN, infinity or a value too large for dtype(&#39;float64&#39;).
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/validation.py:122,</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype, estimator_name, input_name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="k">if</span> <span class="n">first_pass_isfinite</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">return</span>
+<span class="ne">--&gt; </span><span class="mi">122</span> <span class="n">_assert_all_finite_element_wise</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">xp</span><span class="o">=</span><span class="n">xp</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="n">allow_nan</span><span class="o">=</span><span class="n">allow_nan</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>     <span class="n">msg_dtype</span><span class="o">=</span><span class="n">msg_dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="n">estimator_name</span><span class="o">=</span><span class="n">estimator_name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="n">input_name</span><span class="o">=</span><span class="n">input_name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span> <span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/validation.py:171,</span> in <span class="ni">_assert_all_finite_element_wise</span><span class="nt">(X, xp, allow_nan, msg_dtype, estimator_name, input_name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="k">if</span> <span class="n">estimator_name</span> <span class="ow">and</span> <span class="n">input_name</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span> <span class="ow">and</span> <span class="n">has_nan_error</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="c1"># Improve the error message on how to handle missing values in</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="c1"># scikit-learn.</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">msg_err</span> <span class="o">+=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">estimator_name</span><span class="si">}</span><span class="s2"> does not accept missing values&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>         <span class="s2">&quot; encoded as NaN natively. For supervised learning, you might want&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>         <span class="s2">&quot;#estimators-that-handle-nan-values&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">171</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg_err</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Input X contains NaN.
+<span class="n">KNeighborsRegressor</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">accept</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">encoded</span> <span class="k">as</span> <span class="n">NaN</span> <span class="n">natively</span><span class="o">.</span> <span class="n">For</span> <span class="n">supervised</span> <span class="n">learning</span><span class="p">,</span> <span class="n">you</span> <span class="n">might</span> <span class="n">want</span> <span class="n">to</span> <span class="n">consider</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">ensemble</span><span class="o">.</span><span class="n">HistGradientBoostingClassifier</span> <span class="ow">and</span> <span class="n">Regressor</span> <span class="n">which</span> <span class="n">accept</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">encoded</span> <span class="k">as</span> <span class="n">NaNs</span> <span class="n">natively</span><span class="o">.</span> <span class="n">Alternatively</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">possible</span> <span class="n">to</span> <span class="n">preprocess</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">by</span> <span class="n">using</span> <span class="n">an</span> <span class="n">imputer</span> <span class="n">transformer</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">pipeline</span> <span class="ow">or</span> <span class="n">drop</span> <span class="n">samples</span> <span class="k">with</span> <span class="n">missing</span> <span class="n">values</span><span class="o">.</span> <span class="n">See</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">impute</span><span class="o">.</span><span class="n">html</span> <span class="n">You</span> <span class="n">can</span> <span class="n">find</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">estimators</span> <span class="n">that</span> <span class="n">handle</span> <span class="n">NaN</span> <span class="n">values</span> <span class="n">at</span> <span class="n">the</span> <span class="n">following</span> <span class="n">page</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">impute</span><span class="o">.</span><span class="n">html</span><span class="c1">#estimators-that-handle-nan-values</span>
 </pre></div>
 </div>
 </div>
@@ -3374,7 +3414,7 @@ Perhaps a certain type of house contributes to more missing values.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">7763</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_imp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">7763</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -3416,7 +3456,7 @@ Perhaps a certain type of house contributes to more missing values.</p>
       <td>130.0</td>
       <td>3.6389</td>
       <td>5.584615</td>
-      <td>NaN</td>
+      <td>1.04886</td>
       <td>3.769231</td>
     </tr>
   </tbody>
@@ -3877,36 +3917,36 @@ There are many ways to scale your data but we are going to look at 2 of them.</p
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.011932</td>
-      <td>0.147443</td>
+      <td>0.009116</td>
+      <td>0.160559</td>
       <td>0.696373</td>
       <td>0.794236</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.008757</td>
-      <td>0.130968</td>
+      <td>0.008147</td>
+      <td>0.134536</td>
       <td>0.684447</td>
       <td>0.791467</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.008732</td>
-      <td>0.154511</td>
+      <td>0.007982</td>
+      <td>0.143678</td>
       <td>0.695532</td>
       <td>0.789436</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.010271</td>
-      <td>0.157842</td>
+      <td>0.007958</td>
+      <td>0.144992</td>
       <td>0.679478</td>
       <td>0.793243</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.008897</td>
-      <td>0.089000</td>
+      <td>0.008038</td>
+      <td>0.089106</td>
       <td>0.680657</td>
       <td>0.794820</td>
     </tr>
@@ -4065,11 +4105,9 @@ Test score:  0.71
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;imputer&#39;, SimpleImputer(strategy=&#39;median&#39;)),
-                (&#39;scaler&#39;, StandardScaler()), (&#39;reg&#39;, KNeighborsRegressor())])
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;imputer&#x27;, SimpleImputer(strategy=&#x27;median&#x27;)),
+                (&#x27;scaler&#x27;, StandardScaler()), (&#x27;reg&#x27;, KNeighborsRegressor())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;imputer&#x27;, SimpleImputer(strategy=&#x27;median&#x27;)),
+                (&#x27;scaler&#x27;, StandardScaler()), (&#x27;reg&#x27;, KNeighborsRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;median&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsRegressor</label><div class="sk-toggleable__content"><pre>KNeighborsRegressor()</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <ul class="simple">
 <li><p>Note that we are passing <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <strong>NOT</strong> the imputed or scaled data here.</p></li>
@@ -4143,36 +4181,36 @@ Test score:  0.71
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.025440</td>
-      <td>0.142615</td>
+      <td>0.022580</td>
+      <td>0.157835</td>
       <td>0.693883</td>
       <td>0.792395</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.022569</td>
-      <td>0.137869</td>
+      <td>0.020257</td>
+      <td>0.140336</td>
       <td>0.685017</td>
       <td>0.789108</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.023778</td>
-      <td>0.141539</td>
+      <td>0.019219</td>
+      <td>0.143953</td>
       <td>0.694409</td>
       <td>0.787796</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.022253</td>
-      <td>0.144353</td>
+      <td>0.019068</td>
+      <td>0.147445</td>
       <td>0.677055</td>
       <td>0.792444</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.022670</td>
-      <td>0.118798</td>
+      <td>0.019125</td>
+      <td>0.117869</td>
       <td>0.714494</td>
       <td>0.823421</td>
     </tr>
@@ -4187,8 +4225,8 @@ Test score:  0.71
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.023342
-score_time     0.137035
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.020050
+score_time     0.141488
 test_score     0.692972
 train_score    0.797033
 dtype: float64
@@ -4205,8 +4243,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001181
-score_time     0.000262
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001078
+score_time     0.000348
 test_score    -0.000838
 train_score    0.000000
 dtype: float64
@@ -4289,8 +4327,8 @@ Take the mean of each column and assess your model.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002649
-score_time     0.002171
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.002501
+score_time     0.003170
 test_score     0.873469
 train_score    0.916327
 dtype: float64
@@ -4322,16 +4360,16 @@ dtype: float64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-bait-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-bait-py",
+            kernelName: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-bait-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

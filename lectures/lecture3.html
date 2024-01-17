@@ -792,101 +792,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>lon</th>
-      <th>lat</th>
-      <th>vote</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>-80.162475</td>
-      <td>25.692104</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-80.214360</td>
-      <td>25.944083</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-80.094133</td>
-      <td>26.234314</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>-80.248086</td>
-      <td>26.291902</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>-81.789963</td>
-      <td>26.348035</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>396</th>
-      <td>-97.460476</td>
-      <td>48.225094</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>397</th>
-      <td>-96.551116</td>
-      <td>48.591592</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>398</th>
-      <td>-166.519855</td>
-      <td>53.887114</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>399</th>
-      <td>-163.733617</td>
-      <td>67.665859</td>
-      <td>blue</td>
-    </tr>
-    <tr>
-      <th>400</th>
-      <td>-145.423115</td>
-      <td>68.077395</td>
-      <td>blue</td>
-    </tr>
-  </tbody>
-</table>
-<p>400 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -929,24 +834,11 @@ to evaluate the model performance.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.578125
-</pre></div>
-</div>
-</div>
 </div>
 <p>If we see what our model predicts on the feature table for our training split <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, our model will predict the most frequent class from our training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vote
-red     185
-blue    135
-Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -957,56 +849,11 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,
-       &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;], dtype=&#39;&lt;U3&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can also now take the test score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6125
 </pre></div>
 </div>
 </div>
@@ -1030,23 +877,11 @@ because the split can influence the model score (this is true to a much lesser e
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_score     0.88125
-train_score    1.00000
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">dt_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9125
 </pre></div>
 </div>
 </div>
@@ -1072,293 +907,6 @@ which we will discuss later.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>price</th>
-      <th>bedrooms</th>
-      <th>bathrooms</th>
-      <th>sqft_living</th>
-      <th>sqft_lot</th>
-      <th>floors</th>
-      <th>waterfront</th>
-      <th>view</th>
-      <th>condition</th>
-      <th>grade</th>
-      <th>sqft_above</th>
-      <th>sqft_basement</th>
-      <th>yr_built</th>
-      <th>yr_renovated</th>
-      <th>zipcode</th>
-      <th>lat</th>
-      <th>long</th>
-      <th>sqft_living15</th>
-      <th>sqft_lot15</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>221900.0</td>
-      <td>3</td>
-      <td>1.00</td>
-      <td>1180</td>
-      <td>5650</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>1180</td>
-      <td>0</td>
-      <td>1955</td>
-      <td>0</td>
-      <td>98178</td>
-      <td>47.5112</td>
-      <td>-122.257</td>
-      <td>1340</td>
-      <td>5650</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>538000.0</td>
-      <td>3</td>
-      <td>2.25</td>
-      <td>2570</td>
-      <td>7242</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>2170</td>
-      <td>400</td>
-      <td>1951</td>
-      <td>1991</td>
-      <td>98125</td>
-      <td>47.7210</td>
-      <td>-122.319</td>
-      <td>1690</td>
-      <td>7639</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>180000.0</td>
-      <td>2</td>
-      <td>1.00</td>
-      <td>770</td>
-      <td>10000</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>6</td>
-      <td>770</td>
-      <td>0</td>
-      <td>1933</td>
-      <td>0</td>
-      <td>98028</td>
-      <td>47.7379</td>
-      <td>-122.233</td>
-      <td>2720</td>
-      <td>8062</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>604000.0</td>
-      <td>4</td>
-      <td>3.00</td>
-      <td>1960</td>
-      <td>5000</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>5</td>
-      <td>7</td>
-      <td>1050</td>
-      <td>910</td>
-      <td>1965</td>
-      <td>0</td>
-      <td>98136</td>
-      <td>47.5208</td>
-      <td>-122.393</td>
-      <td>1360</td>
-      <td>5000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>510000.0</td>
-      <td>3</td>
-      <td>2.00</td>
-      <td>1680</td>
-      <td>8080</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>1680</td>
-      <td>0</td>
-      <td>1987</td>
-      <td>0</td>
-      <td>98074</td>
-      <td>47.6168</td>
-      <td>-122.045</td>
-      <td>1800</td>
-      <td>7503</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>21608</th>
-      <td>360000.0</td>
-      <td>3</td>
-      <td>2.50</td>
-      <td>1530</td>
-      <td>1131</td>
-      <td>3.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>1530</td>
-      <td>0</td>
-      <td>2009</td>
-      <td>0</td>
-      <td>98103</td>
-      <td>47.6993</td>
-      <td>-122.346</td>
-      <td>1530</td>
-      <td>1509</td>
-    </tr>
-    <tr>
-      <th>21609</th>
-      <td>400000.0</td>
-      <td>4</td>
-      <td>2.50</td>
-      <td>2310</td>
-      <td>5813</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>2310</td>
-      <td>0</td>
-      <td>2014</td>
-      <td>0</td>
-      <td>98146</td>
-      <td>47.5107</td>
-      <td>-122.362</td>
-      <td>1830</td>
-      <td>7200</td>
-    </tr>
-    <tr>
-      <th>21610</th>
-      <td>402101.0</td>
-      <td>2</td>
-      <td>0.75</td>
-      <td>1020</td>
-      <td>1350</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>1020</td>
-      <td>0</td>
-      <td>2009</td>
-      <td>0</td>
-      <td>98144</td>
-      <td>47.5944</td>
-      <td>-122.299</td>
-      <td>1020</td>
-      <td>2007</td>
-    </tr>
-    <tr>
-      <th>21611</th>
-      <td>400000.0</td>
-      <td>3</td>
-      <td>2.50</td>
-      <td>1600</td>
-      <td>2388</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>1600</td>
-      <td>0</td>
-      <td>2004</td>
-      <td>0</td>
-      <td>98027</td>
-      <td>47.5345</td>
-      <td>-122.069</td>
-      <td>1410</td>
-      <td>1287</td>
-    </tr>
-    <tr>
-      <th>21612</th>
-      <td>325000.0</td>
-      <td>2</td>
-      <td>0.75</td>
-      <td>1020</td>
-      <td>1076</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>1020</td>
-      <td>0</td>
-      <td>2008</td>
-      <td>0</td>
-      <td>98144</td>
-      <td>47.5941</td>
-      <td>-122.299</td>
-      <td>1020</td>
-      <td>1357</td>
-    </tr>
-  </tbody>
-</table>
-<p>21613 rows × 19 columns</p>
-</div></div></div>
 </div>
 <p>Let get our <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> objects and split our data.</p>
 <div class="cell docutils container">
@@ -1388,19 +936,11 @@ which we will discuss later.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DummyRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DummyRegressor</label><div class="sk-toggleable__content"><pre>DummyRegressor()</pre></div></div></div></div></div></div></div>
 </div>
 <p>If we predict on our training data, we see it’s making the same prediction for each observation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([539306.46784268, 539306.46784268, 539306.46784268, ...,
-       539306.46784268, 539306.46784268, 539306.46784268])
 </pre></div>
 </div>
 </div>
@@ -1412,21 +952,11 @@ which we will discuss later.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>539306.4678426837
-</pre></div>
-</div>
-</div>
 </div>
 <p>How well does it do?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -1438,11 +968,6 @@ which means that it is doing a little worse than constantly predicting the mean 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.00010814646015933072
 </pre></div>
 </div>
 </div>
@@ -1543,101 +1068,6 @@ Then we are given an unseen test images of the same actors but from different an
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>160</th>
-      <td>-76.4813</td>
-      <td>44.2307</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>127</th>
-      <td>-81.2496</td>
-      <td>42.9837</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>169</th>
-      <td>-66.0580</td>
-      <td>45.2788</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>188</th>
-      <td>-73.2533</td>
-      <td>45.3057</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>187</th>
-      <td>-67.9245</td>
-      <td>47.1652</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>-76.3305</td>
-      <td>44.1255</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>-74.7287</td>
-      <td>45.0184</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>-121.4944</td>
-      <td>38.5816</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>126</th>
-      <td>-79.5656</td>
-      <td>43.6436</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>-66.9195</td>
-      <td>44.8938</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-<p>167 rows × 3 columns</p>
-</div></div></div>
 </div>
 <p>We have 2 features, so 2 dimensions (<code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code>)  and 167 points.
 Visualizing this in 2 dimensions gives us the following:</p>
@@ -1653,73 +1083,6 @@ Visualizing this in 2 dimensions gives us the following:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-  #altair-viz-4c0f3c5612df448c9661768a8712a026.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-4c0f3c5612df448c9661768a8712a026.vega-embed details,
-  #altair-viz-4c0f3c5612df448c9661768a8712a026.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-4c0f3c5612df448c9661768a8712a026"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4c0f3c5612df448c9661768a8712a026") {
-      outputDiv = document.getElementById("altair-viz-4c0f3c5612df448c9661768a8712a026");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-66158384001fb6a73b6445c49f67d5ce"}, "mark": {"type": "circle", "opacity": 0.6, "size": 20}, "encoding": {"color": {"field": "country", "scale": {"domain": ["Canada", "USA"], "range": ["red", "blue"]}, "type": "nominal"}, "x": {"field": "longitude", "scale": {"domain": [-140, -40]}, "type": "quantitative"}, "y": {"field": "latitude", "scale": {"domain": [20, 60]}, "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-66158384001fb6a73b6445c49f67d5ce": [{"longitude": -76.4813, "latitude": 44.2307, "country": "Canada"}, {"longitude": -81.2496, "latitude": 42.9837, "country": "Canada"}, {"longitude": -66.058, "latitude": 45.2788, "country": "Canada"}, {"longitude": -73.2533, "latitude": 45.3057, "country": "Canada"}, {"longitude": -67.9245, "latitude": 47.1652, "country": "Canada"}, {"longitude": -120.3394, "latitude": 50.6758, "country": "Canada"}, {"longitude": -106.651, "latitude": 35.0841, "country": "USA"}, {"longitude": -79.6902, "latitude": 44.3893, "country": "Canada"}, {"longitude": -84.3201, "latitude": 46.5239, "country": "Canada"}, {"longitude": -98.4951, "latitude": 29.4246, "country": "USA"}, {"longitude": -77.0366, "latitude": 38.895, "country": "USA"}, {"longitude": -93.3968, "latitude": 48.6114, "country": "Canada"}, {"longitude": -67.2799, "latitude": 45.2004, "country": "Canada"}, {"longitude": -122.8565, "latitude": 49.3144, "country": "Canada"}, {"longitude": -63.572, "latitude": 44.68, "country": "Canada"}, {"longitude": -68.3219, "latitude": 47.3556, "country": "USA"}, {"longitude": -97.1385, "latitude": 49.8955, "country": "Canada"}, {"longitude": -122.3295, "latitude": 49.0521, "country": "Canada"}, {"longitude": -87.6244, "latitude": 41.8756, "country": "USA"}, {"longitude": -68.5897, "latitude": 47.2587, "country": "USA"}, {"longitude": -73.4467, "latitude": 45.5172, "country": "Canada"}, {"longitude": -63.5859, "latitude": 44.6486, "country": "Canada"}, {"longitude": -97.7437, "latitude": 30.2711, "country": "USA"}, {"longitude": -79.0247, "latitude": 43.8504, "country": "Canada"}, {"longitude": -111.9639, "latitude": 49.0017, "country": "Canada"}, {"longitude": -129.9912, "latitude": 55.9383, "country": "Canada"}, {"longitude": -78.9186, "latitude": 42.9131, "country": "Canada"}, {"longitude": -71.7985, "latitude": 45.0126, "country": "Canada"}, {"longitude": -95.9929, "latitude": 36.1557, "country": "USA"}, {"longitude": -123.0833, "latitude": 49.0167, "country": "Canada"}, {"longitude": -94.5648, "latitude": 48.7227, "country": "Canada"}, {"longitude": -118.7148, "latitude": 50.4165, "country": "Canada"}, {"longitude": -97.2049, "latitude": 48.9988, "country": "USA"}, {"longitude": -122.7933, "latitude": 49.2843, "country": "Canada"}, {"longitude": -97.1056, "latitude": 32.7019, "country": "USA"}, {"longitude": -72.5565, "latitude": 46.3327, "country": "Canada"}, {"longitude": -75.1635, "latitude": 39.9527, "country": "USA"}, {"longitude": -110.9748, "latitude": 32.2229, "country": "USA"}, {"longitude": -67.2781, "latitude": 45.189, "country": "USA"}, {"longitude": -83.0466, "latitude": 42.3316, "country": "USA"}, {"longitude": -79.7599, "latitude": 43.6858, "country": "Canada"}, {"longitude": -84.3201, "latitude": 46.5239, "country": "Canada"}, {"longitude": -106.6608, "latitude": 52.1318, "country": "Canada"}, {"longitude": -83.0007, "latitude": 39.9623, "country": "USA"}, {"longitude": -75.7106, "latitude": 45.4284, "country": "Canada"}, {"longitude": -52.7151, "latitude": 47.5617, "country": "Canada"}, {"longitude": -113.508, "latitude": 53.5354, "country": "Canada"}, {"longitude": -76.6108, "latitude": 39.2909, "country": "USA"}, {"longitude": -97.5533, "latitude": 48.7531, "country": "USA"}, {"longitude": -66.9843, "latitude": 44.8607, "country": "USA"}, {"longitude": -113.8184, "latitude": 52.2698, "country": "Canada"}, {"longitude": -113.2966, "latitude": 53.5257, "country": "Canada"}, {"longitude": -79.4394, "latitude": 43.8801, "country": "Canada"}, {"longitude": -66.9905, "latitude": 44.9065, "country": "USA"}, {"longitude": -112.0741, "latitude": 33.4484, "country": "USA"}, {"longitude": -130.0437, "latitude": 55.9773, "country": "USA"}, {"longitude": -75.7887, "latitude": 45.3113, "country": "Canada"}, {"longitude": -80.8431, "latitude": 35.2272, "country": "USA"}, {"longitude": -79.6667, "latitude": 43.4474, "country": "Canada"}, {"longitude": -121.8906, "latitude": 37.3362, "country": "USA"}, {"longitude": -85.7039, "latitude": 38.2092, "country": "USA"}, {"longitude": -73.6515, "latitude": 45.7081, "country": "Canada"}, {"longitude": -122.4199, "latitude": 37.779, "country": "USA"}, {"longitude": -79.4109, "latitude": 43.7615, "country": "Canada"}, {"longitude": -67.9245, "latitude": 47.1652, "country": "Canada"}, {"longitude": -111.9626, "latitude": 48.9971, "country": "USA"}, {"longitude": -79.0359, "latitude": 43.1726, "country": "USA"}, {"longitude": -73.6875, "latitude": 45.5089, "country": "Canada"}, {"longitude": -111.8315, "latitude": 33.4151, "country": "USA"}, {"longitude": -114.0626, "latitude": 51.0534, "country": "Canada"}, {"longitude": -73.6289, "latitude": 45.468, "country": "Canada"}, {"longitude": -75.9774, "latitude": 36.853, "country": "USA"}, {"longitude": -79.3839, "latitude": 43.6535, "country": "Canada"}, {"longitude": -87.9225, "latitude": 43.035, "country": "USA"}, {"longitude": -72.7218, "latitude": 45.399, "country": "Canada"}, {"longitude": -117.1628, "latitude": 32.7174, "country": "USA"}, {"longitude": -67.4297, "latitude": 45.5634, "country": "USA"}, {"longitude": -83.0466, "latitude": 42.3316, "country": "USA"}, {"longitude": -123.1374, "latitude": 49.1632, "country": "Canada"}, {"longitude": -119.4983, "latitude": 49.8893, "country": "Canada"}, {"longitude": -79.8729, "latitude": 43.2561, "country": "Canada"}, {"longitude": -122.5997, "latitude": 49.2197, "country": "Canada"}, {"longitude": -80.2632, "latitude": 43.1408, "country": "Canada"}, {"longitude": -79.2441, "latitude": 43.158, "country": "Canada"}, {"longitude": -97.2089, "latitude": 49.0061, "country": "Canada"}, {"longitude": -94.6002, "latitude": 48.7124, "country": "USA"}, {"longitude": -102.5496, "latitude": 48.9959, "country": "USA"}, {"longitude": -83.0353, "latitude": 42.3171, "country": "Canada"}, {"longitude": -71.889, "latitude": 45.4033, "country": "Canada"}, {"longitude": -66.6458, "latitude": 45.9664, "country": "Canada"}, {"longitude": -71.0692, "latitude": 48.406, "country": "Canada"}, {"longitude": -84.3902, "latitude": 33.7491, "country": "USA"}, {"longitude": -122.7436, "latitude": 48.9881, "country": "USA"}, {"longitude": -102.548, "latitude": 49.0014, "country": "Canada"}, {"longitude": -104.6173, "latitude": 50.4488, "country": "Canada"}, {"longitude": -122.3301, "latitude": 47.6038, "country": "USA"}, {"longitude": -123.114, "latitude": 49.2609, "country": "Canada"}, {"longitude": -71.0583, "latitude": 42.3603, "country": "USA"}, {"longitude": -134.4197, "latitude": 58.3019, "country": "USA"}, {"longitude": -75.4864, "latitude": 44.6943, "country": "USA"}, {"longitude": -82.4405, "latitude": 42.9816, "country": "USA"}, {"longitude": -71.3998, "latitude": 46.8884, "country": "Canada"}, {"longitude": -122.6742, "latitude": 45.5202, "country": "USA"}, {"longitude": -67.9353, "latitude": 47.1575, "country": "USA"}, {"longitude": -69.265, "latitude": 47.5052, "country": "Canada"}, {"longitude": -97.3327, "latitude": 32.7532, "country": "USA"}, {"longitude": -123.365, "latitude": 48.4283, "country": "Canada"}, {"longitude": -68.3281, "latitude": 47.3644, "country": "Canada"}, {"longitude": -78.8784, "latitude": 42.8867, "country": "USA"}, {"longitude": -79.5268, "latitude": 43.7942, "country": "Canada"}, {"longitude": -79.6457, "latitude": 43.5903, "country": "Canada"}, {"longitude": -79.4608, "latitude": 46.3092, "country": "Canada"}, {"longitude": -95.9384, "latitude": 41.2587, "country": "USA"}, {"longitude": -79.0615, "latitude": 43.0844, "country": "USA"}, {"longitude": -79.7967, "latitude": 43.3249, "country": "Canada"}, {"longitude": -69.2275, "latitude": 47.4562, "country": "USA"}, {"longitude": -123.0833, "latitude": 49.0833, "country": "Canada"}, {"longitude": -90.0516, "latitude": 35.149, "country": "USA"}, {"longitude": -122.2714, "latitude": 37.8045, "country": "USA"}, {"longitude": -119.7848, "latitude": 36.7394, "country": "USA"}, {"longitude": -104.8253, "latitude": 38.834, "country": "USA"}, {"longitude": -74.0132, "latitude": 45.7754, "country": "Canada"}, {"longitude": -79.3377, "latitude": 43.8564, "country": "Canada"}, {"longitude": -93.2655, "latitude": 44.9773, "country": "USA"}, {"longitude": -95.3677, "latitude": 29.7589, "country": "USA"}, {"longitude": -80.3123, "latitude": 43.3601, "country": "Canada"}, {"longitude": -79.1153, "latitude": 43.101, "country": "Canada"}, {"longitude": -79.7599, "latitude": 43.6858, "country": "Canada"}, {"longitude": -75.5192, "latitude": 44.7184, "country": "Canada"}, {"longitude": -68.6034, "latitude": 47.2527, "country": "Canada"}, {"longitude": -83.0353, "latitude": 42.3171, "country": "Canada"}, {"longitude": -73.7344, "latitude": 45.6056, "country": "Canada"}, {"longitude": -72.0968, "latitude": 45.0072, "country": "Canada"}, {"longitude": -67.5735, "latitude": 46.1503, "country": "Canada"}, {"longitude": -80.4944, "latitude": 43.4532, "country": "Canada"}, {"longitude": -79.1153, "latitude": 43.101, "country": "Canada"}, {"longitude": -110.679, "latitude": 50.043, "country": "Canada"}, {"longitude": -78.3199, "latitude": 44.3048, "country": "Canada"}, {"longitude": -79.2506, "latitude": 42.9931, "country": "Canada"}, {"longitude": -96.7969, "latitude": 32.7763, "country": "USA"}, {"longitude": -122.3295, "latitude": 49.0521, "country": "Canada"}, {"longitude": -123.078, "latitude": 48.9854, "country": "USA"}, {"longitude": -97.5171, "latitude": 35.473, "country": "USA"}, {"longitude": -104.9849, "latitude": 39.7392, "country": "USA"}, {"longitude": -94.5781, "latitude": 39.1001, "country": "USA"}, {"longitude": -122.9109, "latitude": 49.2068, "country": "Canada"}, {"longitude": -89.2598, "latitude": 48.4064, "country": "Canada"}, {"longitude": -82.4584, "latitude": 27.9478, "country": "USA"}, {"longitude": -71.1473, "latitude": 48.382, "country": "Canada"}, {"longitude": -71.1753, "latitude": 46.791, "country": "Canada"}, {"longitude": -73.6104, "latitude": 45.4972, "country": "Canada"}, {"longitude": -79.8828, "latitude": 43.5137, "country": "Canada"}, {"longitude": -118.2428, "latitude": 34.0537, "country": "USA"}, {"longitude": -118.1916, "latitude": 33.769, "country": "USA"}, {"longitude": -86.1584, "latitude": 39.7683, "country": "USA"}, {"longitude": -72.9406, "latitude": 45.6275, "country": "Canada"}, {"longitude": -75.6903, "latitude": 45.4211, "country": "Canada"}, {"longitude": -76.3019, "latitude": 44.211, "country": "Canada"}, {"longitude": -115.1485, "latitude": 36.1673, "country": "USA"}, {"longitude": -122.8491, "latitude": 49.1913, "country": "Canada"}, {"longitude": -67.4253, "latitude": 45.5672, "country": "Canada"}, {"longitude": -122.8491, "latitude": 49.1913, "country": "Canada"}, {"longitude": -76.3305, "latitude": 44.1255, "country": "USA"}, {"longitude": -74.7287, "latitude": 45.0184, "country": "Canada"}, {"longitude": -121.4944, "latitude": 38.5816, "country": "USA"}, {"longitude": -79.5656, "latitude": 43.6436, "country": "Canada"}, {"longitude": -66.9195, "latitude": 44.8938, "country": "Canada"}]}}, {"mode": "vega-lite"});
-</script></div></div>
 </div>
 <p>What about the housing training dataset we saw?</p>
 <div class="cell docutils container">
@@ -1737,281 +1100,6 @@ Visualizing this in 2 dimensions gives us the following:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>bedrooms</th>
-      <th>bathrooms</th>
-      <th>sqft_living</th>
-      <th>sqft_lot</th>
-      <th>floors</th>
-      <th>waterfront</th>
-      <th>view</th>
-      <th>condition</th>
-      <th>grade</th>
-      <th>sqft_above</th>
-      <th>sqft_basement</th>
-      <th>yr_built</th>
-      <th>yr_renovated</th>
-      <th>zipcode</th>
-      <th>lat</th>
-      <th>long</th>
-      <th>sqft_living15</th>
-      <th>sqft_lot15</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>14305</th>
-      <td>3</td>
-      <td>2.75</td>
-      <td>2170</td>
-      <td>2738</td>
-      <td>1.5</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>9</td>
-      <td>1550</td>
-      <td>620</td>
-      <td>1930</td>
-      <td>0</td>
-      <td>98109</td>
-      <td>47.6389</td>
-      <td>-122.349</td>
-      <td>1170</td>
-      <td>1062</td>
-    </tr>
-    <tr>
-      <th>19844</th>
-      <td>4</td>
-      <td>2.75</td>
-      <td>3550</td>
-      <td>9400</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>9</td>
-      <td>3550</td>
-      <td>0</td>
-      <td>2014</td>
-      <td>0</td>
-      <td>98059</td>
-      <td>47.4827</td>
-      <td>-122.131</td>
-      <td>3550</td>
-      <td>9421</td>
-    </tr>
-    <tr>
-      <th>2686</th>
-      <td>3</td>
-      <td>3.25</td>
-      <td>1210</td>
-      <td>1173</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>1000</td>
-      <td>210</td>
-      <td>2002</td>
-      <td>0</td>
-      <td>98133</td>
-      <td>47.7114</td>
-      <td>-122.356</td>
-      <td>1650</td>
-      <td>1493</td>
-    </tr>
-    <tr>
-      <th>11926</th>
-      <td>3</td>
-      <td>2.50</td>
-      <td>2370</td>
-      <td>7875</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>9</td>
-      <td>2370</td>
-      <td>0</td>
-      <td>2003</td>
-      <td>0</td>
-      <td>98065</td>
-      <td>47.5427</td>
-      <td>-121.863</td>
-      <td>2660</td>
-      <td>7752</td>
-    </tr>
-    <tr>
-      <th>13873</th>
-      <td>5</td>
-      <td>1.75</td>
-      <td>2250</td>
-      <td>8970</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>7</td>
-      <td>1500</td>
-      <td>750</td>
-      <td>1966</td>
-      <td>0</td>
-      <td>98034</td>
-      <td>47.7217</td>
-      <td>-122.188</td>
-      <td>1940</td>
-      <td>8710</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>15377</th>
-      <td>4</td>
-      <td>2.50</td>
-      <td>3440</td>
-      <td>14554</td>
-      <td>2.0</td>
-      <td>1</td>
-      <td>4</td>
-      <td>3</td>
-      <td>8</td>
-      <td>2170</td>
-      <td>1270</td>
-      <td>2012</td>
-      <td>0</td>
-      <td>98155</td>
-      <td>47.7364</td>
-      <td>-122.286</td>
-      <td>3170</td>
-      <td>11810</td>
-    </tr>
-    <tr>
-      <th>21602</th>
-      <td>3</td>
-      <td>1.75</td>
-      <td>1500</td>
-      <td>11968</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>6</td>
-      <td>1500</td>
-      <td>0</td>
-      <td>2014</td>
-      <td>0</td>
-      <td>98010</td>
-      <td>47.3095</td>
-      <td>-122.002</td>
-      <td>1320</td>
-      <td>11303</td>
-    </tr>
-    <tr>
-      <th>17730</th>
-      <td>2</td>
-      <td>1.00</td>
-      <td>1640</td>
-      <td>5200</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>7</td>
-      <td>1040</td>
-      <td>600</td>
-      <td>1937</td>
-      <td>0</td>
-      <td>98199</td>
-      <td>47.6426</td>
-      <td>-122.403</td>
-      <td>1780</td>
-      <td>5040</td>
-    </tr>
-    <tr>
-      <th>15725</th>
-      <td>3</td>
-      <td>3.00</td>
-      <td>1560</td>
-      <td>1466</td>
-      <td>3.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>8</td>
-      <td>1560</td>
-      <td>0</td>
-      <td>2006</td>
-      <td>0</td>
-      <td>98103</td>
-      <td>47.6604</td>
-      <td>-122.352</td>
-      <td>1530</td>
-      <td>2975</td>
-    </tr>
-    <tr>
-      <th>19966</th>
-      <td>4</td>
-      <td>2.50</td>
-      <td>2300</td>
-      <td>3825</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>7</td>
-      <td>2300</td>
-      <td>0</td>
-      <td>2012</td>
-      <td>0</td>
-      <td>98042</td>
-      <td>47.3594</td>
-      <td>-122.082</td>
-      <td>2110</td>
-      <td>3825</td>
-    </tr>
-  </tbody>
-</table>
-<p>17290 rows × 18 columns</p>
-</div></div></div>
 </div>
 <p>Notice a problem?!</p>
 <p>We can only visualize data when the dimensions &lt;= 3.</p>
@@ -2027,25 +1115,11 @@ High dimensional = 100s or 1000s of dimensions (roughly speaking, it depends on 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-76.4813,  44.2307])
-</pre></div>
-</div>
-</div>
 </div>
 <p>An example feature vector from the housing dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.00000e+00,  2.75000e+00,  2.17000e+03,  2.73800e+03,
-        1.50000e+00,  0.00000e+00,  0.00000e+00,  4.00000e+00,
-        9.00000e+00,  1.55000e+03,  6.20000e+02,  1.93000e+03,
-        0.00000e+00,  9.81090e+04,  4.76389e+01, -1.22349e+02,
-        1.17000e+03,  1.06200e+03])
 </pre></div>
 </div>
 </div>
@@ -2075,101 +1149,6 @@ High dimensional = 100s or 1000s of dimensions (roughly speaking, it depends on 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>160</th>
-      <td>-76.4813</td>
-      <td>44.2307</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>127</th>
-      <td>-81.2496</td>
-      <td>42.9837</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>169</th>
-      <td>-66.0580</td>
-      <td>45.2788</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>188</th>
-      <td>-73.2533</td>
-      <td>45.3057</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>187</th>
-      <td>-67.9245</td>
-      <td>47.1652</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>-76.3305</td>
-      <td>44.1255</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>-74.7287</td>
-      <td>45.0184</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>-121.4944</td>
-      <td>38.5816</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>126</th>
-      <td>-79.5656</td>
-      <td>43.6436</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>-66.9195</td>
-      <td>44.8938</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-<p>167 rows × 3 columns</p>
-</div></div></div>
 </div>
 <p>Let’s take 2 points (two feature vectors) from the cities dataset.</p>
 <div class="cell docutils container">
@@ -2179,43 +1158,6 @@ High dimensional = 100s or 1000s of dimensions (roughly speaking, it depends on 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>30</th>
-      <td>-66.9843</td>
-      <td>44.8607</td>
-    </tr>
-    <tr>
-      <th>171</th>
-      <td>-80.2632</td>
-      <td>43.1408</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>The two sampled points are shown as black circles below.</p>
 <p>Our goal is to find how similar these two points are.</p>
@@ -2228,85 +1170,11 @@ High dimensional = 100s or 1000s of dimensions (roughly speaking, it depends on 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-  #altair-viz-56e6a40269d041dbb576cb6b1db2b06f.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-56e6a40269d041dbb576cb6b1db2b06f.vega-embed details,
-  #altair-viz-56e6a40269d041dbb576cb6b1db2b06f.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-56e6a40269d041dbb576cb6b1db2b06f"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-56e6a40269d041dbb576cb6b1db2b06f") {
-      outputDiv = document.getElementById("altair-viz-56e6a40269d041dbb576cb6b1db2b06f");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-66158384001fb6a73b6445c49f67d5ce"}, "mark": {"type": "circle", "opacity": 0.6, "size": 20}, "encoding": {"color": {"field": "country", "scale": {"domain": ["Canada", "USA"], "range": ["red", "blue"]}, "type": "nominal"}, "x": {"field": "longitude", "scale": {"domain": [-140, -40]}, "type": "quantitative"}, "y": {"field": "latitude", "scale": {"domain": [20, 60]}, "type": "quantitative"}}}, {"data": {"name": "data-7c144ccbe61beb3e29b101c8ca59a046"}, "mark": {"type": "circle", "color": "black", "size": 130}, "encoding": {"x": {"field": "longitude", "type": "quantitative"}, "y": {"field": "latitude", "type": "quantitative"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-66158384001fb6a73b6445c49f67d5ce": [{"longitude": -76.4813, "latitude": 44.2307, "country": "Canada"}, {"longitude": -81.2496, "latitude": 42.9837, "country": "Canada"}, {"longitude": -66.058, "latitude": 45.2788, "country": "Canada"}, {"longitude": -73.2533, "latitude": 45.3057, "country": "Canada"}, {"longitude": -67.9245, "latitude": 47.1652, "country": "Canada"}, {"longitude": -120.3394, "latitude": 50.6758, "country": "Canada"}, {"longitude": -106.651, "latitude": 35.0841, "country": "USA"}, {"longitude": -79.6902, "latitude": 44.3893, "country": "Canada"}, {"longitude": -84.3201, "latitude": 46.5239, "country": "Canada"}, {"longitude": -98.4951, "latitude": 29.4246, "country": "USA"}, {"longitude": -77.0366, "latitude": 38.895, "country": "USA"}, {"longitude": -93.3968, "latitude": 48.6114, "country": "Canada"}, {"longitude": -67.2799, "latitude": 45.2004, "country": "Canada"}, {"longitude": -122.8565, "latitude": 49.3144, "country": "Canada"}, {"longitude": -63.572, "latitude": 44.68, "country": "Canada"}, {"longitude": -68.3219, "latitude": 47.3556, "country": "USA"}, {"longitude": -97.1385, "latitude": 49.8955, "country": "Canada"}, {"longitude": -122.3295, "latitude": 49.0521, "country": "Canada"}, {"longitude": -87.6244, "latitude": 41.8756, "country": "USA"}, {"longitude": -68.5897, "latitude": 47.2587, "country": "USA"}, {"longitude": -73.4467, "latitude": 45.5172, "country": "Canada"}, {"longitude": -63.5859, "latitude": 44.6486, "country": "Canada"}, {"longitude": -97.7437, "latitude": 30.2711, "country": "USA"}, {"longitude": -79.0247, "latitude": 43.8504, "country": "Canada"}, {"longitude": -111.9639, "latitude": 49.0017, "country": "Canada"}, {"longitude": -129.9912, "latitude": 55.9383, "country": "Canada"}, {"longitude": -78.9186, "latitude": 42.9131, "country": "Canada"}, {"longitude": -71.7985, "latitude": 45.0126, "country": "Canada"}, {"longitude": -95.9929, "latitude": 36.1557, "country": "USA"}, {"longitude": -123.0833, "latitude": 49.0167, "country": "Canada"}, {"longitude": -94.5648, "latitude": 48.7227, "country": "Canada"}, {"longitude": -118.7148, "latitude": 50.4165, "country": "Canada"}, {"longitude": -97.2049, "latitude": 48.9988, "country": "USA"}, {"longitude": -122.7933, "latitude": 49.2843, "country": "Canada"}, {"longitude": -97.1056, "latitude": 32.7019, "country": "USA"}, {"longitude": -72.5565, "latitude": 46.3327, "country": "Canada"}, {"longitude": -75.1635, "latitude": 39.9527, "country": "USA"}, {"longitude": -110.9748, "latitude": 32.2229, "country": "USA"}, {"longitude": -67.2781, "latitude": 45.189, "country": "USA"}, {"longitude": -83.0466, "latitude": 42.3316, "country": "USA"}, {"longitude": -79.7599, "latitude": 43.6858, "country": "Canada"}, {"longitude": -84.3201, "latitude": 46.5239, "country": "Canada"}, {"longitude": -106.6608, "latitude": 52.1318, "country": "Canada"}, {"longitude": -83.0007, "latitude": 39.9623, "country": "USA"}, {"longitude": -75.7106, "latitude": 45.4284, "country": "Canada"}, {"longitude": -52.7151, "latitude": 47.5617, "country": "Canada"}, {"longitude": -113.508, "latitude": 53.5354, "country": "Canada"}, {"longitude": -76.6108, "latitude": 39.2909, "country": "USA"}, {"longitude": -97.5533, "latitude": 48.7531, "country": "USA"}, {"longitude": -66.9843, "latitude": 44.8607, "country": "USA"}, {"longitude": -113.8184, "latitude": 52.2698, "country": "Canada"}, {"longitude": -113.2966, "latitude": 53.5257, "country": "Canada"}, {"longitude": -79.4394, "latitude": 43.8801, "country": "Canada"}, {"longitude": -66.9905, "latitude": 44.9065, "country": "USA"}, {"longitude": -112.0741, "latitude": 33.4484, "country": "USA"}, {"longitude": -130.0437, "latitude": 55.9773, "country": "USA"}, {"longitude": -75.7887, "latitude": 45.3113, "country": "Canada"}, {"longitude": -80.8431, "latitude": 35.2272, "country": "USA"}, {"longitude": -79.6667, "latitude": 43.4474, "country": "Canada"}, {"longitude": -121.8906, "latitude": 37.3362, "country": "USA"}, {"longitude": -85.7039, "latitude": 38.2092, "country": "USA"}, {"longitude": -73.6515, "latitude": 45.7081, "country": "Canada"}, {"longitude": -122.4199, "latitude": 37.779, "country": "USA"}, {"longitude": -79.4109, "latitude": 43.7615, "country": "Canada"}, {"longitude": -67.9245, "latitude": 47.1652, "country": "Canada"}, {"longitude": -111.9626, "latitude": 48.9971, "country": "USA"}, {"longitude": -79.0359, "latitude": 43.1726, "country": "USA"}, {"longitude": -73.6875, "latitude": 45.5089, "country": "Canada"}, {"longitude": -111.8315, "latitude": 33.4151, "country": "USA"}, {"longitude": -114.0626, "latitude": 51.0534, "country": "Canada"}, {"longitude": -73.6289, "latitude": 45.468, "country": "Canada"}, {"longitude": -75.9774, "latitude": 36.853, "country": "USA"}, {"longitude": -79.3839, "latitude": 43.6535, "country": "Canada"}, {"longitude": -87.9225, "latitude": 43.035, "country": "USA"}, {"longitude": -72.7218, "latitude": 45.399, "country": "Canada"}, {"longitude": -117.1628, "latitude": 32.7174, "country": "USA"}, {"longitude": -67.4297, "latitude": 45.5634, "country": "USA"}, {"longitude": -83.0466, "latitude": 42.3316, "country": "USA"}, {"longitude": -123.1374, "latitude": 49.1632, "country": "Canada"}, {"longitude": -119.4983, "latitude": 49.8893, "country": "Canada"}, {"longitude": -79.8729, "latitude": 43.2561, "country": "Canada"}, {"longitude": -122.5997, "latitude": 49.2197, "country": "Canada"}, {"longitude": -80.2632, "latitude": 43.1408, "country": "Canada"}, {"longitude": -79.2441, "latitude": 43.158, "country": "Canada"}, {"longitude": -97.2089, "latitude": 49.0061, "country": "Canada"}, {"longitude": -94.6002, "latitude": 48.7124, "country": "USA"}, {"longitude": -102.5496, "latitude": 48.9959, "country": "USA"}, {"longitude": -83.0353, "latitude": 42.3171, "country": "Canada"}, {"longitude": -71.889, "latitude": 45.4033, "country": "Canada"}, {"longitude": -66.6458, "latitude": 45.9664, "country": "Canada"}, {"longitude": -71.0692, "latitude": 48.406, "country": "Canada"}, {"longitude": -84.3902, "latitude": 33.7491, "country": "USA"}, {"longitude": -122.7436, "latitude": 48.9881, "country": "USA"}, {"longitude": -102.548, "latitude": 49.0014, "country": "Canada"}, {"longitude": -104.6173, "latitude": 50.4488, "country": "Canada"}, {"longitude": -122.3301, "latitude": 47.6038, "country": "USA"}, {"longitude": -123.114, "latitude": 49.2609, "country": "Canada"}, {"longitude": -71.0583, "latitude": 42.3603, "country": "USA"}, {"longitude": -134.4197, "latitude": 58.3019, "country": "USA"}, {"longitude": -75.4864, "latitude": 44.6943, "country": "USA"}, {"longitude": -82.4405, "latitude": 42.9816, "country": "USA"}, {"longitude": -71.3998, "latitude": 46.8884, "country": "Canada"}, {"longitude": -122.6742, "latitude": 45.5202, "country": "USA"}, {"longitude": -67.9353, "latitude": 47.1575, "country": "USA"}, {"longitude": -69.265, "latitude": 47.5052, "country": "Canada"}, {"longitude": -97.3327, "latitude": 32.7532, "country": "USA"}, {"longitude": -123.365, "latitude": 48.4283, "country": "Canada"}, {"longitude": -68.3281, "latitude": 47.3644, "country": "Canada"}, {"longitude": -78.8784, "latitude": 42.8867, "country": "USA"}, {"longitude": -79.5268, "latitude": 43.7942, "country": "Canada"}, {"longitude": -79.6457, "latitude": 43.5903, "country": "Canada"}, {"longitude": -79.4608, "latitude": 46.3092, "country": "Canada"}, {"longitude": -95.9384, "latitude": 41.2587, "country": "USA"}, {"longitude": -79.0615, "latitude": 43.0844, "country": "USA"}, {"longitude": -79.7967, "latitude": 43.3249, "country": "Canada"}, {"longitude": -69.2275, "latitude": 47.4562, "country": "USA"}, {"longitude": -123.0833, "latitude": 49.0833, "country": "Canada"}, {"longitude": -90.0516, "latitude": 35.149, "country": "USA"}, {"longitude": -122.2714, "latitude": 37.8045, "country": "USA"}, {"longitude": -119.7848, "latitude": 36.7394, "country": "USA"}, {"longitude": -104.8253, "latitude": 38.834, "country": "USA"}, {"longitude": -74.0132, "latitude": 45.7754, "country": "Canada"}, {"longitude": -79.3377, "latitude": 43.8564, "country": "Canada"}, {"longitude": -93.2655, "latitude": 44.9773, "country": "USA"}, {"longitude": -95.3677, "latitude": 29.7589, "country": "USA"}, {"longitude": -80.3123, "latitude": 43.3601, "country": "Canada"}, {"longitude": -79.1153, "latitude": 43.101, "country": "Canada"}, {"longitude": -79.7599, "latitude": 43.6858, "country": "Canada"}, {"longitude": -75.5192, "latitude": 44.7184, "country": "Canada"}, {"longitude": -68.6034, "latitude": 47.2527, "country": "Canada"}, {"longitude": -83.0353, "latitude": 42.3171, "country": "Canada"}, {"longitude": -73.7344, "latitude": 45.6056, "country": "Canada"}, {"longitude": -72.0968, "latitude": 45.0072, "country": "Canada"}, {"longitude": -67.5735, "latitude": 46.1503, "country": "Canada"}, {"longitude": -80.4944, "latitude": 43.4532, "country": "Canada"}, {"longitude": -79.1153, "latitude": 43.101, "country": "Canada"}, {"longitude": -110.679, "latitude": 50.043, "country": "Canada"}, {"longitude": -78.3199, "latitude": 44.3048, "country": "Canada"}, {"longitude": -79.2506, "latitude": 42.9931, "country": "Canada"}, {"longitude": -96.7969, "latitude": 32.7763, "country": "USA"}, {"longitude": -122.3295, "latitude": 49.0521, "country": "Canada"}, {"longitude": -123.078, "latitude": 48.9854, "country": "USA"}, {"longitude": -97.5171, "latitude": 35.473, "country": "USA"}, {"longitude": -104.9849, "latitude": 39.7392, "country": "USA"}, {"longitude": -94.5781, "latitude": 39.1001, "country": "USA"}, {"longitude": -122.9109, "latitude": 49.2068, "country": "Canada"}, {"longitude": -89.2598, "latitude": 48.4064, "country": "Canada"}, {"longitude": -82.4584, "latitude": 27.9478, "country": "USA"}, {"longitude": -71.1473, "latitude": 48.382, "country": "Canada"}, {"longitude": -71.1753, "latitude": 46.791, "country": "Canada"}, {"longitude": -73.6104, "latitude": 45.4972, "country": "Canada"}, {"longitude": -79.8828, "latitude": 43.5137, "country": "Canada"}, {"longitude": -118.2428, "latitude": 34.0537, "country": "USA"}, {"longitude": -118.1916, "latitude": 33.769, "country": "USA"}, {"longitude": -86.1584, "latitude": 39.7683, "country": "USA"}, {"longitude": -72.9406, "latitude": 45.6275, "country": "Canada"}, {"longitude": -75.6903, "latitude": 45.4211, "country": "Canada"}, {"longitude": -76.3019, "latitude": 44.211, "country": "Canada"}, {"longitude": -115.1485, "latitude": 36.1673, "country": "USA"}, {"longitude": -122.8491, "latitude": 49.1913, "country": "Canada"}, {"longitude": -67.4253, "latitude": 45.5672, "country": "Canada"}, {"longitude": -122.8491, "latitude": 49.1913, "country": "Canada"}, {"longitude": -76.3305, "latitude": 44.1255, "country": "USA"}, {"longitude": -74.7287, "latitude": 45.0184, "country": "Canada"}, {"longitude": -121.4944, "latitude": 38.5816, "country": "USA"}, {"longitude": -79.5656, "latitude": 43.6436, "country": "Canada"}, {"longitude": -66.9195, "latitude": 44.8938, "country": "Canada"}], "data-7c144ccbe61beb3e29b101c8ca59a046": [{"longitude": -66.9843, "latitude": 44.8607}, {"longitude": -80.2632, "latitude": 43.1408}]}}, {"mode": "vega-lite"});
-</script></div></div>
 </div>
 <p>First, we subtract these two cities. We are subtracting the city at index 0 from the city at index 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_cities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">two_cities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude   -13.2789
-latitude     -1.7199
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2318,23 +1186,11 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude    176.329185
-latitude       2.958056
-dtype: float64
-</pre></div>
-</div>
-</div>
 </div>
 <p>Then we sum up the squared differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">two_cities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">two_cities</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>179.28724121999983
 </pre></div>
 </div>
 </div>
@@ -2347,11 +1203,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.389818565611703
-</pre></div>
-</div>
-</div>
 </div>
 <p>We end with a value of 13.3898 which is the distance between the two cities in feature space.</p>
 </div>
@@ -2361,12 +1212,6 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">two_cities</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.        , 13.38981857],
-       [13.38981857,  0.        ]])
 </pre></div>
 </div>
 </div>
@@ -2399,34 +1244,12 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.        ,  4.92866046, 10.47586257, ..., 45.36619339,
-         3.13968038,  9.58476504],
-       [ 4.92866046,  0.        , 15.36399019, ..., 40.48484175,
-         1.80868018, 14.45684087],
-       [10.47586257, 15.36399019,  0.        , ..., 55.83947468,
-        13.60621684,  0.94361393],
-       ...,
-       [45.36619339, 40.48484175, 55.83947468, ...,  0.        ,
-        42.23325838, 54.93872568],
-       [ 3.13968038,  1.80868018, 13.60621684, ..., 42.23325838,
-         0.        , 12.70774745],
-       [ 9.58476504, 14.45684087,  0.94361393, ..., 54.93872568,
-        12.70774745,  0.        ]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>This is going to be of shape 167 by 167 as this was the number of examples in our training portion.</p>
 <p>Each row here gives us the distance of that particular city to all other cities in the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dists</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(167, 167)
 </pre></div>
 </div>
 </div>
@@ -2437,317 +1260,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>...</th>
-      <th>157</th>
-      <th>158</th>
-      <th>159</th>
-      <th>160</th>
-      <th>161</th>
-      <th>162</th>
-      <th>163</th>
-      <th>164</th>
-      <th>165</th>
-      <th>166</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.000000</td>
-      <td>4.928660</td>
-      <td>10.475863</td>
-      <td>3.402295</td>
-      <td>9.046000</td>
-      <td>44.329135</td>
-      <td>31.525721</td>
-      <td>3.212817</td>
-      <td>8.167347</td>
-      <td>26.529757</td>
-      <td>...</td>
-      <td>0.180478</td>
-      <td>39.498997</td>
-      <td>46.632397</td>
-      <td>9.154090</td>
-      <td>46.632397</td>
-      <td>0.183869</td>
-      <td>1.921478</td>
-      <td>45.366193</td>
-      <td>3.139680</td>
-      <td>9.584765</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.928660</td>
-      <td>0.000000</td>
-      <td>15.363990</td>
-      <td>8.326614</td>
-      <td>13.965788</td>
-      <td>39.839439</td>
-      <td>26.601406</td>
-      <td>2.099390</td>
-      <td>4.686255</td>
-      <td>21.937558</td>
-      <td>...</td>
-      <td>5.097647</td>
-      <td>34.577431</td>
-      <td>42.060108</td>
-      <td>14.063632</td>
-      <td>42.060108</td>
-      <td>5.049876</td>
-      <td>6.830969</td>
-      <td>40.484842</td>
-      <td>1.808680</td>
-      <td>14.456841</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10.475863</td>
-      <td>15.363990</td>
-      <td>0.000000</td>
-      <td>7.195350</td>
-      <td>2.653738</td>
-      <td>54.549042</td>
-      <td>41.853597</td>
-      <td>13.661189</td>
-      <td>18.304496</td>
-      <td>36.104309</td>
-      <td>...</td>
-      <td>10.299402</td>
-      <td>49.928916</td>
-      <td>56.925712</td>
-      <td>1.397385</td>
-      <td>56.925712</td>
-      <td>10.337038</td>
-      <td>8.674609</td>
-      <td>55.839475</td>
-      <td>13.606217</td>
-      <td>0.943614</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3.402295</td>
-      <td>8.326614</td>
-      <td>7.195350</td>
-      <td>0.000000</td>
-      <td>5.643921</td>
-      <td>47.391337</td>
-      <td>34.926888</td>
-      <td>6.501805</td>
-      <td>11.133646</td>
-      <td>29.822103</td>
-      <td>...</td>
-      <td>3.239187</td>
-      <td>42.880277</td>
-      <td>49.747776</td>
-      <td>5.833864</td>
-      <td>49.747776</td>
-      <td>3.295760</td>
-      <td>1.503112</td>
-      <td>48.707466</td>
-      <td>6.527458</td>
-      <td>6.347179</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>9.046000</td>
-      <td>13.965788</td>
-      <td>2.653738</td>
-      <td>5.643921</td>
-      <td>0.000000</td>
-      <td>52.532333</td>
-      <td>40.567164</td>
-      <td>12.088727</td>
-      <td>16.408137</td>
-      <td>35.345303</td>
-      <td>...</td>
-      <td>8.883025</td>
-      <td>48.487730</td>
-      <td>54.961957</td>
-      <td>1.674158</td>
-      <td>54.961957</td>
-      <td>8.938714</td>
-      <td>7.134836</td>
-      <td>54.253225</td>
-      <td>12.162108</td>
-      <td>2.483804</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>0.183869</td>
-      <td>5.049876</td>
-      <td>10.337038</td>
-      <td>3.295760</td>
-      <td>8.938714</td>
-      <td>44.493704</td>
-      <td>31.639843</td>
-      <td>3.370041</td>
-      <td>8.341824</td>
-      <td>26.596728</td>
-      <td>...</td>
-      <td>0.090157</td>
-      <td>39.625372</td>
-      <td>46.793616</td>
-      <td>9.021147</td>
-      <td>46.793616</td>
-      <td>0.000000</td>
-      <td>1.833858</td>
-      <td>45.502887</td>
-      <td>3.270795</td>
-      <td>9.442309</td>
-    </tr>
-    <tr>
-      <th>163</th>
-      <td>1.921478</td>
-      <td>6.830969</td>
-      <td>8.674609</td>
-      <td>1.503112</td>
-      <td>7.134836</td>
-      <td>45.960223</td>
-      <td>33.432373</td>
-      <td>5.001225</td>
-      <td>9.708835</td>
-      <td>28.425488</td>
-      <td>...</td>
-      <td>1.768291</td>
-      <td>41.377557</td>
-      <td>48.300994</td>
-      <td>7.323990</td>
-      <td>48.300994</td>
-      <td>1.833858</td>
-      <td>0.000000</td>
-      <td>47.206600</td>
-      <td>5.028487</td>
-      <td>7.810194</td>
-    </tr>
-    <tr>
-      <th>164</th>
-      <td>45.366193</td>
-      <td>40.484842</td>
-      <td>55.839475</td>
-      <td>48.707466</td>
-      <td>54.253225</td>
-      <td>12.149226</td>
-      <td>15.249886</td>
-      <td>42.205693</td>
-      <td>38.013270</td>
-      <td>24.755170</td>
-      <td>...</td>
-      <td>45.541763</td>
-      <td>6.789646</td>
-      <td>10.695838</td>
-      <td>54.518494</td>
-      <td>10.695838</td>
-      <td>45.502887</td>
-      <td>47.206600</td>
-      <td>0.000000</td>
-      <td>42.233258</td>
-      <td>54.938726</td>
-    </tr>
-    <tr>
-      <th>165</th>
-      <td>3.139680</td>
-      <td>1.808680</td>
-      <td>13.606217</td>
-      <td>6.527458</td>
-      <td>12.162108</td>
-      <td>41.375773</td>
-      <td>28.405702</td>
-      <td>0.756038</td>
-      <td>5.558903</td>
-      <td>23.675006</td>
-      <td>...</td>
-      <td>3.312655</td>
-      <td>36.359838</td>
-      <td>43.637580</td>
-      <td>12.291750</td>
-      <td>43.637580</td>
-      <td>3.270795</td>
-      <td>5.028487</td>
-      <td>42.233258</td>
-      <td>0.000000</td>
-      <td>12.707747</td>
-    </tr>
-    <tr>
-      <th>166</th>
-      <td>9.584765</td>
-      <td>14.456841</td>
-      <td>0.943614</td>
-      <td>6.347179</td>
-      <td>2.483804</td>
-      <td>53.731902</td>
-      <td>40.924593</td>
-      <td>12.780661</td>
-      <td>17.476788</td>
-      <td>35.161267</td>
-      <td>...</td>
-      <td>9.407212</td>
-      <td>49.012123</td>
-      <td>56.094462</td>
-      <td>0.842200</td>
-      <td>56.094462</td>
-      <td>9.442309</td>
-      <td>7.810194</td>
-      <td>54.938726</td>
-      <td>12.707747</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>167 rows × 167 columns</p>
-</div></div></div>
 </div>
 <p>The distance of each city to itself is going to be zero.</p>
 <p>If we don’t replace the 0’s on the diagonal with infinity, each city’s most similar city is going to be itself which is not useful.</p>
@@ -2758,317 +1270,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>...</th>
-      <th>157</th>
-      <th>158</th>
-      <th>159</th>
-      <th>160</th>
-      <th>161</th>
-      <th>162</th>
-      <th>163</th>
-      <th>164</th>
-      <th>165</th>
-      <th>166</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>inf</td>
-      <td>4.928660</td>
-      <td>10.475863</td>
-      <td>3.402295</td>
-      <td>9.046000</td>
-      <td>44.329135</td>
-      <td>31.525721</td>
-      <td>3.212817</td>
-      <td>8.167347</td>
-      <td>26.529757</td>
-      <td>...</td>
-      <td>0.180478</td>
-      <td>39.498997</td>
-      <td>46.632397</td>
-      <td>9.154090</td>
-      <td>46.632397</td>
-      <td>0.183869</td>
-      <td>1.921478</td>
-      <td>45.366193</td>
-      <td>3.139680</td>
-      <td>9.584765</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.928660</td>
-      <td>inf</td>
-      <td>15.363990</td>
-      <td>8.326614</td>
-      <td>13.965788</td>
-      <td>39.839439</td>
-      <td>26.601406</td>
-      <td>2.099390</td>
-      <td>4.686255</td>
-      <td>21.937558</td>
-      <td>...</td>
-      <td>5.097647</td>
-      <td>34.577431</td>
-      <td>42.060108</td>
-      <td>14.063632</td>
-      <td>42.060108</td>
-      <td>5.049876</td>
-      <td>6.830969</td>
-      <td>40.484842</td>
-      <td>1.808680</td>
-      <td>14.456841</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10.475863</td>
-      <td>15.363990</td>
-      <td>inf</td>
-      <td>7.195350</td>
-      <td>2.653738</td>
-      <td>54.549042</td>
-      <td>41.853597</td>
-      <td>13.661189</td>
-      <td>18.304496</td>
-      <td>36.104309</td>
-      <td>...</td>
-      <td>10.299402</td>
-      <td>49.928916</td>
-      <td>56.925712</td>
-      <td>1.397385</td>
-      <td>56.925712</td>
-      <td>10.337038</td>
-      <td>8.674609</td>
-      <td>55.839475</td>
-      <td>13.606217</td>
-      <td>0.943614</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3.402295</td>
-      <td>8.326614</td>
-      <td>7.195350</td>
-      <td>inf</td>
-      <td>5.643921</td>
-      <td>47.391337</td>
-      <td>34.926888</td>
-      <td>6.501805</td>
-      <td>11.133646</td>
-      <td>29.822103</td>
-      <td>...</td>
-      <td>3.239187</td>
-      <td>42.880277</td>
-      <td>49.747776</td>
-      <td>5.833864</td>
-      <td>49.747776</td>
-      <td>3.295760</td>
-      <td>1.503112</td>
-      <td>48.707466</td>
-      <td>6.527458</td>
-      <td>6.347179</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>9.046000</td>
-      <td>13.965788</td>
-      <td>2.653738</td>
-      <td>5.643921</td>
-      <td>inf</td>
-      <td>52.532333</td>
-      <td>40.567164</td>
-      <td>12.088727</td>
-      <td>16.408137</td>
-      <td>35.345303</td>
-      <td>...</td>
-      <td>8.883025</td>
-      <td>48.487730</td>
-      <td>54.961957</td>
-      <td>1.674158</td>
-      <td>54.961957</td>
-      <td>8.938714</td>
-      <td>7.134836</td>
-      <td>54.253225</td>
-      <td>12.162108</td>
-      <td>2.483804</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>0.183869</td>
-      <td>5.049876</td>
-      <td>10.337038</td>
-      <td>3.295760</td>
-      <td>8.938714</td>
-      <td>44.493704</td>
-      <td>31.639843</td>
-      <td>3.370041</td>
-      <td>8.341824</td>
-      <td>26.596728</td>
-      <td>...</td>
-      <td>0.090157</td>
-      <td>39.625372</td>
-      <td>46.793616</td>
-      <td>9.021147</td>
-      <td>46.793616</td>
-      <td>inf</td>
-      <td>1.833858</td>
-      <td>45.502887</td>
-      <td>3.270795</td>
-      <td>9.442309</td>
-    </tr>
-    <tr>
-      <th>163</th>
-      <td>1.921478</td>
-      <td>6.830969</td>
-      <td>8.674609</td>
-      <td>1.503112</td>
-      <td>7.134836</td>
-      <td>45.960223</td>
-      <td>33.432373</td>
-      <td>5.001225</td>
-      <td>9.708835</td>
-      <td>28.425488</td>
-      <td>...</td>
-      <td>1.768291</td>
-      <td>41.377557</td>
-      <td>48.300994</td>
-      <td>7.323990</td>
-      <td>48.300994</td>
-      <td>1.833858</td>
-      <td>inf</td>
-      <td>47.206600</td>
-      <td>5.028487</td>
-      <td>7.810194</td>
-    </tr>
-    <tr>
-      <th>164</th>
-      <td>45.366193</td>
-      <td>40.484842</td>
-      <td>55.839475</td>
-      <td>48.707466</td>
-      <td>54.253225</td>
-      <td>12.149226</td>
-      <td>15.249886</td>
-      <td>42.205693</td>
-      <td>38.013270</td>
-      <td>24.755170</td>
-      <td>...</td>
-      <td>45.541763</td>
-      <td>6.789646</td>
-      <td>10.695838</td>
-      <td>54.518494</td>
-      <td>10.695838</td>
-      <td>45.502887</td>
-      <td>47.206600</td>
-      <td>inf</td>
-      <td>42.233258</td>
-      <td>54.938726</td>
-    </tr>
-    <tr>
-      <th>165</th>
-      <td>3.139680</td>
-      <td>1.808680</td>
-      <td>13.606217</td>
-      <td>6.527458</td>
-      <td>12.162108</td>
-      <td>41.375773</td>
-      <td>28.405702</td>
-      <td>0.756038</td>
-      <td>5.558903</td>
-      <td>23.675006</td>
-      <td>...</td>
-      <td>3.312655</td>
-      <td>36.359838</td>
-      <td>43.637580</td>
-      <td>12.291750</td>
-      <td>43.637580</td>
-      <td>3.270795</td>
-      <td>5.028487</td>
-      <td>42.233258</td>
-      <td>inf</td>
-      <td>12.707747</td>
-    </tr>
-    <tr>
-      <th>166</th>
-      <td>9.584765</td>
-      <td>14.456841</td>
-      <td>0.943614</td>
-      <td>6.347179</td>
-      <td>2.483804</td>
-      <td>53.731902</td>
-      <td>40.924593</td>
-      <td>12.780661</td>
-      <td>17.476788</td>
-      <td>35.161267</td>
-      <td>...</td>
-      <td>9.407212</td>
-      <td>49.012123</td>
-      <td>56.094462</td>
-      <td>0.842200</td>
-      <td>56.094462</td>
-      <td>9.442309</td>
-      <td>7.810194</td>
-      <td>54.938726</td>
-      <td>12.707747</td>
-      <td>inf</td>
-    </tr>
-  </tbody>
-</table>
-<p>167 rows × 167 columns</p>
-</div></div></div>
 </div>
 <p>Now let’s look at the distance between city 0 and some other cities.</p>
 <p>We can look at city 0 with its respective <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> values.</p>
@@ -3078,83 +1279,11 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>160</th>
-      <td>-76.4813</td>
-      <td>44.2307</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>And the distances from city 0 to the other cities in the training dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([        inf,  4.92866046, 10.47586257,  3.40229467,  9.04600003,
-       44.32913545, 31.52572108,  3.21281701,  8.16734667, 26.52975665,
-        5.36451793, 17.47354208,  9.25235538, 46.65300827, 12.91711643,
-        8.73732272, 21.41984759, 46.10101237, 11.38925694,  8.45258153,
-        3.29603996, 12.90216965, 25.43541008,  2.57167487, 35.80191816,
-       54.77569987,  2.77064993,  4.74762925, 21.11653758, 46.84711517,
-       18.63306299, 42.68410294, 21.26505054, 46.58691036, 23.62784332,
-        4.45224202,  4.47636916, 36.52381145,  9.25295786,  6.83445279,
-        3.32357247,  8.16734667, 31.19662805,  7.79242035,  1.42424148,
-       23.99849627, 38.17792497,  4.94149717, 21.5518279 ,  9.51787313,
-       38.19275017, 37.97055885,  2.97880445,  9.51483002, 37.1901251 ,
-       54.83532899,  1.28350735, 10.0044146 ,  3.28029451, 45.92971431,
-       11.01430039,  3.19225293, 46.38943202,  2.96693525,  9.04600003,
-       35.80001702,  2.76505999,  3.07231406, 36.96774058, 38.19559327,
-        3.10919556,  7.39488827,  2.95943349, 11.50351059,  3.93684711,
-       42.2793155 ,  9.14918312,  6.83445279, 46.91610836, 43.38757936,
-        3.5288519 , 46.38746533,  3.93581626,  2.96373905, 21.27058643,
-       18.66494501, 26.50025275,  6.82764827,  4.7396424 ,  9.9874779 ,
-        6.83549241, 13.13067545, 46.50627115, 26.49966844, 28.81491391,
-       45.97271218, 46.90321547,  5.73649067, 59.62262041,  1.09761148,
-        6.08870392,  5.73454545, 46.21089504,  9.03328701,  7.92447701,
-       23.80155222, 47.07123507,  8.73468637,  2.74816746,  3.07662193,
-        3.22855068,  3.63284771, 19.68277227,  2.82337311,  3.43691007,
-        7.93860597, 46.85396601, 16.3288186 , 46.23882897, 43.94670281,
-       28.85319232,  2.91163454,  2.88081958, 16.80079704, 23.7934676 ,
-        3.9286773 ,  2.86603875,  3.32357247,  1.07865087,  8.4376414 ,
-        6.82764827,  3.0717763 ,  4.45272866,  9.11228649,  4.08772282,
-        2.86603875, 34.6881178 ,  1.8400926 ,  3.03326165, 23.32224009,
-       46.10101237, 46.83865522, 22.78600867, 28.85530775, 18.81002995,
-       46.69549579, 13.44345687, 17.34527477,  6.75905672,  5.89141512,
-        3.13784784,  3.47624672, 42.98365051, 43.00228242, 10.65641958,
-        3.80625889,  1.42924216,  0.18047839, 39.49899714, 46.63239678,
-        9.15409025, 46.63239678,  0.18386865,  1.92147809, 45.36619339,
-        3.13968038,  9.58476504])
 </pre></div>
 </div>
 </div>
@@ -3167,11 +1296,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>157
-</pre></div>
-</div>
-</div>
 </div>
 <p>The closest city in the training dataset is the city with index 157.</p>
 <p>This corresponds to index 96 from the original dataset before shuffling.</p>
@@ -3181,40 +1305,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>96</th>
-      <td>-76.3019</td>
-      <td>44.211</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>If we look at the <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> values for the city at index 157 (labelled 96), they look pretty close to those of city 0.</p>
 <div class="cell docutils container">
@@ -3223,49 +1313,10 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>160</th>
-      <td>-76.4813</td>
-      <td>44.2307</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dists</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">157</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.18047839205805613
 </pre></div>
 </div>
 </div>
@@ -3283,20 +1334,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[19.54996348],
-       [18.02706204],
-       [24.60912622],
-       [21.39718237],
-       [25.24111312],
-       [47.81750619],
-       [28.49499735],
-       [19.39177482],
-       [21.95316686],
-       [19.01698738]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can find the city closest to the query point (-80, 25) using:</p>
 <div class="cell docutils container">
@@ -3305,20 +1342,10 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>147
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dists</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dists</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.83839229])
 </pre></div>
 </div>
 </div>
@@ -3333,11 +1360,6 @@ These are often called the “Nearest Neighbors”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[3.83839229]]), array([[147]]))
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can also use <code class="docutils literal notranslate"><span class="pre">kneighbors</span></code> to find the 5 nearest cities in the training split to one of the cities in the test split.</p>
 <div class="cell docutils container">
@@ -3347,12 +1369,6 @@ These are often called the “Nearest Neighbors”.</p>
 <span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cities_train_df</span><span class="p">[[</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">]]);</span>
 <span class="n">nn</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">cities_test_X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.03461517, 0.90722048, 0.90722048, 0.90970871, 0.90970871]]),
- array([[100,  39,  77, 130,  87]]))
 </pre></div>
 </div>
 </div>
@@ -3441,40 +1457,6 @@ d) <code class="docutils literal notranslate"><span class="pre">array([1,</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>195</th>
-      <td>-122.7454</td>
-      <td>53.9129</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3493,73 +1475,6 @@ d) <code class="docutils literal notranslate"><span class="pre">array([1,</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-  #altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19.vega-embed details,
-  #altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19") {
-      outputDiv = document.getElementById("altair-viz-50dd74a7b56c4f8b82dc9cf2e700aa19");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-c4c6612deb1589c1d2e3cbfa1b504ae9"}, "mark": {"type": "circle"}, "encoding": {"color": {"field": "country", "scale": {"domain": ["Canada", "USA"], "range": ["red", "blue"]}, "type": "nominal"}, "x": {"field": "longitude", "scale": {"domain": [-140, -40]}, "type": "quantitative"}, "y": {"field": "latitude", "scale": {"domain": [20, 60]}, "type": "quantitative"}}}, {"data": {"name": "data-d0ae25a3f6b392271f284534b330ba9e"}, "mark": {"type": "point", "fill": "darkgreen", "opacity": 1, "shape": "triangle-up", "size": 400}, "encoding": {"x": {"field": "longitude", "type": "quantitative"}, "y": {"field": "latitude", "type": "quantitative"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c4c6612deb1589c1d2e3cbfa1b504ae9": [{"longitude": -79.4608, "latitude": 46.3092, "country": "Canada"}, {"longitude": -84.3902, "latitude": 33.7491, "country": "USA"}, {"longitude": -67.4253, "latitude": 45.5672, "country": "Canada"}, {"longitude": -97.7437, "latitude": 30.2711, "country": "USA"}, {"longitude": -97.1385, "latitude": 49.8955, "country": "Canada"}, {"longitude": -82.4584, "latitude": 27.9478, "country": "USA"}, {"longitude": -71.1473, "latitude": 48.382, "country": "Canada"}, {"longitude": -104.9849, "latitude": 39.7392, "country": "USA"}, {"longitude": -76.3305, "latitude": 44.1255, "country": "USA"}, {"longitude": -76.4813, "latitude": 44.2307, "country": "Canada"}, {"longitude": -111.8315, "latitude": 33.4151, "country": "USA"}, {"longitude": -115.1485, "latitude": 36.1673, "country": "USA"}, {"longitude": -102.5496, "latitude": 48.9959, "country": "USA"}, {"longitude": -68.5897, "latitude": 47.2587, "country": "USA"}, {"longitude": -71.0692, "latitude": 48.406, "country": "Canada"}, {"longitude": -66.9905, "latitude": 44.9065, "country": "USA"}, {"longitude": -122.8491, "latitude": 49.1913, "country": "Canada"}, {"longitude": -84.3201, "latitude": 46.5239, "country": "Canada"}, {"longitude": -79.1153, "latitude": 43.101, "country": "Canada"}, {"longitude": -122.4199, "latitude": 37.779, "country": "USA"}, {"longitude": -122.6742, "latitude": 45.5202, "country": "USA"}, {"longitude": -66.9843, "latitude": 44.8607, "country": "USA"}, {"longitude": -71.3998, "latitude": 46.8884, "country": "Canada"}, {"longitude": -95.9384, "latitude": 41.2587, "country": "USA"}, {"longitude": -98.4951, "latitude": 29.4246, "country": "USA"}, {"longitude": -82.4405, "latitude": 42.9816, "country": "USA"}, {"longitude": -79.2506, "latitude": 42.9931, "country": "Canada"}, {"longitude": -118.1916, "latitude": 33.769, "country": "USA"}, {"longitude": -86.1584, "latitude": 39.7683, "country": "USA"}, {"longitude": -75.9774, "latitude": 36.853, "country": "USA"}], "data-d0ae25a3f6b392271f284534b330ba9e": [{"longitude": -122.7454, "latitude": 53.9129, "country": "Canada"}]}}, {"mode": "vega-lite"});
-</script></div></div>
 </div>
 <p>We want to find the class for this green triangle city.</p>
 <div class="cell docutils container">
@@ -3567,11 +1482,6 @@ d) <code class="docutils literal notranslate"><span class="pre">array([1,</span>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neigh_clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">neigh_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">small_X_train</span><span class="p">,</span> <span class="n">small_y_train</span><span class="p">)</span>
 <span class="n">neigh_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">one_city</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Canada&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3584,11 +1494,6 @@ d) <code class="docutils literal notranslate"><span class="pre">array([1,</span>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neigh_clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">neigh_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">small_X_train</span><span class="p">,</span> <span class="n">small_y_train</span><span class="p">)</span>
 <span class="n">neigh_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">one_city</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;USA&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -3617,118 +1522,10 @@ d) <code class="docutils literal notranslate"><span class="pre">array([1,</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fit_time</th>
-      <th>score_time</th>
-      <th>test_score</th>
-      <th>train_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.001359</td>
-      <td>0.002368</td>
-      <td>0.823529</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.001226</td>
-      <td>0.001851</td>
-      <td>0.705882</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.001321</td>
-      <td>0.001872</td>
-      <td>0.647059</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.001149</td>
-      <td>0.002136</td>
-      <td>0.941176</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.001096</td>
-      <td>0.002011</td>
-      <td>0.823529</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.001277</td>
-      <td>0.002016</td>
-      <td>0.588235</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.001212</td>
-      <td>0.001821</td>
-      <td>0.647059</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.001351</td>
-      <td>0.001956</td>
-      <td>0.812500</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.001164</td>
-      <td>0.001733</td>
-      <td>0.937500</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.001195</td>
-      <td>0.001807</td>
-      <td>0.750000</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001235
-score_time     0.001957
-test_score     0.767647
-train_score    1.000000
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -3746,118 +1543,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fit_time</th>
-      <th>score_time</th>
-      <th>test_score</th>
-      <th>train_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.001346</td>
-      <td>0.004110</td>
-      <td>0.705882</td>
-      <td>0.620000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.001056</td>
-      <td>0.002497</td>
-      <td>0.588235</td>
-      <td>0.620000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.001131</td>
-      <td>0.002539</td>
-      <td>0.588235</td>
-      <td>0.633333</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.001055</td>
-      <td>0.002512</td>
-      <td>0.588235</td>
-      <td>0.606667</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.001066</td>
-      <td>0.002443</td>
-      <td>0.588235</td>
-      <td>0.620000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.001068</td>
-      <td>0.002216</td>
-      <td>0.588235</td>
-      <td>0.633333</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.001138</td>
-      <td>0.003784</td>
-      <td>0.647059</td>
-      <td>0.700000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.001120</td>
-      <td>0.003061</td>
-      <td>0.625000</td>
-      <td>0.629139</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.001079</td>
-      <td>0.002206</td>
-      <td>0.687500</td>
-      <td>0.622517</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.001071</td>
-      <td>0.002886</td>
-      <td>0.625000</td>
-      <td>0.629139</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.001113
-score_time     0.002825
-test_score     0.623162
-train_score    0.631413
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -3869,9 +1558,6 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_knn_decision_boundaries</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">,</span> <span class="n">k_values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/lecture3_131_0.png" src="../_images/lecture3_131_0.png" />
 </div>
 </div>
 <p>If we plot these two models with <span class="math notranslate nohighlight">\(k=1\)</span> on the left and <span class="math notranslate nohighlight">\(k=90\)</span> on the right.</p>
@@ -3901,94 +1587,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n_neighbors</th>
-      <th>mean_train_score</th>
-      <th>mean_cv_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1.000000</td>
-      <td>0.767647</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>6</td>
-      <td>0.841660</td>
-      <td>0.785662</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>11</td>
-      <td>0.823051</td>
-      <td>0.811029</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>16</td>
-      <td>0.807726</td>
-      <td>0.793382</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>21</td>
-      <td>0.777810</td>
-      <td>0.756985</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>26</td>
-      <td>0.765854</td>
-      <td>0.739338</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>31</td>
-      <td>0.758525</td>
-      <td>0.738971</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>36</td>
-      <td>0.738583</td>
-      <td>0.720221</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>41</td>
-      <td>0.725912</td>
-      <td>0.726471</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>46</td>
-      <td>0.733916</td>
-      <td>0.713971</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4009,73 +1607,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-  #altair-viz-4ac892b7c64b40d8b65e3f080a09212a.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-4ac892b7c64b40d8b65e3f080a09212a.vega-embed details,
-  #altair-viz-4ac892b7c64b40d8b65e3f080a09212a.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-4ac892b7c64b40d8b65e3f080a09212a"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4ac892b7c64b40d8b65e3f080a09212a") {
-      outputDiv = document.getElementById("altair-viz-4ac892b7c64b40d8b65e3f080a09212a");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-0a30ebbeafb719cb7f4a23a7432da33a"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "score_type", "type": "nominal"}, "x": {"field": "n_neighbors", "type": "quantitative"}, "y": {"field": "accuracy", "scale": {"domain": [0.67, 1.0]}, "type": "quantitative"}}, "height": 300, "title": "Accuracies of n_neighbors for KNeighborsClassifier", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-0a30ebbeafb719cb7f4a23a7432da33a": [{"n_neighbors": 1, "score_type": "mean_train_score", "accuracy": 1.0}, {"n_neighbors": 6, "score_type": "mean_train_score", "accuracy": 0.8416600441501103}, {"n_neighbors": 11, "score_type": "mean_train_score", "accuracy": 0.8230507726269316}, {"n_neighbors": 16, "score_type": "mean_train_score", "accuracy": 0.8077262693156733}, {"n_neighbors": 21, "score_type": "mean_train_score", "accuracy": 0.7778101545253863}, {"n_neighbors": 26, "score_type": "mean_train_score", "accuracy": 0.7658543046357617}, {"n_neighbors": 31, "score_type": "mean_train_score", "accuracy": 0.7585253863134657}, {"n_neighbors": 36, "score_type": "mean_train_score", "accuracy": 0.7385827814569536}, {"n_neighbors": 41, "score_type": "mean_train_score", "accuracy": 0.7259116997792494}, {"n_neighbors": 46, "score_type": "mean_train_score", "accuracy": 0.7339161147902871}, {"n_neighbors": 1, "score_type": "mean_cv_score", "accuracy": 0.7676470588235293}, {"n_neighbors": 6, "score_type": "mean_cv_score", "accuracy": 0.7856617647058823}, {"n_neighbors": 11, "score_type": "mean_cv_score", "accuracy": 0.8110294117647058}, {"n_neighbors": 16, "score_type": "mean_cv_score", "accuracy": 0.7933823529411764}, {"n_neighbors": 21, "score_type": "mean_cv_score", "accuracy": 0.7569852941176471}, {"n_neighbors": 26, "score_type": "mean_cv_score", "accuracy": 0.7393382352941177}, {"n_neighbors": 31, "score_type": "mean_cv_score", "accuracy": 0.7389705882352942}, {"n_neighbors": 36, "score_type": "mean_cv_score", "accuracy": 0.7202205882352942}, {"n_neighbors": 41, "score_type": "mean_cv_score", "accuracy": 0.7264705882352942}, {"n_neighbors": 46, "score_type": "mean_cv_score", "accuracy": 0.7139705882352942}]}}, {"mode": "vega-lite"});
-</script></div></div>
 </div>
 <p>Looking at this graph with k on the x-axis and accuracy on the y-axis, we can see there is a sweet spot where the gap between the validation and training scores is the lowest and cross-validation score is the highest. Here it’s when <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> is 11.</p>
 <p>How do I know it’s 11?
@@ -4086,105 +1617,12 @@ Here’s how!</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>n_neighbors</th>
-      <th>mean_train_score</th>
-      <th>mean_cv_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2</th>
-      <td>11</td>
-      <td>0.823051</td>
-      <td>0.811029</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>16</td>
-      <td>0.807726</td>
-      <td>0.793382</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>6</td>
-      <td>0.841660</td>
-      <td>0.785662</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1.000000</td>
-      <td>0.767647</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>21</td>
-      <td>0.777810</td>
-      <td>0.756985</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>26</td>
-      <td>0.765854</td>
-      <td>0.739338</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>31</td>
-      <td>0.758525</td>
-      <td>0.738971</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>41</td>
-      <td>0.725912</td>
-      <td>0.726471</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>36</td>
-      <td>0.738583</td>
-      <td>0.720221</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>46</td>
-      <td>0.733916</td>
-      <td>0.713971</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cities_X_train</span><span class="p">,</span> <span class="n">cities_y_train</span><span class="p">);</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test accuracy:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">cities_X_test</span><span class="p">,</span> <span class="n">cities_y_test</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test accuracy: 0.857
 </pre></div>
 </div>
 </div>
