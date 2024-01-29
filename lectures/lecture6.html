@@ -927,7 +927,7 @@ such as “and”, “or”, etc
 <span class="c1"># Put together a df with the results</span>
 <span class="n">train_bow_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">count_vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 <span class="n">train_bow_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># tolist() needed since indices are different</span>
-<span class="n">train_bow_df</span>
+<span class="n">train_bow_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -957,12 +957,6 @@ such as “and”, “or”, etc
   </thead>
   <tbody>
     <tr>
-      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
-      <td>0</td>
-      <td>1</td>
-      <td>spam</td>
-    </tr>
-    <tr>
       <th>Lol you are always so convincing.</th>
       <td>0</td>
       <td>0</td>
@@ -973,6 +967,18 @@ such as “and”, “or”, etc
       <td>1</td>
       <td>0</td>
       <td>non spam</td>
+    </tr>
+    <tr>
+      <th>Sauder has been interesting so far.</th>
+      <td>1</td>
+      <td>0</td>
+      <td>non spam</td>
+    </tr>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>0</td>
+      <td>1</td>
+      <td>spam</td>
     </tr>
     <tr>
       <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
@@ -986,15 +992,82 @@ such as “and”, “or”, etc
       <td>0</td>
       <td>spam</td>
     </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add 1 to all values to avoid 0s to numeric columns only</span>
+
+<span class="n">train_bow_df</span><span class="p">[</span><span class="n">train_bow_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sauder</th>
+      <th>urgent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>URGENT!! As a valued network customer you have been selected to receive a £900 prize reward!</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Lol you are always so convincing.</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Sauder has interesting courses.</th>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>URGENT! You have won a 1 week FREE membership in our £100000 prize Jackpot!</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free!</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
     <tr>
       <th>Sauder has been interesting so far.</th>
+      <td>2</td>
       <td>1</td>
-      <td>0</td>
-      <td>non spam</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># count_vect.get_stop_words()</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>Suppose we are given 2 new text messages and we want to find the targets for these examples, how do we do it using naive Bayes?</p>
 <p>First, let’s get a numeric representation of our made-up new text messages.</p>
@@ -2930,16 +3003,16 @@ We will not cover this in detail as part of this course.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-bait-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-bait-py",
+            kernelName: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-bait-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
