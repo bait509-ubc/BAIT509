@@ -1041,7 +1041,6 @@ First we create some data where we have two features and one target variable.</p
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
 
-
 <span class="n">rm</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
 <span class="n">rm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
@@ -1857,36 +1856,36 @@ which be used for classification.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.006164</td>
-      <td>0.001068</td>
+      <td>0.015296</td>
+      <td>0.001708</td>
       <td>0.852941</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.003262</td>
-      <td>0.000926</td>
+      <td>0.003291</td>
+      <td>0.000935</td>
       <td>0.823529</td>
       <td>0.827068</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002855</td>
-      <td>0.000864</td>
+      <td>0.003608</td>
+      <td>0.001133</td>
       <td>0.696970</td>
       <td>0.858209</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003088</td>
-      <td>0.000998</td>
+      <td>0.002950</td>
+      <td>0.000898</td>
       <td>0.818182</td>
       <td>0.828358</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003108</td>
-      <td>0.000946</td>
+      <td>0.003799</td>
+      <td>0.001144</td>
       <td>0.939394</td>
       <td>0.805970</td>
     </tr>
@@ -1901,8 +1900,8 @@ which be used for classification.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.003695
-score_time     0.000960
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.005789
+score_time     0.001164
 test_score     0.826203
 train_score    0.829335
 dtype: float64
@@ -2225,7 +2224,7 @@ Model intercept: [-0.30837315]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;logisticregression__C&#39;: 79.00931005170068}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;logisticregression__C&#39;: 15.369430500779647}
 </pre></div>
 </div>
 </div>
@@ -2307,7 +2306,7 @@ Model intercept: [-0.30837315]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87870884, 0.12129116]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87765906, 0.12234094]])
 </pre></div>
 </div>
 </div>
@@ -2538,6 +2537,8 @@ which are nonsense values for probabilities.</p>
 <span class="n">scores_image</span> <span class="o">=</span> <span class="n">mglearn</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">plot_2d_scores</span><span class="p">(</span>
     <span class="n">lr</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cm</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
 <span class="p">)</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scores_image</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

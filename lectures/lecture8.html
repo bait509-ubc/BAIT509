@@ -1052,7 +1052,7 @@ Impurity is 0 when all observations in the node come from the same class.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.23330056, 0.76669944])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.27718465, 0.72281535])
 </pre></div>
 </div>
 </div>
@@ -1129,6 +1129,10 @@ Let’s see an example using a dataset from the passengers of the Titanic.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/datasets/_openml.py:1022: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
+  warn(
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1455,12 +1459,16 @@ the model only needed one of them (the other has 0 feature importance).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex      
-female  0    0.278261
-        1    0.721739
-male    0    0.801887
-        1    0.198113
-Name: survived, dtype: float64
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/q8/b0hct6591d77ky6m9kfk2jhw0000gp/T/ipykernel_11687/3116214982.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  X_train.join(y).groupby(&#39;sex&#39;)[&#39;survived&#39;].value_counts(normalize=True, sort=False)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex     survived
+female  0           0.278261
+        1           0.721739
+male    0           0.801887
+        1           0.198113
+Name: proportion, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1932,7 +1940,7 @@ and show how we can use its coefficients in RFE to select features.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 1460 entries, 1 to 1460
+Index: 1460 entries, 1 to 1460
 Data columns (total 80 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
@@ -1960,7 +1968,7 @@ Data columns (total 80 columns):
  21  RoofMatl       1460 non-null   object 
  22  Exterior1st    1460 non-null   object 
  23  Exterior2nd    1460 non-null   object 
- 24  MasVnrType     1452 non-null   object 
+ 24  MasVnrType     588 non-null    object 
  25  MasVnrArea     1452 non-null   float64
  26  ExterQual      1460 non-null   object 
  27  ExterCond      1460 non-null   object 
@@ -2086,10 +2094,10 @@ memory usage: 923.9+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.096767
-score_time     0.007980
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.061272
+score_time     0.006526
 test_score     0.900704
-train_score    0.937073
+train_score    0.936003
 dtype: float64
 </pre></div>
 </div>
@@ -2105,100 +2113,100 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.18933301e-01,  2.80624447e-02,  2.49132864e-01,
-        -1.40590707e-01,  2.31783263e-01,  2.65570346e-01,
-         8.50470929e-02,  6.52628102e-02, -3.13917938e-01,
-        -7.97798026e-02,  1.05265241e-01, -2.45700606e-01,
-        -2.51716876e-01,  1.04134981e-01,  8.63370099e-02,
-        -9.51283873e-02,  1.72637862e-01, -1.84005614e-01,
-         1.70408093e-01, -5.28454157e-02,  4.55049746e-02,
-        -5.80085441e-02, -2.77268489e-01,  6.36099941e-02,
-         2.59018638e-01, -2.51791021e-01,  2.73931399e-01,
-         1.16524037e-01, -3.44323661e-02,  1.50334394e-01,
-         5.73976404e-03, -1.22379856e-01, -2.22706456e-01,
-         3.89058771e-01,  9.84743001e-02,  3.18747469e-01,
-         8.07869809e-01, -5.43891111e-01, -2.88829814e-01,
-        -3.89519565e-01,  5.73620415e-01,  6.48703698e-01,
-         2.12038949e-01, -2.11955326e-01,  3.63854967e-01,
-         6.26812156e-02, -3.86895845e-01, -3.95567146e-02,
-        -2.83614357e-01, -2.52232245e-01,  1.61994852e-01,
-         3.73935373e-01,  8.36232692e-05, -3.55125977e-01,
-        -3.70316904e-02,  2.24462859e-01,  8.95902280e-02,
-         7.81882038e-02,  7.51040124e-01,  1.88005545e-01,
-        -9.38962046e-01,  6.31420013e-01,  1.56077888e-01,
-        -1.05638273e+00,  1.51768906e-01, -6.47126505e-01,
-         9.39744370e-01, -6.74179506e-01,  5.30064004e-01,
-        -2.60472717e-01,  2.75258931e-01,  1.66205559e-01,
-         8.30580848e-01, -1.26565747e-01, -1.95058069e-01,
-        -4.79020204e-01, -9.92076631e-01,  4.26097263e-01,
-        -2.72595638e-01,  2.61812838e-01,  6.55126248e-01,
-        -4.55002749e-01,  1.06361447e-01, -1.52588492e-01,
-        -5.43373515e-02,  2.34971653e-01, -1.00295126e-01,
-        -4.67343956e-01, -2.41568026e-01,  2.14029782e-01,
-         3.39293357e-01, -3.19666099e-01,  2.08155033e-01,
-         3.67478658e-01, -5.54117014e-01,  1.01128089e-01,
-         2.32542717e-01,  1.44587164e-03, -1.44346432e-01,
-        -1.62869940e-05,  2.33052514e-01,  1.30394165e-01,
-        -3.76771189e-01,  5.35405290e-01,  1.44431481e-01,
-        -3.90448640e-01,  8.74666820e-02, -2.00562093e-01,
-         4.12801986e-01, -2.53142602e-01, -1.74950314e-01,
-         9.30777031e-01,  2.87246206e-01, -1.04779772e+00,
-         4.57111290e-02, -6.74056599e-01, -2.18556417e-01,
-         1.62035760e-01,  3.60103624e-01,  1.45434213e-01,
-         2.25123041e-01,  4.40807503e-05,  1.82992462e-01,
-         7.89478745e-02,  4.86640547e-02, -5.68776738e-01,
-         1.13460925e-01,  1.44750964e-01, -3.67112152e-01,
-         8.44775005e-02, -3.67025687e-01,  2.68285847e-01,
-         1.34546502e-01,  2.31449396e-01,  1.12479652e-01,
-         2.24760373e-01,  1.18242766e-02,  3.43209069e-01,
-        -6.70480526e-01,  4.77666585e-01, -4.37506565e-01,
-        -4.47333369e-01,  4.00842722e-01,  2.11902207e-01,
-         1.74079048e-01, -2.51989232e-01,  1.11275956e+00,
-         1.34546502e-01,  2.50451946e-01,  2.76242490e-03,
-        -8.58224960e-01, -7.13454081e-03, -3.89635372e-01,
-        -8.69992217e-01, -4.34719328e-01, -6.76054434e-02,
-         9.54157528e-01,  3.87255057e-02, -4.97376032e-01,
-         4.61299223e-01,  4.76613430e-01, -6.69281813e-02,
-        -3.73524817e-01, -2.12557541e-02, -1.17014240e-01,
-         5.23713609e-02,  8.59822561e-02,  7.91869632e-02,
-        -8.70743678e-03, -1.31709622e-01,  1.96400888e-01,
-        -1.35087169e-01, -1.88532887e-01,  1.90391605e-01,
-        -1.68705126e-01,  4.38343568e-01, -3.12346440e-01,
-         4.09329029e-02,  3.15490827e-02,  1.49418496e-02,
-        -9.99772695e-03,  6.94411301e-02, -1.05850712e-01,
-         5.19999028e-01, -2.81860518e-01, -2.56118341e-01,
-         1.23914167e-01, -1.05850712e-01,  7.13548041e-02,
-         7.41810549e-02, -2.49958058e-01,  1.89343085e-01,
-        -8.48372623e-02, -6.92793634e-02,  3.53357348e-01,
-        -1.66404565e-02,  2.40785809e-01,  2.15214709e-01,
-        -6.17503710e-01, -1.05850712e-01,  2.83629631e-01,
-        -1.48793608e-01,  1.25594001e-01, -2.62402043e-01,
-         1.89941721e-01, -1.08676457e-01, -7.92096221e-02,
-         3.06032259e-02, -4.94681327e-01,  5.27912454e-01,
-        -1.71371243e-01,  4.81451047e-02,  5.94754077e-02,
-        -4.54720488e-01,  2.86755731e-01,  7.51939783e-01,
-         1.25531196e-02, -5.96444522e-01,  1.23911289e-01,
-        -1.23827666e-01,  2.85562500e-01,  4.03642227e-01,
-        -4.59233278e-01, -4.23793288e-01,  1.93905462e-01,
-        -9.76201259e-01,  5.88636548e-01,  6.30919626e-02,
-         3.24556372e-01,  4.10405511e-01, -1.75802801e-01,
-        -3.24535461e-01,  5.90073924e-01,  4.26786586e-01,
-        -6.51069777e-01, -2.75774360e-01, -3.39744382e-01,
-         4.13662302e-01,  1.93307755e-02,  5.31989713e-01,
-        -6.41738166e-02, -5.60980969e-01,  7.45856540e-02,
-         5.26236254e-01, -5.91451791e-01, -2.69895015e-01,
-        -1.22565519e-01,  4.77566293e-01, -9.43922536e-02,
-        -2.13866639e-01,  1.31927453e-01,  1.76415063e-01,
-        -9.43922536e-02,  2.87006723e-02,  2.12622352e-01,
-        -6.58755463e-03, -3.12274873e-01,  1.72015280e-01,
-        -9.43922536e-02,  2.87006723e-02,  5.62310037e-01,
-        -5.19974857e-01,  1.32435679e-01, -1.08995655e-01,
-        -9.43922536e-02,  5.17377943e-02,  2.54406038e-01,
-        -3.06060209e-01,  2.33439447e-01, -1.11594584e-01,
-        -2.44510220e-01, -2.24157320e-01,  3.46906300e-01,
-         1.44812519e-01, -3.33407928e-01,  2.55717400e-01,
-         4.35473241e-01,  4.81412233e-01,  9.43857948e-01,
-        -3.84055137e+00, -6.86763848e-01,  2.59953343e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.13086132e-01,  3.15165220e-02,  2.37488838e-01,
+        -1.41058318e-01,  2.33744312e-01,  2.59411629e-01,
+         8.55948622e-02,  5.36547257e-02, -3.14691953e-01,
+        -7.73012922e-02,  1.06317820e-01, -2.44534430e-01,
+        -2.59477640e-01,  1.11200954e-01,  8.78382152e-02,
+        -9.49713049e-02,  1.65370060e-01, -1.87080669e-01,
+         1.61917554e-01, -5.70456559e-02,  4.25096727e-02,
+        -6.71453522e-02, -2.73963521e-01,  5.19292801e-02,
+         2.52445270e-01, -2.52898469e-01,  2.80517473e-01,
+         1.18089718e-01, -3.07605607e-02,  1.46161884e-01,
+         5.58452397e-03, -1.19728587e-01, -2.22793866e-01,
+         3.88682706e-01,  1.00619000e-01,  3.17180814e-01,
+         8.17807294e-01, -5.43797176e-01, -2.90156006e-01,
+        -3.82688209e-01,  5.73412646e-01,  6.43168121e-01,
+         2.06342648e-01, -2.06403271e-01,  3.56806562e-01,
+         6.95761524e-02, -3.78008947e-01, -4.84343897e-02,
+        -2.86152124e-01, -2.53144217e-01,  1.68448720e-01,
+         3.70786998e-01, -6.06232808e-05, -3.46698315e-01,
+        -5.84519592e-02,  2.33270610e-01,  8.98503013e-02,
+         8.19687396e-02,  7.43746728e-01,  1.84881675e-01,
+        -9.28689026e-01,  6.21563188e-01,  1.54362159e-01,
+        -1.06832504e+00,  1.47217750e-01, -6.36747456e-01,
+         9.43624537e-01, -7.02458691e-01,  5.32003842e-01,
+        -2.54365590e-01,  2.70048740e-01,  1.68302040e-01,
+         8.35756855e-01, -1.27087410e-01, -2.00134544e-01,
+        -4.77447861e-01, -9.73943238e-01,  4.16471243e-01,
+        -2.76244365e-01,  2.64016994e-01,  6.65141182e-01,
+        -4.44831331e-01,  9.82271449e-02, -1.45731490e-01,
+        -4.60859182e-02,  2.36606638e-01, -1.05321562e-01,
+        -4.71860253e-01, -2.46880459e-01,  2.10450434e-01,
+         3.43772283e-01, -3.04336857e-01,  2.09852454e-01,
+         3.64263337e-01, -5.52427267e-01,  9.90794776e-02,
+         2.29095828e-01,  1.38065150e-03, -1.39646408e-01,
+        -1.75363718e-05,  2.31827581e-01,  1.30647050e-01,
+        -3.85378623e-01,  5.34383522e-01,  1.59654840e-01,
+        -3.94044041e-01,  8.53236784e-02, -1.98038782e-01,
+         4.12727353e-01, -2.44368656e-01, -1.72907492e-01,
+         9.37043820e-01,  2.84108714e-01, -1.05673704e+00,
+         3.81114598e-02, -6.73322846e-01, -2.11442119e-01,
+         1.62723913e-01,  3.52648229e-01,  1.43614154e-01,
+         2.25718047e-01,  4.75531193e-05,  1.83520279e-01,
+         7.90910845e-02,  4.79068770e-02, -5.72560093e-01,
+         1.16251344e-01,  1.45682332e-01, -3.63975558e-01,
+         8.71409994e-02, -3.64066487e-01,  2.78914810e-01,
+         1.34565042e-01,  2.20646556e-01,  1.09764840e-01,
+         2.29804377e-01,  1.00828053e-02,  3.40476620e-01,
+        -6.55687793e-01,  4.82348209e-01, -4.43834941e-01,
+        -4.66477540e-01,  4.00237436e-01,  2.13116601e-01,
+         1.73821437e-01, -2.48084617e-01,  1.11865436e+00,
+         1.34565042e-01,  2.39619188e-01,  8.77210524e-03,
+        -8.56784759e-01, -4.19781865e-03, -3.79293135e-01,
+        -9.36575914e-01, -4.30630001e-01, -5.68914566e-02,
+         9.76525930e-01,  4.73224198e-02, -5.59194525e-01,
+         3.65838948e-01, -1.40119197e-01,  3.33414151e-01,
+        -2.93166677e-02, -1.15056694e-01,  4.21337160e-02,
+         1.02179022e-01,  7.89772014e-02, -8.79265558e-03,
+        -1.31776628e-01,  1.98901841e-01, -1.37370382e-01,
+        -1.89622179e-01,  1.93169588e-01, -1.77310402e-01,
+         4.41967383e-01, -3.09492493e-01,  4.12274792e-02,
+         3.42331614e-02,  8.02536607e-03, -2.64509962e-03,
+         6.43493662e-02, -1.04023417e-01,  5.19803377e-01,
+        -2.87865563e-01, -2.50775609e-01,  1.22800589e-01,
+        -1.04023417e-01,  7.48343355e-02,  7.80501567e-02,
+        -2.53858719e-01,  1.83789227e-01, -8.28756244e-02,
+        -6.13648204e-02,  3.58043238e-01, -1.46860482e-02,
+         2.41198796e-01,  1.96367799e-01, -6.15596171e-01,
+        -1.04023417e-01,  2.78942993e-01, -1.44884065e-01,
+         1.35855262e-01, -2.64806948e-01,  1.85163961e-01,
+        -1.13114602e-01, -7.72172244e-02,  3.01034809e-02,
+        -4.91066926e-01,  5.27425949e-01, -1.76188998e-01,
+         4.75673293e-02,  6.20985412e-02, -4.47850068e-01,
+         2.81212139e-01,  7.53015920e-01,  1.22987922e-02,
+        -5.98737407e-01,  1.28068596e-01, -1.28129220e-01,
+         2.88243580e-01,  4.04447499e-01, -4.61071693e-01,
+        -4.24598523e-01,  1.92918513e-01, -9.68363117e-01,
+         5.83503287e-01,  6.57997106e-02,  3.18999496e-01,
+         3.54472523e-01, -1.72720210e-01, -3.10721043e-01,
+         6.11403937e-01,  4.36304428e-01, -6.59119322e-01,
+        -2.59680936e-01, -3.35392218e-01,  4.22856540e-01,
+         2.64834624e-02,  5.30640483e-01, -7.10133859e-02,
+        -5.73635506e-01,  7.16093163e-02,  5.30099436e-01,
+        -5.89023964e-01, -2.77040017e-01, -1.24806087e-01,
+         4.79821549e-01, -9.07208562e-02, -2.08774584e-01,
+         1.20851901e-01,  1.78582915e-01, -9.07208562e-02,
+         2.77448590e-02,  2.09679607e-01, -2.88251463e-03,
+        -3.15035744e-01,  1.71154025e-01, -9.07208562e-02,
+         2.77448590e-02,  5.60140410e-01, -5.22120104e-01,
+         1.38455835e-01, -1.13560768e-01, -9.07208562e-02,
+         5.15805726e-02,  2.57171103e-01, -3.08812299e-01,
+         2.33281682e-01, -1.07743388e-01, -2.46263248e-01,
+        -2.24340661e-01,  3.45004992e-01,  1.45187519e-01,
+        -3.28106990e-01,  2.55962756e-01,  4.26908544e-01,
+         4.89621641e-01,  9.37637274e-01, -3.84198628e+00,
+        -6.81971349e-01,  2.59668626e+00]])
 </pre></div>
 </div>
 </div>
@@ -2212,7 +2220,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 282)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 281)
 </pre></div>
 </div>
 </div>
@@ -2223,13 +2231,7 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_feats</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s1">&#39;pipeline-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span>
-    <span class="s1">&#39;onehotencoder&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/joel/miniconda3/envs/bait/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
-  warnings.warn(msg, category=FutureWarning)
+    <span class="s1">&#39;onehotencoder&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2249,7 +2251,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>282
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>281
 </pre></div>
 </div>
 </div>
@@ -2288,29 +2290,29 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>279</th>
+      <th>278</th>
       <td>SaleType_New</td>
-      <td>-3.840551</td>
+      <td>-3.841986</td>
     </tr>
     <tr>
-      <th>281</th>
+      <th>280</th>
       <td>SaleType_WD</td>
-      <td>2.599533</td>
+      <td>2.596686</td>
     </tr>
     <tr>
       <th>146</th>
       <td>Exterior2nd_BrkFace</td>
-      <td>1.11276</td>
+      <td>1.118654</td>
     </tr>
     <tr>
       <th>63</th>
       <td>Neighborhood_BrDale</td>
-      <td>-1.056383</td>
+      <td>-1.068325</td>
     </tr>
     <tr>
       <th>113</th>
       <td>HouseStyle_SFoyer</td>
-      <td>-1.047798</td>
+      <td>-1.056737</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2318,33 +2320,33 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>Exterior2nd_HdBoard</td>
-      <td>0.002762</td>
+      <th>179</th>
+      <td>BsmtQual_Gd</td>
+      <td>-0.002645</td>
     </tr>
     <tr>
       <th>97</th>
       <td>Condition2_PosA</td>
-      <td>0.001446</td>
+      <td>0.001381</td>
     </tr>
     <tr>
       <th>52</th>
       <td>Utilities_AllPub</td>
-      <td>0.000084</td>
+      <td>-0.000061</td>
     </tr>
     <tr>
       <th>121</th>
       <td>RoofMatl_ClyTile</td>
-      <td>0.000044</td>
+      <td>0.000048</td>
     </tr>
     <tr>
       <th>99</th>
       <td>Condition2_RRAe</td>
-      <td>-0.000016</td>
+      <td>-0.000018</td>
     </tr>
   </tbody>
 </table>
-<p>282 rows × 2 columns</p>
+<p>281 rows × 2 columns</p>
 </div></div></div>
 </div>
 <p>We can see that <code class="docutils literal notranslate"><span class="pre">SaleType_New</span></code> is the most important feature in our model.</p>
@@ -2378,31 +2380,33 @@ and then fitting a model again with the reduced number of features.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 276 features.
-Fitting estimator with 226 features.
-Fitting estimator with 176 features.
-Fitting estimator with 126 features.
-Fitting estimator with 76 features.
-Fitting estimator with 277 features.
-Fitting estimator with 227 features.
-Fitting estimator with 177 features.
-Fitting estimator with 127 features.
-Fitting estimator with 77 features.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 275 features.
+Fitting estimator with 225 features.
+Fitting estimator with 175 features.
+Fitting estimator with 125 features.
+Fitting estimator with 75 features.
 Fitting estimator with 276 features.
-Fitting estimator with 226 features.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 226 features.
 Fitting estimator with 176 features.
 Fitting estimator with 126 features.
 Fitting estimator with 76 features.
-Fitting estimator with 279 features.
-Fitting estimator with 229 features.
-Fitting estimator with 179 features.
-Fitting estimator with 129 features.
-Fitting estimator with 79 features.
-Fitting estimator with 279 features.
-Fitting estimator with 229 features.
-Fitting estimator with 179 features.
-Fitting estimator with 129 features.
-Fitting estimator with 79 features.
+Fitting estimator with 275 features.
+Fitting estimator with 225 features.
+Fitting estimator with 175 features.
+Fitting estimator with 125 features.
+Fitting estimator with 75 features.
+Fitting estimator with 278 features.
+Fitting estimator with 228 features.
+Fitting estimator with 178 features.
+Fitting estimator with 128 features.
+Fitting estimator with 78 features.
+Fitting estimator with 278 features.
+Fitting estimator with 228 features.
+Fitting estimator with 178 features.
+Fitting estimator with 128 features.
+Fitting estimator with 78 features.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -2432,38 +2436,38 @@ Fitting estimator with 79 features.
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.190379</td>
-      <td>0.006981</td>
-      <td>0.897436</td>
-      <td>0.914347</td>
+      <td>0.181349</td>
+      <td>0.009148</td>
+      <td>0.893162</td>
+      <td>0.915418</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.204075</td>
-      <td>0.007054</td>
-      <td>0.871795</td>
+      <td>0.187679</td>
+      <td>0.006660</td>
+      <td>0.884615</td>
       <td>0.922912</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.204441</td>
-      <td>0.007261</td>
-      <td>0.901709</td>
-      <td>0.919700</td>
+      <td>0.170722</td>
+      <td>0.006677</td>
+      <td>0.905983</td>
+      <td>0.918630</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.217459</td>
-      <td>0.007610</td>
-      <td>0.922747</td>
-      <td>0.913369</td>
+      <td>0.168004</td>
+      <td>0.006295</td>
+      <td>0.931330</td>
+      <td>0.914439</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.200192</td>
-      <td>0.007031</td>
+      <td>0.165910</td>
+      <td>0.006184</td>
       <td>0.914163</td>
-      <td>0.921925</td>
+      <td>0.917647</td>
     </tr>
   </tbody>
 </table>
@@ -2476,10 +2480,10 @@ Fitting estimator with 79 features.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.203309
-score_time     0.007187
-test_score     0.901570
-train_score    0.918451
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.174733
+score_time     0.006993
+test_score     0.905851
+train_score    0.917809
 dtype: float64
 </pre></div>
 </div>
@@ -2496,15 +2500,15 @@ so our model is both easier to explain and faster to train:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 282 features.
-Fitting estimator with 232 features.
-Fitting estimator with 182 features.
-Fitting estimator with 132 features.
-Fitting estimator with 82 features.
-Fitting estimator with 32 features.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 281 features.
+Fitting estimator with 231 features.
+Fitting estimator with 181 features.
+Fitting estimator with 131 features.
+Fitting estimator with 81 features.
+Fitting estimator with 31 features.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8938356164383562
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8904109589041096
 </pre></div>
 </div>
 </div>
@@ -2555,175 +2559,175 @@ How do we know how many features is the optimal amount… Well, you guessed it! 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 13 features.
-Fitting estimator with 3 features.
-Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 13 features.
-Fitting estimator with 3 features.
-Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 273 features.
-Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 13 features.
-Fitting estimator with 3 features.
-Fitting estimator with 273 features.
-Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 13 features.
-Fitting estimator with 3 features.
-Fitting estimator with 273 features.
-Fitting estimator with 263 features.
-Fitting estimator with 253 features.
-Fitting estimator with 243 features.
-Fitting estimator with 233 features.
-Fitting estimator with 223 features.
-Fitting estimator with 213 features.
-Fitting estimator with 203 features.
-Fitting estimator with 193 features.
-Fitting estimator with 183 features.
-Fitting estimator with 173 features.
-Fitting estimator with 163 features.
-Fitting estimator with 153 features.
-Fitting estimator with 143 features.
-Fitting estimator with 133 features.
-Fitting estimator with 123 features.
-Fitting estimator with 113 features.
-Fitting estimator with 103 features.
-Fitting estimator with 93 features.
-Fitting estimator with 83 features.
-Fitting estimator with 73 features.
-Fitting estimator with 63 features.
-Fitting estimator with 53 features.
-Fitting estimator with 43 features.
-Fitting estimator with 33 features.
-Fitting estimator with 23 features.
-Fitting estimator with 13 features.
-Fitting estimator with 3 features.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
+Fitting estimator with 272 features.
+Fitting estimator with 262 features.
+Fitting estimator with 252 features.
+Fitting estimator with 242 features.
+Fitting estimator with 232 features.
+Fitting estimator with 222 features.
+Fitting estimator with 212 features.
+Fitting estimator with 202 features.
+Fitting estimator with 192 features.
+Fitting estimator with 182 features.
+Fitting estimator with 172 features.
+Fitting estimator with 162 features.
+Fitting estimator with 152 features.
+Fitting estimator with 142 features.
+Fitting estimator with 132 features.
+Fitting estimator with 122 features.
+Fitting estimator with 112 features.
+Fitting estimator with 102 features.
+Fitting estimator with 92 features.
+Fitting estimator with 82 features.
+Fitting estimator with 72 features.
+Fitting estimator with 62 features.
+Fitting estimator with 52 features.
+Fitting estimator with 42 features.
+Fitting estimator with 32 features.
+Fitting estimator with 22 features.
+Fitting estimator with 12 features.
+Fitting estimator with 2 features.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       1.444219
-score_time     0.011036
-test_score     0.905822
-train_score    0.910959
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       1.177414
+score_time     0.009818
+test_score     0.906678
+train_score    0.910103
 dtype: float64
 </pre></div>
 </div>
@@ -2738,90 +2742,92 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 282 features.
-Fitting estimator with 272 features.
-Fitting estimator with 262 features.
-Fitting estimator with 252 features.
-Fitting estimator with 242 features.
-Fitting estimator with 232 features.
-Fitting estimator with 222 features.
-Fitting estimator with 212 features.
-Fitting estimator with 202 features.
-Fitting estimator with 192 features.
-Fitting estimator with 182 features.
-Fitting estimator with 172 features.
-Fitting estimator with 162 features.
-Fitting estimator with 152 features.
-Fitting estimator with 142 features.
-Fitting estimator with 132 features.
-Fitting estimator with 122 features.
-Fitting estimator with 112 features.
-Fitting estimator with 102 features.
-Fitting estimator with 92 features.
-Fitting estimator with 82 features.
-Fitting estimator with 72 features.
-Fitting estimator with 62 features.
-Fitting estimator with 52 features.
-Fitting estimator with 42 features.
-Fitting estimator with 32 features.
-Fitting estimator with 22 features.
-Fitting estimator with 12 features.
-Fitting estimator with 2 features.
-Fitting estimator with 282 features.
-Fitting estimator with 272 features.
-Fitting estimator with 262 features.
-Fitting estimator with 252 features.
-Fitting estimator with 242 features.
-Fitting estimator with 232 features.
-Fitting estimator with 222 features.
-Fitting estimator with 212 features.
-Fitting estimator with 202 features.
-Fitting estimator with 192 features.
-Fitting estimator with 182 features.
-Fitting estimator with 172 features.
-Fitting estimator with 162 features.
-Fitting estimator with 152 features.
-Fitting estimator with 142 features.
-Fitting estimator with 132 features.
-Fitting estimator with 122 features.
-Fitting estimator with 112 features.
-Fitting estimator with 102 features.
-Fitting estimator with 92 features.
-Fitting estimator with 82 features.
-Fitting estimator with 72 features.
-Fitting estimator with 62 features.
-Fitting estimator with 52 features.
-Fitting estimator with 42 features.
-Fitting estimator with 32 features.
-Fitting estimator with 22 features.
-Fitting estimator with 12 features.
-Fitting estimator with 2 features.
-Fitting estimator with 282 features.
-Fitting estimator with 272 features.
-Fitting estimator with 262 features.
-Fitting estimator with 252 features.
-Fitting estimator with 242 features.
-Fitting estimator with 232 features.
-Fitting estimator with 222 features.
-Fitting estimator with 212 features.
-Fitting estimator with 202 features.
-Fitting estimator with 192 features.
-Fitting estimator with 182 features.
-Fitting estimator with 172 features.
-Fitting estimator with 162 features.
-Fitting estimator with 152 features.
-Fitting estimator with 142 features.
-Fitting estimator with 132 features.
-Fitting estimator with 122 features.
-Fitting estimator with 112 features.
-Fitting estimator with 102 features.
-Fitting estimator with 92 features.
-Fitting estimator with 82 features.
-Fitting estimator with 72 features.
-Fitting estimator with 62 features.
-Fitting estimator with 52 features.
-Fitting estimator with 42 features.
-Fitting estimator with 32 features.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 281 features.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting estimator with 271 features.
+Fitting estimator with 261 features.
+Fitting estimator with 251 features.
+Fitting estimator with 241 features.
+Fitting estimator with 231 features.
+Fitting estimator with 221 features.
+Fitting estimator with 211 features.
+Fitting estimator with 201 features.
+Fitting estimator with 191 features.
+Fitting estimator with 181 features.
+Fitting estimator with 171 features.
+Fitting estimator with 161 features.
+Fitting estimator with 151 features.
+Fitting estimator with 141 features.
+Fitting estimator with 131 features.
+Fitting estimator with 121 features.
+Fitting estimator with 111 features.
+Fitting estimator with 101 features.
+Fitting estimator with 91 features.
+Fitting estimator with 81 features.
+Fitting estimator with 71 features.
+Fitting estimator with 61 features.
+Fitting estimator with 51 features.
+Fitting estimator with 41 features.
+Fitting estimator with 31 features.
+Fitting estimator with 21 features.
+Fitting estimator with 11 features.
+Fitting estimator with 281 features.
+Fitting estimator with 271 features.
+Fitting estimator with 261 features.
+Fitting estimator with 251 features.
+Fitting estimator with 241 features.
+Fitting estimator with 231 features.
+Fitting estimator with 221 features.
+Fitting estimator with 211 features.
+Fitting estimator with 201 features.
+Fitting estimator with 191 features.
+Fitting estimator with 181 features.
+Fitting estimator with 171 features.
+Fitting estimator with 161 features.
+Fitting estimator with 151 features.
+Fitting estimator with 141 features.
+Fitting estimator with 131 features.
+Fitting estimator with 121 features.
+Fitting estimator with 111 features.
+Fitting estimator with 101 features.
+Fitting estimator with 91 features.
+Fitting estimator with 81 features.
+Fitting estimator with 71 features.
+Fitting estimator with 61 features.
+Fitting estimator with 51 features.
+Fitting estimator with 41 features.
+Fitting estimator with 31 features.
+Fitting estimator with 21 features.
+Fitting estimator with 11 features.
+Fitting estimator with 281 features.
+Fitting estimator with 271 features.
+Fitting estimator with 261 features.
+Fitting estimator with 251 features.
+Fitting estimator with 241 features.
+Fitting estimator with 231 features.
+Fitting estimator with 221 features.
+Fitting estimator with 211 features.
+Fitting estimator with 201 features.
+Fitting estimator with 191 features.
+Fitting estimator with 181 features.
+Fitting estimator with 171 features.
+Fitting estimator with 161 features.
+Fitting estimator with 151 features.
+Fitting estimator with 141 features.
+Fitting estimator with 131 features.
+Fitting estimator with 121 features.
+Fitting estimator with 111 features.
+Fitting estimator with 101 features.
+Fitting estimator with 91 features.
+Fitting estimator with 81 features.
+Fitting estimator with 71 features.
+Fitting estimator with 61 features.
+Fitting estimator with 51 features.
+Fitting estimator with 41 features.
+Fitting estimator with 31 features.
+Fitting estimator with 21 features.
+Fitting estimator with 11 features.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8904109589041096
@@ -2836,7 +2842,7 @@ Fitting estimator with 32 features.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -2851,14 +2857,7 @@ Fitting estimator with 32 features.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;MSZoning_RL&#39;, &#39;LandSlope_Sev&#39;, &#39;Neighborhood_BrDale&#39;,
-       &#39;Neighborhood_CollgCr&#39;, &#39;Condition2_Artery&#39;, &#39;HouseStyle_2.5Unf&#39;,
-       &#39;HouseStyle_SFoyer&#39;, &#39;RoofStyle_Flat&#39;, &#39;RoofMatl_Tar&amp;Grv&#39;,
-       &#39;Exterior1st_AsbShng&#39;, &#39;Exterior1st_Stone&#39;, &#39;Exterior1st_Wd Sdng&#39;,
-       &#39;Exterior2nd_BrkFace&#39;, &#39;Exterior2nd_ImStucc&#39;, &#39;Exterior2nd_Stone&#39;,
-       &#39;Exterior2nd_Wd Sdng&#39;, &#39;HeatingQC_Gd&#39;, &#39;Electrical_Mix&#39;,
-       &#39;SaleType_ConLw&#39;, &#39;SaleType_New&#39;, &#39;SaleType_Oth&#39;, &#39;SaleType_WD&#39;],
-      dtype=&#39;&lt;U20&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;SaleType_New&#39;], dtype=&#39;&lt;U20&#39;)
 </pre></div>
 </div>
 </div>
@@ -2914,8 +2913,8 @@ whereas with forward selection we add features until our cross-validation score 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       20.473383
-score_time      0.008420
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       27.396991
+score_time      0.008717
 test_score      0.907546
 train_score     0.907535
 dtype: float64
@@ -2962,16 +2961,16 @@ dtype: float64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-bait-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-bait-py",
+            kernelName: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-bait-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
