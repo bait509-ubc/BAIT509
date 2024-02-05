@@ -1494,9 +1494,10 @@ If we look at the distribution of fraudulent labels to non-fraudulent labels, we
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.995872
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class
+0    0.995872
 1    0.004128
-Name: Class, dtype: float64
+Name: proportion, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1522,8 +1523,8 @@ So, what would be a good accuracy here? 99.9%? 99.99%?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.372812
-score_time     0.004492
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.172872
+score_time     0.002629
 test_score     0.998830
 train_score    0.998993
 dtype: float64
@@ -1630,7 +1631,7 @@ to visualize how well our model is doing classifying each target class.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7f598d965280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x179d97e50&gt;
 </pre></div>
 </div>
 <img alt="../_images/lecture9_33_1.png" src="../_images/lecture9_33_1.png" />
@@ -2027,9 +2028,10 @@ Real-world data is often imbalanced and can be seen in scenarios such as:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.995856
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class
+0    0.995856
 1    0.004144
-Name: Class, dtype: float64
+Name: proportion, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2460,7 +2462,7 @@ The higher the MSE, the worse the model performs.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2570054492.048015
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2570054492.048064
 </pre></div>
 </div>
 </div>
@@ -2624,7 +2626,7 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.192997502985257
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.192997502985218
 </pre></div>
 </div>
 </div>
@@ -2928,32 +2930,32 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.048384</td>
-      <td>0.260229</td>
+      <td>0.032128</td>
+      <td>0.226627</td>
       <td>0.695818</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.038649</td>
-      <td>0.244504</td>
+      <td>0.030844</td>
+      <td>0.210495</td>
       <td>0.707483</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.037045</td>
-      <td>0.247833</td>
+      <td>0.031129</td>
+      <td>0.217490</td>
       <td>0.713788</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.037473</td>
-      <td>0.251970</td>
+      <td>0.030537</td>
+      <td>0.209025</td>
       <td>0.686938</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.037632</td>
-      <td>0.209049</td>
+      <td>0.027322</td>
+      <td>0.171605</td>
       <td>0.724608</td>
     </tr>
   </tbody>
@@ -3000,32 +3002,32 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.038403</td>
-      <td>0.259079</td>
+      <td>0.031523</td>
+      <td>0.212269</td>
       <td>-62462.584290</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.040179</td>
-      <td>0.244061</td>
+      <td>0.027885</td>
+      <td>0.198421</td>
       <td>-63437.715015</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.039809</td>
-      <td>0.247949</td>
+      <td>0.027871</td>
+      <td>0.203763</td>
       <td>-62613.202523</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.039748</td>
-      <td>0.251017</td>
+      <td>0.027251</td>
+      <td>0.227063</td>
       <td>-64204.295214</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.036887</td>
-      <td>0.208489</td>
+      <td>0.027771</td>
+      <td>0.172859</td>
       <td>-59217.838633</td>
     </tr>
   </tbody>
@@ -3089,8 +3091,8 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.059981</td>
-      <td>0.277755</td>
+      <td>0.030613</td>
+      <td>0.214975</td>
       <td>-3.901574e+09</td>
       <td>-62462.584290</td>
       <td>-0.227097</td>
@@ -3098,8 +3100,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.045837</td>
-      <td>0.276288</td>
+      <td>0.027247</td>
+      <td>0.203607</td>
       <td>-4.024344e+09</td>
       <td>-63437.715015</td>
       <td>-0.227546</td>
@@ -3107,8 +3109,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.040251</td>
-      <td>0.251510</td>
+      <td>0.028034</td>
+      <td>0.205147</td>
       <td>-3.920413e+09</td>
       <td>-62613.202523</td>
       <td>-0.222369</td>
@@ -3116,8 +3118,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.042084</td>
-      <td>0.252586</td>
+      <td>0.027603</td>
+      <td>0.208715</td>
       <td>-4.122192e+09</td>
       <td>-64204.295214</td>
       <td>-0.230167</td>
@@ -3125,8 +3127,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.039941</td>
-      <td>0.211911</td>
+      <td>0.027986</td>
+      <td>0.175747</td>
       <td>-3.506752e+09</td>
       <td>-59217.838633</td>
       <td>-0.210335</td>
@@ -3185,8 +3187,8 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.058236</td>
-      <td>0.285248</td>
+      <td>0.030596</td>
+      <td>0.213980</td>
       <td>-3.901574e+09</td>
       <td>-2.646129e+09</td>
       <td>-62462.584290</td>
@@ -3198,8 +3200,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.039596</td>
-      <td>0.242525</td>
+      <td>0.028104</td>
+      <td>0.199698</td>
       <td>-4.024344e+09</td>
       <td>-2.627996e+09</td>
       <td>-63437.715015</td>
@@ -3211,8 +3213,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.037424</td>
-      <td>0.246107</td>
+      <td>0.027226</td>
+      <td>0.204043</td>
       <td>-3.920413e+09</td>
       <td>-2.678975e+09</td>
       <td>-62613.202523</td>
@@ -3224,8 +3226,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.039576</td>
-      <td>0.251874</td>
+      <td>0.027180</td>
+      <td>0.206620</td>
       <td>-4.122192e+09</td>
       <td>-2.636180e+09</td>
       <td>-64204.295214</td>
@@ -3237,8 +3239,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.039297</td>
-      <td>0.208939</td>
+      <td>0.027144</td>
+      <td>0.173949</td>
       <td>-3.506752e+09</td>
       <td>-2.239671e+09</td>
       <td>-59217.838633</td>
@@ -3402,6 +3404,26 @@ we might end up with another results for the best hyperparameter.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 6 candidates, totalling 18 fits
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END .......................................max_depth=65; total time=   2.3s
+[CV] END .......................................max_depth=12; total time=   2.4s
+[CV] END .......................................max_depth=69; total time=   2.5s
+[CV] END .......................................max_depth=69; total time=   2.6s
+[CV] END .......................................max_depth=12; total time=   2.6s
+[CV] END .......................................max_depth=12; total time=   2.7s
+[CV] END .......................................max_depth=65; total time=   2.6s
+[CV] END .......................................max_depth=69; total time=   3.1s
+[CV] END ........................................max_depth=4; total time=   2.0s
+[CV] END ........................................max_depth=4; total time=   1.9s
+[CV] END ........................................max_depth=4; total time=   2.0s
+[CV] END .......................................max_depth=43; total time=   2.8s
+[CV] END .......................................max_depth=65; total time=   2.9s
+[CV] END .......................................max_depth=43; total time=   3.0s
+[CV] END .......................................max_depth=43; total time=   3.0s
+[CV] END .......................................max_depth=62; total time=   2.7s
+[CV] END .......................................max_depth=62; total time=   2.1s
+[CV] END .......................................max_depth=62; total time=   2.1s
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -3488,6 +3510,26 @@ and that our recall score is higher with this value.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 6 candidates, totalling 18 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END .......................................max_depth=69; total time=   2.3s
+[CV] END .......................................max_depth=12; total time=   2.4s
+[CV] END .......................................max_depth=65; total time=   2.5s
+[CV] END .......................................max_depth=12; total time=   2.5s
+[CV] END .......................................max_depth=69; total time=   2.7s
+[CV] END .......................................max_depth=69; total time=   2.7s
+[CV] END .......................................max_depth=12; total time=   2.7s
+[CV] END .......................................max_depth=65; total time=   2.7s
+[CV] END ........................................max_depth=4; total time=   1.6s
+[CV] END ........................................max_depth=4; total time=   1.6s
+[CV] END ........................................max_depth=4; total time=   1.8s
+[CV] END .......................................max_depth=65; total time=   2.5s
+[CV] END .......................................max_depth=43; total time=   2.5s
+[CV] END .......................................max_depth=62; total time=   2.1s
+[CV] END .......................................max_depth=43; total time=   2.5s
+[CV] END .......................................max_depth=43; total time=   2.5s
+[CV] END .......................................max_depth=62; total time=   2.0s
+[CV] END .......................................max_depth=62; total time=   1.8s
 </pre></div>
 </div>
 </div>
@@ -3610,9 +3652,10 @@ because there is no penalty for incorrectly classifying observations here when j
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    359
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>legendary
+0    359
 1     33
-Name: legendary, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -3893,8 +3936,8 @@ Name: legendary, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.025501</td>
-      <td>0.007092</td>
+      <td>0.015617</td>
+      <td>0.007359</td>
       <td>0.941176</td>
       <td>0.666667</td>
       <td>0.666667</td>
@@ -3902,8 +3945,8 @@ Name: legendary, dtype: int64
     </tr>
     <tr>
       <th>1</th>
-      <td>0.009468</td>
-      <td>0.006572</td>
+      <td>0.006605</td>
+      <td>0.008269</td>
       <td>0.941176</td>
       <td>0.666667</td>
       <td>0.666667</td>
@@ -3911,8 +3954,8 @@ Name: legendary, dtype: int64
     </tr>
     <tr>
       <th>2</th>
-      <td>0.008165</td>
-      <td>0.005613</td>
+      <td>0.006800</td>
+      <td>0.006950</td>
       <td>0.911765</td>
       <td>0.500000</td>
       <td>0.666667</td>
@@ -3920,8 +3963,8 @@ Name: legendary, dtype: int64
     </tr>
     <tr>
       <th>3</th>
-      <td>0.008900</td>
-      <td>0.006036</td>
+      <td>0.007100</td>
+      <td>0.008601</td>
       <td>0.939394</td>
       <td>0.500000</td>
       <td>0.500000</td>
@@ -3929,8 +3972,8 @@ Name: legendary, dtype: int64
     </tr>
     <tr>
       <th>4</th>
-      <td>0.008775</td>
-      <td>0.006466</td>
+      <td>0.007335</td>
+      <td>0.006308</td>
       <td>0.909091</td>
       <td>0.500000</td>
       <td>0.333333</td>
@@ -3962,16 +4005,16 @@ Name: legendary, dtype: int64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-bait-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-bait-py",
+            kernelName: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-bait-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
