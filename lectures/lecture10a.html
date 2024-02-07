@@ -332,12 +332,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-bias-in-ml">
+   10.1. Introduction to bias in ML
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-of-bias-in-machine-learning">
+   10.2. Sources of bias in machine learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-bias">
+     10.2.1. Data Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithmic-bias">
+     10.2.2. Algorithmic Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confirmation-bias">
+     10.2.3. Confirmation Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measurement-bias">
+     10.2.4. Measurement Bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-fairness-metrics">
+   10.3. Common fairness metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demographic-parity">
+     10.3.1. Demographic Parity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equalized-odds">
+     10.3.2. Equalized Odds
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equal-opportunity">
+     10.3.3. Equal Opportunity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-with-fairlearn">
+   10.4. Implementation with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fairlearn
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strategies-to-mitigate-bias-in-ml-models">
+   10.5. Strategies to mitigate bias in ML models
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -349,6 +437,83 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-bias-in-ml">
+   10.1. Introduction to bias in ML
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-of-bias-in-machine-learning">
+   10.2. Sources of bias in machine learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-bias">
+     10.2.1. Data Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithmic-bias">
+     10.2.2. Algorithmic Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confirmation-bias">
+     10.2.3. Confirmation Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measurement-bias">
+     10.2.4. Measurement Bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-fairness-metrics">
+   10.3. Common fairness metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demographic-parity">
+     10.3.1. Demographic Parity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equalized-odds">
+     10.3.2. Equalized Odds
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equal-opportunity">
+     10.3.3. Equal Opportunity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-with-fairlearn">
+   10.4. Implementation with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fairlearn
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strategies-to-mitigate-bias-in-ml-models">
+   10.5. Strategies to mitigate bias in ML models
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -358,9 +523,622 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="data-science-ethics">
 <h1><span class="section-number">10. </span>Data Science Ethics<a class="headerlink" href="#data-science-ethics" title="Permalink to this headline">#</a></h1>
-<!-- This pdf file is copied into `_build/html/lectures/` before running `ghp-import` in the Makefile. -->
-<iframe src="lecture10-ethics.pdf#zoom=100&navpanes=0&statusbar=0&messages=0&pagemode=none" width="135%" height="600px" style="position: relative;z-index: 9999999;">
-</iframe></div>
+<div class="section" id="introduction-to-bias-in-ml">
+<h2><span class="section-number">10.1. </span>Introduction to bias in ML<a class="headerlink" href="#introduction-to-bias-in-ml" title="Permalink to this headline">#</a></h2>
+<p>Machine learning models are increasingly used in high-stakes decisions, from credit scoring and hiring to medical diagnoses and criminal sentencing. However, these models can inadvertently perpetuate, amplify, or create bias if not carefully developed and monitored. We’ll begin with a case study to set the stage for our discussion on bias and fairness in machine learning.</p>
+<a class="reference internal image-reference" href="../_images/dalle1.jpg"><img alt="../_images/dalle1.jpg" src="../_images/dalle1.jpg" style="width: 30%;" /></a>
+<p>Source: Image created by openAI</p>
+<p>Imagine a job recruitment platform that uses machine learning algorithms to target job advertisements to potential applicants. An investigation reveals that the algorithm disproportionately shows high-paying job ads for technical roles to men more than women. This pattern emerges not from explicit programming but from the algorithm learning from historical data, which reflects a pre-existing gender imbalance in the tech industry. (https://globalnews.ca/news/4532172/amazon-jobs-ai-bias/)</p>
+<p>This case highlights “algorithmic bias,” where the model’s predictions or decisions are systematically prejudiced due to erroneous assumptions in the machine learning process. It raises questions about fairness: What does it mean for an algorithm to be fair, and how can we measure and ensure fairness?</p>
+</div>
+<div class="section" id="sources-of-bias-in-machine-learning">
+<h2><span class="section-number">10.2. </span>Sources of bias in machine learning<a class="headerlink" href="#sources-of-bias-in-machine-learning" title="Permalink to this headline">#</a></h2>
+<div class="section" id="data-bias">
+<h3><span class="section-number">10.2.1. </span>Data Bias<a class="headerlink" href="#data-bias" title="Permalink to this headline">#</a></h3>
+<p>If the training data is unrepresentative or contains historical prejudices, models can inherit these biases. For example, if a dataset for facial recognition has mostly light-skinned individuals, the model may perform poorly on darker-skinned faces.</p>
+<a class="reference internal image-reference" href="../_images/dalle2.jpg"><img alt="../_images/dalle2.jpg" src="../_images/dalle2.jpg" style="width: 30%;" /></a>
+<p>Source: Image created by openAI</p>
+<p>In a <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf#page=5">report</a> by the National Institute of Standards and Technology, a study covering 189 facial recognition algorithms—which represent a significant portion of the industry—revealed prevalent biases. The study showed that these technologies incorrectly recognized Black and Asian faces with a frequency that was 10 to 100 times higher compared to white faces. Furthermore, the report indicated a higher rate of misidentification for women than for men, with Black women being especially susceptible to this bias. Additionally, when employing images used by U.S. law enforcement, the algorithms were prone to falsely recognize Native American individuals more frequently than those from other demographic groups.</p>
+</div>
+<div class="section" id="algorithmic-bias">
+<h3><span class="section-number">10.2.2. </span>Algorithmic Bias<a class="headerlink" href="#algorithmic-bias" title="Permalink to this headline">#</a></h3>
+<p>Sometimes, the algorithm’s design can give undue weight to certain features that correlate with sensitive attributes like race or gender, leading to biased outcomes.</p>
+<a class="reference internal image-reference" href="../_images/dalle3.jpg"><img alt="../_images/dalle3.jpg" src="../_images/dalle3.jpg" style="width: 30%;" /></a>
+<p>Source: Image created by openAI</p>
+<p>Algorithmic bias can manifest in various domains, one notable example being the COMPAS (Correctional Offender Management Profiling for Alternative Sanctions) system used in the US criminal justice system. COMPAS is a risk assessment tool designed to help judges make decisions about which defendants are likely to reoffend.</p>
+<p>An <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">investigation</a> by ProPublica in 2016 revealed that the COMPAS algorithm disproportionately misclassified Black defendants as having a higher risk of recidivism compared to white defendants. Specifically, the study found that Black defendants were nearly twice as likely to be labeled a higher risk yet not actually reoffend. It also showed that white defendants were more likely to be labeled lower risk but go on to commit other crimes.</p>
+<p>This discrepancy highlights how algorithmic decision-making can reflect and amplify societal biases, raising concerns about fairness and the implications of relying on such tools in the justice system.</p>
+</div>
+<div class="section" id="confirmation-bias">
+<h3><span class="section-number">10.2.3. </span>Confirmation Bias<a class="headerlink" href="#confirmation-bias" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/dalle4.jpg"><img alt="../_images/dalle4.jpg" src="../_images/dalle4.jpg" style="width: 30%;" /></a>
+<p>Source: Image created by openAI</p>
+<p>This occurs when the model’s predictions reinforce the pre-existing beliefs encoded in the data, perpetuating a cycle of bias.</p>
+<p>A clear example of confirmation bias in AI can be seen in <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3565472.3595619">news recommendation algorithms</a> used by social media platforms and news aggregation websites. These algorithms typically personalize content based on a user’s past interactions, preferences, and browsing history. If a user frequently engages with articles from a particular political viewpoint, the algorithm learns to prioritize content reflecting that viewpoint. Over time, the user is increasingly presented with news and opinions that align with their initial beliefs, potentially creating an “echo chamber” or “filter bubble.” This effect can limit exposure to diverse perspectives and reinforce pre-existing biases, making users less likely to encounter challenging or contradictory information.</p>
+<p>Such confirmation bias in AI-driven content recommendation systems can contribute to increased polarization and division within society. It exemplifies how AI, without careful design to promote diversity and exposure to a wide range of viewpoints, can inadvertently magnify human biases.</p>
+</div>
+<div class="section" id="measurement-bias">
+<h3><span class="section-number">10.2.4. </span>Measurement Bias<a class="headerlink" href="#measurement-bias" title="Permalink to this headline">#</a></h3>
+<p>When the tools or processes used to collect data are biased, they can distort the representation of reality within the dataset.</p>
+<a class="reference internal image-reference" href="../_images/dalle5.jpg"><img alt="../_images/dalle5.jpg" src="../_images/dalle5.jpg" style="width: 30%;" /></a>
+<p>Source: Image created by openAI</p>
+<p>A notable example of measurement bias can be found in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8477341/#:~:text=Inaccurate%20signal%20detection%20and%20validation,about%20the%20effectiveness%20of%20monitoring.">health monitoring wearable devices</a>, such as fitness trackers and smartwatches, designed to measure various health metrics like heart rate, sleep patterns, and physical activity levels. These devices rely on sensors and algorithms to collect and interpret data. However, research has shown that the accuracy of these measurements can vary significantly across different skin tones.</p>
+<p>In particular, the optical heart rate sensors used in many wearables, which rely on green LED lights to measure heart rate, have been found to be less accurate on darker skin tones. The absorption and reflection of light differ across skin tones, and since many of these devices were predominantly tested on lighter skin tones during their development, the algorithms may not perform equally well for all users. This discrepancy introduces measurement bias, as the data used to train and calibrate these health algorithms does not equally represent all potential users, leading to potential inaccuracies in health assessments for individuals with darker skin.</p>
+<p>This example of measurement bias highlights the critical importance of inclusive and diverse data collection practices in the development of AI technologies, especially those used in health and wellness applications, to ensure accuracy and fairness for all users.</p>
+</div>
+</div>
+<div class="section" id="common-fairness-metrics">
+<h2><span class="section-number">10.3. </span>Common fairness metrics<a class="headerlink" href="#common-fairness-metrics" title="Permalink to this headline">#</a></h2>
+<div class="section" id="demographic-parity">
+<h3><span class="section-number">10.3.1. </span>Demographic Parity<a class="headerlink" href="#demographic-parity" title="Permalink to this headline">#</a></h3>
+<p><strong>Definition</strong>: Demographic Parity compares the rate of positive predictions across different groups without considering the actual labels.</p>
+<p><strong>Utility</strong>: This metric is useful when the dataset is known to have biases, as it aims to ensure that decisions (e.g., loan approvals) are made at the same rate for each group.</p>
+<p><strong>Limitations</strong>: It ignores the true labels, losing valuable information. Moreover, the metric simplifies the distribution of predictions across groups, which complicates its use for optimizing fairness.</p>
+<p>Example Calculation:</p>
+<p>Suppose you have two groups, A and B, in your dataset.
+After making predictions, you find:</p>
+<ul class="simple">
+<li><p>60 out of 100 individuals from Group A received positive predictions (e.g., loan approved).</p></li>
+<li><p>40 out of 100 individuals from Group B received positive predictions.</p></li>
+</ul>
+<p>Demographic Parity is not achieved since the positive prediction rates are not equal (60% for Group A vs. 40% for Group B).</p>
+</div>
+<div class="section" id="equalized-odds">
+<h3><span class="section-number">10.3.2. </span>Equalized Odds<a class="headerlink" href="#equalized-odds" title="Permalink to this headline">#</a></h3>
+<p><strong>Definition</strong>: Equalized Odds compares both the True Positive Rates (TPR) and False Positive Rates (FPR) between different groups, ensuring fairness in both correctly and incorrectly predicted positive outcomes.</p>
+<p><strong>Utility</strong>: Suitable when historical data is reliable and both types of correct and incorrect positive predictions are equally important.</p>
+<p><strong>Limitations</strong>: Historical biases can invalidate the original labels’ usefulness. Also, a significant class imbalance can exaggerate statistical problems, especially in smaller sensitive groups.</p>
+<p>Example Calculation:</p>
+<p>Considering the same groups, A and B, and their true and false positive outcomes:</p>
+<ul class="simple">
+<li><p>Group A: TPR = 80%, FPR = 20%</p></li>
+<li><p>Group B: TPR = 70%, FPR = 25%</p></li>
+</ul>
+<p>Equalized Odds is not achieved since both TPR and FPR are not equal across groups (80% vs. 70% for TPR and 20% vs. 25% for FPR).</p>
+</div>
+<div class="section" id="equal-opportunity">
+<h3><span class="section-number">10.3.3. </span>Equal Opportunity<a class="headerlink" href="#equal-opportunity" title="Permalink to this headline">#</a></h3>
+<p><strong>Definition</strong>: Equal Opportunity specifically focuses on the equality of True Positive Rates (TPR) across different groups.</p>
+<p><strong>Utility</strong>: This metric is beneficial when false positives are less concerning than false negatives, making it critical to fairly identify true positives across all groups.</p>
+<p><strong>Limitations</strong>: Like Equalized Odds, it suffers in the presence of historical biases and class imbalances, affecting its reliability for groups with fewer members.</p>
+<p>Example Calculation:</p>
+<p>Using the same scenario with groups A and B, focusing solely on TPR:</p>
+<ul class="simple">
+<li><p>Group A: TPR = 80%</p></li>
+<li><p>Group B: TPR = 70%</p></li>
+</ul>
+<p>Equal Opportunity is not achieved due to the disparity in TPR between Group A and Group B (80% vs. 70%).</p>
+</div>
+</div>
+<div class="section" id="implementation-with-fairlearn">
+<h2><span class="section-number">10.4. </span>Implementation with <code class="docutils literal notranslate"><span class="pre">fairlearn</span></code><a class="headerlink" href="#implementation-with-fairlearn" title="Permalink to this headline">#</a></h2>
+<p>Fairlearn is an open-source, community-driven project to help data scientists improve fairness of AI systems. https://fairlearn.org/</p>
+<p>If you haven’t installed fairlearn, you can run the following code in a new code cell.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>! conda install fairlearn
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span>
+
+<span class="kn">from</span> <span class="nn">fairlearn.metrics</span> <span class="kn">import</span> <span class="n">MetricFrame</span><span class="p">,</span> <span class="n">false_positive_rate</span><span class="p">,</span> <span class="n">false_negative_rate</span><span class="p">,</span><span class="n">count</span><span class="p">,</span> <span class="n">selection_rate</span>
+<span class="kn">from</span> <span class="nn">fairlearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_adult</span>
+<span class="kn">from</span> <span class="nn">fairlearn.postprocessing</span> <span class="kn">import</span> <span class="n">ThresholdOptimizer</span><span class="p">,</span> <span class="n">plot_threshold_optimizer</span>
+<span class="kn">from</span> <span class="nn">fairlearn.metrics</span> <span class="kn">import</span> <span class="n">demographic_parity_ratio</span><span class="p">,</span> <span class="n">equalized_odds_ratio</span>
+<span class="kn">from</span> <span class="nn">fairlearn.reductions</span> <span class="kn">import</span> <span class="n">DemographicParity</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s import the ACSIncome dataset.</p>
+<p>From <a class="reference external" href="https://fairlearn.org/main/user_guide/datasets/acs_income.html#introduction">fairlearn documentation</a>:</p>
+<p>“The ACSIncome dataset is one of five datasets created by Ding et al. [1] as an improved alternative to the popular UCI Adult dataset. [2] Briefly, the UCI Adult dataset is commonly used as a benchmark dataset when comparing different algorithmic fairness interventions. ACSIncome offers a few improvements, such as providing more datapoints (1,664,500 vs. 48,842) and more recent data (2018 vs. 1994). Further, the binary labels in the UCI Adult dataset indicate whether an individual earned more than $50k US dollars in that year”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fetch_adult</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>workclass</th>
+      <th>fnlwgt</th>
+      <th>education</th>
+      <th>education-num</th>
+      <th>marital-status</th>
+      <th>occupation</th>
+      <th>relationship</th>
+      <th>race</th>
+      <th>sex</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+      <th>native-country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25</td>
+      <td>Private</td>
+      <td>226802</td>
+      <td>11th</td>
+      <td>7</td>
+      <td>Never-married</td>
+      <td>Machine-op-inspct</td>
+      <td>Own-child</td>
+      <td>Black</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38</td>
+      <td>Private</td>
+      <td>89814</td>
+      <td>HS-grad</td>
+      <td>9</td>
+      <td>Married-civ-spouse</td>
+      <td>Farming-fishing</td>
+      <td>Husband</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>United-States</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28</td>
+      <td>Local-gov</td>
+      <td>336951</td>
+      <td>Assoc-acdm</td>
+      <td>12</td>
+      <td>Married-civ-spouse</td>
+      <td>Protective-serv</td>
+      <td>Husband</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>44</td>
+      <td>Private</td>
+      <td>160323</td>
+      <td>Some-college</td>
+      <td>10</td>
+      <td>Married-civ-spouse</td>
+      <td>Machine-op-inspct</td>
+      <td>Husband</td>
+      <td>Black</td>
+      <td>Male</td>
+      <td>7688</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18</td>
+      <td>NaN</td>
+      <td>103497</td>
+      <td>Some-college</td>
+      <td>10</td>
+      <td>Never-married</td>
+      <td>NaN</td>
+      <td>Own-child</td>
+      <td>White</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30</td>
+      <td>United-States</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>After importing the data, let’s create our target column (binary) as whether the annual income is larger than $50,000.</p>
+<p>We also define the sensitive feature (e.g., sex) that we want to examine the fairness</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the target and sensitive features</span>
+<span class="n">target_labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="s2">&quot;&gt;50K&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
+<span class="n">sensitive_features</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then split the data in training and test set, as well as the associated sensitive feature (e.g. sex)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into a training and test set</span>
+
+<span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">A_train</span><span class="p">,</span> <span class="n">A_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">target_labels</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">target_labels</span>
+<span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">A_train</span> <span class="o">=</span> <span class="n">A_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">A_test</span> <span class="o">=</span> <span class="n">A_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then build a pipeline and fit a SVC model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;impute&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;impute&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;ohe&quot;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">,</span> <span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_exclude</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;preprocessor&quot;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;classifier&quot;</span><span class="p">,</span>
+            <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                 ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer()),
+                                                                  (&#x27;scaler&#x27;,
+                                                                   StandardScaler())]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                                 (&#x27;cat&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                  (&#x27;ohe&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])),
+                (&#x27;classifier&#x27;, LogisticRegression(solver=&#x27;liblinear&#x27;))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-19" type="checkbox" ><label for="sk-estimator-id-19" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                 ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer()),
+                                                                  (&#x27;scaler&#x27;,
+                                                                   StandardScaler())]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                                 (&#x27;cat&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                  (&#x27;ohe&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])),
+                (&#x27;classifier&#x27;, LogisticRegression(solver=&#x27;liblinear&#x27;))])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-20" type="checkbox" ><label for="sk-estimator-id-20" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                 Pipeline(steps=[(&#x27;impute&#x27;, SimpleImputer()),
+                                                 (&#x27;scaler&#x27;, StandardScaler())]),
+                                 &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                (&#x27;cat&#x27;,
+                                 Pipeline(steps=[(&#x27;impute&#x27;,
+                                                  SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                 (&#x27;ohe&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                 &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-21" type="checkbox" ><label for="sk-estimator-id-21" class="sk-toggleable__label sk-toggleable__label-arrow">num</label><div class="sk-toggleable__content"><pre>&lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-22" type="checkbox" ><label for="sk-estimator-id-22" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-23" type="checkbox" ><label for="sk-estimator-id-23" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-24" type="checkbox" ><label for="sk-estimator-id-24" class="sk-toggleable__label sk-toggleable__label-arrow">cat</label><div class="sk-toggleable__content"><pre>&lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-25" type="checkbox" ><label for="sk-estimator-id-25" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;most_frequent&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-26" type="checkbox" ><label for="sk-estimator-id-26" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-27" type="checkbox" ><label for="sk-estimator-id-27" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(solver=&#x27;liblinear&#x27;)</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<p>We get the prediction on testing set</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first step to examine model fairness is to plot the evaluation metrics by sub-groups in the sensitive feature</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">,</span>
+    <span class="s2">&quot;false positive rate&quot;</span><span class="p">:</span> <span class="n">false_positive_rate</span><span class="p">,</span>
+    <span class="s2">&quot;false negative rate&quot;</span><span class="p">:</span> <span class="n">false_negative_rate</span><span class="p">,</span>
+    <span class="s2">&quot;selection rate&quot;</span><span class="p">:</span> <span class="n">selection_rate</span><span class="p">,</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">metric_frame</span> <span class="o">=</span> <span class="n">MetricFrame</span><span class="p">(</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span>
+<span class="p">)</span>
+<span class="n">metric_frame</span><span class="o">.</span><span class="n">by_group</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Show all metrics&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;accuracy&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;precision&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;false positive rate&#39;}, xlabel=&#39;sex&#39;&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;false negative rate&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;selection rate&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;count&#39;}, xlabel=&#39;sex&#39;&gt;],
+       [&lt;Axes: xlabel=&#39;sex&#39;&gt;, &lt;Axes: xlabel=&#39;sex&#39;&gt;, &lt;Axes: xlabel=&#39;sex&#39;&gt;]],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/lecture10a_28_1.png" src="../_images/lecture10a_28_1.png" />
+</div>
+</div>
+<p>As we can see from the plots above, there’s a wide disparity in the selection rate, false negative rate, and false positive rate between female and male.</p>
+<ul class="simple">
+<li><p>Selection rate: In particular, the model predicted positive outcome (i.e., annual income &gt; $50,000) for more male then female.</p></li>
+<li><p>False positive rate: In favor of male, that means the model tends to predict male as having annual income &gt; $50,000 even though it will get it wrong more than female</p></li>
+<li><p>False negative rate: Female are overlooked more than male. That means there were more female that actually have income &gt; $50,000 but the model failed to identify them.</p></li>
+</ul>
+<p>Below are examples to calculate the <code class="docutils literal notranslate"><span class="pre">demographic</span> <span class="pre">parity</span> <span class="pre">ratio</span></code> and <code class="docutils literal notranslate"><span class="pre">equalized</span> <span class="pre">odds</span> <span class="pre">ratio</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Demographic parity ratio</strong>: Ratio of selection rates between smallest and largest groups. Return type is a decimal value. A ratio of 1 means all groups have same selection rate.</p></li>
+<li><p><strong>Equalized odds ratio</strong>: The equalized odds ratio of 1 means that all groups have the same true positive, true negative, false positive, and false negative rates.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_dpr</span> <span class="o">=</span> <span class="n">demographic_parity_ratio</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span><span class="p">)</span>
+<span class="n">m_eqo</span> <span class="o">=</span> <span class="n">equalized_odds_ratio</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of demographic parity ratio: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">m_dpr</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of equal odds ratio: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">m_eqo</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value of demographic parity ratio: 0.28
+Value of equal odds ratio: 0.23
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="strategies-to-mitigate-bias-in-ml-models">
+<h2><span class="section-number">10.5. </span>Strategies to mitigate bias in ML models<a class="headerlink" href="#strategies-to-mitigate-bias-in-ml-models" title="Permalink to this headline">#</a></h2>
+<p>There are many bias mitigation techniques including pre-processing, post-processing, or reductions (https://fairlearn.org/v0.10/user_guide/mitigation/index.html). One thing which should always be remembered: all the algorithms herein will provide mathematical guarantees as to how close they can drive some unfairness metric to zero. However, this does not mean that the results are fair.</p>
+<p>Below is an example of post-processing bias mitigation technique</p>
+<p>From the <a class="reference external" href="https://fairlearn.org/v0.10/user_guide/mitigation/postprocessing.html">fairlearn documentation</a>:</p>
+<p>“ThresholdOptimizer is based on the paper Equality of Opportunity in Supervised Learning [1]. Unlike other mitigation techniques ThresholdOptimizer is built to satisfy the specified fairness criteria exactly and with no remaining disparity. In many cases this comes at the expense of performance, for example, with significantly lower accuracy. Regardless, it provides an interesting data point for comparison with other models. Importantly, ThresholdOptimizer requires the sensitive features to be available at deployment time (i.e., for the predict method).</p>
+<p>For each sensitive feature value, ThresholdOptimizer creates separate thresholds and applies them to the predictions of the user-provided estimator. To decide on the thresholds it generates all possible thresholds and selects the best combination in terms of the objective and the fairness constraints”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold_optimizer</span> <span class="o">=</span> <span class="n">ThresholdOptimizer</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="s2">&quot;equalized_odds&quot;</span><span class="p">,</span> <span class="c1"># other options: &quot;demographic_parity&quot;, &quot;false_positive_rate_parity&quot;, &quot;false_negative_rate_parity&quot;</span>
+    <span class="n">predict_method</span><span class="o">=</span><span class="s2">&quot;predict_proba&quot;</span><span class="p">,</span>
+    <span class="n">prefit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold_optimizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-6 {color: black;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ThresholdOptimizer(constraints=&#x27;equalized_odds&#x27;,
+                   estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                                              ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                                                               Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                                                SimpleImputer()),
+                                                                                               (&#x27;scaler&#x27;,
+                                                                                                StandardScaler())]),
+                                                                               &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                                                              (&#x27;cat&#x27;,
+                                                                               Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                                                SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                                               (&#x27;ohe&#x27;,
+                                                                                                OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                                               &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])),
+                                             (&#x27;classifier&#x27;,
+                                              LogisticRegression(solver=&#x27;liblinear&#x27;))]),
+                   predict_method=&#x27;predict_proba&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-48" type="checkbox" ><label for="sk-estimator-id-48" class="sk-toggleable__label sk-toggleable__label-arrow">ThresholdOptimizer</label><div class="sk-toggleable__content"><pre>ThresholdOptimizer(constraints=&#x27;equalized_odds&#x27;,
+                   estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                                              ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                                                               Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                                                SimpleImputer()),
+                                                                                               (&#x27;scaler&#x27;,
+                                                                                                StandardScaler())]),
+                                                                               &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                                                              (&#x27;cat&#x27;,
+                                                                               Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                                                SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                                               (&#x27;ohe&#x27;,
+                                                                                                OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                                               &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])),
+                                             (&#x27;classifier&#x27;,
+                                              LogisticRegression(solver=&#x27;liblinear&#x27;))]),
+                   predict_method=&#x27;predict_proba&#x27;)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-49" type="checkbox" ><label for="sk-estimator-id-49" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                 ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer()),
+                                                                  (&#x27;scaler&#x27;,
+                                                                   StandardScaler())]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                                 (&#x27;cat&#x27;,
+                                                  Pipeline(steps=[(&#x27;impute&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                  (&#x27;ohe&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                  &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])),
+                (&#x27;classifier&#x27;, LogisticRegression(solver=&#x27;liblinear&#x27;))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-50" type="checkbox" ><label for="sk-estimator-id-50" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[(&#x27;num&#x27;,
+                                 Pipeline(steps=[(&#x27;impute&#x27;, SimpleImputer()),
+                                                 (&#x27;scaler&#x27;, StandardScaler())]),
+                                 &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;),
+                                (&#x27;cat&#x27;,
+                                 Pipeline(steps=[(&#x27;impute&#x27;,
+                                                  SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                 (&#x27;ohe&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                 &lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;)])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-51" type="checkbox" ><label for="sk-estimator-id-51" class="sk-toggleable__label sk-toggleable__label-arrow">num</label><div class="sk-toggleable__content"><pre>&lt;sklearn.compose._column_transformer.make_column_selector object at 0x17aaa2800&gt;</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-52" type="checkbox" ><label for="sk-estimator-id-52" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-53" type="checkbox" ><label for="sk-estimator-id-53" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-54" type="checkbox" ><label for="sk-estimator-id-54" class="sk-toggleable__label sk-toggleable__label-arrow">cat</label><div class="sk-toggleable__content"><pre>&lt;sklearn.compose._column_transformer.make_column_selector object at 0x17abd8220&gt;</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-55" type="checkbox" ><label for="sk-estimator-id-55" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;most_frequent&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-56" type="checkbox" ><label for="sk-estimator-id-56" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-57" type="checkbox" ><label for="sk-estimator-id-57" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(solver=&#x27;liblinear&#x27;)</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_opt</span> <span class="o">=</span> <span class="n">threshold_optimizer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+        <span class="n">threshold_optimizer</span><span class="o">.</span><span class="n">interpolated_thresholder_</span><span class="o">.</span><span class="n">interpolation_dict</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plot_threshold_optimizer</span><span class="p">(</span><span class="n">threshold_optimizer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;Female&quot;: {
+        &quot;p_ignore&quot;: 0.29485001396603083,
+        &quot;prediction_constant&quot;: 0.07,
+        &quot;p0&quot;: 0.011199999999999212,
+        &quot;operation0&quot;: &quot;[&gt;0.2557008916970541]&quot;,
+        &quot;p1&quot;: 0.9888000000000008,
+        &quot;operation1&quot;: &quot;[&gt;0.23024442358675778]&quot;
+    },
+    &quot;Male&quot;: {
+        &quot;p_ignore&quot;: 0.0,
+        &quot;prediction_constant&quot;: 0.07,
+        &quot;p0&quot;: 0.0164948453608247,
+        &quot;operation0&quot;: &quot;[&gt;0.581067729051074]&quot;,
+        &quot;p1&quot;: 0.9835051546391753,
+        &quot;operation1&quot;: &quot;[&gt;0.5631712111474275]&quot;
+    }
+}
+</pre></div>
+</div>
+<img alt="../_images/lecture10a_37_1.png" src="../_images/lecture10a_37_1.png" />
+</div>
+</div>
+<p>Re-evaluate fairness metrics after using ThresholdOptimizer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">,</span>
+    <span class="s2">&quot;false positive rate&quot;</span><span class="p">:</span> <span class="n">false_positive_rate</span><span class="p">,</span>
+    <span class="s2">&quot;false negative rate&quot;</span><span class="p">:</span> <span class="n">false_negative_rate</span><span class="p">,</span>
+    <span class="s2">&quot;selection rate&quot;</span><span class="p">:</span> <span class="n">selection_rate</span><span class="p">,</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">metric_frame</span> <span class="o">=</span> <span class="n">MetricFrame</span><span class="p">(</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_opt</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span>
+<span class="p">)</span>
+<span class="n">metric_frame</span><span class="o">.</span><span class="n">by_group</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Show all metrics&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;accuracy&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;precision&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;false positive rate&#39;}, xlabel=&#39;sex&#39;&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;false negative rate&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;selection rate&#39;}, xlabel=&#39;sex&#39;&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;count&#39;}, xlabel=&#39;sex&#39;&gt;],
+       [&lt;Axes: xlabel=&#39;sex&#39;&gt;, &lt;Axes: xlabel=&#39;sex&#39;&gt;, &lt;Axes: xlabel=&#39;sex&#39;&gt;]],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/lecture10a_39_1.png" src="../_images/lecture10a_39_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_dpr_opt</span> <span class="o">=</span> <span class="n">demographic_parity_ratio</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span><span class="p">)</span>
+<span class="n">m_eqo_opt</span> <span class="o">=</span> <span class="n">equalized_odds_ratio</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of demographic parity ratio (after post-processing): </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">m_dpr_opt</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of equal odds ratio (after post-processing): </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">m_eqo_opt</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value of demographic parity ratio (after post-processing): 0.56
+Value of equal odds ratio (after post-processing): 0.96
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -371,16 +1149,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-bait-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-bait-py",
+            kernelName: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-bait-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

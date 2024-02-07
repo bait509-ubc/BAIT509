@@ -2930,32 +2930,32 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.032128</td>
-      <td>0.226627</td>
+      <td>0.037876</td>
+      <td>0.223662</td>
       <td>0.695818</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.030844</td>
-      <td>0.210495</td>
+      <td>0.028238</td>
+      <td>0.203475</td>
       <td>0.707483</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.031129</td>
-      <td>0.217490</td>
+      <td>0.029148</td>
+      <td>0.211091</td>
       <td>0.713788</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.030537</td>
-      <td>0.209025</td>
+      <td>0.028359</td>
+      <td>0.218618</td>
       <td>0.686938</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.027322</td>
-      <td>0.171605</td>
+      <td>0.028985</td>
+      <td>0.177136</td>
       <td>0.724608</td>
     </tr>
   </tbody>
@@ -3002,32 +3002,32 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.031523</td>
-      <td>0.212269</td>
+      <td>0.037514</td>
+      <td>0.225316</td>
       <td>-62462.584290</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.027885</td>
-      <td>0.198421</td>
+      <td>0.028159</td>
+      <td>0.202306</td>
       <td>-63437.715015</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.027871</td>
-      <td>0.203763</td>
+      <td>0.027739</td>
+      <td>0.209377</td>
       <td>-62613.202523</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.027251</td>
-      <td>0.227063</td>
+      <td>0.028325</td>
+      <td>0.214590</td>
       <td>-64204.295214</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.027771</td>
-      <td>0.172859</td>
+      <td>0.027873</td>
+      <td>0.177630</td>
       <td>-59217.838633</td>
     </tr>
   </tbody>
@@ -3091,8 +3091,8 @@ Directly from the docs:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.030613</td>
-      <td>0.214975</td>
+      <td>0.036642</td>
+      <td>0.220047</td>
       <td>-3.901574e+09</td>
       <td>-62462.584290</td>
       <td>-0.227097</td>
@@ -3100,8 +3100,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.027247</td>
-      <td>0.203607</td>
+      <td>0.027709</td>
+      <td>0.204257</td>
       <td>-4.024344e+09</td>
       <td>-63437.715015</td>
       <td>-0.227546</td>
@@ -3109,8 +3109,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.028034</td>
-      <td>0.205147</td>
+      <td>0.028423</td>
+      <td>0.214962</td>
       <td>-3.920413e+09</td>
       <td>-62613.202523</td>
       <td>-0.222369</td>
@@ -3118,8 +3118,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.027603</td>
-      <td>0.208715</td>
+      <td>0.027470</td>
+      <td>0.213464</td>
       <td>-4.122192e+09</td>
       <td>-64204.295214</td>
       <td>-0.230167</td>
@@ -3127,8 +3127,8 @@ Directly from the docs:</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.027986</td>
-      <td>0.175747</td>
+      <td>0.027981</td>
+      <td>0.179939</td>
       <td>-3.506752e+09</td>
       <td>-59217.838633</td>
       <td>-0.210335</td>
@@ -3271,7 +3271,7 @@ Directly from the docs:</p>
     <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
     <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> 
-    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_percentage_error&#39;</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span>
 <span class="p">);</span>
 <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
 </pre></div>
@@ -3402,26 +3402,129 @@ we might end up with another results for the best hyperparameter.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 6 candidates, totalling 18 fits
+[CV] END .......................................max_depth=69; total time=   0.0s
+[CV] END .......................................max_depth=69; total time=   0.0s
+[CV] END .......................................max_depth=69; total time=   0.0s
+[CV] END .......................................max_depth=12; total time=   0.0s
+[CV] END .......................................max_depth=12; total time=   0.0s
+[CV] END .......................................max_depth=12; total time=   0.0s
+[CV] END .......................................max_depth=65; total time=   0.0s
+[CV] END .......................................max_depth=65; total time=   0.0s
+[CV] END .......................................max_depth=43; total time=   0.0s
+[CV] END .......................................max_depth=43; total time=   0.0s
+[CV] END .......................................max_depth=43; total time=   0.0s
+[CV] END .......................................max_depth=65; total time=   0.0s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END .......................................max_depth=65; total time=   2.3s
-[CV] END .......................................max_depth=12; total time=   2.4s
-[CV] END .......................................max_depth=69; total time=   2.5s
-[CV] END .......................................max_depth=69; total time=   2.6s
-[CV] END .......................................max_depth=12; total time=   2.6s
-[CV] END .......................................max_depth=12; total time=   2.7s
-[CV] END .......................................max_depth=65; total time=   2.6s
-[CV] END .......................................max_depth=69; total time=   3.1s
-[CV] END ........................................max_depth=4; total time=   2.0s
-[CV] END ........................................max_depth=4; total time=   1.9s
-[CV] END ........................................max_depth=4; total time=   2.0s
-[CV] END .......................................max_depth=43; total time=   2.8s
-[CV] END .......................................max_depth=65; total time=   2.9s
-[CV] END .......................................max_depth=43; total time=   3.0s
-[CV] END .......................................max_depth=43; total time=   3.0s
-[CV] END .......................................max_depth=62; total time=   2.7s
-[CV] END .......................................max_depth=62; total time=   2.1s
-[CV] END .......................................max_depth=62; total time=   2.1s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_split.py:737: UserWarning: The least populated class in y has only 1 members, which is less than n_splits=3.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CV] END ........................................max_depth=4; total time=   0.0s
+[CV] END ........................................max_depth=4; total time=   0.0s
+[CV] END ........................................max_depth=4; total time=   0.0s
+[CV] END .......................................max_depth=62; total time=   0.0s
+[CV] END .......................................max_depth=62; total time=   0.0s
+[CV] END .......................................max_depth=62; total time=   0.0s
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">grid_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">dt_model</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">param_grid</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">random_state</span><span class="o">=</span><span class="mi">2080</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py:1152,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1149</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1150</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1151</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1152</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_search.py:898,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_results</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span>         <span class="n">all_candidate_params</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">,</span> <span class="n">all_out</span><span class="p">,</span> <span class="n">all_more_results</span>
+<span class="g g-Whitespace">    </span><span class="mi">894</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">896</span>     <span class="k">return</span> <span class="n">results</span>
+<span class="ne">--&gt; </span><span class="mi">898</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">900</span> <span class="c1"># multimetric is determined here because in the case of a callable</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="c1"># self.scoring the return type is only known after calling</span>
+<span class="g g-Whitespace">    </span><span class="mi">902</span> <span class="n">first_test_score</span> <span class="o">=</span> <span class="n">all_out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;test_scores&quot;</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_search.py:1809,</span> in <span class="ni">RandomizedSearchCV._run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1807</span> <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1808</span>     <span class="sd">&quot;&quot;&quot;Search n_iter candidates from param_distributions&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1809</span>     <span class="n">evaluate_candidates</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1810</span>         <span class="n">ParameterSampler</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1811</span>             <span class="bp">self</span><span class="o">.</span><span class="n">param_distributions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span>
+<span class="g g-Whitespace">   </span><span class="mi">1812</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1813</span>     <span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_search.py:875,</span> in <span class="ni">BaseSearchCV.fit.&lt;locals&gt;.evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n_candidates</span> <span class="o">*</span> <span class="n">n_splits</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>         <span class="s2">&quot;cv.split and cv.get_n_splits returned &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="s2">&quot;inconsistent results. Expected </span><span class="si">{}</span><span class="s2"> &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="s2">&quot;splits, got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_splits</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">875</span> <span class="n">_warn_or_raise_about_fit_failures</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span> <span class="c1"># For callable self.scoring, the return type is only know after</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span> <span class="c1"># calling. If the return type is a dictionary, the error scores</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span> <span class="c1"># can now be inserted with the correct key. The type checking</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span> <span class="c1"># of out will be done in `_insert_error_scores`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:414,</span> in <span class="ni">_warn_or_raise_about_fit_failures</span><span class="nt">(results, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> <span class="k">if</span> <span class="n">num_failed_fits</span> <span class="o">==</span> <span class="n">num_fits</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="n">all_fits_failed_message</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">All the </span><span class="si">{</span><span class="n">num_fits</span><span class="si">}</span><span class="s2"> fits failed.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="s2">&quot;It is very likely that your model is misconfigured.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="s2">&quot;You can try to debug the error by setting error_score=&#39;raise&#39;.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>         <span class="sa">f</span><span class="s2">&quot;Below are more details about the failures:</span><span class="se">\n</span><span class="si">{</span><span class="n">fit_errors_summary</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">414</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">all_fits_failed_message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">some_fits_failed_message</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">num_failed_fits</span><span class="si">}</span><span class="s2"> fits failed out of a total of </span><span class="si">{</span><span class="n">num_fits</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="s2">&quot;The score on these train-test partitions for these parameters&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>         <span class="sa">f</span><span class="s2">&quot;Below are more details about the failures:</span><span class="se">\n</span><span class="si">{</span><span class="n">fit_errors_summary</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span>     <span class="p">)</span>
+
+<span class="ne">ValueError</span>: 
+<span class="n">All</span> <span class="n">the</span> <span class="mi">18</span> <span class="n">fits</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">It</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">likely</span> <span class="n">that</span> <span class="n">your</span> <span class="n">model</span> <span class="ow">is</span> <span class="n">misconfigured</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">can</span> <span class="k">try</span> <span class="n">to</span> <span class="n">debug</span> <span class="n">the</span> <span class="n">error</span> <span class="n">by</span> <span class="n">setting</span> <span class="n">error_score</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="n">are</span> <span class="n">more</span> <span class="n">details</span> <span class="n">about</span> <span class="n">the</span> <span class="n">failures</span><span class="p">:</span>
+<span class="gt">--------------------------------------------------------------------------------</span>
+<span class="mi">18</span> <span class="n">fits</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_validation.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">729</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_fit_and_score</span>
+    <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1152</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/tree/_classes.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">959</span><span class="p">,</span> <span class="ow">in</span> <span class="n">fit</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/tree/_classes.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">242</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_fit</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">617</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_validate_data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_X_params</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/validation.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">915</span><span class="p">,</span> <span class="ow">in</span> <span class="n">check_array</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">_asarray_with_order</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">xp</span><span class="o">=</span><span class="n">xp</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/_array_api.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">380</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_asarray_with_order</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/pandas/core/generic.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2084</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__array__</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="ne">ValueError</span>: could not convert string to float: &#39;INLAND&#39;
 </pre></div>
 </div>
 </div>
@@ -3849,6 +3952,221 @@ Name: count, dtype: int64
 <p>392 rows × 11 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a numeric transformer</span>
+<span class="n">num_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">),</span>
+    <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;attack&#39;</span><span class="p">,</span><span class="s1">&#39;defense&#39;</span><span class="p">,</span><span class="s1">&#39;speed&#39;</span><span class="p">]</span>
+
+<span class="c1"># create a categorical transformer</span>
+<span class="n">cat_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">),</span>
+    <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+
+<span class="c1"># make column transformer</span>
+<span class="n">preprossor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">num_pipe</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">cat_pipe</span><span class="p">,</span> <span class="n">cat_cols</span><span class="p">),</span>
+    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># the final pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="n">main_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">SVC</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">main_pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;columntransformer&#x27;,
+                 ColumnTransformer(remainder=&#x27;passthrough&#x27;,
+                                   transformers=[(&#x27;pipeline-1&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;median&#x27;)),
+                                                                  (&#x27;scaler&#x27;,
+                                                                   StandardScaler())]),
+                                                  [&#x27;longitude&#x27;, &#x27;latitude&#x27;,
+                                                   &#x27;housing_median_age&#x27;,
+                                                   &#x27;households&#x27;,
+                                                   &#x27;median_income&#x27;,
+                                                   &#x27;rooms_per_household&#x27;,
+                                                   &#x27;bedrooms_per_household&#x27;,
+                                                   &#x27;population_per_household&#x27;]),
+                                                 (&#x27;pipeline-2&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(fill_value=&#x27;missing&#x27;,
+                                                                                 strategy=&#x27;constant&#x27;)),
+                                                                  (&#x27;onehot&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                  [&#x27;ocean_proximity&#x27;])])),
+                (&#x27;svc&#x27;, SVC())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-23" type="checkbox" ><label for="sk-estimator-id-23" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;columntransformer&#x27;,
+                 ColumnTransformer(remainder=&#x27;passthrough&#x27;,
+                                   transformers=[(&#x27;pipeline-1&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;median&#x27;)),
+                                                                  (&#x27;scaler&#x27;,
+                                                                   StandardScaler())]),
+                                                  [&#x27;longitude&#x27;, &#x27;latitude&#x27;,
+                                                   &#x27;housing_median_age&#x27;,
+                                                   &#x27;households&#x27;,
+                                                   &#x27;median_income&#x27;,
+                                                   &#x27;rooms_per_household&#x27;,
+                                                   &#x27;bedrooms_per_household&#x27;,
+                                                   &#x27;population_per_household&#x27;]),
+                                                 (&#x27;pipeline-2&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(fill_value=&#x27;missing&#x27;,
+                                                                                 strategy=&#x27;constant&#x27;)),
+                                                                  (&#x27;onehot&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                                  [&#x27;ocean_proximity&#x27;])])),
+                (&#x27;svc&#x27;, SVC())])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-24" type="checkbox" ><label for="sk-estimator-id-24" class="sk-toggleable__label sk-toggleable__label-arrow">columntransformer: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;,
+                  transformers=[(&#x27;pipeline-1&#x27;,
+                                 Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                  SimpleImputer(strategy=&#x27;median&#x27;)),
+                                                 (&#x27;scaler&#x27;, StandardScaler())]),
+                                 [&#x27;longitude&#x27;, &#x27;latitude&#x27;, &#x27;housing_median_age&#x27;,
+                                  &#x27;households&#x27;, &#x27;median_income&#x27;,
+                                  &#x27;rooms_per_household&#x27;,
+                                  &#x27;bedrooms_per_household&#x27;,
+                                  &#x27;population_per_household&#x27;]),
+                                (&#x27;pipeline-2&#x27;,
+                                 Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                  SimpleImputer(fill_value=&#x27;missing&#x27;,
+                                                                strategy=&#x27;constant&#x27;)),
+                                                 (&#x27;onehot&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
+                                 [&#x27;ocean_proximity&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-25" type="checkbox" ><label for="sk-estimator-id-25" class="sk-toggleable__label sk-toggleable__label-arrow">pipeline-1</label><div class="sk-toggleable__content"><pre>[&#x27;longitude&#x27;, &#x27;latitude&#x27;, &#x27;housing_median_age&#x27;, &#x27;households&#x27;, &#x27;median_income&#x27;, &#x27;rooms_per_household&#x27;, &#x27;bedrooms_per_household&#x27;, &#x27;population_per_household&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-26" type="checkbox" ><label for="sk-estimator-id-26" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;median&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-27" type="checkbox" ><label for="sk-estimator-id-27" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-28" type="checkbox" ><label for="sk-estimator-id-28" class="sk-toggleable__label sk-toggleable__label-arrow">pipeline-2</label><div class="sk-toggleable__content"><pre>[&#x27;ocean_proximity&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-29" type="checkbox" ><label for="sk-estimator-id-29" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(fill_value=&#x27;missing&#x27;, strategy=&#x27;constant&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-30" type="checkbox" ><label for="sk-estimator-id-30" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-31" type="checkbox" ><label for="sk-estimator-id-31" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre></pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-32" type="checkbox" ><label for="sk-estimator-id-32" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-33" type="checkbox" ><label for="sk-estimator-id-33" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">57</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">main_pipe</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/_param_validation.py:214,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">214</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span> <span class="k">except</span> <span class="n">InvalidParameterError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="c1"># When the function is just a wrapper around an estimator, we allow</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># the function to delegate validation to the estimator, but we replace</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="c1"># the name of the estimator by the name of the function in the error</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="c1"># message to avoid confusion.</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="sa">r</span><span class="s2">&quot;parameter of \w+ must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> must be&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>         <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:328,</span> in <span class="ni">cross_validate</span><span class="nt">(estimator, X, y, groups, scoring, cv, n_jobs, verbose, fit_params, pre_dispatch, return_train_score, return_estimator, return_indices, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="n">parallel</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">pre_dispatch</span><span class="o">=</span><span class="n">pre_dispatch</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span> <span class="n">results</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="n">clone</span><span class="p">(</span><span class="n">estimator</span><span class="p">),</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>     <span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">indices</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">328</span> <span class="n">_warn_or_raise_about_fit_failures</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">error_score</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="c1"># For callable scoring, the return type is only know after calling. If the</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span> <span class="c1"># return type is a dictionary, the error scores can now be inserted with</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="c1"># the correct key.</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_validation.py:414,</span> in <span class="ni">_warn_or_raise_about_fit_failures</span><span class="nt">(results, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> <span class="k">if</span> <span class="n">num_failed_fits</span> <span class="o">==</span> <span class="n">num_fits</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="n">all_fits_failed_message</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">All the </span><span class="si">{</span><span class="n">num_fits</span><span class="si">}</span><span class="s2"> fits failed.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="s2">&quot;It is very likely that your model is misconfigured.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="s2">&quot;You can try to debug the error by setting error_score=&#39;raise&#39;.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>         <span class="sa">f</span><span class="s2">&quot;Below are more details about the failures:</span><span class="se">\n</span><span class="si">{</span><span class="n">fit_errors_summary</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">414</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">all_fits_failed_message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">some_fits_failed_message</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">num_failed_fits</span><span class="si">}</span><span class="s2"> fits failed out of a total of </span><span class="si">{</span><span class="n">num_fits</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="s2">&quot;The score on these train-test partitions for these parameters&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>         <span class="sa">f</span><span class="s2">&quot;Below are more details about the failures:</span><span class="se">\n</span><span class="si">{</span><span class="n">fit_errors_summary</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span>     <span class="p">)</span>
+
+<span class="ne">ValueError</span>: 
+<span class="n">All</span> <span class="n">the</span> <span class="mi">5</span> <span class="n">fits</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">It</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">likely</span> <span class="n">that</span> <span class="n">your</span> <span class="n">model</span> <span class="ow">is</span> <span class="n">misconfigured</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">can</span> <span class="k">try</span> <span class="n">to</span> <span class="n">debug</span> <span class="n">the</span> <span class="n">error</span> <span class="n">by</span> <span class="n">setting</span> <span class="n">error_score</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="n">are</span> <span class="n">more</span> <span class="n">details</span> <span class="n">about</span> <span class="n">the</span> <span class="n">failures</span><span class="p">:</span>
+<span class="gt">--------------------------------------------------------------------------------</span>
+<span class="mi">5</span> <span class="n">fits</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">error</span><span class="p">:</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/pandas/core/indexes/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3791</span><span class="p">,</span> <span class="ow">in</span> <span class="n">get_loc</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;index.pyx&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">152</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pandas</span><span class="o">.</span><span class="n">_libs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">IndexEngine</span><span class="o">.</span><span class="n">get_loc</span>
+  <span class="n">File</span> <span class="s2">&quot;index.pyx&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">181</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pandas</span><span class="o">.</span><span class="n">_libs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">IndexEngine</span><span class="o">.</span><span class="n">get_loc</span>
+  <span class="n">File</span> <span class="s2">&quot;pandas/_libs/hashtable_class_helper.pxi&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7080</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pandas</span><span class="o">.</span><span class="n">_libs</span><span class="o">.</span><span class="n">hashtable</span><span class="o">.</span><span class="n">PyObjectHashTable</span><span class="o">.</span><span class="n">get_item</span>
+  <span class="n">File</span> <span class="s2">&quot;pandas/_libs/hashtable_class_helper.pxi&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7088</span><span class="p">,</span> <span class="ow">in</span> <span class="n">pandas</span><span class="o">.</span><span class="n">_libs</span><span class="o">.</span><span class="n">hashtable</span><span class="o">.</span><span class="n">PyObjectHashTable</span><span class="o">.</span><span class="n">get_item</span>
+<span class="ne">KeyError</span>: &#39;longitude&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">447</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_get_column_indices</span>
+    <span class="n">col_idx</span> <span class="o">=</span> <span class="n">all_columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/pandas/core/indexes/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3798</span><span class="p">,</span> <span class="ow">in</span> <span class="n">get_loc</span>
+    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="ne">KeyError</span>: &#39;longitude&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/model_selection/_validation.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">729</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_fit_and_score</span>
+    <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1152</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/pipeline.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">423</span><span class="p">,</span> <span class="ow">in</span> <span class="n">fit</span>
+    <span class="n">Xt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params_steps</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/pipeline.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">377</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_fit</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">fitted_transformer</span> <span class="o">=</span> <span class="n">fit_transform_one_cached</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/joblib/memory.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">353</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__call__</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/pipeline.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">957</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_fit_transform_one</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/_set_output.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">157</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapped</span>
+    <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1152</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/compose/_column_transformer.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">751</span><span class="p">,</span> <span class="ow">in</span> <span class="n">fit_transform</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_validate_column_callables</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/compose/_column_transformer.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">459</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_validate_column_callables</span>
+    <span class="n">transformer_to_input_indices</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_column_indices</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/quannguyen/opt/miniconda3/envs/571/lib/python3.10/site-packages/sklearn/utils/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">455</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_get_column_indices</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A given column is not a column of the dataframe&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+<span class="ne">ValueError</span>: A given column is not a column of the dataframe
+</pre></div>
+</div>
+</div>
+</div>
 <p>Let’s do cross-validation and look at the scores from cross-validation of not just accuracy, but precision and recall and the f1 score as well.</p>
 <ol class="simple">
 <li><p>Build a pipeline containing the column transformer and an SVC model and set <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> in the SVM classifier.</p></li>
@@ -3936,8 +4254,8 @@ Name: count, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.015617</td>
-      <td>0.007359</td>
+      <td>0.008283</td>
+      <td>0.006674</td>
       <td>0.941176</td>
       <td>0.666667</td>
       <td>0.666667</td>
@@ -3945,8 +4263,8 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>1</th>
-      <td>0.006605</td>
-      <td>0.008269</td>
+      <td>0.006897</td>
+      <td>0.006086</td>
       <td>0.941176</td>
       <td>0.666667</td>
       <td>0.666667</td>
@@ -3954,8 +4272,8 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>2</th>
-      <td>0.006800</td>
-      <td>0.006950</td>
+      <td>0.006335</td>
+      <td>0.005881</td>
       <td>0.911765</td>
       <td>0.500000</td>
       <td>0.666667</td>
@@ -3963,8 +4281,8 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>3</th>
-      <td>0.007100</td>
-      <td>0.008601</td>
+      <td>0.006494</td>
+      <td>0.006122</td>
       <td>0.939394</td>
       <td>0.500000</td>
       <td>0.500000</td>
@@ -3972,8 +4290,8 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>4</th>
-      <td>0.007335</td>
-      <td>0.006308</td>
+      <td>0.006614</td>
+      <td>0.005894</td>
       <td>0.909091</td>
       <td>0.500000</td>
       <td>0.333333</td>
